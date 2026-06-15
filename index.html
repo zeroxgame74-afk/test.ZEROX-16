@@ -25,75 +25,87 @@
         }
         body, body * {
             font-weight: 900 !important;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif !important;
         }
         .update-box {
             background: #1f1f1f;
-            padding: 40px 30px;
+            padding: 35px 25px;
             border-radius: 48px;
             border: 2px solid #FFC800;
-            max-width: 450px;
+            max-width: 420px;
             width: 90%;
         }
         .update-box i {
-            font-size: 4rem;
-            color: #FFC800;
-            margin-bottom: 20px;
-            display: inline-block;
-            animation: spin 2s infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0); }
-            100% { transform: rotate(360deg); }
-        }
-        .update-box h1 {
-            font-size: 1.8rem;
+            font-size: 3.5rem;
             color: #FFC800;
             margin-bottom: 15px;
+            display: inline-block;
+        }
+        .update-box h1 {
+            font-size: 1.6rem;
+            color: #FFC800;
+            margin-bottom: 12px;
         }
         .update-box p {
+            font-size: 0.9rem;
+            margin: 8px 0;
+            color: #d0d0d0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .update-box p i {
             font-size: 1rem;
-            margin: 10px 0;
-            color: #ccc;
+            margin-bottom: 0;
+            color: #FFC800;
         }
         .update-box small {
             display: block;
-            margin-top: 25px;
-            font-size: 0.7rem;
+            margin-top: 20px;
+            font-size: 0.65rem;
             color: #888;
         }
         .refresh-btn {
             background: #FFC800;
             color: #121212;
             border: none;
-            padding: 10px 25px;
+            padding: 8px 22px;
             border-radius: 40px;
-            margin-top: 20px;
+            margin-top: 18px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.85rem;
+            transition: 0.2s;
         }
         .refresh-btn:hover {
             background: #e6b400;
+            transform: scale(1.02);
+        }
+        .refresh-btn i {
+            font-size: 0.9rem !important;
+            margin-bottom: 0 !important;
         }
     </style>
 </head>
 <body>
     <div class="update-box">
-        <i class="fas fa-sync-alt"></i>
+        <i class="fas fa-code-branch"></i>
         <h1>در حال بروزرسانی</h1>
-        <p>⚠️ سایت میم نون چند لحظه‌ای است در دسترس نیست</p>
-        <p>🔧 تیم فنی مشغول اعمال تغییرات و بهبود امکانات است</p>
-        <p>📱 لطفاً چند دقیقه دیگر مجدد تلاش کنید</p>
+        <p><i class="fas fa-exclamation-triangle"></i> سایت میم نون چند لحظه‌ای است در دسترس نیست</p>
+        <p><i class="fas fa-tools"></i> تیم فنی مشغول اعمال تغییرات و بهبود امکانات است</p>
+        <p><i class="fas fa-mobile-alt"></i> لطفاً چند دقیقه دیگر مجدد تلاش کنید</p>
         <button class="refresh-btn" onclick="location.reload()">
-            <i class="fas fa-redo-alt"></i> تلاش مجدد
+            <i class="fas fa-sync-alt"></i> تلاش مجدد
         </button>
         <small>mim.non.ir | همه چیز به زودی بهتر از قبل</small>
     </div>
     <script>
         setInterval(() => {
             location.reload();
-        }, 10000);
+        }, 15000);
     </script>
 </body>
 </html>
