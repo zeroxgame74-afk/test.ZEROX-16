@@ -905,6 +905,7 @@
         if(filterType === "cheap") return font.price > 0 && font.price < 100000;
         if(filterType === "economic") return font.price >= 100000 && font.price <= 300000;
         if(filterType === "special") return font.isSpecial === true;
+        if(filterType === "free") return font.isFree === true;
         return true;
     }
 
@@ -946,7 +947,7 @@
             
             let freeTagHtml = '';
             if (font.isFree) {
-                freeTagHtml = `<div class="free-tag"><i class="fas fa-gem"></i> رایگان</div>`;
+                freeTagHtml = `<div class="free-tag"><i class="fas fa-gift"></i> رایگان</div>`;
             }
             
             let priceHtml = '';
@@ -1214,6 +1215,7 @@
                             <button class="filter-btn" data-pricefilter="cheap"><i class="fas fa-rocket"></i> ارزون</button>
                             <button class="filter-btn" data-pricefilter="economic"><i class="fas fa-bolt"></i> اقتصادی</button>
                             <button class="filter-btn" data-pricefilter="special"><i class="fas fa-star"></i> پیشنهاد ویژه</button>
+                            <button class="filter-btn" data-pricefilter="free"><i class="fas fa-gift"></i> رایگان</button>
                         </div>
                     </div>
                 </div>
