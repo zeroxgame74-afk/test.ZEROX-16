@@ -2,1073 +2,1586 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>کالفود | call food.ir</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700;800;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZEROX.GAME.IR</title>
+    <!-- فونت وزیرمتن -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        /* ===== تنظیمات پایه ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --main: #B61C1C;
+            --main-dark: #8a1010;
+            --radius: 24px;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            --transition: 0.25s ease;
+        }
+
         body {
             font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            background: linear-gradient(145deg, #fef9f1 0%, #fff6ec 100%);
-            color: #2e241f;
-            scroll-behavior: smooth;
-            padding-top: 85px;
+            background: var(--main);
+            color: white;
+            min-height: 100vh;
+            /* بهبود نمایش در ویندوز */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
-        i, .fas, .far {
-            font-weight: 900;
-            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.05));
-            transition: all 0.2s ease;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f3e3d3;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #d97a3c;
-            border-radius: 10px;
-        }
-
-        .navbar {
-            background: rgba(255, 248, 240, 0.96);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
-            padding: 0.8rem 1.5rem;
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            z-index: 1000;
+        /* ===== هدر ===== */
+        .header {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
-            border-bottom: 1px solid rgba(217, 122, 60, 0.2);
+            gap: 6px;
+            padding: 8px 10px 0 10px;
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #c55a2c, #e68a2e);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+        .logo img {
+            width: 100%;
+            max-width: 1000px;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: -4px;
+            border-radius: 0 0 16px 16px;
+        }
+
+        /* ===== ناوبری ===== */
+        nav {
+            width: 95%;
+            max-width: 1200px;
             display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px 8px;
+            padding: 12px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(4px);
+            margin: 0 auto;
+            transition: var(--transition);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-weight: 800;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-        }
-
-        .logo i {
-            background: none;
-            color: #d97a3c;
-            font-size: 1.7rem;
-            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 0.7rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 800;
-            color: #4b3b2f;
-            transition: 0.2s;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 0.4rem 0.6rem;
-            border-radius: 40px;
-            background: transparent;
-        }
-
-        .nav-links a:hover {
-            color: #d76f2c;
-            background: rgba(215, 111, 44, 0.08);
-            transform: translateY(-1px);
-        }
-
-        .cart-icon {
-            position: relative;
-            font-size: 1.5rem;
-            color: #c25d2b;
             cursor: pointer;
-            padding: 0.3rem 0.6rem;
-            border-radius: 40px;
-            transition: 0.2s;
+            transition: var(--transition);
+            font-size: 14px;
+            background: transparent;
+            letter-spacing: 0.3px;
+        }
+
+        nav a i,
+        .custom-cd-icon {
+            font-size: 14px;
+            width: 28px;
+            height: 28px;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
+            border-radius: 50%;
+            background: white;
+            color: var(--main);
+            transition: var(--transition);
         }
-        .cart-icon:hover {
-            background: rgba(215, 111, 44, 0.08);
+
+        .custom-cd-icon {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            color: #C0C0C0;
+            box-shadow: 0 0 0 2px var(--main);
+            font-size: 12px;
+        }
+
+        nav a:hover {
+            background: white;
+            color: var(--main);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        nav a:hover i,
+        nav a:hover .custom-cd-icon {
+            background: var(--main);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        nav a:hover .custom-cd-icon {
+            background: linear-gradient(135deg, #3a3a3a, #2a2a2a);
+            color: white;
+            box-shadow: 0 0 0 2px white;
+        }
+
+        /* ===== بخش‌ها ===== */
+        .section {
+            display: none;
+            padding: 20px 16px 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeUp 0.35s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin: 30px 0 22px 0;
+            border-right: 5px solid white;
+            padding-right: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title i {
+            font-size: 26px;
+        }
+
+        /* ===== دکمه‌های فیلتر ===== */
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 28px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 10px 22px;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(2px);
+        }
+
+        .filter-btn i {
+            font-size: 14px;
+        }
+
+        .filter-btn:hover {
+            background: var(--main);
+            border-color: var(--main);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(182, 28, 28, 0.3);
+        }
+
+        .filter-btn.active {
+            background: var(--main);
+            border-color: var(--main);
+            box-shadow: 0 0 20px rgba(182, 28, 28, 0.5);
+        }
+
+        /* ===== کارت‌های ترکیبی (اخبار، داستان‌ها، اُلد) ===== */
+        .hybrid-card {
+            background: white;
+            border-radius: var(--radius);
+            margin-top: 25px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #1a1a1a;
+        }
+
+        .hybrid-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -8px rgba(0, 0, 0, 0.35);
+        }
+
+        .hybrid-inner {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 700px) {
+            .hybrid-inner {
+                flex-direction: row;
+            }
+        }
+
+        .hybrid-media {
+            flex: 1.2;
+            background: #111;
+            min-height: 180px;
+        }
+
+        .hybrid-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            min-height: 200px;
+            transition: transform 0.4s ease;
+        }
+
+        .hybrid-card:hover .hybrid-media img {
             transform: scale(1.02);
         }
 
-        .cart-count {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: #e67e22;
-            color: white;
-            font-size: 0.65rem;
-            font-weight: bold;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
+        .hybrid-content {
+            flex: 1.5;
+            padding: 24px 26px;
+            color: #1a1a1a;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            flex-direction: column;
         }
 
-        .hero {
-            background: url('https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg') center/cover no-repeat;
-            min-height: 55vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0 0 48px 48px;
-            margin: 0 1rem 0 1rem;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.25);
-        }
-        .hero-overlay {
-            background: linear-gradient(120deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
-            border-radius: 0 0 48px 48px;
-            width: 100%;
-            padding: 2rem;
-            display: flex;
-            justify-content: center;
-        }
-        .call-message-box {
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem 2rem;
-            border-radius: 60px;
-            text-align: center;
-        }
-        .call-message-box p {
-            color: #fff1e0;
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-        .call-message-box .phone-wrapper {
-            margin-top: 8px;
-        }
-        .call-message-box i {
-            color: #ffb347;
-            margin-left: 10px;
-        }
-        .phone-number {
-            direction: ltr;
+        .hybrid-badge {
             display: inline-block;
-            background: #e67e22;
-            padding: 8px 24px;
+            background: var(--main);
+            color: white;
+            padding: 5px 18px;
             border-radius: 40px;
-            color: white;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            align-self: flex-start;
         }
 
-        .menu-section {
-            max-width: 700px;
-            margin: 4rem auto;
-            padding: 0 1.5rem;
+        .hybrid-badge i {
+            margin-left: 6px;
         }
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
+
+        .hybrid-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #000;
             font-weight: 900;
-            margin-bottom: 2rem;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .section-title:after {
-            content: "";
-            width: 80px;
-            height: 4px;
-            background: #e67e22;
-            display: block;
-            margin: 12px auto 0;
-            border-radius: 4px;
-            position: absolute;
-            bottom: -15px;
-        }
-        .sub-section-title {
-            text-align: center;
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin: 2rem 0 1.5rem;
-            color: #c55a2c;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            line-height: 1.3;
         }
 
-        .food-card {
-            background: white;
-            border-radius: 48px;
-            overflow: hidden;
-            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.25);
-            transition: all 0.3s ease;
-            margin-bottom: 2rem;
+        .hybrid-desc {
+            opacity: 0.85;
+            margin-bottom: 16px;
+            line-height: 1.7;
+            color: #2c2c3a;
+            font-weight: 500;
         }
-        .food-card:hover {
-            transform: translateY(-6px);
+
+        /* ===== دکمه‌های اکشن ===== */
+        .news-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 6px;
         }
-        .card-img {
-            height: 280px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        .food-tag {
-            position: absolute;
-            top: 18px;
-            right: 18px;
-            background: #e67e22;
+
+        .news-actions button {
+            background: var(--main);
             color: white;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.8rem;
+            border: none;
+            padding: 9px 22px;
+            border-radius: 40px;
+            cursor: pointer;
             font-weight: 800;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .news-actions button:hover {
+            background: var(--main-dark);
+            transform: scale(0.97);
+        }
+
+        .news-full-text,
+        .full-text,
+        .story-full-text,
+        .old-full-text {
+            display: none;
+            margin-top: 18px;
+            padding: 18px 20px;
+            background: #f5f5f7;
+            border-radius: 16px;
+            color: #1a1a1a;
+            line-height: 1.9;
+            font-size: 14px;
+            border-right: 4px solid var(--main);
+            animation: fadeSlide 0.3s ease-out;
+            white-space: pre-line;
+            text-align: justify;
+        }
+
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== گرید ویدیوها ===== */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -8px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-thumb {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .video-card:hover .video-thumb {
+            transform: scale(1.03);
+        }
+
+        .video-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: var(--main);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 900;
             display: flex;
             align-items: center;
             gap: 6px;
-            z-index: 10;
-        }
-        .badge-special {
-            position: absolute;
-            top: 18px;
-            left: 18px;
-            background: #2e241f;
-            color: #ffd966;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-        }
-        .card-info {
-            padding: 1.5rem;
-        }
-        .card-info h3 {
-            font-size: 1.7rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-        }
-        .desc {
-            color: #5e4b3a;
-            font-size: 0.95rem;
-            margin: 0.5rem 0 1rem;
-            line-height: 1.5;
-        }
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 100%;
-            margin-top: 10px;
-        }
-        .add-to-cart {
-            background: #2e241f;
-            color: white;
-            border: none;
-            padding: 12px 0;
-            border-radius: 60px;
-            font-weight: 800;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
-            transition: 0.2s;
-        }
-        .add-to-cart:hover {
-            background: #e67e22;
-            transform: scale(0.98);
-        }
-        .detail-btn {
-            background: #f0e2d4;
-            color: #4b3b2f;
-            border: none;
-            padding: 12px 0;
-            border-radius: 60px;
-            font-weight: 800;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            cursor: pointer;
-            transition: 0.2s;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        .detail-btn:hover {
-            background: #e67e22;
-            color: white;
-        }
-        .detail-btn:hover i {
-            filter: drop-shadow(0 0 2px white);
-        }
-        .detail-box {
-            background: #fff8f0;
-            border-radius: 28px;
-            padding: 1rem;
-            margin-top: 1rem;
-            border-right: 5px solid #e67e22;
-            display: none;
-            font-weight: 700;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: #3a2a1f;
-        }
-        .detail-box.show {
-            display: block;
-            animation: fadeInUp 0.3s ease;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .detail-box i {
-            margin-left: 8px;
-            color: #e67e22;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
-        .timer-expired {
-            background: #fff0e0;
-            border-radius: 50px;
-            padding: 8px 16px;
-            margin: 12px 0;
+        .video-info {
+            padding: 20px 18px 22px;
             text-align: center;
-            border: 1px solid #e67e22;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
-        .timer-expired-content {
+
+        .video-info h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            font-weight: 900;
+            color: var(--main);
+            line-height: 1.4;
+        }
+
+        .video-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .video-cat-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f0f0f0;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 11px;
+            color: var(--main);
+            font-weight: 800;
+        }
+
+        .date-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .date-time i {
+            color: var(--main);
+            font-size: 11px;
+        }
+
+        .video-info p {
+            font-size: 0.85rem;
+            color: #444;
+            margin-bottom: 16px;
+            line-height: 1.6;
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .button-group {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 0.9rem;
-            color: #c55a2c;
-        }
-        .timer-expired-content i {
-            font-size: 1.1rem;
-            color: #e67e22;
-        }
-        .timer-expired-text {
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #a17248;
+            flex-wrap: wrap;
             margin-top: 4px;
         }
 
-        .support-section {
-            max-width: 700px;
-            margin: 3rem auto;
-            padding: 1rem;
-        }
-        .support-box {
-            background: white;
-            border-radius: 48px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
-        }
-        .support-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.8rem;
-            color: #c55a2c;
-        }
-        .support-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background: #fff6ed;
-            padding: 1rem;
-            border-radius: 70px;
-            margin: 1rem 0;
-            font-size: 1.1rem;
-        }
-        .support-item i {
-            font-size: 1.8rem;
-            color: #e67e22;
+        /* ===== دکمه‌های با افکت شاین ===== */
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            20% {
+                left: 100%;
+            }
+            100% {
+                left: 100%;
+            }
         }
 
-        .cart-sidebar {
-            position: fixed;
+        .btn-card,
+        .more-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-card::after,
+        .more-btn::after {
+            content: '';
+            position: absolute;
             top: 0;
-            left: -400px;
-            width: 400px;
+            left: -100%;
+            width: 60%;
             height: 100%;
-            background: #fffaf5;
-            box-shadow: -8px 0 30px rgba(0,0,0,0.2);
-            z-index: 2000;
-            transition: left 0.3s;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            border-radius: 0 28px 28px 0;
-        }
-        .cart-sidebar.open {
-            left: 0;
-        }
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 3px solid #f0e2d4;
-            padding-bottom: 1rem;
-        }
-        .close-cart {
-            background: none;
-            border: none;
-            font-size: 1.7rem;
-            cursor: pointer;
-            color: #af7f58;
-        }
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            margin: 1rem 0;
-        }
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            background: white;
-            padding: 0.8rem;
-            border-radius: 28px;
-            margin-bottom: 0.8rem;
-        }
-        .cart-item-actions button {
-            background: #f0e2d4;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 0 2px;
-        }
-        .cart-total {
-            border-top: 2px dashed #e2cfbe;
-            padding-top: 1rem;
-            font-size: 1.1rem;
-            font-weight: 800;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        .checkout-btn {
-            background: #e67e22;
-            width: 100%;
-            margin-top: 1.2rem;
-            padding: 1rem;
-            border: none;
-            border-radius: 60px;
-            color: white;
-            font-weight: 900;
-            font-size: 1.1rem;
-            cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        .empty-cart {
-            text-align: center;
-            color: #ad8b70;
-            padding: 2rem;
-        }
-        .footer {
-            background: #2b211c;
-            color: #ffe0cd;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-radius: 40px 40px 0 0;
-        }
-        @media (max-width: 880px) {
-            .navbar {
-                flex-direction: column;
-                gap: 12px;
-                padding: 0.8rem 1rem;
-            }
-            .nav-links {
-                justify-content: center;
-                gap: 0.5rem;
-            }
-            .nav-links a {
-                font-size: 0.75rem;
-                padding: 0.3rem 0.5rem;
-            }
-            .cart-icon {
-                font-size: 1.3rem;
-            }
-            body {
-                padding-top: 120px;
-            }
-        }
-        @media (max-width: 550px) {
-            body {
-                padding-top: 150px;
-            }
-        }
-        .toast-msg {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            background: #2e241f;
-            color: #ffefcf;
-            padding: 14px 25px;
-            border-radius: 60px;
-            z-index: 2100;
-            opacity: 0;
-            transition: 0.3s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            animation: shine 3.5s infinite;
             pointer-events: none;
-            font-weight: 800;
         }
-        .custom-alert {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            background: #fffef7;
-            padding: 1.8rem 1.8rem;
-            border-radius: 48px;
-            box-shadow: 0 40px 60px rgba(0,0,0,0.3);
-            z-index: 3000;
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.2s;
-            border-top: 6px solid #e67e22;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
+
+        .btn-card:hover::after,
+        .more-btn:hover::after {
+            animation: none;
         }
-        .custom-alert.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translate(-50%, -50%) scale(1);
-        }
-        .custom-alert i.fa-check-circle {
-            font-size: 2rem;
-            color: #e67e22;
-            margin-bottom: 0.8rem;
-            opacity: 0.8;
-        }
-        .custom-alert h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            font-weight: 900;
-            color: #2e241f;
-        }
-        .custom-alert .order-list {
-            background: transparent;
-            padding: 0;
-            margin: 0.5rem 0;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 700;
-        }
-        .custom-alert .order-list p {
-            margin: 0.2rem 0;
-        }
-        .custom-alert p {
-            margin: 0.5rem 0;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #2e241f;
-        }
-        .custom-alert .phone-number-modal {
-            direction: ltr;
-            background: #e67e22;
-            display: inline-block;
-            padding: 5px 16px;
+
+        .btn-card {
+            background: var(--main);
+            border: none;
+            padding: 8px 20px;
             border-radius: 40px;
             color: white;
             font-weight: 800;
-            margin: 0.5rem 0;
-            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 13px;
+            font-family: 'Vazirmatn', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        .discount-input-group {
-            background: #fff5e8;
+
+        .btn-card:hover {
+            background: var(--main-dark);
+            transform: scale(1.03);
+        }
+
+        .more-btn {
+            background: transparent;
+            border: 2px solid var(--main);
+            padding: 7px 18px;
+            border-radius: 40px;
+            color: var(--main);
+            font-size: 13px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .more-btn:hover {
+            background: var(--main);
+            color: white;
+            border-color: var(--main);
+        }
+
+        /* ===== گرید موسیقی ===== */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .music-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .music-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.3);
+        }
+
+        .music-img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .music-card:hover .music-img {
+            transform: scale(1.02);
+        }
+
+        .music-info {
+            padding: 22px 20px 24px;
+            text-align: center;
+        }
+
+        .title-platform-box {
+            background: #f8f8fa;
+            border-radius: 20px;
+            padding: 14px 12px;
+            margin-bottom: 12px;
+        }
+
+        .title-platform-box h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            font-weight: 900;
+            color: var(--main);
+        }
+
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 15px;
+            color: var(--main);
+            font-weight: 800;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .platform-badge i {
+            font-size: 18px;
+        }
+
+        .composers-section {
+            background: #f8f8fa;
+            border-radius: 20px;
+            padding: 12px 14px;
+            margin: 12px 0;
+        }
+
+        .composer-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--main);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .composers-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .composer-item {
+            background: white;
+            border-radius: 30px;
+            padding: 6px 14px;
+            font-size: 12px;
+            color: #333;
+            font-weight: 600;
+            border: 1px solid #eee;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin: 2px 0;
+        }
+
+        .composer-item i {
+            color: var(--main);
+            font-size: 11px;
+        }
+
+        .music-desc-box {
+            background: #f8f8fa;
+            border-radius: 20px;
+            padding: 12px 14px;
+            margin: 12px 0;
+            border-right: 3px solid var(--main);
+        }
+
+        .music-desc-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--main);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .music-desc-text {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* ===== پلیر اختصاصی ===== */
+        .custom-player {
+            background: #f8f8fa;
             border-radius: 60px;
-            padding: 6px 15px;
-            margin: 15px auto 8px auto;
+            padding: 10px 16px;
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            border: 1px solid #e8e8ea;
+            transition: var(--transition);
+        }
+
+        .custom-player:hover {
+            border-color: var(--main);
+            background: #fff;
+        }
+
+        .custom-player audio {
+            flex: 1;
+            min-width: 140px;
+            height: 40px;
+            border-radius: 40px;
+            outline: none;
+        }
+
+        .download-music-btn {
+            background: var(--main);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-music-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            animation: shine 3.5s infinite;
+        }
+
+        .download-music-btn:hover {
+            background: var(--main-dark);
+            transform: scale(1.03);
+        }
+
+        .download-music-btn:hover::after {
+            animation: none;
+        }
+
+        /* ===== درباره ما ===== */
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .welcome-box {
+            background: white;
+            border-radius: 32px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .welcome-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .welcome-icon i {
+            font-size: 60px;
+            color: var(--main);
+            filter: drop-shadow(0 0 20px rgba(182, 28, 28, 0.3));
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .welcome-box h2 {
+            font-size: 2rem;
+            color: var(--main);
+            margin-bottom: 15px;
+        }
+
+        .welcome-box p {
+            font-size: 1.15rem;
+            color: #333;
+            line-height: 1.9;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 28px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatSlow {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(2deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        .icon-3d {
+            font-size: 70px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: float 2s ease-in-out infinite;
+            color: var(--main);
+            filter: drop-shadow(0 8px 18px rgba(182, 28, 28, 0.25));
+        }
+
+        .icon-3d-support {
+            font-size: 70px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: floatSlow 2.5s ease-in-out infinite;
+            color: var(--main);
+            filter: drop-shadow(0 8px 20px rgba(182, 28, 28, 0.25));
+        }
+
+        .info-card h3 {
+            font-size: 1.35rem;
+            color: var(--main);
+            margin-bottom: 14px;
+        }
+
+        .info-card p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .contact-link {
+            display: inline-block;
+            margin-top: 15px;
+            background: var(--main);
+            color: white;
+            padding: 8px 22px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            background: var(--main-dark);
+            transform: scale(1.03);
+        }
+
+        .dev-name {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--main);
+            margin-top: 8px;
+        }
+
+        /* ===== کانال‌ها ===== */
+        .channels-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .channel-card {
+            background: white;
+            border-radius: 32px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .channel-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .channel-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: float 2s ease-in-out infinite;
+            color: var(--main);
+            filter: drop-shadow(0 8px 18px rgba(182, 28, 28, 0.25));
+        }
+
+        .channel-card h3 {
+            font-size: 1.5rem;
+            color: var(--main);
+            margin-bottom: 12px;
+        }
+
+        .channel-card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 18px;
+            line-height: 1.7;
+        }
+
+        .channel-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--main);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .channel-link i {
+            font-size: 1.2rem;
+        }
+
+        .channel-link:hover {
+            background: var(--main-dark);
+            transform: scale(1.03);
+        }
+
+        .coming-soon {
+            background: #f5f5f5;
+            border-radius: 20px;
+            padding: 16px;
+            margin-top: 16px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        /* ===== گریدهای عمومی ===== */
+        .news-grid,
+        .cards-grid,
+        .old-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* ===== باکس اطلاعات بازی (اُلد) ===== */
+        .game-info-box {
+            background: #f8f8fa;
+            border-radius: 20px;
+            padding: 16px 18px;
+            margin: 14px 0 10px;
+            border-right: 3px solid var(--main);
+        }
+
+        .info-row {
             display: flex;
             align-items: center;
             gap: 10px;
-            border: 1px solid #f0d5bc;
-            width: 90%;
-        }
-        .discount-input-group i {
-            font-size: 1rem;
-            color: #e67e22;
-            opacity: 0.7;
-        }
-        .discount-input-group input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 8px 0;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-align: right;
-            color: #2e241f;
-            outline: none;
-        }
-        .discount-input-group input::placeholder {
-            color: #c9b59c;
-            font-weight: 500;
-            font-size: 0.75rem;
-        }
-        .discount-feedback {
-            font-size: 0.7rem;
-            margin-top: 3px;
-            margin-bottom: 8px;
-            font-weight: 800;
-            text-align: center;
-            min-height: 24px;
-        }
-        .discount-success {
-            color: #2b7a3b;
-        }
-        .discount-error {
-            color: #c0392b;
+            padding: 5px 0;
+            font-size: 13px;
+            color: #333;
+            flex-wrap: wrap;
+            border-bottom: 1px dashed #e8e8ea;
         }
 
-        .custom-alert .order-code {
-            background: #2e241f;
-            color: #ffd966;
-            padding: 8px;
-            border-radius: 60px;
-            margin: 0.8rem 0;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            font-weight: 900;
-            display: inline-block;
-            width: auto;
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-row i {
+            width: 22px;
+            color: var(--main);
+            font-size: 14px;
             text-align: center;
         }
-        .custom-alert button {
-            background: #e67e22;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 50px;
-            color: white;
+
+        .info-row strong {
+            color: var(--main);
             font-weight: 800;
-            font-size: 0.9rem;
-            cursor: pointer;
-            margin-top: 0.8rem;
-            font-family: 'Vazirmatn', sans-serif;
-            transition: 0.2s;
         }
-        .custom-alert button:hover {
-            background: #c55a2c;
-            transform: scale(0.96);
+
+        .story-box {
+            background: #f5f5f7;
+            border-radius: 20px;
+            padding: 16px 18px;
+            margin: 12px 0;
         }
-        .page-content {
-            display: none;
-        }
-        .page-content.active-page {
-            display: block;
-        }
-        .foods-grid {
+
+        .story-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--main);
+            margin-bottom: 10px;
             display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ===== فوتر ===== */
+        footer {
+            text-align: center;
+            padding: 18px 12px;
+            color: white;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== واکنش‌گرایی ===== */
+        @media (max-width: 650px) {
+            nav a {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            nav a i,
+            .custom-cd-icon {
+                font-size: 11px;
+                width: 24px;
+                height: 24px;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+            .hybrid-content h2 {
+                font-size: 1.25rem;
+            }
+            .videos-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+            .music-grid {
+                grid-template-columns: 1fr;
+            }
+            .news-grid,
+            .cards-grid,
+            .old-grid {
+                grid-template-columns: 1fr;
+            }
+            .welcome-box h2 {
+                font-size: 1.5rem;
+            }
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+            .hybrid-content {
+                padding: 18px;
+            }
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            nav {
+                gap: 4px;
+                padding: 8px 6px;
+            }
+            nav a {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+            nav a i,
+            .custom-cd-icon {
+                width: 20px;
+                height: 20px;
+                font-size: 9px;
+            }
+            .video-card .video-thumb {
+                height: 150px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <div class="logo">
+            <img src="https://uploadkon.ir/uploads/3ee908_26Zerox.png" alt="ZEROX">
+        </div>
+        <nav>
+            <a onclick="showTab('home')"><i class="fa-solid fa-house"></i> خانه</a>
+            <a onclick="showTab('news')"><i class="fa-solid fa-newspaper"></i> اخبار</a>
+            <a onclick="showTab('video')"><i class="fa-solid fa-video"></i> ویدیوها</a>
+            <a onclick="showTab('music')"><i class="fa-solid fa-music"></i> موسیقی</a>
+            <a onclick="showTab('shop')"><i class="fa-solid fa-shop"></i> شاپ</a>
+            <a onclick="showTab('stories')"><i class="fa-solid fa-book-open"></i> داستان‌ها</a>
+            <a onclick="showTab('old')"><span class="custom-cd-icon"><i class="fa-solid fa-compact-disc"></i></span> زروکس اُلد</a>
+            <a onclick="showTab('about')"><i class="fa-solid fa-info-circle"></i> درباره ما</a>
+            <a onclick="showTab('channels')"><i class="fa-solid fa-database"></i> کانال‌هامون!</a>
+        </nav>
+    </div>
 
-<div class="navbar">
-    <div class="logo"><i class="fas fa-utensils"></i> کالفود</div>
-    <div class="nav-links">
-        <a href="#" data-page="home"><i class="fas fa-home"></i> خانه</a>
-        <a href="#" data-page="dolme"><i class="fas fa-leaf"></i> دلمه</a>
-        <a href="#" data-page="persian"><i class="fas fa-utensils"></i> غذای مجلسی</a>
-        <a href="#" data-page="cake"><i class="fas fa-birthday-cake"></i> کیک</a>
-        <a href="#" data-page="fastfood"><i class="fas fa-burger"></i> فست فود</a>
-        <a href="#" data-page="finger"><i class="fas fa-hand-peace"></i> فینگر فود</a>
-        <a href="#" data-page="traditional"><i class="fas fa-mosque"></i> غذای سنتی</a>
-        <a href="#" data-page="sweet"><i class="fas fa-cake-candles"></i> شیرینی‌جات</a>
-        <a href="#" data-page="dessert"><i class="fas fa-ice-cream"></i> دسر</a>
-        <a href="#" data-page="tafarda"><i class="fas fa-calendar-day"></i> تا فردا</a>
-        <a href="#" data-page="support"><i class="fas fa-headset"></i> پشتیبانی</a>
-        <div class="cart-icon" id="cartIcon">
-            <i class="fas fa-shopping-bag"></i>
-            <span class="cart-count" id="cartCount">0</span>
+    <!-- ===== صفحه اصلی ===== -->
+    <div id="home" class="section active">
+        <div class="section-title"><i class="fa-solid fa-fire"></i> آخرین ویدیوها</div>
+        <div id="homeVideosGrid" class="videos-grid"></div>
+
+        <div class="section-title"><i class="fa-regular fa-newspaper"></i> آخرین اخبار</div>
+        <div id="homeNewsGrid" class="news-grid"></div>
+
+        <div class="section-title"><i class="fa-solid fa-book-open"></i> آخرین داستان‌ها</div>
+        <div id="homeStoriesGrid" class="cards-grid"></div>
+    </div>
+
+    <!-- ===== اخبار ===== -->
+    <div id="news" class="section">
+        <div class="section-title"><i class="fa-regular fa-newspaper"></i> همه اخبار</div>
+        <div id="newsGrid" class="news-grid"></div>
+    </div>
+
+    <!-- ===== ویدیوها ===== -->
+    <div id="video" class="section">
+        <div class="section-title"><i class="fa-solid fa-video"></i> ویدیوها</div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="همه"><i class="fa-solid fa-globe"></i> همه</button>
+            <button class="filter-btn" data-filter="ترسناک"><i class="fa-solid fa-ghost"></i> ترسناک</button>
+            <button class="filter-btn" data-filter="هیجانی"><i class="fa-solid fa-bolt"></i> هیجانی</button>
+            <button class="filter-btn" data-filter="علمی"><i class="fa-solid fa-flask"></i> علمی‌تخیلی</button>
+            <button class="filter-btn" data-filter="معرفی"><i class="fa-solid fa-gamepad"></i> معرفی بازی</button>
+        </div>
+        <div id="videosGrid" class="videos-grid"></div>
+    </div>
+
+    <!-- ===== موسیقی ===== -->
+    <div id="music" class="section">
+        <div class="section-title"><i class="fa-solid fa-music"></i> موسیقی بازی‌ها</div>
+        <div id="musicGrid" class="music-grid"></div>
+    </div>
+
+    <!-- ===== شاپ ===== -->
+    <div id="shop" class="section">
+        <div class="hybrid-card">
+            <div class="hybrid-content">
+                <h2>🛍️ زروکس شاپ</h2>
+                <p>به زودی با بهترین محصولات گیمینگ</p>
+            </div>
         </div>
     </div>
-</div>
 
-<div id="homePage" class="page-content active-page">
-    <div class="hero">
-        <div class="hero-overlay">
-            <div class="call-message-box">
-                <p><i class="fas fa-comment-dots"></i> کالفود میگوید: برای خرید با این شماره تماس بگیرید</p>
-                <div class="phone-wrapper">
-                    <i class="fas fa-phone-volume"></i>
-                    <span class="phone-number">09902684303</span>
+    <!-- ===== داستان‌ها ===== -->
+    <div id="stories" class="section">
+        <div class="section-title"><i class="fa-solid fa-book-open"></i> داستان‌های بازی</div>
+        <div id="storiesGrid" class="cards-grid"></div>
+    </div>
+
+    <!-- ===== زروکس اُلد ===== -->
+    <div id="old" class="section">
+        <div class="section-title">
+            <i class="fa-solid fa-compact-disc" style="background:linear-gradient(135deg,#2a2a2a,#1a1a1a);color:#C0C0C0;padding:8px;border-radius:50%;box-shadow:0 0 0 2px white;font-size:20px;"></i>
+            بازی‌های نوستالژیک | زروکس اُلد
+        </div>
+        <div id="oldGrid" class="old-grid"></div>
+    </div>
+
+    <!-- ===== درباره ما ===== -->
+    <div id="about" class="section">
+        <div class="about-container">
+            <div class="welcome-box">
+                <div class="welcome-icon">
+                    <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <h2>به زروکس گیم خوش اومدید! 🎮</h2>
+                <p>اینجا بهشت گیمر هاست<br>اینجا یک خانه برای گیمرهای ایرانی هستش! ❤️</p>
+            </div>
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="icon-3d-support"><i class="fa-solid fa-headset"></i></div>
+                    <h3>پشتیبانی</h3>
+                    <p>برای ارتباط با ادمین در روبیکا پیام بدین</p>
+                    <a href="https://rubika.ir/@support_Zerox" target="_blank" class="contact-link">@support_Zerox</a>
+                </div>
+                <div class="info-card">
+                    <div class="icon-3d"><i class="fa-solid fa-user-astronaut"></i></div>
+                    <h3>سازنده سایت</h3>
+                    <div class="dev-name">@mohamad_hossein_ev18</div>
+                    <a href="https://t.me/mohamad_hossein_ev18" target="_blank" class="contact-link" style="margin-top:15px;"><i class="fab fa-telegram"></i> ارسال پیام در تلگرام</a>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div class="menu-section">
-        <div class="section-title"><i class="fas fa-crown"></i> غذاهای ویژه و پرطرفدار کالفود!</div>
-        <div id="featuredGrid"></div>
-        
-        <div class="sub-section-title">
-            <i class="fas fa-utensils"></i> غذاهای مجلسی
-        </div>
-        <div id="persianHomeGrid"></div>
-    </div>
-</div>
 
-<div id="dolmePage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-leaf"></i> دلمه</div><div id="dolmeGrid" class="foods-grid"></div></div></div>
-<div id="fastfoodPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-burger"></i> فست فود</div><div id="fastfoodGrid" class="foods-grid"></div></div></div>
-<div id="fingerPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-hand-peace"></i> فینگر فود</div><div id="fingerGrid" class="foods-grid"></div></div></div>
-<div id="persianPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-utensils"></i> غذای مجلسی</div><div id="persianGrid" class="foods-grid"></div></div></div>
-<div id="cakePage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-birthday-cake"></i> کیک</div><div id="cakeGrid" class="foods-grid"></div></div></div>
-<div id="traditionalPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-mosque"></i> غذای سنتی</div><div id="traditionalGrid" class="foods-grid"></div></div></div>
-<div id="sweetPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-cake-candles"></i> شیرینی‌جات</div><div id="sweetGrid" class="foods-grid"></div></div></div>
-<div id="dessertPage" class="page-content"><div class="menu-section"><div class="section-title"><i class="fas fa-ice-cream"></i> دسر</div><div id="dessertGrid" class="foods-grid"></div></div></div>
-
-<div id="tafardaPage" class="page-content">
-    <div class="menu-section">
-        <div class="section-title"><i class="fas fa-calendar-day"></i> تا فردا</div>
-        <div class="food-card" id="tomorrowSpecialCard">
-            <div class="card-img" style="background-image: url('https://cdn.imgurl.ir/uploads/p633535_IMG_20260614_153018.jpg');">
-                <div class="food-tag"><i class="fas fa-leaf"></i> دلمه ویژه</div>
-                <div class="badge-special"><i class="fas fa-hourglass-end"></i> زمان به پایان رسیده</div>
+    <!-- ===== کانال‌ها ===== -->
+    <div id="channels" class="section">
+        <div class="channels-container">
+            <div class="channel-card">
+                <div class="channel-icon"><i class="fa-solid fa-tv"></i></div>
+                <h3>کانال آپارات</h3>
+                <p>اینجا کانال اصلی آپارات خفن زروکسه!</p>
+                <a href="https://www.aparat.com/ZEROX_GAME" target="_blank" class="channel-link"><i class="fa-solid fa-play-circle"></i> بازدید از کانال آپارات</a>
+                <div style="margin-top:20px;">
+                    <p style="font-size:0.9rem; color:#666;">مارا در روبیکا هم دنبال کنید!</p>
+                    <a href="https://rubika.ir/@ZEROX_GAME" target="_blank" class="channel-link" style="background:#222; margin-top:10px;"><i class="fa-solid fa-paper-plane"></i> @ZEROX_GAME در روبیکا</a>
+                </div>
             </div>
-            <div class="card-info">
-                <h3><i class="fas fa-egg"></i> دلمه تا فردا موجوده!</h3>
-                <div class="desc">دلمه اصیل و خوشمزه با برگ مو تازه، آماده برای فردا! فقط امشب ثبت‌نام کن.</div>
-                <div class="timer-expired">
-                    <div class="timer-expired-content">
-                        <i class="fas fa-hourglass-end"></i>
-                        <span>زمان ثبت سفارش به پایان رسیده است!</span>
+            <div class="channel-card">
+                <div class="icon-3d" style="animation:floatSlow 2.5s ease-in-out infinite;"><i class="fa-brands fa-youtube"></i></div>
+                <h3>کانال یوتیوب</h3>
+                <div class="coming-soon"><i class="fa-regular fa-clock"></i> به زودی...</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>© 2026 ZEROX | هر بازی یک حماسه</footer>
+
+    <script>
+        // ============================================================
+        // DATA
+        // ============================================================
+        const videosData = [
+            { id: 2, title: "داستان بازی اوت لست۱ | بهترین بازی ترسناک دنیا", desc: "در این ویدیو داستان کامل Outlast رو بررسی می‌کنیم | از ورود مایلز آپشور به تیمارستان مرموز Mount Massive تا روبه‌رو شدن...", thumb: "https://cdn.imgurl.ir/uploads/y799019_Zerox_th12.png", link: "https://www.aparat.com/v/gkcxc4t", category: "ترسناک", date: "۱۴۰۵/۰۳/۰۶", time: "۱۵:۳۰", fullText: "این ویدیو توسط کانال خفن زیروکس ساخته شده | در این ویدیو داستان کامل Outlast رو بررسی می‌کنیم | از ورود مایلز آپشور به تیمارستان مرموز Mount Massive تا روبه‌رو شدن با آزمایش‌های مخفی، بیماران دیوانه و موجود ترسناکی به نام Walrider. اگر به بازی‌های ترسناک و داستان‌های تاریک علاقه داری، این ویدیو رو از دست نده!" },
+            { id: 1, title: "داستان کامل بازی نه من انسان نیستم | ترند و ترسناک ترین بازی در سال ۲۰۲۵", desc: "سلام بر شما | من امروز درمورد داستان بازی من انسان نیستم صحبت کردم", thumb: "https://uploadkon.ir/uploads/804c08_2671129478-9827-l-3296.jpg", link: "https://www.aparat.com/v/itl9b8h", category: "ترسناک", date: "۱۴۰۵/۰۳/۰۵", time: "۱۹:۲۰", fullText: "سلام بر شما | من امروز درمورد داستان بازی من انسان نیستم صحبت کردم | تمام نکات و همچیو توضیح دادم | امیدوارم از ویدیو لذت کافی ببرید | پارت بعدی رو به زودی زود میذارم | داستان رو تماما گفتم براتون" }
+        ];
+
+        const newsData = [
+            { id: 3, title: "فال‌اوت هنوز زنده است!", summary: "بتسدا به‌تازگی آپدیت جدیدی برای Fallout 76 منتشر کرده...", image: "https://up.20script.ir/file/dbb3-fall-out-Zerox-.jpg", date: "۱۹ خرداد ۱۴۰۵", time: "۲۰:۵۱", fullText: "فال‌اوت هنوز زنده است!\nبتسدا به‌تازگی آپدیت جدیدی برای Fallout 76 منتشر کرده و محتوای تازه‌ای به بازی اضافه شده است. در این آپدیت، بازیکن‌ها با چالش‌ها و دشمنان جدیدی روبه‌رو می‌شوند و می‌توانند پاداش‌ها و آیتم‌های بیشتری به دست بیاورند.\nجالب‌تر اینکه با وجود گذشت چند سال از انتشار بازی، بتسدا همچنان به پشتیبانی از Fallout 76 ادامه می‌دهد و برنامه‌های بیشتری برای آینده آن دارد. Fallout 4 هم هنوز آپدیت دریافت می‌کند؛ اتفاقی که برای خیلی از طرفدارها غافلگیرکننده بوده است.\nبه نظر می‌رسد دنیای Fallout فعلاً قصد خداحافظی با بازیکن‌ها را ندارد.\nبرای جدیدترین اخبار دنیای بازی‌ها، همراه زروکس گیم باشید.\n— ZEROX GAME" },
+            { id: 5, title: "سامر گیم داره چیکار میکنه؟", summary: "سامر گیم فست ترکوند! بالاخره بعد از کلی پچ‌پچ، ناتی داگ ماسک رو برداشت...", image: "https://uploadkon.ir/uploads/b62c08_26the-last-of-us-Zerox-.jpg", date: "۱۴۰۵/۰۳/۱۹", time: "۰۲:۱۷", fullText: "سامر گیم فست ترکوند! بالاخره بعد از کلی پچ‌پچ، ناتی داگ ماسک رو برداشت و The Last of Us Part 3 رو نشون داد. داستانش کاملاً غافلگیرکننده‌ست و خبری از الی و جوئل نیست. بعدش سونی رسماً تایید کرد که خدای جنگ داره میره مصر باستان، اونم با یه گیم‌پلی سریع‌تر که محورش روی آترئوس جوونه. تو جبهه‌ی ترسناک‌ها هم کپکام یه رزیدنت اویل جدید معرفی کرد که ظاهراً قراره یه تجربه‌ی کو-آپ بقا-محور باشه و حسابی بترسیم. خلاصه اینکه ۲۰۲۷ قراره سال شلوغی بشه. گروه_خبری زروکس!" },
+            { id: 4, title: "ولورین بالاخره پنچه هاشو کشید بیرون؟", summary: "ولورین بالاخره برگشت! اطلاعات جدیدی از Marvel's Wolverine منتشر شده", image: "https://uploadkon.ir/uploads/be1308_26InShot-20260606-132014431.jpg", date: "۱۴۰۵/۰۳/۱۸", time: "۲۲:۴۶", fullText: "ولورین بالاخره برگشت! اطلاعات جدیدی از Marvel's Wolverine منتشر شده و طرفدارها رو حسابی هیجان‌زده کرده. نمایش جدید بازی مبارزات سریع و خشن لوگان رو نشون می‌ده و به نظر می‌رسه با یکی از تاریک‌ترین بازی‌های مارول طرف باشیم." }
+        ];
+
+        const storiesData = [{
+            title: "داستان کامل بازی خدای جنگ رکناروگ",
+            desc: "بعد از اتفاقات بازی قبلی، کریتوس و آترئوس توی سرزمین‌های نورس زندگی آرومی داشتن، اما این آرامش زیاد دوام نمیاره...",
+            img: "https://uploadkon.ir/uploads/76e009_26god-of-war-123-Zerox-.jpg",
+            full: `بعد از اتفاقات بازی قبلی، کریتوس و آترئوس توی سرزمین‌های نورس زندگی آرومی داشتن، اما این آرامش زیاد دوام نمیاره. زمستون بزرگ یا همون «فیمبول‌وینتر» شروع شده و همه می‌دونن که بعدش قراره رگناروک، یعنی پایان دنیا، از راه برسه.
+
+اول داستان، کریتوس و آترئوس هنوز دارن با مرگ فریا و پسرش بالدور دست و پنجه نرم می‌کنن. فریا که از دست کریتوس عصبانیه، مدام دنبال انتقامه. از اون طرف آترئوس هم کم‌کم می‌فهمه که همون «لوکی» معروف افسانه‌هاست و نقش بزرگی توی آینده دنیا داره.
+
+یه روز سر و کله ثور، خدای رعد و برق، پیدا میشه. همون جنگجوی غول‌پیکری که همه ازش می‌ترسن. اون همراه اودین میاد سراغ کریتوس. اودین سعی می‌کنه با حرف زدن جلوی جنگ رو بگیره، ولی همه می‌دونن که پشت این لبخندها یه نقشه بزرگ خوابیده.
+
+آترئوس که دنبال جواب سوال‌هاشه، مخفیانه سفر خودش رو شروع می‌کنه. اون می‌خواد بفهمه واقعاً کیه و سرنوشتش چیه. توی این مسیر با غول‌های باقیمونده، موجودات عجیب و رازهای قدیمی روبه‌رو میشه.
+
+در همین حال کریتوس هم درگیر این موضوعه که نکنه دوباره تبدیل به همون هیولای گذشته بشه؛ همون جنگجویی که فقط مرگ و نابودی به بار می‌آورد. اما این بار فرق کرده. حالا یه پدره و نمی‌خواد پسرش هم راه اشتباه اون رو بره.
+
+هرچی داستان جلوتر میره، رابطه پدر و پسر بارها به چالش کشیده میشه. آترئوس می‌خواد مستقل باشه و خودش تصمیم بگیره، ولی کریتوس همیشه نگرانشه.
+
+کم‌کم مشخص میشه که اودین سال‌ها دروغ گفته و خیلی از اتفاقات رو پشت پرده کنترل کرده. هدفش هم اینه که از سرنوشت فرار کنه و هرطور شده قدرت خودش رو حفظ کنه.
+
+بعد از کلی ماجراجویی، متحدان مختلفی دور کریتوس جمع میشن؛ از فریا گرفته تا دورف‌ها و جنگجویان قلمروهای مختلف. همه آماده میشن تا جنگ نهایی رگناروک رو شروع کنن.
+
+و بالاخره جنگ بزرگ آغاز میشه. ارتش‌ها به آزگارد حمله می‌کنن. نبردهای عظیم شکل می‌گیره و هر گوشه از دنیا در آتیش جنگ می‌سوزه. کریتوس با ثور روبه‌رو میشه و یکی از حماسی‌ترین مبارزه‌های تاریخ بازی‌های ویدیویی رقم می‌خوره.
+
+اما برخلاف چیزی که همه انتظار داشتن، کریتوس سعی می‌کنه چرخه کشتار رو بشکنه. اون دیگه فقط به فکر انتقام نیست.
+
+در نهایت ثور متوجه میشه که اودین از همه سوءاستفاده کرده، اما قبل از اینکه بتونه مسیرش رو عوض کنه، اودین خودش اون رو از بین می‌بره.
+
+آخرین نبرد بین کریتوس و یارانش با اودین شکل می‌گیره. بعد از مبارزه‌ای سخت، اودین شکست می‌خوره و دوران حکومتش به پایان می‌رسه.
+
+بعد از پایان جنگ، آزگارد نابود میشه و دنیا وارد دوران جدیدی میشه. آترئوس تصمیم می‌گیره برای پیدا کردن غول‌های باقی‌مونده سفر خودش رو شروع کنه. کریتوس هم برای اولین بار می‌فهمه که سرنوشتش فقط نابودی نیست؛ مردم حالا اون رو به عنوان یک قهرمان و ناجی می‌شناسن.
+
+و اینجاست که داستان پدر و پسری که از ترس سرنوشت فرار می‌کردن، به داستان امید و ساختن آینده تبدیل میشه.`
+        }];
+
+        const musicData = [
+            { id: 4, title: "INSIDE | ZEROX", game: "INSIDE", platform: "PC, Xbox One, PlayStation 4, Nintendo Switch, iOS", cover: "https://cdn.imgurl.ir/uploads/e280977_inside___Zerox_.jpg", file: "https://cdn.imgurl.ir/uploads/s393413_INSIDE___ZEROX120.mp3", composers: ["Martin Stig Andersen", "SØS Gunver Ryberg"], desc: "موسیقی بازی INSIDE رو Martin Stig Andersen ساخت و کارش رو حدود سال‌های ۲۰۱۴ تا ۲۰۱۶، همزمان با ساخت خود بازی انجام داد. جالبه که اینجا مثل بقیه بازی‌ها آهنگ شاد یا ملودی مشخص نداریم؛ بیشتر صداها محیطی و عجیبن. سازنده به جای موسیقی معمولی، از صداهای واقعی مثل نویز، صداهای فلزی، نفس انسان و حتی سکوت استفاده کرده و بعد اون‌ها رو تغییر داده تا حس ترس و تنش بده." },
+            { id: 3, title: "GOD OF WAR | ZEROX", game: "God of War Ragnarök", platform: "PS", cover: "https://cdn.imgurl.ir/uploads/c555686_Negar_1780837093023.jpg", file: "https://uploadkon.ir/uploads/7ea308_26ef9f06-26Zerox-god-of-war.mp3", composers: ["Bear McCreary"], desc: "کار روی موسیقی از حدود ۲۰۱۹ شروع شد و هم‌زمان با توسعه بازی جلو رفت، تا اینکه بازی در ۲۰۲۲ منتشر شد. و الان از سایت زروکس گوش میکنید!" },
+            { id: 2, title: "HALO INFINITE | ZEROX", game: "Halo Infinite", platform: "Xbox", cover: "https://uploadkon.ir/uploads/b1f108_26InShot-20260607-161240740.jpg", file: "https://uploadkon.ir/uploads/478e08_26HALO-INFINITE-ZEROX.mp3", composers: ["Gareth Coker", "Curtis Schweitzer", "Joel Corelitz"], desc: "این آهنگ سال و تاریخ ۸ دسامبر ۲۰۲۱ ساخته شده و برای بازی هیلو اینفینیت یک شاهکار محسوب میشه!" }
+        ];
+
+        const oldData = [
+            { id: 3, title: "GRAND THEFT AUTO: SAN ADVENTURES | ZEROX", name: "Grand Theft Auto: San Andreas", year: "۲۰۰۴", developer: "Rockstar North", publisher: "Rockstar Games", director: "Leslie Benzies (کارگردان اصلی / لید دیزاینر) - Dan Houser (نقش مهم در نویسندگی و هدایت داستان)", producer: "Leslie Benzies - Imran Sarwar", composers: ["Michael Hunter (موسیقی اصلی بازی) - موسیقی‌های لایسنس شده از هنرمندان مختلف"], platform: "PlayStation 2, Xbox, PC (ویندوز), بعداً: موبایل", genre: "اکشن-ماجراجویی، جهان‌باز (Open World)، رانندگی، تیراندازی سوم‌شخص", engine: "RenderWare", cover: "https://uploadkon.ir/uploads/724812_26gta-sa-Zerox-.jpg", music: "https://uploadkon.ir/uploads/444012_26GTA-SA-ZEROX-.mp3", desc: "داستان درباره کارل \"CJ\" جانسون است که بعد از مرگ مادرش به لس سانتوس برمی‌گردد. او دوباره وارد محله و گنگ قدیمی‌اش می‌شود، اما خیلی زود درگیر فساد پلیس، خیانت، جنگ باندها و قدرت‌گیری در شهرهای مختلف ایالت سن آندریاس می‌شود. هدف اصلی CJ این است که خانواده‌اش را دوباره جمع کند و کنترل محله‌اش را پس بگیرد.", fullText: "داستان درباره کارل \"CJ\" جانسون است که بعد از مرگ مادرش به لس سانتوس برمی‌گردد. او دوباره وارد محله و گنگ قدیمی‌اش می‌شود، اما خیلی زود درگیر فساد پلیس، خیانت، جنگ باندها و قدرت‌گیری در شهرهای مختلف ایالت سن آندریاس می‌شود. هدف اصلی CJ این است که خانواده‌اش را دوباره جمع کند و کنترل محله‌اش را پس بگیرد. در این مسیر طولانی و حماسی، شخصیت‌های ماندگاری مثل Big Smoke، Ryder، Sweet و Officer Tenpenny روبروی CJ قرار می‌گیرند و توطئه‌های بزرگی شکل می‌گیرد." },
+            { id: 2, title: "PRINCE OF PERSIA | ZEROX", name: "Prince of Persia", year: "۱۹۸۹", developer: "Jordan Mechner", publisher: "Brøderbund", director: "Jordan Mechner", producer: "Brøderbund Software", composers: ["صدا و موسیقی محدود و ساده (نسخه اولیه بازی موسیقی حرفه‌ای گسترده نداشت و بیشتر افکت‌های صوتی کلاسیک بود)"], platform: "Apple II / DOS / Commodore 64 / Amiga (و بعدها پورت‌های مختلف)", genre: "اکشن، پلتفرمر، ماجراجویی", engine: "موتور اختصاصی اولیه ساخته شده توسط Jordan Mechner", cover: "https://cdn.imgurl.ir/uploads/f82900_____Zerox_.jpg", music: "https://uploadkon.ir/uploads/da8b10_26Prince-of-Persia-Zerox.mp3", desc: "شاهزاده‌ای جوان در یک سرزمین شرقی، زمانی که سلطان در جنگ است، وزیر خبیث به نام Jaffar قدرت را در دست می‌گیرد. او به شاهزاده‌خانم اولتیماتوم می‌دهد: یا با او ازدواج کند یا در زندان بمیرد. شاهزاده در سیاهچال زندانی می‌شود و باید در کمتر از ۶۰ دقیقه از میان تله‌های مرگبار، شمشیرزن‌ها و مسیرهای خطرناک عبور کند تا خودش را به قصر برساند و شاهزاده‌خانم را نجات دهد.", fullText: "شاهزاده‌ای جوان در یک سرزمین شرقی، زمانی که سلطان در جنگ است، وزیر خبیث به نام Jaffar قدرت را در دست می‌گیرد. او به شاهزاده‌خانم اولتیماتوم می‌دهد: یا با او ازدواج کند یا در زندان بمیرد.\nشاهزاده در سیاهچال زندانی می‌شود و باید در کمتر از ۶۰ دقیقه از میان تله‌های مرگبار، شمشیرزن‌ها و مسیرهای خطرناک عبور کند تا خودش را به قصر برساند و شاهزاده‌خانم را نجات دهد.\nگیم‌پلی بازی بر پایه دقت در حرکت، زمان‌بندی و حل کردن مسیرهای سخت طراحی شده و برای زمان خودش یکی از واقعی‌ترین انیمیشن‌های حرکتی شخصیت‌ها را داشت.\nاین بازی یکی از پایه‌گذاران سبک پلتفرمر سینمایی محسوب می‌شود و تأثیر بزرگی روی بازی‌های بعدی گذاشت." },
+            { id: 1, title: "GOD OF WAR | ZEROX", name: "God of War", year: "۲۲ مارس ۲۰۰۵", developer: "Santa Monica Studio", publisher: "Sony Computer Entertainment", director: "David Jaffe", producer: "Shannon Studstill", composers: ["Gerard Marino", "Mike Reagan", "Ron Fish", "Winifred Phillips", "Cris Velasco"], platform: "PlayStation 2", genre: "اکشن ماجراجویی، هک اند اسلش", engine: "Kinetica Engine", cover: "https://uploadkon.ir/uploads/4c9d09_26god-of-war-Zerox-ir-28.jpg", music: "https://uploadkon.ir/uploads/157a09_26ef9f06-26Zerox-god-of-war.mp3", desc: "کریتوس، یک جنگجوی اسپارتی، برای گرفتن انتقام و رهایی از کابوس‌های گذشته‌اش به دنبال نابودی خدای جنگ یعنی Ares می‌رود. در طول مسیر با هیولاها، تایتان‌ها و خدایان اساطیر یونان روبه‌رو می‌شود.", fullText: "داستان God of War یکی از حماسی‌ترین داستان‌های تاریخ بازی است. کریتوس، جنگجوی اسپارتی، پس از اینکه آرس (خدای جنگ) او را فریب می‌دهد و خانواده‌اش را می‌کشد، تصمیم می‌گیرد انتقام بگیرد. او با کمک آتنا، خدای خرد، وارد ماجرایی می‌شود تا جعبه پاندورا را پیدا کند و آرس را نابود کند. در این مسیر با موجودات افسانه‌ای مانند مینوتور، سیرن، و مدوسا روبرو می‌شود و قدرت‌های جدیدی به دست می‌آورد. نبرد نهایی کریتوس با آرس یکی از به‌یادماندنی‌ترین نبردهای تاریخ بازی‌های ویدیویی است." }
+        ];
+
+        // ============================================================
+        // HELPERS
+        // ============================================================
+        function getPlatformIcon(platform) {
+            if (platform.includes("Xbox")) return '<i class="fab fa-xbox"></i>';
+            if (platform.includes("PS")) return '<i class="fab fa-playstation"></i>';
+            if (platform.includes("PC") || platform.includes("Windows")) return '<i class="fab fa-windows"></i>';
+            return '<i class="fas fa-gamepad"></i>';
+        }
+
+        function getCatIcon(cat) {
+            const map = {
+                'ترسناک': '<i class="fa-solid fa-ghost"></i>',
+                'هیجانی': '<i class="fa-solid fa-bolt"></i>',
+                'علمی': '<i class="fa-solid fa-flask"></i>',
+                'معرفی': '<i class="fa-solid fa-gamepad"></i>'
+            };
+            return map[cat] || '<i class="fa-solid fa-tag"></i>';
+        }
+
+        function downloadMusic(url, title) {
+            fetch(url)
+                .then(r => r.blob())
+                .then(b => {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(b);
+                    a.download = title + '.mp3';
+                    a.click();
+                    URL.revokeObjectURL(a.href);
+                })
+                .catch(() => window.open(url, '_blank'));
+        }
+
+        // ============================================================
+        // RENDER FUNCTIONS
+        // ============================================================
+        function renderVideos(containerId, filter = "همه") {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            let filtered = filter === "همه" ? videosData : videosData.filter(v => v.category === filter);
+            if (filtered.length === 0) {
+                container.innerHTML =
+                    `<div style="background:white;border-radius:24px;padding:40px;text-align:center;color:var(--main);"><i class="fa-solid fa-video-slash" style="font-size:48px;"></i><h3>ویدیویی یافت نشد</h3></div>`;
+                return;
+            }
+            container.innerHTML = filtered.map(v =>
+                `<div class="video-card">
+                    <img class="video-thumb" src="${v.thumb}" onerror="this.src='https://via.placeholder.com/300x200'">
+                    <div class="video-badge"><i class="fa-solid fa-play"></i> تماشا</div>
+                    <div class="video-info">
+                        <h3>${v.title}</h3>
+                        <div class="video-meta-row">
+                            <div class="video-cat-tag">${getCatIcon(v.category)} ${v.category}</div>
+                            <div class="date-time"><i class="fa-regular fa-calendar"></i> ${v.date} <i class="fa-regular fa-clock"></i> ${v.time}</div>
+                        </div>
+                        <p>${v.desc.substring(0, 100)}${v.desc.length > 100 ? '...' : ''}</p>
+                        <div class="button-group">
+                            <button class="btn-card" onclick="event.stopPropagation(); window.open('${v.link}','_blank')"><i class="fa-solid fa-play"></i> مشاهده ویدیو</button>
+                            <button class="more-btn" onclick="event.stopPropagation(); toggleVideoText(this)"><i class="fa-regular fa-eye"></i> توضیحات</button>
+                        </div>
+                        <div class="full-text">${v.fullText}</div>
                     </div>
-                    <div class="timer-expired-text"><i class="fas fa-clock"></i> سفارشات این بخش بسته شد</div>
-                </div>
-                <div class="btn-group">
-                    <div class="detail-btn" id="tomorrowDetailBtn" style="cursor: pointer;"><i class="fas fa-info-circle"></i> توضیحات بیشتر</div>
-                </div>
-                <div class="detail-box" id="tomorrowDetailBox">
-                    <i class="fas fa-align-right"></i> دلمه‌های خوشمزه کالفود با برگ مو تازه، گوشت چرخ کرده، برنج و سبزیجات معطر. برای فردا صبح آماده می‌شه! کافیه امشب سفارشت رو ثبت کنی تا فردا تازه و داغ تحویل بگیری.
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="supportPage" class="page-content"><div class="support-section"><div class="support-box"><h3><i class="fas fa-headset"></i> پشتیبانی کالفود</h3><div class="support-item"><i class="fas fa-headset"></i> <span>پشتیبانی : <strong>09902684303</strong></span></div><div class="support-item"><i class="fas fa-laptop-code"></i> <span>سازنده سایت : محمد حسین صنعتی</span></div></div></div></div>
-
-<div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header"><h2><i class="fas fa-basket-shopping"></i> سبد خرید</h2><button class="close-cart" id="closeCartBtn"><i class="fas fa-times-circle"></i></button></div>
-    <div class="cart-items" id="cartItemsList"><div class="empty-cart">سبدت خالیه پرش کن! 🍔</div></div>
-    <div class="cart-total" id="cartTotalDisplay">
-        <span><i class="fas fa-clipboard-list"></i> تعداد سفارش:</span>
-        <span id="cartTotalCount">۰ عدد (تماس تلفنی)</span>
-    </div>
-    <button class="checkout-btn" id="checkoutBtn"><i class="fas fa-check-circle"></i> پرداخت ثبت نهایی</button>
-</div>
-
-<div id="successModal" class="custom-alert">
-    <i class="fas fa-check-circle"></i>
-    <h3>سفارش شما با موفقیت ثبت شد!</h3>
-    <div class="order-list" id="orderSummaryList"></div>
-    
-    <p style="margin-top: 10px; margin-bottom: 5px;"><i class="fas fa-ticket-alt"></i> کد تخفیف داری؟ وارد کن:</p>
-    
-    <div class="discount-input-group">
-        <i class="fas fa-ticket-alt"></i>
-        <input type="text" id="discountCodeInput" placeholder="کد تخفیف" autocomplete="off">
-    </div>
-    <div id="discountFeedback" class="discount-feedback"></div>
-    
-    <p><i class="fas fa-phone-alt"></i> برای خرید با این شماره تماس بگیرید:</p>
-    <div class="phone-number-modal">09902684303</div>
-    <div class="order-code" id="trackingCode">------</div>
-    <p><i class="fas fa-info-circle"></i> این کد را به فروشنده بدهید</p>
-    <button onclick="closeModal()"><i class="fas fa-check"></i> متوجه شدم</button>
-</div>
-
-<div class="toast-msg" id="toastMsg"></div>
-<footer class="footer"><p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p><p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p></footer>
-
-<script>
-    const foods = [
-        { id: 26, name: "کیک هل گلاب روکش شکلاتی", desc: "کیک هل و گلاب با روکش شکلاتی، عطر و طعمی بی‌نظیر و مجلسی", longDesc: "کیک هل گلاب روکش شکلاتی کالفود، یک دسر لوکس و مجلسی! ترکیب دلنشین هل و گلاب با بافتی نرم و لطیف، پوشیده شده با روکش شکلاتی براق و خوشمزه. عطری خلسه‌آور و طعمی بی‌نظیر که هر مهمانی را به سطحی بالاتر می‌برد. مناسب برای جشن‌ها، تولدها و لحظات خاص شما! ✨", img: "https://cdn.imgurl.ir/uploads/b331368_IMG_20260616_203524.jpg", tag: "کیک", tagIcon: "fa-birthday-cake", isSpecial: true, createdAt: new Date(2026, 5, 16, 20, 35) },
-        { id: 25, name: "کیک پرتقالی", desc: "کیک پرتقالی با عطر و طعم بی‌نظیر پرتقال تازه و بافتی نرم و لطیف", longDesc: "کیک پرتقالی کالفود، با طعمی دلپذیر و عطری خوش از پرتقال تازه تهیه شده. بافتی نرم و اسفنجی دارد که با پودر قند یا خامه فرم گرفته تزئین می‌شود. انتخابی ایده‌آل برای عصرانه‌های بهاری و دورهمی‌های دوستانه! 🍊", img: "https://cdn.imgurl.ir/uploads/j199837_IMG_20260616_203427.jpg", tag: "کیک", tagIcon: "fa-birthday-cake", isSpecial: false, createdAt: new Date(2026, 5, 16, 20, 30) },
-        { id: 24, name: "پیتزا خانواده کالفود", desc: "مرغ و قارچ، گوشت و قارچ، مخلوط | یک انتخاب لذیذ و خوشمزه", longDesc: "پیتزا خانواده کالفود؛ ترکیبی ناب از سه طعم محبوب! پیتزایی با خمیر نازک و ترد، لایه‌ای از سس گوجه فرنگی تازه، پنیر موزارلای ذوب شده و روی آن می‌توانی مرغ و قارچ، گوشت چرخ‌کرده و قارچ یا ترکیب مخلوط هر دو را سفارش بدهی. هر برش آن یک تجربه بی‌نظیر از طعم‌های اصیل و کیفیت درجه یک کالفود است. مناسب برای مهمانی‌های دوستانه و دورهمی‌های گرم خانوادگی!", img: "https://cdn.imgurl.ir/uploads/h9984_InShot_20260615_182309597.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 15, 18, 30) },
-        { id: 23, name: "کماچ سیب زمینی", desc: "یک میان وعده سنتی و مقوی با سیب زمینی تازه و ادویه‌های معطر", longDesc: "کماچ سیب زمینی؛ یک غذای سنتی و خوشمزه از خراسان جنوبی که با سیب زمینی تازه، آرد مرغوب، پیاز و ادویه‌های معطر تهیه می‌شود. بافتی نرم و طعمی دلچسب دارد که هم به عنوان میان وعده و هم برای عصرانه‌های خاص مناسب است. ترکیبی از اصالت و طعم بی‌نظیر.", img: "https://cdn.imgurl.ir/uploads/k596094_IMG_20260614_202950.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 14, 20, 50) },
-        { id: 22, name: "لازانیا با سس بشامل", desc: "لازانیا با سس بشامل طعمی عالی و عطری دلچسب", longDesc: "لازانیا با سس بشامل؛ یک غذای مجلسی و بی‌نظیر با لایه‌های نازک پاستا، گوشت چرخ کرده تازه، سس گوجه و سس بشامل خامه‌ای. پنیر فراوان روی آن طلایی شده و عطری دلچسب در تمام فضا می‌پیچد. مناسب برای مهمانی‌های خاص و شام‌های لوکس. یک تجربه فراموش‌نشدنی از طعم ایتالیایی اصیل.", img: "https://cdn.imgurl.ir/uploads/d763805_IMG_20260614_202632.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: true, createdAt: new Date(2026, 5, 14, 20, 35) },
-        { id: 21, name: "لازانیا رولی", desc: "لازانیای رول شده با گوشت و سس مخصوص، یک نوآوری خوشمزه", longDesc: "لازانیا رولی؛ یک ابتکار جذاب و خوشمزه از کالفود! ورق‌های لازانیا با مواد پرکننده شامل گوشت چرخ کرده، قارچ، پنیر ریکوتا و سس مخصوص رول شده و سپس با سس گوجه و پنیر پیتزا پخته می‌شوند. هر لقمه طعمی متفاوت و لذیذ دارد. مناسب برای دورهمی‌های دوستانه یا یک شام خاص و به‌یادماندنی.", img: "https://cdn.imgurl.ir/uploads/n341993_IMG_20260614_202326.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: true, createdAt: new Date(2026, 5, 14, 20, 20) },
-        { id: 20, name: "کیک مرغ لقمه ای", desc: "کیک مرغ مقوی خوشمزه!", longDesc: "کیک مرغ لقمه‌ای؛ یک میان وعده مقوی و پرطرفدار! تکه‌های مرغ آبدار با سیب زمینی، هویج، نخود فرنگی و ادویه‌های مخصوص در قالبی شبیه کیک قالبی پخته می‌شود. بافتی نرم و طعمی بی‌نظیر دارد که هم بزرگسالان و هم کودکان عاشق آن می‌شوند. مناسب برای مهمانی‌ها، عصرانه یا یک وعده سریع و مقوی.", img: "https://cdn.imgurl.ir/uploads/o131922_IMG_20260614_201845.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 14, 20, 5) },
-        { id: 19, name: "ژله بستنی کالفود!", desc: "ژله بستنی کالفود با طعم پرتغال و آلوئه‌ورا", longDesc: "ژله بستنی کالفود؛ ترکیبی بی‌نظیر از ژله نرم و بستنی خامه‌ای با طعم پرتقال تازه و آلوئه‌ورا. یک دسر تابستونی و سرحال که هم خنکته، هم خوشمزه.", img: "https://uploadkon.ir/uploads/456213_26IMG-20260613-230203.jpg", tag: "دسر", tagIcon: "fa-ice-cream", isSpecial: true, createdAt: new Date(2026, 5, 13, 23, 0) },
-        { id: 18, name: "مرغ کاراملی با شوید باقالی پلو", desc: "مرغ کاراملی با شوید باقالی پلو، یک غذای کامل و سنتی", longDesc: "مرغ کاراملی با شوید باقالی پلو؛ یه غذای سنتی مجلسی و پرطرفدار! تکه‌های مرغ آبدار با سس کاراملی مخصوص، کنار باقالی پلو معطر.", img: "https://uploadkon.ir/uploads/8f7e13_26IMG-20260613-185831.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 13, 22, 0) },
-        { id: 17, name: "پیتزا اسنکی", desc: "پیتزا اسنکی، بمب انرژی و خوشمزه", longDesc: "پیتزا اسنکی؛ بمب انرژی و خوشمزه برای لحظات فوری! پیتزاهای کوچک و ترد با سس پنیری مخصوص.", img: "https://uploadkon.ir/uploads/cd0b13_26IMG-20260613-230747.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 13, 21, 0) },
-        { id: 16, name: "کیک مرغ", desc: "گردو با عطر جعفری و پیازچه تازه", longDesc: "کیک مرغ؛ یک ابتکار خوشمزه و متفاوت از کالفود! لایه‌های لطیف مرغ تازه ترکیب شده با گردو.", img: "https://cdn.imgurl.ir/uploads/d943046_IMG_20260613_152928.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 13, 15, 30) },
-        { id: 15, name: "جوجه چینی ترد", desc: "جوجه چینی ترد و پفکی با پوشش طلایی", longDesc: "جوجه چینی ترد؛ ترد و پفکی مثل هیچ جای دیگه! تکه‌های جوجه با پوششی مخصوص.", img: "https://cdn.imgurl.ir/uploads/i24874_IMG_20260613_153322.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: false, createdAt: new Date(2026, 5, 13, 14, 30) },
-        { id: 14, name: "مرغ شکم پر شمالی", desc: "مرغ شکم پر شمالی با سس انار و آلو", longDesc: "مرغ شکم پر شمالی؛ یه غذای سنتی با طعم شمال! مرغ آبدار با ترکیبی از سبزیجات معطر.", img: "https://cdn.imgurl.ir/uploads/j1545_IMG_20260613_153404.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: true, createdAt: new Date(2026, 5, 13, 13, 30) },
-        { id: 13, name: "حلوای زعفرانی", desc: "حلوای زعفرانی با عطر بی‌نظیر هل و گلاب", longDesc: "حلوای زعفرانی؛ یه دسر سنتی و عطرآگین که دل هر کسی رو می‌بره! حلوا با زعفران ناب.", img: "https://cdn.imgurl.ir/uploads/x569079_IMG_20260613_153732.jpg", tag: "شیرینی‌جات", tagIcon: "fa-cake-candles", isSpecial: false, createdAt: new Date(2026, 5, 13, 12, 30) },
-        { id: 12, name: "اشترودل مرغ و قارچ پنیری", desc: "خمیر ترد و سبک، همراه با مرغ تازه، قارچ و پنیر", longDesc: "اشترودل مرغ و قارچ پنیری؛ ترد و لذیذ. خمیر ترد و سبک، همراه با مرغ تازه.", img: "https://cdn.imgurl.ir/uploads/d405294_IMG_20260612_142842.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2026, 5, 12, 14, 28) },
-        { id: 11, name: "کاپ کیک", desc: "کاپ کیک با خمیر با کیفیت، خامه و اشکال تزئینی", longDesc: "کاپ کیک؛ دسری زیبا و خوشمزه برای لحظات خاص. این کاپ کیک با خمیر نرم و لطیف.", img: "https://cdn.imgurl.ir/uploads/o0654_IMG_20260612_144324.jpg", tag: "کیک", tagIcon: "fa-birthday-cake", isSpecial: true, createdAt: new Date(2026, 5, 12, 14, 30) },
-        { id: 10, name: "کماچ لقمه", desc: "کماچ لقمه؛ غذای سنتی و اصیل خراسان جنوبی", longDesc: "کماچ لقمه؛ غذای سنتی و اصیل خراسان جنوبی. این خوراکی خوشمزه با خمیر مخصوص.", img: "https://uploadkon.ir/uploads/7ae012_26IMG-20260612-151323.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: true, createdAt: new Date(2026, 5, 12, 15, 13) },
-        { id: 9, name: "بمب کالفود", desc: "ترکیبی شگفت‌انگیز از پیتزا لقمه، اشترودل و پیراشکی", longDesc: "بمب کالفود؛ ترکیبی شگفت‌انگیز از سه طعم محبوب.", img: "https://cdn.imgurl.ir/uploads/422605_IMG_20260612_132940.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2026, 5, 12, 13, 29) },
-        { id: 8, name: "پیراشکی", desc: "مرغ و قارچ یا گوشت و قارچ", longDesc: "پیراشکی؛ انتخابی ایده‌آل برای یک میان‌وعده لذیذ.", img: "https://cdn.imgurl.ir/uploads/h91972_IMG_20260612_130447.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2026, 5, 12, 13, 4) },
-        { id: 7, name: "دلمه برگ مو", desc: "دلمه برگ مو، یک غذای مجلسی و خوشمزه اصیل ایرانی", longDesc: "دلمه برگ مو، یک غذای مجلسی و خوشمزه اصیل ایرانی.", img: "https://cdn.imgurl.ir/uploads/53500_IMG_20260612_025151.jpg", tag: "دلمه", tagIcon: "fa-leaf", isSpecial: true, createdAt: new Date(2026, 5, 12, 2, 51) },
-        { id: 6, name: "کماچ", desc: "کماچ با خمیر درجه یک و غذای محلی خراسان جنوبی", longDesc: "کماچ؛ یک غذای سنتی و اصیل از خراسان جنوبی!", img: "https://cdn.imgurl.ir/uploads/w444158_IMG_20260612_010841.jpg", tag: "غذای سنتی", tagIcon: "fa-mosque", isSpecial: false, createdAt: new Date(2026, 5, 12, 1, 8) },
-        { id: 5, name: "نبات های شیری گردویی", desc: "شیرینی سنتی و مجلسی با طعم نبات و گردوی تازه", longDesc: "شیرینی سنتی و مجلسی با طعم نبات و گردوی تازه!", img: "https://uploadkon.ir/uploads/212511_26IMG-20260612-003157.jpg", tag: "شیرینی‌جات", tagIcon: "fa-cake-candles", isSpecial: true, createdAt: new Date(2026, 5, 12, 0, 31) },
-        { id: 4, name: "مرغ بریان", desc: "مرغ بریان بدون برنج، طعم اصیل و مجلسی", longDesc: "غذای اصیل مرغ بریان، بدون برنج و با طعمی بی‌نظیر!", img: "https://cdn.imgurl.ir/uploads/d404509_IMG_20260612_000809.jpg", tag: "غذای مجلسی", tagIcon: "fa-utensils", isSpecial: false, createdAt: new Date(2026, 5, 12, 0, 8) },
-        { id: 3, name: "اچما مرغ قارچ پنیری", desc: "اچمای لذیذ با طعم مرغ قارچ پنیری", longDesc: "اچمای خوشمزه با مرغ تازه، قارچ عطرآگین و پنیر آب شده.", img: "https://cdn.imgurl.ir/uploads/h6527_IMG_20260611_230627.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2026, 5, 11, 23, 6) },
-        { id: 2, name: "پیتزا لقمه", desc: "پیتزا لقمه، یک انتخاب خفن برای شما", longDesc: "اگر گشنتون بود اینو انتخاب کنید! پیتزا لقمه با سس مخصوص.", img: "https://uploadkon.ir/uploads/9bfa11_26IMG-20260611-220107.jpg", tag: "فینگر فود", tagIcon: "fa-hand-peace", isSpecial: true, createdAt: new Date(2026, 5, 11, 22, 1) },
-        { id: 1, name: "بورک مرغ و ژامبون پنیری", desc: "مرغ ژامبون و خمیر با کیفیت", longDesc: "این بورک خوشمزه با مرغ تازه، ژامبون مرغوب و خمیر مخصوص تهیه شده.", img: "https://cdn.imgurl.ir/uploads/s325527_Negar_1781200451190.jpg", tag: "فست فود", tagIcon: "fa-burger", isSpecial: true, createdAt: new Date(2026, 5, 11, 20, 0) }
-    ];
-    foods.sort((a, b) => b.createdAt - a.createdAt);
-
-    let cart = [];
-    let processing = false;
-    let discountApplied = false;
-    const VALID_DISCOUNT_CODE = "call food 1395497554";
-
-    const cartSidebar = document.getElementById('cartSidebar');
-    const cartIconElem = document.getElementById('cartIcon');
-    const closeCartBtn = document.getElementById('closeCartBtn');
-    const cartItemsList = document.getElementById('cartItemsList');
-    const cartCountSpan = document.getElementById('cartCount');
-    const cartTotalCountSpan = document.getElementById('cartTotalCount');
-    const checkoutBtn = document.getElementById('checkoutBtn');
-    const toastMsgDiv = document.getElementById('toastMsg');
-    const modal = document.getElementById('successModal');
-    const orderSummaryList = document.getElementById('orderSummaryList');
-    const trackingCodeSpan = document.getElementById('trackingCode');
-    let toastTimeout;
-
-    function showToast(msg, isSuccess = true) {
-        toastMsgDiv.innerHTML = `<i class="fas ${isSuccess ? 'fa-check-circle' : 'fa-info-circle'}"></i> ${msg}`;
-        toastMsgDiv.style.opacity = '1';
-        if(toastTimeout) clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => toastMsgDiv.style.opacity = '0', 3000);
-    }
-    
-    function generateRandomSixDigit() {
-        return Math.floor(100000 + Math.random() * 900000).toString();
-    }
-    
-    function updateTrackingCodeDisplay() {
-        if(discountApplied) {
-            trackingCodeSpan.innerText = "call food.ir";
-        } else {
-            trackingCodeSpan.innerText = generateRandomSixDigit();
+                </div>`
+            ).join('');
         }
-    }
-    
-    function closeModal() { 
-        modal.classList.remove('show');
-        discountApplied = false;
-        updateTrackingCodeDisplay();
-        const discountInput = document.getElementById('discountCodeInput');
-        const discountFeedback = document.getElementById('discountFeedback');
-        if(discountInput) discountInput.value = '';
-        if(discountFeedback) discountFeedback.innerHTML = '';
-        discountFeedback.className = 'discount-feedback';
-    }
-    window.closeModal = closeModal;
 
-    function initDiscountFeature() {
-        const discountInput = document.getElementById('discountCodeInput');
-        const discountFeedback = document.getElementById('discountFeedback');
-        
-        if(!discountInput) return;
-        
-        discountInput.addEventListener('input', function() {
-            const enteredCode = this.value.trim();
-            if(enteredCode === VALID_DISCOUNT_CODE) {
-                discountApplied = true;
-                updateTrackingCodeDisplay();
-                discountFeedback.innerHTML = '<i class="fas fa-check-circle"></i> تبریک! کد تخفیف تایید شد';
-                discountFeedback.className = 'discount-feedback discount-success';
+        function renderNews(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = newsData.map(n =>
+                `<div class="hybrid-card">
+                    <div class="hybrid-inner">
+                        <div class="hybrid-media"><img src="${n.image}" onerror="this.src='https://via.placeholder.com/300x200'"></div>
+                        <div class="hybrid-content">
+                            <div class="hybrid-badge"><i class="fa-regular fa-newspaper"></i> جدیدترین خبر</div>
+                            <h2>${n.title}</h2>
+                            <div style="display:flex;gap:14px;margin-bottom:12px;font-size:0.7rem;color:#777;">
+                                <i class="fa-regular fa-calendar"></i> ${n.date} <i class="fa-regular fa-clock"></i> ${n.time}
+                            </div>
+                            <p class="hybrid-desc">${n.summary}</p>
+                            <div class="news-actions">
+                                <button onclick="event.stopPropagation(); toggleNewsText(this)"><i class="fa-regular fa-eye"></i> ادامه مطلب</button>
+                            </div>
+                            <div class="news-full-text">${n.fullText}</div>
+                        </div>
+                    </div>
+                </div>`
+            ).join('');
+        }
+
+        function renderStories(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = storiesData.map(s =>
+                `<div class="hybrid-card">
+                    <div class="hybrid-inner">
+                        <div class="hybrid-media"><img src="${s.img}" onerror="this.src='https://via.placeholder.com/300x200'"></div>
+                        <div class="hybrid-content">
+                            <div class="hybrid-badge"><i class="fa-solid fa-book-open"></i> داستان اختصاصی</div>
+                            <h2>${s.title}</h2>
+                            <p class="hybrid-desc">${s.desc.substring(0, 120)}...</p>
+                            <div class="news-actions">
+                                <button onclick="event.stopPropagation(); toggleStoryText(this)"><i class="fa-regular fa-eye"></i> ادامه داستان</button>
+                            </div>
+                            <div class="news-full-text" style="white-space:pre-line;text-align:justify;">${s.full}</div>
+                        </div>
+                    </div>
+                </div>`
+            ).join('');
+        }
+
+        function renderMusic() {
+            const container = document.getElementById('musicGrid');
+            if (!container) return;
+            if (musicData.length === 0) {
+                container.innerHTML =
+                    `<div style="background:white;border-radius:24px;padding:40px;text-align:center;color:var(--main);"><i class="fa-solid fa-music" style="font-size:48px;"></i><h3>هنوز موسیقی‌ای اضافه نشده</h3></div>`;
+                return;
+            }
+            const sorted = [...musicData].sort((a, b) => b.id - a.id);
+            container.innerHTML = sorted.map(m =>
+                `<div class="music-card">
+                    <img class="music-img" src="${m.cover}" onerror="this.src='https://via.placeholder.com/400x400'">
+                    <div class="music-info">
+                        <div class="title-platform-box">
+                            <h3>${m.title}</h3>
+                            <div class="platform-badge">${getPlatformIcon(m.platform)} ${m.platform}</div>
+                        </div>
+                        ${m.composers ? `<div class="composers-section"><div class="composer-title"><i class="fa-solid fa-microphone-alt"></i> آهنگسازان</div><div class="composers-list">${m.composers.map(c => `<div class="composer-item"><i class="fa-regular fa-user"></i> ${c}</div>`).join('')}</div></div>` : ''}
+                        <div class="music-desc-box">
+                            <div class="music-desc-title"><i class="fa-regular fa-note-sticky"></i> توضیحات موسیقی</div>
+                            <div class="music-desc-text">${m.desc}</div>
+                        </div>
+                        <div class="custom-player">
+                            <audio controls src="${m.file}"></audio>
+                            <button class="download-music-btn" onclick="event.stopPropagation(); downloadMusic('${m.file}', '${m.title}')"><i class="fa-solid fa-download"></i> دانلود</button>
+                        </div>
+                    </div>
+                </div>`
+            ).join('');
+        }
+
+        function renderOld() {
+            const container = document.getElementById('oldGrid');
+            if (!container) return;
+            if (oldData.length === 0) {
+                container.innerHTML =
+                    `<div style="background:white;border-radius:24px;padding:40px;text-align:center;color:var(--main);"><i class="fa-solid fa-joystick" style="font-size:48px;"></i><h3>به زودی...</h3></div>`;
+                return;
+            }
+            container.innerHTML = oldData.map(game =>
+                `<div class="hybrid-card">
+                    <div class="hybrid-inner">
+                        <div class="hybrid-media"><img src="${game.cover}" onerror="this.src='https://via.placeholder.com/300x200'"></div>
+                        <div class="hybrid-content">
+                            <div class="hybrid-badge"><i class="fa-solid fa-compact-disc"></i> زروکس اُلد | نوستالژی محض</div>
+                            <h2>${game.title}</h2>
+                            <div class="game-info-box">
+                                <div class="info-row"><i class="fa-solid fa-gamepad"></i> <strong>نام بازی:</strong> ${game.name}</div>
+                                <div class="info-row"><i class="fa-regular fa-calendar"></i> <strong>سال انتشار:</strong> ${game.year}</div>
+                                <div class="info-row"><i class="fa-solid fa-building"></i> <strong>سازنده:</strong> ${game.developer}</div>
+                                <div class="info-row"><i class="fa-solid fa-box"></i> <strong>ناشر:</strong> ${game.publisher}</div>
+                                <div class="info-row"><i class="fa-solid fa-user-tie"></i> <strong>کارگردان:</strong> ${game.director}</div>
+                                <div class="info-row"><i class="fa-solid fa-chalkboard-user"></i> <strong>تهیه‌کننده:</strong> ${game.producer}</div>
+                                <div class="info-row"><i class="fa-solid fa-music"></i> <strong>آهنگسازان:</strong> ${game.composers.join("، ")}</div>
+                                <div class="info-row"><i class="fa-solid fa-tv"></i> <strong>پلتفرم:</strong> ${game.platform}</div>
+                                <div class="info-row"><i class="fa-solid fa-tag"></i> <strong>سبک:</strong> ${game.genre}</div>
+                                <div class="info-row"><i class="fa-solid fa-microchip"></i> <strong>موتور بازی:</strong> ${game.engine}</div>
+                            </div>
+                            <div class="story-box">
+                                <div class="story-title"><i class="fa-solid fa-book-open"></i> داستان بازی</div>
+                                <p class="hybrid-desc">${game.desc}</p>
+                                <button class="more-btn" onclick="toggleOldText(this)"><i class="fa-regular fa-eye"></i> ادامه داستان</button>
+                                <div class="old-full-text">${game.fullText}</div>
+                            </div>
+                            <div class="custom-player">
+                                <audio controls src="${game.music}"></audio>
+                                <button class="download-music-btn" onclick="downloadMusic('${game.music}', '${game.name}')"><i class="fa-solid fa-download"></i> دانلود</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+            ).join('');
+        }
+
+        // ============================================================
+        // TOGGLE FUNCTIONS
+        // ============================================================
+        function toggleVideoText(btn) {
+            const full = btn.parentElement.nextElementSibling;
+            if (full.style.display === "none" || full.style.display === "") {
+                full.style.display = "block";
+                btn.innerHTML = '<i class="fa-regular fa-eye-slash"></i> بستن';
             } else {
-                if(discountApplied) {
-                    discountApplied = false;
-                    updateTrackingCodeDisplay();
-                }
-                if(enteredCode.length > 0) {
-                    discountFeedback.innerHTML = '<i class="fas fa-times-circle"></i> متاسفانه کد صحیح نمی‌باشد';
-                    discountFeedback.className = 'discount-feedback discount-error';
-                } else {
-                    discountFeedback.innerHTML = '';
-                    discountFeedback.className = 'discount-feedback';
-                }
+                full.style.display = "none";
+                btn.innerHTML = '<i class="fa-regular fa-eye"></i> توضیحات';
             }
-        });
-    }
+        }
 
-    function showOrderSuccessModal() {
-        discountApplied = false;
-        updateTrackingCodeDisplay();
-        let orderHtml = '';
-        cart.forEach(item => { orderHtml += `<p>• ${item.quantity} عدد ${item.name}</p>`; });
-        orderSummaryList.innerHTML = orderHtml;
-        modal.classList.add('show');
-        const discountInput = document.getElementById('discountCodeInput');
-        const discountFeedback = document.getElementById('discountFeedback');
-        if(discountInput) discountInput.value = '';
-        if(discountFeedback) discountFeedback.innerHTML = '';
-        discountFeedback.className = 'discount-feedback';
-    }
-    
-    function updateCartBadge() { 
-        const total = cart.reduce((a,i)=> a + i.quantity, 0); 
-        cartCountSpan.innerText = total;
-        if(cartTotalCountSpan) cartTotalCountSpan.innerText = `${total} عدد (تماس تلفنی)`;
-    }
-    function saveCart() { localStorage.setItem('callfoodCart', JSON.stringify(cart)); }
-    function loadCart() { const saved = localStorage.getItem('callfoodCart'); if(saved) try { cart = JSON.parse(saved); } catch(e){} renderCart(); }
-    function renderCart() {
-        if(cart.length === 0) { 
-            cartItemsList.innerHTML = `<div class="empty-cart">سبدت خالیه پرش کن! 🍔</div>`; 
-            updateCartBadge(); saveCart(); return; 
-        }
-        let html = '';
-        cart.forEach(item => { html += `<div class="cart-item"><div><strong><i class="fas fa-utensil-spoon"></i> ${item.name}</strong><br>تعداد: ${item.quantity}</div><div class="cart-item-actions"><button class="cart-inc" data-id="${item.id}">+</button><button class="cart-dec" data-id="${item.id}">-</button><button class="cart-remove" data-id="${item.id}"><i class="fas fa-trash"></i></button></div></div>`; });
-        cartItemsList.innerHTML = html;
-        document.querySelectorAll('.cart-inc').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); changeQty(id, 1); }));
-        document.querySelectorAll('.cart-dec').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); changeQty(id, -1); }));
-        document.querySelectorAll('.cart-remove').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); cart = cart.filter(i => i.id !== id); renderCart(); showToast("حذف شد"); }));
-        updateCartBadge(); saveCart();
-    }
-    function changeQty(id, delta) { let idx = cart.findIndex(i => i.id === id); if(idx !== -1) { let newQty = cart[idx].quantity + delta; if(newQty <= 0) cart.splice(idx,1); else cart[idx].quantity = newQty; renderCart(); showToast("سبد بروز شد"); } }
-    function addToCart(product) { 
-        if(processing) return;
-        processing = true;
-        let existing = cart.find(i => i.id === product.id); 
-        if(existing) { existing.quantity++; showToast(`${product.name} +۱ شد`); } 
-        else { cart.push({ id: product.id, name: product.name, quantity: 1 }); showToast(`${product.name} به سبد اضافه شد 🎉`); } 
-        renderCart(); 
-        setTimeout(() => { processing = false; }, 300);
-    }
-    function attachCardEvents(cardElement, food) {
-        const addBtn = cardElement.querySelector('.add-to-cart');
-        if(addBtn) {
-            const newAddBtn = addBtn.cloneNode(true);
-            addBtn.parentNode.replaceChild(newAddBtn, addBtn);
-            newAddBtn.addEventListener('click', (e) => { e.preventDefault(); addToCart(food); });
-        }
-        const detailBtn = cardElement.querySelector('.detail-btn');
-        const detailBox = cardElement.querySelector('.detail-box');
-        if(detailBtn && detailBox) {
-            const newDetailBtn = detailBtn.cloneNode(true);
-            detailBtn.parentNode.replaceChild(newDetailBtn, detailBtn);
-            newDetailBtn.addEventListener('click', (e) => { e.preventDefault(); detailBox.classList.toggle('show'); });
-        }
-    }
-    function createFoodCard(food) {
-        const card = document.createElement('div'); card.className = 'food-card';
-        card.innerHTML = `<div class="card-img" style="background-image: url('${food.img}');"><div class="food-tag"><i class="fas ${food.tagIcon}"></i> ${food.tag}</div>${food.isSpecial ? '<div class="badge-special"><i class="fas fa-star"></i> ویژه خفن</div>' : ''}</div><div class="card-info"><h3><i class="fas fa-egg"></i> ${food.name}</h3><div class="desc">${food.desc}</div><div class="btn-group"><button class="add-to-cart" data-id="${food.id}"><i class="fas fa-cart-plus"></i> افزودن به سبد</button><button class="detail-btn" data-id="${food.id}"><i class="fas fa-info-circle"></i> توضیحات بیشتر</button></div><div class="detail-box" id="detail-${food.id}"><i class="fas fa-align-right"></i> ${food.longDesc}</div></div>`;
-        attachCardEvents(card, food);
-        return card;
-    }
-    function renderPages() {
-        const featuredGrid = document.getElementById('featuredGrid');
-        const persianHomeGrid = document.getElementById('persianHomeGrid');
-        const dolmeGrid = document.getElementById('dolmeGrid');
-        const fastGrid = document.getElementById('fastfoodGrid');
-        const fingerGrid = document.getElementById('fingerGrid');
-        const persianGrid = document.getElementById('persianGrid');
-        const cakeGrid = document.getElementById('cakeGrid');
-        const sweetGrid = document.getElementById('sweetGrid');
-        const traditionalGrid = document.getElementById('traditionalGrid');
-        const dessertGrid = document.getElementById('dessertGrid');
-        
-        if(featuredGrid) featuredGrid.innerHTML = '';
-        if(persianHomeGrid) persianHomeGrid.innerHTML = '';
-        if(dolmeGrid) dolmeGrid.innerHTML = '';
-        if(fastGrid) fastGrid.innerHTML = '';
-        if(fingerGrid) fingerGrid.innerHTML = '';
-        if(persianGrid) persianGrid.innerHTML = '';
-        if(cakeGrid) cakeGrid.innerHTML = '';
-        if(sweetGrid) sweetGrid.innerHTML = '';
-        if(traditionalGrid) traditionalGrid.innerHTML = '';
-        if(dessertGrid) dessertGrid.innerHTML = '';
-        
-        const specials = foods.filter(f => f.isSpecial).sort((a,b) => b.createdAt - a.createdAt);
-        specials.forEach(food => { if(featuredGrid) featuredGrid.appendChild(createFoodCard(food)); });
-        
-        foods.forEach(food => {
-            if(food.tag === 'دلمه' && dolmeGrid) dolmeGrid.appendChild(createFoodCard(food));
-            else if(food.tag === 'غذای مجلسی') { 
-                if(persianHomeGrid) persianHomeGrid.appendChild(createFoodCard(food)); 
-                if(persianGrid) persianGrid.appendChild(createFoodCard(food)); 
+        function toggleNewsText(btn) {
+            const full = btn.parentElement.nextElementSibling;
+            if (full.style.display === "none" || full.style.display === "") {
+                full.style.display = "block";
+                btn.innerHTML = '<i class="fa-regular fa-eye-slash"></i> بستن متن';
+            } else {
+                full.style.display = "none";
+                btn.innerHTML = '<i class="fa-regular fa-eye"></i> ادامه مطلب';
             }
-            else if(food.tag === 'فست فود' && fastGrid) fastGrid.appendChild(createFoodCard(food));
-            else if(food.tag === 'فینگر فود' && fingerGrid) fingerGrid.appendChild(createFoodCard(food));
-            else if(food.tag === 'کیک' && cakeGrid) cakeGrid.appendChild(createFoodCard(food));
-            else if(food.tag === 'شیرینی‌جات' && sweetGrid) sweetGrid.appendChild(createFoodCard(food));
-            else if(food.tag === 'غذای سنتی' && traditionalGrid) traditionalGrid.appendChild(createFoodCard(food));
-            else if(food.tag === 'دسر' && dessertGrid) dessertGrid.appendChild(createFoodCard(food));
-        });
-    }
-    
-    const pages = { home: document.getElementById('homePage'), dolme: document.getElementById('dolmePage'), fastfood: document.getElementById('fastfoodPage'), finger: document.getElementById('fingerPage'), persian: document.getElementById('persianPage'), cake: document.getElementById('cakePage'), traditional: document.getElementById('traditionalPage'), sweet: document.getElementById('sweetPage'), dessert: document.getElementById('dessertPage'), tafarda: document.getElementById('tafardaPage'), support: document.getElementById('supportPage') };
-    
-    document.querySelectorAll('[data-page]').forEach(link => {
-        link.addEventListener('click', (e) => { e.preventDefault(); let page = link.dataset.page; Object.values(pages).forEach(p => p.classList.remove('active-page')); if(pages[page]) pages[page].classList.add('active-page'); window.scrollTo({ top: 0, behavior: 'smooth' }); });
-    });
-    
-    function openSidebar() { cartSidebar.classList.add('open'); }
-    function closeSidebar() { cartSidebar.classList.remove('open'); }
-    cartIconElem.addEventListener('click', openSidebar);
-    closeCartBtn.addEventListener('click', closeSidebar);
-    document.addEventListener('click', (e) => { if(cartSidebar.classList.contains('open') && !cartSidebar.contains(e.target) && !cartIconElem.contains(e.target)) closeSidebar(); });
-    
-    checkoutBtn.addEventListener('click', () => { if(cart.length === 0) { showToast("سبد خالیه! اول غذا انتخاب کن 😋", false); return; } showOrderSuccessModal(); cart = []; renderCart(); closeSidebar(); });
-    
-    const tomorrowDetailBtn = document.getElementById('tomorrowDetailBtn');
-    const tomorrowDetailBox = document.getElementById('tomorrowDetailBox');
-    if(tomorrowDetailBtn && tomorrowDetailBox) {
-        tomorrowDetailBtn.addEventListener('click', () => { tomorrowDetailBox.classList.toggle('show'); });
-    }
-    
-    renderPages();
-    loadCart();
-    initDiscountFeature();
-    updateTrackingCodeDisplay();
-</script>
+        }
+
+        function toggleStoryText(btn) {
+            const full = btn.parentElement.nextElementSibling;
+            if (full.style.display === "none" || full.style.display === "") {
+                full.style.display = "block";
+                btn.innerHTML = '<i class="fa-regular fa-eye-slash"></i> بستن داستان';
+            } else {
+                full.style.display = "none";
+                btn.innerHTML = '<i class="fa-regular fa-eye"></i> ادامه داستان';
+            }
+        }
+
+        function toggleOldText(btn) {
+            const full = btn.parentElement.nextElementSibling;
+            if (full.style.display === "none" || full.style.display === "") {
+                full.style.display = "block";
+                btn.innerHTML = '<i class="fa-regular fa-eye-slash"></i> بستن';
+            } else {
+                full.style.display = "none";
+                btn.innerHTML = '<i class="fa-regular fa-eye"></i> ادامه داستان';
+            }
+        }
+
+        // ============================================================
+        // FILTERS & NAVIGATION
+        // ============================================================
+        let currentVideoFilter = "همه";
+
+        function setupFilters() {
+            document.querySelectorAll('#video .filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#video .filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentVideoFilter = btn.getAttribute('data-filter');
+                    renderVideos('videosGrid', currentVideoFilter);
+                });
+            });
+        }
+
+        function showTab(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+
+            if (id === 'home') {
+                renderVideos('homeVideosGrid', 'همه');
+                renderNews('homeNewsGrid');
+                renderStories('homeStoriesGrid');
+            }
+            if (id === 'news') renderNews('newsGrid');
+            if (id === 'video') renderVideos('videosGrid', currentVideoFilter);
+            if (id === 'music') renderMusic();
+            if (id === 'stories') renderStories('storiesGrid');
+            if (id === 'old') renderOld();
+        }
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        renderVideos('homeVideosGrid', 'همه');
+        renderNews('homeNewsGrid');
+        renderStories('homeStoriesGrid');
+        renderNews('newsGrid');
+        renderVideos('videosGrid', 'همه');
+        renderStories('storiesGrid');
+        renderMusic();
+        renderOld();
+        setupFilters();
+    </script>
 </body>
-    </html>
+        </html>
