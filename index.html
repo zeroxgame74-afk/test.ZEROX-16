@@ -6,6 +6,7 @@
     <title>mim.non.ir | فروشگاه تخصصی فونت</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <link href="https://cdn.fontcdn.ir/FontPersian/Morabba/Morabba.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,25 +22,47 @@
             line-height: 1.5;
         }
 
-        body, html, div, section, nav, button, span, p, h1, h2, h3, h4, a, li, ul, .nav-link, .cart-icon, .logo-area h1, .logo-area p,
-        .hero-text h2, .hero-text h2 span, .hero-text p, .hero-stats .stat h3, .hero-stats .stat span,
-        .btn-primary, .btn-outline, .filter-label, .filter-btn, .font-title, .font-cat, .offer-tag, .special-offer,
-        .font-desc, .current-price, .old-price, .btn-buy, .btn-preview, .footer-col h4, .footer-col p, .footer-col a,
-        .copyright, .modal-content h3, .cart-item, .cart-total, .checkout-btn, .close-modal, .close-cart, .close-payment,
-        .random-code, .coming-soon-box h3, .coming-soon-box p, .empty-cart, .stat span, .bestseller-header h2, .bestseller-header p,
-        .expired-box, .expired-box span, .expired-box i, .btn-download, .free-tag, .free-price, .contact-box, .contact-item,
-        .blog-post, .blog-title, .blog-meta, .blog-content {
+        /* ===== فونت ترکیبی ===== */
+        body, p, span, li, .font-desc, .blog-text, .cart-item, .filter-btn, .btn-buy, .btn-download, .footer-col p, .footer-col a, .copyright, .contact-item .value a, .nav-link, .hero-text p, .price-wrapper, .old-price, .current-price, .free-price, .expired-box, .tags-row, .font-cat, .offer-tag, .special-offer, .free-tag, .blog-meta, .contact-note-new, .stat span {
             font-family: 'Vazirmatn', 'Tahoma', sans-serif !important;
             font-weight: bold !important;
         }
 
-        .hero-text h2 { font-size: 3rem !important; font-weight: 900 !important; }
-        .hero-text p { font-size: 1.3rem !important; }
-        .font-title { font-size: 1.8rem !important; font-weight: 900 !important; }
-        .current-price { font-size: 1.5rem !important; font-weight: 900 !important; }
-        .filter-btn { font-size: 0.85rem !important; font-weight: 800 !important; padding: 8px 20px !important; }
-        .nav-link { font-size: 1rem !important; font-weight: 800 !important; }
-        .cart-icon { font-weight: 800 !important; }
+        h1, h2, h3, h4, .hero-text h2, .font-title, .logo-area h1, .bestseller-header h2, .contact-box-new h2, .modal-content h3, .blog-title, .checkout-btn, .btn-primary, .stat h3, .refresh-btn, .update-box h1, .coming-soon-box h3 {
+            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
+            font-weight: 800 !important;
+        }
+        /* ========================= */
+
+        /* ===== محافظت از عکس فونت ===== */
+        .font-preview {
+            position: relative;
+            overflow: hidden;
+        }
+        .font-preview img {
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+        .font-preview::after {
+            content: "mim.non.ir";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: #FFC800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        /* ============================= */
 
         .blog-container {
             max-width: 900px;
@@ -60,14 +83,6 @@
         }
         .blog-content {
             padding: 25px;
-        }
-        .blog-title {
-            font-size: 1.8rem;
-            color: #FFC800;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
         .blog-meta {
             display: flex;
@@ -94,6 +109,8 @@
             color: #FFC800;
             margin: 20px 0 10px 0;
             font-size: 1.2rem;
+            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
+            font-weight: 800 !important;
         }
         .blog-text ul {
             margin-right: 20px;
@@ -131,40 +148,23 @@
             margin-bottom: 10px;
             display: inline-block;
         }
-        .coming-soon-box h3 {
-            font-size: 1.3rem;
-            color: #FFC800;
-            margin: 10px 0;
-            font-weight: 900;
-        }
         .coming-soon-box p {
             font-size: 0.9rem;
             font-weight: bold;
             color: #ccc;
         }
 
-        .contact-box {
-            text-align: center;
+        .contact-box-new {
+            max-width: 600px;
+            margin: 50px auto;
             padding: 30px 25px;
             background: #1f1f1f;
             border-radius: 32px;
-            margin: 50px auto;
             border: 1px solid #FFC800;
-            max-width: 600px;
-            width: 90%;
+            text-align: center;
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         }
-        .contact-box h2 {
-            font-size: 1.8rem;
-            color: #FFC800;
-            margin-bottom: 25px;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .contact-item {
+        .contact-item-new {
             background: #2a2a2a;
             border-radius: 60px;
             padding: 14px 20px;
@@ -174,42 +174,60 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 12px;
-            transition: 0.2s;
             border: 1px solid #FFC80040;
+            transition: 0.2s;
+            width: 100%;
+            box-sizing: border-box;
         }
-        .contact-item:hover {
+        .contact-item-new:hover {
             border-color: #FFC800;
             transform: translateY(-2px);
         }
-        .contact-item .label {
+        .contact-item-new .label {
             display: flex;
             align-items: center;
             gap: 10px;
             color: #FFC800;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            font-weight: bold;
         }
-        .contact-item .value a {
+        .contact-item-new .label i {
+            font-size: 1.1rem;
+            color: #FFC800;
+        }
+        .contact-item-new .value a {
             color: #e0e0e0;
             text-decoration: none;
             font-size: 0.9rem;
-            transition: 0.2s;
             background: #1f1f1f;
             padding: 8px 16px;
             border-radius: 40px;
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            transition: 0.2s;
+            font-weight: bold;
         }
-        .contact-item .value a:hover {
+        .contact-item-new .value a:hover {
             color: #FFC800;
             background: #1a1a1a;
         }
-        .contact-note {
+        .contact-note-new {
             margin-top: 20px;
             padding-top: 15px;
             border-top: 1px dashed #3a3a3a;
             font-size: 0.7rem;
             color: #888;
+        }
+        @media (max-width: 500px) {
+            .contact-item-new {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .contact-item-new .value a {
+                justify-content: center;
+            }
         }
 
         .bestseller-header {
@@ -227,12 +245,6 @@
             color: #FFC800;
             margin-bottom: 10px;
             display: inline-block;
-        }
-        .bestseller-header h2 {
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: #FFC800;
-            margin: 10px 0;
         }
         .bestseller-header p {
             font-size: 0.9rem;
@@ -273,7 +285,7 @@
         }
 
         .logo-area h1 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             background: linear-gradient(135deg, #FFC800 30%, #ffdd55 80%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -303,6 +315,8 @@
             background: none;
             border: none;
             transition: 0.2s;
+            font-size: 1rem !important;
+            font-weight: 800 !important;
         }
 
         .nav-link i { color: #FFC800; font-size: 0.95rem; }
@@ -320,6 +334,7 @@
             font-size: 0.9rem;
             position: absolute;
             left: 20px;
+            font-weight: 800 !important;
         }
 
         .cart-icon i { color: #FFC800; font-size: 1rem; }
@@ -346,19 +361,23 @@
             text-align: center;
         }
 
+        .hero-text h2 {
+            font-size: 3rem !important;
+            font-weight: 900 !important;
+        }
         .hero-text h2 span {
             color: #FFC800;
             border-bottom: 3px solid #FFC800;
             display: inline-block;
             padding-bottom: 5px;
         }
-
         .hero-text p {
             margin-bottom: 25px;
             color: #d0d0d0;
             max-width: 750px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 1.3rem !important;
         }
 
         .hero-buttons {
@@ -380,6 +399,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            font-weight: 800 !important;
         }
 
         .btn-outline {
@@ -393,6 +413,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
+            font-weight: 800 !important;
         }
 
         .hero-stats {
@@ -404,6 +426,12 @@
         .stat h3 {
             color: #FFC800;
             font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .stat h3 i {
+            color: #FFC800;
         }
         .stat span {
             font-size: 0.9rem;
@@ -435,6 +463,8 @@
             font-size: 1rem;
             border-bottom: 1px solid #3a3a3a;
             padding-bottom: 6px;
+            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
+            font-weight: 800 !important;
         }
 
         .filter-buttons {
@@ -454,6 +484,8 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            font-size: 0.85rem !important;
+            font-weight: 800 !important;
         }
 
         .filter-btn i { color: #FFC800; font-size: 0.8rem; }
@@ -486,12 +518,6 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
-        .font-preview img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-        }
-
         .font-details {
             padding: 16px 18px 20px;
         }
@@ -502,6 +528,8 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 12px;
+            font-size: 1.8rem !important;
+            font-weight: 900 !important;
         }
 
         .tags-row {
@@ -538,6 +566,8 @@
 
         .current-price {
             color: #FFC800;
+            font-size: 1.5rem !important;
+            font-weight: 900 !important;
         }
         .free-price {
             color: #FFC800;
@@ -648,12 +678,18 @@
             color: #FFC800;
             font-size: 1rem;
             margin-bottom: 10px;
+            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
+            font-weight: 800 !important;
         }
 
         .footer-col p, .footer-col a {
             color: #b0b0b0;
             font-size: 0.8rem;
             text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: #FFC800 !important;
         }
 
         .social-icons {
@@ -707,6 +743,12 @@
             max-height: 80vh;
             overflow-y: auto;
         }
+        .modal-content h3, .cart-modal-content h3, .payment-modal-content h3 {
+            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: 1.4rem;
+            color: #FFC800;
+        }
 
         .random-code {
             font-size: 1.3rem;
@@ -722,10 +764,12 @@
             border: none;
             padding: 10px;
             border-radius: 40px;
-            font-weight: 800;
+            font-weight: 800 !important;
             cursor: pointer;
             width: 100%;
             margin-top: 12px;
+            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
+            font-size: 1rem;
         }
 
         .cart-item {
@@ -754,10 +798,79 @@
             font-weight: bold;
             margin: 15px 0;
             transition: 0.2s;
+            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
         }
         .payment-link:hover {
             background: #e6b400;
             transform: scale(1.02);
+        }
+
+        .update-box {
+            background: #1f1f1f;
+            padding: 40px 30px;
+            border-radius: 48px;
+            border: 2px solid #FFC800;
+            max-width: 450px;
+            width: 90%;
+            margin: 0 auto;
+        }
+        .update-box .fa-spinner {
+            font-size: 3.5rem;
+            color: #FFC800;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: spin 1.5s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .update-box h1 {
+            font-size: 1.8rem;
+            color: #FFC800;
+            margin-bottom: 15px;
+        }
+        .update-box p {
+            font-size: 1rem;
+            margin: 12px 0;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .update-box p i {
+            font-size: 1.1rem;
+            color: #FFC800;
+        }
+        .update-box small {
+            display: block;
+            margin-top: 25px;
+            font-size: 0.7rem;
+            color: #888;
+        }
+        .refresh-btn {
+            background: #FFC800;
+            color: #121212;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 40px;
+            margin-top: 20px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+            font-weight: 900 !important;
+            font-size: 0.95rem !important;
+        }
+        .refresh-btn:hover {
+            background: #e6b400;
+            transform: scale(1.02);
+        }
+        .refresh-btn i {
+            color: #121212;
+            font-size: 1rem;
         }
 
         @media (max-width: 850px) {
@@ -813,9 +926,9 @@
                         <button class="btn-outline" id="sampleTypeBtn"><i class="fas fa-play-circle"></i> نمونه تایپ‌فیس</button>
                     </div>
                     <div class="hero-stats">
-                        <div class="stat"><h3>۴+</h3><span>فونت حرفه‌ای</span></div>
+                        <div class="stat"><h3>۵+</h3><span>فونت حرفه‌ای</span></div>
                         <div class="stat"><h3>۱۵۷</h3><span>طراح راضی</span></div>
-                        <div class="stat"><h3>⭐ ۴.۸</h3><span>رضایت بالا</span></div>
+                        <div class="stat"><h3><i class="fas fa-star"></i> ۴.۸</h3><span>رضایت بالا</span></div>
                     </div>
                 </div>
             </div>
@@ -842,8 +955,7 @@
             </div>
             <div class="footer-col">
                 <h4>تماس با ما</h4>
-                <p><i class="fas fa-envelope"></i> support@mim.non.ir</p>
-                <p><i class="fas fa-phone-alt"></i> ۰۲۱-۱۲۳۴۵۶۷۸</p>
+                <p><i class="fas fa-envelope"></i> <a href="https://eitaa.com/ya_ali_ir" target="_blank" style="color: #FFC800; text-decoration: none;">support@mim.non.ir</a></p>
             </div>
         </div>
         <div class="copyright">mim.non.ir 2026 | تمامی حقوق میم نون محفوظ است</div>
@@ -931,6 +1043,20 @@
             isSpecial: false,
             isFree: true,
             downloadLink: "https://cdn.imgurl.ir/uploads/a32949_font_negar_mim.non_ir1.rar"
+        },
+        {
+            id: 5,
+            name: "فونت مــربــع!",
+            category: "persian",
+            price: 383000,
+            oldPrice: 698000,
+            image: "https://cdn.imgurl.ir/uploads/i816776_Negar_1781736178838.jpg",
+            description: "مربع یک فونت جدید خوانا از ترکیب فونت های کوفی و ایرانی است که با طراحی «حسن منصوری و شهرزاده اکبری» تهیه و تنظیم شده! و الان راحت با قیمت مناسب برای خرید اماده است!",
+            icon: "fa-crown",
+            offerExpired: false,
+            isSpecial: true,
+            isFree: false,
+            downloadLink: null
         }
     ];
 
@@ -1312,9 +1438,10 @@
         else if (tabId === 'contact') {
             if (heroSection) heroSection.style.display = 'none';
             dynamicContainer.innerHTML = `
-                <div class="contact-box">
+                <div class="contact-box-new">
                     <h2><i class="fas fa-phone-alt"></i> تماس با ما</h2>
-                    <div class="contact-item">
+                    
+                    <div class="contact-item-new">
                         <div class="label">
                             <i class="fas fa-user-astronaut"></i>
                             سازنده سایت
@@ -1325,7 +1452,20 @@
                             </a>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    
+                    <div class="contact-item-new">
+                        <div class="label">
+                            <i class="fas fa-user-astronaut"></i>
+                            سازنده سایت (اکانت دوم)
+                        </div>
+                        <div class="value">
+                            <a href="https://rubika.ir/mohamad_hossein_ev18" target="_blank">
+                                <i class="fas fa-video"></i> mohamad_hossein_ev18
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item-new">
                         <div class="label">
                             <i class="fas fa-paper-plane"></i>
                             کانال ایتا
@@ -1336,18 +1476,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="label">
-                            <i class="fas fa-music"></i>
-                            روبیکا
-                        </div>
-                        <div class="value">
-                            <a href="https://rubika.ir/mohamad_hossein_ev18" target="_blank">
-                                <i class="fas fa-video"></i> mohamad_hossein_ev18
-                            </a>
-                        </div>
-                    </div>
-                    <div class="contact-note">
+                    
+                    <div class="contact-note-new">
                         جهت ارتباط، سوالات و پشتیبانی با ما در ایتا یا روبیکا در ارتباط باشید.
                     </div>
                 </div>
