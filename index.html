@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>mim.non.ir | فروشگاه تخصصی فونت</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- فونت وزیرمتن برای متن‌ها -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-    <!-- فونت مرابا برای تیترها (بدون فونت‌ایران) -->
-    <link href="https://cdn.fontcdn.ir/FontPersian/Morabba/Morabba.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -24,35 +21,80 @@
             line-height: 1.5;
         }
 
-        /* ===== فونت ترکیبی ===== */
-        /* متن‌ها و پاراگراف‌ها با Vazirmatn */
-        body, p, span, li, .font-desc, .blog-text, .cart-item, .filter-btn, .btn-buy, .btn-download, .footer-col p, .footer-col a, .copyright, .contact-item .value a, .nav-link, .hero-text p, .price-wrapper, .old-price, .current-price, .free-price, .expired-box, .tags-row, .font-cat, .offer-tag, .special-offer, .free-tag, .blog-meta, .contact-note-new, .stat span {
+        body, html, div, section, nav, button, span, p, h1, h2, h3, h4, a, li, ul, .nav-link, .cart-icon, .logo-area h1, .logo-area p,
+        .hero-text h2, .hero-text p, .hero-stats .stat h3, .hero-stats .stat span,
+        .btn-primary, .btn-outline, .filter-label, .filter-btn, .font-title, .font-cat, .offer-tag, .special-offer,
+        .font-desc, .current-price, .old-price, .btn-buy, .btn-preview, .btn-detail, .footer-col h4, .footer-col p, .footer-col a,
+        .copyright, .modal-content h3, .cart-item, .cart-total, .checkout-btn, .close-modal, .close-cart, .close-payment,
+        .random-code, .coming-soon-box h3, .coming-soon-box p, .empty-cart, .stat span, .bestseller-header h2, .bestseller-header p,
+        .expired-box, .expired-box span, .expired-box i, .btn-download, .free-tag, .free-price, .contact-box, .contact-item,
+        .blog-post, .blog-title, .blog-meta, .blog-content, .section-title, .font-preview-text {
             font-family: 'Vazirmatn', 'Tahoma', sans-serif !important;
             font-weight: bold !important;
         }
 
-        /* تیترها و عناوین با Morabba */
-        h1, h2, h3, h4, .hero-text h2, .font-title, .logo-area h1, .bestseller-header h2, .contact-box-new h2, .modal-content h3, .blog-title, .checkout-btn, .btn-primary, .stat h3, .refresh-btn, .update-box h1, .coming-soon-box h3, .filter-label, .footer-col h4, .payment-link {
-            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
-            font-weight: 800 !important;
+        /* ===== بخش‌های جدید ===== */
+        .section-title {
+            font-size: 2rem;
+            color: #FFC800;
+            text-align: center;
+            margin: 50px 0 30px;
+            position: relative;
         }
-        /* ========================= */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #FFC800;
+            margin: 10px auto 0;
+            border-radius: 10px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-top: -20px;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
 
-        /* ===== محافظت از عکس فونت ===== */
+        /* ===== کارت فونت جدید ===== */
+        .font-card {
+            background: #1f1f1f;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #2d2d2d;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+        .font-card:hover {
+            transform: translateY(-8px);
+            border-color: #FFC800;
+            box-shadow: 0 15px 35px rgba(255, 200, 0, 0.15);
+        }
         .font-preview {
             position: relative;
             overflow: hidden;
+            background: #121212;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .font-preview img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: 0.4s;
             pointer-events: none;
             user-select: none;
             -webkit-user-drag: none;
-            width: 100%;
-            aspect-ratio: 1/1;
-            object-fit: cover;
         }
-        .font-preview::after {
-            content: "mim.non.ir";
+        .font-card:hover .font-preview img {
+            transform: scale(1.03);
+        }
+        .font-preview .watermark {
             position: absolute;
             bottom: 10px;
             right: 10px;
@@ -66,7 +108,343 @@
             opacity: 0.5;
             pointer-events: none;
         }
-        /* ============================= */
+        .font-preview .live-preview {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.85);
+            color: #FFC800;
+            padding: 12px;
+            text-align: center;
+            font-size: 1.1rem;
+            backdrop-filter: blur(4px);
+            transform: translateY(100%);
+            transition: 0.3s;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        .font-card:hover .live-preview {
+            transform: translateY(0);
+        }
+
+        .font-details {
+            padding: 18px 20px 20px;
+        }
+        .font-title {
+            color: #FFC800;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .font-title i {
+            font-size: 1.2rem;
+        }
+        .tags-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .font-cat, .offer-tag, .special-offer, .free-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 12px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            background: #FFC80020;
+            border: 1px solid #FFC800;
+            color: #FFC800;
+        }
+        .font-desc {
+            font-size: 0.8rem;
+            color: #c0c0c0;
+            margin: 10px 0;
+            padding: 8px 0;
+            border-top: 1px dashed #3a3a3a;
+            border-bottom: 1px dashed #3a3a3a;
+            line-height: 1.6;
+        }
+        .price-wrapper {
+            margin: 10px 0;
+        }
+        .current-price {
+            color: #FFC800;
+            font-size: 1.2rem;
+        }
+        .old-price {
+            font-size: 0.8rem;
+            text-decoration: line-through;
+            color: #888;
+            margin-right: 8px;
+        }
+        .free-price {
+            color: #FFC800;
+            font-size: 1.2rem;
+            font-weight: 900;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .btn-buy, .btn-download, .btn-detail {
+            padding: 8px 0;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: 0.2s;
+            font-weight: bold;
+            flex: 1;
+        }
+        .btn-buy {
+            background: #FFC800;
+            color: #121212;
+        }
+        .btn-buy:hover {
+            background: #e6b400;
+            transform: scale(1.02);
+        }
+        .btn-download {
+            background: #FFC800;
+            color: #121212;
+            text-decoration: none;
+        }
+        .btn-download:hover {
+            background: #e6b400;
+            transform: scale(1.02);
+        }
+        .btn-detail {
+            background: #2c2c2c;
+            color: #FFC800;
+            flex: 0.5;
+        }
+        .btn-detail:hover {
+            background: #3a3a3a;
+        }
+        .btn-preview-icon {
+            background: #2c2c2c;
+            border: none;
+            width: 38px;
+            border-radius: 40px;
+            color: #FFC800;
+            cursor: pointer;
+            font-size: 0.9rem;
+            flex: 0.3;
+        }
+        .btn-preview-icon:hover {
+            background: #3a3a3a;
+        }
+
+        /* ===== مودال جزئیات فونت ===== */
+        .detail-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            padding: 20px;
+        }
+        .detail-modal-content {
+            background: #1e1e1e;
+            max-width: 700px;
+            width: 100%;
+            border-radius: 32px;
+            padding: 30px;
+            border: 2px solid #FFC800;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .detail-modal-content .close-detail {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            background: none;
+            border: none;
+            color: #FFC800;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .detail-modal-content .close-detail:hover {
+            transform: rotate(90deg);
+        }
+        .detail-modal-content img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 15px 0;
+        }
+        .detail-modal-content h2 {
+            color: #FFC800;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .detail-modal-content .detail-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+            padding: 15px 0;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+        .detail-modal-content .detail-meta span {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        .detail-modal-content .detail-meta span strong {
+            color: #FFC800;
+        }
+        .detail-modal-content .detail-desc {
+            color: #ccc;
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+        .detail-modal-content .detail-price {
+            font-size: 1.5rem;
+            color: #FFC800;
+            margin: 15px 0;
+        }
+        .detail-modal-content .detail-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .detail-modal-content .detail-actions .btn-buy {
+            flex: 1;
+            padding: 12px;
+            font-size: 1rem;
+        }
+        .detail-modal-content .detail-actions .btn-download {
+            flex: 1;
+            padding: 12px;
+            font-size: 1rem;
+        }
+        .detail-modal-content .detail-actions .btn-preview {
+            flex: 0.5;
+            padding: 12px;
+            font-size: 1rem;
+            background: #2c2c2c;
+            color: #FFC800;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+
+        /* ===== بخش‌های جدید صفحه اصلی ===== */
+        .featured-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .featured-banner {
+            background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid #FFC80040;
+            text-align: center;
+            grid-column: 1 / -1;
+            margin-bottom: 20px;
+        }
+        .featured-banner h3 {
+            color: #FFC800;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .featured-banner p {
+            color: #aaa;
+            font-size: 1rem;
+        }
+        .featured-banner .btn-primary {
+            margin-top: 15px;
+        }
+
+        /* ===== بقیه استایل‌ها ===== */
+        .hero-text h2 { 
+            font-size: 3rem !important; 
+            font-weight: 900 !important; 
+            color: #FFC800 !important;
+        }
+        .hero-text p { 
+            font-size: 1.3rem !important; 
+            color: #e0e0e0;
+        }
+        .filter-btn { 
+            font-size: 0.85rem !important; 
+            font-weight: 800 !important; 
+            padding: 8px 20px !important; 
+            background: #2a2a2a;
+            border: none;
+            border-radius: 40px;
+            color: #e0e0e0;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+        .filter-btn i { color: #FFC800; font-size: 0.8rem; }
+        .filter-btn.active, .filter-btn:hover {
+            background: #FFC800;
+            color: #121212;
+        }
+        .filter-btn.active i, .filter-btn:hover i { color: #121212; }
+
+        .filter-wrapper {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .filter-box {
+            background: #1f1f1f;
+            border-radius: 40px;
+            padding: 15px 25px;
+            border: 1px solid #FFC80040;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .filter-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #FFC800;
+            font-size: 1rem;
+            border-bottom: 1px solid #3a3a3a;
+            padding-bottom: 6px;
+        }
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
 
         .blog-container {
             max-width: 900px;
@@ -87,6 +465,14 @@
         }
         .blog-content {
             padding: 25px;
+        }
+        .blog-title {
+            font-size: 1.8rem;
+            color: #FFC800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .blog-meta {
             display: flex;
@@ -113,8 +499,6 @@
             color: #FFC800;
             margin: 20px 0 10px 0;
             font-size: 1.2rem;
-            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
-            font-weight: 800 !important;
         }
         .blog-text ul {
             margin-right: 20px;
@@ -152,6 +536,12 @@
             margin-bottom: 10px;
             display: inline-block;
         }
+        .coming-soon-box h3 {
+            font-size: 1.3rem;
+            color: #FFC800;
+            margin: 10px 0;
+            font-weight: 900;
+        }
         .coming-soon-box p {
             font-size: 0.9rem;
             font-weight: bold;
@@ -167,6 +557,12 @@
             border: 1px solid #FFC800;
             text-align: center;
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .contact-box-new h2 {
+            color: #FFC800;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 900;
         }
         .contact-item-new {
             background: #2a2a2a;
@@ -250,6 +646,12 @@
             margin-bottom: 10px;
             display: inline-block;
         }
+        .bestseller-header h2 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #FFC800;
+            margin: 10px 0;
+        }
         .bestseller-header p {
             font-size: 0.9rem;
             font-weight: bold;
@@ -269,7 +671,6 @@
             z-index: 1000;
             width: 100%;
         }
-
         .nav-flex {
             display: flex;
             align-items: center;
@@ -281,26 +682,22 @@
             padding: 0 20px;
             position: relative;
         }
-
         .logo-area {
             position: absolute;
             right: 20px;
             text-align: right;
         }
-
         .logo-area h1 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             background: linear-gradient(135deg, #FFC800 30%, #ffdd55 80%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-
         .logo-area p {
             font-size: 0.7rem;
             color: #ccc;
         }
-
         .nav-links {
             display: flex;
             gap: 22px;
@@ -308,7 +705,6 @@
             justify-content: center;
             margin: 0 auto;
         }
-
         .nav-link {
             display: flex;
             align-items: center;
@@ -319,13 +715,9 @@
             background: none;
             border: none;
             transition: 0.2s;
-            font-size: 1rem !important;
-            font-weight: 800 !important;
         }
-
         .nav-link i { color: #FFC800; font-size: 0.95rem; }
         .nav-link:hover, .nav-link.active { color: #FFC800; }
-
         .cart-icon {
             background: #2a2a2a;
             padding: 6px 16px;
@@ -338,9 +730,7 @@
             font-size: 0.9rem;
             position: absolute;
             left: 20px;
-            font-weight: 800 !important;
         }
-
         .cart-icon i { color: #FFC800; font-size: 1rem; }
         #cartCount {
             background: #FFC800;
@@ -357,33 +747,12 @@
             padding: 60px 0;
             border-bottom: 1px solid #3a3a3a;
         }
-
         .hero-grid {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
             text-align: center;
         }
-
-        .hero-text h2 {
-            font-size: 3rem !important;
-            font-weight: 900 !important;
-        }
-        .hero-text h2 span {
-            color: #FFC800;
-            border-bottom: 3px solid #FFC800;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-        .hero-text p {
-            margin-bottom: 25px;
-            color: #d0d0d0;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 1.3rem !important;
-        }
-
         .hero-buttons {
             display: flex;
             gap: 18px;
@@ -391,7 +760,6 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-
         .btn-primary {
             background: #FFC800;
             color: #1f1f1f;
@@ -403,9 +771,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-weight: 800 !important;
         }
-
         .btn-outline {
             background: transparent;
             border: 2px solid #FFC800;
@@ -417,16 +783,12 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
-            font-weight: 800 !important;
         }
-
         .hero-stats {
             display: flex;
             gap: 35px;
             justify-content: center;
         }
-
         .stat h3 {
             color: #FFC800;
             font-size: 1.5rem;
@@ -442,158 +804,20 @@
             color: #ccc;
         }
 
-        .filter-wrapper {
-            max-width: 1400px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        .filter-box {
-            background: #1f1f1f;
-            border-radius: 40px;
-            padding: 15px 25px;
-            border: 1px solid #FFC80040;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .filter-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #FFC800;
-            font-size: 1rem;
-            border-bottom: 1px solid #3a3a3a;
-            padding-bottom: 6px;
-            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
-            font-weight: 800 !important;
-        }
-
-        .filter-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .filter-btn {
-            background: #2a2a2a;
-            border: none;
-            padding: 6px 18px;
-            border-radius: 40px;
-            color: #e0e0e0;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem !important;
-            font-weight: 800 !important;
-        }
-
-        .filter-btn i { color: #FFC800; font-size: 0.8rem; }
-        .filter-btn.active, .filter-btn:hover {
-            background: #FFC800;
-            color: #121212;
-        }
-        .filter-btn.active i, .filter-btn:hover i { color: #121212; }
-
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
             max-width: 1400px;
             margin: 30px auto 50px;
             padding: 0 20px;
         }
 
-        .font-card {
-            background: #1f1f1f;
-            border-radius: 28px;
-            overflow: hidden;
-            border: 1px solid #2d2d2d;
-            transition: 0.2s;
-        }
-
-        .font-card:hover {
-            transform: translateY(-5px);
-            border-color: #FFC80080;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .font-details {
-            padding: 16px 18px 20px;
-        }
-
-        .font-title {
-            color: #FFC800;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-            font-size: 1.8rem !important;
-            font-weight: 900 !important;
-        }
-
-        .tags-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-        }
-
-        .font-cat, .offer-tag, .special-offer, .free-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 14px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            background: #FFC80020;
-            border: 1px solid #FFC800;
-            color: #FFC800;
-        }
-
-        .font-desc {
-            font-size: 0.85rem;
-            color: #c0c0c0;
-            margin-bottom: 12px;
-            padding: 8px 0;
-            border-top: 1px dashed #3a3a3a;
-            border-bottom: 1px dashed #3a3a3a;
-        }
-
-        .price-wrapper {
-            margin: 10px 0;
-        }
-
-        .current-price {
-            color: #FFC800;
-            font-size: 1.5rem !important;
-            font-weight: 900 !important;
-        }
-        .free-price {
-            color: #FFC800;
-            font-size: 1.3rem;
-            font-weight: 900;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .old-price {
-            font-size: 0.85rem;
-            text-decoration: line-through;
-            color: #888;
-            margin-right: 8px;
-        }
-
         .expired-box {
             background: #3a1a1a;
             border-radius: 40px;
-            padding: 8px 12px;
-            margin: 12px 0;
+            padding: 6px 12px;
+            margin: 8px 0;
             text-align: center;
             border: 1px solid #ff5555;
             display: flex;
@@ -603,63 +827,11 @@
         }
         .expired-box i {
             color: #ff8888;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
         }
         .expired-box span {
             color: #ffaaaa;
-            font-size: 0.8rem;
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .btn-buy {
-            background: #FFC800;
-            border: none;
-            padding: 10px 0;
-            width: 100%;
-            border-radius: 40px;
-            color: #111;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.9rem;
-        }
-
-        .btn-download {
-            background: #FFC800;
-            border: none;
-            padding: 10px 0;
-            width: 100%;
-            border-radius: 40px;
-            color: #111;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-        .btn-download:hover {
-            background: #e6b400;
-            transform: scale(1.02);
-        }
-
-        .btn-preview {
-            background: #2c2c2c;
-            border: none;
-            width: 42px;
-            border-radius: 40px;
-            color: #FFC800;
-            cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.7rem;
         }
 
         footer {
@@ -668,7 +840,6 @@
             padding: 30px 0 25px;
             border-top: 2px solid #FFC800;
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -677,31 +848,24 @@
             margin: 0 auto;
             padding: 0 20px 25px;
         }
-
         .footer-col h4 {
             color: #FFC800;
             font-size: 1rem;
             margin-bottom: 10px;
-            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
-            font-weight: 800 !important;
         }
-
         .footer-col p, .footer-col a {
             color: #b0b0b0;
             font-size: 0.8rem;
             text-decoration: none;
         }
-
         .footer-col a:hover {
             color: #FFC800 !important;
         }
-
         .social-icons {
             display: flex;
             gap: 10px;
             margin-top: 10px;
         }
-
         .social-icons a {
             background: #222;
             width: 30px;
@@ -712,7 +876,6 @@
             justify-content: center;
             color: #FFC800;
         }
-
         .copyright {
             text-align: center;
             padding-top: 20px;
@@ -735,7 +898,6 @@
             justify-content: center;
             z-index: 2000;
         }
-
         .modal-content, .cart-modal-content, .payment-modal-content {
             background: #1e1e1e;
             max-width: 420px;
@@ -747,13 +909,6 @@
             max-height: 80vh;
             overflow-y: auto;
         }
-        .modal-content h3, .cart-modal-content h3, .payment-modal-content h3 {
-            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
-            font-weight: 800 !important;
-            font-size: 1.4rem;
-            color: #FFC800;
-        }
-
         .random-code {
             font-size: 1.3rem;
             background: #FFC800;
@@ -762,20 +917,16 @@
             border-radius: 40px;
             color: #121212;
         }
-
         .checkout-btn, .close-modal, .close-cart, .close-payment {
             background: #FFC800;
             border: none;
             padding: 10px;
             border-radius: 40px;
-            font-weight: 800 !important;
+            font-weight: 800;
             cursor: pointer;
             width: 100%;
             margin-top: 12px;
-            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
-            font-size: 1rem;
         }
-
         .cart-item {
             background: #2a2a2a;
             padding: 12px;
@@ -784,14 +935,12 @@
             text-align: right;
             margin-bottom: 10px;
         }
-
         .cart-total {
             text-align: left;
             padding: 10px 0;
             font-size: 1rem;
             border-top: 2px solid #FFC800;
         }
-
         .payment-link {
             display: inline-block;
             background: #FFC800;
@@ -802,79 +951,10 @@
             font-weight: bold;
             margin: 15px 0;
             transition: 0.2s;
-            font-family: 'Morabba', 'Vazirmatn', sans-serif !important;
         }
         .payment-link:hover {
             background: #e6b400;
             transform: scale(1.02);
-        }
-
-        .update-box {
-            background: #1f1f1f;
-            padding: 40px 30px;
-            border-radius: 48px;
-            border: 2px solid #FFC800;
-            max-width: 450px;
-            width: 90%;
-            margin: 0 auto;
-        }
-        .update-box .fa-spinner {
-            font-size: 3.5rem;
-            color: #FFC800;
-            margin-bottom: 15px;
-            display: inline-block;
-            animation: spin 1.5s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .update-box h1 {
-            font-size: 1.8rem;
-            color: #FFC800;
-            margin-bottom: 15px;
-        }
-        .update-box p {
-            font-size: 1rem;
-            margin: 12px 0;
-            color: #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .update-box p i {
-            font-size: 1.1rem;
-            color: #FFC800;
-        }
-        .update-box small {
-            display: block;
-            margin-top: 25px;
-            font-size: 0.7rem;
-            color: #888;
-        }
-        .refresh-btn {
-            background: #FFC800;
-            color: #121212;
-            border: none;
-            padding: 10px 28px;
-            border-radius: 40px;
-            margin-top: 20px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.2s;
-            font-weight: 900 !important;
-            font-size: 0.95rem !important;
-        }
-        .refresh-btn:hover {
-            background: #e6b400;
-            transform: scale(1.02);
-        }
-        .refresh-btn i {
-            color: #121212;
-            font-size: 1rem;
         }
 
         @media (max-width: 850px) {
@@ -888,9 +968,15 @@
             .nav-links { order: 2; }
             .hero-text h2 { font-size: 2rem !important; }
             .hero-text p { font-size: 1rem !important; }
-            .font-title { font-size: 1.4rem !important; }
+            .font-title { font-size: 1.2rem !important; }
             .blog-title { font-size: 1.4rem; }
             .blog-content { padding: 18px; }
+            .featured-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
         }
     </style>
 </head>
@@ -923,7 +1009,7 @@
         <section class="hero" id="heroSection">
             <div class="hero-grid">
                 <div class="hero-text">
-                    <h2>فونت‌های حرفه‌ای و<br><span>منحصر به‌فرد برای طراحان</span></h2>
+                    <h2>سلام خوش آمدید به <br>سایت خفن میم نون!</h2>
                     <p>مجموعه‌ای از بهترین فونت‌های فارسی و لاتین با کیفیت بالا</p>
                     <div class="hero-buttons">
                         <button class="btn-primary" id="shopNowBtn"><i class="fas fa-arrow-down"></i> مشاهده فونت‌ها</button>
@@ -966,6 +1052,15 @@
     </footer>
 </div>
 
+<!-- ===== مودال جزئیات فونت ===== -->
+<div id="detailModal" class="detail-modal">
+    <div class="detail-modal-content">
+        <button class="close-detail" id="closeDetailBtn"><i class="fas fa-times"></i></button>
+        <div id="detailContent"></div>
+    </div>
+</div>
+
+<!-- ===== مودال پیش‌نمایش ===== -->
 <div id="fontModal" class="modal">
     <div class="modal-content">
         <h3><i class="fas fa-eye"></i> پیش‌نمایش فونت</h3>
@@ -973,6 +1068,8 @@
         <button class="close-modal" id="closeModalBtn">بستن</button>
     </div>
 </div>
+
+<!-- ===== مودال سبد خرید ===== -->
 <div id="cartModal" class="cart-modal">
     <div class="cart-modal-content">
         <h3><i class="fas fa-shopping-cart"></i> سبد خرید</h3>
@@ -982,6 +1079,8 @@
         <button class="close-cart" id="closeCartBtn">بستن</button>
     </div>
 </div>
+
+<!-- ===== مودال پرداخت ===== -->
 <div id="paymentModal" class="payment-modal">
     <div class="payment-modal-content">
         <h3><i class="fas fa-credit-card"></i> تکمیل سفارش</h3>
@@ -1004,7 +1103,10 @@
             offerExpired: false,
             isSpecial: false,
             isFree: false,
-            downloadLink: null
+            downloadLink: null,
+            designer: "محمد رضایی",
+            style: "ساده و مدرن",
+            weight: "معمولی"
         },
         {
             id: 2,
@@ -1018,7 +1120,10 @@
             offerExpired: true,
             isSpecial: true,
             isFree: false,
-            downloadLink: null
+            downloadLink: null,
+            designer: "سارا کریمی",
+            style: "تزئینی و خاص",
+            weight: "ضخیم"
         },
         {
             id: 3,
@@ -1032,7 +1137,10 @@
             offerExpired: false,
             isSpecial: false,
             isFree: true,
-            downloadLink: "https://uploadkon.ir/uploads/b29d15_26font-market-mim-non-ir.rar"
+            downloadLink: "https://uploadkon.ir/uploads/b29d15_26font-market-mim-non-ir.rar",
+            designer: "تیم میم نون",
+            style: "کاربردی و خوانا",
+            weight: "متوسط"
         },
         {
             id: 4,
@@ -1046,7 +1154,10 @@
             offerExpired: false,
             isSpecial: false,
             isFree: true,
-            downloadLink: "https://cdn.imgurl.ir/uploads/a32949_font_negar_mim.non_ir1.rar"
+            downloadLink: "https://cdn.imgurl.ir/uploads/a32949_font_negar_mim.non_ir1.rar",
+            designer: "نگار احمدی",
+            style: "اصیل و سنتی",
+            weight: "نازک"
         },
         {
             id: 5,
@@ -1054,13 +1165,16 @@
             category: "persian",
             price: 383000,
             oldPrice: 698000,
-            image: "https://cdn.imgurl.ir/uploads/i816776_Negar_1781736178838.jpg",
+            image: "https://cdn.imgurl.ir/uploads/m935214_Negar_1781777381490.jpg",
             description: "مربع یک فونت جدید خوانا از ترکیب فونت های کوفی و ایرانی است که با طراحی «حسن منصوری و شهرزاده اکبری» تهیه و تنظیم شده! و الان راحت با قیمت مناسب برای خرید اماده است!",
             icon: "fa-crown",
             offerExpired: false,
             isSpecial: true,
             isFree: false,
-            downloadLink: null
+            downloadLink: null,
+            designer: "حسن منصوری و شهرزاده اکبری",
+            style: "کوفی و ایرانی",
+            weight: "ضخیم"
         }
     ];
 
@@ -1068,6 +1182,7 @@
     let currentFilter = "all";
     let currentPriceFilter = "all";
 
+    // ===== فیلتر قیمت =====
     function filterByPrice(font, filterType) {
         if(filterType === "all") return true;
         if(filterType === "expensive") return font.price > 300000;
@@ -1078,6 +1193,7 @@
         return true;
     }
 
+    // ===== رندر محصولات با قابلیت پیش‌نمایش =====
     function renderProducts(filteredFonts = null, isPriceFilterPage = false) {
         const container = document.getElementById("productsGrid");
         if (!container) return;
@@ -1094,7 +1210,7 @@
         filtered.sort((a, b) => b.id - a.id);
         
         if(filtered.length === 0) {
-            container.innerHTML = `<div style="text-align:center; padding:60px; background:#1f1f1f; border-radius:32px;"><i class="fas fa-search" style="font-size:2rem; color:#FFC800;"></i><p style="margin-top:15px;">هیچ فونتی با این قیمت پیدا نشد!</p></div>`;
+            container.innerHTML = `<div style="text-align:center; padding:60px; background:#1f1f1f; border-radius:32px; grid-column: 1 / -1;"><i class="fas fa-search" style="font-size:2rem; color:#FFC800;"></i><p style="margin-top:15px;">هیچ فونتی با این قیمت پیدا نشد!</p></div>`;
             return;
         }
         
@@ -1104,76 +1220,42 @@
                 expiredHtml = `<div class="expired-box"><i class="fas fa-clock"></i> <span>مدت تخفیف به پایان رسید</span></div>`;
             }
             
-            let specialTagHtml = '';
-            if (font.isSpecial) {
-                specialTagHtml = `<div class="special-offer"><i class="fas fa-gem"></i> پیشنهاد ویژه</div>`;
-            }
+            let specialTagHtml = font.isSpecial ? `<div class="special-offer"><i class="fas fa-gem"></i> پیشنهاد ویژه</div>` : '';
+            let offerTagHtml = (!font.offerExpired && !font.isSpecial && !font.isFree) ? `<div class="offer-tag"><i class="fas fa-gift"></i> ویژه</div>` : '';
+            let freeTagHtml = font.isFree ? `<div class="free-tag"><i class="fas fa-gift"></i> رایگان</div>` : '';
             
-            let offerTagHtml = '';
-            if (!font.offerExpired && !font.isSpecial && !font.isFree) {
-                offerTagHtml = `<div class="offer-tag"><i class="fas fa-gift"></i> ویژه</div>`;
-            }
+            let priceHtml = font.isFree ? 
+                `<div class="price-wrapper"><span class="free-price"><i class="fas fa-gift"></i> رایگان</span></div>` :
+                `<div class="price-wrapper"><span class="current-price">${font.price.toLocaleString()} تومان</span>${font.oldPrice ? ` <span class="old-price">${font.oldPrice.toLocaleString()} تومان</span>` : ''}</div>`;
             
-            let freeTagHtml = '';
-            if (font.isFree) {
-                freeTagHtml = `<div class="free-tag"><i class="fas fa-gift"></i> رایگان</div>`;
-            }
-            
-            let priceHtml = '';
-            if (font.isFree) {
-                priceHtml = `<div class="price-wrapper"><span class="free-price"><i class="fas fa-gift"></i> رایگان</span></div>`;
-            } else {
-                priceHtml = `
-                    <div class="price-wrapper">
-                        <span class="current-price">${font.price.toLocaleString()} تومان</span>
-                        ${font.oldPrice ? `<span class="old-price">${font.oldPrice.toLocaleString()} تومان</span>` : ''}
-                    </div>
-                `;
-            }
-            
-            let buttonHtml = '';
-            if (font.isFree) {
-                buttonHtml = `
-                    <div class="card-actions">
-                        <a href="${font.downloadLink}" class="btn-download" download style="text-decoration: none;">
-                            <i class="fas fa-download"></i> دانلود
-                        </a>
-                        <button class="btn-preview" data-image="${font.image}" data-name="${font.name}">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                `;
-            } else {
-                buttonHtml = `
-                    <div class="card-actions">
-                        <button class="btn-buy" data-id="${font.id}" data-name="${font.name}" data-price="${font.price}">
-                            <i class="fas fa-shopping-bag"></i> خرید
-                        </button>
-                        <button class="btn-preview" data-image="${font.image}" data-name="${font.name}">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                `;
-            }
+            let buttonHtml = font.isFree ?
+                `<div class="card-actions">
+                    <a href="${font.downloadLink}" class="btn-download" download><i class="fas fa-download"></i> دانلود</a>
+                    <button class="btn-detail" data-id="${font.id}"><i class="fas fa-info-circle"></i></button>
+                    <button class="btn-preview-icon" data-image="${font.image}" data-name="${font.name}"><i class="fas fa-eye"></i></button>
+                </div>` :
+                `<div class="card-actions">
+                    <button class="btn-buy" data-id="${font.id}" data-name="${font.name}" data-price="${font.price}"><i class="fas fa-shopping-bag"></i> خرید</button>
+                    <button class="btn-detail" data-id="${font.id}"><i class="fas fa-info-circle"></i></button>
+                    <button class="btn-preview-icon" data-image="${font.image}" data-name="${font.name}"><i class="fas fa-eye"></i></button>
+                </div>`;
             
             return `
-                <div class="font-card">
+                <div class="font-card" data-font-id="${font.id}">
                     <div class="font-preview">
                         <img src="${font.image}" alt="${font.name}" onerror="this.src='https://placehold.co/600x600/2a2a2a/FFC800?text=Font'">
+                        <div class="watermark">mim.non.ir</div>
+                        <div class="live-preview">نمونه: ${font.name} | متن تست</div>
                     </div>
                     <div class="font-details">
-                        <div class="font-title">
-                            <i class="fas ${font.icon}"></i> ${font.name}
-                        </div>
+                        <div class="font-title"><i class="fas ${font.icon}"></i> ${font.name}</div>
                         <div class="tags-row">
                             <div class="font-cat"><i class="fas fa-tag"></i> فارسی</div>
                             ${offerTagHtml}
                             ${specialTagHtml}
                             ${freeTagHtml}
                         </div>
-                        <div class="font-desc">
-                            <i class="fas fa-info-circle"></i> ${font.description}
-                        </div>
+                        <div class="font-desc"><i class="fas fa-info-circle"></i> ${font.description}</div>
                         ${priceHtml}
                         ${expiredHtml}
                         ${buttonHtml}
@@ -1184,14 +1266,29 @@
         attachProductEvents();
     }
 
+    // ===== اتصال رویدادها =====
     function attachProductEvents() {
+        // خرید
         document.querySelectorAll('.btn-buy').forEach(btn => {
             btn.removeEventListener('click', buyHandler);
             btn.addEventListener('click', buyHandler);
         });
-        document.querySelectorAll('.btn-preview').forEach(btn => {
+        // پیش‌نمایش
+        document.querySelectorAll('.btn-preview-icon').forEach(btn => {
             btn.removeEventListener('click', previewHandler);
             btn.addEventListener('click', previewHandler);
+        });
+        // جزئیات
+        document.querySelectorAll('.btn-detail').forEach(btn => {
+            btn.removeEventListener('click', detailHandler);
+            btn.addEventListener('click', detailHandler);
+        });
+        // هاور برای پیش‌نمایش زنده
+        document.querySelectorAll('.font-card').forEach(card => {
+            card.removeEventListener('mouseenter', livePreviewEnter);
+            card.removeEventListener('mouseleave', livePreviewLeave);
+            card.addEventListener('mouseenter', livePreviewEnter);
+            card.addEventListener('mouseleave', livePreviewLeave);
         });
     }
 
@@ -1209,6 +1306,78 @@
         openModal(btn.dataset.image, btn.dataset.name);
     }
 
+    function detailHandler(e) {
+        const btn = e.currentTarget;
+        const id = parseInt(btn.dataset.id);
+        const font = fontsData.find(f => f.id === id);
+        if (font) openDetailModal(font);
+    }
+
+    function livePreviewEnter(e) {
+        const card = e.currentTarget;
+        const preview = card.querySelector('.live-preview');
+        if (preview) {
+            preview.style.transform = 'translateY(0)';
+        }
+    }
+
+    function livePreviewLeave(e) {
+        const card = e.currentTarget;
+        const preview = card.querySelector('.live-preview');
+        if (preview) {
+            preview.style.transform = 'translateY(100%)';
+        }
+    }
+
+    // ===== مودال جزئیات فونت =====
+    function openDetailModal(font) {
+        const modal = document.getElementById('detailModal');
+        const content = document.getElementById('detailContent');
+        
+        let priceHtml = font.isFree ? 
+            `<span class="free-price"><i class="fas fa-gift"></i> رایگان</span>` :
+            `<span class="current-price">${font.price.toLocaleString()} تومان</span>${font.oldPrice ? ` <span class="old-price">${font.oldPrice.toLocaleString()} تومان</span>` : ''}`;
+        
+        let buttonHtml = font.isFree ?
+            `<a href="${font.downloadLink}" class="btn-download" download><i class="fas fa-download"></i> دانلود فونت</a>` :
+            `<button class="btn-buy" data-id="${font.id}" data-name="${font.name}" data-price="${font.price}"><i class="fas fa-shopping-bag"></i> خرید فونت</button>`;
+        
+        content.innerHTML = `
+            <h2><i class="fas ${font.icon}"></i> ${font.name}</h2>
+            <img src="${font.image}" alt="${font.name}" onerror="this.src='https://placehold.co/600x600/2a2a2a/FFC800?text=Font'">
+            <div class="detail-meta">
+                <span><strong>طراح:</strong> ${font.designer || 'نامشخص'}</span>
+                <span><strong>سبک:</strong> ${font.style || 'متفرقه'}</span>
+                <span><strong>وزن:</strong> ${font.weight || 'معمولی'}</span>
+                <span><strong>دسته:</strong> ${font.category === 'persian' ? 'فارسی' : 'لاتین'}</span>
+            </div>
+            <div class="detail-desc">${font.description}</div>
+            <div class="detail-price">${priceHtml}</div>
+            <div class="detail-actions">
+                ${buttonHtml}
+                <button class="btn-preview" data-image="${font.image}" data-name="${font.name}"><i class="fas fa-eye"></i> پیش‌نمایش</button>
+            </div>
+        `;
+        
+        modal.style.display = 'flex';
+        
+        // اتصال رویدادهای داخل مودال
+        content.querySelector('.btn-buy')?.addEventListener('click', function(e) {
+            const btn = e.currentTarget;
+            addToCart({
+                id: parseInt(btn.dataset.id),
+                name: btn.dataset.name,
+                price: parseInt(btn.dataset.price)
+            });
+            modal.style.display = 'none';
+        });
+        content.querySelector('.btn-preview')?.addEventListener('click', function(e) {
+            const btn = e.currentTarget;
+            openModal(btn.dataset.image, btn.dataset.name);
+        });
+    }
+
+    // ===== سبد خرید =====
     function addToCart(item) {
         const exist = cart.find(i => i.id === item.id);
         if (exist) exist.quantity++;
@@ -1225,9 +1394,9 @@
     function showToast(msg) {
         const toast = document.createElement('div');
         toast.innerText = msg;
-        toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:#FFC800; color:#121212; padding:8px 16px; border-radius:40px; font-weight:bold; z-index:9999; font-size:0.85rem; font-family:Vazirmatn';
+        toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:#FFC800; color:#121212; padding:8px 16px; border-radius:40px; font-weight:bold; z-index:9999; font-size:0.85rem; font-family:Vazirmatn; box-shadow: 0 5px 15px rgba(0,0,0,0.3);';
         document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 2000);
+        setTimeout(() => toast.remove(), 2500);
     }
 
     function openCartModal() {
@@ -1299,6 +1468,7 @@
         showToast('سفارش ثبت شد');
     }
 
+    // ===== مودال پیش‌نمایش =====
     const modal = document.getElementById('fontModal');
     const modalImage = document.getElementById('modalImage');
     function openModal(img, name) {
@@ -1307,19 +1477,25 @@
         modal.style.display = 'flex';
     }
 
+    // ===== رویدادهای مودال‌ها =====
     document.getElementById('closeModalBtn').onclick = () => modal.style.display = 'none';
+    document.getElementById('closeDetailBtn').onclick = () => document.getElementById('detailModal').style.display = 'none';
     document.getElementById('cartIconBtn').onclick = openCartModal;
     document.getElementById('closeCartBtn').onclick = () => document.getElementById('cartModal').style.display = 'none';
     document.getElementById('checkoutBtn').onclick = () => { if (cart.length) showPaymentModal(); else alert('سبد خرید خالی'); };
     document.getElementById('closePaymentBtn').onclick = clearCartAndClosePayment;
+    
     window.onclick = (e) => {
         if (e.target === modal) modal.style.display = 'none';
+        if (e.target === document.getElementById('detailModal')) document.getElementById('detailModal').style.display = 'none';
         if (e.target === document.getElementById('cartModal')) document.getElementById('cartModal').style.display = 'none';
         if (e.target === document.getElementById('paymentModal')) clearCartAndClosePayment();
     };
+    
     document.getElementById('sampleTypeBtn')?.addEventListener('click', () => openModal(fontsData[0].image, fontsData[0].name));
     document.getElementById('shopNowBtn')?.addEventListener('click', () => document.querySelector('.products-grid')?.scrollIntoView({ behavior: 'smooth' }));
 
+    // ===== فیلترهای صفحه خانه =====
     function initHomeFilters() {
         document.querySelectorAll('#homeFilterButtons .filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1331,6 +1507,7 @@
         });
     }
 
+    // ===== فیلترهای صفحه فونت‌ها =====
     function initFontsPriceFilters() {
         document.querySelectorAll('#priceFilterButtons .filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1342,6 +1519,7 @@
         });
     }
 
+    // ===== تب‌ها =====
     const dynamicContainer = document.getElementById('dynamicContent');
     const heroSection = document.getElementById('heroSection');
     
@@ -1354,6 +1532,31 @@
         if (tabId === 'home') {
             if (heroSection) heroSection.style.display = 'block';
             dynamicContainer.innerHTML = `
+                <!-- بخش بنر ویژه -->
+                <div class="featured-section">
+                    <div class="featured-banner">
+                        <h3><i class="fas fa-gem"></i> بهترین فونت‌های ایرانی</h3>
+                        <p>مجموعه‌ای از بهترین و باکیفیت‌ترین فونت‌های فارسی و لاتین برای طراحان حرفه‌ای</p>
+                        <button class="btn-primary" onclick="document.querySelector('.products-grid')?.scrollIntoView({ behavior: 'smooth' })"><i class="fas fa-arrow-down"></i> مشاهده فونت‌ها</button>
+                    </div>
+                </div>
+
+                <!-- بخش جدیدترین فونت‌ها -->
+                <h3 class="section-title"><i class="fas fa-star"></i> جدیدترین فونت‌ها</h3>
+                <p class="section-subtitle">آخرین فونت‌های اضافه شده به فروشگاه</p>
+                <div class="products-grid" id="newFontsGrid"></div>
+
+                <!-- بخش پرفروش‌ترین فونت‌ها -->
+                <h3 class="section-title"><i class="fas fa-fire"></i> پرفروش‌ترین فونت‌ها</h3>
+                <p class="section-subtitle">محبوب‌ترین انتخاب‌های طراحان حرفه‌ای</p>
+                <div class="products-grid" id="bestsellerGrid"></div>
+
+                <!-- بخش پیشنهاد ویژه -->
+                <h3 class="section-title"><i class="fas fa-gem"></i> پیشنهاد ویژه</h3>
+                <p class="section-subtitle">فونت‌هایی با تخفیف ویژه و کیفیت استثنایی</p>
+                <div class="products-grid" id="specialGrid"></div>
+
+                <!-- بخش همه فونت‌ها با فیلتر -->
                 <div class="filter-wrapper">
                     <div class="filter-box">
                         <div class="filter-label"><i class="fas fa-filter"></i> دسته‌بندی فونت:</div>
@@ -1369,8 +1572,15 @@
                 </div>
                 <div class="products-grid" id="productsGrid"></div>
             `;
+            
             currentFilter = "all";
             currentPriceFilter = "all";
+            
+            // رندر بخش‌های مختلف
+            renderSection('newFontsGrid', [...fontsData].slice(-3).reverse());
+            renderSection('bestsellerGrid', [fontsData[0], fontsData[3]]);
+            renderSection('specialGrid', fontsData.filter(f => f.isSpecial));
+            
             renderProducts(null, false);
             initHomeFilters();
         } 
@@ -1407,7 +1617,7 @@
                 </div>
                 <div class="products-grid" id="productsGrid"></div>
             `;
-            renderProducts([fontsData[0]], false);
+            renderProducts([fontsData[0], fontsData[3]], false);
         } 
         else if (tabId === 'blog') {
             if (heroSection) heroSection.style.display = 'none';
@@ -1444,46 +1654,19 @@
             dynamicContainer.innerHTML = `
                 <div class="contact-box-new">
                     <h2><i class="fas fa-phone-alt"></i> تماس با ما</h2>
-                    
                     <div class="contact-item-new">
-                        <div class="label">
-                            <i class="fas fa-user-astronaut"></i>
-                            سازنده سایت
-                        </div>
-                        <div class="value">
-                            <a href="https://eitaa.com/ya_ali_ir" target="_blank">
-                                <i class="fab fa-eitaa"></i> @ya_ali_ir
-                            </a>
-                        </div>
+                        <div class="label"><i class="fas fa-user-astronaut"></i> سازنده سایت</div>
+                        <div class="value"><a href="https://eitaa.com/ya_ali_ir" target="_blank"><i class="fab fa-eitaa"></i> @ya_ali_ir</a></div>
                     </div>
-                    
                     <div class="contact-item-new">
-                        <div class="label">
-                            <i class="fas fa-user-astronaut"></i>
-                            سازنده سایت (اکانت دوم)
-                        </div>
-                        <div class="value">
-                            <a href="https://rubika.ir/mohamad_hossein_ev18" target="_blank">
-                                <i class="fas fa-video"></i> mohamad_hossein_ev18
-                            </a>
-                        </div>
+                        <div class="label"><i class="fas fa-user-astronaut"></i> سازنده سایت (اکانت دوم)</div>
+                        <div class="value"><a href="https://rubika.ir/mohamad_hossein_ev18" target="_blank"><i class="fas fa-video"></i> mohamad_hossein_ev18</a></div>
                     </div>
-                    
                     <div class="contact-item-new">
-                        <div class="label">
-                            <i class="fas fa-paper-plane"></i>
-                            کانال ایتا
-                        </div>
-                        <div class="value">
-                            <a href="https://eitaa.com/mim_non_marjae_font" target="_blank">
-                                <i class="fab fa-eitaa"></i> کانال میم نون
-                            </a>
-                        </div>
+                        <div class="label"><i class="fas fa-paper-plane"></i> کانال ایتا</div>
+                        <div class="value"><a href="https://eitaa.com/mim_non_marjae_font" target="_blank"><i class="fab fa-eitaa"></i> کانال میم نون</a></div>
                     </div>
-                    
-                    <div class="contact-note-new">
-                        جهت ارتباط، سوالات و پشتیبانی با ما در ایتا یا روبیکا در ارتباط باشید.
-                    </div>
+                    <div class="contact-note-new">جهت ارتباط، سوالات و پشتیبانی با ما در ایتا یا روبیکا در ارتباط باشید.</div>
                 </div>
             `;
         } 
@@ -1496,9 +1679,69 @@
         }
     }
 
+    // ===== رندر بخش‌های جداگانه =====
+    function renderSection(containerId, fonts) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        if (fonts.length === 0) {
+            container.innerHTML = `<div style="text-align:center; padding:40px; background:#1f1f1f; border-radius:32px; grid-column: 1 / -1; color:#888;">هیچ فونتی در این دسته وجود ندارد</div>`;
+            return;
+        }
+        
+        container.innerHTML = fonts.map(font => {
+            let priceHtml = font.isFree ? 
+                `<span class="free-price"><i class="fas fa-gift"></i> رایگان</span>` :
+                `<span class="current-price">${font.price.toLocaleString()} تومان</span>`;
+            
+            return `
+                <div class="font-card" data-font-id="${font.id}">
+                    <div class="font-preview">
+                        <img src="${font.image}" alt="${font.name}" onerror="this.src='https://placehold.co/600x600/2a2a2a/FFC800?text=Font'">
+                        <div class="watermark">mim.non.ir</div>
+                        <div class="live-preview">نمونه: ${font.name}</div>
+                    </div>
+                    <div class="font-details">
+                        <div class="font-title"><i class="fas ${font.icon}"></i> ${font.name}</div>
+                        <div class="tags-row">
+                            <div class="font-cat"><i class="fas fa-tag"></i> فارسی</div>
+                            ${font.isSpecial ? '<div class="special-offer"><i class="fas fa-gem"></i> ویژه</div>' : ''}
+                            ${font.isFree ? '<div class="free-tag"><i class="fas fa-gift"></i> رایگان</div>' : ''}
+                        </div>
+                        <div class="price-wrapper">${priceHtml}</div>
+                        <div class="card-actions">
+                            ${font.isFree ? 
+                                `<a href="${font.downloadLink}" class="btn-download" download><i class="fas fa-download"></i> دانلود</a>` :
+                                `<button class="btn-buy" data-id="${font.id}" data-name="${font.name}" data-price="${font.price}"><i class="fas fa-shopping-bag"></i> خرید</button>`
+                            }
+                            <button class="btn-detail" data-id="${font.id}"><i class="fas fa-info-circle"></i></button>
+                            <button class="btn-preview-icon" data-image="${font.image}" data-name="${font.name}"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join("");
+        
+        // اتصال رویدادها برای این بخش
+        container.querySelectorAll('.btn-buy').forEach(btn => {
+            btn.addEventListener('click', buyHandler);
+        });
+        container.querySelectorAll('.btn-preview-icon').forEach(btn => {
+            btn.addEventListener('click', previewHandler);
+        });
+        container.querySelectorAll('.btn-detail').forEach(btn => {
+            btn.addEventListener('click', detailHandler);
+        });
+        container.querySelectorAll('.font-card').forEach(card => {
+            card.addEventListener('mouseenter', livePreviewEnter);
+            card.addEventListener('mouseleave', livePreviewLeave);
+        });
+    }
+
+    // ===== راه‌اندازی =====
     document.querySelectorAll('.nav-link').forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); setActiveTab(btn.dataset.tab); }));
     setActiveTab('home');
     updateCartUI();
 </script>
 </body>
-    </html>
+</html>
