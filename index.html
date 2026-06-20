@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>میم نون | فروشگاه فونت فارسی</title>
     
-    <!-- فونت وزیرمتن از گوگل فونت -->
+    <!-- فونت وزیرمتن با وزن‌های سنگین -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome برای آیکون‌ها -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <style>
-        /* ===== ریست و تنظیمات پایه ===== */
+        /* ===== ریست ===== */
         * {
             margin: 0;
             padding: 0;
@@ -20,9 +23,10 @@
         
         body {
             font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
             background-color: #292929;
             color: #ffffff;
-            line-height: 1.7;
+            line-height: 1.8;
         }
         
         a {
@@ -36,22 +40,21 @@
             padding: 0 20px;
         }
         
-        /* ===== رنگ‌های اصلی ===== */
         :root {
             --yellow: #FFC800;
             --dark: #292929;
-            --dark-light: #3a3a3a;
-            --white: #ffffff;
+            --dark-light: #3d3d3d;
+            --gray: #888888;
         }
         
         /* ===== هدر ===== */
         header {
-            background-color: var(--dark);
-            border-bottom: 2px solid var(--yellow);
-            padding: 18px 0;
+            background: var(--dark);
+            border-bottom: 3px solid var(--yellow);
+            padding: 15px 0;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 999;
         }
         
         .header-inner {
@@ -63,192 +66,218 @@
         }
         
         .logo {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 900;
             color: var(--yellow);
             letter-spacing: -1px;
         }
         
-        .logo span {
-            color: var(--white);
-            font-weight: 400;
+        .logo i {
+            margin-left: 8px;
         }
         
         nav {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             align-items: center;
             flex-wrap: wrap;
         }
         
         nav a {
-            font-weight: 500;
+            font-weight: 700;
             font-size: 15px;
-            transition: color 0.3s;
-            padding: 5px 0;
-            border-bottom: 2px solid transparent;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: 0.3s;
         }
         
         nav a:hover {
-            color: var(--yellow);
-            border-bottom-color: var(--yellow);
+            background: var(--yellow);
+            color: var(--dark);
         }
         
         .btn-login {
-            background-color: var(--yellow);
+            background: var(--yellow);
             color: var(--dark);
-            padding: 8px 22px;
+            padding: 10px 25px;
             border-radius: 30px;
             font-weight: 800;
             font-size: 14px;
-            transition: all 0.3s;
             border: none;
             cursor: pointer;
+            transition: 0.3s;
         }
         
         .btn-login:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(255, 200, 0, 0.4);
+            box-shadow: 0 0 20px rgba(255, 200, 0, 0.4);
         }
         
-        /* ===== بخش قهرمان (Hero) ===== */
+        /* ===== بخش قهرمان ===== */
         .hero {
-            padding: 80px 0 60px;
+            padding: 90px 0 70px;
             text-align: center;
-            background: linear-gradient(180deg, #1f1f1f 0%, #292929 100%);
+            background: linear-gradient(180deg, #1a1a1a 0%, #292929 100%);
         }
         
         .hero h1 {
-            font-size: 48px;
+            font-size: 52px;
             font-weight: 900;
             color: var(--yellow);
             margin-bottom: 20px;
-            letter-spacing: -1px;
         }
         
-        .hero h1 .highlight {
-            color: var(--white);
+        .hero h1 span {
             background: var(--yellow);
-            padding: 0 12px;
-            border-radius: 8px;
+            color: var(--dark);
+            padding: 0 15px;
+            border-radius: 10px;
             display: inline-block;
         }
         
         .hero p {
             font-size: 20px;
-            font-weight: 400;
-            max-width: 650px;
+            font-weight: 700;
+            max-width: 700px;
             margin: 0 auto 35px;
-            color: #cccccc;
+            color: #ddd;
         }
         
         .btn-cta {
-            background-color: var(--yellow);
+            background: var(--yellow);
             color: var(--dark);
-            padding: 16px 50px;
+            padding: 18px 55px;
             border-radius: 50px;
             font-weight: 800;
             font-size: 20px;
             border: none;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: 0.3s;
             display: inline-block;
         }
         
         .btn-cta:hover {
             transform: scale(1.06);
-            box-shadow: 0 8px 30px rgba(255, 200, 0, 0.35);
+            box-shadow: 0 8px 35px rgba(255, 200, 0, 0.35);
         }
         
         /* ===== بخش محصولات ===== */
         .products {
-            padding: 70px 0;
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
         }
         
         .section-title {
             font-size: 32px;
             font-weight: 900;
             color: var(--yellow);
-            margin-bottom: 15px;
             position: relative;
-            display: inline-block;
         }
         
         .section-title::after {
             content: '';
             display: block;
-            width: 60%;
+            width: 70px;
             height: 4px;
             background: var(--yellow);
-            margin-top: 6px;
+            margin-top: 8px;
             border-radius: 4px;
         }
         
-        .section-desc {
-            color: #aaaaaa;
-            margin-bottom: 40px;
-            font-weight: 400;
+        .section-link {
+            color: var(--yellow);
+            font-weight: 700;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        
+        .section-link i {
+            margin-right: 6px;
+        }
+        
+        .section-link:hover {
+            letter-spacing: 1px;
         }
         
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
             gap: 30px;
         }
         
         .product-card {
             background: var(--dark-light);
             border-radius: 16px;
-            padding: 25px 20px 20px;
-            transition: all 0.3s;
-            border: 1px solid transparent;
+            padding: 28px 22px 22px;
+            transition: 0.3s;
+            border: 2px solid transparent;
             text-align: center;
+            position: relative;
         }
         
         .product-card:hover {
-            transform: translateY(-8px);
             border-color: var(--yellow);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 12px;
         }
         
         .product-name {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 900;
             color: var(--white);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             direction: ltr;
         }
         
         .product-name-fa {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
-            color: #dddddd;
+            color: #ccc;
             margin-bottom: 12px;
         }
         
         .product-price {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 900;
             color: var(--yellow);
             margin: 12px 0;
         }
         
-        .product-price span {
+        .product-price small {
             font-size: 16px;
-            font-weight: 400;
-            color: #aaaaaa;
+            font-weight: 700;
+            color: var(--gray);
         }
         
         .btn-buy {
             background: transparent;
             border: 2px solid var(--yellow);
             color: var(--yellow);
-            padding: 8px 30px;
+            padding: 10px 0;
             border-radius: 30px;
             font-weight: 800;
             font-size: 15px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: 0.3s;
             width: 100%;
         }
         
@@ -259,23 +288,23 @@
         
         /* ===== بخش لایسنس ===== */
         .license {
-            padding: 70px 0;
+            padding: 80px 0;
             background: #1f1f1f;
         }
         
         .license-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
         
         .license-card {
             background: var(--dark-light);
-            padding: 35px 25px;
+            padding: 40px 30px;
             border-radius: 16px;
             text-align: center;
-            border-top: 5px solid var(--yellow);
+            border-top: 6px solid var(--yellow);
             transition: 0.3s;
         }
         
@@ -284,14 +313,14 @@
         }
         
         .license-card h3 {
-            font-size: 22px;
-            font-weight: 800;
-            margin-bottom: 12px;
+            font-size: 24px;
+            font-weight: 900;
             color: var(--yellow);
+            margin-bottom: 10px;
         }
         
         .license-card .price {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 900;
             color: var(--white);
             margin: 15px 0;
@@ -301,27 +330,26 @@
             list-style: none;
             text-align: right;
             padding: 0;
-            margin: 20px 0;
+            margin: 25px 0;
         }
         
         .license-card ul li {
-            padding: 6px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #444;
-            font-weight: 400;
+            font-weight: 700;
             font-size: 15px;
         }
         
-        .license-card ul li::before {
-            content: "✓ ";
+        .license-card ul li i {
             color: var(--yellow);
-            font-weight: 900;
+            margin-left: 10px;
         }
         
         .btn-license {
             background: var(--yellow);
             color: var(--dark);
             border: none;
-            padding: 10px 30px;
+            padding: 12px 35px;
             border-radius: 30px;
             font-weight: 800;
             font-size: 16px;
@@ -334,48 +362,139 @@
             transform: scale(1.04);
         }
         
+        /* ===== بخش پشتیبانی ===== */
+        .support {
+            padding: 70px 0;
+        }
+        
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .support-item {
+            background: var(--dark-light);
+            padding: 30px 25px;
+            border-radius: 16px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        
+        .support-item:hover {
+            background: #4a4a4a;
+        }
+        
+        .support-item i {
+            font-size: 40px;
+            color: var(--yellow);
+            margin-bottom: 15px;
+        }
+        
+        .support-item h4 {
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .support-item p {
+            font-weight: 700;
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* ===== بخش اخبار ===== */
+        .news {
+            padding: 70px 0;
+            background: #1f1f1f;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .news-card {
+            background: var(--dark-light);
+            padding: 25px;
+            border-radius: 16px;
+            transition: 0.3s;
+            border-right: 4px solid var(--yellow);
+        }
+        
+        .news-card:hover {
+            transform: translateX(-6px);
+        }
+        
+        .news-card .date {
+            color: var(--yellow);
+            font-weight: 700;
+            font-size: 13px;
+        }
+        
+        .news-card h4 {
+            font-weight: 800;
+            font-size: 18px;
+            margin: 8px 0;
+        }
+        
+        .news-card p {
+            font-weight: 700;
+            color: #bbb;
+            font-size: 14px;
+        }
+        
         /* ===== فوتر ===== */
         footer {
             background: #1a1a1a;
-            padding: 50px 0 30px;
-            border-top: 2px solid var(--yellow);
+            padding: 60px 0 30px;
+            border-top: 3px solid var(--yellow);
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 40px;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
         
         .footer-col h4 {
             color: var(--yellow);
-            font-weight: 800;
+            font-weight: 900;
             font-size: 18px;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
         
         .footer-col a {
             display: block;
-            color: #bbbbbb;
-            font-weight: 400;
-            font-size: 15px;
-            padding: 4px 0;
+            color: #bbb;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 5px 0;
             transition: 0.3s;
         }
         
         .footer-col a:hover {
             color: var(--yellow);
-            padding-right: 6px;
+            padding-right: 8px;
+        }
+        
+        .footer-col .contact-info {
+            color: var(--yellow);
+            font-weight: 800;
+            font-size: 16px;
         }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 25px;
+            padding-top: 30px;
             border-top: 1px solid #333;
-            color: #888;
+            color: var(--gray);
+            font-weight: 700;
             font-size: 14px;
-            font-weight: 400;
         }
         
         .footer-bottom strong {
@@ -386,10 +505,6 @@
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 32px;
-            }
-            
-            .hero h1 .highlight {
-                display: inline;
             }
             
             .hero p {
@@ -404,11 +519,7 @@
             
             nav {
                 justify-content: center;
-                gap: 15px;
-            }
-            
-            .logo {
-                font-size: 24px;
+                gap: 12px;
             }
             
             .section-title {
@@ -418,11 +529,15 @@
             .product-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
+            
+            .license-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 26px;
+                font-size: 24px;
             }
             
             .btn-cta {
@@ -450,14 +565,14 @@
 <!-- ===== هدر ===== -->
 <header>
     <div class="container header-inner">
-        <div class="logo">میم‌نون <span>| فونت</span></div>
+        <div class="logo"><i class="fas fa-font"></i> میم‌نون</div>
         <nav>
-            <a href="#">خانه</a>
-            <a href="#">فونت‌ها</a>
-            <a href="#">لایسنس</a>
-            <a href="#">مقالات</a>
-            <a href="#">پشتیبانی</a>
-            <button class="btn-login">ورود / ثبت‌نام</button>
+            <a href="#"><i class="fas fa-home"></i> خانه</a>
+            <a href="#"><i class="fas fa-list"></i> فونت‌ها</a>
+            <a href="#"><i class="fas fa-file-contract"></i> لایسنس</a>
+            <a href="#"><i class="fas fa-newspaper"></i> مقالات</a>
+            <a href="#"><i class="fas fa-headset"></i> پشتیبانی</a>
+            <button class="btn-login"><i class="fas fa-user"></i> ورود / ثبت‌نام</button>
         </nav>
     </div>
 </header>
@@ -466,54 +581,56 @@
 <section class="hero">
     <div class="container">
         <h1>
-            خرید <span class="highlight">فونت قانونی</span><br>
+            خرید <span>فونت قانونی</span><br>
             با کیفیت بالا
         </h1>
         <p>
-            بزرگترین مرجع فروش فونت‌های فارسی با لایسنس معتبر.<br>
-            مناسب برای برندها، وب‌سایت‌ها و پروژه‌های تجاری.
+            <i class="fas fa-check-circle" style="color: var(--yellow);"></i> 
+            بزرگترین مرجع فروش فونت‌های فارسی با لایسنس معتبر
+            <br>
+            مناسب برای برندها، وب‌سایت‌ها و پروژه‌های تجاری
         </p>
-        <a href="#" class="btn-cta">مشاهده همه فونت‌ها</a>
+        <a href="#" class="btn-cta"><i class="fas fa-arrow-left"></i> مشاهده همه فونت‌ها</a>
     </div>
 </section>
 
 <!-- ===== محصولات ===== -->
 <section class="products">
     <div class="container">
-        <h2 class="section-title">محبوب‌ترین فونت‌ها</h2>
-        <p class="section-desc">انتخاب طراحان حرفه‌ای برای پروژه‌های خود</p>
+        <div class="section-header">
+            <h2 class="section-title">محبوب‌ترین فونت‌ها</h2>
+            <a href="#" class="section-link">مشاهده همه <i class="fas fa-arrow-left"></i></a>
+        </div>
         
         <div class="product-grid">
-            <!-- کارت ۱ -->
             <div class="product-card">
-                <div class="product-name" style="font-family: 'Vazirmatn', sans-serif; font-weight: 900;">وزیرمتن</div>
-                <div class="product-name-fa">Vazirmatn</div>
-                <div class="product-price">۲۹۰,۰۰۰ <span>تومان</span></div>
-                <button class="btn-buy">افزودن به سبد خرید</button>
+                <span class="product-badge">پرفروش</span>
+                <div class="product-name" style="font-weight: 900;">Vazirmatn</div>
+                <div class="product-name-fa">وزیرمتن</div>
+                <div class="product-price">۲۹۰,۰۰۰ <small>تومان</small></div>
+                <button class="btn-buy"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
             </div>
             
-            <!-- کارت ۲ -->
             <div class="product-card">
-                <div class="product-name" style="font-family: 'Vazirmatn', sans-serif; font-weight: 700;">آوای فیروز</div>
-                <div class="product-name-fa">Avaye Firooz</div>
-                <div class="product-price">۳۵۰,۰۰۰ <span>تومان</span></div>
-                <button class="btn-buy">افزودن به سبد خرید</button>
+                <div class="product-name" style="font-weight: 800;">Avaye Firooz</div>
+                <div class="product-name-fa">آوای فیروز</div>
+                <div class="product-price">۳۵۰,۰۰۰ <small>تومان</small></div>
+                <button class="btn-buy"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
             </div>
             
-            <!-- کارت ۳ -->
             <div class="product-card">
-                <div class="product-name" style="font-family: 'Vazirmatn', sans-serif; font-weight: 800;">شبنم</div>
-                <div class="product-name-fa">Shabnam</div>
-                <div class="product-price">۲۲۰,۰۰۰ <span>تومان</span></div>
-                <button class="btn-buy">افزودن به سبد خرید</button>
+                <span class="product-badge">جدید</span>
+                <div class="product-name" style="font-weight: 900;">Shabnam</div>
+                <div class="product-name-fa">شبنم</div>
+                <div class="product-price">۲۲۰,۰۰۰ <small>تومان</small></div>
+                <button class="btn-buy"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
             </div>
             
-            <!-- کارت ۴ -->
             <div class="product-card">
-                <div class="product-name" style="font-family: 'Vazirmatn', sans-serif; font-weight: 900;">سروش</div>
-                <div class="product-name-fa">Soroosh</div>
-                <div class="product-price">۴۱۰,۰۰۰ <span>تومان</span></div>
-                <button class="btn-buy">افزودن به سبد خرید</button>
+                <div class="product-name" style="font-weight: 900;">Soroosh</div>
+                <div class="product-name-fa">سروش</div>
+                <div class="product-price">۴۱۰,۰۰۰ <small>تومان</small></div>
+                <button class="btn-buy"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
             </div>
         </div>
     </div>
@@ -522,41 +639,97 @@
 <!-- ===== لایسنس ===== -->
 <section class="license">
     <div class="container">
-        <h2 class="section-title">لایسنس‌های خرید</h2>
-        <p class="section-desc">پلن مناسب پروژه خود را انتخاب کنید</p>
+        <div class="section-header">
+            <h2 class="section-title">لایسنس‌های خرید</h2>
+            <a href="#" class="section-link">مشاهده همه <i class="fas fa-arrow-left"></i></a>
+        </div>
         
         <div class="license-grid">
             <div class="license-card">
-                <h3>شخصی</h3>
+                <h3><i class="fas fa-user"></i> شخصی</h3>
                 <div class="price">۱۹۹,۰۰۰ تومان</div>
                 <ul>
-                    <li>استفاده در کامپیوتر شخصی</li>
-                    <li>پروژه‌های غیرتجاری</li>
-                    <li>پشتیبانی ۱ ماهه</li>
+                    <li><i class="fas fa-check"></i> استفاده در کامپیوتر شخصی</li>
+                    <li><i class="fas fa-check"></i> پروژه‌های غیرتجاری</li>
+                    <li><i class="fas fa-check"></i> پشتیبانی ۱ ماهه</li>
                 </ul>
-                <button class="btn-license">خرید لایسنس</button>
+                <button class="btn-license"><i class="fas fa-shopping-cart"></i> خرید لایسنس</button>
             </div>
             
             <div class="license-card">
-                <h3>شرکتی</h3>
+                <h3><i class="fas fa-building"></i> شرکتی</h3>
                 <div class="price">۴۹۹,۰۰۰ تومان</div>
                 <ul>
-                    <li>استفاده در پروژه‌های تجاری</li>
-                    <li>وب‌سایت و نرم‌افزار شرکتی</li>
-                    <li>پشتیبانی ۶ ماهه</li>
+                    <li><i class="fas fa-check"></i> استفاده در پروژه‌های تجاری</li>
+                    <li><i class="fas fa-check"></i> وب‌سایت و نرم‌افزار شرکتی</li>
+                    <li><i class="fas fa-check"></i> پشتیبانی ۶ ماهه</li>
                 </ul>
-                <button class="btn-license">خرید لایسنس</button>
+                <button class="btn-license"><i class="fas fa-shopping-cart"></i> خرید لایسنس</button>
             </div>
             
             <div class="license-card">
-                <h3>نامحدود</h3>
+                <h3><i class="fas fa-infinity"></i> نامحدود</h3>
                 <div class="price">۹۹۹,۰۰۰ تومان</div>
                 <ul>
-                    <li>استفاده در تمام زیرمجموعه‌ها</li>
-                    <li>بدون محدودیت تعداد کاربر</li>
-                    <li>پشتیبانی ۱ ساله</li>
+                    <li><i class="fas fa-check"></i> استفاده در تمام زیرمجموعه‌ها</li>
+                    <li><i class="fas fa-check"></i> بدون محدودیت تعداد کاربر</li>
+                    <li><i class="fas fa-check"></i> پشتیبانی ۱ ساله</li>
                 </ul>
-                <button class="btn-license">خرید لایسنس</button>
+                <button class="btn-license"><i class="fas fa-shopping-cart"></i> خرید لایسنس</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== پشتیبانی ===== -->
+<section class="support">
+    <div class="container">
+        <h2 class="section-title">پشتیبانی</h2>
+        <p style="font-weight: 700; color: #bbb; margin-top: 5px;">با تیم پشتیبانی ما در تماس باشید</p>
+        
+        <div class="support-grid">
+            <div class="support-item">
+                <i class="fas fa-user-tie"></i>
+                <h4>مسلم ابراهیمی</h4>
+                <p>مشاوره پیش از خرید فونت</p>
+            </div>
+            <div class="support-item">
+                <i class="fas fa-user-cog"></i>
+                <h4>نرگس سدرهنشین</h4>
+                <p>راهنمایی نصب و استفاده</p>
+            </div>
+            <div class="support-item">
+                <i class="fas fa-user-astronaut"></i>
+                <h4>داوود فولادی</h4>
+                <p>مشکلات ثبت‌نام و خرید</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== اخبار ===== -->
+<section class="news">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">اخبار فونت</h2>
+            <a href="#" class="section-link">مشاهده همه <i class="fas fa-arrow-left"></i></a>
+        </div>
+        
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="date"><i class="far fa-calendar-alt"></i> ۲۷ اردیبهشت ۱۴۰۵</div>
+                <h4>فونت‌های برگزیده در مسابقات فونت</h4>
+                <p>اگر برای طراحی برند، رابط کاربری، پوستر یا پروژه‌های حرفه‌ای به دنبال فونت فارسی خاص و معتبر هستید...</p>
+            </div>
+            <div class="news-card">
+                <div class="date"><i class="far fa-calendar-alt"></i> ۲۳ اسفند ۱۴۰۴</div>
+                <h4>بهترین فونت‌های فارسی رایگان</h4>
+                <p>وبسایت فونت ایران در کنار فونت‌های حرفه‌ای و تجاری، مجموعه‌ای ارزشمند از فونت‌های فارسی رایگان را...</p>
+            </div>
+            <div class="news-card">
+                <div class="date"><i class="far fa-calendar-alt"></i> ۶ اسفند ۱۴۰۴</div>
+                <h4>فونت‌های مناسب تامنیل یوتیوب</h4>
+                <p>تامنیل ویدیوی شما در یوتیوب، بیلبورد محتوای شماست. با افزایش رقابت در شبکه‌های اجتماعی...</p>
             </div>
         </div>
     </div>
@@ -567,34 +740,35 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-col">
-                <h4>میم‌نون</h4>
+                <h4><i class="fas fa-font"></i> میم‌نون</h4>
                 <a href="#">درباره ما</a>
                 <a href="#">تماس با ما</a>
-                <a href="#">قوانین</a>
+                <a href="#">قوانین و مقررات</a>
             </div>
             <div class="footer-col">
-                <h4>فونت‌ها</h4>
+                <h4><i class="fas fa-list"></i> فونت‌ها</h4>
                 <a href="#">همه فونت‌ها</a>
                 <a href="#">محبوب‌ترین</a>
                 <a href="#">جدیدترین</a>
             </div>
             <div class="footer-col">
-                <h4>پشتیبانی</h4>
+                <h4><i class="fas fa-headset"></i> پشتیبانی</h4>
                 <a href="#">سوالات متداول</a>
                 <a href="#">راهنما</a>
-                <a href="#">تیکت پشتیبانی</a>
+                <a href="#">ثبت تیکت</a>
             </div>
             <div class="footer-col">
-                <h4>تماس</h4>
-                <a href="#" style="color: var(--yellow); font-weight: 700;">۰۲۱-۱۲۳۴-۵۶۷۸</a>
-                <a href="#">info@mimnoon.com</a>
+                <h4><i class="fas fa-phone"></i> تماس</h4>
+                <a class="contact-info"><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴-۵۶۷۸</a>
+                <a><i class="fas fa-envelope"></i> info@mimnoon.com</a>
+                <a><i class="fas fa-map-marker-alt"></i> تهران، خیابان آزادی</a>
             </div>
         </div>
         <div class="footer-bottom">
-            تمامی حقوق متعلق به <strong>میم‌نون</strong> است &copy; ۲۰۲۶
+            <i class="fas fa-copyright"></i> تمامی حقوق متعلق به <strong>میم‌نون</strong> است &copy; ۲۰۲۶
         </div>
     </div>
 </footer>
 
 </body>
-</html>
+    </html>
