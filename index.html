@@ -3,1595 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>میم نون | فروشگاه فونت فارسی</title>
-    
-    <!-- فونت وزیرمتن -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+    <title>خرید فونتهای فارسی با لایسنس قانونی | فونت ایران</title>
     <style>
-        /* ===== کامل‌ترین ریست ===== */
+        /* Reset و فونت پایه */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
         body {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            background: #292929;
-            color: #ffffff;
-            line-height: 1.8;
-            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
         }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-        }
-        
-        ul, ol {
-            list-style: none;
-        }
-        
-        img {
-            max-width: 100%;
-            display: block;
-        }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        :root {
-            --yellow: #FFC800;
-            --dark: #292929;
-            --dark-light: #3d3d3d;
-            --dark-hover: #4a4a4a;
-            --gray: #888;
-            --light-gray: #aaa;
-            --white: #fff;
-            --shadow: 0 10px 40px rgba(0,0,0,0.5);
+
+        /* ---------- هدر (Header) ---------- */
+        .main-header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            padding: 15px 0;
+            border-bottom: 3px solid #e63946;
         }
-        
-        /* ===== اسکرول بار ===== */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: var(--dark); }
-        ::-webkit-scrollbar-thumb { background: var(--yellow); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #e6b400; }
-        
-        /* ===== نوار بالایی ===== */
-        .top-bar {
-            background: #1a1a1a;
-            padding: 8px 0;
-            border-bottom: 1px solid #333;
-            font-size: 13px;
-        }
-        .top-bar-inner {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 10px;
-        }
-        .top-bar-left, .top-bar-right {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .top-bar-left a, .top-bar-right a {
-            color: var(--gray);
-            transition: 0.3s;
-        }
-        .top-bar-left a:hover, .top-bar-right a:hover {
-            color: var(--yellow);
-        }
-        .top-bar-right .phone {
-            color: var(--yellow);
-            font-weight: 800;
-        }
-        .top-bar-right .cart-count {
-            background: var(--yellow);
-            color: var(--dark);
-            border-radius: 50%;
-            padding: 0 8px;
-            font-size: 12px;
-            font-weight: 900;
-        }
-        
-        /* ===== هدر ===== */
-        header {
-            background: var(--dark);
-            padding: 18px 0;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            border-bottom: 3px solid var(--yellow);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
         }
         .logo {
-            font-size: 32px;
-            font-weight: 900;
-            color: var(--yellow);
-            letter-spacing: -1px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #e63946;
         }
-        .logo i { margin-left: 10px; }
-        .logo span { color: var(--white); font-weight: 700; }
-        nav {
+        .logo span {
+            color: #333;
+        }
+        .main-nav ul {
             display: flex;
-            gap: 8px;
-            align-items: center;
+            list-style: none;
+            gap: 25px;
             flex-wrap: wrap;
         }
-        nav a {
-            font-weight: 700;
-            font-size: 15px;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: 0.3s;
-            position: relative;
+        .main-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.2s;
         }
-        nav a i { margin-left: 6px; }
-        nav a:hover, nav a.active {
-            background: var(--yellow);
-            color: var(--dark);
+        .main-nav a:hover {
+            color: #e63946;
         }
-        nav a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            right: 50%;
-            transform: translateX(50%);
-            width: 20px;
-            height: 3px;
-            background: var(--yellow);
-            border-radius: 4px;
-        }
-        .btn-login {
-            background: var(--yellow);
-            color: var(--dark);
-            padding: 10px 28px;
+        .header-btn {
+            background-color: #e63946;
+            color: #fff !important;
+            padding: 8px 18px;
             border-radius: 30px;
-            font-weight: 800;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
+            transition: background-color 0.2s;
         }
-        .btn-login i { margin-left: 6px; }
-        .btn-login:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(255, 200, 0, 0.4);
+        .header-btn:hover {
+            background-color: #c1121f !important;
         }
-        
-        /* ===== قهرمان ===== */
-        .hero {
-            padding: 100px 0 80px;
-            text-align: center;
-            background: linear-gradient(180deg, #1a1a1a 0%, #292929 50%, #1f1f1f 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255,200,0,0.05) 0%, transparent 70%);
-            animation: rotate 30s linear infinite;
-        }
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .hero-content { position: relative; z-index: 1; }
-        .hero-badge {
-            display: inline-block;
-            background: var(--yellow);
-            color: var(--dark);
-            padding: 6px 24px;
-            border-radius: 30px;
-            font-weight: 800;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 900;
-            color: var(--yellow);
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        .hero h1 .highlight {
-            background: var(--yellow);
-            color: var(--dark);
-            padding: 0 18px;
+
+        /* ---------- بخش پشتیبانی (مشابه بخش ابتدایی) ---------- */
+        .support-section {
+            background-color: #fff;
+            padding: 40px 0;
+            margin: 30px 0;
             border-radius: 12px;
-            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
-        .hero p {
-            font-size: 20px;
-            font-weight: 700;
-            max-width: 750px;
-            margin: 0 auto 40px;
-            color: #ddd;
-            line-height: 2;
-        }
-        .hero p i { color: var(--yellow); margin-left: 8px; }
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn-cta {
-            background: var(--yellow);
-            color: var(--dark);
-            padding: 18px 55px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 20px;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-cta:hover {
-            transform: scale(1.06);
-            box-shadow: 0 8px 35px rgba(255, 200, 0, 0.35);
-        }
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            padding: 18px 45px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 18px;
-            border: 2px solid var(--yellow);
-            cursor: pointer;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-secondary:hover {
-            background: var(--yellow);
-            color: var(--dark);
-        }
-        
-        /* ===== محصولات ===== */
-        .products { padding: 90px 0; }
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 45px;
-        }
-        .section-title {
-            font-size: 34px;
-            font-weight: 900;
-            color: var(--yellow);
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--yellow);
-            margin-top: 8px;
-            border-radius: 4px;
-        }
-        .section-title i { margin-left: 12px; }
-        .section-link {
-            color: var(--yellow);
-            font-weight: 700;
-            font-size: 16px;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-        }
-        .section-link:hover { letter-spacing: 1px; }
-        
-        .product-grid {
+        .support-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
         }
-        .product-card {
-            background: var(--dark-light);
-            border-radius: 16px;
-            padding: 25px 20px 20px;
-            transition: 0.4s;
-            border: 2px solid transparent;
-            text-align: center;
-            position: relative;
+        .support-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-right: 4px solid #e63946;
         }
-        .product-card:hover {
-            border-color: var(--yellow);
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
-        }
-        .product-badge {
-            position: absolute;
-            top: -12px;
-            right: -12px;
-            background: var(--yellow);
-            color: var(--dark);
-            padding: 4px 18px;
-            border-radius: 30px;
-            font-weight: 800;
-            font-size: 12px;
-            box-shadow: 0 4px 15px rgba(255,200,0,0.3);
-            z-index: 2;
-        }
-        .product-badge.hot { background: #ff4444; color: white; }
-        .product-badge.new { background: #4CAF50; color: white; }
-        .product-image {
-            width: 100%;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 10px;
-        }
-        .product-name {
-            font-size: 28px;
-            font-weight: 900;
-            color: var(--white);
-            margin-bottom: 4px;
-            direction: ltr;
-        }
-        .product-name-fa {
+        .support-item h3 {
             font-size: 18px;
-            font-weight: 700;
-            color: #ccc;
-            margin-bottom: 12px;
-        }
-        .product-rating {
-            color: var(--yellow);
-            font-size: 14px;
+            color: #e63946;
             margin-bottom: 8px;
         }
-        .product-rating span { color: var(--gray); font-weight: 700; }
-        .product-price {
-            font-size: 28px;
-            font-weight: 900;
-            color: var(--yellow);
-            margin: 12px 0;
+        .support-item p {
+            color: #555;
+            font-size: 14px;
         }
-        .product-price small {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--gray);
-        }
-        .product-price .old {
-            color: var(--gray);
-            text-decoration: line-through;
-            font-size: 18px;
-            margin-left: 10px;
-        }
-        .btn-buy {
-            background: transparent;
-            border: 2px solid var(--yellow);
-            color: var(--yellow);
-            padding: 10px 0;
-            border-radius: 30px;
-            font-weight: 800;
-            font-size: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .btn-buy:hover {
-            background: var(--yellow);
-            color: var(--dark);
-        }
-        .btn-buy.added {
-            background: #4CAF50;
-            border-color: #4CAF50;
-            color: white;
-        }
-        .btn-buy.added:hover {
-            background: #45a049;
-        }
-        
-        /* ===== لایسنس ===== */
-        .license {
-            padding: 90px 0;
-            background: #1f1f1f;
+
+        /* ---------- بخش لایسنسها (محصولات) ---------- */
+        .license-section {
+            padding: 40px 0;
         }
         .license-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 45px;
+            margin-top: 20px;
         }
         .license-card {
-            background: var(--dark-light);
-            padding: 45px 30px 35px;
-            border-radius: 16px;
-            text-align: center;
-            border-top: 6px solid var(--yellow);
-            transition: 0.4s;
-            position: relative;
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         .license-card:hover {
-            transform: scale(1.03);
-            box-shadow: var(--shadow);
-        }
-        .license-card.popular { border-top-color: #ff4444; }
-        .license-card .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #ff4444;
-            color: white;
-            padding: 4px 20px;
-            border-radius: 30px;
-            font-weight: 800;
-            font-size: 12px;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         .license-card h3 {
-            font-size: 26px;
-            font-weight: 900;
-            color: var(--yellow);
-            margin-bottom: 10px;
+            color: #e63946;
+            margin-bottom: 12px;
+            font-size: 20px;
         }
-        .license-card h3 i { margin-left: 10px; }
-        .license-card .price {
-            font-size: 34px;
-            font-weight: 900;
-            color: var(--white);
-            margin: 15px 0;
-        }
-        .license-card .price small {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--gray);
-        }
-        .license-card ul {
-            text-align: right;
-            padding: 0;
-            margin: 25px 0;
-        }
-        .license-card ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #444;
-            font-weight: 700;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .license-card ul li i { color: var(--yellow); width: 20px; }
-        .btn-license {
-            background: var(--yellow);
-            color: var(--dark);
-            border: none;
-            padding: 14px 40px;
-            border-radius: 30px;
-            font-weight: 800;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-license:hover {
-            opacity: 0.85;
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(255,200,0,0.3);
-        }
-        
-        /* ===== پشتیبانی ===== */
-        .support { padding: 80px 0; }
-        .support-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 35px;
-        }
-        .support-item {
-            background: var(--dark-light);
-            padding: 35px 25px;
-            border-radius: 16px;
-            text-align: center;
-            transition: 0.3s;
-            border: 2px solid transparent;
-        }
-        .support-item:hover {
-            border-color: var(--yellow);
-            transform: translateY(-5px);
-        }
-        .support-item .avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--yellow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 36px;
-            color: var(--dark);
-            font-weight: 900;
-        }
-        .support-item i {
-            font-size: 40px;
-            color: var(--yellow);
+        .license-card p {
+            color: #555;
+            font-size: 14px;
             margin-bottom: 15px;
         }
-        .support-item h4 {
-            font-weight: 800;
-            font-size: 18px;
-            margin-bottom: 6px;
-        }
-        .support-item p {
-            font-weight: 700;
-            color: #bbb;
-            font-size: 14px;
-        }
-        .support-item .contact-btn {
-            margin-top: 12px;
+        .license-tag {
             display: inline-block;
-            background: var(--yellow);
-            color: var(--dark);
-            padding: 6px 20px;
+            background: #e63946;
+            color: #fff;
+            padding: 4px 14px;
             border-radius: 30px;
-            font-weight: 800;
-            font-size: 13px;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
         }
-        .support-item .contact-btn:hover { transform: scale(1.05); }
-        
-        /* ===== اخبار ===== */
-        .news {
-            padding: 80px 0;
-            background: #1f1f1f;
-        }
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 35px;
-        }
-        .news-card {
-            background: var(--dark-light);
-            padding: 30px;
-            border-radius: 16px;
-            transition: 0.3s;
-            border-right: 5px solid var(--yellow);
-            cursor: pointer;
-        }
-        .news-card:hover {
-            transform: translateX(-8px);
-            box-shadow: var(--shadow);
-        }
-        .news-card .date {
-            color: var(--yellow);
-            font-weight: 700;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .news-card h4 {
-            font-weight: 800;
-            font-size: 19px;
-            margin: 10px 0 8px;
-        }
-        .news-card p {
-            font-weight: 700;
-            color: #bbb;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-        .news-card .read-more {
-            color: var(--yellow);
-            font-weight: 800;
-            font-size: 14px;
-            margin-top: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        .news-card .read-more:hover { gap: 12px; }
-        
-        /* ===== آمار ===== */
-        .stats {
-            padding: 60px 0;
-            background: var(--dark);
-            border-top: 1px solid #333;
-            border-bottom: 1px solid #333;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-        .stats-item .number {
-            font-size: 42px;
-            font-weight: 900;
-            color: var(--yellow);
-        }
-        .stats-item .label {
-            font-weight: 700;
-            color: var(--gray);
-            font-size: 16px;
-            margin-top: 4px;
-        }
-        
-        /* ===== مودال ===== */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s;
-            backdrop-filter: blur(5px);
-        }
-        .modal-overlay.active { display: flex; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .modal {
-            background: var(--dark-light);
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 420px;
-            width: 90%;
-            position: relative;
-            border: 2px solid var(--yellow);
-            box-shadow: var(--shadow);
-        }
-        .modal .close-modal {
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--gray);
-            transition: 0.3s;
-        }
-        .modal .close-modal:hover { color: var(--yellow); }
-        .modal h2 {
-            color: var(--yellow);
-            font-weight: 900;
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .modal input {
-            width: 100%;
-            padding: 14px 18px;
-            margin-bottom: 15px;
+
+        /* ---------- بخش اخبار ---------- */
+        .news-section {
+            background: #fff;
+            padding: 40px 0;
+            margin: 30px 0;
             border-radius: 12px;
-            border: 2px solid #555;
-            background: var(--dark);
-            color: white;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 15px;
-            transition: 0.3s;
         }
-        .modal input:focus {
-            border-color: var(--yellow);
-            outline: none;
+        .news-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
         }
-        .modal .btn-submit {
-            width: 100%;
-            padding: 14px;
-            background: var(--yellow);
-            color: var(--dark);
-            border: none;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
+        .news-item:last-child {
+            border-bottom: none;
         }
-        .modal .btn-submit:hover { transform: scale(1.02); }
-        .modal p {
-            text-align: center;
-            margin-top: 15px;
-            font-weight: 700;
-            color: var(--gray);
+        .news-date {
+            color: #e63946;
+            font-weight: bold;
+            font-size: 14px;
         }
-        .modal p a {
-            color: var(--yellow);
-            font-weight: 800;
-            cursor: pointer;
-        }
-        
-        /* ===== توست ===== */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--dark-light);
-            color: white;
-            padding: 18px 30px;
-            border-radius: 16px;
-            border-right: 5px solid var(--yellow);
-            box-shadow: var(--shadow);
-            z-index: 99999;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            animation: slideUp 0.4s;
-            min-width: 250px;
-        }
-        .toast i { color: var(--yellow); font-size: 20px; }
-        @keyframes slideUp {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        /* ===== اسکرول به بالا ===== */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: var(--yellow);
-            color: var(--dark);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            cursor: pointer;
-            transition: 0.3s;
-            z-index: 999;
-            border: none;
-            box-shadow: 0 4px 20px rgba(255,200,0,0.3);
-        }
-        .scroll-top:hover {
-            transform: scale(1.1);
-        }
-        .scroll-top.show { display: flex; }
-        
-        /* ===== فوتر ===== */
-        footer {
-            background: #1a1a1a;
-            padding: 70px 0 30px;
-            border-top: 3px solid var(--yellow);
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 40px;
-            margin-bottom: 45px;
-        }
-        .footer-col h4 {
-            color: var(--yellow);
-            font-weight: 900;
+        .news-title {
             font-size: 18px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-weight: 600;
+            margin: 5px 0;
         }
-        .footer-col a {
-            display: block;
-            color: #bbb;
-            font-weight: 700;
+        .news-excerpt {
+            color: #555;
             font-size: 14px;
-            padding: 6px 0;
-            transition: 0.3s;
-            cursor: pointer;
         }
-        .footer-col a:hover {
-            color: var(--yellow);
-            padding-right: 8px;
-        }
-        .footer-col .contact-info {
-            color: var(--yellow);
-            font-weight: 800;
-            font-size: 16px;
-        }
-        .footer-col .social {
-            display: flex;
-            gap: 12px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-        .footer-col .social a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--dark-light);
-            color: var(--white);
-            transition: 0.3s;
-            padding: 0;
-        }
-        .footer-col .social a:hover {
-            background: var(--yellow);
-            color: var(--dark);
-            transform: translateY(-3px);
-        }
-        .footer-bottom {
+
+        /* ---------- فوتر (Footer) ---------- */
+        .main-footer {
+            background: #222;
+            color: #aaa;
+            padding: 30px 0;
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #333;
-            color: var(--gray);
-            font-weight: 700;
-            font-size: 14px;
+            margin-top: 40px;
         }
-        .footer-bottom strong { color: var(--yellow); }
-        
-        /* ===== ریسپانسیو ===== */
-        @media (max-width: 992px) {
-            .hero h1 { font-size: 42px; }
+        .main-footer a {
+            color: #e63946;
+            text-decoration: none;
         }
+
+        /* ریسپانسیو */
         @media (max-width: 768px) {
-            .top-bar-inner { flex-direction: column; text-align: center; }
-            .top-bar-left, .top-bar-right { justify-content: center; }
-            .header-inner { flex-direction: column; text-align: center; }
-            nav { justify-content: center; gap: 6px; }
-            nav a { font-size: 13px; padding: 6px 12px; }
-            nav a.active::after { display: none; }
-            .hero h1 { font-size: 32px; }
-            .hero p { font-size: 17px; }
-            .btn-cta { font-size: 16px; padding: 14px 30px; }
-            .btn-secondary { font-size: 14px; padding: 14px 25px; }
-            .section-title { font-size: 26px; }
-            .product-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-            .license-grid { grid-template-columns: 1fr; }
-            .news-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .modal { padding: 30px 20px; }
-        }
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 24px; }
-            .hero-buttons { flex-direction: column; align-items: center; }
-            .product-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
-            .product-card { padding: 18px 12px; }
-            .product-name { font-size: 20px; }
-            .product-price { font-size: 20px; }
-            .product-image { height: 80px; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .toast { right: 10px; left: 10px; min-width: auto; }
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .main-nav ul {
+                justify-content: center;
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
-
-<!-- ===== نوار بالایی ===== -->
-<div class="top-bar">
-    <div class="container top-bar-inner">
-        <div class="top-bar-left">
-            <a href="#"><i class="fas fa-phone"></i> پشتیبانی: ۰۲۱-۱۲۳۴-۵۶۷۸</a>
-            <a href="#"><i class="fas fa-envelope"></i> info@mimnoon.com</a>
-        </div>
-        <div class="top-bar-right">
-            <span><i class="fas fa-clock"></i> شنبه تا چهارشنبه ۹ الی ۱۷</span>
-            <a href="#" id="cartLink"><i class="fas fa-shopping-cart"></i> سبد خرید (<span id="cartCount">۰</span>)</a>
-            <a href="#" id="loginModalTrigger"><i class="fas fa-user"></i> حساب کاربری</a>
-            <span class="phone"><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴-۵۶۷۸</span>
-        </div>
-    </div>
-</div>
-
-<!-- ===== هدر اصلی ===== -->
-<header>
-    <div class="container header-inner">
-        <div class="logo"><i class="fas fa-font"></i> میم<span>نون</span></div>
-        <nav>
-            <a href="#" class="active" id="homeLink"><i class="fas fa-home"></i> خانه</a>
-            <a href="#" id="productsLink"><i class="fas fa-list"></i> فونت‌ها</a>
-            <a href="#" id="licenseLink"><i class="fas fa-file-contract"></i> لایسنس</a>
-            <a href="#" id="newsLink"><i class="fas fa-newspaper"></i> مقالات</a>
-            <a href="#" id="supportLink"><i class="fas fa-headset"></i> پشتیبانی</a>
-            <a href="#"><i class="fas fa-info-circle"></i> درباره ما</a>
-            <button class="btn-login" id="loginBtn"><i class="fas fa-user"></i> ورود / ثبت‌نام</button>
-        </nav>
-    </div>
-</header>
-
-<!-- ===== قهرمان ===== -->
-<section class="hero" id="homeSection">
-    <div class="container hero-content">
-        <div class="hero-badge"><i class="fas fa-star"></i> بیش از ۵۰۰ فونت حرفه‌ای</div>
-        <h1>
-            خرید <span class="highlight">فونت قانونی</span><br>
-            با کیفیت بالا
-        </h1>
-        <p>
-            <i class="fas fa-check-circle"></i> بزرگترین مرجع فروش فونت‌های فارسی با لایسنس معتبر
-            <br>
-            <i class="fas fa-check-circle"></i> مناسب برای برندها، وب‌سایت‌ها و پروژه‌های تجاری
-            <br>
-            <i class="fas fa-check-circle"></i> پشتیبانی ۲۴ ساعته و ضمانت بازگشت وجه
-        </p>
-        <div class="hero-buttons">
-            <a class="btn-cta" id="heroProductsBtn"><i class="fas fa-arrow-left"></i> مشاهده همه فونت‌ها</a>
-            <a class="btn-secondary" id="demoBtn"><i class="fas fa-play-circle"></i> مشاهده دمو</a>
-        </div>
-    </div>
-</section>
-
-<!-- ===== محصولات ===== -->
-<section class="products" id="productsSection">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fas fa-fire"></i> محبوب‌ترین فونت‌ها</h2>
-            <a class="section-link" id="viewAllProducts">مشاهده همه <i class="fas fa-arrow-left"></i></a>
-        </div>
-        
-        <div class="product-grid">
-            <!-- محصول ۱ - وزیرمتن -->
-            <div class="product-card" data-id="1" data-name="وزیرمتن" data-price="290000">
-                <span class="product-badge hot"><i class="fas fa-fire"></i> پرفروش</span>
-                <div class="product-image">
-                    <img src="https://fontiran.com/wp-content/uploads/2024/01/Vazirmatn-preview-300x300.png" alt="وزیرمتن" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23333%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2255%22 text-anchor=%22middle%22 fill=%22%23FFC800%22 font-size=%2230%22 font-family=%22Arial%22%3Eف%3C/text%3E%3C/svg%3E'">
-                </div>
-                <div class="product-name" style="font-weight: 900;">Vazirmatn</div>
-                <div class="product-name-fa">وزیرمتن</div>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    <span>(۱۲۴)</span>
-                </div>
-                <div class="product-price">
-                    <span class="old">۳۹۰,۰۰۰</span>
-                    ۲۹۰,۰۰۰ <small>تومان</small>
-                </div>
-                <button class="btn-buy add-to-cart"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
-            </div>
-            
-            <!-- محصول ۲ - آوای فیروز -->
-            <div class="product-card" data-id="2" data-name="آوای فیروز" data-price="350000">
-                <span class="product-badge new"><i class="fas fa-star"></i> جدید</span>
-                <div class="product-image">
-                    <img src="https://fontiran.com/wp-content/uploads/2024/01/Avaye-Firooz-preview-300x300.png" alt="آوای فیروز" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23333%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2255%22 text-anchor=%22middle%22 fill=%22%23FFC800%22 font-size=%2230%22 font-family=%22Arial%22%3Eآ%3C/text%3E%3C/svg%3E'">
-                </div>
-                <div class="product-name" style="font-weight: 800;">Avaye Firooz</div>
-                <div class="product-name-fa">آوای فیروز</div>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    <span>(۸۹)</span>
-                </div>
-                <div class="product-price">۳۵۰,۰۰۰ <small>تومان</small></div>
-                <button class="btn-buy add-to-cart"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
-            </div>
-            
-            <!-- محصول ۳ - شبنم -->
-            <div class="product-card" data-id="3" data-name="شبنم" data-price="220000">
-                <div class="product-image">
-                    <img src="https://fontiran.com/wp-content/uploads/2024/01/Shabnam-preview-300x300.png" alt="شبنم" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23333%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2255%22 text-anchor=%22middle%22 fill=%22%23FFC800%22 font-size=%2230%22 font-family=%22Arial%22%3Eش%3C/text%3E%3C/svg%3E'">
-                </div>
-                <div class="product-name" style="font-weight: 900;">Shabnam</div>
-                <div class="product-name-fa">شبنم</div>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    <span>(۲۰۱)</span>
-                </div>
-                <div class="product-price">۲۲۰,۰۰۰ <small>تومان</small></div>
-                <button class="btn-buy add-to-cart"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
-            </div>
-            
-            <!-- محصول ۴ - سروش -->
-            <div class="product-card" data-id="4" data-name="سروش" data-price="410000">
-                <span class="product-badge hot"><i class="fas fa-fire"></i> پرفروش</span>
-                <div class="product-image">
-                    <img src="https://fontiran.com/wp-content/uploads/2024/01/Soroosh-preview-300x300.png" alt="سروش" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23333%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2255%22 text-anchor=%22middle%22 fill=%22%23FFC800%22 font-size=%2230%22 font-family=%22Arial%22%3Eس%3C/text%3E%3C/svg%3E'">
-                </div>
-                <div class="product-name" style="font-weight: 900;">Soroosh</div>
-                <div class="product-name-fa">سروش</div>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    <span>(۱۵۶)</span>
-                </div>
-                <div class="product-price">۴۱۰,۰۰۰ <small>تومان</small></div>
-                <button class="btn-buy add-to-cart"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
-            </div>
-            
-            <!-- محصول ۵ - ایران‌سنس -->
-            <div class="product-card" data-id="5" data-name="ایران‌سنس" data-price="280000">
-                <div class="product-image">
-                    <img src="https://fontiran.com/wp-content/uploads/2024/01/Iran-Sense-preview-300x300.png" alt="ایران‌سنس" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23333%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2255%22 text-anchor=%22middle%22 fill=%22%23FFC800%22 font-size=%2230%22 font-family=%22Arial%22%3Eا%3C/text%3E%3C/svg%3E'">
-                </div>
-                <div class="product-name" style="font-weight: 800;">Iran Sense</div>
-                <div class="product-name-fa">ایران‌سنس</div>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    <span>(۹۸)</span>
-                </div>
-                <div class="product-price">۲۸۰,۰۰۰ <small>تومان</small></div>
-                <button class="btn-buy add-to-cart"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
-            </div>
-            
-            <!-- محصول ۶ - پارس‌فونت -->
-            <div class="product-card" data-id="6" data-name="پارس‌فونت" data-price="380000">
-                <span class="product-badge new"><i class="fas fa-star"></i> جدید</span>
-                <div class="product-image">
-                    <img src="https://fontiran.com/wp-content/uploads/2024/01/Pars-Font-preview-300x300.png" alt="پارس‌فونت" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23333%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2255%22 text-anchor=%22middle%22 fill=%22%23FFC800%22 font-size=%2230%22 font-family=%22Arial%22%3Eپ%3C/text%3E%3C/svg%3E'">
-                </div>
-                <div class="product-name" style="font-weight: 900;">Pars Font</div>
-                <div class="product-name-fa">پارس‌فونت</div>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    <span>(۷۶)</span>
-                </div>
-                <div class="product-price">۳۸۰,۰۰۰ <small>تومان</small></div>
-                <button class="btn-buy add-to-cart"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== لایسنس ===== -->
-<section class="license" id="licenseSection">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fas fa-file-contract"></i> لایسنس‌های خرید</h2>
-            <a class="section-link" id="viewAllLicenses">مشاهده همه <i class="fas fa-arrow-left"></i></a>
-        </div>
-        
-        <div class="license-grid">
-            <div class="license-card">
-                <h3><i class="fas fa-user"></i> شخصی</h3>
-                <div class="price">۱۹۹,۰۰۰ <small>تومان</small></div>
+    <!-- ====== هدر (Header) ====== -->
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo">فونت <span>ایران</span></div>
+            <nav class="main-nav">
                 <ul>
-                    <li><i class="fas fa-check"></i> استفاده در کامپیوتر شخصی</li>
-                    <li><i class="fas fa-check"></i> پروژه‌های غیرتجاری</li>
-                    <li><i class="fas fa-check"></i> پشتیبانی ۱ ماهه</li>
-                    <li><i class="fas fa-check"></i> یک کاربر</li>
+                    <li><a href="#">فروشگاه</a></li>
+                    <li><a href="#">طراحان</a></li>
+                    <li><a href="#">اخبار</a></li>
+                    <li><a href="#">آموزش</a></li>
+                    <li><a href="#" class="header-btn">ورود / ثبت‌نام</a></li>
                 </ul>
-                <button class="btn-license buy-license" data-plan="شخصی"><i class="fas fa-shopping-cart"></i> خرید لایسنس</button>
-            </div>
-            
-            <div class="license-card popular">
-                <span class="popular-badge"><i class="fas fa-star"></i> محبوب</span>
-                <h3><i class="fas fa-building"></i> شرکتی</h3>
-                <div class="price">۴۹۹,۰۰۰ <small>تومان</small></div>
-                <ul>
-                    <li><i class="fas fa-check"></i> استفاده در پروژه‌های تجاری</li>
-                    <li><i class="fas fa-check"></i> وب‌سایت و نرم‌افزار شرکتی</li>
-                    <li><i class="fas fa-check"></i> پشتیبانی ۶ ماهه</li>
-                    <li><i class="fas fa-check"></i> تا ۵ کاربر</li>
-                </ul>
-                <button class="btn-license buy-license" data-plan="شرکتی"><i class="fas fa-shopping-cart"></i> خرید لایسنس</button>
-            </div>
-            
-            <div class="license-card">
-                <h3><i class="fas fa-infinity"></i> نامحدود</h3>
-                <div class="price">۹۹۹,۰۰۰ <small>تومان</small></div>
-                <ul>
-                    <li><i class="fas fa-check"></i> استفاده در تمام زیرمجموعه‌ها</li>
-                    <li><i class="fas fa-check"></i> بدون محدودیت تعداد کاربر</li>
-                    <li><i class="fas fa-check"></i> پشتیبانی ۱ ساله</li>
-                    <li><i class="fas fa-check"></i> آپدیت رایگان</li>
-                </ul>
-                <button class="btn-license buy-license" data-plan="نامحدود"><i class="fas fa-shopping-cart"></i> خرید لایسنس</button>
-            </div>
+            </nav>
         </div>
-    </div>
-</section>
+    </header>
 
-<!-- ===== آمار ===== -->
-<section class="stats">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stats-item">
-                <div class="number">۵۰۰+</div>
-                <div class="label">فونت حرفه‌ای</div>
-            </div>
-            <div class="stats-item">
-                <div class="number">۲,۴۰۰+</div>
-                <div class="label">خریدار راضی</div>
-            </div>
-            <div class="stats-item">
-                <div class="number">۹۸%</div>
-                <div class="label">رضایت مشتریان</div>
-            </div>
-            <div class="stats-item">
-                <div class="number">۲۴/۷</div>
-                <div class="label">پشتیبانی</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== پشتیبانی ===== -->
-<section class="support" id="supportSection">
-    <div class="container">
-        <h2 class="section-title"><i class="fas fa-headset"></i> پشتیبانی</h2>
-        <p style="font-weight: 700; color: #bbb; margin-top: 5px;">با تیم پشتیبانی ما در تماس باشید</p>
-        
-        <div class="support-grid">
-            <div class="support-item">
-                <div class="avatar">م</div>
-                <h4>مسلم ابراهیمی</h4>
-                <p><i class="fas fa-check-circle" style="color: var(--yellow);"></i> مشاوره پیش از خرید فونت</p>
-                <button class="contact-btn contact-support" data-name="مسلم ابراهیمی"><i class="fas fa-phone"></i> تماس بگیرید</button>
-            </div>
-            <div class="support-item">
-                <div class="avatar">ن</div>
-                <h4>نرگس سدرهنشین</h4>
-                <p><i class="fas fa-check-circle" style="color: var(--yellow);"></i> راهنمایی نصب و استفاده</p>
-                <button class="contact-btn contact-support" data-name="نرگس سدرهنشین"><i class="fas fa-phone"></i> تماس بگیرید</button>
-            </div>
-            <div class="support-item">
-                <div class="avatar">د</div>
-                <h4>داوود فولادی</h4>
-                <p><i class="fas fa-check-circle" style="color: var(--yellow);"></i> مشکلات ثبت‌نام و خرید</p>
-                <button class="contact-btn contact-support" data-name="داوود فولادی"><i class="fas fa-phone"></i> تماس بگیرید</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== اخبار ===== -->
-<section class="news" id="newsSection">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fas fa-newspaper"></i> اخبار فونت</h2>
-            <a class="section-link" id="viewAllNews">مشاهده همه <i class="fas fa-arrow-left"></i></a>
-        </div>
-        
-        <div class="news-grid">
-            <div class="news-card">
-                <div class="date"><i class="far fa-calendar-alt"></i> ۲۷ اردیبهشت ۱۴۰۵</div>
-                <h4>فونت‌های برگزیده در مسابقات فونت</h4>
-                <p>اگر برای طراحی برند، رابط کاربری، پوستر یا پروژه‌های حرفه‌ای به دنبال فونت فارسی خاص و معتبر هستید، احتمالاً عباراتی مثل «بهترین…</p>
-                <a class="read-more read-news" data-id="1">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
-            </div>
-            <div class="news-card">
-                <div class="date"><i class="far fa-calendar-alt"></i> ۲۳ اسفند ۱۴۰۴</div>
-                <h4>بهترین فونت‌های فارسی رایگان</h4>
-                <p>وبسایت فونت ایران در کنار فونت‌های حرفه‌ای و تجاری، مجموعه‌ای ارزشمند از فونت‌های فارسی رایگان را در اختیار طراحان، دانشجویان و…</p>
-                <a class="read-more read-news" data-id="2">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
-            </div>
-            <div class="news-card">
-                <div class="date"><i class="far fa-calendar-alt"></i> ۶ اسفند ۱۴۰۴</div>
-                <h4>فونت‌های مناسب تامنیل یوتیوب</h4>
-                <p>تامنیل ویدیوی شما در یوتیوب، بیلبورد محتوای شماست. با افزایش رقابت در شبکه‌های اجتماعی، مخاطب در چند ثانیه تصمیم می‌گیرد که روی…</p>
-                <a class="read-more read-news" data-id="3">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== مودال ورود ===== -->
-<div class="modal-overlay" id="loginModal">
-    <div class="modal">
-        <span class="close-modal" id="closeLoginModal"><i class="fas fa-times"></i></span>
-        <h2><i class="fas fa-user"></i> ورود به حساب</h2>
-        <input type="text" placeholder="نام کاربری یا ایمیل" id="loginUsername">
-        <input type="password" placeholder="رمز عبور" id="loginPassword">
-        <button class="btn-submit" id="loginSubmit"><i class="fas fa-sign-in-alt"></i> ورود</button>
-        <p>حساب ندارید؟ <a id="showRegister">ثبت‌نام کنید</a></p>
-    </div>
-</div>
-
-<!-- ===== مودال ثبت‌نام ===== -->
-<div class="modal-overlay" id="registerModal">
-    <div class="modal">
-        <span class="close-modal" id="closeRegisterModal"><i class="fas fa-times"></i></span>
-        <h2><i class="fas fa-user-plus"></i> ثبت‌نام</h2>
-        <input type="text" placeholder="نام و نام خانوادگی" id="registerName">
-        <input type="text" placeholder="ایمیل" id="registerEmail">
-        <input type="password" placeholder="رمز عبور" id="registerPassword">
-        <input type="password" placeholder="تکرار رمز عبور" id="registerPassword2">
-        <button class="btn-submit" id="registerSubmit"><i class="fas fa-user-plus"></i> ثبت‌نام</button>
-        <p>قبلاً ثبت‌نام کردید؟ <a id="showLogin">ورود</a></p>
-    </div>
-</div>
-
-<!-- ===== اسکرول به بالا ===== -->
-<button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
-
-<!-- ===== فوتر ===== -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4><i class="fas fa-font"></i> میم‌نون</h4>
-                <a href="#">درباره ما</a>
-                <a href="#">تماس با ما</a>
-                <a href="#">قوانین و مقررات</a>
-                <a href="#">حریم خصوصی</a>
-                <div class="social">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+    <main class="container">
+        <!-- ====== بخش پشتیبانی ====== -->
+        <section class="support-section">
+            <h2 style="color: #e63946; margin-bottom: 10px;">پشتیبانی</h2>
+            <div class="support-grid">
+                <div class="support-item">
+                    <h3>مشاوره خرید</h3>
+                    <p>مسلم ابراهیمی</p>
+                    <p style="color: #777;">اگر پیش از خرید نیاز به مشاوره دارید.</p>
+                </div>
+                <div class="support-item">
+                    <h3>مشکل نصب فونت</h3>
+                    <p>نرگس سدرهنشین</p>
+                    <p style="color: #777;">اگر در استفاده یا نصب فونت مشکل دارید.</p>
+                </div>
+                <div class="support-item">
+                    <h3>مشکل سایت</h3>
+                    <p>داوود فولادی</p>
+                    <p style="color: #777;">ثبت‌نام، خرید، دانلود و...</p>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4><i class="fas fa-list"></i> فونت‌ها</h4>
-                <a href="#">همه فونت‌ها</a>
-                <a href="#">محبوب‌ترین</a>
-                <a href="#">جدیدترین</a>
-                <a href="#">پرفروش‌ترین</a>
-                <a href="#">فونت‌های رایگان</a>
-            </div>
-            <div class="footer-col">
-                <h4><i class="fas fa-headset"></i> پشتیبانی</h4>
-                <a href="#">سوالات متداول</a>
-                <a href="#">راهنما</a>
-                <a href="#">ثبت تیکت</a>
-                <a href="#">گزارش مشکل</a>
-                <a href="#">پیشنهادات</a>
-            </div>
-            <div class="footer-col">
-                <h4><i class="fas fa-phone"></i> تماس</h4>
-                <a class="contact-info"><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴-۵۶۷۸</a>
-                <a><i class="fas fa-envelope"></i> info@mimnoon.com</a>
-                <a><i class="fas fa-map-marker-alt"></i> تهران، خیابان آزادی</a>
-                <a><i class="fas fa-clock"></i> شنبه تا چهارشنبه ۹ الی ۱۷</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <i class="fas fa-copyright"></i> تمامی حقوق متعلق به <strong>میم‌نون</strong> است &copy; ۲۰۲۶
-        </div>
-    </div>
-</footer>
+        </section>
 
-<!-- ===== جاوااسکریپت کامل ===== -->
-<script>
-    // ===== متغیرها =====
-    let cartCount = 0;
-    let cartItems = [];
-    
-    // ===== المنت‌ها =====
-    const cartCountEl = document.getElementById('cartCount');
-    const cartLink = document.getElementById('cartLink');
-    const loginBtn = document.getElementById('loginBtn');
-    const loginModalTrigger = document.getElementById('loginModalTrigger');
-    const loginModal = document.getElementById('loginModal');
-    const registerModal = document.getElementById('registerModal');
-    const closeLoginModal = document.getElementById('closeLoginModal');
-    const closeRegisterModal = document.getElementById('closeRegisterModal');
-    const showRegister = document.getElementById('showRegister');
-    const showLogin = document.getElementById('showLogin');
-    const loginSubmit = document.getElementById('loginSubmit');
-    const registerSubmit = document.getElementById('registerSubmit');
-    const scrollTopBtn = document.getElementById('scrollTop');
-    const toastContainer = document.createElement('div');
-    document.body.appendChild(toastContainer);
-    
-    // ===== توابع =====
-    function showToast(message, icon = 'fa-check-circle') {
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
-        document.body.appendChild(toast);
-        setTimeout(() => {
-            toast.style.opacity = '0';
-            toast.style.transform = 'translateX(100px)';
-            setTimeout(() => toast.remove(), 400);
-        }, 3000);
-    }
-    
-    function updateCart() {
-        cartCountEl.textContent = cartCount;
-        if (cartCount > 0) {
-            cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> سبد خرید (${cartCount})`;
-        } else {
-            cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> سبد خرید (۰)`;
-        }
-    }
-    
-    function addToCart(productName, price) {
-        cartCount++;
-        cartItems.push({ name: productName, price: price });
-        updateCart();
-        showToast(`${productName} به سبد خرید اضافه شد!`, 'fa-shopping-cart');
-    }
-    
-    function openModal(modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeModal(modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-    
-    function scrollToSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }
-    
-    // ===== رویدادهای دکمه افزودن به سبد خرید =====
-    document.querySelectorAll('.add-to-cart').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const card = this.closest('.product-card');
-            const name = card.dataset.name;
-            const price = card.dataset.price;
-            addToCart(name, price);
-            
-            // انیمیشن دکمه
-            this.classList.add('added');
-            this.innerHTML = '<i class="fas fa-check"></i> افزوده شد';
-            setTimeout(() => {
-                this.classList.remove('added');
-                this.innerHTML = '<i class="fas fa-shopping-cart"></i> افزودن به سبد خرید';
-            }, 2000);
-        });
-    });
-    
-    // ===== رویدادهای دکمه خرید لایسنس =====
-    document.querySelectorAll('.buy-license').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const plan = this.dataset.plan;
-            showToast(`لایسنس ${plan} با موفقیت به سبد خرید اضافه شد!`, 'fa-file-contract');
-            cartCount++;
-            updateCart();
-        });
-    });
-    
-    // ===== رویدادهای دکمه تماس پشتیبانی =====
-    document.querySelectorAll('.contact-support').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const name = this.dataset.name;
-            showToast(`شماره تماس ${name} برای شما ارسال شد!`, 'fa-phone');
-        });
-    });
-    
-    // ===== رویدادهای دکمه ادامه مطلب اخبار =====
-    document.querySelectorAll('.read-news').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const id = this.dataset.id;
-            showToast(`در حال باز کردن مقاله شماره ${id}...`, 'fa-newspaper');
-        });
-    });
-    
-    // ===== منوی هدر =====
-    document.querySelectorAll('nav a:not(.btn-login)').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-            this.classList.add('active');
-            
-            const text = this.textContent.trim();
-            if (text.includes('خانه')) {
-                scrollToSection('homeSection');
-            } else if (text.includes('فونت')) {
-                scrollToSection('productsSection');
-            } else if (text.includes('لایسنس')) {
-                scrollToSection('licenseSection');
-            } else if (text.includes('مقالات')) {
-                scrollToSection('newsSection');
-            } else if (text.includes('پشتیبانی')) {
-                scrollToSection('supportSection');
-            }
-        });
-    });
-    
-    // ===== دکمه مشاهده همه محصولات =====
-    document.getElementById('viewAllProducts').addEventListener('click', function(e) {
-        e.preventDefault();
-        showToast('در حال بارگذاری همه فونت‌ها...', 'fa-list');
-    });
-    
-    document.getElementById('heroProductsBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-        scrollToSection('productsSection');
-    });
-    
-    // ===== دکمه دمو =====
-    document.getElementById('demoBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-        showToast('در حال بارگذاری دمو...', 'fa-play-circle');
-    });
-    
-    // ===== دکمه‌های لایسنس =====
-    document.getElementById('viewAllLicenses').addEventListener('click', function(e) {
-        e.preventDefault();
-        showToast('در حال بارگذاری همه لایسنس‌ها...', 'fa-file-contract');
-    });
-    
-    document.getElementById('viewAllNews').addEventListener('click', function(e) {
-        e.preventDefault();
-        showToast('در حال بارگذاری همه مقالات...', 'fa-newspaper');
-    });
-    
-    // ===== مودال‌ها =====
-    loginBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        openModal(loginModal);
-    });
-    
-    loginModalTrigger.addEventListener('click', function(e) {
-        e.preventDefault();
-        openModal(loginModal);
-    });
-    
-    closeLoginModal.addEventListener('click', function() {
-        closeModal(loginModal);
-    });
-    
-    closeRegisterModal.addEventListener('click', function() {
-        closeModal(registerModal);
-    });
-    
-    showRegister.addEventListener('click', function(e) {
-        e.preventDefault();
-        closeModal(loginModal);
-        setTimeout(() => openModal(registerModal), 300);
-    });
-    
-    showLogin.addEventListener('click', function(e) {
-        e.preventDefault();
-        closeModal(registerModal);
-        setTimeout(() => openModal(loginModal), 300);
-    });
-    
-    loginSubmit.addEventListener('click', function() {
-        const username = document.getElementById('loginUsername').value;
-        const password = document.getElementById('loginPassword').value;
-        if (username && password) {
-            showToast('با موفقیت وارد شدید! خوش آمدید 👋', 'fa-user-check');
-            closeModal(loginModal);
-            document.getElementById('loginUsername').value = '';
-            document.getElementById('loginPassword').value = '';
-        } else {
-            showToast('لطفاً نام کاربری و رمز عبور را وارد کنید!', 'fa-exclamation-triangle');
-        }
-    });
-    
-    registerSubmit.addEventListener('click', function() {
-        const name = document.getElementById('registerName').value;
-        const email = document.getElementById('registerEmail').value;
-        const pass = document.getElementById('registerPassword').value;
-        const pass2 = document.getElementById('registerPassword2').value;
-        if (name && email && pass && pass2) {
-            if (pass === pass2) {
-                showToast('ثبت‌نام با موفقیت انجام شد! 🎉', 'fa-user-plus');
-                closeModal(registerModal);
-                document.getElementById('registerName').value = '';
-                document.getElementById('registerEmail').value = '';
-                document.getElementById('registerPassword').value = '';
-                document.getElementById('registerPassword2').value = '';
-            } else {
-                showToast('رمز عبور و تکرار آن مطابقت ندارند!', 'fa-exclamation-triangle');
-            }
-        } else {
-            showToast('لطفاً تمام فیلدها را پر کنید!', 'fa-exclamation-triangle');
-        }
-    });
-    
-    // ===== بستن مودال با کلیک بیرون =====
-    document.querySelectorAll('.modal-overlay').forEach(overlay => {
-        overlay.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal(this);
-            }
-        });
-    });
-    
-    // ===== اسکرول به بالا =====
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            scrollTopBtn.classList.add('show');
-        } else {
-            scrollTopBtn.classList.remove('show');
-        }
-    });
-    
-    scrollTopBtn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    
-    // ===== سبد خرید =====
-    cartLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (cartItems.length === 0) {
-            showToast('سبد خرید شما خالی است!', 'fa-shopping-cart');
-        } else {
-            let items = cartItems.map(item => `${item.name} (${item.price.toLocaleString()} تومان)`).join('\n');
-            showToast(`سبد خرید:\n${items}\n\nمجموع: ${cartItems.length} محصول`, 'fa-shopping-cart');
-        }
-    });
-    
-    // ===== لینک‌های فوتر =====
-    document.querySelectorAll('.footer-col a:not(.contact-info)').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const text = this.textContent.trim();
-            showToast(`در حال باز کردن صفحه "${text}"...`, 'fa-arrow-left');
-        });
-    });
-    
-    // ===== لینک‌های شبکه‌های اجتماعی =====
-    document.querySelectorAll('.social a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const platform = this.querySelector('i').className;
-            showToast(`در حال باز کردن ${platform.replace('fab fa-', '')}...`, 'fa-share-alt');
-        });
-    });
-    
-    // ===== لینک‌های نوار بالایی =====
-    document.querySelectorAll('.top-bar-left a, .top-bar-right a:not(#cartLink):not(#loginModalTrigger)').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const text = this.textContent.trim();
-            if (text.includes('پشتیبانی') || text.includes('۰۲۱')) {
-                showToast('در حال اتصال به پشتیبانی...', 'fa-headset');
-            } else {
-                showToast(`در حال باز کردن ${text}...`, 'fa-arrow-left');
-            }
-        });
-    });
-    
-    // ===== لینک "درباره ما" در هدر =====
-    document.querySelector('nav a:last-child:not(.btn-login)')?.addEventListener('click', function(e) {
-        e.preventDefault();
-        showToast('در حال باز کردن صفحه درباره ما...', 'fa-info-circle');
-    });
-    
-    console.log('🚀 میم‌نون | نسخه کامل و حرفه‌ای');
-    console.log('📦 تعداد محصولات: ۶ عدد');
-    console.log('💼 تعداد لایسنس‌ها: ۳ عدد');
-    console.log('👥 تعداد پشتیبانی: ۳ نفر');
-    console.log('📰 تعداد اخبار: ۳ عدد');
-</script>
+        <!-- ====== بخش لایسنسها ====== -->
+        <section class="license-section">
+            <h2 style="color: #e63946; margin-bottom: 10px;">لایسنس‌های فونت</h2>
+            <div class="license-grid">
+                <div class="license-card">
+                    <span class="license-tag">محبوب</span>
+                    <h3>نامحدود</h3>
+                    <p>مناسب برای سازمانها و شرکتهای بزرگ با زیر مجموعه‌های متعدد.</p>
+                </div>
+                <div class="license-card">
+                    <h3>سیستم‌های شخصی</h3>
+                    <p>نصب روی کامپیوتر و موبایل‌های شخصی. بدون محدودیت تعداد.</p>
+                </div>
+                <div class="license-card">
+                    <h3>وبسایت شخصی</h3>
+                    <p>برای پروژه‌های خوداشتغالی و شخصی.</p>
+                </div>
+                <div class="license-card">
+                    <h3>وبسایت شرکتی</h3>
+                    <p>استفاده در پروژه‌های تجاری.</p>
+                </div>
+                <div class="license-card">
+                    <h3>حقوقی</h3>
+                    <p>برای شرکتها، موسسات، سازمانها و دفاتر مطبوعاتی.</p>
+                </div>
+            </div>
+        </section>
 
+        <!-- ====== بخش اخبار ====== -->
+        <section class="news-section">
+            <h2 style="color: #e63946; margin-bottom: 20px;">اخبار فونت</h2>
+            <div class="news-item">
+                <div class="news-date">۲۷ اردیبهشت ۱۴۰۵</div>
+                <div class="news-title">فونت‌های برگزیده در مسابقات فونت</div>
+                <div class="news-excerpt">اگر برای طراحی برند، رابط کاربری، پوستر یا پروژه‌های حرفهای به دنبال فونت فارسی خاص و معتبر هستید...</div>
+            </div>
+            <div class="news-item">
+                <div class="news-date">۲۳ اسفند ۱۴۰۴</div>
+                <div class="news-title">بهترین فونت‌های فارسی رایگان</div>
+                <div class="news-excerpt">وبسایت فونت ایران در کنار فونت‌های حرفهای و تجاری، مجموعهای ارزشمند از فونت‌های فارسی رایگان را در اختیار طراحان قرار داده است...</div>
+            </div>
+            <div class="news-item">
+                <div class="news-date">۰۶ اسفند ۱۴۰۴</div>
+                <div class="news-title">فونت‌های مناسب تامنیل یوتیوب</div>
+                <div class="news-excerpt">تامنیل ویدیوی شما در یوتیوب، بیلبورد محتوای شماست. با افزایش رقابت در شبکه‌های اجتماعی...</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ====== فوتر (Footer) ====== -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>© تمامی حقوق برای <a href="#">فونت ایران</a> محفوظ است.</p>
+            <p style="margin-top: 8px; font-size: 13px;">این یک نمونه کد برای نمایش است و کد اصلی سایت نمی‌باشد.</p>
+        </div>
+    </footer>
 </body>
 </html>
