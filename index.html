@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خرید فونتهای فارسی با لایسنس قانونی | فونت ایران</title>
+    <title>نمونه اسلایدر و بخش پویا - فونت ایران</title>
     <style>
-        /* Reset و فونت پایه */
+        /* === RESET & BASE === */
         * {
             margin: 0;
             padding: 0;
@@ -13,284 +13,491 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
+            background: #f8f9fa;
             color: #333;
-            line-height: 1.6;
+            direction: rtl;
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* ---------- هدر (Header) ---------- */
-        .main-header {
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            padding: 15px 0;
-            border-bottom: 3px solid #e63946;
+        .section-title {
+            color: #e63946;
+            font-size: 28px;
+            margin: 40px 0 20px;
+            text-align: center;
         }
-        .header-content {
+
+        /* =============================================
+                   اسلایدر (SLIDER) با افکت محو
+                   ============================================= */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 30px auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            background: #1a1a2e;
+        }
+        .slides-wrapper {
+            position: relative;
+            height: 400px;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #e63946;
-        }
-        .logo span {
-            color: #333;
-        }
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-        .main-nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .main-nav a:hover {
-            color: #e63946;
-        }
-        .header-btn {
-            background-color: #e63946;
-            color: #fff !important;
-            padding: 8px 18px;
-            border-radius: 30px;
-            transition: background-color 0.2s;
-        }
-        .header-btn:hover {
-            background-color: #c1121f !important;
-        }
-
-        /* ---------- بخش پشتیبانی (مشابه بخش ابتدایی) ---------- */
-        .support-section {
-            background-color: #fff;
-            padding: 40px 0;
-            margin: 30px 0;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-        .support-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-        .support-item {
-            background: #f8f9fa;
+            justify-content: center;
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
             padding: 20px;
-            border-radius: 8px;
-            border-right: 4px solid #e63946;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
         }
-        .support-item h3 {
-            font-size: 18px;
-            color: #e63946;
-            margin-bottom: 8px;
+        .slide.active {
+            opacity: 1;
+            z-index: 10;
         }
-        .support-item p {
-            color: #555;
-            font-size: 14px;
+        /* اسلایدهای نمونه با رنگهای گرادیان (بهجای تصویر) */
+        .slide:nth-child(1) {
+            background: linear-gradient(135deg, #e63946, #f4a261);
+        }
+        .slide:nth-child(2) {
+            background: linear-gradient(135deg, #2a9d8f, #264653);
+        }
+        .slide:nth-child(3) {
+            background: linear-gradient(135deg, #6d597a, #b56576);
+        }
+        .slide:nth-child(4) {
+            background: linear-gradient(135deg, #1d3557, #457b9d);
+        }
+        /* دکمههای اسلایدر */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(6px);
+            color: #fff;
+            border: none;
+            padding: 14px 20px;
+            cursor: pointer;
+            font-size: 24px;
+            border-radius: 50%;
+            z-index: 20;
+            transition: 0.3s;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slider-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        .slider-btn.prev {
+            right: 15px;
+        }
+        .slider-btn.next {
+            left: 15px;
+        }
+        /* نقطه‌های پایین اسلایدر */
+        .dots-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 20;
+        }
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .dot.active {
+            background: #fff;
+            transform: scale(1.2);
+            border-color: #fff;
         }
 
-        /* ---------- بخش لایسنسها (محصولات) ---------- */
-        .license-section {
-            padding: 40px 0;
-        }
-        .license-grid {
+        /* =============================================
+                   بخش محصولات پویا (با جاوااسکریپت)
+                   ============================================= */
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin: 20px 0 40px;
         }
-        .license-card {
+        .product-card {
             background: #fff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            transition: transform 0.2s, box-shadow 0.2s;
+            padding: 25px 20px;
+            border-radius: 14px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: 0.3s;
+            border-bottom: 4px solid transparent;
         }
-        .license-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+            border-bottom-color: #e63946;
         }
-        .license-card h3 {
+        .product-card .icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+        .product-card h3 {
             color: #e63946;
-            margin-bottom: 12px;
-            font-size: 20px;
+            margin: 10px 0 8px;
         }
-        .license-card p {
-            color: #555;
-            font-size: 14px;
-            margin-bottom: 15px;
+        .product-card .price {
+            font-weight: bold;
+            color: #2a9d8f;
+            font-size: 18px;
+            margin: 10px 0;
         }
-        .license-tag {
+        .product-card .badge {
             display: inline-block;
             background: #e63946;
             color: #fff;
-            padding: 4px 14px;
+            padding: 3px 14px;
             border-radius: 30px;
             font-size: 12px;
             font-weight: bold;
         }
 
-        /* ---------- بخش اخبار ---------- */
-        .news-section {
+        /* =============================================
+                   نظرات کاربران (پویا)
+                   ============================================= */
+        .testimonial-box {
             background: #fff;
-            padding: 40px 0;
-            margin: 30px 0;
-            border-radius: 12px;
-        }
-        .news-item {
-            border-bottom: 1px solid #eee;
-            padding: 20px 0;
-        }
-        .news-item:last-child {
-            border-bottom: none;
-        }
-        .news-date {
-            color: #e63946;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .news-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin: 5px 0;
-        }
-        .news-excerpt {
-            color: #555;
-            font-size: 14px;
-        }
-
-        /* ---------- فوتر (Footer) ---------- */
-        .main-footer {
-            background: #222;
-            color: #aaa;
-            padding: 30px 0;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+            margin: 20px 0 40px;
             text-align: center;
-            margin-top: 40px;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: 0.5s;
         }
-        .main-footer a {
+        .testimonial-text {
+            font-size: 20px;
+            color: #222;
+            font-style: italic;
+        }
+        .testimonial-author {
+            margin-top: 12px;
+            font-weight: bold;
             color: #e63946;
-            text-decoration: none;
+        }
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .testimonial-controls button {
+            background: #e63946;
+            color: #fff;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .testimonial-controls button:hover {
+            background: #c1121f;
         }
 
-        /* ریسپانسیو */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
+        /* =============================================
+                   بنر تبلیغاتی متحرک
+                   ============================================= */
+        .ad-banner {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            padding: 25px 30px;
+            border-radius: 14px;
+            margin: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            animation: pulseGlow 2s infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 rgba(230, 57, 70, 0.3);
             }
-            .main-nav ul {
-                justify-content: center;
-                gap: 15px;
+            100% {
+                box-shadow: 0 0 25px rgba(230, 57, 70, 0.6);
+            }
+        }
+        .ad-banner h3 {
+            font-size: 22px;
+        }
+        .ad-banner .btn {
+            background: #e63946;
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .ad-banner .btn:hover {
+            background: #c1121f;
+            transform: scale(1.03);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                font-size: 20px;
+            }
+            .slides-wrapper {
+                height: 280px;
+            }
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                padding: 8px;
+            }
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            }
+            .ad-banner {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- ====== هدر (Header) ====== -->
-    <header class="main-header">
-        <div class="container header-content">
-            <div class="logo">فونت <span>ایران</span></div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#">فروشگاه</a></li>
-                    <li><a href="#">طراحان</a></li>
-                    <li><a href="#">اخبار</a></li>
-                    <li><a href="#">آموزش</a></li>
-                    <li><a href="#" class="header-btn">ورود / ثبت‌نام</a></li>
-                </ul>
-            </nav>
+
+    <div class="container">
+
+        <!-- ==========================================
+        اسلایدر (Slider) خودکار با دکمه
+        ========================================== -->
+        <h2 class="section-title">✨ جدیدترین فونت‌های ایران</h2>
+        <div class="slider-container">
+            <div class="slides-wrapper" id="sliderWrapper">
+                <!-- اسلایدها با محتوای نمونه -->
+                <div class="slide active">🎨 فونت <strong>وزیری</strong> – مناسب برای متون ادبی</div>
+                <div class="slide">💼 فونت <strong>دانشجو</strong> – ویژه پایان‌نامه و گزارش</div>
+                <div class="slide">🖥️ فونت <strong>کدینگ</strong> – ایده‌آل برای برنامه‌نویسان</div>
+                <div class="slide">📱 فونت <strong>موبایل</strong> – خوانایی عالی در صفحه‌نمایش</div>
+            </div>
+
+            <!-- دکمه‌های قبلی و بعدی -->
+            <button class="slider-btn prev" id="prevSlide">❮</button>
+            <button class="slider-btn next" id="nextSlide">❯</button>
+
+            <!-- نقطه‌های پایین -->
+            <div class="dots-container" id="dotsContainer"></div>
         </div>
-    </header>
 
-    <main class="container">
-        <!-- ====== بخش پشتیبانی ====== -->
-        <section class="support-section">
-            <h2 style="color: #e63946; margin-bottom: 10px;">پشتیبانی</h2>
-            <div class="support-grid">
-                <div class="support-item">
-                    <h3>مشاوره خرید</h3>
-                    <p>مسلم ابراهیمی</p>
-                    <p style="color: #777;">اگر پیش از خرید نیاز به مشاوره دارید.</p>
-                </div>
-                <div class="support-item">
-                    <h3>مشکل نصب فونت</h3>
-                    <p>نرگس سدرهنشین</p>
-                    <p style="color: #777;">اگر در استفاده یا نصب فونت مشکل دارید.</p>
-                </div>
-                <div class="support-item">
-                    <h3>مشکل سایت</h3>
-                    <p>داوود فولادی</p>
-                    <p style="color: #777;">ثبت‌نام، خرید، دانلود و...</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ====== بخش لایسنسها ====== -->
-        <section class="license-section">
-            <h2 style="color: #e63946; margin-bottom: 10px;">لایسنس‌های فونت</h2>
-            <div class="license-grid">
-                <div class="license-card">
-                    <span class="license-tag">محبوب</span>
-                    <h3>نامحدود</h3>
-                    <p>مناسب برای سازمانها و شرکتهای بزرگ با زیر مجموعه‌های متعدد.</p>
-                </div>
-                <div class="license-card">
-                    <h3>سیستم‌های شخصی</h3>
-                    <p>نصب روی کامپیوتر و موبایل‌های شخصی. بدون محدودیت تعداد.</p>
-                </div>
-                <div class="license-card">
-                    <h3>وبسایت شخصی</h3>
-                    <p>برای پروژه‌های خوداشتغالی و شخصی.</p>
-                </div>
-                <div class="license-card">
-                    <h3>وبسایت شرکتی</h3>
-                    <p>استفاده در پروژه‌های تجاری.</p>
-                </div>
-                <div class="license-card">
-                    <h3>حقوقی</h3>
-                    <p>برای شرکتها، موسسات، سازمانها و دفاتر مطبوعاتی.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ====== بخش اخبار ====== -->
-        <section class="news-section">
-            <h2 style="color: #e63946; margin-bottom: 20px;">اخبار فونت</h2>
-            <div class="news-item">
-                <div class="news-date">۲۷ اردیبهشت ۱۴۰۵</div>
-                <div class="news-title">فونت‌های برگزیده در مسابقات فونت</div>
-                <div class="news-excerpt">اگر برای طراحی برند، رابط کاربری، پوستر یا پروژه‌های حرفهای به دنبال فونت فارسی خاص و معتبر هستید...</div>
-            </div>
-            <div class="news-item">
-                <div class="news-date">۲۳ اسفند ۱۴۰۴</div>
-                <div class="news-title">بهترین فونت‌های فارسی رایگان</div>
-                <div class="news-excerpt">وبسایت فونت ایران در کنار فونت‌های حرفهای و تجاری، مجموعهای ارزشمند از فونت‌های فارسی رایگان را در اختیار طراحان قرار داده است...</div>
-            </div>
-            <div class="news-item">
-                <div class="news-date">۰۶ اسفند ۱۴۰۴</div>
-                <div class="news-title">فونت‌های مناسب تامنیل یوتیوب</div>
-                <div class="news-excerpt">تامنیل ویدیوی شما در یوتیوب، بیلبورد محتوای شماست. با افزایش رقابت در شبکه‌های اجتماعی...</div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ====== فوتر (Footer) ====== -->
-    <footer class="main-footer">
-        <div class="container">
-            <p>© تمامی حقوق برای <a href="#">فونت ایران</a> محفوظ است.</p>
-            <p style="margin-top: 8px; font-size: 13px;">این یک نمونه کد برای نمایش است و کد اصلی سایت نمی‌باشد.</p>
+        <!-- ==========================================
+        محصولات / لایسنس‌ها (پویا با JS)
+        ========================================== -->
+        <h2 class="section-title">🛒 لایسنس‌های محبوب</h2>
+        <div class="product-grid" id="productGrid">
+            <!-- توسط جاوااسکریپت پر می‌شود -->
         </div>
-    </footer>
+
+        <!-- ==========================================
+        نظرات کاربران (پویا)
+        ========================================== -->
+        <h2 class="section-title">💬 نظرات کاربران</h2>
+        <div class="testimonial-box" id="testimonialBox">
+            <p class="testimonial-text" id="testimonialText">"فونت‌های ایران کیفیت فوق‌العاده‌ای دارند. طراحی حرفه‌ای و پشتیبانی عالی!"</p>
+            <p class="testimonial-author" id="testimonialAuthor">— احمد رضایی، طراح گرافیک</p>
+        </div>
+        <div class="testimonial-controls">
+            <button id="prevTestimonial">نظر قبلی</button>
+            <button id="nextTestimonial">نظر بعدی</button>
+        </div>
+
+        <!-- ==========================================
+        بنر تبلیغاتی متحرک
+        ========================================== -->
+        <div class="ad-banner">
+            <div>
+                <h3>🎁 تخفیف ویژه نوروز</h3>
+                <p style="opacity:0.9;">تا ۴۰٪ کاهش قیمت روی همه لایسنس‌ها</p>
+            </div>
+            <a href="#" class="btn">خرید با تخفیف</a>
+        </div>
+
+    </div>
+
+    <!-- ==========================================
+    جاوااسکریپت (همه بخش‌های پویا)
+    ========================================== -->
+    <script>
+        // ============================
+        // 1. اسلایدر
+        // ============================
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.getElementById('dotsContainer');
+        let currentSlide = 0;
+        let slideInterval;
+
+        // ایجاد نقطه‌ها
+        slides.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.dataset.index = index;
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function goToSlide(index) {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+            });
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            goToSlide((currentSlide + 1) % slides.length);
+        }
+
+        function prevSlide() {
+            goToSlide((currentSlide - 1 + slides.length) % slides.length);
+        }
+
+        // دکمه‌ها
+        document.getElementById('nextSlide').addEventListener('click', () => {
+            nextSlide();
+            resetInterval();
+        });
+        document.getElementById('prevSlide').addEventListener('click', () => {
+            prevSlide();
+            resetInterval();
+        });
+
+        // تایمر خودکار
+        function startInterval() {
+            slideInterval = setInterval(nextSlide, 4000);
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+        startInterval();
+
+        // ============================
+        // 2. محصولات (دیتا پویا)
+        // ============================
+        const products = [{
+            icon: '📄',
+            name: 'لایسنس شخصی',
+            desc: 'استفاده در پروژه‌های شخصی',
+            price: '۲۵۰,۰۰۰ تومان',
+            badge: 'پرفروش'
+        }, {
+            icon: '🏢',
+            name: 'لایسنس شرکتی',
+            desc: 'مناسب برای تیم‌های حرفه‌ای',
+            price: '۷۸۰,۰۰۰ تومان',
+            badge: 'جدید'
+        }, {
+            icon: '♾️',
+            name: 'لایسنس نامحدود',
+            desc: 'برای سازمان‌های بزرگ',
+            price: '۲,۴۰۰,۰۰۰ تومان',
+            badge: 'ویژه'
+        }, {
+            icon: '📱',
+            name: 'لایسنس وب‌اپ',
+            desc: 'استفاده در وب‌سایت و اپلیکیشن',
+            price: '۴۲۰,۰۰۰ تومان',
+            badge: ''
+        }];
+
+        const grid = document.getElementById('productGrid');
+        products.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                        <div class="icon">${p.icon}</div>
+                        <h3>${p.name}</h3>
+                        <p>${p.desc}</p>
+                        <div class="price">${p.price}</div>
+                        ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
+                    `;
+            grid.appendChild(card);
+        });
+
+        // ============================
+        // 3. نظرات پویا
+        // ============================
+        const testimonials = [{
+            text: '"فونت‌های ایران کیفیت فوق‌العاده‌ای دارند. طراحی حرفه‌ای و پشتیبانی عالی!"',
+            author: '— احمد رضایی، طراح گرافیک'
+        }, {
+            text: '"من از فونت وزیری برای پایان‌نامه استفاده کردم. استادم از خوانایی آن تعریف کرد."',
+            author: '— سارا محمدی، دانشجوی ارشد'
+        }, {
+            text: '"بهترین فونت‌های فارسی برای محیط کدنویسی. چشم‌ها خسته نمی‌شوند."',
+            author: '— علی کریمی، برنامه‌نویس'
+        }, {
+            text: '"بسته لایسنس نامحدود برای شرکت ما عالی بود. توصیه می‌کنم."',
+            author: '— مدیرعامل یک استارتاپ'
+        }];
+
+        let currentTestimonial = 0;
+        const textEl = document.getElementById('testimonialText');
+        const authorEl = document.getElementById('testimonialAuthor');
+
+        function updateTestimonial(index) {
+            const t = testimonials[index];
+            textEl.textContent = t.text;
+            authorEl.textContent = t.author;
+        }
+
+        document.getElementById('nextTestimonial').addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            updateTestimonial(currentTestimonial);
+        });
+
+        document.getElementById('prevTestimonial').addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            updateTestimonial(currentTestimonial);
+        });
+    </script>
+
 </body>
 </html>
