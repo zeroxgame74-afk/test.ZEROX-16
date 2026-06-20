@@ -10,11 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome برای آیکون‌ها -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <style>
-        /* ===== ریست ===== */
+        /* ===== ریست کامل ===== */
         * {
             margin: 0;
             padding: 0;
@@ -34,6 +34,10 @@
             color: inherit;
         }
         
+        ul {
+            list-style: none;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -44,17 +48,85 @@
             --yellow: #FFC800;
             --dark: #292929;
             --dark-light: #3d3d3d;
+            --dark-hover: #4a4a4a;
             --gray: #888888;
+            --light-gray: #aaaaaa;
+        }
+        
+        /* ===== اسکرول بار ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--yellow);
+            border-radius: 10px;
         }
         
         /* ===== هدر ===== */
+        .top-bar {
+            background: #1a1a1a;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+            font-size: 13px;
+        }
+        
+        .top-bar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .top-bar-left {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .top-bar-left a {
+            color: var(--gray);
+            transition: 0.3s;
+        }
+        
+        .top-bar-left a:hover {
+            color: var(--yellow);
+        }
+        
+        .top-bar-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .top-bar-right span {
+            color: var(--gray);
+        }
+        
+        .top-bar-right a {
+            color: var(--gray);
+            transition: 0.3s;
+        }
+        
+        .top-bar-right a:hover {
+            color: var(--yellow);
+        }
+        
+        .top-bar-right .phone {
+            color: var(--yellow);
+            font-weight: 800;
+        }
+        
         header {
             background: var(--dark);
-            border-bottom: 3px solid var(--yellow);
-            padding: 15px 0;
+            padding: 18px 0;
             position: sticky;
             top: 0;
             z-index: 999;
+            border-bottom: 3px solid var(--yellow);
         }
         
         .header-inner {
@@ -66,19 +138,24 @@
         }
         
         .logo {
-            font-size: 30px;
+            font-size: 32px;
             font-weight: 900;
             color: var(--yellow);
             letter-spacing: -1px;
         }
         
         .logo i {
-            margin-left: 8px;
+            margin-left: 10px;
+        }
+        
+        .logo span {
+            color: var(--white);
+            font-weight: 700;
         }
         
         nav {
             display: flex;
-            gap: 20px;
+            gap: 8px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -86,9 +163,14 @@
         nav a {
             font-weight: 700;
             font-size: 15px;
-            padding: 8px 12px;
+            padding: 8px 16px;
             border-radius: 8px;
             transition: 0.3s;
+            position: relative;
+        }
+        
+        nav a i {
+            margin-left: 6px;
         }
         
         nav a:hover {
@@ -96,10 +178,15 @@
             color: var(--dark);
         }
         
+        nav a.active {
+            background: var(--yellow);
+            color: var(--dark);
+        }
+        
         .btn-login {
             background: var(--yellow);
             color: var(--dark);
-            padding: 10px 25px;
+            padding: 10px 28px;
             border-radius: 30px;
             font-weight: 800;
             font-size: 14px;
@@ -108,39 +195,91 @@
             transition: 0.3s;
         }
         
+        .btn-login i {
+            margin-left: 6px;
+        }
+        
         .btn-login:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 200, 0, 0.4);
+            box-shadow: 0 0 25px rgba(255, 200, 0, 0.4);
         }
         
         /* ===== بخش قهرمان ===== */
         .hero {
-            padding: 90px 0 70px;
+            padding: 100px 0 80px;
             text-align: center;
-            background: linear-gradient(180deg, #1a1a1a 0%, #292929 100%);
+            background: linear-gradient(180deg, #1a1a1a 0%, #292929 50%, #1f1f1f 100%);
+            position: relative;
+            overflow: hidden;
         }
         
-        .hero h1 {
-            font-size: 52px;
-            font-weight: 900;
-            color: var(--yellow);
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255,200,0,0.05) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 6px 24px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 14px;
             margin-bottom: 20px;
         }
         
-        .hero h1 span {
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--yellow);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero h1 .highlight {
             background: var(--yellow);
             color: var(--dark);
-            padding: 0 15px;
-            border-radius: 10px;
+            padding: 0 18px;
+            border-radius: 12px;
             display: inline-block;
         }
         
         .hero p {
             font-size: 20px;
             font-weight: 700;
-            max-width: 700px;
-            margin: 0 auto 35px;
+            max-width: 750px;
+            margin: 0 auto 40px;
             color: #ddd;
+            line-height: 2;
+        }
+        
+        .hero p i {
+            color: var(--yellow);
+            margin-left: 8px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
         .btn-cta {
@@ -153,7 +292,9 @@
             border: none;
             cursor: pointer;
             transition: 0.3s;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .btn-cta:hover {
@@ -161,9 +302,29 @@
             box-shadow: 0 8px 35px rgba(255, 200, 0, 0.35);
         }
         
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 18px;
+            border: 2px solid var(--yellow);
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--yellow);
+            color: var(--dark);
+        }
+        
         /* ===== بخش محصولات ===== */
         .products {
-            padding: 80px 0;
+            padding: 90px 0;
         }
         
         .section-header {
@@ -171,11 +332,11 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
         
         .section-title {
-            font-size: 32px;
+            font-size: 34px;
             font-weight: 900;
             color: var(--yellow);
             position: relative;
@@ -184,11 +345,15 @@
         .section-title::after {
             content: '';
             display: block;
-            width: 70px;
+            width: 80px;
             height: 4px;
             background: var(--yellow);
             margin-top: 8px;
             border-radius: 4px;
+        }
+        
+        .section-title i {
+            margin-left: 12px;
         }
         
         .section-link {
@@ -196,10 +361,9 @@
             font-weight: 700;
             font-size: 16px;
             transition: 0.3s;
-        }
-        
-        .section-link i {
-            margin-right: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .section-link:hover {
@@ -215,8 +379,8 @@
         .product-card {
             background: var(--dark-light);
             border-radius: 16px;
-            padding: 28px 22px 22px;
-            transition: 0.3s;
+            padding: 30px 24px 24px;
+            transition: 0.4s;
             border: 2px solid transparent;
             text-align: center;
             position: relative;
@@ -224,8 +388,8 @@
         
         .product-card:hover {
             border-color: var(--yellow);
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.6);
         }
         
         .product-badge {
@@ -234,10 +398,22 @@
             right: -12px;
             background: var(--yellow);
             color: var(--dark);
-            padding: 4px 16px;
+            padding: 4px 18px;
             border-radius: 30px;
             font-weight: 800;
             font-size: 12px;
+            box-shadow: 0 4px 15px rgba(255,200,0,0.3);
+        }
+        
+        .product-badge.hot {
+            background: #ff4444;
+            color: white;
+        }
+        
+        .product-image {
+            font-size: 48px;
+            color: var(--yellow);
+            margin-bottom: 10px;
         }
         
         .product-name {
@@ -255,8 +431,19 @@
             margin-bottom: 12px;
         }
         
+        .product-rating {
+            color: var(--yellow);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .product-rating span {
+            color: var(--gray);
+            font-weight: 700;
+        }
+        
         .product-price {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 900;
             color: var(--yellow);
             margin: 12px 0;
@@ -266,6 +453,13 @@
             font-size: 16px;
             font-weight: 700;
             color: var(--gray);
+        }
+        
+        .product-price .old {
+            color: var(--gray);
+            text-decoration: line-through;
+            font-size: 18px;
+            margin-left: 10px;
         }
         
         .btn-buy {
@@ -279,6 +473,10 @@
             cursor: pointer;
             transition: 0.3s;
             width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         
         .btn-buy:hover {
@@ -288,7 +486,7 @@
         
         /* ===== بخش لایسنس ===== */
         .license {
-            padding: 80px 0;
+            padding: 90px 0;
             background: #1f1f1f;
         }
         
@@ -296,94 +494,145 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 40px;
+            margin-top: 45px;
         }
         
         .license-card {
             background: var(--dark-light);
-            padding: 40px 30px;
+            padding: 45px 30px 35px;
             border-radius: 16px;
             text-align: center;
             border-top: 6px solid var(--yellow);
-            transition: 0.3s;
+            transition: 0.4s;
+            position: relative;
         }
         
         .license-card:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        
+        .license-card.popular {
+            border-top-color: #ff4444;
+        }
+        
+        .license-card .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff4444;
+            color: white;
+            padding: 4px 20px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 12px;
         }
         
         .license-card h3 {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 900;
             color: var(--yellow);
             margin-bottom: 10px;
         }
         
+        .license-card h3 i {
+            margin-left: 10px;
+        }
+        
         .license-card .price {
-            font-size: 32px;
+            font-size: 34px;
             font-weight: 900;
             color: var(--white);
             margin: 15px 0;
         }
         
+        .license-card .price small {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray);
+        }
+        
         .license-card ul {
-            list-style: none;
             text-align: right;
             padding: 0;
             margin: 25px 0;
         }
         
         .license-card ul li {
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px solid #444;
             font-weight: 700;
             font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .license-card ul li i {
             color: var(--yellow);
-            margin-left: 10px;
+            width: 20px;
         }
         
         .btn-license {
             background: var(--yellow);
             color: var(--dark);
             border: none;
-            padding: 12px 35px;
+            padding: 14px 40px;
             border-radius: 30px;
             font-weight: 800;
             font-size: 16px;
             cursor: pointer;
             transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .btn-license:hover {
             opacity: 0.85;
-            transform: scale(1.04);
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(255,200,0,0.3);
         }
         
         /* ===== بخش پشتیبانی ===== */
         .support {
-            padding: 70px 0;
+            padding: 80px 0;
         }
         
         .support-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 35px;
         }
         
         .support-item {
             background: var(--dark-light);
-            padding: 30px 25px;
+            padding: 35px 25px;
             border-radius: 16px;
             text-align: center;
             transition: 0.3s;
+            border: 2px solid transparent;
         }
         
         .support-item:hover {
-            background: #4a4a4a;
+            border-color: var(--yellow);
+            transform: translateY(-5px);
+        }
+        
+        .support-item .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 36px;
+            color: var(--dark);
+            font-weight: 900;
         }
         
         .support-item i {
@@ -395,7 +644,7 @@
         .support-item h4 {
             font-weight: 800;
             font-size: 18px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
         .support-item p {
@@ -404,68 +653,136 @@
             font-size: 14px;
         }
         
+        .support-item .contact-btn {
+            margin-top: 12px;
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+        
+        .support-item .contact-btn:hover {
+            transform: scale(1.05);
+        }
+        
         /* ===== بخش اخبار ===== */
         .news {
-            padding: 70px 0;
+            padding: 80px 0;
             background: #1f1f1f;
         }
         
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 35px;
         }
         
         .news-card {
             background: var(--dark-light);
-            padding: 25px;
+            padding: 30px;
             border-radius: 16px;
             transition: 0.3s;
-            border-right: 4px solid var(--yellow);
+            border-right: 5px solid var(--yellow);
+            cursor: pointer;
         }
         
         .news-card:hover {
-            transform: translateX(-6px);
+            transform: translateX(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
         }
         
         .news-card .date {
             color: var(--yellow);
             font-weight: 700;
             font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         
         .news-card h4 {
             font-weight: 800;
-            font-size: 18px;
-            margin: 8px 0;
+            font-size: 19px;
+            margin: 10px 0 8px;
         }
         
         .news-card p {
             font-weight: 700;
             color: #bbb;
             font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .news-card .read-more {
+            color: var(--yellow);
+            font-weight: 800;
+            font-size: 14px;
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+        }
+        
+        .news-card .read-more:hover {
+            gap: 12px;
+        }
+        
+        /* ===== بخش آمار ===== */
+        .stats {
+            padding: 60px 0;
+            background: var(--dark);
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stats-item .number {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--yellow);
+        }
+        
+        .stats-item .label {
+            font-weight: 700;
+            color: var(--gray);
+            font-size: 16px;
+            margin-top: 4px;
         }
         
         /* ===== فوتر ===== */
         footer {
             background: #1a1a1a;
-            padding: 60px 0 30px;
+            padding: 70px 0 30px;
             border-top: 3px solid var(--yellow);
         }
         
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
         
         .footer-col h4 {
             color: var(--yellow);
             font-weight: 900;
             font-size: 18px;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .footer-col a {
@@ -473,7 +790,7 @@
             color: #bbb;
             font-weight: 700;
             font-size: 14px;
-            padding: 5px 0;
+            padding: 6px 0;
             transition: 0.3s;
         }
         
@@ -486,6 +803,31 @@
             color: var(--yellow);
             font-weight: 800;
             font-size: 16px;
+        }
+        
+        .footer-col .social {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        
+        .footer-col .social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--dark-light);
+            color: var(--white);
+            transition: 0.3s;
+            padding: 0;
+        }
+        
+        .footer-col .social a:hover {
+            background: var(--yellow);
+            color: var(--dark);
+            transform: translateY(-3px);
         }
         
         .footer-bottom {
@@ -502,13 +844,21 @@
         }
         
         /* ===== ریسپانسیو ===== */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .hero h1 {
-                font-size: 32px;
+                font-size: 42px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar-inner {
+                flex-direction: column;
+                text-align: center;
             }
             
-            .hero p {
-                font-size: 17px;
+            .top-bar-left, .top-bar-right {
+                justify-content: center;
+                flex-wrap: wrap;
             }
             
             .header-inner {
@@ -519,7 +869,30 @@
             
             nav {
                 justify-content: center;
-                gap: 12px;
+                gap: 6px;
+            }
+            
+            nav a {
+                font-size: 13px;
+                padding: 6px 12px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 17px;
+            }
+            
+            .btn-cta {
+                font-size: 16px;
+                padding: 14px 30px;
+            }
+            
+            .btn-secondary {
+                font-size: 14px;
+                padding: 14px 25px;
             }
             
             .section-title {
@@ -533,6 +906,14 @@
             .license-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -540,9 +921,9 @@
                 font-size: 24px;
             }
             
-            .btn-cta {
-                font-size: 16px;
-                padding: 14px 30px;
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
             }
             
             .product-grid {
@@ -557,21 +938,50 @@
             .product-name {
                 font-size: 20px;
             }
+            
+            .product-price {
+                font-size: 20px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- ===== هدر ===== -->
+<!-- ===== نوار بالایی ===== -->
+<div class="top-bar">
+    <div class="container top-bar-inner">
+        <div class="top-bar-left">
+            <a href="#"><i class="fas fa-phone"></i> پشتیبانی: ۰۲۱-۱۲۳۴-۵۶۷۸</a>
+            <a href="#"><i class="fas fa-envelope"></i> info@mimnoon.com</a>
+        </div>
+        <div class="top-bar-right">
+            <span><i class="fas fa-clock"></i> شنبه تا چهارشنبه ۹ الی ۱۷</span>
+            <a href="#"><i class="fas fa-shopping-cart"></i> سبد خرید (۰)</a>
+            <a href="#"><i class="fas fa-user"></i> حساب کاربری</a>
+            <span class="phone"><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴-۵۶۷۸</span>
+        </div>
+    </div>
+</div>
+
+<!-- ===== هدر اصلی ===== -->
 <header>
     <div class="container header-inner">
-        <div class="logo"><i class="fas fa-font"></i> میم‌نون</div>
+        <div class="logo"><i class="fas fa-font"></i> میم<span>نون</span></div>
         <nav>
-            <a href="#"><i class="fas fa-home"></i> خانه</a>
+            <a href="#" class="active"><i class="fas fa-home"></i> خانه</a>
             <a href="#"><i class="fas fa-list"></i> فونت‌ها</a>
             <a href="#"><i class="fas fa-file-contract"></i> لایسنس</a>
             <a href="#"><i class="fas fa-newspaper"></i> مقالات</a>
             <a href="#"><i class="fas fa-headset"></i> پشتیبانی</a>
+            <a href="#"><i class="fas fa-info-circle"></i> درباره ما</a>
             <button class="btn-login"><i class="fas fa-user"></i> ورود / ثبت‌نام</button>
         </nav>
     </div>
@@ -579,18 +989,23 @@
 
 <!-- ===== بخش قهرمان ===== -->
 <section class="hero">
-    <div class="container">
+    <div class="container hero-content">
+        <div class="hero-badge"><i class="fas fa-star"></i> بیش از ۵۰۰ فونت حرفه‌ای</div>
         <h1>
-            خرید <span>فونت قانونی</span><br>
+            خرید <span class="highlight">فونت قانونی</span><br>
             با کیفیت بالا
         </h1>
         <p>
-            <i class="fas fa-check-circle" style="color: var(--yellow);"></i> 
-            بزرگترین مرجع فروش فونت‌های فارسی با لایسنس معتبر
+            <i class="fas fa-check-circle"></i> بزرگترین مرجع فروش فونت‌های فارسی با لایسنس معتبر
             <br>
-            مناسب برای برندها، وب‌سایت‌ها و پروژه‌های تجاری
+            <i class="fas fa-check-circle"></i> مناسب برای برندها، وب‌سایت‌ها و پروژه‌های تجاری
+            <br>
+            <i class="fas fa-check-circle"></i> پشتیبانی ۲۴ ساعته و ضمانت بازگشت وجه
         </p>
-        <a href="#" class="btn-cta"><i class="fas fa-arrow-left"></i> مشاهده همه فونت‌ها</a>
+        <div class="hero-buttons">
+            <a href="#" class="btn-cta"><i class="fas fa-arrow-left"></i> مشاهده همه فونت‌ها</a>
+            <a href="#" class="btn-secondary"><i class="fas fa-play-circle"></i> مشاهده دمو</a>
+        </div>
     </div>
 </section>
 
@@ -598,37 +1013,61 @@
 <section class="products">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">محبوب‌ترین فونت‌ها</h2>
+            <h2 class="section-title"><i class="fas fa-fire"></i> محبوب‌ترین فونت‌ها</h2>
             <a href="#" class="section-link">مشاهده همه <i class="fas fa-arrow-left"></i></a>
         </div>
         
         <div class="product-grid">
             <div class="product-card">
-                <span class="product-badge">پرفروش</span>
+                <span class="product-badge hot"><i class="fas fa-fire"></i> پرفروش</span>
+                <div class="product-image"><i class="fas fa-font"></i></div>
                 <div class="product-name" style="font-weight: 900;">Vazirmatn</div>
                 <div class="product-name-fa">وزیرمتن</div>
-                <div class="product-price">۲۹۰,۰۰۰ <small>تومان</small></div>
-                <button class="btn-buy"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-name" style="font-weight: 800;">Avaye Firooz</div>
-                <div class="product-name-fa">آوای فیروز</div>
-                <div class="product-price">۳۵۰,۰۰۰ <small>تومان</small></div>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <span>(۱۲۴)</span>
+                </div>
+                <div class="product-price">
+                    <span class="old">۳۹۰,۰۰۰</span>
+                    ۲۹۰,۰۰۰ <small>تومان</small>
+                </div>
                 <button class="btn-buy"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
             </div>
             
             <div class="product-card">
                 <span class="product-badge">جدید</span>
+                <div class="product-image"><i class="fas fa-pen-fancy"></i></div>
+                <div class="product-name" style="font-weight: 800;">Avaye Firooz</div>
+                <div class="product-name-fa">آوای فیروز</div>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    <span>(۸۹)</span>
+                </div>
+                <div class="product-price">۳۵۰,۰۰۰ <small>تومان</small></div>
+                <button class="btn-buy"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image"><i class="fas fa-feather"></i></div>
                 <div class="product-name" style="font-weight: 900;">Shabnam</div>
                 <div class="product-name-fa">شبنم</div>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <span>(۲۰۱)</span>
+                </div>
                 <div class="product-price">۲۲۰,۰۰۰ <small>تومان</small></div>
                 <button class="btn-buy"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
             </div>
             
             <div class="product-card">
+                <span class="product-badge hot"><i class="fas fa-fire"></i> پرفروش</span>
+                <div class="product-image"><i class="fas fa-quill"></i></div>
                 <div class="product-name" style="font-weight: 900;">Soroosh</div>
                 <div class="product-name-fa">سروش</div>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <span>(۱۵۶)</span>
+                </div>
                 <div class="product-price">۴۱۰,۰۰۰ <small>تومان</small></div>
                 <button class="btn-buy"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
             </div>
@@ -640,42 +1079,70 @@
 <section class="license">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">لایسنس‌های خرید</h2>
+            <h2 class="section-title"><i class="fas fa-file-contract"></i> لایسنس‌های خرید</h2>
             <a href="#" class="section-link">مشاهده همه <i class="fas fa-arrow-left"></i></a>
         </div>
         
         <div class="license-grid">
             <div class="license-card">
                 <h3><i class="fas fa-user"></i> شخصی</h3>
-                <div class="price">۱۹۹,۰۰۰ تومان</div>
+                <div class="price">۱۹۹,۰۰۰ <small>تومان</small></div>
                 <ul>
                     <li><i class="fas fa-check"></i> استفاده در کامپیوتر شخصی</li>
                     <li><i class="fas fa-check"></i> پروژه‌های غیرتجاری</li>
                     <li><i class="fas fa-check"></i> پشتیبانی ۱ ماهه</li>
+                    <li><i class="fas fa-check"></i> یک کاربر</li>
                 </ul>
                 <button class="btn-license"><i class="fas fa-shopping-cart"></i> خرید لایسنس</button>
             </div>
             
-            <div class="license-card">
+            <div class="license-card popular">
+                <span class="popular-badge"><i class="fas fa-star"></i> محبوب</span>
                 <h3><i class="fas fa-building"></i> شرکتی</h3>
-                <div class="price">۴۹۹,۰۰۰ تومان</div>
+                <div class="price">۴۹۹,۰۰۰ <small>تومان</small></div>
                 <ul>
                     <li><i class="fas fa-check"></i> استفاده در پروژه‌های تجاری</li>
                     <li><i class="fas fa-check"></i> وب‌سایت و نرم‌افزار شرکتی</li>
                     <li><i class="fas fa-check"></i> پشتیبانی ۶ ماهه</li>
+                    <li><i class="fas fa-check"></i> تا ۵ کاربر</li>
                 </ul>
                 <button class="btn-license"><i class="fas fa-shopping-cart"></i> خرید لایسنس</button>
             </div>
             
             <div class="license-card">
                 <h3><i class="fas fa-infinity"></i> نامحدود</h3>
-                <div class="price">۹۹۹,۰۰۰ تومان</div>
+                <div class="price">۹۹۹,۰۰۰ <small>تومان</small></div>
                 <ul>
                     <li><i class="fas fa-check"></i> استفاده در تمام زیرمجموعه‌ها</li>
                     <li><i class="fas fa-check"></i> بدون محدودیت تعداد کاربر</li>
                     <li><i class="fas fa-check"></i> پشتیبانی ۱ ساله</li>
+                    <li><i class="fas fa-check"></i> آپدیت رایگان</li>
                 </ul>
                 <button class="btn-license"><i class="fas fa-shopping-cart"></i> خرید لایسنس</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== آمار ===== -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stats-item">
+                <div class="number">۵۰۰+</div>
+                <div class="label">فونت حرفه‌ای</div>
+            </div>
+            <div class="stats-item">
+                <div class="number">۲,۴۰۰+</div>
+                <div class="label">خریدار راضی</div>
+            </div>
+            <div class="stats-item">
+                <div class="number">۹۸%</div>
+                <div class="label">رضایت مشتریان</div>
+            </div>
+            <div class="stats-item">
+                <div class="number">۲۴/۷</div>
+                <div class="label">پشتیبانی</div>
             </div>
         </div>
     </div>
@@ -684,24 +1151,27 @@
 <!-- ===== پشتیبانی ===== -->
 <section class="support">
     <div class="container">
-        <h2 class="section-title">پشتیبانی</h2>
+        <h2 class="section-title"><i class="fas fa-headset"></i> پشتیبانی</h2>
         <p style="font-weight: 700; color: #bbb; margin-top: 5px;">با تیم پشتیبانی ما در تماس باشید</p>
         
         <div class="support-grid">
             <div class="support-item">
-                <i class="fas fa-user-tie"></i>
+                <div class="avatar">م</div>
                 <h4>مسلم ابراهیمی</h4>
-                <p>مشاوره پیش از خرید فونت</p>
+                <p><i class="fas fa-check-circle" style="color: var(--yellow);"></i> مشاوره پیش از خرید فونت</p>
+                <a href="#" class="contact-btn"><i class="fas fa-phone"></i> تماس بگیرید</a>
             </div>
             <div class="support-item">
-                <i class="fas fa-user-cog"></i>
+                <div class="avatar">ن</div>
                 <h4>نرگس سدرهنشین</h4>
-                <p>راهنمایی نصب و استفاده</p>
+                <p><i class="fas fa-check-circle" style="color: var(--yellow);"></i> راهنمایی نصب و استفاده</p>
+                <a href="#" class="contact-btn"><i class="fas fa-phone"></i> تماس بگیرید</a>
             </div>
             <div class="support-item">
-                <i class="fas fa-user-astronaut"></i>
+                <div class="avatar">د</div>
                 <h4>داوود فولادی</h4>
-                <p>مشکلات ثبت‌نام و خرید</p>
+                <p><i class="fas fa-check-circle" style="color: var(--yellow);"></i> مشکلات ثبت‌نام و خرید</p>
+                <a href="#" class="contact-btn"><i class="fas fa-phone"></i> تماس بگیرید</a>
             </div>
         </div>
     </div>
@@ -711,7 +1181,7 @@
 <section class="news">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">اخبار فونت</h2>
+            <h2 class="section-title"><i class="fas fa-newspaper"></i> اخبار فونت</h2>
             <a href="#" class="section-link">مشاهده همه <i class="fas fa-arrow-left"></i></a>
         </div>
         
@@ -719,17 +1189,20 @@
             <div class="news-card">
                 <div class="date"><i class="far fa-calendar-alt"></i> ۲۷ اردیبهشت ۱۴۰۵</div>
                 <h4>فونت‌های برگزیده در مسابقات فونت</h4>
-                <p>اگر برای طراحی برند، رابط کاربری، پوستر یا پروژه‌های حرفه‌ای به دنبال فونت فارسی خاص و معتبر هستید...</p>
+                <p>اگر برای طراحی برند، رابط کاربری، پوستر یا پروژه‌های حرفه‌ای به دنبال فونت فارسی خاص و معتبر هستید، احتمالاً عباراتی مثل «بهترین…</p>
+                <a href="#" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
             </div>
             <div class="news-card">
                 <div class="date"><i class="far fa-calendar-alt"></i> ۲۳ اسفند ۱۴۰۴</div>
                 <h4>بهترین فونت‌های فارسی رایگان</h4>
-                <p>وبسایت فونت ایران در کنار فونت‌های حرفه‌ای و تجاری، مجموعه‌ای ارزشمند از فونت‌های فارسی رایگان را...</p>
+                <p>وبسایت فونت ایران در کنار فونت‌های حرفه‌ای و تجاری، مجموعه‌ای ارزشمند از فونت‌های فارسی رایگان را در اختیار طراحان، دانشجویان و…</p>
+                <a href="#" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
             </div>
             <div class="news-card">
                 <div class="date"><i class="far fa-calendar-alt"></i> ۶ اسفند ۱۴۰۴</div>
                 <h4>فونت‌های مناسب تامنیل یوتیوب</h4>
-                <p>تامنیل ویدیوی شما در یوتیوب، بیلبورد محتوای شماست. با افزایش رقابت در شبکه‌های اجتماعی...</p>
+                <p>تامنیل ویدیوی شما در یوتیوب، بیلبورد محتوای شماست. با افزایش رقابت در شبکه‌های اجتماعی، مخاطب در چند ثانیه تصمیم می‌گیرد که روی…</p>
+                <a href="#" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
             </div>
         </div>
     </div>
@@ -744,24 +1217,36 @@
                 <a href="#">درباره ما</a>
                 <a href="#">تماس با ما</a>
                 <a href="#">قوانین و مقررات</a>
+                <a href="#">حریم خصوصی</a>
+                <div class="social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
             <div class="footer-col">
                 <h4><i class="fas fa-list"></i> فونت‌ها</h4>
                 <a href="#">همه فونت‌ها</a>
                 <a href="#">محبوب‌ترین</a>
                 <a href="#">جدیدترین</a>
+                <a href="#">پرفروش‌ترین</a>
+                <a href="#">فونت‌های رایگان</a>
             </div>
             <div class="footer-col">
                 <h4><i class="fas fa-headset"></i> پشتیبانی</h4>
                 <a href="#">سوالات متداول</a>
                 <a href="#">راهنما</a>
                 <a href="#">ثبت تیکت</a>
+                <a href="#">گزارش مشکل</a>
+                <a href="#">پیشنهادات</a>
             </div>
             <div class="footer-col">
                 <h4><i class="fas fa-phone"></i> تماس</h4>
                 <a class="contact-info"><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴-۵۶۷۸</a>
                 <a><i class="fas fa-envelope"></i> info@mimnoon.com</a>
                 <a><i class="fas fa-map-marker-alt"></i> تهران، خیابان آزادی</a>
+                <a><i class="fas fa-clock"></i> شنبه تا چهارشنبه ۹ الی ۱۷</a>
             </div>
         </div>
         <div class="footer-bottom">
