@@ -103,10 +103,6 @@
             transform: translateY(-1px);
         }
 
-        .nav-links a i {
-            font-size: 0.95rem;
-        }
-
         .cart-icon {
             position: relative;
             font-size: 1.5rem;
@@ -436,105 +432,6 @@
             text-decoration: underline;
         }
 
-        /* استایل‌های صفحه کالفود */
-        .callfood-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            margin: 2rem 0;
-        }
-        .step-card {
-            background: white;
-            border-radius: 32px;
-            padding: 1.5rem 1.8rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 1.2rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-            border-right: 5px solid #e67e22;
-            transition: 0.3s;
-        }
-        .step-card:hover {
-            transform: translateX(-4px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.10);
-        }
-        .step-number {
-            background: #e67e22;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: 900;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .step-content {
-            flex: 1;
-        }
-        .step-content h4 {
-            font-size: 1.1rem;
-            font-weight: 900;
-            color: #2e241f;
-            margin-bottom: 4px;
-        }
-        .step-content p {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #5e4b3a;
-            line-height: 1.6;
-        }
-        .step-content .highlight {
-            color: #e67e22;
-            font-weight: 900;
-        }
-        .step-content .code-box {
-            background: #2e241f;
-            color: #ffd966;
-            padding: 4px 14px;
-            border-radius: 30px;
-            display: inline-block;
-            font-size: 0.85rem;
-            font-weight: 900;
-            letter-spacing: 1px;
-            margin: 4px 0;
-        }
-        .step-content .instagram-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #e67e22;
-            color: white;
-            padding: 6px 18px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 0.85rem;
-            transition: 0.2s;
-            margin-top: 4px;
-        }
-        .step-content .instagram-link:hover {
-            background: #c55a2c;
-            transform: scale(0.97);
-        }
-        .callfood-footer-text {
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 900;
-            color: #c55a2c;
-            margin-top: 2rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 60px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
-        }
-        .callfood-footer-text i {
-            color: #e67e22;
-        }
-
         .cart-sidebar {
             position: fixed;
             top: 0;
@@ -645,15 +542,6 @@
             }
             body {
                 padding-top: 120px;
-            }
-            .step-card {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 1.2rem;
-            }
-            .step-content .instagram-link {
-                justify-content: center;
             }
         }
         @media (max-width: 550px) {
@@ -830,27 +718,6 @@
             flex-direction: column;
             gap: 2rem;
         }
-
-        /* آیکون کاستوم کالفود */
-        .callfood-custom-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #e67e22, #c55a2c);
-            color: white;
-            width: 26px;
-            height: 26px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 900;
-            font-family: 'Vazirmatn', sans-serif;
-            box-shadow: 0 2px 6px rgba(230, 126, 34, 0.3);
-            transition: 0.2s;
-        }
-        .nav-links a:hover .callfood-custom-icon {
-            transform: scale(1.08);
-            box-shadow: 0 4px 10px rgba(230, 126, 34, 0.4);
-        }
     </style>
 </head>
 <body>
@@ -868,7 +735,6 @@
         <a href="#" data-page="sweet"><i class="fas fa-cake-candles"></i> شیرینی‌جات</a>
         <a href="#" data-page="dessert"><i class="fas fa-ice-cream"></i> دسر</a>
         <a href="#" data-page="tafarda"><i class="fas fa-calendar-day"></i> تا فردا</a>
-        <a href="#" data-page="callfood"><span class="callfood-custom-icon">ک</span> کالفود</a>
         <a href="#" data-page="support"><i class="fas fa-headset"></i> پشتیبانی</a>
         <div class="cart-icon" id="cartIcon">
             <i class="fas fa-shopping-bag"></i>
@@ -939,70 +805,6 @@
     </div>
 </div>
 
-<!-- صفحه کالفود جدید -->
-<div id="callfoodPage" class="page-content">
-    <div class="menu-section">
-        <div class="section-title">
-            <span class="callfood-custom-icon" style="width:48px;height:48px;font-size:1.8rem;border-radius:14px;">ک</span>
-            کالفود
-        </div>
-        <p style="text-align:center;font-size:1.05rem;color:#5e4b3a;margin-bottom:1.8rem;font-weight:700;">
-            برای خرید از Call Food، سریع و راحت این مراحل رو انجام بده:
-        </p>
-
-        <div class="callfood-steps">
-            <div class="step-card">
-                <div class="step-number">۱</div>
-                <div class="step-content">
-                    <h4><i class="fas fa-globe" style="color:#e67e22;"></i> مرحله اول</h4>
-                    <p>برو سایت رسمی و <span class="highlight">ثبت سفارش</span> رو بزن.</p>
-                </div>
-            </div>
-
-            <div class="step-card">
-                <div class="step-number">۲</div>
-                <div class="step-content">
-                    <h4><i class="fas fa-shopping-bag" style="color:#e67e22;"></i> مرحله دوم</h4>
-                    <p>روی آیکون <span class="highlight">سبد خرید</span> کلیک کن.</p>
-                </div>
-            </div>
-
-            <div class="step-card">
-                <div class="step-number">۳</div>
-                <div class="step-content">
-                    <h4><i class="fas fa-ticket-alt" style="color:#e67e22;"></i> مرحله سوم</h4>
-                    <p>در مرحله تأیید، جای <span class="highlight">کد تخفیف</span> رو ببین.</p>
-                    <p style="margin-top:6px;font-size:0.85rem;">
-                        · اگر کد داری، وارد کن.
-                        <br>
-                        · اگر نداری، یه کد <span class="code-box">۶ رقمی تصادفی</span> تو سایت تولید میشه.
-                    </p>
-                </div>
-            </div>
-
-            <div class="step-card">
-                <div class="step-number">۴</div>
-                <div class="step-content">
-                    <h4><i class="fas fa-paper-plane" style="color:#e67e22;"></i> مرحله چهارم</h4>
-                    <p>اون کد رو در <span class="highlight">پیوی اینستاگرام</span> برامون بفرست تا سفارشت ثبت بشه.</p>
-                    <a href="#" class="instagram-link" target="_blank">
-                        <i class="fab fa-instagram"></i> ارسال در پیوی اینستاگرام
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="callfood-footer-text">
-            <i class="fas fa-heart" style="color:#e67e22;"></i>
-            با تشکر از شما
-            <br>
-            <span style="font-size:0.95rem;color:#2e241f;">
-                <i class="fas fa-phone-alt" style="color:#e67e22;"></i> کالفود؛ یک تماس خوشمزه! 😋
-            </span>
-        </div>
-    </div>
-</div>
-
 <div id="supportPage" class="page-content">
     <div class="support-section">
         <div class="support-box">
@@ -1050,7 +852,10 @@
 </div>
 
 <div class="toast-msg" id="toastMsg"></div>
-<footer class="footer"><p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت غذا امضای کار ماست!</p><p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p></footer>
+<footer class="footer">
+    <p><i class="fas fa-medal"></i> کالفود | کیفیت غذا و با کیفیت بودن غذا امضای کار ماست!</p>
+    <p>© 2026 کالفود – یک تماس خوشمزه <i class="fas fa-mug-hot"></i></p>
+</footer>
 
 <script>
     const foods = [
@@ -1267,7 +1072,7 @@
         });
     }
     
-    const pages = { home: document.getElementById('homePage'), dolme: document.getElementById('dolmePage'), fastfood: document.getElementById('fastfoodPage'), finger: document.getElementById('fingerPage'), persian: document.getElementById('persianPage'), cake: document.getElementById('cakePage'), traditional: document.getElementById('traditionalPage'), sweet: document.getElementById('sweetPage'), dessert: document.getElementById('dessertPage'), tafarda: document.getElementById('tafardaPage'), callfood: document.getElementById('callfoodPage'), support: document.getElementById('supportPage') };
+    const pages = { home: document.getElementById('homePage'), dolme: document.getElementById('dolmePage'), fastfood: document.getElementById('fastfoodPage'), finger: document.getElementById('fingerPage'), persian: document.getElementById('persianPage'), cake: document.getElementById('cakePage'), traditional: document.getElementById('traditionalPage'), sweet: document.getElementById('sweetPage'), dessert: document.getElementById('dessertPage'), tafarda: document.getElementById('tafardaPage'), support: document.getElementById('supportPage') };
     
     document.querySelectorAll('[data-page]').forEach(link => {
         link.addEventListener('click', (e) => { e.preventDefault(); let page = link.dataset.page; Object.values(pages).forEach(p => p.classList.remove('active-page')); if(pages[page]) pages[page].classList.add('active-page'); window.scrollTo({ top: 0, behavior: 'smooth' }); });
