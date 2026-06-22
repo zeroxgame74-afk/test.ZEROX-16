@@ -103,6 +103,10 @@
             transform: translateY(-1px);
         }
 
+        .nav-links a i {
+            font-size: 0.95rem;
+        }
+
         .cart-icon {
             position: relative;
             font-size: 1.5rem;
@@ -431,61 +435,104 @@
             color: #c55a2c;
             text-decoration: underline;
         }
-        .welcome-box {
-            background: linear-gradient(135deg, #fff6ed, #fff0e0);
-            border-radius: 48px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 2px solid #e67e22;
-            border-right: 8px solid #e67e22;
-            text-align: center;
-            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.1);
+
+        /* استایل‌های صفحه کالفود */
+        .callfood-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin: 2rem 0;
         }
-        .welcome-box h2 {
-            color: #c55a2c;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
+        .step-card {
+            background: white;
+            border-radius: 32px;
+            padding: 1.5rem 1.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border-right: 5px solid #e67e22;
+            transition: 0.3s;
+        }
+        .step-card:hover {
+            transform: translateX(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+        }
+        .step-number {
+            background: #e67e22;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
-        .welcome-box h2 i {
-            color: #e67e22;
+        .step-content {
+            flex: 1;
         }
-        .welcome-box .welcome-text {
-            font-size: 1rem;
-            line-height: 2;
-            color: #3a2a1f;
+        .step-content h4 {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #2e241f;
+            margin-bottom: 4px;
+        }
+        .step-content p {
+            font-size: 0.9rem;
             font-weight: 700;
-            padding: 0.5rem 0;
-            text-align: justify;
+            color: #5e4b3a;
+            line-height: 1.6;
         }
-        .welcome-box .welcome-text i {
+        .step-content .highlight {
             color: #e67e22;
-            margin-left: 8px;
-        }
-        .welcome-box .highlight {
-            color: #c55a2c;
             font-weight: 900;
         }
-        .welcome-box .step-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            margin: 0.5rem 0;
-            text-align: right;
+        .step-content .code-box {
+            background: #2e241f;
+            color: #ffd966;
+            padding: 4px 14px;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin: 4px 0;
         }
-        .welcome-box .step-list span {
-            display: flex;
+        .step-content .instagram-link {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-weight: 700;
-            font-size: 0.95rem;
+            background: #e67e22;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            margin-top: 4px;
         }
-        .welcome-box .step-list i {
-            color: #e67e22;
+        .step-content .instagram-link:hover {
+            background: #c55a2c;
+            transform: scale(0.97);
+        }
+        .callfood-footer-text {
+            text-align: center;
             font-size: 1.1rem;
+            font-weight: 900;
+            color: #c55a2c;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 60px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+        }
+        .callfood-footer-text i {
+            color: #e67e22;
         }
 
         .cart-sidebar {
@@ -598,6 +645,15 @@
             }
             body {
                 padding-top: 120px;
+            }
+            .step-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 1.2rem;
+            }
+            .step-content .instagram-link {
+                justify-content: center;
             }
         }
         @media (max-width: 550px) {
@@ -774,6 +830,27 @@
             flex-direction: column;
             gap: 2rem;
         }
+
+        /* آیکون کاستوم کالفود */
+        .callfood-custom-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e67e22, #c55a2c);
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 900;
+            font-family: 'Vazirmatn', sans-serif;
+            box-shadow: 0 2px 6px rgba(230, 126, 34, 0.3);
+            transition: 0.2s;
+        }
+        .nav-links a:hover .callfood-custom-icon {
+            transform: scale(1.08);
+            box-shadow: 0 4px 10px rgba(230, 126, 34, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -791,6 +868,7 @@
         <a href="#" data-page="sweet"><i class="fas fa-cake-candles"></i> شیرینی‌جات</a>
         <a href="#" data-page="dessert"><i class="fas fa-ice-cream"></i> دسر</a>
         <a href="#" data-page="tafarda"><i class="fas fa-calendar-day"></i> تا فردا</a>
+        <a href="#" data-page="callfood"><span class="callfood-custom-icon">ک</span> کالفود</a>
         <a href="#" data-page="support"><i class="fas fa-headset"></i> پشتیبانی</a>
         <div class="cart-icon" id="cartIcon">
             <i class="fas fa-shopping-bag"></i>
@@ -861,25 +939,73 @@
     </div>
 </div>
 
+<!-- صفحه کالفود جدید -->
+<div id="callfoodPage" class="page-content">
+    <div class="menu-section">
+        <div class="section-title">
+            <span class="callfood-custom-icon" style="width:48px;height:48px;font-size:1.8rem;border-radius:14px;">ک</span>
+            کالفود
+        </div>
+        <p style="text-align:center;font-size:1.05rem;color:#5e4b3a;margin-bottom:1.8rem;font-weight:700;">
+            برای خرید از Call Food، سریع و راحت این مراحل رو انجام بده:
+        </p>
+
+        <div class="callfood-steps">
+            <div class="step-card">
+                <div class="step-number">۱</div>
+                <div class="step-content">
+                    <h4><i class="fas fa-globe" style="color:#e67e22;"></i> مرحله اول</h4>
+                    <p>برو سایت رسمی و <span class="highlight">ثبت سفارش</span> رو بزن.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">۲</div>
+                <div class="step-content">
+                    <h4><i class="fas fa-shopping-bag" style="color:#e67e22;"></i> مرحله دوم</h4>
+                    <p>روی آیکون <span class="highlight">سبد خرید</span> کلیک کن.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">۳</div>
+                <div class="step-content">
+                    <h4><i class="fas fa-ticket-alt" style="color:#e67e22;"></i> مرحله سوم</h4>
+                    <p>در مرحله تأیید، جای <span class="highlight">کد تخفیف</span> رو ببین.</p>
+                    <p style="margin-top:6px;font-size:0.85rem;">
+                        · اگر کد داری، وارد کن.
+                        <br>
+                        · اگر نداری، یه کد <span class="code-box">۶ رقمی تصادفی</span> تو سایت تولید میشه.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">۴</div>
+                <div class="step-content">
+                    <h4><i class="fas fa-paper-plane" style="color:#e67e22;"></i> مرحله چهارم</h4>
+                    <p>اون کد رو در <span class="highlight">پیوی اینستاگرام</span> برامون بفرست تا سفارشت ثبت بشه.</p>
+                    <a href="#" class="instagram-link" target="_blank">
+                        <i class="fab fa-instagram"></i> ارسال در پیوی اینستاگرام
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="callfood-footer-text">
+            <i class="fas fa-heart" style="color:#e67e22;"></i>
+            با تشکر از شما
+            <br>
+            <span style="font-size:0.95rem;color:#2e241f;">
+                <i class="fas fa-phone-alt" style="color:#e67e22;"></i> کالفود؛ یک تماس خوشمزه! 😋
+            </span>
+        </div>
+    </div>
+</div>
+
 <div id="supportPage" class="page-content">
     <div class="support-section">
         <div class="support-box">
-            <!-- باکس خوش آمدگویی جدید -->
-            <div class="welcome-box">
-                <h2><i class="fas fa-hand-peace"></i> خوش آمدید!</h2>
-                <div class="welcome-text">
-                    <p><i class="fas fa-store"></i> به سایت رسمی <span class="highlight">کالفود (call food)</span> خوش آمدید!</p>
-                    <div class="step-list">
-                        <span><i class="fas fa-1"></i> برای خرید، روی <span class="highlight">«ثبت سفارش»</span> در پایین هر غذا بزنید.</span>
-                        <span><i class="fas fa-2"></i> سپس روی <span class="highlight">آیکون سبد خرید</span> در بالا سمت راست کلیک کنید.</span>
-                        <span><i class="fas fa-3"></i> بعد از تأیید سفارش، کادر <span class="highlight">کد تخفیف</span> نمایش داده می‌شود.</span>
-                        <span><i class="fas fa-4"></i> اگر کد تخفیف دارید، وارد کنید و از تخفیف لذت ببرید! <i class="fas fa-gift"></i></span>
-                        <span><i class="fas fa-5"></i> اگر کد ندارید، <span class="highlight">کد ۶ رقمی تصادفی</span> که تولید می‌شه رو به <span class="highlight">پیوی اینستاگرام، بله یا ایتا</span> بدید تا سفارشتون ثبت بشه.</span>
-                    </div>
-                    <p style="margin-top: 10px;"><i class="fas fa-heart" style="color: #c55a2c;"></i> با تشکر از همه عزیزان <i class="fas fa-heart" style="color: #c55a2c;"></i></p>
-                    <p style="font-size: 0.9rem; margin-top: 5px; color: #c55a2c;"><i class="fas fa-phone-alt"></i> <span class="highlight">کالفود، یک تماس خوشمزه!</span></p>
-                </div>
-            </div>
             <h3><i class="fas fa-headset"></i> پشتیبانی کالفود</h3>
             <div class="support-item">
                 <i class="fas fa-headset"></i>
@@ -1141,7 +1267,7 @@
         });
     }
     
-    const pages = { home: document.getElementById('homePage'), dolme: document.getElementById('dolmePage'), fastfood: document.getElementById('fastfoodPage'), finger: document.getElementById('fingerPage'), persian: document.getElementById('persianPage'), cake: document.getElementById('cakePage'), traditional: document.getElementById('traditionalPage'), sweet: document.getElementById('sweetPage'), dessert: document.getElementById('dessertPage'), tafarda: document.getElementById('tafardaPage'), support: document.getElementById('supportPage') };
+    const pages = { home: document.getElementById('homePage'), dolme: document.getElementById('dolmePage'), fastfood: document.getElementById('fastfoodPage'), finger: document.getElementById('fingerPage'), persian: document.getElementById('persianPage'), cake: document.getElementById('cakePage'), traditional: document.getElementById('traditionalPage'), sweet: document.getElementById('sweetPage'), dessert: document.getElementById('dessertPage'), tafarda: document.getElementById('tafardaPage'), callfood: document.getElementById('callfoodPage'), support: document.getElementById('supportPage') };
     
     document.querySelectorAll('[data-page]').forEach(link => {
         link.addEventListener('click', (e) => { e.preventDefault(); let page = link.dataset.page; Object.values(pages).forEach(p => p.classList.remove('active-page')); if(pages[page]) pages[page].classList.add('active-page'); window.scrollTo({ top: 0, behavior: 'smooth' }); });
