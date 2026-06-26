@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbitix | پرامت خفن فضایی</title>
+    <title>Orbitix | پرامت فضایی فوق‌حرفه‌ای</title>
 
-    <!-- فونت وزیر (وزیرمتن) از CDN -->
+    <!-- فونت وزیر -->
     <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
+
     <style>
-        /* ===== ریست و تنظیمات کلی ===== */
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -16,671 +17,960 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a1628 0%, #1a3a6a 40%, #2a5a8a 70%, #1a3a6a 100%);
+            background: #05080f;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Vazir', 'Segoe UI', Tahoma, sans-serif;
-            padding: 1.5rem;
-            margin: 0;
+            padding: 20px;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* ===== پس‌زمینه ستاره‌های آبی-سفید ===== */
+        /* ===== پس‌زمینه ستاره‌های واقع‌گرایانه ===== */
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(2px 2px at 10% 20%, #ffffff, transparent),
-                radial-gradient(3px 3px at 30% 70%, #b3d9ff, transparent),
-                radial-gradient(2px 2px at 50% 10%, #e6f0ff, transparent),
-                radial-gradient(4px 4px at 70% 80%, #80b5ff, transparent),
-                radial-gradient(2px 2px at 90% 40%, #c4e0ff, transparent),
-                radial-gradient(3px 3px at 15% 90%, #d4eaff, transparent),
-                radial-gradient(2px 2px at 60% 50%, #e0f0ff, transparent),
-                radial-gradient(3px 3px at 85% 15%, #b0d0ff, transparent),
-                radial-gradient(2px 2px at 45% 65%, #ffffff, transparent),
-                radial-gradient(4px 4px at 5% 45%, #7aa9ff, transparent),
-                radial-gradient(2px 2px at 25% 55%, #ffffff, transparent),
-                radial-gradient(3px 3px at 75% 35%, #aac9ff, transparent);
-            background-size: 300px 300px;
-            opacity: 0.8;
+            inset: 0;
+            background-image:
+                radial-gradient(1px 1px at 2% 5%, #fff, transparent),
+                radial-gradient(2px 2px at 8% 25%, #b3d9ff, transparent),
+                radial-gradient(1px 1px at 14% 65%, #fff, transparent),
+                radial-gradient(3px 3px at 22% 15%, #7aa9ff, transparent),
+                radial-gradient(1px 1px at 30% 78%, #fff, transparent),
+                radial-gradient(2px 2px at 38% 35%, #b3d9ff, transparent),
+                radial-gradient(1px 1px at 46% 55%, #fff, transparent),
+                radial-gradient(3px 3px at 54% 10%, #4a8aff, transparent),
+                radial-gradient(1px 1px at 62% 42%, #fff, transparent),
+                radial-gradient(2px 2px at 70% 72%, #7aa9ff, transparent),
+                radial-gradient(1px 1px at 78% 28%, #fff, transparent),
+                radial-gradient(3px 3px at 86% 60%, #b3d9ff, transparent),
+                radial-gradient(1px 1px at 94% 18%, #fff, transparent),
+                radial-gradient(2px 2px at 48% 88%, #4a8aff, transparent),
+                radial-gradient(1px 1px at 12% 48%, #fff, transparent),
+                radial-gradient(2px 2px at 72% 48%, #b3d9ff, transparent),
+                radial-gradient(1px 1px at 92% 82%, #fff, transparent),
+                radial-gradient(3px 3px at 28% 92%, #7aa9ff, transparent);
+            background-size: 400px 400px;
+            opacity: 0.7;
             pointer-events: none;
             z-index: 0;
-            animation: starTwinkle 12s infinite alternate ease-in-out;
+            animation: starsMove 30s infinite alternate ease-in-out;
         }
 
-        @keyframes starTwinkle {
+        @keyframes starsMove {
             0% { opacity: 0.4; transform: scale(1) rotate(0deg); }
-            100% { opacity: 1; transform: scale(1.05) rotate(3deg); }
+            100% { opacity: 0.9; transform: scale(1.08) rotate(2deg); }
         }
 
-        /* ===== کارت اصلی با تم آبی-سفید ===== */
-        .cosmic-card {
-            max-width: 850px;
+        /* ===== پس‌زمینه سحابی ===== */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(60, 80, 180, 0.08), transparent 50%),
+                radial-gradient(ellipse at 80% 30%, rgba(120, 60, 200, 0.06), transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(30, 100, 200, 0.05), transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===== کارت اصلی با طراحی فوق‌حرفه‌ای ===== */
+        .card {
+            max-width: 860px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 3.5rem 1.2rem 3.5rem 1.2rem;
-            padding: 2.8rem 2.5rem;
-            box-shadow: 0 30px 80px rgba(0, 20, 80, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.1) inset;
+            background: rgba(6, 10, 25, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 48px 20px 48px 20px;
+            padding: 40px 35px 35px;
+            box-shadow:
+                0 50px 120px rgba(0, 0, 0, 0.8),
+                0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+                0 0 80px rgba(60, 120, 255, 0.03);
             position: relative;
             z-index: 2;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s ease;
-            animation: cardFloat 7s infinite alternate ease-in-out;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s;
+            animation: cardFloat 10s infinite alternate ease-in-out;
         }
 
         @keyframes cardFloat {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-12px) rotate(0.4deg); }
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-18px) rotate(0.3deg); }
         }
 
-        .cosmic-card:hover {
-            transform: scale(1.01) translateY(-6px);
-            box-shadow: 0 40px 100px rgba(60, 150, 255, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.2) inset;
+        .card:hover {
+            transform: translateY(-10px) scale(1.008);
+            box-shadow:
+                0 60px 140px rgba(0, 0, 0, 0.9),
+                0 0 0 2px rgba(255, 255, 255, 0.06) inset,
+                0 0 100px rgba(60, 120, 255, 0.06);
         }
 
-        /* ===== لایه ستاره‌های داخلی کارت ===== */
-        .cosmic-card::before {
+        /* ===== ستاره‌های درخشان داخل کارت ===== */
+        .card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(2px 2px at 15% 25%, #ffffffcc, transparent),
-                        radial-gradient(3px 3px at 75% 65%, #aad0ffcc, transparent),
-                        radial-gradient(2px 2px at 45% 85%, #c4e0ffcc, transparent),
-                        radial-gradient(4px 4px at 90% 15%, #b3d9ffcc, transparent),
-                        radial-gradient(2px 2px at 5% 60%, #e0f0ffcc, transparent),
-                        radial-gradient(3px 3px at 55% 10%, #ffffffcc, transparent),
-                        radial-gradient(2px 2px at 35% 45%, #ffffffcc, transparent),
-                        radial-gradient(3px 3px at 80% 55%, #b0d0ffcc, transparent);
-            background-size: 250px 250px;
-            opacity: 0.3;
+            inset: 0;
+            background:
+                radial-gradient(1px 1px at 8% 15%, #fff, transparent),
+                radial-gradient(2px 2px at 22% 45%, #b3d9ff, transparent),
+                radial-gradient(1px 1px at 40% 10%, #fff, transparent),
+                radial-gradient(3px 3px at 58% 65%, #7aa9ff, transparent),
+                radial-gradient(1px 1px at 76% 30%, #fff, transparent),
+                radial-gradient(2px 2px at 90% 55%, #b3d9ff, transparent),
+                radial-gradient(1px 1px at 15% 75%, #fff, transparent),
+                radial-gradient(3px 3px at 45% 85%, #4a8aff, transparent),
+                radial-gradient(1px 1px at 68% 12%, #fff, transparent),
+                radial-gradient(2px 2px at 85% 78%, #7aa9ff, transparent);
+            background-size: 300px 300px;
+            opacity: 0.2;
             pointer-events: none;
             border-radius: inherit;
             z-index: 0;
-            animation: innerStarMove 18s infinite linear;
+            animation: cardStars 20s infinite linear;
         }
 
-        @keyframes innerStarMove {
-            0% { background-position: 0 0; opacity: 0.2; }
-            50% { opacity: 0.5; }
-            100% { background-position: 100px 80px; opacity: 0.2; }
+        @keyframes cardStars {
+            0% { background-position: 0 0; opacity: 0.15; }
+            50% { opacity: 0.3; }
+            100% { background-position: 200px 150px; opacity: 0.15; }
         }
 
-        .cosmic-card > * {
+        .card>* {
             position: relative;
-            z-index: 3;
-        }
-
-        /* ===== هدر با آیکون کاستوم Orbitix ===== */
-        .prompt-header {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 1.8rem;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
-            padding-bottom: 0.9rem;
-            flex-wrap: wrap;
-        }
-
-        /* ===== آیکون کاستوم اختصاصی Orbitix ===== */
-        .custom-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 4.5rem;
-            height: 4.5rem;
-            background: linear-gradient(135deg, #1a4a7a, #0a2a5a);
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 40px rgba(60, 160, 255, 0.3), 0 0 80px rgba(100, 100, 255, 0.1);
-            animation: customIconSpin 10s infinite linear, iconPulse 3s infinite alternate;
-            transition: 0.3s;
-            transform-origin: center;
-            flex-shrink: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* حلقه‌های مداری درون آیکون */
-        .custom-icon .orbit-ring-inner {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 1.5px solid rgba(255, 255, 255, 0.15);
-            animation: orbitRingSpin 6s infinite linear;
-        }
-
-        .custom-icon .orbit-ring-inner:nth-child(2) {
-            width: 75%;
-            height: 75%;
-            border-color: rgba(255, 255, 255, 0.1);
-            animation-duration: 4s;
-            animation-direction: reverse;
-        }
-
-        .custom-icon .orbit-ring-inner:nth-child(3) {
-            width: 50%;
-            height: 50%;
-            border-color: rgba(255, 255, 255, 0.08);
-            animation-duration: 3s;
-        }
-
-        @keyframes orbitRingSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* نقطه مرکزی آیکون */
-        .custom-icon .center-dot {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: radial-gradient(circle, #ffffff, #7aa9ff);
-            border-radius: 50%;
-            box-shadow: 0 0 30px #7aa9ff, 0 0 60px #4a8aff;
             z-index: 2;
         }
 
-        /* سیاره‌های کوچک در آیکون */
-        .custom-icon .planet {
+        /* ===== HEADER با طراحی خاص ===== */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
             position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(100, 180, 255, 0.3), transparent);
+        }
+
+        /* ===== آیکون کاستوم Orbitix با طراحی 3D ===== */
+        .logo-icon {
+            width: 72px;
+            height: 72px;
+            min-width: 72px;
+            background: radial-gradient(ellipse at 30% 25%, #1a2a5a, #0a0f25);
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+                0 0 60px rgba(60, 160, 255, 0.08),
+                0 0 120px rgba(60, 160, 255, 0.04),
+                inset 0 -4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            overflow: visible;
+        }
+
+        .logo-icon:hover {
+            transform: scale(1.12) rotate(12deg);
+            border-color: rgba(120, 200, 255, 0.4);
+            box-shadow:
+                0 0 80px rgba(60, 160, 255, 0.15),
+                0 0 150px rgba(60, 160, 255, 0.08),
+                inset 0 -4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* حلقه‌های مداری با طراحی ظریف */
+        .logo-icon .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            animation: ringSpin 8s infinite linear;
+        }
+
+        .logo-icon .ring:nth-child(1) {
+            width: 90%;
+            height: 90%;
+            border-color: rgba(255, 255, 255, 0.08);
+            animation-duration: 7s;
+        }
+
+        .logo-icon .ring:nth-child(2) {
+            width: 70%;
+            height: 70%;
+            border-color: rgba(255, 255, 255, 0.05);
+            animation-duration: 5s;
+            animation-direction: reverse;
+            border-style: dashed;
+        }
+
+        .logo-icon .ring:nth-child(3) {
+            width: 50%;
+            height: 50%;
+            border-color: rgba(255, 255, 255, 0.04);
+            animation-duration: 3.5s;
+            border-style: dotted;
+        }
+
+        @keyframes ringSpin {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* نقطه مرکزی با درخشش */
+        .logo-icon .dot {
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #fff, #4a8aff);
+            border-radius: 50%;
+            box-shadow:
+                0 0 40px #4a8aff,
+                0 0 80px #7aa9ff,
+                0 0 120px #4a8aff30;
+            z-index: 2;
+            animation: dotPulse 2.5s infinite alternate;
+        }
+
+        @keyframes dotPulse {
+            0% { transform: scale(1); box-shadow: 0 0 40px #4a8aff, 0 0 80px #7aa9ff; }
+            100% { transform: scale(1.2); box-shadow: 0 0 60px #4a8aff, 0 0 120px #7aa9ff, 0 0 160px #4a8aff40; }
+        }
+
+        /* سیاره‌ها با طراحی زیبا */
+        .logo-icon .planet {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-icon .planet:nth-child(5) {
+            width: 10px;
+            height: 10px;
+            top: 8%;
+            right: 6%;
+            background: radial-gradient(circle at 30% 30%, #b3d9ff, #3b82f6);
+            animation: orbit1 4.5s infinite linear;
+            box-shadow: 0 0 20px #3b82f660;
+        }
+
+        .logo-icon .planet:nth-child(6) {
             width: 8px;
             height: 8px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #b3d9ff, #4a8aff);
-            box-shadow: 0 0 15px #7aa9ff;
-            z-index: 1;
+            bottom: 10%;
+            left: 4%;
+            background: radial-gradient(circle at 30% 30%, #fcd34d, #f59e0b);
+            animation: orbit2 5.5s infinite linear reverse;
+            box-shadow: 0 0 20px #f59e0b50;
         }
 
-        .custom-icon .planet:nth-child(4) { top: 15%; right: 15%; animation: planetOrbit 4s infinite linear; }
-        .custom-icon .planet:nth-child(5) { bottom: 20%; left: 12%; animation: planetOrbit 5s infinite linear reverse; }
-        .custom-icon .planet:nth-child(6) { top: 55%; left: 10%; animation: planetOrbit 3.5s infinite linear; width: 6px; height: 6px; }
+        .logo-icon .planet:nth-child(7) {
+            width: 7px;
+            height: 7px;
+            top: 45%;
+            left: 3%;
+            background: radial-gradient(circle at 30% 30%, #a78bfa, #7c3aed);
+            animation: orbit3 4s infinite linear;
+            box-shadow: 0 0 20px #7c3aed50;
+        }
 
-        @keyframes planetOrbit {
-            0% { transform: rotate(0deg) translateX(18px) rotate(0deg); }
+        .logo-icon .planet:nth-child(8) {
+            width: 6px;
+            height: 6px;
+            bottom: 30%;
+            right: 4%;
+            background: radial-gradient(circle at 30% 30%, #34d399, #059669);
+            animation: orbit4 6s infinite linear reverse;
+            box-shadow: 0 0 15px #05966940;
+        }
+
+        .logo-icon .planet:nth-child(9) {
+            width: 7px;
+            height: 7px;
+            top: 28%;
+            right: 2%;
+            background: radial-gradient(circle at 30% 30%, #fb923c, #ea580c);
+            animation: orbit5 5s infinite linear;
+            box-shadow: 0 0 15px #ea580c40;
+        }
+
+        .logo-icon .planet:nth-child(10) {
+            width: 5px;
+            height: 5px;
+            bottom: 18%;
+            left: 8%;
+            background: radial-gradient(circle at 30% 30%, #f472b6, #db2777);
+            animation: orbit6 3.8s infinite linear reverse;
+            box-shadow: 0 0 15px #db277740;
+        }
+
+        @keyframes orbit1 {
+            0% { transform: rotate(0) translateX(28px) rotate(0); }
+            100% { transform: rotate(360deg) translateX(28px) rotate(-360deg); }
+        }
+        @keyframes orbit2 {
+            0% { transform: rotate(0) translateX(24px) rotate(0); }
+            100% { transform: rotate(-360deg) translateX(24px) rotate(360deg); }
+        }
+        @keyframes orbit3 {
+            0% { transform: rotate(0) translateX(22px) rotate(0); }
+            100% { transform: rotate(360deg) translateX(22px) rotate(-360deg); }
+        }
+        @keyframes orbit4 {
+            0% { transform: rotate(0) translateX(20px) rotate(0); }
+            100% { transform: rotate(-360deg) translateX(20px) rotate(360deg); }
+        }
+        @keyframes orbit5 {
+            0% { transform: rotate(0) translateX(18px) rotate(0); }
             100% { transform: rotate(360deg) translateX(18px) rotate(-360deg); }
         }
-
-        @keyframes customIconSpin {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.05); box-shadow: 0 0 60px #7aa9ff, 0 0 100px #4a8aff; }
-            100% { transform: rotate(360deg) scale(1); }
+        @keyframes orbit6 {
+            0% { transform: rotate(0) translateX(16px) rotate(0); }
+            100% { transform: rotate(-360deg) translateX(16px) rotate(360deg); }
         }
 
-        @keyframes iconPulse {
-            0% { filter: drop-shadow(0 0 10px #7aa9ff); }
-            100% { filter: drop-shadow(0 0 40px #ffffff) drop-shadow(0 0 80px #4a8aff); }
-        }
-
-        .custom-icon:hover {
-            animation-play-state: paused;
-            transform: scale(1.15) rotate(10deg);
-            border-color: #ffffff;
-            box-shadow: 0 0 80px #7aa9ff, 0 0 120px #ffffff;
-        }
-
-        .custom-icon:hover .orbit-ring-inner {
+        .logo-icon:hover .ring {
             animation-play-state: paused;
         }
 
-        .custom-icon:hover .planet {
+        .logo-icon:hover .planet {
             animation-play-state: paused;
         }
 
-        /* ===== تایتل Orbitix ===== */
-        .prompt-header h1 {
+        /* تایتل با جلوه ویژه */
+        .header h1 {
             font-size: 2.8rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #ffffff, #b3d9ff, #7aa9ff, #ffffff);
+            background: linear-gradient(135deg, #ffffff 0%, #93c5fd 30%, #7aa9ff 60%, #b3d9ff 100%);
             background-size: 300% 300%;
             -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: transparent;
-            letter-spacing: 3px;
-            text-shadow: 0 0 40px rgba(60, 160, 255, 0.2);
-            animation: gradientMove 6s ease infinite alternate;
-            margin-right: 0.3rem;
-            font-family: 'Vazir', sans-serif;
+            letter-spacing: 4px;
+            animation: grad 6s infinite alternate;
+            text-shadow: 0 0 60px rgba(60, 160, 255, 0.1);
+            position: relative;
         }
 
-        @keyframes gradientMove {
+        .header h1::after {
+            content: '✦';
+            position: absolute;
+            font-size: 1.2rem;
+            top: -5px;
+            right: -25px;
+            -webkit-text-fill-color: initial;
+            color: rgba(255, 255, 255, 0.2);
+            animation: sparkle 2s infinite alternate;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0.2; transform: scale(0.8) rotate(0); }
+            100% { opacity: 0.8; transform: scale(1.2) rotate(180deg); }
+        }
+
+        @keyframes grad {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
         }
 
-        .prompt-header .sub-icon {
+        .header .rocket {
             font-size: 2.2rem;
             margin-right: auto;
-            animation: rocketMove 2.2s infinite alternate ease-in-out;
-            filter: drop-shadow(0 0 20px #7aa9ff);
+            animation: rocketFloat 2.5s infinite alternate ease-in-out;
+            filter: drop-shadow(0 0 30px rgba(120, 200, 255, 0.3));
         }
 
-        @keyframes rocketMove {
-            0% { transform: translateY(0px) scale(1) rotate(-5deg); }
-            100% { transform: translateY(-12px) scale(1.1) rotate(5deg); }
+        @keyframes rocketFloat {
+            0% { transform: translateY(0) rotate(-8deg) scale(1); }
+            100% { transform: translateY(-18px) rotate(8deg) scale(1.05); }
         }
 
-        /* ===== محتوای پرامت با تم آبی-سفید ===== */
-        .prompt-content {
-            font-size: 1.4rem;
-            line-height: 2.4rem;
-            color: #e6f0ff;
-            text-shadow: 0 0 20px rgba(60, 150, 255, 0.15);
-            background: rgba(255, 255, 255, 0.06);
-            padding: 1.8rem 2.2rem;
-            border-radius: 2.5rem 0.8rem 2.5rem 0.8rem;
-            border-left: 4px solid rgba(255, 255, 255, 0.4);
-            border-right: 4px solid rgba(100, 180, 255, 0.4);
-            backdrop-filter: blur(6px);
-            margin-bottom: 2rem;
-            transition: all 0.4s;
-            font-family: 'Vazir', 'Segoe UI', Tahoma, sans-serif;
+        /* ===== محتوا با طراحی خاص ===== */
+        .content {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 28px 32px;
+            border-radius: 32px 12px 32px 12px;
+            border-left: 3px solid rgba(255, 255, 255, 0.06);
+            border-right: 3px solid rgba(100, 180, 255, 0.06);
+            margin-bottom: 28px;
+            transition: all 0.5s;
+            font-size: 1.3rem;
+            line-height: 2.5rem;
+            color: #c4d8f0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .prompt-content:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-left-color: #ffffff;
-            border-right-color: #7aa9ff;
-            box-shadow: 0 0 60px rgba(60, 150, 255, 0.15);
-            transform: scale(1.005);
+        .content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(60, 120, 255, 0.02), transparent 60%);
+            pointer-events: none;
+            animation: contentGlow 15s infinite alternate;
         }
 
-        .highlight {
-            color: #ffffff;
+        @keyframes contentGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(20%, 10%) scale(1.2); }
+        }
+
+        .content:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: rgba(120, 200, 255, 0.2);
+            border-right-color: rgba(120, 200, 255, 0.2);
+            box-shadow: 0 0 60px rgba(60, 150, 255, 0.03);
+        }
+
+        .content .hl {
+            color: #fff;
             font-weight: 700;
-            text-shadow: 0 0 30px #7aa9ff, 0 0 60px #4a8aff, 0 0 100px #ffffff;
-            display: inline-block;
-            animation: pulseText 2.8s infinite;
+            text-shadow:
+                0 0 30px rgba(120, 200, 255, 0.3),
+                0 0 60px rgba(60, 120, 255, 0.2);
+            animation: pulse 3s infinite;
             font-size: 1.5rem;
-        }
-
-        @keyframes pulseText {
-            0% { opacity: 0.8; text-shadow: 0 0 20px #7aa9ff; }
-            50% { opacity: 1; text-shadow: 0 0 50px #7aa9ff, 0 0 100px #ffffff, 0 0 150px #4a8aff; }
-            100% { opacity: 0.8; text-shadow: 0 0 20px #7aa9ff; }
-        }
-
-        .prompt-content .emoji-big {
-            font-size: 2rem;
-            display: inline-block;
-            animation: spinGlow 12s infinite linear;
-        }
-
-        @keyframes spinGlow {
-            0% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 5px #7aa9ff); }
-            50% { transform: rotate(180deg) scale(1.2); filter: drop-shadow(0 0 40px #ffffff); }
-            100% { transform: rotate(360deg) scale(1); filter: drop-shadow(0 0 5px #7aa9ff); }
-        }
-
-        .tag-cloud {
-            display: inline-block;
-            margin-top: 0.6rem;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 0.3rem 1.2rem;
-            border-radius: 3rem;
-            font-size: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(4px);
+            cursor: pointer;
             transition: 0.3s;
+            position: relative;
         }
 
-        .tag-cloud:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: #7aa9ff;
-            box-shadow: 0 0 30px rgba(60, 150, 255, 0.2);
+        .content .hl::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(120, 200, 255, 0.3), transparent);
+            animation: underlineGlow 2s infinite;
         }
 
-        .tag-cloud span {
-            color: #b3d9ff;
+        @keyframes underlineGlow {
+            0% { opacity: 0.3; transform: scaleX(0.8); }
+            50% { opacity: 0.8; transform: scaleX(1); }
+            100% { opacity: 0.3; transform: scaleX(0.8); }
         }
 
-        /* ===== بلوک کد ===== */
-        .code-block {
-            background: rgba(0, 10, 30, 0.6);
-            border-radius: 2rem 0.5rem 2rem 0.5rem;
-            padding: 1.5rem 2rem;
-            margin: 1.8rem 0;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 40px rgba(60, 150, 255, 0.1);
+        .content .hl:hover {
+            text-shadow: 0 0 50px rgba(255, 255, 255, 0.4), 0 0 100px rgba(120, 200, 255, 0.3);
+        }
+
+        @keyframes pulse {
+            0%,
+            100% { text-shadow: 0 0 20px rgba(120, 200, 255, 0.2); }
+            50% { text-shadow: 0 0 50px rgba(120, 200, 255, 0.4), 0 0 100px rgba(60, 120, 255, 0.2); }
+        }
+
+        .content .big-emoji {
+            font-size: 2.2rem;
+            display: inline-block;
+            animation: spinEmoji 14s infinite linear;
+        }
+
+        @keyframes spinEmoji {
+            0% { transform: rotate(0) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.2)); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .tags {
+            display: inline-block;
+            margin-top: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 6px 20px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            transition: 0.4s;
+            backdrop-filter: blur(4px);
+        }
+
+        .tags:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(120, 200, 255, 0.15);
+            box-shadow: 0 0 30px rgba(60, 150, 255, 0.05);
+        }
+
+        .tags span {
+            color: #93c5fd;
+        }
+
+        /* ===== کد با طراحی زیبا ===== */
+        .code {
+            background: rgba(0, 4, 15, 0.8);
+            border-radius: 28px 8px 28px 8px;
+            padding: 20px 26px;
+            margin: 22px 0;
+            border: 1px solid rgba(255, 255, 255, 0.04);
             font-family: 'Fira Code', 'Courier New', monospace;
-            font-size: 0.95rem;
-            color: #c4e0ff;
+            font-size: 0.9rem;
+            color: #a8c8e8;
             direction: ltr;
             text-align: left;
             overflow-x: auto;
             white-space: pre-wrap;
             word-break: break-word;
             transition: 0.4s;
-            backdrop-filter: blur(4px);
+            line-height: 1.9;
+            position: relative;
         }
 
-        .code-block:hover {
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 0 60px rgba(60, 150, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.05) inset;
-            transform: scale(1.005);
+        .code::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 100% 0, rgba(60, 120, 255, 0.03), transparent);
+            pointer-events: none;
         }
 
-        .code-block .tag { color: #7dd3fc; }
-        .code-block .attr { color: #93c5fd; }
-        .code-block .value { color: #fcd34d; }
-        .code-block .comment { color: #6b8c9f; font-style: italic; }
-        .code-block .keyword { color: #a78bfa; font-weight: 600; }
+        .code:hover {
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 60px rgba(60, 150, 255, 0.03), inset 0 0 60px rgba(60, 150, 255, 0.02);
+        }
 
-        /* ===== دکمه کیهانی ===== */
-        .btn-cosmic {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #e6f0ff;
-            padding: 1rem 2.5rem;
-            border-radius: 3.5rem 0.8rem 3.5rem 0.8rem;
+        .code .tag { color: #7dd3fc; }
+        .code .attr { color: #93c5fd; }
+        .code .val { color: #fcd34d; }
+        .code .cmt { color: #3a5a7a; font-style: italic; }
+        .code .key { color: #a78bfa; }
+        .code .str { color: #34d399; }
+
+        /* ===== دکمه با طراحی خاص ===== */
+        .btn {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #d4e8ff;
+            padding: 16px 38px;
+            border-radius: 48px 12px 48px 12px;
             font-size: 1.3rem;
             font-weight: 600;
             cursor: pointer;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 0 30px rgba(60, 150, 255, 0.15);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            letter-spacing: 1px;
-            margin-top: 0.5rem;
-            font-family: 'Vazir', 'Segoe UI', Tahoma, sans-serif;
+            gap: 16px;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-family: 'Vazir', sans-serif;
+            backdrop-filter: blur(8px);
+            margin-top: 8px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-cosmic:hover {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
-            box-shadow: 0 0 70px rgba(60, 150, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.1) inset;
-            transform: scale(1.04) translateY(-4px);
-            color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.6);
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(60, 120, 255, 0.05), transparent 50%);
+            opacity: 0;
+            transition: 0.5s;
         }
 
-        .btn-cosmic:active {
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        .btn:hover {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05) translateY(-5px);
+            box-shadow:
+                0 0 60px rgba(60, 150, 255, 0.08),
+                0 0 120px rgba(60, 150, 255, 0.04);
+            color: #fff;
+        }
+
+        .btn:active {
             transform: scale(0.95);
         }
 
-        .btn-cosmic .rocket-emoji {
+        .btn .rkt {
             display: inline-block;
-            animation: rocketLaunch 1.6s infinite alternate ease-in-out;
+            animation: rktAnim 1.8s infinite alternate ease-in-out;
             font-size: 1.8rem;
         }
 
-        @keyframes rocketLaunch {
-            0% { transform: translateY(0px) rotate(-10deg); }
-            100% { transform: translateY(-14px) rotate(10deg) scale(1.1); }
+        @keyframes rktAnim {
+            0% { transform: translateY(0) rotate(-10deg) scale(1); }
+            100% { transform: translateY(-14px) rotate(10deg) scale(1.08); }
         }
 
-        /* ===== فوتر ===== */
-        .cosmic-footer {
-            margin-top: 2.8rem;
+        .btn-wrap {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .btn-wrap::before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+        }
+
+        /* ===== فوتر با طراحی زیبا ===== */
+        .footer {
+            margin-top: 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: #b3d9ff;
-            font-size: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1.4rem;
+            color: #6a8aaa;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 20px;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            gap: 12px;
         }
 
-        .orbit-ring {
+        .orbits {
             display: flex;
-            gap: 0.4rem;
+            gap: 8px;
         }
 
-        .orbit-ring span {
-            display: inline-block;
+        .orbits span {
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            animation: orbitPulse 2.2s infinite alternate;
-            box-shadow: 0 0 16px rgba(60, 150, 255, 0.4);
+            animation: orbPulse 2.5s infinite alternate;
         }
 
-        .orbit-ring span:nth-child(1) { background: #ffffff; animation-delay: 0s; }
-        .orbit-ring span:nth-child(2) { background: #b3d9ff; animation-delay: 0.25s; }
-        .orbit-ring span:nth-child(3) { background: #7aa9ff; animation-delay: 0.5s; }
-        .orbit-ring span:nth-child(4) { background: #4a8aff; animation-delay: 0.75s; }
-        .orbit-ring span:nth-child(5) { background: #ffffff; animation-delay: 1s; }
+        .orbits span:nth-child(1) { background: #fff; animation-delay: 0; box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
+        .orbits span:nth-child(2) { background: #b3d9ff; animation-delay: 0.3s; box-shadow: 0 0 20px rgba(179, 217, 255, 0.1); }
+        .orbits span:nth-child(3) { background: #7aa9ff; animation-delay: 0.6s; box-shadow: 0 0 20px rgba(122, 169, 255, 0.1); }
+        .orbits span:nth-child(4) { background: #4a8aff; animation-delay: 0.9s; box-shadow: 0 0 20px rgba(74, 138, 255, 0.1); }
+        .orbits span:nth-child(5) { background: #fff; animation-delay: 1.2s; box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
 
-        @keyframes orbitPulse {
-            0% { transform: scale(0.5); opacity: 0.3; }
-            100% { transform: scale(1.3); opacity: 1; }
+        @keyframes orbPulse {
+            0% { transform: scale(0.3); opacity: 0.2; }
+            100% { transform: scale(1.4); opacity: 0.8; }
         }
 
-        .footer-version {
+        .footer .ver {
             display: flex;
-            gap: 0.8rem;
             align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.2rem 1.2rem;
-            border-radius: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 4px 18px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(4px);
         }
 
-        .footer-version span {
-            background: linear-gradient(90deg, #ffffff, #7aa9ff);
+        .footer .ver span {
+            background: linear-gradient(90deg, #93c5fd, #7aa9ff);
             -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            -webkit-text-fill-color: transparent;
             font-weight: 700;
         }
 
-        /* ===== انیمیشن‌های اضافه ===== */
-        .glow-orb {
+        /* ===== گلوهای نورانی ===== */
+        .glow {
             position: fixed;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(60, 150, 255, 0.06), transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            animation: orbFloat 20s infinite alternate ease-in-out;
+            animation: glowFloat 30s infinite alternate ease-in-out;
         }
 
-        .glow-orb:nth-of-type(1) { top: -150px; left: -150px; }
-        .glow-orb:nth-of-type(2) { bottom: -150px; right: -150px; animation-delay: 5s; background: radial-gradient(circle, rgba(100, 180, 255, 0.06), transparent 70%); }
-
-        @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-            100% { transform: translate(80px, 50px) scale(1.3); opacity: 0.8; }
+        .glow:nth-child(1) {
+            width: 600px;
+            height: 600px;
+            top: -250px;
+            left: -250px;
+            background: radial-gradient(circle, rgba(60, 100, 200, 0.04), transparent 70%);
         }
 
-        /* ===== ریسپانسیو ===== */
-        @media (max-width: 700px) {
-            .cosmic-card { padding: 1.8rem 1.2rem; border-radius: 2.5rem 0.8rem 2.5rem 0.8rem; }
-            .prompt-header h1 { font-size: 2rem; }
-            .custom-icon { width: 3.8rem; height: 3.8rem; }
-            .custom-icon .center-dot { width: 8px; height: 8px; }
-            .custom-icon .planet { width: 6px; height: 6px; }
-            .custom-icon .planet:nth-child(4) { top: 12%; right: 12%; }
-            .custom-icon .planet:nth-child(5) { bottom: 15%; left: 10%; }
-            .custom-icon .planet:nth-child(6) { top: 50%; left: 8%; width: 5px; height: 5px; }
-            @keyframes planetOrbit {
-                0% { transform: rotate(0deg) translateX(14px) rotate(0deg); }
-                100% { transform: rotate(360deg) translateX(14px) rotate(-360deg); }
-            }
-            .prompt-content { font-size: 1.1rem; padding: 1.2rem 1.2rem; line-height: 2rem; }
-            .code-block { font-size: 0.75rem; padding: 1rem 1.2rem; }
-            .btn-cosmic { font-size: 1rem; padding: 0.8rem 1.5rem; }
-            .cosmic-footer { flex-direction: column; align-items: flex-start; }
+        .glow:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            bottom: -200px;
+            right: -200px;
+            background: radial-gradient(circle, rgba(100, 60, 200, 0.04), transparent 70%);
+            animation-delay: 10s;
         }
 
-        @media (max-width: 450px) {
-            .prompt-header h1 { font-size: 1.6rem; }
-            .custom-icon { width: 3.2rem; height: 3.2rem; }
-            .custom-icon .center-dot { width: 6px; height: 6px; }
-            .custom-icon .planet { width: 4px; height: 4px; }
-            .custom-icon .planet:nth-child(4) { top: 10%; right: 10%; }
-            .custom-icon .planet:nth-child(5) { bottom: 12%; left: 8%; }
-            .custom-icon .planet:nth-child(6) { top: 45%; left: 6%; width: 4px; height: 4px; }
-            @keyframes planetOrbit {
-                0% { transform: rotate(0deg) translateX(10px) rotate(0deg); }
-                100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
-            }
-            .prompt-content { font-size: 1rem; padding: 0.8rem 1rem; }
+        .glow:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(60, 80, 180, 0.03), transparent 70%);
+            animation-delay: 5s;
+            animation-duration: 40s;
+        }
+
+        @keyframes glowFloat {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            100% { transform: translate(100px, 80px) scale(1.4); opacity: 0.6; }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .card { padding: 28px 20px; border-radius: 36px 14px; }
+            .header h1 { font-size: 2.2rem; }
+            .logo-icon { width: 60px; height: 60px; min-width: 60px; }
+            .logo-icon .dot { width: 14px; height: 14px; }
+            .logo-icon .planet:nth-child(5) { width: 8px; height: 8px; top: 6%; right: 4%; }
+            .logo-icon .planet:nth-child(6) { width: 7px; height: 7px; bottom: 8%; left: 3%; }
+            .logo-icon .planet:nth-child(7) { width: 6px; height: 6px; top: 42%; left: 2%; }
+            .logo-icon .planet:nth-child(8) { width: 5px; height: 5px; bottom: 28%; right: 3%; }
+            .logo-icon .planet:nth-child(9) { width: 6px; height: 6px; top: 26%; right: 1%; }
+            .logo-icon .planet:nth-child(10) { width: 4px; height: 4px; bottom: 16%; left: 6%; }
+            @keyframes orbit1 { 0% { transform: rotate(0) translateX(22px) rotate(0); } 100% { transform: rotate(360deg) translateX(22px) rotate(-360deg); } }
+            @keyframes orbit2 { 0% { transform: rotate(0) translateX(20px) rotate(0); } 100% { transform: rotate(-360deg) translateX(20px) rotate(360deg); } }
+            @keyframes orbit3 { 0% { transform: rotate(0) translateX(18px) rotate(0); } 100% { transform: rotate(360deg) translateX(18px) rotate(-360deg); } }
+            @keyframes orbit4 { 0% { transform: rotate(0) translateX(16px) rotate(0); } 100% { transform: rotate(-360deg) translateX(16px) rotate(360deg); } }
+            @keyframes orbit5 { 0% { transform: rotate(0) translateX(14px) rotate(0); } 100% { transform: rotate(360deg) translateX(14px) rotate(-360deg); } }
+            @keyframes orbit6 { 0% { transform: rotate(0) translateX(12px) rotate(0); } 100% { transform: rotate(-360deg) translateX(12px) rotate(360deg); } }
+            .content { font-size: 1.1rem; padding: 20px; line-height: 2.1rem; }
+            .content .hl { font-size: 1.2rem; }
+            .code { font-size: 0.8rem; padding: 16px; }
+            .btn { font-size: 1.1rem; padding: 14px 28px; }
+            .header .rocket { font-size: 1.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 18px 14px; border-radius: 28px 10px; }
+            .header h1 { font-size: 1.6rem; letter-spacing: 2px; }
+            .header h1::after { display: none; }
+            .logo-icon { width: 50px; height: 50px; min-width: 50px; }
+            .logo-icon .dot { width: 12px; height: 12px; }
+            .logo-icon .planet:nth-child(5) { width: 7px; height: 7px; top: 4%; right: 3%; }
+            .logo-icon .planet:nth-child(6) { width: 6px; height: 6px; bottom: 6%; left: 2%; }
+            .logo-icon .planet:nth-child(7) { width: 5px; height: 5px; top: 40%; left: 1%; }
+            .logo-icon .planet:nth-child(8) { width: 4px; height: 4px; bottom: 25%; right: 2%; }
+            .logo-icon .planet:nth-child(9) { width: 5px; height: 5px; top: 24%; right: 0%; }
+            .logo-icon .planet:nth-child(10) { width: 4px; height: 4px; bottom: 14%; left: 4%; }
+            @keyframes orbit1 { 0% { transform: rotate(0) translateX(18px) rotate(0); } 100% { transform: rotate(360deg) translateX(18px) rotate(-360deg); } }
+            @keyframes orbit2 { 0% { transform: rotate(0) translateX(16px) rotate(0); } 100% { transform: rotate(-360deg) translateX(16px) rotate(360deg); } }
+            @keyframes orbit3 { 0% { transform: rotate(0) translateX(14px) rotate(0); } 100% { transform: rotate(360deg) translateX(14px) rotate(-360deg); } }
+            @keyframes orbit4 { 0% { transform: rotate(0) translateX(12px) rotate(0); } 100% { transform: rotate(-360deg) translateX(12px) rotate(360deg); } }
+            @keyframes orbit5 { 0% { transform: rotate(0) translateX(10px) rotate(0); } 100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); } }
+            @keyframes orbit6 { 0% { transform: rotate(0) translateX(10px) rotate(0); } 100% { transform: rotate(-360deg) translateX(10px) rotate(360deg); } }
+            .content { font-size: 1rem; padding: 16px; line-height: 1.9rem; border-radius: 24px 8px; }
+            .content .hl { font-size: 1.1rem; }
+            .content .big-emoji { font-size: 1.8rem; }
+            .code { font-size: 0.7rem; padding: 12px; border-radius: 20px 6px; line-height: 1.7; }
+            .btn { font-size: 1rem; padding: 12px 22px; gap: 12px; border-radius: 36px 10px; }
+            .btn .rkt { font-size: 1.4rem; }
+            .header .rocket { font-size: 1.5rem; }
+            .footer { font-size: 0.75rem; flex-direction: column; align-items: flex-start; gap: 8px; }
+            .orbits span { width: 8px; height: 8px; }
+            .footer .ver { padding: 3px 12px; }
+            .tags { font-size: 0.8rem; padding: 4px 14px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- اُرب‌های نورانی پس‌زمینه -->
-    <div class="glow-orb"></div>
-    <div class="glow-orb"></div>
+    <!-- گلوهای نورانی پس‌زمینه -->
+    <div class="glow"></div>
+    <div class="glow"></div>
+    <div class="glow"></div>
 
     <!-- ===== کارت اصلی Orbitix ===== -->
-    <div class="cosmic-card">
+    <div class="card">
 
-        <!-- هدر با آیکون کاستوم Orbitix -->
-        <div class="prompt-header">
-            <div class="custom-icon" title="Orbitix - آیکون کاستوم کهکشانی">
-                <div class="orbit-ring-inner"></div>
-                <div class="orbit-ring-inner"></div>
-                <div class="orbit-ring-inner"></div>
-                <div class="center-dot"></div>
+        <!-- HEADER -->
+        <div class="header">
+            <!-- آیکون کاستوم با ۶ سیاره و حلقه‌های مداری -->
+            <div class="logo-icon" title="Orbitix - آیکون کاستوم کهکشانی">
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="dot"></div>
+                <div class="planet"></div>
+                <div class="planet"></div>
+                <div class="planet"></div>
                 <div class="planet"></div>
                 <div class="planet"></div>
                 <div class="planet"></div>
             </div>
             <h1>Orbitix</h1>
-            <span class="sub-icon">🚀</span>
+            <span class="rocket">🚀</span>
         </div>
 
-        <!-- محتوای پرامت -->
-        <div class="prompt-content">
-            <p style="margin-bottom: 0.8rem;">
-                <span class="emoji-big">🌌</span>
-                <span class="highlight">پرامت</span> یک اپلیکیشن تعاملی با 
-                <span style="color:#93c5fd; font-weight:600;">انیمیشن‌های کهکشانی</span> 
-                و <span style="color:#ffffff; font-weight:600;">جزئیات خفن</span> طراحی کن.
+        <!-- CONTENT -->
+        <div class="content">
+            <p style="margin-bottom:12px;">
+                <span class="big-emoji">🌌</span>
+                <span class="hl">پرامت</span> یک اپلیکیشن تعاملی با
+                <span style="color:#7dd3fc; font-weight:600;">انیمیشن‌های کهکشانی</span>
+                و <span style="color:#fff; font-weight:600;">جزئیات خفن</span> طراحی کن.
             </p>
             <p>
-                <span style="display:inline-block; animation: spinGlow 14s infinite linear;">⚡</span>
-                از <strong style="color:#93c5fd;">Three.js</strong> یا 
-                <strong style="color:#93c5fd;">CSS</strong> برای افکت‌های 
+                <span style="display:inline-block; animation: spinEmoji 16s infinite linear;">⚡</span>
+                از <strong style="color:#7dd3fc;">Three.js</strong> یا
+                <strong style="color:#7dd3fc;">CSS</strong> برای افکت‌های
                 <span style="color:#fcd34d; font-weight:600;">نورپردازی پویا</span>،
                 ذرات ستاره‌ای و حرکت سیاره‌ها استفاده کن.
             </p>
-            <div class="tag-cloud">
-                🌠 <span>#کد_تمیز</span> · <span>#انیمیشن_نرم</span> · <span>#تجربه_فراگیر</span> · <span style="color:#fcd34d;">#Orbitix</span>
+            <div class="tags">
+                🌠 <span>#کد_تمیز</span> ·
+                <span>#انیمیشن_نرم</span> ·
+                <span>#تجربه_فراگیر</span> ·
+                <span style="color:#fcd34d;">#Orbitix</span>
             </div>
         </div>
 
-        <!-- بلوک کد -->
-        <div class="code-block">
-            <span class="comment">&lt;!-- Orbitix | پرامت خفن فضایی با تم آبی-سفید --&gt;</span>
+        <!-- CODE BLOCK -->
+        <div class="code">
+            <span class="cmt">&lt;!-- Orbitix | پرامت فضایی فوق‌حرفه‌ای --&gt;</span>
             <br>
-            <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">"universe"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"galaxy"</span><span class="tag">&gt;</span>
             <br>
-            &nbsp;&nbsp;<span class="tag">&lt;canvas</span> <span class="attr">id</span>=<span class="value">"starfield"</span><span class="tag">&gt;&lt;/canvas&gt;</span>
+            &nbsp;&nbsp;<span class="tag">&lt;canvas</span> <span class="attr">id</span>=<span class="val">"stars"</span><span class="tag">&gt;&lt;/canvas&gt;</span>
             <br>
-            &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">"nebula"</span><span class="tag">&gt;</span>
+            &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"core"</span><span class="tag">&gt;</span>
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span>✨ کهکشان تعاملی ✨<span class="tag">&lt;/h1&gt;</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span><span class="str">🚀 کهکشان تعاملی</span><span class="tag">&lt;/h1&gt;</span>
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="value">"launch()"</span><span class="tag">&gt;</span>🚀 پرتاب<span class="tag">&lt;/button&gt;</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="val">"launch()"</span><span class="tag">&gt;</span><span class="str">🌟 پرتاب</span><span class="tag">&lt;/button&gt;</span>
             <br>
             &nbsp;&nbsp;<span class="tag">&lt;/div&gt;</span>
             <br>
             <span class="tag">&lt;/div&gt;</span>
             <br>
-            <span class="comment">&lt;!-- انیمیشن سی‌اس‌اس و جاوااسکریپت برای حرکت سیاره‌ها --&gt;</span>
+            <span class="cmt">&lt;!-- ۶ سیاره در مدار با انیمیشن‌های CSS --&gt;</span>
         </div>
 
-        <!-- دکمه -->
-        <div style="display: flex; justify-content: center; margin: 0.8rem 0 0.2rem;">
-            <button class="btn-cosmic" onclick="alert('🚀 Orbitix پرتاب شد! کهکشان در حال انفجار است...')">
-                <span class="rocket-emoji">🚀</span> 
+        <!-- BUTTON -->
+        <div class="btn-wrap">
+            <button class="btn" onclick="alert('🚀 Orbitix پرتاب شد! کهکشان در حال انفجار...')">
+                <span class="rkt">🚀</span>
                 اجرای پرامت
-                <span style="font-size:1.4rem; margin-right:0.3rem;">✦</span>
+                <span style="font-size:1.3rem; opacity:0.5;">✦</span>
             </button>
         </div>
 
-        <!-- فوتر -->
-        <div class="cosmic-footer">
-            <div class="orbit-ring">
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="orbits">
                 <span></span><span></span><span></span><span></span><span></span>
             </div>
-            <div class="footer-version">
-                <span>💫</span> 
-                <span>Orbitix v4.0</span>
-                <span style="opacity:0.5;">|</span>
+            <div class="ver">
+                <span>💫</span>
+                <span>Orbitix v6.0</span>
+                <span style="opacity:0.3;">|</span>
                 <span>🌍 کهکشان آبی</span>
-                <span style="opacity:0.5;">|</span>
-                <span style="font-size:1.2rem;">✦</span>
+                <span style="opacity:0.3;">|</span>
+                <span style="font-size:1.2rem; opacity:0.4;">✦</span>
             </div>
         </div>
+
     </div>
 
     <!-- ===== اسکریپت تعاملی ===== -->
     <script>
         (function() {
-            const card = document.querySelector('.cosmic-card');
-            const btn = document.querySelector('.btn-cosmic');
-            const icon = document.querySelector('.custom-icon');
+            const card = document.querySelector('.card');
+            const btn = document.querySelector('.btn');
+            const icon = document.querySelector('.logo-icon');
 
-            // افکت hover روی دکمه
+            // Hover روی دکمه
             btn.addEventListener('mouseenter', function() {
-                card.style.transition = 'box-shadow 0.4s, transform 0.3s';
-                card.style.boxShadow = '0 0 100px rgba(60, 150, 255, 0.5), 0 0 0 3px rgba(255, 255, 255, 0.2) inset';
+                card.style.boxShadow = '0 60px 140px rgba(0,0,0,0.9), 0 0 0 2px rgba(255,255,255,0.06) inset, 0 0 100px rgba(60,120,255,0.08)';
             });
             btn.addEventListener('mouseleave', function() {
-                card.style.boxShadow = '0 30px 80px rgba(0, 20, 80, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.1) inset';
+                card.style.boxShadow = '0 50px 120px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.04) inset, 0 0 80px rgba(60,120,255,0.03)';
             });
 
-            // کلیک روی آیکون کاستوم Orbitix
+            // کلیک روی آیکون -> تغییر رنگ با افکت زیبا
             if (icon) {
                 icon.addEventListener('click', function() {
-                    const colors = ['#ffffff', '#7aa9ff', '#b3d9ff', '#4a8aff', '#93c5fd', '#fcd34d'];
-                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                    this.style.boxShadow = `0 0 80px ${randomColor}, 0 0 120px ${randomColor}`;
-                    this.style.borderColor = randomColor;
-                    // تغییر رنگ نقطه مرکزی
-                    const dot = this.querySelector('.center-dot');
+                    const colors = ['#fff', '#7aa9ff', '#b3d9ff', '#4a8aff', '#fcd34d', '#93c5fd', '#a78bfa', '#34d399', '#f472b6', '#fb923c'];
+                    const c = colors[Math.floor(Math.random() * colors.length)];
+                    this.style.borderColor = c;
+                    this.style.boxShadow = `0 0 80px ${c}30, 0 0 160px ${c}15, inset 0 -4px 20px rgba(0,0,0,0.4)`;
+
+                    const dot = this.querySelector('.dot');
                     if (dot) {
-                        dot.style.background = `radial-gradient(circle, ${randomColor}, #4a8aff)`;
-                        dot.style.boxShadow = `0 0 30px ${randomColor}`;
+                        dot.style.background = `radial-gradient(circle, #fff, ${c})`;
+                        dot.style.boxShadow = `0 0 40px ${c}, 0 0 80px ${c}, 0 0 120px ${c}30`;
                     }
+
+                    // تغییر رنگ سیاره‌ها
+                    const planets = this.querySelectorAll('.planet');
+                    const hue = Math.floor(Math.random() * 360);
+                    planets.forEach((p, i) => {
+                        const h = (hue + i * 30) % 360;
+                        p.style.background = `radial-gradient(circle at 30% 30%, hsl(${h}, 80%, 70%), hsl(${h}, 80%, 40%))`;
+                        p.style.boxShadow = `0 0 25px hsl(${h}, 80%, 50%)`;
+                    });
+
+                    // بازگشت به حالت اول بعد از 1.5 ثانیه
                     setTimeout(() => {
-                        this.style.boxShadow = '0 0 40px rgba(60, 160, 255, 0.3), 0 0 80px rgba(100, 100, 255, 0.1)';
-                        this.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+                        this.style.borderColor = 'rgba(255,255,255,0.12)';
+                        this.style.boxShadow = '0 0 60px rgba(60,160,255,0.08), 0 0 120px rgba(60,160,255,0.04), inset 0 -4px 20px rgba(0,0,0,0.4)';
                         if (dot) {
-                            dot.style.background = 'radial-gradient(circle, #ffffff, #7aa9ff)';
-                            dot.style.boxShadow = '0 0 30px #7aa9ff, 0 0 60px #4a8aff';
+                            dot.style.background = 'radial-gradient(circle, #fff, #4a8aff)';
+                            dot.style.boxShadow = '0 0 40px #4a8aff, 0 0 80px #7aa9ff, 0 0 120px #4a8aff30';
                         }
-                    }, 800);
+                        // برگرداندن رنگ سیاره‌ها
+                        const origColors = [
+                            'radial-gradient(circle at 30% 30%, #b3d9ff, #3b82f6)',
+                            'radial-gradient(circle at 30% 30%, #fcd34d, #f59e0b)',
+                            'radial-gradient(circle at 30% 30%, #a78bfa, #7c3aed)',
+                            'radial-gradient(circle at 30% 30%, #34d399, #059669)',
+                            'radial-gradient(circle at 30% 30%, #fb923c, #ea580c)',
+                            'radial-gradient(circle at 30% 30%, #f472b6, #db2777)'
+                        ];
+                        planets.forEach((p, i) => {
+                            if (i < origColors.length) {
+                                p.style.background = origColors[i];
+                                p.style.boxShadow = '';
+                            }
+                        });
+                    }, 1500);
                 });
             }
 
             // کلیک روی هایلایت
-            const highlight = document.querySelector('.highlight');
-            if (highlight) {
-                highlight.addEventListener('click', function() {
-                    const colors = ['#ffffff', '#7aa9ff', '#b3d9ff', '#fcd34d', '#93c5fd', '#4a8aff'];
-                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                    this.style.color = randomColor;
-                    this.style.textShadow = `0 0 40px ${randomColor}, 0 0 80px ${randomColor}`;
+            const hl = document.querySelector('.hl');
+            if (hl) {
+                hl.addEventListener('click', function() {
+                    const colors = ['#fff', '#7aa9ff', '#b3d9ff', '#fcd34d', '#93c5fd', '#4a8aff', '#a78bfa', '#34d399'];
+                    const c = colors[Math.floor(Math.random() * colors.length)];
+                    this.style.color = c;
+                    this.style.textShadow = `0 0 40px ${c}, 0 0 80px ${c}, 0 0 120px ${c}30`;
+                    setTimeout(() => {
+                        this.style.color = '#fff';
+                        this.style.textShadow = '0 0 30px rgba(120,200,255,0.3), 0 0 60px rgba(60,120,255,0.2)';
+                    }, 1000);
                 });
             }
 
-            console.log('✨ Orbitix | پرامت فضایی خفن با تم آبی-سفید ✨');
-            console.log('🌠 آیکون کاستوم با حلقه‌های مداری و سیاره‌ها');
+            console.log('🚀 Orbitix | پرامت فضایی فوق‌حرفه‌ای با ۶ سیاره');
+            console.log('✨ طراحی تیره با افکت‌های کهکشانی و انیمیشن‌های روان');
         })();
     </script>
+
 </body>
 </html>
