@@ -1,976 +1,1070 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbitix | پرامت فضایی فوق‌حرفه‌ای</title>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Falling Hero | سقوط آزاد</title>
+    
     <!-- فونت وزیر -->
-    <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
 
     <style>
-        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            user-select: none;
         }
 
         body {
-            background: #05080f;
+            font-family: 'Vazir', sans-serif;
+            background: #0b0e1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Vazir', 'Segoe UI', Tahoma, sans-serif;
-            padding: 20px;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* ===== پس‌زمینه ستاره‌های واقع‌گرایانه ===== */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                radial-gradient(1px 1px at 2% 5%, #fff, transparent),
-                radial-gradient(2px 2px at 8% 25%, #b3d9ff, transparent),
-                radial-gradient(1px 1px at 14% 65%, #fff, transparent),
-                radial-gradient(3px 3px at 22% 15%, #7aa9ff, transparent),
-                radial-gradient(1px 1px at 30% 78%, #fff, transparent),
-                radial-gradient(2px 2px at 38% 35%, #b3d9ff, transparent),
-                radial-gradient(1px 1px at 46% 55%, #fff, transparent),
-                radial-gradient(3px 3px at 54% 10%, #4a8aff, transparent),
-                radial-gradient(1px 1px at 62% 42%, #fff, transparent),
-                radial-gradient(2px 2px at 70% 72%, #7aa9ff, transparent),
-                radial-gradient(1px 1px at 78% 28%, #fff, transparent),
-                radial-gradient(3px 3px at 86% 60%, #b3d9ff, transparent),
-                radial-gradient(1px 1px at 94% 18%, #fff, transparent),
-                radial-gradient(2px 2px at 48% 88%, #4a8aff, transparent),
-                radial-gradient(1px 1px at 12% 48%, #fff, transparent),
-                radial-gradient(2px 2px at 72% 48%, #b3d9ff, transparent),
-                radial-gradient(1px 1px at 92% 82%, #fff, transparent),
-                radial-gradient(3px 3px at 28% 92%, #7aa9ff, transparent);
-            background-size: 400px 400px;
-            opacity: 0.7;
-            pointer-events: none;
-            z-index: 0;
-            animation: starsMove 30s infinite alternate ease-in-out;
-        }
-
-        @keyframes starsMove {
-            0% { opacity: 0.4; transform: scale(1) rotate(0deg); }
-            100% { opacity: 0.9; transform: scale(1.08) rotate(2deg); }
-        }
-
-        /* ===== پس‌زمینه سحابی ===== */
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background:
-                radial-gradient(ellipse at 20% 50%, rgba(60, 80, 180, 0.08), transparent 50%),
-                radial-gradient(ellipse at 80% 30%, rgba(120, 60, 200, 0.06), transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(30, 100, 200, 0.05), transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ===== کارت اصلی با طراحی فوق‌حرفه‌ای ===== */
-        .card {
-            max-width: 860px;
-            width: 100%;
-            background: rgba(6, 10, 25, 0.75);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 48px 20px 48px 20px;
-            padding: 40px 35px 35px;
-            box-shadow:
-                0 50px 120px rgba(0, 0, 0, 0.8),
-                0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-                0 0 80px rgba(60, 120, 255, 0.03);
-            position: relative;
-            z-index: 2;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s;
-            animation: cardFloat 10s infinite alternate ease-in-out;
-        }
-
-        @keyframes cardFloat {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-18px) rotate(0.3deg); }
-        }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.008);
-            box-shadow:
-                0 60px 140px rgba(0, 0, 0, 0.9),
-                0 0 0 2px rgba(255, 255, 255, 0.06) inset,
-                0 0 100px rgba(60, 120, 255, 0.06);
-        }
-
-        /* ===== ستاره‌های درخشان داخل کارت ===== */
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(1px 1px at 8% 15%, #fff, transparent),
-                radial-gradient(2px 2px at 22% 45%, #b3d9ff, transparent),
-                radial-gradient(1px 1px at 40% 10%, #fff, transparent),
-                radial-gradient(3px 3px at 58% 65%, #7aa9ff, transparent),
-                radial-gradient(1px 1px at 76% 30%, #fff, transparent),
-                radial-gradient(2px 2px at 90% 55%, #b3d9ff, transparent),
-                radial-gradient(1px 1px at 15% 75%, #fff, transparent),
-                radial-gradient(3px 3px at 45% 85%, #4a8aff, transparent),
-                radial-gradient(1px 1px at 68% 12%, #fff, transparent),
-                radial-gradient(2px 2px at 85% 78%, #7aa9ff, transparent);
-            background-size: 300px 300px;
-            opacity: 0.2;
-            pointer-events: none;
-            border-radius: inherit;
-            z-index: 0;
-            animation: cardStars 20s infinite linear;
-        }
-
-        @keyframes cardStars {
-            0% { background-position: 0 0; opacity: 0.15; }
-            50% { opacity: 0.3; }
-            100% { background-position: 200px 150px; opacity: 0.15; }
-        }
-
-        .card>* {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* ===== HEADER با طراحی خاص ===== */
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 28px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            flex-wrap: wrap;
-            position: relative;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 80px;
-            height: 1px;
-            background: linear-gradient(90deg, rgba(100, 180, 255, 0.3), transparent);
-        }
-
-        /* ===== آیکون کاستوم Orbitix با طراحی 3D ===== */
-        .logo-icon {
-            width: 72px;
-            height: 72px;
-            min-width: 72px;
-            background: radial-gradient(ellipse at 30% 25%, #1a2a5a, #0a0f25);
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.12);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow:
-                0 0 60px rgba(60, 160, 255, 0.08),
-                0 0 120px rgba(60, 160, 255, 0.04),
-                inset 0 -4px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            overflow: visible;
-        }
-
-        .logo-icon:hover {
-            transform: scale(1.12) rotate(12deg);
-            border-color: rgba(120, 200, 255, 0.4);
-            box-shadow:
-                0 0 80px rgba(60, 160, 255, 0.15),
-                0 0 150px rgba(60, 160, 255, 0.08),
-                inset 0 -4px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        /* حلقه‌های مداری با طراحی ظریف */
-        .logo-icon .ring {
-            position: absolute;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            animation: ringSpin 8s infinite linear;
-        }
-
-        .logo-icon .ring:nth-child(1) {
-            width: 90%;
-            height: 90%;
-            border-color: rgba(255, 255, 255, 0.08);
-            animation-duration: 7s;
-        }
-
-        .logo-icon .ring:nth-child(2) {
-            width: 70%;
-            height: 70%;
-            border-color: rgba(255, 255, 255, 0.05);
-            animation-duration: 5s;
-            animation-direction: reverse;
-            border-style: dashed;
-        }
-
-        .logo-icon .ring:nth-child(3) {
-            width: 50%;
-            height: 50%;
-            border-color: rgba(255, 255, 255, 0.04);
-            animation-duration: 3.5s;
-            border-style: dotted;
-        }
-
-        @keyframes ringSpin {
-            0% { transform: rotate(0); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* نقطه مرکزی با درخشش */
-        .logo-icon .dot {
-            width: 18px;
-            height: 18px;
-            background: radial-gradient(circle, #fff, #4a8aff);
-            border-radius: 50%;
-            box-shadow:
-                0 0 40px #4a8aff,
-                0 0 80px #7aa9ff,
-                0 0 120px #4a8aff30;
-            z-index: 2;
-            animation: dotPulse 2.5s infinite alternate;
-        }
-
-        @keyframes dotPulse {
-            0% { transform: scale(1); box-shadow: 0 0 40px #4a8aff, 0 0 80px #7aa9ff; }
-            100% { transform: scale(1.2); box-shadow: 0 0 60px #4a8aff, 0 0 120px #7aa9ff, 0 0 160px #4a8aff40; }
-        }
-
-        /* سیاره‌ها با طراحی زیبا */
-        .logo-icon .planet {
-            position: absolute;
-            border-radius: 50%;
-            z-index: 1;
-            transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-        }
-
-        .logo-icon .planet:nth-child(5) {
-            width: 10px;
-            height: 10px;
-            top: 8%;
-            right: 6%;
-            background: radial-gradient(circle at 30% 30%, #b3d9ff, #3b82f6);
-            animation: orbit1 4.5s infinite linear;
-            box-shadow: 0 0 20px #3b82f660;
-        }
-
-        .logo-icon .planet:nth-child(6) {
-            width: 8px;
-            height: 8px;
-            bottom: 10%;
-            left: 4%;
-            background: radial-gradient(circle at 30% 30%, #fcd34d, #f59e0b);
-            animation: orbit2 5.5s infinite linear reverse;
-            box-shadow: 0 0 20px #f59e0b50;
-        }
-
-        .logo-icon .planet:nth-child(7) {
-            width: 7px;
-            height: 7px;
-            top: 45%;
-            left: 3%;
-            background: radial-gradient(circle at 30% 30%, #a78bfa, #7c3aed);
-            animation: orbit3 4s infinite linear;
-            box-shadow: 0 0 20px #7c3aed50;
-        }
-
-        .logo-icon .planet:nth-child(8) {
-            width: 6px;
-            height: 6px;
-            bottom: 30%;
-            right: 4%;
-            background: radial-gradient(circle at 30% 30%, #34d399, #059669);
-            animation: orbit4 6s infinite linear reverse;
-            box-shadow: 0 0 15px #05966940;
-        }
-
-        .logo-icon .planet:nth-child(9) {
-            width: 7px;
-            height: 7px;
-            top: 28%;
-            right: 2%;
-            background: radial-gradient(circle at 30% 30%, #fb923c, #ea580c);
-            animation: orbit5 5s infinite linear;
-            box-shadow: 0 0 15px #ea580c40;
-        }
-
-        .logo-icon .planet:nth-child(10) {
-            width: 5px;
-            height: 5px;
-            bottom: 18%;
-            left: 8%;
-            background: radial-gradient(circle at 30% 30%, #f472b6, #db2777);
-            animation: orbit6 3.8s infinite linear reverse;
-            box-shadow: 0 0 15px #db277740;
-        }
-
-        @keyframes orbit1 {
-            0% { transform: rotate(0) translateX(28px) rotate(0); }
-            100% { transform: rotate(360deg) translateX(28px) rotate(-360deg); }
-        }
-        @keyframes orbit2 {
-            0% { transform: rotate(0) translateX(24px) rotate(0); }
-            100% { transform: rotate(-360deg) translateX(24px) rotate(360deg); }
-        }
-        @keyframes orbit3 {
-            0% { transform: rotate(0) translateX(22px) rotate(0); }
-            100% { transform: rotate(360deg) translateX(22px) rotate(-360deg); }
-        }
-        @keyframes orbit4 {
-            0% { transform: rotate(0) translateX(20px) rotate(0); }
-            100% { transform: rotate(-360deg) translateX(20px) rotate(360deg); }
-        }
-        @keyframes orbit5 {
-            0% { transform: rotate(0) translateX(18px) rotate(0); }
-            100% { transform: rotate(360deg) translateX(18px) rotate(-360deg); }
-        }
-        @keyframes orbit6 {
-            0% { transform: rotate(0) translateX(16px) rotate(0); }
-            100% { transform: rotate(-360deg) translateX(16px) rotate(360deg); }
-        }
-
-        .logo-icon:hover .ring {
-            animation-play-state: paused;
-        }
-
-        .logo-icon:hover .planet {
-            animation-play-state: paused;
-        }
-
-        /* تایتل با جلوه ویژه */
-        .header h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffffff 0%, #93c5fd 30%, #7aa9ff 60%, #b3d9ff 100%);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 4px;
-            animation: grad 6s infinite alternate;
-            text-shadow: 0 0 60px rgba(60, 160, 255, 0.1);
-            position: relative;
-        }
-
-        .header h1::after {
-            content: '✦';
-            position: absolute;
-            font-size: 1.2rem;
-            top: -5px;
-            right: -25px;
-            -webkit-text-fill-color: initial;
-            color: rgba(255, 255, 255, 0.2);
-            animation: sparkle 2s infinite alternate;
-        }
-
-        @keyframes sparkle {
-            0% { opacity: 0.2; transform: scale(0.8) rotate(0); }
-            100% { opacity: 0.8; transform: scale(1.2) rotate(180deg); }
-        }
-
-        @keyframes grad {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        .header .rocket {
-            font-size: 2.2rem;
-            margin-right: auto;
-            animation: rocketFloat 2.5s infinite alternate ease-in-out;
-            filter: drop-shadow(0 0 30px rgba(120, 200, 255, 0.3));
-        }
-
-        @keyframes rocketFloat {
-            0% { transform: translateY(0) rotate(-8deg) scale(1); }
-            100% { transform: translateY(-18px) rotate(8deg) scale(1.05); }
-        }
-
-        /* ===== محتوا با طراحی خاص ===== */
-        .content {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 28px 32px;
-            border-radius: 32px 12px 32px 12px;
-            border-left: 3px solid rgba(255, 255, 255, 0.06);
-            border-right: 3px solid rgba(100, 180, 255, 0.06);
-            margin-bottom: 28px;
-            transition: all 0.5s;
-            font-size: 1.3rem;
-            line-height: 2.5rem;
-            color: #c4d8f0;
-            position: relative;
             overflow: hidden;
+            touch-action: none;
         }
 
-        .content::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(60, 120, 255, 0.02), transparent 60%);
-            pointer-events: none;
-            animation: contentGlow 15s infinite alternate;
-        }
-
-        @keyframes contentGlow {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(20%, 10%) scale(1.2); }
-        }
-
-        .content:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-left-color: rgba(120, 200, 255, 0.2);
-            border-right-color: rgba(120, 200, 255, 0.2);
-            box-shadow: 0 0 60px rgba(60, 150, 255, 0.03);
-        }
-
-        .content .hl {
-            color: #fff;
-            font-weight: 700;
-            text-shadow:
-                0 0 30px rgba(120, 200, 255, 0.3),
-                0 0 60px rgba(60, 120, 255, 0.2);
-            animation: pulse 3s infinite;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        .content .hl::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(120, 200, 255, 0.3), transparent);
-            animation: underlineGlow 2s infinite;
-        }
-
-        @keyframes underlineGlow {
-            0% { opacity: 0.3; transform: scaleX(0.8); }
-            50% { opacity: 0.8; transform: scaleX(1); }
-            100% { opacity: 0.3; transform: scaleX(0.8); }
-        }
-
-        .content .hl:hover {
-            text-shadow: 0 0 50px rgba(255, 255, 255, 0.4), 0 0 100px rgba(120, 200, 255, 0.3);
-        }
-
-        @keyframes pulse {
-            0%,
-            100% { text-shadow: 0 0 20px rgba(120, 200, 255, 0.2); }
-            50% { text-shadow: 0 0 50px rgba(120, 200, 255, 0.4), 0 0 100px rgba(60, 120, 255, 0.2); }
-        }
-
-        .content .big-emoji {
-            font-size: 2.2rem;
-            display: inline-block;
-            animation: spinEmoji 14s infinite linear;
-        }
-
-        @keyframes spinEmoji {
-            0% { transform: rotate(0) scale(1); }
-            50% { transform: rotate(180deg) scale(1.2); filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.2)); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-
-        .tags {
-            display: inline-block;
-            margin-top: 12px;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 6px 20px;
+        /* کانتینر اصلی */
+        .game-wrapper {
+            background: linear-gradient(145deg, #141a2b, #0b0e1a);
             border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.9rem;
-            transition: 0.4s;
-            backdrop-filter: blur(4px);
+            padding: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), inset 0 0 60px rgba(90, 140, 255, 0.05);
         }
 
-        .tags:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(120, 200, 255, 0.15);
-            box-shadow: 0 0 30px rgba(60, 150, 255, 0.05);
-        }
-
-        .tags span {
-            color: #93c5fd;
-        }
-
-        /* ===== کد با طراحی زیبا ===== */
-        .code {
-            background: rgba(0, 4, 15, 0.8);
-            border-radius: 28px 8px 28px 8px;
-            padding: 20px 26px;
-            margin: 22px 0;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            font-family: 'Fira Code', 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: #a8c8e8;
-            direction: ltr;
-            text-align: left;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-break: break-word;
-            transition: 0.4s;
-            line-height: 1.9;
+        .game-container {
             position: relative;
+            width: 400px;
+            height: 700px;
+            background: radial-gradient(ellipse at 50% 30%, #1a2340, #070a12);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: inset 0 0 80px rgba(0, 20, 80, 0.6);
+            touch-action: none;
+            cursor: none;
         }
 
-        .code::before {
-            content: '';
+        /* ===== لایه ستاره‌های پس‌زمینه ===== */
+        #stars-canvas {
             position: absolute;
             top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle at 100% 0, rgba(60, 120, 255, 0.03), transparent);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===== عناصر بازی ===== */
+        #game-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: 1;
+            touch-action: none;
+        }
+
+        /* ===== رابط کاربری ===== */
+        .ui-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 16px 20px;
+        }
+
+        /* هدر امتیازات */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            padding: 10px 18px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            pointer-events: auto;
+        }
+
+        .score-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffe484;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+
+        .score-box svg {
+            width: 28px;
+            height: 28px;
+            filter: drop-shadow(0 0 8px #ffd966);
+        }
+
+        .best-box {
+            color: #a0b4e0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 4px 14px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .best-box span {
+            color: #ffd966;
+            font-weight: 700;
+        }
+
+        /* ===== صفحه شروع / پایان ===== */
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            pointer-events: auto;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.hidden {
+            opacity: 0;
             pointer-events: none;
         }
 
-        .code:hover {
-            border-color: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 60px rgba(60, 150, 255, 0.03), inset 0 0 60px rgba(60, 150, 255, 0.02);
-        }
-
-        .code .tag { color: #7dd3fc; }
-        .code .attr { color: #93c5fd; }
-        .code .val { color: #fcd34d; }
-        .code .cmt { color: #3a5a7a; font-style: italic; }
-        .code .key { color: #a78bfa; }
-        .code .str { color: #34d399; }
-
-        /* ===== دکمه با طراحی خاص ===== */
-        .btn {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #d4e8ff;
-            padding: 16px 38px;
-            border-radius: 48px 12px 48px 12px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
+        .modal-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 30px rgba(100, 180, 255, 0.5);
+            margin-bottom: 10px;
+            display: flex;
             align-items: center;
-            gap: 16px;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            gap: 12px;
+        }
+
+        .modal-title svg {
+            width: 56px;
+            height: 56px;
+            filter: drop-shadow(0 0 20px #4a8eff);
+        }
+
+        .modal-sub {
+            color: #b0c8ff;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .modal-score {
+            color: #ffe484;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin: 6px 0;
+        }
+
+        .modal-best {
+            color: #aab8e0;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
             font-family: 'Vazir', sans-serif;
-            backdrop-filter: blur(8px);
-            margin-top: 8px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(60, 120, 255, 0.05), transparent 50%);
-            opacity: 0;
-            transition: 0.5s;
-        }
-
-        .btn:hover::before {
-            opacity: 1;
+            font-weight: 700;
+            font-size: 1.4rem;
+            padding: 16px 52px;
+            border: none;
+            border-radius: 80px;
+            background: linear-gradient(135deg, #f7c948, #f0a500);
+            color: #0b0e1a;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(240, 165, 0, 0.4);
+            transition: 0.2s ease;
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 1px;
         }
 
         .btn:hover {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05) translateY(-5px);
-            box-shadow:
-                0 0 60px rgba(60, 150, 255, 0.08),
-                0 0 120px rgba(60, 150, 255, 0.04);
-            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(240, 165, 0, 0.7);
         }
 
         .btn:active {
             transform: scale(0.95);
         }
 
-        .btn .rkt {
-            display: inline-block;
-            animation: rktAnim 1.8s infinite alternate ease-in-out;
-            font-size: 1.8rem;
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: none;
+            font-size: 1rem;
+            padding: 10px 28px;
+            margin-top: 12px;
         }
 
-        @keyframes rktAnim {
-            0% { transform: translateY(0) rotate(-10deg) scale(1); }
-            100% { transform: translateY(-14px) rotate(10deg) scale(1.08); }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
         }
 
-        .btn-wrap {
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        .btn-wrap::before {
-            content: '';
+        .powerup-indicator {
             position: absolute;
-            bottom: -20px;
-            width: 60%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-        }
-
-        /* ===== فوتر با طراحی زیبا ===== */
-        .footer {
-            margin-top: 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #6a8aaa;
-            font-size: 0.95rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            padding-top: 20px;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .orbits {
-            display: flex;
-            gap: 8px;
-        }
-
-        .orbits span {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            animation: orbPulse 2.5s infinite alternate;
-        }
-
-        .orbits span:nth-child(1) { background: #fff; animation-delay: 0; box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
-        .orbits span:nth-child(2) { background: #b3d9ff; animation-delay: 0.3s; box-shadow: 0 0 20px rgba(179, 217, 255, 0.1); }
-        .orbits span:nth-child(3) { background: #7aa9ff; animation-delay: 0.6s; box-shadow: 0 0 20px rgba(122, 169, 255, 0.1); }
-        .orbits span:nth-child(4) { background: #4a8aff; animation-delay: 0.9s; box-shadow: 0 0 20px rgba(74, 138, 255, 0.1); }
-        .orbits span:nth-child(5) { background: #fff; animation-delay: 1.2s; box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
-
-        @keyframes orbPulse {
-            0% { transform: scale(0.3); opacity: 0.2; }
-            100% { transform: scale(1.4); opacity: 0.8; }
-        }
-
-        .footer .ver {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 4px 18px;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(4px);
-        }
-
-        .footer .ver span {
-            background: linear-gradient(90deg, #93c5fd, #7aa9ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-        }
-
-        /* ===== گلوهای نورانی ===== */
-        .glow {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-            animation: glowFloat 30s infinite alternate ease-in-out;
-        }
-
-        .glow:nth-child(1) {
-            width: 600px;
-            height: 600px;
-            top: -250px;
-            left: -250px;
-            background: radial-gradient(circle, rgba(60, 100, 200, 0.04), transparent 70%);
-        }
-
-        .glow:nth-child(2) {
-            width: 500px;
-            height: 500px;
-            bottom: -200px;
-            right: -200px;
-            background: radial-gradient(circle, rgba(100, 60, 200, 0.04), transparent 70%);
-            animation-delay: 10s;
-        }
-
-        .glow:nth-child(3) {
-            width: 400px;
-            height: 400px;
-            top: 50%;
+            bottom: 20px;
             left: 50%;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle, rgba(60, 80, 180, 0.03), transparent 70%);
-            animation-delay: 5s;
-            animation-duration: 40s;
+            transform: translateX(-50%);
+            z-index: 15;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 6px 18px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            color: #ffe484;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: 0.3s;
         }
 
-        @keyframes glowFloat {
-            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-            100% { transform: translate(100px, 80px) scale(1.4); opacity: 0.6; }
+        .powerup-indicator.show {
+            opacity: 1;
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .card { padding: 28px 20px; border-radius: 36px 14px; }
-            .header h1 { font-size: 2.2rem; }
-            .logo-icon { width: 60px; height: 60px; min-width: 60px; }
-            .logo-icon .dot { width: 14px; height: 14px; }
-            .logo-icon .planet:nth-child(5) { width: 8px; height: 8px; top: 6%; right: 4%; }
-            .logo-icon .planet:nth-child(6) { width: 7px; height: 7px; bottom: 8%; left: 3%; }
-            .logo-icon .planet:nth-child(7) { width: 6px; height: 6px; top: 42%; left: 2%; }
-            .logo-icon .planet:nth-child(8) { width: 5px; height: 5px; bottom: 28%; right: 3%; }
-            .logo-icon .planet:nth-child(9) { width: 6px; height: 6px; top: 26%; right: 1%; }
-            .logo-icon .planet:nth-child(10) { width: 4px; height: 4px; bottom: 16%; left: 6%; }
-            @keyframes orbit1 { 0% { transform: rotate(0) translateX(22px) rotate(0); } 100% { transform: rotate(360deg) translateX(22px) rotate(-360deg); } }
-            @keyframes orbit2 { 0% { transform: rotate(0) translateX(20px) rotate(0); } 100% { transform: rotate(-360deg) translateX(20px) rotate(360deg); } }
-            @keyframes orbit3 { 0% { transform: rotate(0) translateX(18px) rotate(0); } 100% { transform: rotate(360deg) translateX(18px) rotate(-360deg); } }
-            @keyframes orbit4 { 0% { transform: rotate(0) translateX(16px) rotate(0); } 100% { transform: rotate(-360deg) translateX(16px) rotate(360deg); } }
-            @keyframes orbit5 { 0% { transform: rotate(0) translateX(14px) rotate(0); } 100% { transform: rotate(360deg) translateX(14px) rotate(-360deg); } }
-            @keyframes orbit6 { 0% { transform: rotate(0) translateX(12px) rotate(0); } 100% { transform: rotate(-360deg) translateX(12px) rotate(360deg); } }
-            .content { font-size: 1.1rem; padding: 20px; line-height: 2.1rem; }
-            .content .hl { font-size: 1.2rem; }
-            .code { font-size: 0.8rem; padding: 16px; }
-            .btn { font-size: 1.1rem; padding: 14px 28px; }
-            .header .rocket { font-size: 1.8rem; }
+        .powerup-indicator svg {
+            width: 24px;
+            height: 24px;
         }
 
-        @media (max-width: 480px) {
-            .card { padding: 18px 14px; border-radius: 28px 10px; }
-            .header h1 { font-size: 1.6rem; letter-spacing: 2px; }
-            .header h1::after { display: none; }
-            .logo-icon { width: 50px; height: 50px; min-width: 50px; }
-            .logo-icon .dot { width: 12px; height: 12px; }
-            .logo-icon .planet:nth-child(5) { width: 7px; height: 7px; top: 4%; right: 3%; }
-            .logo-icon .planet:nth-child(6) { width: 6px; height: 6px; bottom: 6%; left: 2%; }
-            .logo-icon .planet:nth-child(7) { width: 5px; height: 5px; top: 40%; left: 1%; }
-            .logo-icon .planet:nth-child(8) { width: 4px; height: 4px; bottom: 25%; right: 2%; }
-            .logo-icon .planet:nth-child(9) { width: 5px; height: 5px; top: 24%; right: 0%; }
-            .logo-icon .planet:nth-child(10) { width: 4px; height: 4px; bottom: 14%; left: 4%; }
-            @keyframes orbit1 { 0% { transform: rotate(0) translateX(18px) rotate(0); } 100% { transform: rotate(360deg) translateX(18px) rotate(-360deg); } }
-            @keyframes orbit2 { 0% { transform: rotate(0) translateX(16px) rotate(0); } 100% { transform: rotate(-360deg) translateX(16px) rotate(360deg); } }
-            @keyframes orbit3 { 0% { transform: rotate(0) translateX(14px) rotate(0); } 100% { transform: rotate(360deg) translateX(14px) rotate(-360deg); } }
-            @keyframes orbit4 { 0% { transform: rotate(0) translateX(12px) rotate(0); } 100% { transform: rotate(-360deg) translateX(12px) rotate(360deg); } }
-            @keyframes orbit5 { 0% { transform: rotate(0) translateX(10px) rotate(0); } 100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); } }
-            @keyframes orbit6 { 0% { transform: rotate(0) translateX(10px) rotate(0); } 100% { transform: rotate(-360deg) translateX(10px) rotate(360deg); } }
-            .content { font-size: 1rem; padding: 16px; line-height: 1.9rem; border-radius: 24px 8px; }
-            .content .hl { font-size: 1.1rem; }
-            .content .big-emoji { font-size: 1.8rem; }
-            .code { font-size: 0.7rem; padding: 12px; border-radius: 20px 6px; line-height: 1.7; }
-            .btn { font-size: 1rem; padding: 12px 22px; gap: 12px; border-radius: 36px 10px; }
-            .btn .rkt { font-size: 1.4rem; }
-            .header .rocket { font-size: 1.5rem; }
-            .footer { font-size: 0.75rem; flex-direction: column; align-items: flex-start; gap: 8px; }
-            .orbits span { width: 8px; height: 8px; }
-            .footer .ver { padding: 3px 12px; }
-            .tags { font-size: 0.8rem; padding: 4px 14px; }
+        /* ===== واکنش‌گرا ===== */
+        @media (max-width: 450px) {
+            .game-container {
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+            }
+            .game-wrapper {
+                border-radius: 0;
+                padding: 0;
+                width: 100%;
+            }
+            .modal-title {
+                font-size: 2.4rem;
+            }
+            .btn {
+                font-size: 1.2rem;
+                padding: 14px 36px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- گلوهای نورانی پس‌زمینه -->
-    <div class="glow"></div>
-    <div class="glow"></div>
-    <div class="glow"></div>
+<div class="game-wrapper">
+    <div class="game-container" id="gameContainer">
 
-    <!-- ===== کارت اصلی Orbitix ===== -->
-    <div class="card">
+        <!-- بوم ستاره‌های پس‌زمینه -->
+        <canvas id="stars-canvas"></canvas>
 
-        <!-- HEADER -->
-        <div class="header">
-            <!-- آیکون کاستوم با ۶ سیاره و حلقه‌های مداری -->
-            <div class="logo-icon" title="Orbitix - آیکون کاستوم کهکشانی">
-                <div class="ring"></div>
-                <div class="ring"></div>
-                <div class="ring"></div>
-                <div class="dot"></div>
-                <div class="planet"></div>
-                <div class="planet"></div>
-                <div class="planet"></div>
-                <div class="planet"></div>
-                <div class="planet"></div>
-                <div class="planet"></div>
+        <!-- بوم اصلی بازی -->
+        <canvas id="game-canvas"></canvas>
+
+        <!-- ===== رابط کاربری ===== -->
+        <div class="ui-overlay">
+            <div class="header">
+                <div class="score-box">
+                    <!-- آیکون ستاره ساخته شده با SVG -->
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FFD966" stroke="#FFA500" stroke-width="1.2"/>
+                    </svg>
+                    <span id="scoreDisplay">۰</span>
+                </div>
+                <div class="best-box">
+                    🏆 <span id="bestDisplay">۰</span>
+                </div>
             </div>
-            <h1>Orbitix</h1>
-            <span class="rocket">🚀</span>
+            <div style="flex:1;"></div>
         </div>
 
-        <!-- CONTENT -->
-        <div class="content">
-            <p style="margin-bottom:12px;">
-                <span class="big-emoji">🌌</span>
-                <span class="hl">پرامت</span> یک اپلیکیشن تعاملی با
-                <span style="color:#7dd3fc; font-weight:600;">انیمیشن‌های کهکشانی</span>
-                و <span style="color:#fff; font-weight:600;">جزئیات خفن</span> طراحی کن.
-            </p>
-            <p>
-                <span style="display:inline-block; animation: spinEmoji 16s infinite linear;">⚡</span>
-                از <strong style="color:#7dd3fc;">Three.js</strong> یا
-                <strong style="color:#7dd3fc;">CSS</strong> برای افکت‌های
-                <span style="color:#fcd34d; font-weight:600;">نورپردازی پویا</span>،
-                ذرات ستاره‌ای و حرکت سیاره‌ها استفاده کن.
-            </p>
-            <div class="tags">
-                🌠 <span>#کد_تمیز</span> ·
-                <span>#انیمیشن_نرم</span> ·
-                <span>#تجربه_فراگیر</span> ·
-                <span style="color:#fcd34d;">#Orbitix</span>
+        <!-- نشان‌دهنده پاورآپ فعال -->
+        <div class="powerup-indicator" id="powerupIndicator">
+            <span id="powerupIcon">🛡️</span>
+            <span id="powerupText">سپر</span>
+        </div>
+
+        <!-- ===== مودال شروع / پایان ===== -->
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal-title">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="10" r="6" stroke="#FFD966" stroke-width="2"/>
+                    <path d="M5 20L12 14L19 20" stroke="#FFD966" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="12" cy="4" r="1.5" fill="#FFD966" stroke="#FFA500" stroke-width="1"/>
+                    <circle cx="7" cy="9" r="1" fill="#FFD966" stroke="#FFA500" stroke-width="1"/>
+                    <circle cx="17" cy="9" r="1" fill="#FFD966" stroke="#FFA500" stroke-width="1"/>
+                </svg>
+                سقوط آزاد
             </div>
-        </div>
-
-        <!-- CODE BLOCK -->
-        <div class="code">
-            <span class="cmt">&lt;!-- Orbitix | پرامت فضایی فوق‌حرفه‌ای --&gt;</span>
-            <br>
-            <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"galaxy"</span><span class="tag">&gt;</span>
-            <br>
-            &nbsp;&nbsp;<span class="tag">&lt;canvas</span> <span class="attr">id</span>=<span class="val">"stars"</span><span class="tag">&gt;&lt;/canvas&gt;</span>
-            <br>
-            &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"core"</span><span class="tag">&gt;</span>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span><span class="str">🚀 کهکشان تعاملی</span><span class="tag">&lt;/h1&gt;</span>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="val">"launch()"</span><span class="tag">&gt;</span><span class="str">🌟 پرتاب</span><span class="tag">&lt;/button&gt;</span>
-            <br>
-            &nbsp;&nbsp;<span class="tag">&lt;/div&gt;</span>
-            <br>
-            <span class="tag">&lt;/div&gt;</span>
-            <br>
-            <span class="cmt">&lt;!-- ۶ سیاره در مدار با انیمیشن‌های CSS --&gt;</span>
-        </div>
-
-        <!-- BUTTON -->
-        <div class="btn-wrap">
-            <button class="btn" onclick="alert('🚀 Orbitix پرتاب شد! کهکشان در حال انفجار...')">
-                <span class="rkt">🚀</span>
-                اجرای پرامت
-                <span style="font-size:1.3rem; opacity:0.5;">✦</span>
+            <div class="modal-sub" id="modalSub">فضانورد، آماده‌ای؟</div>
+            <div class="modal-score" id="modalScore" style="display:none;"></div>
+            <div class="modal-best" id="modalBest"></div>
+            <button class="btn" id="mainBtn">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 3L19 12L5 21V3Z" fill="white" stroke="white" stroke-width="1.5"/>
+                </svg>
+                شروع بازی
             </button>
-        </div>
-
-        <!-- FOOTER -->
-        <div class="footer">
-            <div class="orbits">
-                <span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <div class="ver">
-                <span>💫</span>
-                <span>Orbitix v6.0</span>
-                <span style="opacity:0.3;">|</span>
-                <span>🌍 کهکشان آبی</span>
-                <span style="opacity:0.3;">|</span>
-                <span style="font-size:1.2rem; opacity:0.4;">✦</span>
-            </div>
+            <button class="btn btn-secondary" id="resetBtn" style="display:none;">↺ بازی جدید</button>
         </div>
 
     </div>
+</div>
 
-    <!-- ===== اسکریپت تعاملی ===== -->
-    <script>
-        (function() {
-            const card = document.querySelector('.card');
-            const btn = document.querySelector('.btn');
-            const icon = document.querySelector('.logo-icon');
+<script>
+    (function() {
+        'use strict';
 
-            // Hover روی دکمه
-            btn.addEventListener('mouseenter', function() {
-                card.style.boxShadow = '0 60px 140px rgba(0,0,0,0.9), 0 0 0 2px rgba(255,255,255,0.06) inset, 0 0 100px rgba(60,120,255,0.08)';
-            });
-            btn.addEventListener('mouseleave', function() {
-                card.style.boxShadow = '0 50px 120px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.04) inset, 0 0 80px rgba(60,120,255,0.03)';
-            });
+        // ---------- تنظیمات ----------
+        const CONFIG = {
+            width: 400,
+            height: 700,
+            playerSize: 38,
+            meteorMinSize: 20,
+            meteorMaxSize: 48,
+            starSize: 22,
+            powerupSize: 28,
+            baseSpeed: 2.2,
+            maxSpeed: 5.8,
+            spawnInterval: 32,       // فریم
+            starChance: 0.35,
+            powerupChance: 0.08,
+        };
 
-            // کلیک روی آیکون -> تغییر رنگ با افکت زیبا
-            if (icon) {
-                icon.addEventListener('click', function() {
-                    const colors = ['#fff', '#7aa9ff', '#b3d9ff', '#4a8aff', '#fcd34d', '#93c5fd', '#a78bfa', '#34d399', '#f472b6', '#fb923c'];
-                    const c = colors[Math.floor(Math.random() * colors.length)];
-                    this.style.borderColor = c;
-                    this.style.boxShadow = `0 0 80px ${c}30, 0 0 160px ${c}15, inset 0 -4px 20px rgba(0,0,0,0.4)`;
+        // ---------- DOM ----------
+        const container = document.getElementById('gameContainer');
+        const canvas = document.getElementById('game-canvas');
+        const ctx = canvas.getContext('2d');
+        const starsCanvas = document.getElementById('stars-canvas');
+        const starsCtx = starsCanvas.getContext('2d');
 
-                    const dot = this.querySelector('.dot');
-                    if (dot) {
-                        dot.style.background = `radial-gradient(circle, #fff, ${c})`;
-                        dot.style.boxShadow = `0 0 40px ${c}, 0 0 80px ${c}, 0 0 120px ${c}30`;
-                    }
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const bestDisplay = document.getElementById('bestDisplay');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalSub = document.getElementById('modalSub');
+        const modalScore = document.getElementById('modalScore');
+        const modalBest = document.getElementById('modalBest');
+        const mainBtn = document.getElementById('mainBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const powerupIndicator = document.getElementById('powerupIndicator');
+        const powerupIcon = document.getElementById('powerupIcon');
+        const powerupText = document.getElementById('powerupText');
 
-                    // تغییر رنگ سیاره‌ها
-                    const planets = this.querySelectorAll('.planet');
-                    const hue = Math.floor(Math.random() * 360);
-                    planets.forEach((p, i) => {
-                        const h = (hue + i * 30) % 360;
-                        p.style.background = `radial-gradient(circle at 30% 30%, hsl(${h}, 80%, 70%), hsl(${h}, 80%, 40%))`;
-                        p.style.boxShadow = `0 0 25px hsl(${h}, 80%, 50%)`;
+        // ---------- سایز بوم ----------
+        function resizeCanvas() {
+            const rect = container.getBoundingClientRect();
+            const w = rect.width || CONFIG.width;
+            const h = rect.height || CONFIG.height;
+            canvas.width = w;
+            canvas.height = h;
+            starsCanvas.width = w;
+            starsCanvas.height = h;
+            CONFIG.width = w;
+            CONFIG.height = h;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // ---------- ستاره‌های پس‌زمینه (پویا) ----------
+        class StarField {
+            constructor() {
+                this.stars = [];
+                this.count = 120;
+                this.init();
+            }
+            init() {
+                this.stars = [];
+                for (let i = 0; i < this.count; i++) {
+                    this.stars.push({
+                        x: Math.random() * CONFIG.width,
+                        y: Math.random() * CONFIG.height,
+                        r: Math.random() * 1.8 + 0.5,
+                        speed: Math.random() * 0.6 + 0.2,
+                        alpha: Math.random() * 0.8 + 0.2,
+                        twinkleSpeed: Math.random() * 0.02 + 0.01,
                     });
+                }
+            }
+            update() {
+                for (const s of this.stars) {
+                    s.y += s.speed * 0.4;
+                    s.alpha += Math.sin(Date.now() * s.twinkleSpeed) * 0.008;
+                    s.alpha = Math.min(0.9, Math.max(0.15, s.alpha));
+                    if (s.y > CONFIG.height) {
+                        s.y = -2;
+                        s.x = Math.random() * CONFIG.width;
+                    }
+                }
+            }
+            draw(ctx) {
+                for (const s of this.stars) {
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
+                    ctx.shadowColor = 'rgba(180, 220, 255, 0.3)';
+                    ctx.shadowBlur = 12;
+                    ctx.fill();
+                }
+                ctx.shadowBlur = 0;
+            }
+        }
 
-                    // بازگشت به حالت اول بعد از 1.5 ثانیه
-                    setTimeout(() => {
-                        this.style.borderColor = 'rgba(255,255,255,0.12)';
-                        this.style.boxShadow = '0 0 60px rgba(60,160,255,0.08), 0 0 120px rgba(60,160,255,0.04), inset 0 -4px 20px rgba(0,0,0,0.4)';
-                        if (dot) {
-                            dot.style.background = 'radial-gradient(circle, #fff, #4a8aff)';
-                            dot.style.boxShadow = '0 0 40px #4a8aff, 0 0 80px #7aa9ff, 0 0 120px #4a8aff30';
+        const starField = new StarField();
+
+        // ---------- کلاس‌های بازی ----------
+        class Player {
+            constructor() {
+                this.size = CONFIG.playerSize;
+                this.x = CONFIG.width / 2;
+                this.y = CONFIG.height - 110;
+                this.targetX = this.x;
+                this.smoothX = this.x;
+            }
+            update() {
+                this.smoothX += (this.targetX - this.smoothX) * 0.22;
+                this.x = this.smoothX;
+                // محدودیت
+                this.x = Math.max(this.size / 2, Math.min(CONFIG.width - this.size / 2, this.x));
+                this.targetX = Math.max(this.size / 2, Math.min(CONFIG.width - this.size / 2, this.targetX));
+            }
+            draw(ctx) {
+                // بدن فضانورد (با کلاه)
+                const cx = this.x, cy = this.y;
+                // جت‌پک
+                ctx.fillStyle = '#3a4a7a';
+                ctx.shadowColor = 'rgba(100, 180, 255, 0.4)';
+                ctx.shadowBlur = 20;
+                ctx.beginPath();
+                ctx.ellipse(cx - 12, cy + 10, 8, 12, 0.2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.ellipse(cx + 12, cy + 10, 8, 12, -0.2, 0, Math.PI * 2);
+                ctx.fill();
+
+                // بدن
+                ctx.fillStyle = '#7a9eff';
+                ctx.shadowBlur = 30;
+                ctx.beginPath();
+                ctx.arc(cx, cy, this.size / 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                // کلاه شیشه‌ای
+                ctx.fillStyle = 'rgba(180, 220, 255, 0.25)';
+                ctx.strokeStyle = '#b0d0ff';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(cx, cy - 4, this.size / 2.6, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+
+                // صورتک
+                ctx.fillStyle = '#222';
+                ctx.shadowBlur = 0;
+                ctx.beginPath();
+                ctx.arc(cx - 6, cy - 6, 3.5, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(cx + 6, cy - 6, 3.5, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(cx, cy + 2, 5, 0, Math.PI);
+                ctx.stroke();
+
+                // آنتن
+                ctx.strokeStyle = '#ffd966';
+                ctx.lineWidth = 2;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = '#ffd966';
+                ctx.beginPath();
+                ctx.moveTo(cx + 10, cy - 18);
+                ctx.lineTo(cx + 20, cy - 34);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(cx + 20, cy - 36, 4, 0, Math.PI * 2);
+                ctx.fillStyle = '#ff4444';
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        // آیتم‌ها
+        class FallingItem {
+            constructor(type, x, size, speed) {
+                this.type = type; // 'meteor', 'star', 'powerup'
+                this.x = x || Math.random() * (CONFIG.width - 30) + 15;
+                this.y = -20;
+                this.size = size || CONFIG.meteorMinSize + Math.random() * 20;
+                this.speed = speed || CONFIG.baseSpeed + Math.random() * 1.2;
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotSpeed = (Math.random() - 0.5) * 0.04;
+                // نوع پاورآپ
+                this.powerType = ''; // 'shield', 'speed', 'bomb'
+                if (type === 'powerup') {
+                    const types = ['shield', 'speed', 'bomb'];
+                    this.powerType = types[Math.floor(Math.random() * types.length)];
+                    this.size = CONFIG.powerupSize;
+                }
+                if (type === 'star') {
+                    this.size = CONFIG.starSize;
+                    this.speed = CONFIG.baseSpeed + Math.random() * 0.7;
+                }
+            }
+            update() {
+                this.y += this.speed;
+                this.rotation += this.rotSpeed;
+            }
+            isOffScreen() {
+                return this.y > CONFIG.height + 30;
+            }
+            draw(ctx) {
+                const cx = this.x, cy = this.y;
+                if (this.type === 'meteor') {
+                    // شهاب‌سنگ با جرقه
+                    ctx.shadowColor = 'rgba(255, 120, 30, 0.6)';
+                    ctx.shadowBlur = 30;
+                    const grad = ctx.createRadialGradient(cx - 4, cy - 4, 2, cx, cy, this.size);
+                    grad.addColorStop(0, '#ff7744');
+                    grad.addColorStop(0.6, '#aa4422');
+                    grad.addColorStop(1, '#441100');
+                    ctx.fillStyle = grad;
+                    ctx.beginPath();
+                    ctx.ellipse(cx, cy, this.size / 2, this.size / 2.6, this.rotation, 0, Math.PI * 2);
+                    ctx.fill();
+                    // جرقه
+                    ctx.shadowBlur = 50;
+                    ctx.fillStyle = 'rgba(255, 200, 80, 0.3)';
+                    ctx.beginPath();
+                    ctx.arc(cx - 6, cy + 4, this.size / 4, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                } else if (this.type === 'star') {
+                    // ستاره طلایی
+                    ctx.shadowColor = '#ffd966';
+                    ctx.shadowBlur = 40;
+                    ctx.fillStyle = '#FFD966';
+                    ctx.strokeStyle = '#FFA500';
+                    ctx.lineWidth = 2;
+                    // رسم ستاره ۵ پر با مسیر
+                    const spikes = 5;
+                    const outerR = this.size / 2;
+                    const innerR = this.size / 4.5;
+                    ctx.beginPath();
+                    for (let i = 0; i < spikes * 2; i++) {
+                        const r = i % 2 === 0 ? outerR : innerR;
+                        const angle = (i * Math.PI) / spikes - Math.PI / 2 + this.rotation;
+                        const px = cx + r * Math.cos(angle);
+                        const py = cy + r * Math.sin(angle);
+                        if (i === 0) ctx.moveTo(px, py);
+                        else ctx.lineTo(px, py);
+                    }
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
+                } else if (this.type === 'powerup') {
+                    // پاورآپ با شکل خاص
+                    ctx.shadowColor = '#44ddff';
+                    ctx.shadowBlur = 45;
+                    const colors = {
+                        shield: '#44ddff',
+                        speed: '#ffdd44',
+                        bomb: '#ff5555'
+                    };
+                    ctx.fillStyle = colors[this.powerType] || '#44ddff';
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    if (this.powerType === 'shield') {
+                        // شکل سپر
+                        ctx.arc(cx, cy, this.size / 2, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.stroke();
+                        ctx.fillStyle = '#fff';
+                        ctx.font = '18px sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.shadowBlur = 0;
+                        ctx.fillText('🛡️', cx, cy + 1);
+                    } else if (this.powerType === 'speed') {
+                        ctx.beginPath();
+                        ctx.arc(cx, cy, this.size / 2, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.stroke();
+                        ctx.fillStyle = '#fff';
+                        ctx.font = '18px sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.shadowBlur = 0;
+                        ctx.fillText('⚡', cx, cy + 1);
+                    } else if (this.powerType === 'bomb') {
+                        ctx.beginPath();
+                        ctx.arc(cx, cy, this.size / 2, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.stroke();
+                        ctx.fillStyle = '#fff';
+                        ctx.font = '18px sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.shadowBlur = 0;
+                        ctx.fillText('💣', cx, cy + 1);
+                    }
+                    ctx.shadowBlur = 0;
+                }
+            }
+        }
+
+        // ---------- مدیریت بازی ----------
+        class Game {
+            constructor() {
+                this.player = new Player();
+                this.items = [];
+                this.score = 0;
+                this.best = parseInt(localStorage.getItem('fallingHeroBest')) || 0;
+                this.gameOver = false;
+                this.started = false;
+                this.frameCount = 0;
+                this.speedMultiplier = 1;
+                this.activePowerup = null; // { type, timer }
+                this.powerupTimer = 0;
+                this.comboCount = 0;
+                this.isInvincible = false;
+                this.invincibleTimer = 0;
+                this.particles = [];
+
+                // کنترل ماوس/لمس
+                this.isDragging = false;
+                this.mouseX = this.player.x;
+
+                this.setupControls();
+                this.updateBestDisplay();
+                this.showStartScreen();
+            }
+
+            setupControls() {
+                const c = canvas;
+                // ماوس
+                c.addEventListener('mousemove', (e) => {
+                    const rect = c.getBoundingClientRect();
+                    const scaleX = c.width / rect.width;
+                    const x = (e.clientX - rect.left) * scaleX;
+                    this.mouseX = x;
+                    if (this.started && !this.gameOver) {
+                        this.player.targetX = x;
+                    }
+                });
+                c.addEventListener('mouseleave', () => {
+                    // اگر موس بیرون رفت، هدف رو همونجا نگه دار
+                });
+                // لمس
+                c.addEventListener('touchmove', (e) => {
+                    e.preventDefault();
+                    const rect = c.getBoundingClientRect();
+                    const scaleX = c.width / rect.width;
+                    const touch = e.touches[0];
+                    const x = (touch.clientX - rect.left) * scaleX;
+                    this.mouseX = x;
+                    if (this.started && !this.gameOver) {
+                        this.player.targetX = x;
+                    }
+                }, { passive: false });
+                c.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    const rect = c.getBoundingClientRect();
+                    const scaleX = c.width / rect.width;
+                    const touch = e.touches[0];
+                    const x = (touch.clientX - rect.left) * scaleX;
+                    this.mouseX = x;
+                    if (this.started && !this.gameOver) {
+                        this.player.targetX = x;
+                    }
+                }, { passive: false });
+            }
+
+            startGame() {
+                this.started = true;
+                this.gameOver = false;
+                this.score = 0;
+                this.items = [];
+                this.particles = [];
+                this.frameCount = 0;
+                this.speedMultiplier = 1;
+                this.activePowerup = null;
+                this.powerupTimer = 0;
+                this.isInvincible = false;
+                this.invincibleTimer = 0;
+                this.player = new Player();
+                this.player.x = CONFIG.width / 2;
+                this.player.targetX = CONFIG.width / 2;
+                this.player.smoothX = CONFIG.width / 2;
+                this.updateScoreDisplay();
+                modalOverlay.classList.add('hidden');
+                powerupIndicator.classList.remove('show');
+                this.updateBestDisplay();
+            }
+
+            gameOverHandler() {
+                this.gameOver = true;
+                this.started = false;
+                if (this.score > this.best) {
+                    this.best = this.score;
+                    localStorage.setItem('fallingHeroBest', String(this.best));
+                    this.updateBestDisplay();
+                    modalSub.textContent = '🎉 رکورد جدید! 🎉';
+                } else {
+                    modalSub.textContent = '💫 بازی تمام شد!';
+                }
+                modalScore.style.display = 'block';
+                modalScore.textContent = `امتیاز: ${this.score}`;
+                modalBest.textContent = `🏆 بهترین: ${this.best}`;
+                mainBtn.innerHTML = `
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 3L19 12L5 21V3Z" fill="white" stroke="white" stroke-width="1.5"/>
+                    </svg>
+                    دوباره!
+                `;
+                resetBtn.style.display = 'none';
+                modalOverlay.classList.remove('hidden');
+            }
+
+            showStartScreen() {
+                modalSub.textContent = 'فضانورد، آماده‌ای؟';
+                modalScore.style.display = 'none';
+                modalBest.textContent = `🏆 بهترین: ${this.best}`;
+                mainBtn.innerHTML = `
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 3L19 12L5 21V3Z" fill="white" stroke="white" stroke-width="1.5"/>
+                    </svg>
+                    شروع بازی
+                `;
+                resetBtn.style.display = 'none';
+                modalOverlay.classList.remove('hidden');
+            }
+
+            updateBestDisplay() {
+                bestDisplay.textContent = this.best;
+            }
+
+            updateScoreDisplay() {
+                scoreDisplay.textContent = this.score;
+            }
+
+            // تولید آیتم
+            spawnItem() {
+                const r = Math.random();
+                let type = 'meteor';
+                if (r < CONFIG.starChance) type = 'star';
+                else if (r < CONFIG.starChance + CONFIG.powerupChance) type = 'powerup';
+
+                // افزایش سرعت با امتیاز
+                const speedBonus = Math.min(this.score / 50, 1.2);
+                const baseSpeed = CONFIG.baseSpeed + speedBonus * 0.8;
+
+                let size;
+                if (type === 'meteor') {
+                    size = CONFIG.meteorMinSize + Math.random() * (CONFIG.meteorMaxSize - CONFIG.meteorMinSize);
+                } else if (type === 'star') {
+                    size = CONFIG.starSize;
+                } else {
+                    size = CONFIG.powerupSize;
+                }
+                const item = new FallingItem(type, null, size, baseSpeed + Math.random() * 1.0);
+                // برای تنوع در موقعیت x
+                item.x = Math.random() * (CONFIG.width - 30) + 15;
+                return item;
+            }
+
+            // ذرات انفجار
+            addExplosion(x, y, color, count = 18) {
+                for (let i = 0; i < count; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 4 + 1;
+                    this.particles.push({
+                        x: x,
+                        y: y,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed - 1,
+                        life: 1,
+                        decay: 0.015 + Math.random() * 0.025,
+                        size: Math.random() * 6 + 2,
+                        color: color,
+                    });
+                }
+            }
+
+            // پاورآپ
+            activatePowerup(type) {
+                this.activePowerup = { type, timer: 150 }; // 150 فریم ≈ 2.5 ثانیه
+                this.powerupTimer = 150;
+                const icons = { shield: '🛡️', speed: '⚡', bomb: '💣' };
+                const names = { shield: 'سپر', speed: 'سرعت', bomb: 'بمب' };
+                powerupIcon.textContent = icons[type] || '✨';
+                powerupText.textContent = names[type] || 'قدرت';
+                powerupIndicator.classList.add('show');
+
+                if (type === 'shield') {
+                    this.isInvincible = true;
+                    this.invincibleTimer = 150;
+                } else if (type === 'bomb') {
+                    // نابودی همه موانع
+                    const toRemove = [];
+                    for (const item of this.items) {
+                        if (item.type === 'meteor') {
+                            this.addExplosion(item.x, item.y, '#ff8833', 20);
+                            toRemove.push(item);
                         }
-                        // برگرداندن رنگ سیاره‌ها
-                        const origColors = [
-                            'radial-gradient(circle at 30% 30%, #b3d9ff, #3b82f6)',
-                            'radial-gradient(circle at 30% 30%, #fcd34d, #f59e0b)',
-                            'radial-gradient(circle at 30% 30%, #a78bfa, #7c3aed)',
-                            'radial-gradient(circle at 30% 30%, #34d399, #059669)',
-                            'radial-gradient(circle at 30% 30%, #fb923c, #ea580c)',
-                            'radial-gradient(circle at 30% 30%, #f472b6, #db2777)'
-                        ];
-                        planets.forEach((p, i) => {
-                            if (i < origColors.length) {
-                                p.style.background = origColors[i];
-                                p.style.boxShadow = '';
+                    }
+                    this.items = this.items.filter(it => !toRemove.includes(it));
+                    this.addExplosion(this.player.x, this.player.y, '#ffaa44', 30);
+                } else if (type === 'speed') {
+                    // سرعت جمع‌آوری ستاره دو برابر (با ضریب امتیاز)
+                    // در برخورد ستاره اعمال می‌شود
+                }
+                // بعد از ۱۵۰ فریم غیرفعال می‌شود
+            }
+
+            updatePowerups() {
+                if (this.activePowerup) {
+                    this.powerupTimer--;
+                    if (this.powerupTimer <= 0) {
+                        this.activePowerup = null;
+                        powerupIndicator.classList.remove('show');
+                        this.isInvincible = false;
+                    }
+                }
+                if (this.isInvincible) {
+                    this.invincibleTimer--;
+                    if (this.invincibleTimer <= 0) {
+                        this.isInvincible = false;
+                    }
+                }
+            }
+
+            // حلقه اصلی
+            update() {
+                if (!this.started || this.gameOver) return;
+
+                this.frameCount++;
+
+                // اسپاون آیتم‌ها
+                const spawnRate = Math.max(14, CONFIG.spawnInterval - Math.floor(this.score / 20));
+                if (this.frameCount % spawnRate === 0) {
+                    this.items.push(this.spawnItem());
+                    // گاهی دو تا همزمان
+                    if (this.score > 30 && Math.random() < 0.2) {
+                        this.items.push(this.spawnItem());
+                    }
+                }
+
+                // بروزرسانی آیتم‌ها
+                for (const item of this.items) {
+                    item.update();
+                }
+                // حذف آیتم‌های خارج
+                this.items = this.items.filter(it => !it.isOffScreen());
+
+                // بروزرسانی بازیکن
+                this.player.update();
+
+                // برخوردها
+                const player = this.player;
+                const toRemove = [];
+                for (const item of this.items) {
+                    const dx = player.x - item.x;
+                    const dy = player.y - item.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const threshold = (player.size / 2) + (item.size / 2) - 4;
+
+                    if (dist < threshold) {
+                        if (item.type === 'meteor') {
+                            if (this.isInvincible) {
+                                // سپر فعال، شهاب نابود می‌شه
+                                this.addExplosion(item.x, item.y, '#ff6633', 15);
+                                toRemove.push(item);
+                                continue;
+                            } else {
+                                // برخورد = Game Over
+                                this.addExplosion(player.x, player.y, '#ff4444', 30);
+                                this.gameOverHandler();
+                                return;
                             }
-                        });
-                    }, 1500);
-                });
+                        } else if (item.type === 'star') {
+                            // امتیاز
+                            let points = 10;
+                            if (this.activePowerup && this.activePowerup.type === 'speed') {
+                                points = 20;
+                            }
+                            this.score += points;
+                            this.updateScoreDisplay();
+                            this.addExplosion(item.x, item.y, '#ffd966', 14);
+                            toRemove.push(item);
+                            // هر ۵۰ امتیاز یه پاورآپ رایگان
+                            if (this.score % 50 === 0 && this.score > 0) {
+                                const types = ['shield', 'speed', 'bomb'];
+                                const randType = types[Math.floor(Math.random() * types.length)];
+                                this.activatePowerup(randType);
+                            }
+                        } else if (item.type === 'powerup') {
+                            this.activatePowerup(item.powerType);
+                            this.addExplosion(item.x, item.y, '#44ddff', 20);
+                            toRemove.push(item);
+                        }
+                    }
+                }
+                // حذف آیتم‌های جمع‌شده
+                this.items = this.items.filter(it => !toRemove.includes(it));
+
+                // بروزرسانی ذرات
+                for (const p of this.particles) {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.05;
+                    p.life -= p.decay;
+                }
+                this.particles = this.particles.filter(p => p.life > 0);
+
+                // پاورآپ‌ها
+                this.updatePowerups();
+
+                // افزایش سرعت با امتیاز
+                this.speedMultiplier = 1 + Math.min(this.score / 120, 1.2);
+                for (const item of this.items) {
+                    if (item.type === 'meteor') {
+                        item.speed = (CONFIG.baseSpeed + Math.random() * 0.8) * this.speedMultiplier;
+                    }
+                }
             }
 
-            // کلیک روی هایلایت
-            const hl = document.querySelector('.hl');
-            if (hl) {
-                hl.addEventListener('click', function() {
-                    const colors = ['#fff', '#7aa9ff', '#b3d9ff', '#fcd34d', '#93c5fd', '#4a8aff', '#a78bfa', '#34d399'];
-                    const c = colors[Math.floor(Math.random() * colors.length)];
-                    this.style.color = c;
-                    this.style.textShadow = `0 0 40px ${c}, 0 0 80px ${c}, 0 0 120px ${c}30`;
-                    setTimeout(() => {
-                        this.style.color = '#fff';
-                        this.style.textShadow = '0 0 30px rgba(120,200,255,0.3), 0 0 60px rgba(60,120,255,0.2)';
-                    }, 1000);
-                });
+            draw() {
+                ctx.clearRect(0, 0, CONFIG.width, CONFIG.height);
+
+                // کشیدن آیتم‌ها
+                for (const item of this.items) {
+                    item.draw(ctx);
+                }
+
+                // کشیدن ذرات
+                for (const p of this.particles) {
+                    ctx.globalAlpha = p.life;
+                    ctx.shadowBlur = 20;
+                    ctx.shadowColor = p.color || '#ffaa44';
+                    ctx.fillStyle = p.color || '#ffaa44';
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.globalAlpha = 1;
+                ctx.shadowBlur = 0;
+
+                // کشیدن بازیکن (با جلوه سپر)
+                if (this.isInvincible) {
+                    ctx.shadowColor = '#44ddff';
+                    ctx.shadowBlur = 60;
+                    ctx.strokeStyle = 'rgba(68, 221, 255, 0.5)';
+                    ctx.lineWidth = 4;
+                    ctx.beginPath();
+                    ctx.arc(this.player.x, this.player.y, this.player.size / 2 + 10, 0, Math.PI * 2);
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
+                }
+                this.player.draw(ctx);
+
+                // نمایش پاورآپ فعال روی بازیکن
+                if (this.activePowerup) {
+                    ctx.font = '24px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+                    ctx.fillStyle = '#fff';
+                    ctx.shadowBlur = 30;
+                    ctx.shadowColor = '#44ddff';
+                    ctx.fillText(powerupIcon.textContent, this.player.x, this.player.y - 40);
+                    ctx.shadowBlur = 0;
+                }
             }
 
-            console.log('🚀 Orbitix | پرامت فضایی فوق‌حرفه‌ای با ۶ سیاره');
-            console.log('✨ طراحی تیره با افکت‌های کهکشانی و انیمیشن‌های روان');
-        })();
-    </script>
+            loop() {
+                this.update();
+                this.draw();
+                requestAnimationFrame(() => this.loop());
+            }
+        }
 
+        // ---------- راه‌اندازی ----------
+        const game = new Game();
+
+        // حلقه ستاره‌های پس‌زمینه
+        function starsLoop() {
+            starField.update();
+            starsCtx.clearRect(0, 0, CONFIG.width, CONFIG.height);
+            starField.draw(starsCtx);
+            requestAnimationFrame(starsLoop);
+        }
+        starsLoop();
+
+        // دکمه‌ها
+        mainBtn.addEventListener('click', () => {
+            game.startGame();
+        });
+        resetBtn.addEventListener('click', () => {
+            game.startGame();
+        });
+
+        // شروع حلقه بازی
+        game.loop();
+
+        // ریسایز مجدد برای ستاره‌ها
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            starField.init();
+        });
+
+        // کمک: با کلیک روی صفحه در حالت gameOver هم میشه شروع کرد
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (game.gameOver || !game.started) {
+                    game.startGame();
+                }
+            }
+        });
+
+        console.log('🚀 Falling Hero - بازی سقوط آزاد راه‌اندازی شد!');
+    })();
+</script>
 </body>
-    </html>
+</html>
