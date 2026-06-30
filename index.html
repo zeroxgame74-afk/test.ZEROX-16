@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>قالب خفن و متفاوت · نئون گرین</title>
-  <!-- فونت مدرن و رایگان -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Daric · قالب‌های حرفه‌ای</title>
+  
+  <!-- فونت وزیر (Vazir) از CDN -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+  
+  <!-- Font Awesome 6 (رایگان) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
   <style>
     * {
       margin: 0;
@@ -16,46 +19,47 @@
     }
 
     body {
-      background: #0c0f15;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0b0e14;
+      font-family: 'Vazir', 'Segoe UI', sans-serif;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
-      color: #eef5ff;
+      color: #e8f0f8;
+      line-height: 1.6;
     }
 
-    /* کانتینر اصلی با افکت شیشه‌ای و حاشیه نئون */
-    .neon-card {
+    /* کانتینر اصلی با افکت شیشه‌ای و حاشیه نئون طلایی-نارنجی (متناسب با برند Daric) */
+    .daric-card {
       max-width: 1200px;
       width: 100%;
-      background: rgba(18, 26, 34, 0.65);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(0, 255, 170, 0.25);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 255, 170, 0.15);
+      background: rgba(16, 24, 32, 0.7);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 180, 50, 0.25);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(255, 170, 40, 0.12);
       border-radius: 3.5rem;
-      padding: 2.5rem 3rem;
-      transition: all 0.3s ease;
+      padding: 2.8rem 3.2rem;
       position: relative;
       overflow: hidden;
+      transition: all 0.3s;
     }
 
-    /* خطوط نئون متحرک (دکوراتیو) */
-    .neon-card::before {
+    /* حاشیه متحرک با رنگ‌های طلایی و نارنجی (برند Daric) */
+    .daric-card::before {
       content: '';
       position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: conic-gradient(from 0deg, #00ffaa, #00ccff, #aa00ff, #00ffaa);
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: conic-gradient(from 0deg, #ffb347, #ff8c00, #d4a373, #ffb347);
       border-radius: 3.7rem;
       z-index: -1;
-      animation: spin-border 6s linear infinite;
-      opacity: 0.6;
-      filter: blur(4px);
+      animation: spin-border 8s linear infinite;
+      opacity: 0.5;
+      filter: blur(5px);
     }
 
     @keyframes spin-border {
@@ -63,49 +67,49 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* هدر با لوگوی خلاقانه */
+    /* هدر Daric */
     .header {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 3rem;
-      border-bottom: 1px solid rgba(0, 255, 170, 0.2);
-      padding-bottom: 1.8rem;
+      margin-bottom: 2.8rem;
+      border-bottom: 1px solid rgba(255, 180, 50, 0.15);
+      padding-bottom: 1.6rem;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.8rem;
     }
 
     .logo-icon {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, #00ffaa, #00b8ff);
-      border-radius: 16px;
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #ffb347, #ff8c00);
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 1.8rem;
-      color: #0c0f15;
-      box-shadow: 0 0 20px #00ffaa55;
-      transform: rotate(6deg);
-      transition: 0.2s;
+      font-weight: 900;
+      font-size: 2.2rem;
+      color: #0b0e14;
+      box-shadow: 0 0 30px #ffb34755;
+      transform: rotate(4deg);
+      transition: 0.25s;
     }
 
     .logo-icon:hover {
-      transform: rotate(0deg) scale(1.05);
-      box-shadow: 0 0 40px #00ffaa99;
+      transform: rotate(0deg) scale(1.06);
+      box-shadow: 0 0 50px #ffb34799;
     }
 
     .logo-text {
-      font-size: 1.9rem;
-      font-weight: 800;
+      font-size: 2.2rem;
+      font-weight: 900;
       letter-spacing: -0.5px;
-      background: linear-gradient(to right, #b0ffe0, #a0f0ff);
+      background: linear-gradient(to left, #ffd9a0, #ffb347, #ff8c00);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -113,116 +117,137 @@
 
     .nav {
       display: flex;
-      gap: 2rem;
+      gap: 2.2rem;
       font-weight: 600;
+      font-size: 1.05rem;
     }
 
     .nav a {
-      color: #b2d6e6;
+      color: #c8dae8;
       text-decoration: none;
-      font-size: 1rem;
-      padding: 0.4rem 0;
+      padding: 0.3rem 0;
       border-bottom: 2px solid transparent;
       transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav a i {
+      font-size: 0.9rem;
+      color: #ffb347;
     }
 
     .nav a:hover {
-      color: #00ffaa;
-      border-bottom-color: #00ffaa;
-      text-shadow: 0 0 8px #00ffaa66;
+      color: #ffb347;
+      border-bottom-color: #ffb347;
+      text-shadow: 0 0 12px #ffb34766;
     }
 
-    /* بخش اصلی با گرید متفاوت */
+    /* بخش اصلی با گرید مخصوص Daric */
     .hero-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 2.5rem;
+      gap: 2.8rem;
       margin-bottom: 3rem;
     }
 
     .hero-title {
-      font-size: 3.8rem;
-      font-weight: 800;
+      font-size: 3.6rem;
+      font-weight: 900;
       line-height: 1.2;
       letter-spacing: -1px;
     }
 
     .hero-title span {
-      background: linear-gradient(135deg, #00ffaa, #00ccff);
+      background: linear-gradient(135deg, #ffb347, #ff8c00, #ffb347);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       display: inline-block;
-      text-shadow: 0 0 30px #00ffaa33;
+      text-shadow: 0 0 40px #ffb34733;
     }
 
     .hero-desc {
       font-size: 1.1rem;
       color: #b8d0de;
       max-width: 90%;
-      margin-top: 1rem;
-      line-height: 1.7;
-      border-right: 3px solid #00ffaa;
-      padding-right: 1.2rem;
+      margin-top: 1.2rem;
+      line-height: 1.9;
+      border-right: 3px solid #ffb347;
+      padding-right: 1.4rem;
     }
 
     .cta-group {
-      margin-top: 2.2rem;
+      margin-top: 2.5rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.2rem;
     }
 
     .btn-primary {
-      background: #00ffaa;
-      color: #0c0f15;
-      font-weight: 700;
-      padding: 0.9rem 2.4rem;
+      background: linear-gradient(135deg, #ffb347, #f57c00);
+      color: #0b0e14;
+      font-weight: 800;
+      padding: 0.95rem 2.6rem;
       border-radius: 60px;
       border: none;
-      font-size: 1rem;
+      font-size: 1.05rem;
       cursor: pointer;
       transition: 0.25s;
-      box-shadow: 0 0 20px #00ffaa55;
+      box-shadow: 0 0 30px #ffb34755;
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.7rem;
+      font-family: 'Vazir', sans-serif;
+    }
+
+    .btn-primary i {
+      font-size: 1.1rem;
     }
 
     .btn-primary:hover {
-      transform: scale(1.04);
-      box-shadow: 0 0 45px #00ffaacc;
-      background: #a0ffd0;
+      transform: scale(1.05);
+      box-shadow: 0 0 60px #ffb347cc;
+      background: linear-gradient(135deg, #ffc970, #ff9800);
     }
 
     .btn-outline {
       background: transparent;
-      border: 1.5px solid #00ffaa88;
-      color: #e0f0fa;
-      font-weight: 600;
-      padding: 0.9rem 2.4rem;
+      border: 1.8px solid #ffb34788;
+      color: #e8f0f8;
+      font-weight: 700;
+      padding: 0.95rem 2.6rem;
       border-radius: 60px;
-      font-size: 1rem;
+      font-size: 1.05rem;
       cursor: pointer;
       transition: 0.2s;
       backdrop-filter: blur(4px);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: 'Vazir', sans-serif;
+    }
+
+    .btn-outline i {
+      color: #ffb347;
     }
 
     .btn-outline:hover {
-      background: #00ffaa20;
-      border-color: #00ffaa;
-      box-shadow: 0 0 25px #00ffaa33;
+      background: #ffb34720;
+      border-color: #ffb347;
+      box-shadow: 0 0 35px #ffb34733;
     }
 
     .hero-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      background: rgba(0, 255, 170, 0.04);
-      border-radius: 2rem;
-      padding: 1.8rem 1.5rem;
+      gap: 1.6rem;
+      background: rgba(255, 180, 50, 0.04);
+      border-radius: 2.2rem;
+      padding: 2rem 1.6rem;
       backdrop-filter: blur(4px);
-      border: 1px solid rgba(0, 255, 170, 0.1);
+      border: 1px solid rgba(255, 180, 50, 0.08);
     }
 
     .stat-item {
@@ -230,9 +255,9 @@
     }
 
     .stat-number {
-      font-size: 2.6rem;
-      font-weight: 800;
-      background: linear-gradient(to bottom, #ffffff, #b0e0ff);
+      font-size: 2.8rem;
+      font-weight: 900;
+      background: linear-gradient(to bottom, #ffffff, #ffd8a8);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -241,96 +266,106 @@
     }
 
     .stat-label {
-      font-size: 0.9rem;
-      color: #8aaec9;
-      letter-spacing: 0.5px;
+      font-size: 0.95rem;
+      color: #aac2d6;
+      letter-spacing: 0.3px;
     }
 
-    /* بخش ویژگی‌ها با کارت‌های سه‌بعدی */
+    /* کارت‌های ویژه Daric (توسعه و فروش قالب) */
     .features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.8rem;
-      margin: 2.5rem 0 1rem;
+      gap: 2rem;
+      margin: 2.8rem 0 1.2rem;
     }
 
     .feature-card {
-      background: rgba(22, 34, 44, 0.5);
+      background: rgba(22, 34, 46, 0.6);
       backdrop-filter: blur(4px);
-      border: 1px solid rgba(0, 255, 170, 0.12);
-      border-radius: 2.2rem;
-      padding: 1.8rem 1.5rem;
-      transition: 0.25s ease;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255, 180, 50, 0.1);
+      border-radius: 2.4rem;
+      padding: 2rem 1.8rem;
+      transition: 0.3s ease;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.5);
+      text-align: center;
     }
 
     .feature-card:hover {
-      transform: translateY(-8px);
-      border-color: #00ffaa80;
-      box-shadow: 0 15px 35px rgba(0, 255, 170, 0.2);
-      background: rgba(0, 255, 170, 0.04);
+      transform: translateY(-10px);
+      border-color: #ffb347aa;
+      box-shadow: 0 18px 45px rgba(255, 180, 50, 0.2);
+      background: rgba(255, 180, 50, 0.04);
     }
 
     .feature-icon {
-      font-size: 2.8rem;
-      margin-bottom: 0.8rem;
+      font-size: 3rem;
+      margin-bottom: 1rem;
       display: inline-block;
-      filter: drop-shadow(0 0 10px #00ffaa44);
+      color: #ffb347;
+      filter: drop-shadow(0 0 12px #ffb34744);
     }
 
     .feature-card h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      color: #d6edff;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      color: #e0edf8;
     }
 
     .feature-card p {
-      color: #a0bccf;
-      font-size: 0.95rem;
-      line-height: 1.6;
+      color: #aac2d6;
+      font-size: 0.98rem;
+      line-height: 1.7;
     }
 
-    /* فوتر با تایپوگرافی خاص */
+    /* فوتر Daric */
     .footer {
-      margin-top: 3.5rem;
-      padding-top: 1.8rem;
-      border-top: 1px solid rgba(0, 255, 170, 0.15);
+      margin-top: 3.8rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 180, 50, 0.12);
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       align-items: center;
-      color: #6e8fa8;
-      font-size: 0.9rem;
+      color: #7a96af;
+      font-size: 0.95rem;
     }
 
     .footer-social {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.8rem;
     }
 
     .footer-social a {
-      color: #9bbdd6;
+      color: #b0cada;
       text-decoration: none;
       font-weight: 600;
       transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
       border-bottom: 1px dotted transparent;
     }
 
-    .footer-social a:hover {
-      color: #00ffaa;
-      border-bottom-color: #00ffaa;
+    .footer-social a i {
+      color: #ffb347;
+      font-size: 1rem;
     }
 
-    /* ریسپانسیو */
+    .footer-social a:hover {
+      color: #ffb347;
+      border-bottom-color: #ffb347;
+    }
+
+    /* ریسپانسیو کامل */
     @media (max-width: 850px) {
-      .neon-card {
-        padding: 2rem 1.5rem;
-        border-radius: 2.5rem;
+      .daric-card {
+        padding: 2rem 1.8rem;
+        border-radius: 2.8rem;
       }
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.2rem;
       }
       .hero-title {
         font-size: 2.8rem;
@@ -352,6 +387,7 @@
       .nav {
         flex-wrap: wrap;
         gap: 1rem;
+        font-size: 0.95rem;
       }
       .features {
         grid-template-columns: 1fr;
@@ -365,25 +401,28 @@
       }
       .footer {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.2rem;
         align-items: start;
+      }
+      .logo-text {
+        font-size: 1.8rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="neon-card">
-    <!-- هدر -->
+  <div class="daric-card">
+    <!-- هدر Daric -->
     <header class="header">
       <div class="logo">
-        <div class="logo-icon">✦</div>
-        <span class="logo-text">NEONVERSE</span>
+        <div class="logo-icon">D</div>
+        <span class="logo-text">Daric</span>
       </div>
       <nav class="nav">
-        <a href="#">خانه</a>
-        <a href="#">محصولات</a>
-        <a href="#">درباره</a>
-        <a href="#">تماس</a>
+        <a href="#"><i class="fas fa-home"></i> خانه</a>
+        <a href="#"><i class="fas fa-layer-group"></i> قالب‌ها</a>
+        <a href="#"><i class="fas fa-code"></i> توسعه</a>
+        <a href="#"><i class="fas fa-headset"></i> پشتیبانی</a>
       </nav>
     </header>
 
@@ -391,65 +430,67 @@
     <div class="hero-grid">
       <div>
         <h1 class="hero-title">
-          آینده <span>تعامل</span><br>طراحی شده با <span>نئون</span>
+          <span>Daric</span>؛ ساخت، توسعه<br>و فروش قالب‌های <span>حرفه‌ای</span>
         </h1>
         <p class="hero-desc">
-          یک قالب کاملاً مدرن، با افکت‌های شیشه‌ای، حاشیه‌های متحرک و 
-          هویت بصری خاص. مناسب برای استارتاپ‌ها، پورتفولیو و پروژه‌های خلاقانه.
+          پلتفرم تخصصی برای طراحان و توسعه‌دهندگان. قالب‌های مدرن، ریسپانسیو و 
+          بهینه‌شده برای کسب‌وکارهای خلاق. با Daric، ایده‌های خود را به محصولی درخشان تبدیل کنید.
         </p>
         <div class="cta-group">
           <button class="btn-primary">
-            <span>شروع کنید</span> <span style="font-size:1.3rem;">→</span>
+            <i class="fas fa-rocket"></i> شروع فروش
           </button>
-          <button class="btn-outline">مشاهده دمو</button>
+          <button class="btn-outline">
+            <i class="fas fa-eye"></i> مشاهده دمو
+          </button>
         </div>
       </div>
       <div class="hero-stats">
         <div class="stat-item">
-          <span class="stat-number">۲۵۰+</span>
-          <span class="stat-label">پروژه فعال</span>
+          <span class="stat-number">۱۲۰+</span>
+          <span class="stat-label">قالب فعال</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">۹۸%</span>
-          <span class="stat-label">رضایت کاربر</span>
+          <span class="stat-number">۹۷%</span>
+          <span class="stat-label">رضایت مشتری</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">۴.۹⭐</span>
-          <span class="stat-label">امتیاز کلی</span>
+          <span class="stat-number">۴.۸⭐</span>
+          <span class="stat-label">میانگین امتیاز</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">۱۲K</span>
-          <span class="stat-label">کاربران</span>
+          <span class="stat-number">۸.۵K</span>
+          <span class="stat-label">توسعه‌دهنده</span>
         </div>
       </div>
     </div>
 
-    <!-- کارت‌های ویژگی -->
+    <!-- کارت‌های ویژگی (متناسب با فروش و توسعه قالب) -->
     <div class="features">
       <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>سرعت بالا</h3>
-        <p>بهینه‌سازی شده برای عملکرد فوق‌سریع و تجربه کاربری روان.</p>
+        <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+        <h3>طراحی مدرن</h3>
+        <p>قالب‌هایی با هویت بصری منحصربه‌فرد، آماده برای هر نوع برند و استارتاپ.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🌀</div>
-        <h3>طراحی سیال</h3>
-        <p>ریسپانسیو کامل، از موبایل تا دسکتاپ، بدون افت کیفیت.</p>
+        <div class="feature-icon"><i class="fas fa-code"></i></div>
+        <h3>کد تمیز</h3>
+        <p>توسعه‌یافته با بهترین استانداردها، سبک، سریع و کاملاً قابل شخصی‌سازی.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🎨</div>
-        <h3>هویت نئون</h3>
-        <p>رنگ‌های زنده، سایه‌های درخشان و حاشیه‌های متحرک خاص.</p>
+        <div class="feature-icon"><i class="fas fa-cart-plus"></i></div>
+        <h3>فروش آسان</h3>
+        <p>سیستم پرداخت یکپارچه، پنل کاربری حرفه‌ای و پشتیبانی ۲۴/۷ برای فروشندگان.</p>
       </div>
     </div>
 
-    <!-- فوتر -->
+    <!-- فوتر Daric -->
     <div class="footer">
-      <span>© ۲۰۲۶ · قالب خفن NEONVERSE</span>
+      <span><i class="far fa-copyright"></i> ۲۰۲۶ · Daric — همه حقوق محفوظ است</span>
       <div class="footer-social">
-        <a href="#">توییتر</a>
-        <a href="#">گیت‌هاب</a>
-        <a href="#">دیسکورد</a>
+        <a href="#"><i class="fab fa-twitter"></i> توییتر</a>
+        <a href="#"><i class="fab fa-github"></i> گیت‌هاب</a>
+        <a href="#"><i class="fab fa-discord"></i> دیسکورد</a>
       </div>
     </div>
   </div>
