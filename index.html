@@ -1,561 +1,1355 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEROX.GAME.IR</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZEROX.GAME.IR | مجله گیمینگ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        :root {
-            --main: #B61C1C;
-            --main-dark: #8a1515;
-            --main-light: #d43a3a;
-            --radius: 20px;
-            --shadow: 0 8px 32px rgba(0,0,0,0.15);
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        /* ----- reset & root ----- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        :root {
+            --primary: #B61C1C;
+            --primary-dark: #8a1010;
+            --primary-glow: rgba(182, 28, 28, 0.4);
+            --gold: #f5c842;
+            --white: #ffffff;
+            --gray-100: #f4f6f9;
+            --gray-200: #e9edf2;
+            --gray-800: #1e1e2a;
+            --shadow-card: 0 12px 30px -8px rgba(0, 0, 0, 0.20);
+            --radius-card: 28px;
+            --transition: 0.25s cubic-bezier(0.2, 0, 0, 1);
+        }
+
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background: var(--main);
-            color: #fff;
-            min-height: 100vh;
+            background: var(--primary);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
+
         a {
             text-decoration: none;
             color: inherit;
         }
-        img {
-            display: block;
-            max-width: 100%;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 16px;
+
+        /* ----- sticky header ----- */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(182, 28, 28, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px 0 6px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
         }
 
-        /* ===== HEADER ===== */
-        .header {
-            padding: 16px 0 8px;
-            background: var(--main);
-            border-bottom: 1px solid rgba(255,255,255,0.15);
-        }
         .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
         }
+
         .logo img {
-            max-width: 280px;
             width: 100%;
+            max-width: 700px;
             display: block;
             margin: 0 auto;
-            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.2));
+            height: auto;
         }
-        nav {
+
+        /* ----- navigation ----- */
+        .main-nav {
+            width: 100%;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 4px;
-            width: 100%;
+            gap: 6px 10px;
+            padding: 4px 0 2px;
         }
-        nav a {
-            padding: 8px 18px;
+
+        .main-nav a {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 6px 14px;
             border-radius: 40px;
-            font-weight: 800;
-            font-size: 14px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: var(--transition);
-            cursor: pointer;
-            color: rgba(255,255,255,0.85);
+            background: rgba(255, 255, 255, 0.08);
             border: 1px solid transparent;
+            cursor: pointer;
         }
-        nav a i {
-            font-size: 14px;
+
+        .main-nav a i,
+        .main-nav a .custom-cd-icon {
+            font-size: 0.9rem;
         }
-        nav a:hover, nav a.active {
-            background: #fff;
-            color: var(--main);
-            border-color: #fff;
+
+        .main-nav a .custom-cd-icon {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            color: #c0c0c0;
+            padding: 4px 6px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px var(--white);
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+        }
+
+        .main-nav a:hover {
+            background: var(--white);
+            color: var(--primary);
+            border-color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
-        @media (max-width: 600px) {
-            nav a {
-                padding: 6px 12px;
-                font-size: 12px;
+
+        .main-nav a:hover .custom-cd-icon {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        @media (max-width: 640px) {
+            .main-nav a {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+                gap: 4px;
+            }
+            .main-nav a i {
+                font-size: 0.7rem;
+            }
+            .main-nav a .custom-cd-icon {
+                width: 20px;
+                height: 20px;
+                font-size: 0.6rem;
             }
         }
 
-        /* ===== SECTIONS ===== */
+        /* ----- sections ----- */
         .section {
             display: none;
-            padding: 30px 0 50px;
-            animation: fadeUp 0.4s ease;
+            padding: 24px 16px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
+
         .section.active {
             display: block;
+            animation: fadeUp 0.4s ease;
         }
+
         @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* ===== HERO (صفحه اصلی) ===== */
-        .hero {
-            background: rgba(255,255,255,0.06);
-            backdrop-filter: blur(4px);
-            border-radius: var(--radius);
-            padding: 50px 30px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 40px;
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            margin-bottom: 12px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-        .hero h1 span {
-            color: #fff;
-            background: rgba(0,0,0,0.2);
-            padding: 0 12px;
-            border-radius: 12px;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 20px;
-            line-height: 1.8;
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255,255,255,0.15);
-            padding: 8px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 14px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        /* ===== PRODUCT GRID (محصولات) ===== */
         .section-title {
             font-size: 1.8rem;
             font-weight: 900;
-            margin: 30px 0 20px;
-            padding-right: 16px;
-            border-right: 4px solid #fff;
+            margin: 20px 0 24px 0;
+            border-right: 5px solid var(--gold);
+            padding-right: 18px;
             display: flex;
             align-items: center;
+            gap: 14px;
+            color: var(--white);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title i {
+            color: var(--gold);
+            font-size: 1.6rem;
+        }
+
+        /* ----- filter buttons ----- */
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
             gap: 12px;
-        }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
             margin-bottom: 30px;
+            justify-content: center;
         }
-        .product-card {
-            background: #fff;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 8px 22px;
+            border-radius: 60px;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 0.9rem;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
             transition: var(--transition);
-            color: #1a1a1a;
+            backdrop-filter: blur(2px);
+        }
+
+        .filter-btn i {
+            font-size: 1rem;
+        }
+
+        .filter-btn:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .filter-btn.active {
+            background: var(--white);
+            color: var(--primary);
+            border-color: var(--white);
+            box-shadow: 0 0 0 3px var(--gold), 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ----- cards ----- */
+        .video-grid,
+        .news-grid,
+        .stories-grid,
+        .old-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        /* hybrid card (news / stories / old) */
+        .hybrid-card {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
-        .product-card:hover {
+
+        .hybrid-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 28px 40px -12px rgba(0, 0, 0, 0.35);
         }
-        .product-img {
+
+        .hybrid-media img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            display: block;
             background: #111;
         }
-        .product-body {
-            padding: 20px;
+
+        .hybrid-content {
+            padding: 22px 24px 26px;
+            color: var(--gray-800);
             flex: 1;
             display: flex;
             flex-direction: column;
         }
-        .product-tag {
+
+        .hybrid-badge {
             display: inline-block;
-            background: var(--main);
-            color: #fff;
-            padding: 2px 14px;
-            border-radius: 30px;
-            font-size: 11px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-size: 0.7rem;
             font-weight: 700;
             width: fit-content;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
-        .product-body h3 {
-            font-size: 1.2rem;
+
+        .hybrid-badge i {
+            margin-left: 6px;
+        }
+
+        .hybrid-content h2 {
+            font-size: 1.3rem;
             font-weight: 900;
             color: #000;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .hybrid-desc {
+            color: #3a3a4a;
+            font-weight: 500;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .hybrid-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .hybrid-actions button {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-family: inherit;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .hybrid-actions button:hover {
+            background: var(--primary-dark);
+            transform: scale(0.96);
+        }
+
+        .hybrid-actions .more-btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .hybrid-actions .more-btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .full-text-box {
+            display: none;
+            margin-top: 16px;
+            padding: 16px 18px;
+            background: var(--gray-100);
+            border-radius: 20px;
+            color: #1a1a2a;
+            line-height: 1.9;
+            font-size: 0.9rem;
+            border-right: 4px solid var(--primary);
+            white-space: pre-line;
+        }
+
+        .full-text-box.open {
+            display: block;
+            animation: fadeUp 0.3s ease;
+        }
+
+        /* ----- video card ----- */
+        .video-card {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 40px -12px rgba(0, 0, 0, 0.35);
+        }
+
+        .video-thumb {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-badge-top {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-info {
+            padding: 20px 22px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-info h3 {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--primary);
             margin-bottom: 6px;
         }
-        .product-body .sub {
-            font-size: 13px;
-            color: #666;
+
+        .video-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
             margin-bottom: 10px;
+            font-size: 0.7rem;
         }
-        .product-body p {
-            font-size: 13px;
+
+        .video-cat {
+            background: var(--gray-200);
+            padding: 2px 14px;
+            border-radius: 40px;
+            color: var(--primary);
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .video-date {
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .video-info p {
+            font-size: 0.85rem;
             color: #444;
             line-height: 1.6;
             flex: 1;
             margin-bottom: 12px;
         }
-        .product-footer {
+
+        .video-actions {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: auto;
-            border-top: 1px solid #eee;
-            padding-top: 14px;
+            margin-top: 4px;
         }
-        .price {
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: var(--main);
-        }
-        .btn-buy {
-            background: var(--main);
-            color: #fff;
+
+        .video-actions .btn-watch {
+            background: var(--primary);
+            color: var(--white);
             border: none;
             padding: 8px 20px;
-            border-radius: 40px;
+            border-radius: 60px;
             font-weight: 800;
             font-family: inherit;
+            font-size: 0.8rem;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: var(--transition);
             cursor: pointer;
-            font-size: 13px;
-        }
-        .btn-buy:hover {
-            background: var(--main-dark);
-            transform: scale(1.02);
+            transition: var(--transition);
         }
 
-        /* ===== ABOUT / RULES / CONTACT ===== */
-        .info-card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(4px);
-            border-radius: var(--radius);
-            padding: 30px;
-            border: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 25px;
+        .video-actions .btn-watch:hover {
+            background: var(--primary-dark);
+            transform: scale(0.96);
         }
-        .info-card h2 {
-            font-size: 1.6rem;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .info-card p, .info-card li {
-            font-size: 1rem;
-            line-height: 1.9;
-            opacity: 0.92;
-        }
-        .info-card ul {
-            list-style: none;
-            padding: 0;
-        }
-        .info-card ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        .info-card ul li:last-child {
-            border-bottom: none;
-        }
-        .info-card ul li i {
-            color: #fff;
-            margin-top: 4px;
-            min-width: 20px;
-        }
-        .contact-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 16px;
-        }
-        .contact-item {
-            background: rgba(255,255,255,0.06);
-            padding: 12px 20px;
-            border-radius: 12px;
+
+        .video-actions .btn-more {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-family: inherit;
+            font-size: 0.8rem;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-        .contact-item i {
-            font-size: 18px;
-        }
-        .contact-item a {
-            font-weight: 700;
-        }
-        .contact-item a:hover {
-            text-decoration: underline;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        /* ===== FOOTER ===== */
-        footer {
+        .video-actions .btn-more:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* ----- music card ----- */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .music-card {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+        }
+
+        .music-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 40px -12px rgba(0, 0, 0, 0.35);
+        }
+
+        .music-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            display: block;
+        }
+
+        .music-info {
+            padding: 20px 22px 26px;
             text-align: center;
-            padding: 30px 16px 20px;
-            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .music-info h3 {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .music-platform {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gray-100);
+            padding: 4px 18px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .composer-block {
+            background: var(--gray-100);
+            border-radius: 18px;
+            padding: 12px 14px;
+            margin: 12px 0;
+        }
+
+        .composer-block .label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .composer-item {
+            background: var(--white);
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #333;
+            display: inline-block;
+            margin: 3px 4px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .music-desc-box {
+            background: var(--gray-100);
+            border-radius: 18px;
+            padding: 12px 14px;
+            margin: 12px 0;
+            border-right: 3px solid var(--primary);
+            font-size: 0.8rem;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .music-player-wrap {
+            background: #f0f2f6;
+            border-radius: 60px;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .music-player-wrap audio {
+            flex: 1;
+            min-width: 140px;
+            height: 38px;
+            border-radius: 40px;
+            outline: none;
+        }
+
+        .btn-download {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-family: inherit;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-download:hover {
+            background: var(--primary-dark);
+            transform: scale(0.96);
+        }
+
+        /* ----- old game info ----- */
+        .game-info-box {
+            background: var(--gray-100);
+            border-radius: 20px;
+            padding: 14px 16px;
+            margin: 12px 0;
+            border-right: 3px solid var(--primary);
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 4px 0;
+            font-size: 0.8rem;
+            color: #333;
+            border-bottom: 1px dashed #ddd;
+            flex-wrap: wrap;
+        }
+
+        .info-row i {
+            width: 22px;
+            color: var(--primary);
+        }
+
+        .info-row strong {
+            color: var(--primary);
+        }
+
+        /* ----- about & channels ----- */
+        .about-container,
+        .channels-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .about-card,
+        .channel-card {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            padding: 36px 28px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+        }
+
+        .about-card:hover,
+        .channel-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 40px -12px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-card .icon-big,
+        .channel-card .icon-big {
+            font-size: 64px;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: inline-block;
+            filter: drop-shadow(0 8px 20px var(--primary-glow));
+            animation: float 2.5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .about-card h2,
+        .channel-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .about-card p,
+        .channel-card p {
+            color: #444;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 16px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 28px;
+            border-radius: 60px;
+            font-weight: 800;
+            transition: var(--transition);
+            border: none;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .contact-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(0.96);
+        }
+
+        .dev-name {
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin: 6px 0 10px;
+        }
+
+        .coming-badge {
+            background: var(--gray-100);
+            border-radius: 40px;
+            padding: 8px 20px;
+            display: inline-block;
+            color: #777;
+            font-weight: 700;
+            margin-top: 12px;
+        }
+
+        /* ----- footer ----- */
+        .site-footer {
+            text-align: center;
+            padding: 20px 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
             margin-top: 20px;
         }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 12px 0 16px;
-        }
-        .footer-links a {
-            opacity: 0.75;
-            transition: var(--transition);
-            font-size: 14px;
-        }
-        .footer-links a:hover {
-            opacity: 1;
-        }
-        footer .copy {
-            font-size: 13px;
-            opacity: 0.6;
-        }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2rem; }
-            .hero { padding: 30px 16px; }
-            .section-title { font-size: 1.4rem; }
-            .products-grid { grid-template-columns: 1fr; }
-            .info-card { padding: 20px; }
+        /* ----- responsive tweaks ----- */
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 1.3rem;
+                gap: 8px;
+            }
+            .section-title i {
+                font-size: 1.2rem;
+            }
+            .hybrid-content h2 {
+                font-size: 1.1rem;
+            }
+            .video-info h3 {
+                font-size: 1rem;
+            }
+            .about-card h2,
+            .channel-card h3 {
+                font-size: 1.4rem;
+            }
+            .video-grid,
+            .news-grid,
+            .stories-grid,
+            .old-grid {
+                grid-template-columns: 1fr;
+            }
+            .music-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
-<header class="header">
-    <div class="container header-inner">
-        <div class="logo">
-            <img src="https://uploadkon.ir/uploads/3ee908_26Zerox.png" alt="ZEROX">
-        </div>
-        <nav>
-            <a class="active" onclick="showTab('home')"><i class="fa-solid fa-house"></i> خانه</a>
-            <a onclick="showTab('products')"><i class="fa-solid fa-box"></i> محصولات</a>
-            <a onclick="showTab('about')"><i class="fa-solid fa-info-circle"></i> درباره ما</a>
-            <a onclick="showTab('rules')"><i class="fa-solid fa-gavel"></i> قوانین</a>
-            <a onclick="showTab('contact')"><i class="fa-solid fa-headset"></i> تماس با ما</a>
-        </nav>
-    </div>
-</header>
-
-<!-- ===== HOME ===== -->
-<section id="home" class="section active">
-    <div class="container">
-        <div class="hero">
-            <h1>به <span>زروکس گیم</span> خوش اومدید! 🎮</h1>
-            <p>اینجا بهشت گیمر هاست<br>یک خانه برای گیمرهای ایرانی! ❤️</p>
-            <div class="hero-badge">
-                <i class="fa-solid fa-shield-halved"></i> معتبرترین مرجع گیمینگ
+    <!-- ========== HEADER ========== -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <img src="https://uploadkon.ir/uploads/3ee908_26Zerox.png" alt="ZEROX GAME" />
             </div>
+            <nav class="main-nav">
+                <a onclick="showTab('home')"><i class="fa-solid fa-house"></i> خانه</a>
+                <a onclick="showTab('news')"><i class="fa-solid fa-newspaper"></i> اخبار</a>
+                <a onclick="showTab('video')"><i class="fa-solid fa-video"></i> ویدیوها</a>
+                <a onclick="showTab('music')"><i class="fa-solid fa-music"></i> موسیقی</a>
+                <a onclick="showTab('shop')"><i class="fa-solid fa-shop"></i> شاپ</a>
+                <a onclick="showTab('stories')"><i class="fa-solid fa-book-open"></i> داستان‌ها</a>
+                <a onclick="showTab('old')"><span class="custom-cd-icon"><i class="fa-solid fa-compact-disc"></i></span> زروکس اُلد</a>
+                <a onclick="showTab('about')"><i class="fa-solid fa-info-circle"></i> درباره ما</a>
+                <a onclick="showTab('channels')"><i class="fa-solid fa-database"></i> کانال‌هامون!</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="section-title"><i class="fa-solid fa-fire"></i> جدیدترین محصولات</div>
-        <div id="homeProducts" class="products-grid"></div>
+    <!-- ========== MAIN ========== -->
+    <main>
 
-        <div class="section-title"><i class="fa-regular fa-newspaper"></i> آخرین اخبار</div>
-        <div id="homeNews" class="products-grid" style="grid-template-columns:1fr;"></div>
-    </div>
-</section>
+        <!-- ===== HOME ===== -->
+        <section id="home" class="section active">
+            <div class="section-title"><i class="fa-solid fa-fire"></i> آخرین ویدیوها</div>
+            <div id="homeVideosGrid" class="video-grid"></div>
 
-<!-- ===== PRODUCTS ===== -->
-<section id="products" class="section">
-    <div class="container">
-        <div class="section-title"><i class="fa-solid fa-box"></i> همه محصولات</div>
-        <div id="productsGrid" class="products-grid"></div>
-    </div>
-</section>
+            <div class="section-title"><i class="fa-regular fa-newspaper"></i> آخرین اخبار</div>
+            <div id="homeNewsGrid" class="news-grid"></div>
 
-<!-- ===== ABOUT ===== -->
-<section id="about" class="section">
-    <div class="container">
-        <div class="info-card">
-            <h2><i class="fa-solid fa-flag"></i> درباره ما</h2>
-            <p>سلام! ما تیم <strong>زروکس گیم</strong> هستیم. داستانمون از یه اتاق کوچیک و عشق به بازی شروع شد. دیدیم تو ایران پیدا کردن محتوای اورجینال و باکیفیت بازی، کلی راه دور و پرپیچ و خم داره، پس گفتمون چرا خودمون یه مسیر مستقیم و امن نسازیم؟</p>
-            <p style="margin-top:12px;">از همون روز، با یه هدف ساده شروع کردیم: تبدیل شدن به معتبرترین پل ارتباطی بین شما و دنیای بازی. نه واسطه‌های الکی، نه قیمت‌های نجومی، فقط یه مجموعه که پشتش یه عالمه عشق به بازیه.</p>
-            <p style="margin-top:12px;">امروز، تیممون بزرگتر شده، ولی هنوز همون روحیه اول رو داریم. بزرگترین سرمایهمون، اعتماد شماست. اینکه شما رو داریم، برای ما از هر آپدیتی باارزش‌تره.</p>
-            <p style="margin-top:12px; font-weight:700;">پس خوش اومدید به خونه دوم گیمرهای ایران. اینجا زروکس گیمه؛ جایی که بازی، جدی گرفته میشه.</p>
-            <div style="margin-top:20px; background:rgba(255,255,255,0.06); padding:16px; border-radius:12px;">
-                <p><strong>سازنده سایت | طراح گرافیک:</strong> محمد حسین صنعتی</p>
-                <p><strong>مدیریت مجموعه:</strong> تیم زروکس</p>
+            <div class="section-title"><i class="fa-solid fa-book-open"></i> آخرین داستان‌ها</div>
+            <div id="homeStoriesGrid" class="stories-grid"></div>
+        </section>
+
+        <!-- ===== NEWS ===== -->
+        <section id="news" class="section">
+            <div class="section-title"><i class="fa-regular fa-newspaper"></i> همه اخبار</div>
+            <div id="newsGrid" class="news-grid"></div>
+        </section>
+
+        <!-- ===== VIDEO ===== -->
+        <section id="video" class="section">
+            <div class="section-title"><i class="fa-solid fa-video"></i> ویدیوها</div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="همه"><i class="fa-solid fa-globe"></i> همه</button>
+                <button class="filter-btn" data-filter="ترسناک"><i class="fa-solid fa-ghost"></i> ترسناک</button>
+                <button class="filter-btn" data-filter="هیجانی"><i class="fa-solid fa-bolt"></i> هیجانی</button>
+                <button class="filter-btn" data-filter="علمی"><i class="fa-solid fa-flask"></i> علمی‌تخیلی</button>
+                <button class="filter-btn" data-filter="معرفی"><i class="fa-solid fa-gamepad"></i> معرفی بازی</button>
             </div>
-        </div>
-    </div>
-</section>
+            <div id="videosGrid" class="video-grid"></div>
+        </section>
 
-<!-- ===== RULES ===== -->
-<section id="rules" class="section">
-    <div class="container">
-        <div class="info-card">
-            <h2><i class="fa-solid fa-gavel"></i> قوانین خرید از فروشگاه زروکس گیم</h2>
-            <p style="margin-bottom:16px;">سلام مشتری عزیز! قبل از خرید، لطفاً این چند تا قانون ساده رو بخون تا خرید خوب و بیدردسری داشته باشی:</p>
-            <ul>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>۱. اصالت کامل:</strong> تمام محتواها و اکانت‌ها ۱۰۰٪ اورجینال و تضمینی هستن.</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>۲. قیمت‌ها قطعی:</strong> قیمت‌ها روی سایت درج شده و بدون تغییر هستن.</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>۳. پشتیبانی ویژه:</strong> تیم پشتیبانی شنبه تا جمعه ساعت ۹ تا ۱۱ شب آماده پاسخگویی به سوالات و مشکلاتته.</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>۴. تحویل سریع:</strong> بعد از خرید، اطلاعات در سریعترین زمان ممکن به دستت میرسه.</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>۵. استفاده شخصی:</strong> محصول خریداری شده فقط برای استفاده شخصی خودته و نباید به کس دیگه‌ای بدی یا بفروشیش.</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>۶. پشتیبانی فنی:</strong> اگر به هر دلیلی مشکل فنی پیش اومد، بلافاصله با پشتیبانی تماس بگیر تا راهنماییت کنن.</li>
-            </ul>
-        </div>
-    </div>
-</section>
+        <!-- ===== MUSIC ===== -->
+        <section id="music" class="section">
+            <div class="section-title"><i class="fa-solid fa-music"></i> موسیقی بازی‌ها</div>
+            <div id="musicGrid" class="music-grid"></div>
+        </section>
 
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="section">
-    <div class="container">
-        <div class="info-card">
-            <h2><i class="fa-solid fa-headset"></i> تماس با ما</h2>
-            <p>ما، گروه رسمی و حرفه‌ای زروکس گیم، اینجاییم تا توی هر مرحله از خرید، کنارتون باشیم. سوال داری؟ مشکل پیش اومده؟ یا فقط میخوای یه مشاوره خوب بگیری؟</p>
-            <p style="margin-top:10px;">پشت این شماره‌ها، یه تیم متعهد و آماده به خدمته که شنبه تا جمعه ساعت ۹ تا ۱۱ شب پاسخگوی شماست. از پشتیبانی فنی تا راهنمای خرید، همه چیز با یک تماس حل میشه.</p>
-            <div class="contact-row">
-                <div class="contact-item">
-                    <i class="fa-brands fa-telegram"></i>
-                    <a href="https://t.me/mohamad_hossein_ev18" target="_blank">تلگرام سازنده</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fa-solid fa-paper-plane"></i>
-                    <a href="https://rubika.ir/@support_Zerox" target="_blank">پشتیبانی روبیکا</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>zerox.game@example.com</span>
+        <!-- ===== SHOP ===== -->
+        <section id="shop" class="section">
+            <div class="hybrid-card">
+                <div class="hybrid-content" style="align-items:center; text-align:center;">
+                    <div style="font-size:4rem; color:var(--primary); margin-bottom:10px;">🛍️</div>
+                    <h2 style="color:var(--primary);">زروکس شاپ</h2>
+                    <p style="color:#555; font-size:1.1rem;">به زودی با بهترین محصولات گیمینگ</p>
                 </div>
             </div>
-            <div style="margin-top:20px; background:rgba(255,255,255,0.06); padding:16px; border-radius:12px;">
-                <p><strong>ساعات پاسخگویی:</strong> شنبه تا جمعه، ۹ صبح تا ۱۱ شب</p>
-                <p><strong>یادتون باشه:</strong> اینجا زروکس گیمه؛ جایی که پشتیبانی، فقط یه کلمه نیست، یه تعهد جدیه.</p>
+        </section>
+
+        <!-- ===== STORIES ===== -->
+        <section id="stories" class="section">
+            <div class="section-title"><i class="fa-solid fa-book-open"></i> داستان‌های بازی</div>
+            <div id="storiesGrid" class="stories-grid"></div>
+        </section>
+
+        <!-- ===== OLD ===== -->
+        <section id="old" class="section">
+            <div class="section-title">
+                <i class="fa-solid fa-compact-disc" style="background:linear-gradient(135deg,#2a2a2a,#1a1a1a); color:#c0c0c0; padding:8px; border-radius:50%; box-shadow:0 0 0 2px var(--gold); font-size:1.4rem;"></i>
+                بازی‌های نوستالژیک | زروکس اُلد
             </div>
-        </div>
-    </div>
-</section>
+            <div id="oldGrid" class="old-grid"></div>
+        </section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-    <div class="container">
-        <div class="footer-links">
-            <a onclick="showTab('home')">خانه</a>
-            <a onclick="showTab('products')">محصولات</a>
-            <a onclick="showTab('about')">درباره ما</a>
-            <a onclick="showTab('rules')">قوانین</a>
-            <a onclick="showTab('contact')">تماس با ما</a>
-        </div>
-        <div class="copy">© 2026 ZEROX | هر بازی یک حماسه</div>
-    </div>
-</footer>
+        <!-- ===== ABOUT ===== -->
+        <section id="about" class="section">
+            <div class="about-container">
+                <div class="about-card">
+                    <div class="icon-big"><i class="fa-solid fa-gamepad"></i></div>
+                    <h2>به زروکس گیم خوش اومدید! 🎮</h2>
+                    <p>اینجا بهشت گیمر هاست<br />اینجا یک خانه برای گیمرهای ایرانی هستش! ❤️</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon-big" style="animation-delay:0.3s;"><i class="fa-solid fa-headset"></i></div>
+                    <h3>پشتیبانی</h3>
+                    <p>برای ارتباط با ادمین در روبیکا پیام بدین</p>
+                    <a href="https://rubika.ir/@support_Zerox" target="_blank" class="contact-btn">@support_Zerox</a>
+                </div>
+                <div class="about-card">
+                    <div class="icon-big" style="animation-delay:0.6s;"><i class="fa-solid fa-user-astronaut"></i></div>
+                    <h3>سازنده سایت</h3>
+                    <div class="dev-name">@mohamad_hossein_ev18</div>
+                    <a href="https://t.me/mohamad_hossein_ev18" target="_blank" class="contact-btn"><i class="fab fa-telegram"></i> ارسال پیام در تلگرام</a>
+                </div>
+            </div>
+        </section>
 
-<script>
-    // ===== دیتا =====
-    const oldData = [
-        { id:3, title:"GRAND THEFT AUTO: SAN ADVENTURES", name:"Grand Theft Auto: San Andreas", year:"۲۰۰۴", developer:"Rockstar North", cover:"https://uploadkon.ir/uploads/724812_26gta-sa-Zerox-.jpg", price:"۴۵۰,۰۰۰ تومان", desc:"داستان درباره کارل \"CJ\" جانسون است که بعد از مرگ مادرش به لس سانتوس برمی‌گردد. او دوباره وارد محله و گنگ قدیمی‌اش می‌شود..." },
-        { id:2, title:"PRINCE OF PERSIA", name:"Prince of Persia", year:"۱۹۸۹", developer:"Jordan Mechner", cover:"https://cdn.imgurl.ir/uploads/f82900_____Zerox_.jpg", price:"۳۵۰,۰۰۰ تومان", desc:"شاهزاده‌ای جوان در یک سرزمین شرقی، زمانی که سلطان در جنگ است، وزیر خبیث به نام Jaffar قدرت را در دست می‌گیرد..." },
-        { id:1, title:"GOD OF WAR", name:"God of War", year:"۲۰۰۵", developer:"Santa Monica Studio", cover:"https://uploadkon.ir/uploads/4c9d09_26god-of-war-Zerox-ir-28.jpg", price:"۵۵۰,۰۰۰ تومان", desc:"کریتوس، یک جنگجوی اسپارتی، برای گرفتن انتقام و رهایی از کابوس‌های گذشته‌اش به دنبال نابودی خدای جنگ یعنی Ares می‌رود..." }
-    ];
-
-    const newsData = [
-        { title:"فال‌اوت هنوز زنده است!", summary:"بتسدا به‌تازگی آپدیت جدیدی برای Fallout 76 منتشر کرده...", image:"https://up.20script.ir/file/dbb3-fall-out-Zerox-.jpg", date:"۱۹ خرداد ۱۴۰۵" },
-        { title:"سامر گیم داره چیکار میکنه؟", summary:"سامر گیم فست ترکوند! بالاخره بعد از کلی پچ‌پچ، ناتی داگ ماسک رو برداشت...", image:"https://uploadkon.ir/uploads/b62c08_26the-last-of-us-Zerox-.jpg", date:"۱۴۰۵/۰۳/۱۹" },
-        { title:"ولورین بالاخره پنچه هاشو کشید بیرون؟", summary:"ولورین بالاخره برگشت! اطلاعات جدیدی از Marvel's Wolverine منتشر شده", image:"https://uploadkon.ir/uploads/be1308_26InShot-20260606-132014431.jpg", date:"۱۴۰۵/۰۳/۱۸" }
-    ];
-
-    // ===== رندر محصولات =====
-    function renderProducts(containerId, data = oldData) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = data.map(item => `
-            <div class="product-card">
-                <img class="product-img" src="${item.cover}" onerror="this.src='https://via.placeholder.com/300x200'">
-                <div class="product-body">
-                    <div class="product-tag"><i class="fa-solid fa-compact-disc"></i> زروکس اُلد</div>
-                    <h3>${item.title}</h3>
-                    <div class="sub">${item.name} • ${item.year} • ${item.developer}</div>
-                    <p>${item.desc.substring(0, 80)}...</p>
-                    <div class="product-footer">
-                        <span class="price">${item.price || 'توافقی'}</span>
-                        <button class="btn-buy" onclick="alert('اطلاعات بیشتر در پشتیبانی')"><i class="fa-solid fa-cart-plus"></i> خرید</button>
+        <!-- ===== CHANNELS ===== -->
+        <section id="channels" class="section">
+            <div class="channels-container">
+                <div class="channel-card">
+                    <div class="icon-big"><i class="fa-solid fa-tv"></i></div>
+                    <h3>کانال آپارات</h3>
+                    <p>اینجا کانال اصلی آپارات خفن زروکسه!</p>
+                    <a href="https://www.aparat.com/ZEROX_GAME" target="_blank" class="contact-btn"><i class="fa-solid fa-play-circle"></i> بازدید از کانال آپارات</a>
+                    <div style="margin-top:20px;">
+                        <p style="color:#666; font-size:0.9rem;">مارا در روبیکا هم دنبال کنید!</p>
+                        <a href="https://rubika.ir/@ZEROX_GAME" target="_blank" class="contact-btn" style="background:#222;"><i class="fa-solid fa-paper-plane"></i> @ZEROX_GAME در روبیکا</a>
                     </div>
                 </div>
-            </div>
-        `).join('');
-    }
-
-    function renderNews(containerId) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = newsData.map(n => `
-            <div class="product-card" style="flex-direction:row; align-items:center; padding:12px; gap:16px; flex-wrap:wrap;">
-                <img src="${n.image}" onerror="this.src='https://via.placeholder.com/80x80'" style="width:100px; height:80px; object-fit:cover; border-radius:12px;">
-                <div style="flex:1; min-width:150px;">
-                    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-                        <span style="background:var(--main); color:#fff; padding:2px 12px; border-radius:30px; font-size:11px; font-weight:700;"><i class="fa-regular fa-newspaper"></i> خبر</span>
-                        <span style="font-size:11px; opacity:0.7;"><i class="fa-regular fa-calendar"></i> ${n.date}</span>
-                    </div>
-                    <h4 style="margin:4px 0; color:#000;">${n.title}</h4>
-                    <p style="font-size:13px; color:#555;">${n.summary}</p>
+                <div class="channel-card">
+                    <div class="icon-big" style="animation:float 2.8s ease-in-out infinite;"><i class="fa-brands fa-youtube"></i></div>
+                    <h3>کانال یوتیوب</h3>
+                    <div class="coming-badge"><i class="fa-regular fa-clock"></i> به زودی...</div>
                 </div>
             </div>
-        `).join('');
-    }
+        </section>
 
-    // ===== تب‌ها =====
-    function showTab(id) {
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-        document.querySelector(`nav a[onclick="showTab('${id}')"]`)?.classList.add('active');
+    </main>
 
-        if (id === 'home') {
-            renderProducts('homeProducts');
-            renderNews('homeNews');
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">© 2026 ZEROX | هر بازی یک حماسه</footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+        // --------------------------------------------------------------
+        //  DATA LAYER
+        // --------------------------------------------------------------
+
+        const videosData = [{
+            id: 2,
+            title: "داستان بازی اوت لست۱ | بهترین بازی ترسناک دنیا",
+            desc: "در این ویدیو داستان کامل Outlast رو بررسی می‌کنیم | از ورود مایلز آپشور به تیمارستان مرموز Mount Massive تا روبه‌رو شدن...",
+            thumb: "https://cdn.imgurl.ir/uploads/y799019_Zerox_th12.png",
+            link: "https://www.aparat.com/v/gkcxc4t",
+            category: "ترسناک",
+            date: "۱۴۰۵/۰۳/۰۶",
+            time: "۱۵:۳۰",
+            fullText: "این ویدیو توسط کانال خفن زیروکس ساخته شده | در این ویدیو داستان کامل Outlast رو بررسی می‌کنیم | از ورود مایلز آپشور به تیمارستان مرموز Mount Massive تا روبه‌رو شدن با آزمایش‌های مخفی، بیماران دیوانه و موجود ترسناکی به نام Walrider. اگر به بازی‌های ترسناک و داستان‌های تاریک علاقه داری، این ویدیو رو از دست نده!"
+        }, {
+            id: 1,
+            title: "داستان کامل بازی نه من انسان نیستم | ترند و ترسناک ترین بازی در سال ۲۰۲۵",
+            desc: "سلام بر شما | من امروز درمورد داستان بازی من انسان نیستم صحبت کردم",
+            thumb: "https://uploadkon.ir/uploads/804c08_2671129478-9827-l-3296.jpg",
+            link: "https://www.aparat.com/v/itl9b8h",
+            category: "ترسناک",
+            date: "۱۴۰۵/۰۳/۰۵",
+            time: "۱۹:۲۰",
+            fullText: "سلام بر شما | من امروز درمورد داستان بازی من انسان نیستم صحبت کردم | تمام نکات و همچیو توضیح دادم | امیدوارم از ویدیو لذت کافی ببرید | پارت بعدی رو به زودی زود میذارم | داستان رو تماما گفتم براتون"
+        }];
+
+        const newsData = [{
+            id: 3,
+            title: "فال‌اوت هنوز زنده است!",
+            summary: "بتسدا به‌تازگی آپدیت جدیدی برای Fallout 76 منتشر کرده...",
+            image: "https://up.20script.ir/file/dbb3-fall-out-Zerox-.jpg",
+            date: "۱۹ خرداد ۱۴۰۵",
+            time: "۲۰:۵۱",
+            fullText: "فال‌اوت هنوز زنده است!\nبتسدا به‌تازگی آپدیت جدیدی برای Fallout 76 منتشر کرده و محتوای تازه‌ای به بازی اضافه شده است. در این آپدیت، بازیکن‌ها با چالش‌ها و دشمنان جدیدی روبه‌رو می‌شوند و می‌توانند پاداش‌ها و آیتم‌های بیشتری به دست بیاورند.\nجالب‌تر اینکه با وجود گذشت چند سال از انتشار بازی، بتسدا همچنان به پشتیبانی از Fallout 76 ادامه می‌دهد و برنامه‌های بیشتری برای آینده آن دارد. Fallout 4 هم هنوز آپدیت دریافت می‌کند؛ اتفاقی که برای خیلی از طرفدارها غافلگیرکننده بوده است.\nبه نظر می‌رسد دنیای Fallout فعلاً قصد خداحافظی با بازیکن‌ها را ندارد.\nبرای جدیدترین اخبار دنیای بازی‌ها، همراه زروکس گیم باشید.\n— ZEROX GAME"
+        }, {
+            id: 5,
+            title: "سامر گیم داره چیکار میکنه؟",
+            summary: "سامر گیم فست ترکوند! بالاخره بعد از کلی پچ‌پچ، ناتی داگ ماسک رو برداشت...",
+            image: "https://uploadkon.ir/uploads/b62c08_26the-last-of-us-Zerox-.jpg",
+            date: "۱۴۰۵/۰۳/۱۹",
+            time: "۰۲:۱۷",
+            fullText: "سامر گیم فست ترکوند! بالاخره بعد از کلی پچ‌پچ، ناتی داگ ماسک رو برداشت و The Last of Us Part 3 رو نشون داد. داستانش کاملاً غافلگیرکننده‌ست و خبری از الی و جوئل نیست. بعدش سونی رسماً تایید کرد که خدای جنگ داره میره مصر باستان، اونم با یه گیم‌پلی سریع‌تر که محورش روی آترئوس جوونه. تو جبهه‌ی ترسناک‌ها هم کپکام یه رزیدنت اویل جدید معرفی کرد که ظاهراً قراره یه تجربه‌ی کو-آپ بقا-محور باشه و حسابی بترسیم. خلاصه اینکه ۲۰۲۷ قراره سال شلوغی بشه. گروه_خبری زروکس!"
+        }, {
+            id: 4,
+            title: "ولورین بالاخره پنچه هاشو کشید بیرون؟",
+            summary: "ولورین بالاخره برگشت! اطلاعات جدیدی از Marvel's Wolverine منتشر شده",
+            image: "https://uploadkon.ir/uploads/be1308_26InShot-20260606-132014431.jpg",
+            date: "۱۴۰۵/۰۳/۱۸",
+            time: "۲۲:۴۶",
+            fullText: "ولورین بالاخره برگشت! اطلاعات جدیدی از Marvel's Wolverine منتشر شده و طرفدارها رو حسابی هیجان‌زده کرده. نمایش جدید بازی مبارزات سریع و خشن لوگان رو نشون می‌ده و به نظر می‌رسه با یکی از تاریک‌ترین بازی‌های مارول طرف باشیم."
+        }];
+
+        const storiesData = [{
+            title: "داستان کامل بازی خدای جنگ رکناروگ",
+            desc: "بعد از اتفاقات بازی قبلی، کریتوس و آترئوس توی سرزمین‌های نورس زندگی آرومی داشتن، اما این آرامش زیاد دوام نمیاره...",
+            img: "https://uploadkon.ir/uploads/76e009_26god-of-war-123-Zerox-.jpg",
+            full: `بعد از اتفاقات بازی قبلی، کریتوس و آترئوس توی سرزمین‌های نورس زندگی آرومی داشتن، اما این آرامش زیاد دوام نمیاره. زمستون بزرگ یا همون «فیمبول‌وینتر» شروع شده و همه می‌دونن که بعدش قراره رگناروک، یعنی پایان دنیا، از راه برسه.
+
+اول داستان، کریتوس و آترئوس هنوز دارن با مرگ فریا و پسرش بالدور دست و پنجه نرم می‌کنن. فریا که از دست کریتوس عصبانیه، مدام دنبال انتقامه. از اون طرف آترئوس هم کم‌کم می‌فهمه که همون «لوکی» معروف افسانه‌هاست و نقش بزرگی توی آینده دنیا داره.
+
+یه روز سر و کله ثور، خدای رعد و برق، پیدا میشه. همون جنگجوی غول‌پیکری که همه ازش می‌ترسن. اون همراه اودین میاد سراغ کریتوس. اودین سعی می‌کنه با حرف زدن جلوی جنگ رو بگیره، ولی همه می‌دونن که پشت این لبخندها یه نقشه بزرگ خوابیده.
+
+آترئوس که دنبال جواب سوال‌هاشه، مخفیانه سفر خودش رو شروع می‌کنه. اون می‌خواد بفهمه واقعاً کیه و سرنوشتش چیه. توی این مسیر با غول‌های باقیمونده، موجودات عجیب و رازهای قدیمی روبه‌رو میشه.
+
+در همین حال کریتوس هم درگیر این موضوعه که نکنه دوباره تبدیل به همون هیولای گذشته بشه؛ همون جنگجویی که فقط مرگ و نابودی به بار می‌آورد. اما این بار فرق کرده. حالا یه پدره و نمی‌خواد پسرش هم راه اشتباه اون رو بره.
+
+هرچی داستان جلوتر میره، رابطه پدر و پسر بارها به چالش کشیده میشه. آترئوس می‌خواد مستقل باشه و خودش تصمیم بگیره، ولی کریتوس همیشه نگرانشه.
+
+کم‌کم مشخص میشه که اودین سال‌ها دروغ گفته و خیلی از اتفاقات رو پشت پرده کنترل کرده. هدفش هم اینه که از سرنوشت فرار کنه و هرطور شده قدرت خودش رو حفظ کنه.
+
+بعد از کلی ماجراجویی، متحدان مختلفی دور کریتوس جمع میشن؛ از فریا گرفته تا دورف‌ها و جنگجویان قلمروهای مختلف. همه آماده میشن تا جنگ نهایی رگناروک رو شروع کنن.
+
+و بالاخره جنگ بزرگ آغاز میشه. ارتش‌ها به آزگارد حمله می‌کنن. نبردهای عظیم شکل می‌گیره و هر گوشه از دنیا در آتیش جنگ می‌سوزه. کریتوس با ثور روبه‌رو میشه و یکی از حماسی‌ترین مبارزه‌های تاریخ بازی‌های ویدیویی رقم می‌خوره.
+
+اما برخلاف چیزی که همه انتظار داشتن، کریتوس سعی می‌کنه چرخه کشتار رو بشکنه. اون دیگه فقط به فکر انتقام نیست.
+
+در نهایت ثور متوجه میشه که اودین از همه سوءاستفاده کرده، اما قبل از اینکه بتونه مسیرش رو عوض کنه، اودین خودش اون رو از بین می‌بره.
+
+آخرین نبرد بین کریتوس و یارانش با اودین شکل می‌گیره. بعد از مبارزه‌ای سخت، اودین شکست می‌خوره و دوران حکومتش به پایان می‌رسه.
+
+بعد از پایان جنگ، آزگارد نابود میشه و دنیا وارد دوران جدیدی میشه. آترئوس تصمیم می‌گیره برای پیدا کردن غول‌های باقی‌مونده سفر خودش رو شروع کنه. کریتوس هم برای اولین بار می‌فهمه که سرنوشتش فقط نابودی نیست؛ مردم حالا اون رو به عنوان یک قهرمان و ناجی می‌شناسن.
+
+و اینجاست که داستان پدر و پسری که از ترس سرنوشت فرار می‌کردن، به داستان امید و ساختن آینده تبدیل میشه.`
+        }];
+
+        const musicData = [{
+            id: 4,
+            title: "INSIDE | ZEROX",
+            game: "INSIDE",
+            platform: "PC, Xbox One, PS4, Switch, iOS",
+            cover: "https://cdn.imgurl.ir/uploads/e280977_inside___Zerox_.jpg",
+            file: "https://cdn.imgurl.ir/uploads/s393413_INSIDE___ZEROX120.mp3",
+            composers: ["Martin Stig Andersen", "SØS Gunver Ryberg"],
+            desc: "موسیقی بازی INSIDE رو Martin Stig Andersen ساخت و کارش رو حدود سال‌های ۲۰۱۴ تا ۲۰۱۶، همزمان با ساخت خود بازی انجام داد. جالبه که اینجا مثل بقیه بازی‌ها آهنگ شاد یا ملودی مشخص نداریم؛ بیشتر صداها محیطی و عجیبن. سازنده به جای موسیقی معمولی، از صداهای واقعی مثل نویز، صداهای فلزی، نفس انسان و حتی سکوت استفاده کرده و بعد اون‌ها رو تغییر داده تا حس ترس و تنش بده."
+        }, {
+            id: 3,
+            title: "GOD OF WAR | ZEROX",
+            game: "God of War Ragnarök",
+            platform: "PS",
+            cover: "https://cdn.imgurl.ir/uploads/c555686_Negar_1780837093023.jpg",
+            file: "https://uploadkon.ir/uploads/7ea308_26ef9f06-26Zerox-god-of-war.mp3",
+            composers: ["Bear McCreary"],
+            desc: "کار روی موسیقی از حدود ۲۰۱۹ شروع شد و هم‌زمان با توسعه بازی جلو رفت، تا اینکه بازی در ۲۰۲۲ منتشر شد. و الان از سایت زروکس گوش میکنید!"
+        }, {
+            id: 2,
+            title: "HALO INFINITE | ZEROX",
+            game: "Halo Infinite",
+            platform: "Xbox",
+            cover: "https://uploadkon.ir/uploads/b1f108_26InShot-20260607-161240740.jpg",
+            file: "https://uploadkon.ir/uploads/478e08_26HALO-INFINITE-ZEROX.mp3",
+            composers: ["Gareth Coker", "Curtis Schweitzer", "Joel Corelitz"],
+            desc: "این آهنگ سال و تاریخ ۸ دسامبر ۲۰۲۱ ساخته شده و برای بازی هیلو اینفینیت یک شاهکار محسوب میشه!"
+        }];
+
+        const oldData = [{
+            id: 3,
+            title: "GRAND THEFT AUTO: SAN ADVENTURES | ZEROX",
+            name: "Grand Theft Auto: San Andreas",
+            year: "۲۰۰۴",
+            developer: "Rockstar North",
+            publisher: "Rockstar Games",
+            director: "Leslie Benzies (کارگردان اصلی / لید دیزاینر) - Dan Houser (نقش مهم در نویسندگی و هدایت داستان)",
+            producer: "Leslie Benzies - Imran Sarwar",
+            composers: ["Michael Hunter (موسیقی اصلی بازی) - موسیقی‌های لایسنس شده از هنرمندان مختلف"],
+            platform: "PlayStation 2, Xbox, PC (ویندوز), بعداً: موبایل",
+            genre: "اکشن-ماجراجویی، جهان‌باز (Open World)، رانندگی، تیراندازی سوم‌شخص",
+            engine: "RenderWare",
+            cover: "https://uploadkon.ir/uploads/724812_26gta-sa-Zerox-.jpg",
+            music: "https://uploadkon.ir/uploads/444012_26GTA-SA-ZEROX-.mp3",
+            desc: "داستان درباره کارل \"CJ\" جانسون است که بعد از مرگ مادرش به لس سانتوس برمی‌گردد. او دوباره وارد محله و گنگ قدیمی‌اش می‌شود، اما خیلی زود درگیر فساد پلیس، خیانت، جنگ باندها و قدرت‌گیری در شهرهای مختلف ایالت سن آندریاس می‌شود. هدف اصلی CJ این است که خانواده‌اش را دوباره جمع کند و کنترل محله‌اش را پس بگیرد.",
+            fullText: "داستان درباره کارل \"CJ\" جانسون است که بعد از مرگ مادرش به لس سانتوس برمی‌گردد. او دوباره وارد محله و گنگ قدیمی‌اش می‌شود، اما خیلی زود درگیر فساد پلیس، خیانت، جنگ باندها و قدرت‌گیری در شهرهای مختلف ایالت سن آندریاس می‌شود. هدف اصلی CJ این است که خانواده‌اش را دوباره جمع کند و کنترل محله‌اش را پس بگیرد. در این مسیر طولانی و حماسی، شخصیت‌های ماندگاری مثل Big Smoke، Ryder، Sweet و Officer Tenpenny روبروی CJ قرار می‌گیرند و توطئه‌های بزرگی شکل می‌گیرد."
+        }, {
+            id: 2,
+            title: "PRINCE OF PERSIA | ZEROX",
+            name: "Prince of Persia",
+            year: "۱۹۸۹",
+            developer: "Jordan Mechner",
+            publisher: "Brøderbund",
+            director: "Jordan Mechner",
+            producer: "Brøderbund Software",
+            composers: ["صدا و موسیقی محدود و ساده (نسخه اولیه بازی موسیقی حرفه‌ای گسترده نداشت و بیشتر افکت‌های صوتی کلاسیک بود)"],
+            platform: "Apple II / DOS / Commodore 64 / Amiga (و بعدها پورت‌های مختلف)",
+            genre: "اکشن، پلتفرمر، ماجراجویی",
+            engine: "موتور اختصاصی اولیه ساخته شده توسط Jordan Mechner",
+            cover: "https://cdn.imgurl.ir/uploads/f82900_____Zerox_.jpg",
+            music: "https://uploadkon.ir/uploads/da8b10_26Prince-of-Persia-Zerox.mp3",
+            desc: "شاهزاده‌ای جوان در یک سرزمین شرقی، زمانی که سلطان در جنگ است، وزیر خبیث به نام Jaffar قدرت را در دست می‌گیرد. او به شاهزاده‌خانم اولتیماتوم می‌دهد: یا با او ازدواج کند یا در زندان بمیرد. شاهزاده در سیاهچال زندانی می‌شود و باید در کمتر از ۶۰ دقیقه از میان تله‌های مرگبار، شمشیرزن‌ها و مسیرهای خطرناک عبور کند تا خودش را به قصر برساند و شاهزاده‌خانم را نجات دهد.",
+            fullText: "شاهزاده‌ای جوان در یک سرزمین شرقی، زمانی که سلطان در جنگ است، وزیر خبیث به نام Jaffar قدرت را در دست می‌گیرد. او به شاهزاده‌خانم اولتیماتوم می‌دهد: یا با او ازدواج کند یا در زندان بمیرد.\nشاهزاده در سیاهچال زندانی می‌شود و باید در کمتر از ۶۰ دقیقه از میان تله‌های مرگبار، شمشیرزن‌ها و مسیرهای خطرناک عبور کند تا خودش را به قصر برساند و شاهزاده‌خانم را نجات دهد.\nگیم‌پلی بازی بر پایه دقت در حرکت، زمان‌بندی و حل کردن مسیرهای سخت طراحی شده و برای زمان خودش یکی از واقعی‌ترین انیمیشن‌های حرکتی شخصیت‌ها را داشت.\nاین بازی یکی از پایه‌گذاران سبک پلتفرمر سینمایی محسوب می‌شود و تأثیر بزرگی روی بازی‌های بعدی گذاشت."
+        }, {
+            id: 1,
+            title: "GOD OF WAR | ZEROX",
+            name: "God of War",
+            year: "۲۲ مارس ۲۰۰۵",
+            developer: "Santa Monica Studio",
+            publisher: "Sony Computer Entertainment",
+            director: "David Jaffe",
+            producer: "Shannon Studstill",
+            composers: ["Gerard Marino", "Mike Reagan", "Ron Fish", "Winifred Phillips", "Cris Velasco"],
+            platform: "PlayStation 2",
+            genre: "اکشن ماجراجویی، هک اند اسلش",
+            engine: "Kinetica Engine",
+            cover: "https://uploadkon.ir/uploads/4c9d09_26god-of-war-Zerox-ir-28.jpg",
+            music: "https://uploadkon.ir/uploads/157a09_26ef9f06-26Zerox-god-of-war.mp3",
+            desc: "کریتوس، یک جنگجوی اسپارتی، برای گرفتن انتقام و رهایی از کابوس‌های گذشته‌اش به دنبال نابودی خدای جنگ یعنی Ares می‌رود. در طول مسیر با هیولاها، تایتان‌ها و خدایان اساطیر یونان روبه‌رو می‌شود.",
+            fullText: "داستان God of War یکی از حماسی‌ترین داستان‌های تاریخ بازی است. کریتوس، جنگجوی اسپارتی، پس از اینکه آرس (خدای جنگ) او را فریب می‌دهد و خانواده‌اش را می‌کشد، تصمیم می‌گیرد انتقام بگیرد. او با کمک آتنا، خدای خرد، وارد ماجرایی می‌شود تا جعبه پاندورا را پیدا کند و آرس را نابود کند. در این مسیر با موجودات افسانه‌ای مانند مینوتور، سیرن، و مدوسا روبرو می‌شود و قدرت‌های جدیدی به دست می‌آورد. نبرد نهایی کریتوس با آرس یکی از به‌یادماندنی‌ترین نبردهای تاریخ بازی‌های ویدیویی است."
+        }];
+
+        // --------------------------------------------------------------
+        //  HELPERS
+        // --------------------------------------------------------------
+
+        function getPlatformIcon(platform) {
+            if (platform.includes("Xbox")) return '<i class="fab fa-xbox"></i>';
+            if (platform.includes("PS")) return '<i class="fab fa-playstation"></i>';
+            if (platform.includes("PC")) return '<i class="fab fa-windows"></i>';
+            return '<i class="fas fa-gamepad"></i>';
         }
-        if (id === 'products') {
-            renderProducts('productsGrid');
-        }
-    }
 
-    // ===== رندر اولیه =====
-    renderProducts('homeProducts');
-    renderNews('homeNews');
-    renderProducts('productsGrid');
-</script>
+        function getCatIcon(cat) {
+            if (cat === "ترسناک") return '<i class="fa-solid fa-ghost"></i>';
+            if (cat === "هیجانی") return '<i class="fa-solid fa-bolt"></i>';
+            if (cat === "علمی") return '<i class="fa-solid fa-flask"></i>';
+            if (cat === "معرفی") return '<i class="fa-solid fa-gamepad"></i>';
+            return '<i class="fa-solid fa-tag"></i>';
+        }
+
+        function downloadMusic(url, title) {
+            fetch(url)
+                .then(r => r.blob())
+                .then(blob => {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(blob);
+                    a.download = title + '.mp3';
+                    a.click();
+                    URL.revokeObjectURL(a.href);
+                })
+                .catch(() => window.open(url, '_blank'));
+        }
+
+        // --------------------------------------------------------------
+        //  RENDER FUNCTIONS
+        // --------------------------------------------------------------
+
+        function renderVideos(containerId, filter = "همه") {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            let filtered = filter === "همه" ? videosData : videosData.filter(v => v.category === filter);
+            if (filtered.length === 0) {
+                container.innerHTML =
+                    `<div style="background:var(--white); border-radius:28px; padding:40px; text-align:center; color:var(--primary);"><i class="fa-solid fa-video-slash" style="font-size:48px;"></i><h3 style="margin-top:12px;">ویدیویی یافت نشد</h3></div>`;
+                return;
+            }
+            container.innerHTML = filtered.map(v => `
+                <div class="video-card">
+                    <img class="video-thumb" src="${v.thumb}" onerror="this.src='https://via.placeholder.com/400x220/222/fff?text=ZEROX'" />
+                    <div class="video-badge-top"><i class="fa-solid fa-play"></i> تماشا</div>
+                    <div class="video-info">
+                        <h3>${v.title}</h3>
+                        <div class="video-meta">
+                            <span class="video-cat">${getCatIcon(v.category)} ${v.category}</span>
+                            <span class="video-date"><i class="fa-regular fa-calendar"></i> ${v.date} <i class="fa-regular fa-clock"></i> ${v.time}</span>
+                        </div>
+                        <p>${v.desc.substring(0, 100)}${v.desc.length > 100 ? '...' : ''}</p>
+                        <div class="video-actions">
+                            <button class="btn-watch" onclick="event.stopPropagation(); window.open('${v.link}','_blank')"><i class="fa-solid fa-play"></i> مشاهده ویدیو</button>
+                            <button class="btn-more" onclick="event.stopPropagation(); toggleFullText(this)"><i class="fa-regular fa-eye"></i> توضیحات</button>
+                        </div>
+                        <div class="full-text-box">${v.fullText}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderNews(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = newsData.map(n => `
+                <div class="hybrid-card">
+                    <div class="hybrid-media"><img src="${n.image}" onerror="this.src='https://via.placeholder.com/400x200/222/fff?text=ZEROX'" /></div>
+                    <div class="hybrid-content">
+                        <div class="hybrid-badge"><i class="fa-regular fa-newspaper"></i> جدیدترین خبر</div>
+                        <h2>${n.title}</h2>
+                        <div style="display:flex; gap:14px; font-size:0.7rem; color:#777; margin-bottom:6px;">
+                            <span><i class="fa-regular fa-calendar"></i> ${n.date}</span>
+                            <span><i class="fa-regular fa-clock"></i> ${n.time}</span>
+                        </div>
+                        <p class="hybrid-desc">${n.summary}</p>
+                        <div class="hybrid-actions">
+                            <button onclick="event.stopPropagation(); toggleFullText(this)"><i class="fa-regular fa-eye"></i> ادامه مطلب</button>
+                        </div>
+                        <div class="full-text-box">${n.fullText}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderStories(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = storiesData.map(s => `
+                <div class="hybrid-card">
+                    <div class="hybrid-media"><img src="${s.img}" onerror="this.src='https://via.placeholder.com/400x200/222/fff?text=ZEROX'" /></div>
+                    <div class="hybrid-content">
+                        <div class="hybrid-badge"><i class="fa-solid fa-book-open"></i> داستان اختصاصی</div>
+                        <h2>${s.title}</h2>
+                        <p class="hybrid-desc">${s.desc.substring(0, 120)}...</p>
+                        <div class="hybrid-actions">
+                            <button onclick="event.stopPropagation(); toggleFullText(this)"><i class="fa-regular fa-eye"></i> ادامه داستان</button>
+                        </div>
+                        <div class="full-text-box">${s.full}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderMusic() {
+            const container = document.getElementById('musicGrid');
+            if (!container) return;
+            if (musicData.length === 0) {
+                container.innerHTML =
+                    `<div style="background:var(--white); border-radius:28px; padding:40px; text-align:center; color:var(--primary);"><i class="fa-solid fa-music" style="font-size:48px;"></i><h3 style="margin-top:12px;">هنوز موسیقی‌ای اضافه نشده</h3></div>`;
+                return;
+            }
+            const sorted = [...musicData].sort((a, b) => b.id - a.id);
+            container.innerHTML = sorted.map(m => `
+                <div class="music-card">
+                    <img class="music-img" src="${m.cover}" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=ZEROX'" />
+                    <div class="music-info">
+                        <h3>${m.title}</h3>
+                        <div class="music-platform">${getPlatformIcon(m.platform)} ${m.platform}</div>
+                        ${m.composers ? `<div class="composer-block"><div class="label"><i class="fa-solid fa-microphone-alt"></i> آهنگسازان</div>${m.composers.map(c => `<span class="composer-item"><i class="fa-regular fa-user"></i> ${c}</span>`).join(' ')}</div>` : ''}
+                        <div class="music-desc-box">${m.desc}</div>
+                        <div class="music-player-wrap">
+                            <audio controls src="${m.file}"></audio>
+                            <button class="btn-download" onclick="event.stopPropagation(); downloadMusic('${m.file}', '${m.title}')"><i class="fa-solid fa-download"></i> دانلود</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderOld() {
+            const container = document.getElementById('oldGrid');
+            if (!container) return;
+            if (oldData.length === 0) {
+                container.innerHTML =
+                    `<div style="background:var(--white); border-radius:28px; padding:40px; text-align:center; color:var(--primary);"><i class="fa-solid fa-joystick" style="font-size:48px;"></i><h3 style="margin-top:12px;">به زودی...</h3></div>`;
+                return;
+            }
+            container.innerHTML = oldData.map(game => `
+                <div class="hybrid-card">
+                    <div class="hybrid-media"><img src="${game.cover}" onerror="this.src='https://via.placeholder.com/400x200/222/fff?text=ZEROX'" /></div>
+                    <div class="hybrid-content">
+                        <div class="hybrid-badge"><i class="fa-solid fa-compact-disc"></i> زروکس اُلد | نوستالژی محض</div>
+                        <h2>${game.title}</h2>
+                        <div class="game-info-box">
+                            <div class="info-row"><i class="fa-solid fa-gamepad"></i> <strong>نام بازی:</strong> ${game.name}</div>
+                            <div class="info-row"><i class="fa-regular fa-calendar"></i> <strong>سال انتشار:</strong> ${game.year}</div>
+                            <div class="info-row"><i class="fa-solid fa-building"></i> <strong>سازنده:</strong> ${game.developer}</div>
+                            <div class="info-row"><i class="fa-solid fa-box"></i> <strong>ناشر:</strong> ${game.publisher}</div>
+                            <div class="info-row"><i class="fa-solid fa-user-tie"></i> <strong>کارگردان:</strong> ${game.director}</div>
+                            <div class="info-row"><i class="fa-solid fa-chalkboard-user"></i> <strong>تهیه‌کننده:</strong> ${game.producer}</div>
+                            <div class="info-row"><i class="fa-solid fa-music"></i> <strong>آهنگسازان:</strong> ${game.composers.join(", ")}</div>
+                            <div class="info-row"><i class="fa-solid fa-tv"></i> <strong>پلتفرم:</strong> ${game.platform}</div>
+                            <div class="info-row"><i class="fa-solid fa-tag"></i> <strong>سبک:</strong> ${game.genre}</div>
+                            <div class="info-row"><i class="fa-solid fa-microchip"></i> <strong>موتور بازی:</strong> ${game.engine}</div>
+                        </div>
+                        <div class="music-desc-box" style="background:var(--gray-100); border-right-color:var(--primary);">
+                            <div style="font-weight:800; color:var(--primary); margin-bottom:4px;"><i class="fa-solid fa-book-open"></i> داستان بازی</div>
+                            <p>${game.desc}</p>
+                            <button class="btn-more" style="margin-top:10px; background:transparent; border:2px solid var(--primary); color:var(--primary); padding:4px 18px; border-radius:60px; font-weight:800; font-family:inherit; cursor:pointer; transition:var(--transition);" onclick="toggleFullText(this)"><i class="fa-regular fa-eye"></i> ادامه داستان</button>
+                            <div class="full-text-box">${game.fullText}</div>
+                        </div>
+                        <div class="music-player-wrap">
+                            <audio controls src="${game.music}"></audio>
+                            <button class="btn-download" onclick="downloadMusic('${game.music}', '${game.name}')"><i class="fa-solid fa-download"></i> دانلود</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // --------------------------------------------------------------
+        //  TOGGLE FULL TEXT
+        // --------------------------------------------------------------
+
+        function toggleFullText(btn) {
+            const box = btn.parentElement.nextElementSibling;
+            if (!box || !box.classList.contains('full-text-box')) return;
+            box.classList.toggle('open');
+            btn.innerHTML = box.classList.contains('open') ?
+                '<i class="fa-regular fa-eye-slash"></i> بستن' :
+                '<i class="fa-regular fa-eye"></i> ' + (btn.textContent.includes('داستان') ? 'ادامه داستان' : btn.textContent.includes('مطلب') ?
+                    'ادامه مطلب' : 'توضیحات');
+        }
+
+        // --------------------------------------------------------------
+        //  FILTER / TAB
+        // --------------------------------------------------------------
+
+        let currentVideoFilter = "همه";
+
+        function setupFilters() {
+            document.querySelectorAll('#video .filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('#video .filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentVideoFilter = this.getAttribute('data-filter');
+                    renderVideos('videosGrid', currentVideoFilter);
+                });
+            });
+        }
+
+        function showTab(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+
+            if (id === 'home') {
+                renderVideos('homeVideosGrid', 'همه');
+                renderNews('homeNewsGrid');
+                renderStories('homeStoriesGrid');
+            }
+            if (id === 'news') renderNews('newsGrid');
+            if (id === 'video') renderVideos('videosGrid', currentVideoFilter);
+            if (id === 'music') renderMusic();
+            if (id === 'stories') renderStories('storiesGrid');
+            if (id === 'old') renderOld();
+            if (id === 'shop' || id === 'about' || id === 'channels') { /* nothing to re-render */ }
+        }
+
+        // --------------------------------------------------------------
+        //  INIT
+        // --------------------------------------------------------------
+
+        renderVideos('homeVideosGrid', 'همه');
+        renderNews('homeNewsGrid');
+        renderStories('homeStoriesGrid');
+        renderNews('newsGrid');
+        renderVideos('videosGrid', 'همه');
+        renderStories('storiesGrid');
+        renderMusic();
+        renderOld();
+        setupFilters();
+
+        // expose to global
+        window.showTab = showTab;
+        window.toggleFullText = toggleFullText;
+        window.downloadMusic = downloadMusic;
+    </script>
+
 </body>
-</html>
+    </html>
