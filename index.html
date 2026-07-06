@@ -1,484 +1,1367 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daric · قالب‌های حرفه‌ای</title>
-  
-  <!-- فونت وزیر (Vazir) از CDN -->
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
-  
-  <!-- Font Awesome 6 (رایگان) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZEROX.GAME.IR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --main: #B61C1C;
+            --main-dark: #8a1515;
+            --radius-card: 28px;
+            --shadow-card: 0 20px 40px -12px rgba(0, 0, 0, 0.35);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: var(--main);
+            color: #fff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+        }
 
-    body {
-      background: #0b0e14;
-      font-family: 'Vazir', 'Segoe UI', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      color: #e8f0f8;
-      line-height: 1.6;
-    }
+        /* ===== HEADER / NAV ===== */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 16px 0;
+            gap: 12px;
+        }
+        .logo img {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+        }
+        nav {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 60px;
+            margin: 0 auto 8px;
+        }
+        nav a {
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-weight: 800;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+            background: transparent;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        nav a i,
+        nav a .custom-cd-icon {
+            font-size: 14px;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #fff;
+            color: var(--main);
+            transition: var(--transition);
+        }
+        nav a .custom-cd-icon {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            color: #c0c0c0;
+            box-shadow: 0 0 0 2px var(--main);
+            font-size: 12px;
+        }
+        nav a:hover {
+            background: #fff;
+            color: var(--main);
+            border-color: #fff;
+            transform: translateY(-2px);
+        }
+        nav a:hover i,
+        nav a:hover .custom-cd-icon {
+            background: var(--main);
+            color: #fff;
+            box-shadow: 0 0 0 2px #fff;
+        }
+        @media (max-width: 700px) {
+            nav {
+                border-radius: 30px;
+                padding: 10px 12px;
+                gap: 4px;
+            }
+            nav a {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+            nav a i,
+            nav a .custom-cd-icon {
+                width: 24px;
+                height: 24px;
+                font-size: 10px;
+            }
+        }
 
-    /* کانتینر اصلی با ترکیب رنگ‌های B61C1C (قرمز تیره) و E3B10A (طلایی) */
-    .daric-card {
-      max-width: 1200px;
-      width: 100%;
-      background: rgba(16, 24, 32, 0.75);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 2px solid rgba(227, 177, 10, 0.35);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(227, 177, 10, 0.12);
-      border-radius: 3.5rem;
-      padding: 2.8rem 3.2rem;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s;
-    }
+        /* ===== SECTIONS ===== */
+        .section {
+            display: none;
+            padding: 30px 16px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeUp 0.5s ease;
+        }
+        .section.active {
+            display: block;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    /* هدر Daric با رنگ‌های جدید */
-    .header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2.8rem;
-      border-bottom: 1px solid rgba(227, 177, 10, 0.2);
-      padding-bottom: 1.6rem;
-    }
+        /* ===== SECTION TITLE ===== */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin: 20px 0 28px 0;
+            padding-right: 18px;
+            border-right: 5px solid #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+        }
+        .section-title i {
+            font-size: 28px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
+        /* ===== FILTER BUTTONS ===== */
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 10px 24px;
+            border-radius: 50px;
+            color: #fff;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(4px);
+        }
+        .filter-btn i {
+            font-size: 14px;
+        }
+        .filter-btn:hover {
+            background: var(--main);
+            border-color: var(--main);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(182, 28, 28, 0.4);
+        }
+        .filter-btn.active {
+            background: var(--main);
+            border-color: var(--main);
+            box-shadow: 0 8px 25px rgba(182, 28, 28, 0.5);
+        }
 
-    .logo-icon {
-      width: 52px;
-      height: 52px;
-      background: linear-gradient(135deg, #E3B10A, #B61C1C);
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 2.2rem;
-      color: #0b0e14;
-      box-shadow: 0 0 30px rgba(227, 177, 10, 0.4);
-      transform: rotate(4deg);
-      transition: 0.25s;
-      text-decoration: none;
-    }
+        /* ===== CARDS COMMON ===== */
+        .hybrid-card,
+        .video-card,
+        .music-card {
+            background: #fff;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+        }
+        .hybrid-card:hover,
+        .video-card:hover,
+        .music-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 50px -16px rgba(0, 0, 0, 0.4);
+        }
 
-    .logo-icon:hover {
-      transform: rotate(0deg) scale(1.06);
-      box-shadow: 0 0 50px rgba(227, 177, 10, 0.7);
-    }
+        /* ===== HYBRID CARD (news / stories / old) ===== */
+        .hybrid-inner {
+            display: flex;
+            flex-direction: column;
+        }
+        @media (min-width: 700px) {
+            .hybrid-inner {
+                flex-direction: row;
+            }
+        }
+        .hybrid-media {
+            flex: 1.2;
+            background: #111;
+            min-height: 200px;
+        }
+        .hybrid-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            min-height: 200px;
+        }
+        .hybrid-content {
+            flex: 1.5;
+            padding: 28px;
+            color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+        }
+        .hybrid-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--main);
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: 700;
+            width: fit-content;
+            margin-bottom: 14px;
+        }
+        .hybrid-content h2 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .hybrid-desc {
+            color: #2c2c3a;
+            opacity: 0.85;
+            font-weight: 500;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        .news-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .news-actions button {
+            background: var(--main);
+            color: #fff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-weight: 800;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .news-actions button:hover {
+            background: var(--main-dark);
+            transform: scale(0.97);
+        }
+        .news-full-text,
+        .full-text,
+        .story-full-text,
+        .old-full-text {
+            display: none;
+            margin-top: 18px;
+            padding: 18px 20px;
+            background: #f5f5f5;
+            border-radius: 18px;
+            color: #1a1a1a;
+            line-height: 1.9;
+            font-size: 14px;
+            border-right: 4px solid var(--main);
+            animation: fadeSlide 0.3s ease;
+            white-space: pre-line;
+            text-align: justify;
+        }
+        @keyframes fadeSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .logo-text {
-      font-size: 2.2rem;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      background: linear-gradient(to left, #E3B10A, #B61C1C, #E3B10A);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-decoration: none;
-    }
+        /* ===== VIDEO GRID ===== */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+        .video-card {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            cursor: default;
+        }
+        .video-thumb {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .video-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--main);
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .video-info {
+            padding: 22px 20px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        .video-info h3 {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--main);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .video-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .video-cat-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f0f0f0;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 11px;
+            color: var(--main);
+            font-weight: 800;
+        }
+        .date-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #777;
+            font-weight: 500;
+        }
+        .date-time i {
+            color: var(--main);
+        }
+        .video-info p {
+            font-size: 0.85rem;
+            color: #444;
+            margin-bottom: 14px;
+            line-height: 1.6;
+            font-weight: 500;
+            flex: 1;
+        }
+        .button-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btn-card,
+        .more-btn {
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-card {
+            background: var(--main);
+            color: #fff;
+        }
+        .btn-card:hover {
+            background: var(--main-dark);
+            transform: scale(1.02);
+        }
+        .more-btn {
+            background: transparent;
+            border: 1px solid var(--main);
+            color: var(--main);
+        }
+        .more-btn:hover {
+            background: var(--main);
+            color: #fff;
+        }
+        /* shine effect */
+        .btn-card::after,
+        .more-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s infinite;
+        }
+        .btn-card:hover::after,
+        .more-btn:hover::after {
+            animation: none;
+        }
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            20% {
+                left: 100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
 
-    .nav {
-      display: flex;
-      gap: 2.2rem;
-      font-weight: 600;
-      font-size: 1.05rem;
-    }
+        /* ===== MUSIC GRID ===== */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .music-card {
+            background: #fff;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .music-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .music-card:hover .music-img {
+            transform: scale(1.03);
+        }
+        .music-info {
+            padding: 22px 20px;
+            text-align: center;
+        }
+        .title-platform-box {
+            background: #f9f9f9;
+            border-radius: 20px;
+            padding: 14px 12px;
+            margin-bottom: 14px;
+        }
+        .title-platform-box h3 {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--main);
+            margin-bottom: 8px;
+        }
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+            color: var(--main);
+            font-weight: 800;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .composers-section {
+            background: #f9f9f9;
+            border-radius: 20px;
+            padding: 14px 12px;
+            margin: 12px 0;
+        }
+        .composer-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--main);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .composers-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .composer-item {
+            background: #fff;
+            border-radius: 30px;
+            padding: 5px 14px;
+            font-size: 12px;
+            color: #333;
+            font-weight: 600;
+            border: 1px solid #eee;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+        .composer-item i {
+            color: var(--main);
+        }
+        .music-desc-box {
+            background: #f9f9f9;
+            border-radius: 20px;
+            padding: 14px 16px;
+            margin: 12px 0;
+            border-right: 4px solid var(--main);
+            text-align: center;
+        }
+        .music-desc-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--main);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .music-desc-text {
+            font-size: 13px;
+            color: #444;
+            line-height: 1.7;
+        }
+        .custom-player {
+            background: #f8f8f8;
+            border-radius: 60px;
+            padding: 10px 16px;
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            border: 1px solid #eee;
+            transition: var(--transition);
+        }
+        .custom-player:hover {
+            border-color: var(--main);
+            background: #fff;
+        }
+        .custom-player audio {
+            flex: 1;
+            min-width: 140px;
+            height: 40px;
+            border-radius: 40px;
+            outline: none;
+        }
+        .download-music-btn {
+            background: var(--main);
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .download-music-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shine 3s infinite;
+        }
+        .download-music-btn:hover {
+            background: var(--main-dark);
+            transform: scale(1.02);
+        }
+        .download-music-btn:hover::after {
+            animation: none;
+        }
 
-    .nav a {
-      color: #c8dae8;
-      text-decoration: none;
-      padding: 0.3rem 0;
-      border-bottom: 2px solid transparent;
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
+        /* ===== OLD GAME INFO ===== */
+        .game-info-box {
+            background: #f8f8f8;
+            border-radius: 18px;
+            padding: 16px 18px;
+            margin: 12px 0 8px;
+            border-right: 3px solid var(--main);
+        }
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 4px 0;
+            font-size: 13px;
+            color: #333;
+            flex-wrap: wrap;
+            border-bottom: 1px dashed #eee;
+        }
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        .info-row i {
+            width: 22px;
+            color: var(--main);
+            font-size: 14px;
+        }
+        .info-row strong {
+            color: var(--main);
+            font-weight: 800;
+        }
+        .story-box {
+            background: #f0f0f0;
+            border-radius: 18px;
+            padding: 16px 18px;
+            margin: 12px 0;
+        }
+        .story-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--main);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    .nav a i {
-      font-size: 0.9rem;
-      color: #E3B10A;
-    }
+        /* ===== ABOUT ===== */
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .welcome-box {
+            background: #fff;
+            border-radius: var(--radius-card);
+            padding: 44px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+        }
+        .welcome-box:hover {
+            transform: translateY(-6px);
+        }
+        .welcome-icon i {
+            font-size: 72px;
+            color: var(--main);
+            filter: drop-shadow(0 0 30px rgba(182, 28, 28, 0.3));
+            animation: float 2.5s ease-in-out infinite;
+        }
+        .welcome-box h2 {
+            font-size: 2rem;
+            color: var(--main);
+            margin: 16px 0 10px;
+        }
+        .welcome-box p {
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 1.8;
+        }
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+        .info-card {
+            background: #fff;
+            border-radius: var(--radius-card);
+            padding: 32px 20px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-card);
+        }
+        .info-card:hover {
+            transform: translateY(-8px);
+        }
+        .icon-3d,
+        .icon-3d-support {
+            font-size: 72px;
+            margin-bottom: 16px;
+            display: inline-block;
+            color: var(--main);
+            filter: drop-shadow(0 8px 20px rgba(182, 28, 28, 0.25));
+        }
+        .icon-3d {
+            animation: float 2s ease-in-out infinite;
+        }
+        .icon-3d-support {
+            animation: floatSlow 2.8s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+        @keyframes floatSlow {
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(4deg);
+            }
+        }
+        .info-card h3 {
+            font-size: 1.4rem;
+            color: var(--main);
+            margin-bottom: 12px;
+        }
+        .info-card p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .contact-link {
+            display: inline-block;
+            margin-top: 14px;
+            background: var(--main);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 800;
+            transition: var(--transition);
+        }
+        .contact-link:hover {
+            background: var(--main-dark);
+            transform: scale(1.03);
+        }
+        .dev-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--main);
+            margin-top: 6px;
+        }
 
-    .nav a:hover {
-      color: #E3B10A;
-      border-bottom-color: #E3B10A;
-      text-shadow: 0 0 12px rgba(227, 177, 10, 0.5);
-    }
+        /* ===== CHANNELS ===== */
+        .channels-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .channel-card {
+            background: #fff;
+            border-radius: var(--radius-card);
+            padding: 38px 28px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-card);
+        }
+        .channel-card:hover {
+            transform: translateY(-6px);
+        }
+        .channel-icon {
+            font-size: 72px;
+            margin-bottom: 16px;
+            display: inline-block;
+            color: var(--main);
+            animation: float 2s ease-in-out infinite;
+            filter: drop-shadow(0 8px 20px rgba(182, 28, 28, 0.25));
+        }
+        .channel-card h3 {
+            font-size: 1.6rem;
+            color: var(--main);
+            margin-bottom: 12px;
+        }
+        .channel-card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+        .channel-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--main);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .channel-link:hover {
+            background: var(--main-dark);
+            transform: scale(1.03);
+        }
+        .coming-soon {
+            background: #f5f5f5;
+            border-radius: 20px;
+            padding: 14px;
+            margin-top: 14px;
+            color: #888;
+            font-weight: 600;
+        }
 
-    /* بخش اصلی با گرید */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 2.8rem;
-      margin-bottom: 3rem;
-    }
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 20px 16px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+            font-weight: 500;
+        }
 
-    .hero-title {
-      font-size: 3.6rem;
-      font-weight: 900;
-      line-height: 1.2;
-      letter-spacing: -1px;
-    }
-
-    .hero-title span {
-      background: linear-gradient(135deg, #E3B10A, #B61C1C, #E3B10A);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      display: inline-block;
-      text-shadow: 0 0 40px rgba(227, 177, 10, 0.2);
-    }
-
-    .hero-desc {
-      font-size: 1.1rem;
-      color: #b8d0de;
-      max-width: 90%;
-      margin-top: 1.2rem;
-      line-height: 1.9;
-      border-right: 3px solid #E3B10A;
-      padding-right: 1.4rem;
-    }
-
-    .cta-group {
-      margin-top: 2.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #E3B10A, #B61C1C);
-      color: #fff;
-      font-weight: 800;
-      padding: 0.95rem 2.6rem;
-      border-radius: 60px;
-      border: none;
-      font-size: 1.05rem;
-      cursor: pointer;
-      transition: 0.25s;
-      box-shadow: 0 0 30px rgba(227, 177, 10, 0.3);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-family: 'Vazir', sans-serif;
-      text-decoration: none;
-    }
-
-    .btn-primary i {
-      font-size: 1.1rem;
-    }
-
-    .btn-primary:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 60px rgba(227, 177, 10, 0.6);
-      background: linear-gradient(135deg, #f5c422, #c41f1f);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 1.8px solid rgba(227, 177, 10, 0.5);
-      color: #e8f0f8;
-      font-weight: 700;
-      padding: 0.95rem 2.6rem;
-      border-radius: 60px;
-      font-size: 1.05rem;
-      cursor: pointer;
-      transition: 0.2s;
-      backdrop-filter: blur(4px);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-family: 'Vazir', sans-serif;
-      text-decoration: none;
-    }
-
-    .btn-outline i {
-      color: #E3B10A;
-    }
-
-    .btn-outline:hover {
-      background: rgba(227, 177, 10, 0.12);
-      border-color: #E3B10A;
-      box-shadow: 0 0 35px rgba(227, 177, 10, 0.2);
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.6rem;
-      background: rgba(227, 177, 10, 0.04);
-      border-radius: 2.2rem;
-      padding: 2rem 1.6rem;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(227, 177, 10, 0.08);
-    }
-
-    .stat-item {
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 2.8rem;
-      font-weight: 900;
-      background: linear-gradient(to bottom, #E3B10A, #B61C1C);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      display: block;
-      line-height: 1.2;
-    }
-
-    .stat-label {
-      font-size: 0.95rem;
-      color: #aac2d6;
-      letter-spacing: 0.3px;
-    }
-
-    /* کارت‌های ویژه Daric */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin: 2.8rem 0 1.2rem;
-    }
-
-    .feature-card {
-      background: rgba(22, 34, 46, 0.6);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(227, 177, 10, 0.12);
-      border-radius: 2.4rem;
-      padding: 2rem 1.8rem;
-      transition: 0.3s ease;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.5);
-      text-align: center;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(227, 177, 10, 0.6);
-      box-shadow: 0 18px 45px rgba(227, 177, 10, 0.15);
-      background: rgba(227, 177, 10, 0.04);
-    }
-
-    .feature-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      display: inline-block;
-      color: #E3B10A;
-      filter: drop-shadow(0 0 12px rgba(227, 177, 10, 0.3));
-    }
-
-    .feature-card h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin-bottom: 0.6rem;
-      color: #e0edf8;
-    }
-
-    .feature-card p {
-      color: #aac2d6;
-      font-size: 0.98rem;
-      line-height: 1.7;
-    }
-
-    /* فوتر Daric */
-    .footer {
-      margin-top: 3.8rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(227, 177, 10, 0.12);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      align-items: center;
-      color: #7a96af;
-      font-size: 0.95rem;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 1.8rem;
-    }
-
-    .footer-social a {
-      color: #b0cada;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      border-bottom: 1px dotted transparent;
-    }
-
-    .footer-social a i {
-      color: #E3B10A;
-      font-size: 1rem;
-    }
-
-    .footer-social a:hover {
-      color: #E3B10A;
-      border-bottom-color: #E3B10A;
-    }
-
-    /* ریسپانسیو کامل */
-    @media (max-width: 850px) {
-      .daric-card {
-        padding: 2rem 1.8rem;
-        border-radius: 2.8rem;
-      }
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 2.2rem;
-      }
-      .hero-title {
-        font-size: 2.8rem;
-      }
-      .hero-desc {
-        max-width: 100%;
-      }
-      .features {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 550px) {
-      .header {
-        flex-direction: column;
-        align-items: start;
-        gap: 1.2rem;
-      }
-      .nav {
-        flex-wrap: wrap;
-        gap: 1rem;
-        font-size: 0.95rem;
-      }
-      .features {
-        grid-template-columns: 1fr;
-      }
-      .hero-stats {
-        grid-template-columns: 1fr 1fr;
-      }
-      .btn-primary, .btn-outline {
-        width: 100%;
-        justify-content: center;
-      }
-      .footer {
-        flex-direction: column;
-        gap: 1.2rem;
-        align-items: start;
-      }
-      .logo-text {
-        font-size: 1.8rem;
-      }
-    }
-  </style>
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .hybrid-content {
+                padding: 20px;
+            }
+            .hybrid-content h2 {
+                font-size: 1.3rem;
+            }
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+            .music-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="daric-card">
-    <!-- هدر Daric -->
-    <header class="header">
-      <div class="logo">
-        <a href="#" class="logo-icon">D</a>
-        <a href="#" class="logo-text">Daric</a>
-      </div>
-      <nav class="nav">
-        <a href="#"><i class="fas fa-home"></i> خانه</a>
-        <a href="daric-ghaleb.html"><i class="fas fa-layer-group"></i> قالب‌ها</a>
-        <a href="#"><i class="fas fa-code"></i> توسعه</a>
-        <a href="#"><i class="fas fa-headset"></i> پشتیبانی</a>
-      </nav>
-    </header>
 
-    <!-- محتوای اصلی -->
-    <div class="hero-grid">
-      <div>
-        <h1 class="hero-title">
-          <span>Daric</span>؛ ساخت، توسعه<br>و فروش قالب‌های <span>حرفه‌ای</span>
-        </h1>
-        <p class="hero-desc">
-          پلتفرم تخصصی برای طراحان و توسعه‌دهندگان. قالب‌های مدرن، ریسپانسیو و 
-          بهینه‌شده برای کسب‌وکارهای خلاق. با Daric، ایده‌های خود را به محصولی درخشان تبدیل کنید.
-        </p>
-        <div class="cta-group">
-          <a href="#" class="btn-primary">
-            <i class="fas fa-rocket"></i> شروع فروش
-          </a>
-          <a href="#" class="btn-outline">
-            <i class="fas fa-eye"></i> مشاهده دمو
-          </a>
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+        <div class="logo">
+            <img src="https://uploadkon.ir/uploads/3ee908_26Zerox.png" alt="ZEROX">
         </div>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-number">۱۲۰+</span>
-          <span class="stat-label">قالب فعال</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">۹۷%</span>
-          <span class="stat-label">رضایت مشتری</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">۴.۸⭐</span>
-          <span class="stat-label">میانگین امتیاز</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">۸.۵K</span>
-          <span class="stat-label">توسعه‌دهنده</span>
-        </div>
-      </div>
+        <nav>
+            <a onclick="showTab('home')"><i class="fa-solid fa-house"></i> خانه</a>
+            <a onclick="showTab('news')"><i class="fa-solid fa-newspaper"></i> اخبار</a>
+            <a onclick="showTab('video')"><i class="fa-solid fa-video"></i> ویدیوها</a>
+            <a onclick="showTab('music')"><i class="fa-solid fa-music"></i> موسیقی</a>
+            <a onclick="showTab('shop')"><i class="fa-solid fa-shop"></i> شاپ</a>
+            <a onclick="showTab('stories')"><i class="fa-solid fa-book-open"></i> داستان‌ها</a>
+            <a onclick="showTab('old')"><span class="custom-cd-icon"><i class="fa-solid fa-compact-disc"></i></span> زروکس اُلد</a>
+            <a onclick="showTab('about')"><i class="fa-solid fa-info-circle"></i> درباره ما</a>
+            <a onclick="showTab('channels')"><i class="fa-solid fa-database"></i> کانال‌هامون!</a>
+        </nav>
     </div>
 
-    <!-- کارت‌های ویژگی با لینک‌های جداگانه -->
-    <div class="features">
-      <a href="daric-design.html" class="feature-card">
-        <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
-        <h3>طراحی مدرن</h3>
-        <p>قالب‌هایی با هویت بصری منحصربه‌فرد، آماده برای هر نوع برند و استارتاپ.</p>
-      </a>
-      <a href="daric-code.html" class="feature-card">
-        <div class="feature-icon"><i class="fas fa-code"></i></div>
-        <h3>کد تمیز</h3>
-        <p>توسعه‌یافته با بهترین استانداردها، سبک، سریع و کاملاً قابل شخصی‌سازی.</p>
-      </a>
-      <a href="daric-shop.html" class="feature-card">
-        <div class="feature-icon"><i class="fas fa-cart-plus"></i></div>
-        <h3>فروش آسان</h3>
-        <p>سیستم پرداخت یکپارچه، پنل کاربری حرفه‌ای و پشتیبانی ۲۴/۷ برای فروشندگان.</p>
-      </a>
+    <!-- ===== HOME ===== -->
+    <div id="home" class="section active">
+        <div class="section-title"><i class="fa-solid fa-fire"></i> آخرین ویدیوها</div>
+        <div id="homeVideosGrid" class="videos-grid"></div>
+        <div class="section-title"><i class="fa-regular fa-newspaper"></i> آخرین اخبار</div>
+        <div id="homeNewsGrid" class="news-grid" style="display:grid; grid-template-columns:1fr; gap:28px; margin-bottom:40px;"></div>
+        <div class="section-title"><i class="fa-solid fa-book-open"></i> آخرین داستان‌ها</div>
+        <div id="homeStoriesGrid" class="cards-grid" style="display:grid; grid-template-columns:1fr; gap:28px; margin-bottom:40px;"></div>
     </div>
 
-    <!-- فوتر Daric -->
-    <div class="footer">
-      <span><i class="far fa-copyright"></i> ۲۰۲۶ · Daric — همه حقوق محفوظ است</span>
-      <div class="footer-social">
-        <a href="#"><i class="fab fa-twitter"></i> توییتر</a>
-        <a href="#"><i class="fab fa-github"></i> گیت‌هاب</a>
-        <a href="#"><i class="fab fa-discord"></i> دیسکورد</a>
-      </div>
+    <!-- ===== NEWS ===== -->
+    <div id="news" class="section">
+        <div class="section-title"><i class="fa-regular fa-newspaper"></i> همه اخبار</div>
+        <div id="newsGrid" style="display:grid; grid-template-columns:1fr; gap:28px; margin-bottom:40px;"></div>
     </div>
-  </div>
+
+    <!-- ===== VIDEO ===== -->
+    <div id="video" class="section">
+        <div class="section-title"><i class="fa-solid fa-video"></i> ویدیوها</div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="همه"><i class="fa-solid fa-globe"></i> همه</button>
+            <button class="filter-btn" data-filter="ترسناک"><i class="fa-solid fa-ghost"></i> ترسناک</button>
+            <button class="filter-btn" data-filter="هیجانی"><i class="fa-solid fa-bolt"></i> هیجانی</button>
+            <button class="filter-btn" data-filter="علمی"><i class="fa-solid fa-flask"></i> علمی‌تخیلی</button>
+            <button class="filter-btn" data-filter="معرفی"><i class="fa-solid fa-gamepad"></i> معرفی بازی</button>
+        </div>
+        <div id="videosGrid" class="videos-grid"></div>
+    </div>
+
+    <!-- ===== MUSIC ===== -->
+    <div id="music" class="section">
+        <div class="section-title"><i class="fa-solid fa-music"></i> موسیقی بازی‌ها</div>
+        <div id="musicGrid" class="music-grid"></div>
+    </div>
+
+    <!-- ===== SHOP ===== -->
+    <div id="shop" class="section">
+        <div class="hybrid-card" style="background:#fff; border-radius:28px; padding:40px 30px; text-align:center;">
+            <h2 style="color:var(--main); font-size:2rem;">🛍️ زروکس شاپ</h2>
+            <p style="color:#333; font-size:1.2rem; margin-top:10px;">به زودی با بهترین محصولات گیمینگ</p>
+        </div>
+    </div>
+
+    <!-- ===== STORIES ===== -->
+    <div id="stories" class="section">
+        <div class="section-title"><i class="fa-solid fa-book-open"></i> داستان‌های بازی</div>
+        <div id="storiesGrid" style="display:grid; grid-template-columns:1fr; gap:28px; margin-bottom:40px;"></div>
+    </div>
+
+    <!-- ===== OLD ===== -->
+    <div id="old" class="section">
+        <div class="section-title"><i class="fa-solid fa-compact-disc" style="background:linear-gradient(135deg,#2a2a2a,#1a1a1a); color:#C0C0C0; padding:8px; border-radius:50%; box-shadow:0 0 0 2px #fff; font-size:20px;"></i> بازی‌های نوستالژیک | زروکس اُلد</div>
+        <div id="oldGrid" style="display:grid; grid-template-columns:1fr; gap:28px; margin-bottom:40px;"></div>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <div id="about" class="section">
+        <div class="about-container">
+            <div class="welcome-box">
+                <div class="welcome-icon"><i class="fa-solid fa-gamepad"></i></div>
+                <h2>به زروکس گیم خوش اومدید! 🎮</h2>
+                <p>اینجا بهشت گیمر هاست<br>اینجا یک خانه برای گیمرهای ایرانی هستش! ❤️</p>
+            </div>
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="icon-3d-support"><i class="fa-solid fa-headset"></i></div>
+                    <h3>پشتیبانی</h3>
+                    <p>برای ارتباط با ادمین در روبیکا پیام بدین</p>
+                    <a href="https://rubika.ir/@support_Zerox" target="_blank" class="contact-link">@support_Zerox</a>
+                </div>
+                <div class="info-card">
+                    <div class="icon-3d"><i class="fa-solid fa-user-astronaut"></i></div>
+                    <h3>سازنده سایت</h3>
+                    <div class="dev-name">@mohamad_hossein_ev18</div>
+                    <a href="https://t.me/mohamad_hossein_ev18" target="_blank" class="contact-link" style="margin-top:15px;"><i class="fab fa-telegram"></i> ارسال پیام در تلگرام</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CHANNELS ===== -->
+    <div id="channels" class="section">
+        <div class="channels-container">
+            <div class="channel-card">
+                <div class="channel-icon"><i class="fa-solid fa-tv"></i></div>
+                <h3>کانال آپارات</h3>
+                <p>اینجا کانال اصلی آپارات خفن زروکسه!</p>
+                <a href="https://www.aparat.com/ZEROX_GAME" target="_blank" class="channel-link"><i class="fa-solid fa-play-circle"></i> بازدید از کانال آپارات</a>
+                <div style="margin-top:20px;">
+                    <p style="font-size:0.9rem; color:#666;">مارا در روبیکا هم دنبال کنید!</p>
+                    <a href="https://rubika.ir/@ZEROX_GAME" target="_blank" class="channel-link" style="background:#222; margin-top:10px;"><i class="fa-solid fa-paper-plane"></i> @ZEROX_GAME در روبیکا</a>
+                </div>
+            </div>
+            <div class="channel-card">
+                <div class="icon-3d" style="animation:floatSlow 2.5s ease-in-out infinite;"><i class="fa-brands fa-youtube"></i></div>
+                <h3>کانال یوتیوب</h3>
+                <div class="coming-soon"><i class="fa-regular fa-clock"></i> به زودی...</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>© 2026 ZEROX | هر بازی یک حماسه</footer>
+
+    <script>
+        // =============================================
+        // ===== همه دیتاها کاملاً سر جای خودش =====
+        // =============================================
+
+        const videosData = [
+            { id: 2, title: "داستان بازی اوت لست۱ | بهترین بازی ترسناک دنیا", desc: "در این ویدیو داستان کامل Outlast رو بررسی می‌کنیم | از ورود مایلز آپشور به تیمارستان مرموز Mount Massive تا روبه‌رو شدن...", thumb: "https://cdn.imgurl.ir/uploads/y799019_Zerox_th12.png", link: "https://www.aparat.com/v/gkcxc4t", category: "ترسناک", date: "۱۴۰۵/۰۳/۰۶", time: "۱۵:۳۰",
+                fullText: "این ویدیو توسط کانال خفن زیروکس ساخته شده | در این ویدیو داستان کامل Outlast رو بررسی می‌کنیم | از ورود مایلز آپشور به تیمارستان مرموز Mount Massive تا روبه‌رو شدن با آزمایش‌های مخفی، بیماران دیوانه و موجود ترسناکی به نام Walrider. اگر به بازی‌های ترسناک و داستان‌های تاریک علاقه داری، این ویدیو رو از دست نده!" },
+            { id: 1, title: "داستان کامل بازی نه من انسان نیستم | ترند و ترسناک ترین بازی در سال ۲۰۲۵", desc: "سلام بر شما | من امروز درمورد داستان بازی من انسان نیستم صحبت کردم", thumb: "https://uploadkon.ir/uploads/804c08_2671129478-9827-l-3296.jpg", link: "https://www.aparat.com/v/itl9b8h", category: "ترسناک", date: "۱۴۰۵/۰۳/۰۵", time: "۱۹:۲۰",
+                fullText: "سلام بر شما | من امروز درمورد داستان بازی من انسان نیستم صحبت کردم | تمام نکات و همچیو توضیح دادم | امیدوارم از ویدیو لذت کافی ببرید | پارت بعدی رو به زودی زود میذارم | داستان رو تماما گفتم براتون" }
+        ];
+
+        const newsData = [
+            { id: 3, title: "فال‌اوت هنوز زنده است!", summary: "بتسدا به‌تازگی آپدیت جدیدی برای Fallout 76 منتشر کرده...", image: "https://up.20script.ir/file/dbb3-fall-out-Zerox-.jpg", date: "۱۹ خرداد ۱۴۰۵", time: "۲۰:۵۱",
+                fullText: "فال‌اوت هنوز زنده است!\nبتسدا به‌تازگی آپدیت جدیدی برای Fallout 76 منتشر کرده و محتوای تازه‌ای به بازی اضافه شده است. در این آپدیت، بازیکن‌ها با چالش‌ها و دشمنان جدیدی روبه‌رو می‌شوند و می‌توانند پاداش‌ها و آیتم‌های بیشتری به دست بیاورند.\nجالب‌تر اینکه با وجود گذشت چند سال از انتشار بازی، بتسدا همچنان به پشتیبانی از Fallout 76 ادامه می‌دهد و برنامه‌های بیشتری برای آینده آن دارد. Fallout 4 هم هنوز آپدیت دریافت می‌کند؛ اتفاقی که برای خیلی از طرفدارها غافلگیرکننده بوده است.\nبه نظر می‌رسد دنیای Fallout فعلاً قصد خداحافظی با بازیکن‌ها را ندارد.\nبرای جدیدترین اخبار دنیای بازی‌ها، همراه زروکس گیم باشید.\n— ZEROX GAME" },
+            { id: 5, title: "سامر گیم داره چیکار میکنه؟", summary: "سامر گیم فست ترکوند! بالاخره بعد از کلی پچ‌پچ، ناتی داگ ماسک رو برداشت...", image: "https://uploadkon.ir/uploads/b62c08_26the-last-of-us-Zerox-.jpg", date: "۱۴۰۵/۰۳/۱۹", time: "۰۲:۱۷",
+                fullText: "سامر گیم فست ترکوند! بالاخره بعد از کلی پچ‌پچ، ناتی داگ ماسک رو برداشت و The Last of Us Part 3 رو نشون داد. داستانش کاملاً غافلگیرکننده‌ست و خبری از الی و جوئل نیست. بعدش سونی رسماً تایید کرد که خدای جنگ داره میره مصر باستان، اونم با یه گیم‌پلی سریع‌تر که محورش روی آترئوس جوونه. تو جبهه‌ی ترسناک‌ها هم کپکام یه رزیدنت اویل جدید معرفی کرد که ظاهراً قراره یه تجربه‌ی کو-آپ بقا-محور باشه و حسابی بترسیم. خلاصه اینکه ۲۰۲۷ قراره سال شلوغی بشه. گروه_خبری زروکس!" },
+            { id: 4, title: "ولورین بالاخره پنچه هاشو کشید بیرون؟", summary: "ولورین بالاخره برگشت! اطلاعات جدیدی از Marvel's Wolverine منتشر شده", image: "https://uploadkon.ir/uploads/be1308_26InShot-20260606-132014431.jpg", date: "۱۴۰۵/۰۳/۱۸", time: "۲۲:۴۶",
+                fullText: "ولورین بالاخره برگشت! اطلاعات جدیدی از Marvel's Wolverine منتشر شده و طرفدارها رو حسابی هیجان‌زده کرده. نمایش جدید بازی مبارزات سریع و خشن لوگان رو نشون می‌ده و به نظر می‌رسه با یکی از تاریک‌ترین بازی‌های مارول طرف باشیم." }
+        ];
+
+        const storiesData = [{
+            title: "داستان کامل بازی خدای جنگ رکناروگ",
+            desc: "بعد از اتفاقات بازی قبلی، کریتوس و آترئوس توی سرزمین‌های نورس زندگی آرومی داشتن، اما این آرامش زیاد دوام نمیاره...",
+            img: "https://uploadkon.ir/uploads/76e009_26god-of-war-123-Zerox-.jpg",
+            full: `بعد از اتفاقات بازی قبلی، کریتوس و آترئوس توی سرزمین‌های نورس زندگی آرومی داشتن، اما این آرامش زیاد دوام نمیاره. زمستون بزرگ یا همون «فیمبول‌وینتر» شروع شده و همه می‌دونن که بعدش قراره رگناروک، یعنی پایان دنیا، از راه برسه.
+
+اول داستان، کریتوس و آترئوس هنوز دارن با مرگ فریا و پسرش بالدور دست و پنجه نرم می‌کنن. فریا که از دست کریتوس عصبانیه، مدام دنبال انتقامه. از اون طرف آترئوس هم کم‌کم می‌فهمه که همون «لوکی» معروف افسانه‌هاست و نقش بزرگی توی آینده دنیا داره.
+
+یه روز سر و کله ثور، خدای رعد و برق، پیدا میشه. همون جنگجوی غول‌پیکری که همه ازش می‌ترسن. اون همراه اودین میاد سراغ کریتوس. اودین سعی می‌کنه با حرف زدن جلوی جنگ رو بگیره، ولی همه می‌دونن که پشت این لبخندها یه نقشه بزرگ خوابیده.
+
+آترئوس که دنبال جواب سوال‌هاشه، مخفیانه سفر خودش رو شروع می‌کنه. اون می‌خواد بفهمه واقعاً کیه و سرنوشتش چیه. توی این مسیر با غول‌های باقیمونده، موجودات عجیب و رازهای قدیمی روبه‌رو میشه.
+
+در همین حال کریتوس هم درگیر این موضوعه که نکنه دوباره تبدیل به همون هیولای گذشته بشه؛ همون جنگجویی که فقط مرگ و نابودی به بار می‌آورد. اما این بار فرق کرده. حالا یه پدره و نمی‌خواد پسرش هم راه اشتباه اون رو بره.
+
+هرچی داستان جلوتر میره، رابطه پدر و پسر بارها به چالش کشیده میشه. آترئوس می‌خواد مستقل باشه و خودش تصمیم بگیره، ولی کریتوس همیشه نگرانشه.
+
+کم‌کم مشخص میشه که اودین سال‌ها دروغ گفته و خیلی از اتفاقات رو پشت پرده کنترل کرده. هدفش هم اینه که از سرنوشت فرار کنه و هرطور شده قدرت خودش رو حفظ کنه.
+
+بعد از کلی ماجراجویی، متحدان مختلفی دور کریتوس جمع میشن؛ از فریا گرفته تا دورف‌ها و جنگجویان قلمروهای مختلف. همه آماده میشن تا جنگ نهایی رگناروک رو شروع کنن.
+
+و بالاخره جنگ بزرگ آغاز میشه. ارتش‌ها به آزگارد حمله می‌کنن. نبردهای عظیم شکل می‌گیره و هر گوشه از دنیا در آتیش جنگ می‌سوزه. کریتوس با ثور روبه‌رو میشه و یکی از حماسی‌ترین مبارزه‌های تاریخ بازی‌های ویدیویی رقم می‌خوره.
+
+اما برخلاف چیزی که همه انتظار داشتن، کریتوس سعی می‌کنه چرخه کشتار رو بشکنه. اون دیگه فقط به فکر انتقام نیست.
+
+در نهایت ثور متوجه میشه که اودین از همه سوءاستفاده کرده، اما قبل از اینکه بتونه مسیرش رو عوض کنه، اودین خودش اون رو از بین می‌بره.
+
+آخرین نبرد بین کریتوس و یارانش با اودین شکل می‌گیره. بعد از مبارزه‌ای سخت، اودین شکست می‌خوره و دوران حکومتش به پایان می‌رسه.
+
+بعد از پایان جنگ، آزگارد نابود میشه و دنیا وارد دوران جدیدی میشه. آترئوس تصمیم می‌گیره برای پیدا کردن غول‌های باقی‌مونده سفر خودش رو شروع کنه. کریتوس هم برای اولین بار می‌فهمه که سرنوشتش فقط نابودی نیست؛ مردم حالا اون رو به عنوان یک قهرمان و ناجی می‌شناسن.
+
+و اینجاست که داستان پدر و پسری که از ترس سرنوشت فرار می‌کردن، به داستان امید و ساختن آینده تبدیل میشه.`
+        }];
+
+        const musicData = [
+            { id: 4, title: "INSIDE | ZEROX", game: "INSIDE", platform: "PC, Xbox One, PlayStation 4, Nintendo Switch, iOS", cover: "https://cdn.imgurl.ir/uploads/e280977_inside___Zerox_.jpg", file: "https://cdn.imgurl.ir/uploads/s393413_INSIDE___ZEROX120.mp3",
+                composers: ["Martin Stig Andersen", "SØS Gunver Ryberg"],
+                desc: "موسیقی بازی INSIDE رو Martin Stig Andersen ساخت و کارش رو حدود سال‌های ۲۰۱۴ تا ۲۰۱۶، همزمان با ساخت خود بازی انجام داد. جالبه که اینجا مثل بقیه بازی‌ها آهنگ شاد یا ملودی مشخص نداریم؛ بیشتر صداها محیطی و عجیبن. سازنده به جای موسیقی معمولی، از صداهای واقعی مثل نویز، صداهای فلزی، نفس انسان و حتی سکوت استفاده کرده و بعد اون‌ها رو تغییر داده تا حس ترس و تنش بده." },
+            { id: 3, title: "GOD OF WAR | ZEROX", game: "God of War Ragnarök", platform: "PS", cover: "https://cdn.imgurl.ir/uploads/c555686_Negar_1780837093023.jpg", file: "https://uploadkon.ir/uploads/7ea308_26ef9f06-26Zerox-god-of-war.mp3",
+                composers: ["Bear McCreary"], desc: "کار روی موسیقی از حدود ۲۰۱۹ شروع شد و هم‌زمان با توسعه بازی جلو رفت، تا اینکه بازی در ۲۰۲۲ منتشر شد. و الان از سایت زروکس گوش میکنید!" },
+            { id: 2, title: "HALO INFINITE | ZEROX", game: "Halo Infinite", platform: "Xbox", cover: "https://uploadkon.ir/uploads/b1f108_26InShot-20260607-161240740.jpg", file: "https://uploadkon.ir/uploads/478e08_26HALO-INFINITE-ZEROX.mp3",
+                composers: ["Gareth Coker", "Curtis Schweitzer", "Joel Corelitz"], desc: "این آهنگ سال و تاریخ ۸ دسامبر ۲۰۲۱ ساخته شده و برای بازی هیلو اینفینیت یک شاهکار محسوب میشه!" }
+        ];
+
+        const oldData = [
+            { id: 3, title: "GRAND THEFT AUTO: SAN ADVENTURES | ZEROX", name: "Grand Theft Auto: San Andreas", year: "۲۰۰۴", developer: "Rockstar North", publisher: "Rockstar Games", director: "Leslie Benzies (کارگردان اصلی / لید دیزاینر) - Dan Houser (نقش مهم در نویسندگی و هدایت داستان)",
+                producer: "Leslie Benzies - Imran Sarwar", composers: ["Michael Hunter (موسیقی اصلی بازی) - موسیقی‌های لایسنس شده از هنرمندان مختلف"], platform: "PlayStation 2, Xbox, PC (ویندوز), بعداً: موبایل", genre: "اکشن-ماجراجویی، جهان‌باز (Open World)، رانندگی، تیراندازی سوم‌شخص",
+                engine: "RenderWare", cover: "https://uploadkon.ir/uploads/724812_26gta-sa-Zerox-.jpg", music: "https://uploadkon.ir/uploads/444012_26GTA-SA-ZEROX-.mp3",
+                desc: "داستان درباره کارل \"CJ\" جانسون است که بعد از مرگ مادرش به لس سانتوس برمی‌گردد. او دوباره وارد محله و گنگ قدیمی‌اش می‌شود، اما خیلی زود درگیر فساد پلیس، خیانت، جنگ باندها و قدرت‌گیری در شهرهای مختلف ایالت سن آندریاس می‌شود. هدف اصلی CJ این است که خانواده‌اش را دوباره جمع کند و کنترل محله‌اش را پس بگیرد.",
+                fullText: "داستان درباره کارل \"CJ\" جانسون است که بعد از مرگ مادرش به لس سانتوس برمی‌گردد. او دوباره وارد محله و گنگ قدیمی‌اش می‌شود، اما خیلی زود درگیر فساد پلیس، خیانت، جنگ باندها و قدرت‌گیری در شهرهای مختلف ایالت سن آندریاس می‌شود. هدف اصلی CJ این است که خانواده‌اش را دوباره جمع کند و کنترل محله‌اش را پس بگیرد. در این مسیر طولانی و حماسی، شخصیت‌های ماندگاری مثل Big Smoke، Ryder، Sweet و Officer Tenpenny روبروی CJ قرار می‌گیرند و توطئه‌های بزرگی شکل می‌گیرد." },
+            { id: 2, title: "PRINCE OF PERSIA | ZEROX", name: "Prince of Persia", year: "۱۹۸۹", developer: "Jordan Mechner", publisher: "Brøderbund", director: "Jordan Mechner", producer: "Brøderbund Software",
+                composers: ["صدا و موسیقی محدود و ساده (نسخه اولیه بازی موسیقی حرفه‌ای گسترده نداشت و بیشتر افکت‌های صوتی کلاسیک بود)"], platform: "Apple II / DOS / Commodore 64 / Amiga (و بعدها پورت‌های مختلف)",
+                genre: "اکشن، پلتفرمر، ماجراجویی", engine: "موتور اختصاصی اولیه ساخته شده توسط Jordan Mechner", cover: "https://cdn.imgurl.ir/uploads/f82900_____Zerox_.jpg", music: "https://uploadkon.ir/uploads/da8b10_26Prince-of-Persia-Zerox.mp3",
+                desc: "شاهزاده‌ای جوان در یک سرزمین شرقی، زمانی که سلطان در جنگ است، وزیر خبیث به نام Jaffar قدرت را در دست می‌گیرد. او به شاهزاده‌خانم اولتیماتوم می‌دهد: یا با او ازدواج کند یا در زندان بمیرد. شاهزاده در سیاهچال زندانی می‌شود و باید در کمتر از ۶۰ دقیقه از میان تله‌های مرگبار، شمشیرزن‌ها و مسیرهای خطرناک عبور کند تا خودش را به قصر برساند و شاهزاده‌خانم را نجات دهد.",
+                fullText: "شاهزاده‌ای جوان در یک سرزمین شرقی، زمانی که سلطان در جنگ است، وزیر خبیث به نام Jaffar قدرت را در دست می‌گیرد. او به شاهزاده‌خانم اولتیماتوم می‌دهد: یا با او ازدواج کند یا در زندان بمیرد.\nشاهزاده در سیاهچال زندانی می‌شود و باید در کمتر از ۶۰ دقیقه از میان تله‌های مرگبار، شمشیرزن‌ها و مسیرهای خطرناک عبور کند تا خودش را به قصر برساند و شاهزاده‌خانم را نجات دهد.\nگیم‌پلی بازی بر پایه دقت در حرکت، زمان‌بندی و حل کردن مسیرهای سخت طراحی شده و برای زمان خودش یکی از واقعی‌ترین انیمیشن‌های حرکتی شخصیت‌ها را داشت.\nاین بازی یکی از پایه‌گذاران سبک پلتفرمر سینمایی محسوب می‌شود و تأثیر بزرگی روی بازی‌های بعدی گذاشت." },
+            { id: 1, title: "GOD OF WAR | ZEROX", name: "God of War", year: "۲۲ مارس ۲۰۰۵", developer: "Santa Monica Studio", publisher: "Sony Computer Entertainment", director: "David Jaffe", producer: "Shannon Studstill",
+                composers: ["Gerard Marino", "Mike Reagan", "Ron Fish", "Winifred Phillips", "Cris Velasco"], platform: "PlayStation 2", genre: "اکشن ماجراجویی، هک اند اسلش", engine: "Kinetica Engine",
+                cover: "https://uploadkon.ir/uploads/4c9d09_26god-of-war-Zerox-ir-28.jpg", music: "https://uploadkon.ir/uploads/157a09_26ef9f06-26Zerox-god-of-war.mp3",
+                desc: "کریتوس، یک جنگجوی اسپارتی، برای گرفتن انتقام و رهایی از کابوس‌های گذشته‌اش به دنبال نابودی خدای جنگ یعنی Ares می‌رود. در طول مسیر با هیولاها، تایتان‌ها و خدایان اساطیر یونان روبه‌رو می‌شود.",
+                fullText: "داستان God of War یکی از حماسی‌ترین داستان‌های تاریخ بازی است. کریتوس، جنگجوی اسپارتی، پس از اینکه آرس (خدای جنگ) او را فریب می‌دهد و خانواده‌اش را می‌کشد، تصمیم می‌گیرد انتقام بگیرد. او با کمک آتنا، خدای خرد، وارد ماجرایی می‌شود تا جعبه پاندورا را پیدا کند و آرس را نابود کند. در این مسیر با موجودات افسانه‌ای مانند مینوتور، سیرن، و مدوسا روبرو می‌شود و قدرت‌های جدیدی به دست می‌آورد. نبرد نهایی کریتوس با آرس یکی از به‌یادماندنی‌ترین نبردهای تاریخ بازی‌های ویدیویی است." }
+        ];
+
+        // =============================================
+        // ===== توابع رندر =====
+        // =============================================
+
+        function getPlatformIcon(platform) {
+            if (platform.includes("Xbox")) return '<i class="fab fa-xbox"></i>';
+            if (platform.includes("PS")) return '<i class="fab fa-playstation"></i>';
+            if (platform.includes("PC")) return '<i class="fab fa-windows"></i>';
+            return '<i class="fas fa-gamepad"></i>';
+        }
+
+        function downloadMusic(url, title) {
+            fetch(url).then(r => r.blob()).then(b => { const a = document.createElement('a');
+                a.href = URL.createObjectURL(b);
+                a.download = title + '.mp3';
+                a.click();
+                URL.revokeObjectURL(a.href); }).catch(() => window.open(url, '_blank'));
+        }
+
+        function getCatIcon(cat) {
+            if (cat === "ترسناک") return '<i class="fa-solid fa-ghost"></i>';
+            if (cat === "هیجانی") return '<i class="fa-solid fa-bolt"></i>';
+            if (cat === "علمی") return '<i class="fa-solid fa-flask"></i>';
+            if (cat === "معرفی") return '<i class="fa-solid fa-gamepad"></i>';
+            return '<i class="fa-solid fa-tag"></i>';
+        }
+
+        function renderVideos(containerId, filter = "همه") {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            let filtered = filter === "همه" ? videosData : videosData.filter(v => v.category === filter);
+            if (filtered.length === 0) {
+                container.innerHTML =
+                    `<div style="background:white; border-radius:28px; padding:50px 20px; text-align:center; color:var(--main);"><i class="fa-solid fa-video-slash" style="font-size:48px;"></i><h3 style="margin-top:12px;">ویدیویی یافت نشد</h3></div>`;
+                return;
+            }
+            container.innerHTML = filtered.map(v =>
+                `<div class="video-card">
+                    <img class="video-thumb" src="${v.thumb}" onerror="this.src='https://via.placeholder.com/300x200'">
+                    <div class="video-badge"><i class="fa-solid fa-play"></i> تماشا</div>
+                    <div class="video-info">
+                        <h3>${v.title}</h3>
+                        <div class="video-meta-row">
+                            <div class="video-cat-tag">${getCatIcon(v.category)} ${v.category}</div>
+                            <div class="date-time"><i class="fa-regular fa-calendar"></i> ${v.date} <i class="fa-regular fa-clock"></i> ${v.time}</div>
+                        </div>
+                        <p>${v.desc.substring(0, 100)}${v.desc.length > 100 ? '...' : ''}</p>
+                        <div class="button-group">
+                            <button class="btn-card" onclick="event.stopPropagation(); window.open('${v.link}','_blank')"><i class="fa-solid fa-play"></i> مشاهده ویدیو</button>
+                            <button class="more-btn" onclick="event.stopPropagation(); toggleVideoText(this)"><i class="fa-regular fa-eye"></i> توضیحات</button>
+                        </div>
+                        <div class="full-text">${v.fullText}</div>
+                    </div>
+                </div>`
+            ).join('');
+        }
+
+        function renderNews(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = newsData.map(n =>
+                `<div class="hybrid-card">
+                    <div class="hybrid-inner">
+                        <div class="hybrid-media"><img src="${n.image}" onerror="this.src='https://via.placeholder.com/300x200'"></div>
+                        <div class="hybrid-content">
+                            <div class="hybrid-badge"><i class="fa-regular fa-newspaper"></i> جدیدترین خبر</div>
+                            <h2>${n.title}</h2>
+                            <div style="display:flex; gap:12px; margin-bottom:12px; font-size:0.75rem; color:#777;"><i class="fa-regular fa-calendar"></i> ${n.date} <i class="fa-regular fa-clock"></i> ${n.time}</div>
+                            <p class="hybrid-desc">${n.summary}</p>
+                            <div class="news-actions">
+                                <button onclick="event.stopPropagation(); toggleNewsText(this)"><i class="fa-regular fa-eye"></i> ادامه مطلب</button>
+                            </div>
+                            <div class="news-full-text">${n.fullText}</div>
+                        </div>
+                    </div>
+                </div>`
+            ).join('');
+        }
+
+        function renderStories(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = storiesData.map(s =>
+                `<div class="hybrid-card">
+                    <div class="hybrid-inner">
+                        <div class="hybrid-media"><img src="${s.img}" onerror="this.src='https://via.placeholder.com/300x200'"></div>
+                        <div class="hybrid-content">
+                            <div class="hybrid-badge"><i class="fa-solid fa-book-open"></i> داستان اختصاصی</div>
+                            <h2>${s.title}</h2>
+                            <p class="hybrid-desc">${s.desc.substring(0, 120)}...</p>
+                            <div class="news-actions">
+                                <button onclick="event.stopPropagation(); toggleStoryText(this)"><i class="fa-regular fa-eye"></i> ادامه داستان</button>
+                            </div>
+                            <div class="story-full-text">${s.full}</div>
+                        </div>
+                    </div>
+                </div>`
+            ).join('');
+        }
+
+        function renderMusic() {
+            const container = document.getElementById('musicGrid');
+            if (!container) return;
+            if (musicData.length === 0) {
+                container.innerHTML =
+                    `<div style="background:white; border-radius:28px; padding:50px 20px; text-align:center; color:var(--main);"><i class="fa-solid fa-music" style="font-size:48px;"></i><h3 style="margin-top:12px;">هنوز موسیقی‌ای اضافه نشده</h3></div>`;
+                return;
+            }
+            const sorted = [...musicData].sort((a, b) => b.id - a.id);
+            container.innerHTML = sorted.map(m =>
+                `<div class="music-card">
+                    <img class="music-img" src="${m.cover}" onerror="this.src='https://via.placeholder.com/400x400'">
+                    <div class="music-info">
+                        <div class="title-platform-box">
+                            <h3>${m.title}</h3>
+                            <div class="platform-badge">${getPlatformIcon(m.platform)} ${m.platform}</div>
+                        </div>
+                        ${m.composers ? `<div class="composers-section"><div class="composer-title"><i class="fa-solid fa-microphone-alt"></i> آهنگسازان</div><div class="composers-list">${m.composers.map(c => `<div class="composer-item"><i class="fa-regular fa-user"></i> ${c}</div>`).join('')}</div></div>` : ''}
+                        <div class="music-desc-box">
+                            <div class="music-desc-title"><i class="fa-regular fa-note-sticky"></i> توضیحات موسیقی</div>
+                            <div class="music-desc-text">${m.desc}</div>
+                        </div>
+                        <div class="custom-player">
+                            <audio controls src="${m.file}"></audio>
+                            <button class="download-music-btn" onclick="event.stopPropagation(); downloadMusic('${m.file}', '${m.title}')"><i class="fa-solid fa-download"></i> دانلود</button>
+                        </div>
+                    </div>
+                </div>`
+            ).join('');
+        }
+
+        function renderOld() {
+            const container = document.getElementById('oldGrid');
+            if (!container) return;
+            if (oldData.length === 0) {
+                container.innerHTML =
+                    `<div style="background:white; border-radius:28px; padding:50px 20px; text-align:center; color:var(--main);"><i class="fa-solid fa-joystick" style="font-size:48px;"></i><h3 style="margin-top:12px;">به زودی...</h3></div>`;
+                return;
+            }
+            container.innerHTML = oldData.map(g =>
+                `<div class="hybrid-card">
+                    <div class="hybrid-inner">
+                        <div class="hybrid-media"><img src="${g.cover}" onerror="this.src='https://via.placeholder.com/300x200'"></div>
+                        <div class="hybrid-content">
+                            <div class="hybrid-badge"><i class="fa-solid fa-compact-disc"></i> زروکس اُلد | نوستالژی محض</div>
+                            <h2>${g.title}</h2>
+                            <div class="game-info-box">
+                                <div class="info-row"><i class="fa-solid fa-gamepad"></i> <strong>نام بازی:</strong> ${g.name}</div>
+                                <div class="info-row"><i class="fa-regular fa-calendar"></i> <strong>سال انتشار:</strong> ${g.year}</div>
+                                <div class="info-row"><i class="fa-solid fa-building"></i> <strong>سازنده:</strong> ${g.developer}</div>
+                                <div class="info-row"><i class="fa-solid fa-box"></i> <strong>ناشر:</strong> ${g.publisher}</div>
+                                <div class="info-row"><i class="fa-solid fa-user-tie"></i> <strong>کارگردان:</strong> ${g.director}</div>
+                                <div class="info-row"><i class="fa-solid fa-chalkboard-user"></i> <strong>تهیه‌کننده:</strong> ${g.producer}</div>
+                                <div class="info-row"><i class="fa-solid fa-music"></i> <strong>آهنگسازان:</strong> ${g.composers.join(", ")}</div>
+                                <div class="info-row"><i class="fa-solid fa-tv"></i> <strong>پلتفرم:</strong> ${g.platform}</div>
+                                <div class="info-row"><i class="fa-solid fa-tag"></i> <strong>سبک:</strong> ${g.genre}</div>
+                                <div class="info-row"><i class="fa-solid fa-microchip"></i> <strong>موتور بازی:</strong> ${g.engine}</div>
+                            </div>
+                            <div class="story-box">
+                                <div class="story-title"><i class="fa-solid fa-book-open"></i> داستان بازی</div>
+                                <p class="hybrid-desc">${g.desc}</p>
+                                <button class="more-btn" onclick="toggleOldText(this)"><i class="fa-regular fa-eye"></i> ادامه داستان</button>
+                                <div class="old-full-text">${g.fullText}</div>
+                            </div>
+                            <div class="custom-player">
+                                <audio controls src="${g.music}"></audio>
+                                <button class="download-music-btn" onclick="downloadMusic('${g.music}', '${g.name}')"><i class="fa-solid fa-download"></i> دانلود</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+            ).join('');
+        }
+
+        // ===== توابع Toggle =====
+        function toggleVideoText(btn) {
+            let full = btn.parentElement.nextElementSibling;
+            if (full.style.display === "none" || full.style.display === "") { full.style.display = "block";
+                btn.innerHTML = '<i class="fa-regular fa-eye-slash"></i> بستن'; } else { full.style.display = "none";
+                btn.innerHTML = '<i class="fa-regular fa-eye"></i> توضیحات'; }
+        }
+
+        function toggleNewsText(btn) {
+            let full = btn.parentElement.nextElementSibling;
+            if (full.style.display === "none" || full.style.display === "") { full.style.display = "block";
+                btn.innerHTML = '<i class="fa-regular fa-eye-slash"></i> بستن متن'; } else { full.style.display = "none";
+                btn.innerHTML = '<i class="fa-regular fa-eye"></i> ادامه مطلب'; }
+        }
+
+        function toggleStoryText(btn) {
+            let full = btn.parentElement.nextElementSibling;
+            if (full.style.display === "none" || full.style.display === "") { full.style.display = "block";
+                btn.innerHTML = '<i class="fa-regular fa-eye-slash"></i> بستن داستان'; } else { full.style.display = "none";
+                btn.innerHTML = '<i class="fa-regular fa-eye"></i> ادامه داستان'; }
+        }
+
+        function toggleOldText(btn) {
+            let full = btn.parentElement.nextElementSibling;
+            if (full.style.display === "none" || full.style.display === "") { full.style.display = "block";
+                btn.innerHTML = '<i class="fa-regular fa-eye-slash"></i> بستن'; } else { full.style.display = "none";
+                btn.innerHTML = '<i class="fa-regular fa-eye"></i> ادامه داستان'; }
+        }
+
+        // ===== فیلتر ویدیو =====
+        let currentVideoFilter = "همه";
+
+        function setupFilters() {
+            document.querySelectorAll('#video .filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#video .filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentVideoFilter = btn.getAttribute('data-filter');
+                    renderVideos('videosGrid', currentVideoFilter);
+                });
+            });
+        }
+
+        // ===== Tab Switcher =====
+        function showTab(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if (id === 'home') { renderVideos('homeVideosGrid', 'همه');
+                renderNews('homeNewsGrid');
+                renderStories('homeStoriesGrid'); }
+            if (id === 'news') { renderNews('newsGrid'); }
+            if (id === 'video') { renderVideos('videosGrid', currentVideoFilter); }
+            if (id === 'music') { renderMusic(); }
+            if (id === 'stories') { renderStories('storiesGrid'); }
+            if (id === 'old') { renderOld(); }
+        }
+
+        // ===== رندر اولیه =====
+        renderVideos('homeVideosGrid', 'همه');
+        renderNews('homeNewsGrid');
+        renderStories('homeStoriesGrid');
+        renderNews('newsGrid');
+        renderVideos('videosGrid', 'همه');
+        renderStories('storiesGrid');
+        renderMusic();
+        renderOld();
+        setupFilters();
+    </script>
 </body>
 </html>
