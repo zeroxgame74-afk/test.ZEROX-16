@@ -73,41 +73,121 @@
             font-weight: 900;
         }
 
-        .nav-dots {
+        /* ===== همبرگر ===== */
+        .hamburger {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
+            gap: 6px;
             cursor: pointer;
-            padding: 8px 14px;
+            padding: 10px 14px;
             border-radius: 60px;
             transition: 0.3s;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid transparent;
             position: relative;
+            width: 56px;
+            height: 52px;
         }
-        .nav-dots:hover {
+
+        .hamburger:hover {
             background: rgba(124, 77, 255, 0.1);
             border-color: rgba(179, 136, 255, 0.3);
         }
 
-        .nav-dots .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
+        .hamburger .line {
+            width: 28px;
+            height: 3px;
             background: linear-gradient(145deg, #b388ff, #7c4dff);
-            transition: 0.3s;
-        }
-        .nav-dots:hover .dot {
-            transform: scale(1.2);
-        }
-        .nav-dots .dot:nth-child(2) {
-            animation: pulse-dot 1.8s ease-in-out infinite;
+            border-radius: 10px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-origin: center;
+            position: relative;
         }
 
-        @keyframes pulse-dot {
+        .hamburger .line:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+        .hamburger .line:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+        .hamburger .line:nth-child(3) {
+            transition-delay: 0.05s;
+        }
+
+        .hamburger.active .line:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: linear-gradient(145deg, #ff6b6b, #ee5a24);
+        }
+
+        .hamburger.active .line:nth-child(2) {
+            transform: scaleX(0);
+            opacity: 0;
+        }
+
+        .hamburger.active .line:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: linear-gradient(145deg, #ff6b6b, #ee5a24);
+        }
+
+        .hamburger::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: 60px;
+            padding: 2px;
+            background: linear-gradient(135deg, transparent, #7c4dff55, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .hamburger:hover::before {
+            opacity: 1;
+            animation: rotate-border 2s linear infinite;
+        }
+
+        @keyframes rotate-border {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hamburger .ripple-dots {
+            position: absolute;
+            display: flex;
+            gap: 4px;
+            right: -18px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger .ripple-dots span {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #7c4dff;
+            opacity: 0.3;
+            animation: ripple-dot 1.8s ease-in-out infinite;
+        }
+
+        .hamburger .ripple-dots span:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+        .hamburger .ripple-dots span:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes ripple-dot {
             0%,
             100% {
-                opacity: 0.3;
+                opacity: 0.2;
                 transform: scale(0.8);
             }
             50% {
@@ -116,27 +196,39 @@
             }
         }
 
-        /* ===== منوی درست با گزینه خانه ===== */
+        /* ===== منو ===== */
         .dropdown-menu {
             position: absolute;
-            top: calc(100% + 8px);
+            top: calc(100% + 12px);
             left: 0;
             right: auto;
             background: rgba(20, 24, 38, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 8px 6px;
-            min-width: 200px;
+            backdrop-filter: blur(24px);
+            border-radius: 20px;
+            padding: 12px 8px;
+            min-width: 230px;
             border: 1px solid rgba(179, 136, 255, 0.15);
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-8px) scale(0.95);
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateY(-15px) scale(0.92);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 4px;
             z-index: 1000;
+            overflow: hidden;
+        }
+
+        .dropdown-menu::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b388ff, #7c4dff, #b388ff, transparent);
+            opacity: 0.5;
         }
 
         .nav-dots.active .dropdown-menu {
@@ -149,47 +241,74 @@
             color: #e0e8ff;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.9rem;
-            padding: 10px 16px;
-            border-radius: 12px;
-            transition: all 0.25s ease;
+            font-size: 0.95rem;
+            padding: 12px 18px;
+            border-radius: 14px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             font-family: 'Vazirmatn', sans-serif;
             white-space: nowrap;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid transparent;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dropdown-menu a::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(124, 77, 255, 0.15), transparent 60%);
+            opacity: 0;
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .dropdown-menu a:hover::after {
+            opacity: 1;
         }
 
         .dropdown-menu a i {
-            font-size: 1.1rem;
-            width: 26px;
+            font-size: 1.2rem;
+            width: 28px;
             text-align: center;
+            transition: 0.3s;
         }
 
-        /* آیکون‌های کاستوم */
-        .dropdown-menu a i.fa-home-custom {
+        .dropdown-menu a:hover i {
+            transform: scale(1.2) rotate(-8deg);
+        }
+
+        .dropdown-menu a i.fa-home {
             color: #ffd93d;
         }
-        .dropdown-menu a i.fa-video-custom {
+        .dropdown-menu a i.fa-video {
             color: #ff6b6b;
         }
-        .dropdown-menu a i.fa-gamepad-custom {
+        .dropdown-menu a i.fa-gamepad {
             color: #4ecdc4;
         }
-        .dropdown-menu a i.fa-crown-custom {
+        .dropdown-menu a i.fa-crown {
             color: #ffd93d;
         }
-        .dropdown-menu a i.fa-music-custom {
+        .dropdown-menu a i.fa-music {
             color: #a29bfe;
         }
 
         .dropdown-menu a:hover {
-            background: linear-gradient(145deg, rgba(124, 77, 255, 0.2), rgba(179, 136, 255, 0.1));
+            background: linear-gradient(145deg, rgba(124, 77, 255, 0.15), rgba(179, 136, 255, 0.08));
             border-color: rgba(179, 136, 255, 0.2);
             color: #ffffff;
+            transform: translateX(-4px);
+        }
+
+        .dropdown-menu .menu-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(179, 136, 255, 0.15), transparent);
+            margin: 2px 12px;
         }
 
         /* ===== صفحات ===== */
@@ -241,140 +360,184 @@
             width: 100%;
         }
 
-        /* ===== کارت ویدیو ===== */
-        .video-card {
+        /* ===== کارت ویدیو اختصاصی ===== */
+        .video-card-special {
             background: linear-gradient(145deg, #1b1f2e, #121624);
-            border-radius: 18px;
-            padding: 14px;
-            border: 1px solid #2b3147;
-            transition: 0.3s;
+            border-radius: 24px;
+            padding: 20px;
+            border: 2px solid #7c4dff;
+            transition: 0.4s;
             width: 100%;
+            box-shadow: 0 0 40px rgba(124, 77, 255, 0.15);
         }
 
-        .video-card:hover {
-            border-color: #7c4dff;
-            transform: translateY(-3px);
+        .video-card-special:hover {
+            border-color: #b388ff;
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(124, 77, 255, 0.25);
         }
 
-        .video-card .video-thumb {
+        .video-card-special .video-thumb {
             width: 100%;
-            height: 170px;
-            background: radial-gradient(circle at 30% 30%, #2d2050, #0f0a1e);
-            border-radius: 12px;
+            height: 320px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            border: 1px solid #2f3650;
+            position: relative;
+            background: #0f0a1e;
+        }
+
+        .video-card-special .video-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-card-special .video-thumb .play-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px;
-            border: 1px solid #2f3650;
-            position: relative;
+            opacity: 0;
+            transition: 0.4s;
+            cursor: pointer;
         }
 
-        .video-card .video-thumb i {
-            font-size: 3.5rem;
-            color: #b388ff;
-            opacity: 0.8;
+        .video-card-special .video-thumb:hover .play-overlay {
+            opacity: 1;
         }
 
-        .video-card .video-thumb .play-btn {
-            position: absolute;
-            width: 54px;
-            height: 54px;
+        .video-card-special .video-thumb .play-overlay .play-btn-big {
+            width: 80px;
+            height: 80px;
             background: linear-gradient(145deg, #b388ff, #7c4dff);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 2.5rem;
             color: #0b0d15;
-            cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 0 40px rgba(124, 77, 255, 0.5);
+            box-shadow: 0 0 60px rgba(124, 77, 255, 0.6);
         }
 
-        .video-card .video-thumb .play-btn:hover {
+        .video-card-special .video-thumb .play-overlay .play-btn-big:hover {
             transform: scale(1.1);
         }
 
-        .video-card h3 {
+        .video-card-special .video-title {
+            font-size: 1.4rem;
+            font-weight: 900;
             color: #d4c0ff;
-            font-size: 1rem;
-            margin-bottom: 4px;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
 
-        .video-card .video-meta {
-            color: #7a6a8a;
+        .video-card-special .video-title .trend-badge {
+            display: inline-block;
+            background: linear-gradient(145deg, #ff6b6b, #ee5a24);
+            padding: 2px 12px;
+            border-radius: 60px;
             font-size: 0.7rem;
-            margin-bottom: 8px;
+            color: #0b0d15;
+            margin-right: 8px;
+            vertical-align: middle;
+            animation: pulse-badge 1.5s ease-in-out infinite;
         }
 
-        .video-card .video-meta i {
+        @keyframes pulse-badge {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .video-card-special .video-meta {
+            color: #7a6a8a;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .video-card-special .video-meta i {
             margin-left: 4px;
             color: #b388ff;
         }
 
-        .watch-btn {
+        .video-card-special .video-description {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 14px;
+            padding: 16px;
+            margin: 12px 0 16px;
+            border: 1px solid rgba(179, 136, 255, 0.08);
+            line-height: 2;
+            color: #c8c0d0;
+            font-size: 0.95rem;
+        }
+
+        .video-card-special .video-description i {
+            color: #b388ff;
+            margin-left: 4px;
+        }
+
+        .video-card-special .card-actions-special {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .watch-btn-special {
             background: linear-gradient(145deg, #b388ff, #7c4dff);
             border: none;
             border-radius: 60px;
-            padding: 6px 16px;
+            padding: 12px 28px;
             font-weight: 900;
             font-family: 'Vazirmatn', sans-serif;
             color: #0b0d15;
-            font-size: 0.8rem;
+            font-size: 1rem;
             cursor: pointer;
-            transition: 0.25s;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px #7c4dff55;
+            text-decoration: none;
+        }
+
+        .watch-btn-special:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 35px #7c4dffaa;
+        }
+
+        .watch-btn-special i {
+            background: transparent;
+            -webkit-text-fill-color: #0b0d15;
+        }
+
+        .aparat-link {
+            color: #b388ff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            box-shadow: 0 4px 14px #7c4dff55;
         }
 
-        .watch-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px #7c4dffaa;
-        }
-
-        .video-desc-toggle {
-            cursor: pointer;
-            color: #b388ff;
-            font-size: 0.8rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            transition: 0.3s;
-        }
-
-        .video-desc-toggle:hover {
+        .aparat-link:hover {
             color: #d4c0ff;
-        }
-
-        .video-desc {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            margin-top: 4px;
-        }
-
-        .video-desc.open {
-            max-height: 300px;
-            padding: 12px;
-        }
-
-        .video-desc p {
-            color: #b0a8c0;
-            font-size: 0.8rem;
-            line-height: 1.8;
-        }
-
-        .video-card .card-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-top: 4px;
+            transform: translateX(-4px);
         }
 
         /* ===== کارت‌های خانه ===== */
@@ -630,18 +793,33 @@
             .logo span {
                 font-size: 1.8rem;
             }
+            .hamburger {
+                width: 64px;
+                height: 58px;
+                padding: 12px 16px;
+            }
+            .hamburger .line {
+                width: 32px;
+                height: 3.5px;
+            }
+            .hamburger.active .line:nth-child(1) {
+                transform: translateY(10px) rotate(45deg);
+            }
+            .hamburger.active .line:nth-child(3) {
+                transform: translateY(-10px) rotate(-45deg);
+            }
             .dropdown-menu {
-                min-width: 240px;
-                padding: 10px 8px;
+                min-width: 260px;
+                padding: 14px 10px;
                 left: 0;
             }
             .dropdown-menu a {
-                font-size: 1rem;
-                padding: 12px 20px;
+                font-size: 1.05rem;
+                padding: 14px 22px;
             }
             .dropdown-menu a i {
-                font-size: 1.2rem;
-                width: 30px;
+                font-size: 1.3rem;
+                width: 32px;
             }
 
             .card-grid {
@@ -707,17 +885,21 @@
             }
 
             .page-content {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                grid-template-columns: 1fr;
                 gap: 18px;
             }
             .page-header h1 {
                 font-size: 2.2rem;
             }
-            .video-card .video-thumb {
-                height: 200px;
+            .video-card-special .video-thumb {
+                height: 450px;
             }
-            .video-card .video-thumb i {
-                font-size: 4.5rem;
+            .video-card-special .video-title {
+                font-size: 1.8rem;
+            }
+            .video-card-special .video-description {
+                font-size: 1rem;
+                padding: 20px;
             }
         }
 
@@ -739,17 +921,30 @@
             .logo span {
                 font-size: 1rem;
             }
-            .nav-dots {
-                padding: 5px 10px;
+            .hamburger {
+                width: 46px;
+                height: 44px;
+                padding: 6px 10px;
+                gap: 4px;
             }
-            .nav-dots .dot {
-                width: 4px;
-                height: 4px;
+            .hamburger .line {
+                width: 22px;
+                height: 2.5px;
+            }
+            .hamburger.active .line:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            .hamburger.active .line:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+            .hamburger .ripple-dots {
+                display: none;
             }
             .dropdown-menu {
-                min-width: 160px;
-                padding: 6px 4px;
+                min-width: 170px;
+                padding: 8px 6px;
                 left: -5px;
+                top: calc(100% + 8px);
             }
             .dropdown-menu a {
                 font-size: 0.8rem;
@@ -817,23 +1012,29 @@
             .page-header p {
                 font-size: 0.75rem;
             }
-            .video-card .video-thumb {
-                height: 130px;
+            .video-card-special {
+                padding: 12px;
+                border-radius: 18px;
             }
-            .video-card .video-thumb i {
-                font-size: 2.5rem;
+            .video-card-special .video-thumb {
+                height: 180px;
             }
-            .video-card .video-thumb .play-btn {
-                width: 42px;
-                height: 42px;
-                font-size: 1.2rem;
+            .video-card-special .video-thumb .play-overlay .play-btn-big {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
             }
-            .video-card h3 {
-                font-size: 0.85rem;
+            .video-card-special .video-title {
+                font-size: 1rem;
             }
-            .watch-btn {
-                font-size: 0.7rem;
-                padding: 4px 12px;
+            .video-card-special .video-description {
+                font-size: 0.8rem;
+                padding: 12px;
+                line-height: 1.8;
+            }
+            .watch-btn-special {
+                font-size: 0.8rem;
+                padding: 8px 18px;
             }
         }
     </style>
@@ -849,26 +1050,32 @@
             </a>
 
             <div class="nav-dots" onclick="this.classList.toggle('active')">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+                <div class="hamburger" onclick="event.stopPropagation(); this.classList.toggle('active'); document.querySelector('.nav-dots').classList.toggle('active')">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <div class="ripple-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
 
                 <div class="dropdown-menu">
-                    <!-- گزینه خانه اول -->
-                    <a onclick="showPage('home'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-home" style="color:#ffd93d;"></i> خانه
+                    <a onclick="showPage('home'); document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-dots').classList.remove('active')">
+                        <i class="fas fa-home"></i> خانه
                     </a>
-                    <a onclick="showPage('videos'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-video" style="color:#ff6b6b;"></i> ویدیو ها
+                    <a onclick="showPage('videos'); document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-dots').classList.remove('active')">
+                        <i class="fas fa-video"></i> ویدیو ها
                     </a>
-                    <a onclick="showPage('games'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-gamepad" style="color:#4ecdc4;"></i> اخبار بازی
+                    <a onclick="showPage('games'); document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-dots').classList.remove('active')">
+                        <i class="fas fa-gamepad"></i> اخبار بازی
                     </a>
-                    <a onclick="showPage('old'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-crown" style="color:#ffd93d;"></i> زروکس آلد
+                    <a onclick="showPage('old'); document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-dots').classList.remove('active')">
+                        <i class="fas fa-crown"></i> زروکس آلد
                     </a>
-                    <a onclick="showPage('music'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-music" style="color:#a29bfe;"></i> زروکس‌موزیک
+                    <a onclick="showPage('music'); document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-dots').classList.remove('active')">
+                        <i class="fas fa-music"></i> زروکس‌موزیک
                     </a>
                 </div>
             </div>
@@ -1001,7 +1208,7 @@
             </div>
         </div>
 
-        <!-- ===== صفحه ویدیو ها ===== -->
+        <!-- ===== صفحه ویدیو ها (فقط یک کارت) ===== -->
         <div id="page-videos" class="page">
             <div class="page-header">
                 <h1><i class="fas fa-video" style="color:#ff6b6b;"></i> ویدیو ها</h1>
@@ -1009,83 +1216,42 @@
             </div>
             <div class="page-content">
 
-                <div class="video-card">
+                <!-- کارت اختصاصی -->
+                <div class="video-card-special">
                     <div class="video-thumb">
-                        <i class="fas fa-play-circle"></i>
-                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                        <img src="https://uploadkon.ir/uploads/3e9d14_2671129478-9827-l-3296.jpg" alt="داستان کامل بازی نه من انسان نیستم">
+                        <div class="play-overlay" onclick="window.open('https://www.aparat.com/v/itl9b8h', '_blank')">
+                            <div class="play-btn-big">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
                     </div>
-                    <h3>🎬 تریلر رسمی بازی «شبح تسویه»</h3>
-                    <div class="video-meta">
-                        <i class="far fa-clock"></i> ۲ روز پیش · <i class="far fa-eye"></i> ۱۲,۴۵۰ بازدید
-                    </div>
-                    <div class="card-actions">
-                        <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
-                        <span class="video-desc-toggle" onclick="toggleDesc(this)">
-                            <i class="fas fa-chevron-down"></i> توضیحات
-                        </span>
-                    </div>
-                    <div class="video-desc">
-                        <p>🎮 تریلر رسمی بازی «شبح تسویه» با گرافیک خیره‌کننده و داستانی نفس‌گیر.</p>
-                    </div>
-                </div>
 
-                <div class="video-card">
-                    <div class="video-thumb">
-                        <i class="fas fa-play-circle"></i>
-                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    <div class="video-title">
+                        داستان کامل بازی نه من انسان نیستم | ترند و ترسناک ترین بازی در سال ۲۰۲۵
+                        <span class="trend-badge"><i class="fas fa-fire"></i> ترند</span>
                     </div>
-                    <h3>🎮 گیم‌پلی زنده «افسانه‌های کهن»</h3>
-                    <div class="video-meta">
-                        <i class="far fa-clock"></i> ۵ روز پیش · <i class="far fa-eye"></i> ۸,۷۲۰ بازدید
-                    </div>
-                    <div class="card-actions">
-                        <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
-                        <span class="video-desc-toggle" onclick="toggleDesc(this)">
-                            <i class="fas fa-chevron-down"></i> توضیحات
-                        </span>
-                    </div>
-                    <div class="video-desc">
-                        <p>🎮 گیم‌پلی زنده بازی «افسانه‌های کهن» با کیفیت ۴K و مبارزات هیجان‌انگیز.</p>
-                    </div>
-                </div>
 
-                <div class="video-card">
-                    <div class="video-thumb">
-                        <i class="fas fa-play-circle"></i>
-                        <div class="play-btn"><i class="fas fa-play"></i></div>
-                    </div>
-                    <h3>📽️ پشت صحنه فیلم «رودخانه‌های آتش»</h3>
                     <div class="video-meta">
-                        <i class="far fa-clock"></i> ۱ هفته پیش · <i class="far fa-eye"></i> ۵,۳۰۰ بازدید
+                        <span><i class="fas fa-user"></i> Zerox</span>
+                        <span><i class="far fa-calendar-alt"></i> ۱ ماه پیش</span>
+                        <span><i class="far fa-eye"></i> ۱۱۲ بازدید</span>
+                        <span><i class="fas fa-tag"></i> داستان بازی | من انسان نیستم</span>
                     </div>
-                    <div class="card-actions">
-                        <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
-                        <span class="video-desc-toggle" onclick="toggleDesc(this)">
-                            <i class="fas fa-chevron-down"></i> توضیحات
-                        </span>
-                    </div>
-                    <div class="video-desc">
-                        <p>📽️ پشت صحنه فیلم سینمایی «رودخانه‌های آتش» با بازیگران و جلوه‌های ویژه.</p>
-                    </div>
-                </div>
 
-                <div class="video-card">
-                    <div class="video-thumb">
-                        <i class="fas fa-play-circle"></i>
-                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    <div class="video-description">
+                        <i class="fas fa-quote-right"></i>
+                        سلام بر شما | من امروز درمورد داستان بازی من انسان نیستم صحبت کردم | تمام نکات و همچیو توضیح دادم | امیدوارم از ویدیو لذت کافی ببرید | پارت بعدی رو به زودی زود میذارم | داستان رو تماما گفتم براتون
+                        <i class="fas fa-quote-left" style="float: left;"></i>
                     </div>
-                    <h3>🎞️ بهترین لحظات بازی‌های ۱۴۰۴</h3>
-                    <div class="video-meta">
-                        <i class="far fa-clock"></i> ۲ هفته پیش · <i class="far fa-eye"></i> ۲۱,۱۰۰ بازدید
-                    </div>
-                    <div class="card-actions">
-                        <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
-                        <span class="video-desc-toggle" onclick="toggleDesc(this)">
-                            <i class="fas fa-chevron-down"></i> توضیحات
-                        </span>
-                    </div>
-                    <div class="video-desc">
-                        <p>🎞️ بهترین لحظات بازی‌های ویدیویی سال ۱۴۰۴ در یک ویدیوی کوتاه.</p>
+
+                    <div class="card-actions-special">
+                        <a href="https://www.aparat.com/v/itl9b8h" target="_blank" class="watch-btn-special">
+                            <i class="fas fa-play"></i> تماشا در آپارات
+                        </a>
+                        <a href="https://www.aparat.com/v/itl9b8h" target="_blank" class="aparat-link">
+                            <i class="fas fa-external-link-alt"></i> لینک مستقیم
+                        </a>
                     </div>
                 </div>
 
@@ -1195,23 +1361,12 @@
 
         document.addEventListener('click', function(event) {
             const dots = document.querySelector('.nav-dots');
+            const hamburger = document.querySelector('.hamburger');
             if (dots && !dots.contains(event.target)) {
                 dots.classList.remove('active');
+                if (hamburger) hamburger.classList.remove('active');
             }
         });
-
-        function toggleDesc(element) {
-            var desc = element.parentElement.nextElementSibling;
-            var icon = element.querySelector('i');
-
-            if (desc.classList.contains('open')) {
-                desc.classList.remove('open');
-                icon.className = 'fas fa-chevron-down';
-            } else {
-                desc.classList.add('open');
-                icon.className = 'fas fa-chevron-up';
-            }
-        }
     </script>
 </body>
-  </html>
+</html>
