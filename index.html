@@ -360,184 +360,155 @@
             width: 100%;
         }
 
-        /* ===== کارت ویدیو اختصاصی ===== */
-        .video-card-special {
+        /* ===== کارت ویدیو (سبک قبلی) ===== */
+        .video-card {
             background: linear-gradient(145deg, #1b1f2e, #121624);
-            border-radius: 24px;
-            padding: 20px;
-            border: 2px solid #7c4dff;
-            transition: 0.4s;
+            border-radius: 18px;
+            padding: 14px;
+            border: 1px solid #2b3147;
+            transition: 0.3s;
             width: 100%;
-            box-shadow: 0 0 40px rgba(124, 77, 255, 0.15);
         }
 
-        .video-card-special:hover {
-            border-color: #b388ff;
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(124, 77, 255, 0.25);
+        .video-card:hover {
+            border-color: #7c4dff;
+            transform: translateY(-3px);
         }
 
-        .video-card-special .video-thumb {
+        .video-card .video-thumb {
             width: 100%;
-            height: 320px;
-            border-radius: 16px;
+            height: 180px;
+            border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             border: 1px solid #2f3650;
             position: relative;
             background: #0f0a1e;
         }
 
-        .video-card-special .video-thumb img {
+        .video-card .video-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .video-card-special .video-thumb .play-overlay {
+        .video-card .video-thumb .play-btn {
             position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: 0.4s;
-            cursor: pointer;
-        }
-
-        .video-card-special .video-thumb:hover .play-overlay {
-            opacity: 1;
-        }
-
-        .video-card-special .video-thumb .play-overlay .play-btn-big {
-            width: 80px;
-            height: 80px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 54px;
+            height: 54px;
             background: linear-gradient(145deg, #b388ff, #7c4dff);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             color: #0b0d15;
+            cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 0 60px rgba(124, 77, 255, 0.6);
+            box-shadow: 0 0 40px rgba(124, 77, 255, 0.5);
         }
 
-        .video-card-special .video-thumb .play-overlay .play-btn-big:hover {
-            transform: scale(1.1);
+        .video-card .video-thumb .play-btn:hover {
+            transform: translate(-50%, -50%) scale(1.1);
         }
 
-        .video-card-special .video-title {
-            font-size: 1.4rem;
-            font-weight: 900;
+        .video-card h3 {
             color: #d4c0ff;
-            margin-bottom: 10px;
-            line-height: 1.4;
+            font-size: 1rem;
+            margin-bottom: 4px;
+            line-height: 1.5;
         }
 
-        .video-card-special .video-title .trend-badge {
-            display: inline-block;
-            background: linear-gradient(145deg, #ff6b6b, #ee5a24);
-            padding: 2px 12px;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            color: #0b0d15;
-            margin-right: 8px;
-            vertical-align: middle;
-            animation: pulse-badge 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse-badge {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        .video-card-special .video-meta {
+        .video-card .video-meta {
             color: #7a6a8a;
-            font-size: 0.8rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
+            font-size: 0.7rem;
+            margin-bottom: 8px;
         }
 
-        .video-card-special .video-meta i {
+        .video-card .video-meta i {
             margin-left: 4px;
             color: #b388ff;
         }
 
-        .video-card-special .video-description {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 14px;
-            padding: 16px;
-            margin: 12px 0 16px;
-            border: 1px solid rgba(179, 136, 255, 0.08);
-            line-height: 2;
-            color: #c8c0d0;
-            font-size: 0.95rem;
-        }
-
-        .video-card-special .video-description i {
-            color: #b388ff;
-            margin-left: 4px;
-        }
-
-        .video-card-special .card-actions-special {
+        .video-card .card-actions {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             flex-wrap: wrap;
+            margin-top: 4px;
         }
 
-        .watch-btn-special {
+        .watch-btn {
             background: linear-gradient(145deg, #b388ff, #7c4dff);
             border: none;
             border-radius: 60px;
-            padding: 12px 28px;
+            padding: 6px 16px;
             font-weight: 900;
             font-family: 'Vazirmatn', sans-serif;
             color: #0b0d15;
-            font-size: 1rem;
+            font-size: 0.8rem;
             cursor: pointer;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 20px #7c4dff55;
-            text-decoration: none;
-        }
-
-        .watch-btn-special:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 35px #7c4dffaa;
-        }
-
-        .watch-btn-special i {
-            background: transparent;
-            -webkit-text-fill-color: #0b0d15;
-        }
-
-        .aparat-link {
-            color: #b388ff;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: 0.3s;
+            transition: 0.25s;
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            box-shadow: 0 4px 14px #7c4dff55;
+            text-decoration: none;
         }
 
-        .aparat-link:hover {
+        .watch-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px #7c4dffaa;
+        }
+
+        .video-desc-toggle {
+            cursor: pointer;
+            color: #b388ff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: 0.3s;
+        }
+
+        .video-desc-toggle:hover {
             color: #d4c0ff;
-            transform: translateX(-4px);
+        }
+
+        .video-desc {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            margin-top: 4px;
+        }
+
+        .video-desc.open {
+            max-height: 300px;
+            padding: 12px;
+        }
+
+        .video-desc p {
+            color: #b0a8c0;
+            font-size: 0.8rem;
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        .trend-badge {
+            display: inline-block;
+            background: linear-gradient(145deg, #ff6b6b, #ee5a24);
+            padding: 1px 10px;
+            border-radius: 60px;
+            font-size: 0.6rem;
+            color: #0b0d15;
+            margin-right: 6px;
+            font-weight: 900;
         }
 
         /* ===== کارت‌های خانه ===== */
@@ -891,15 +862,11 @@
             .page-header h1 {
                 font-size: 2.2rem;
             }
-            .video-card-special .video-thumb {
-                height: 450px;
+            .video-card .video-thumb {
+                height: 220px;
             }
-            .video-card-special .video-title {
-                font-size: 1.8rem;
-            }
-            .video-card-special .video-description {
-                font-size: 1rem;
-                padding: 20px;
+            .video-card h3 {
+                font-size: 1.15rem;
             }
         }
 
@@ -1012,29 +979,20 @@
             .page-header p {
                 font-size: 0.75rem;
             }
-            .video-card-special {
-                padding: 12px;
-                border-radius: 18px;
+            .video-card .video-thumb {
+                height: 140px;
             }
-            .video-card-special .video-thumb {
-                height: 180px;
+            .video-card .video-thumb .play-btn {
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
             }
-            .video-card-special .video-thumb .play-overlay .play-btn-big {
-                width: 55px;
-                height: 55px;
-                font-size: 1.6rem;
+            .video-card h3 {
+                font-size: 0.85rem;
             }
-            .video-card-special .video-title {
-                font-size: 1rem;
-            }
-            .video-card-special .video-description {
-                font-size: 0.8rem;
-                padding: 12px;
-                line-height: 1.8;
-            }
-            .watch-btn-special {
-                font-size: 0.8rem;
-                padding: 8px 18px;
+            .watch-btn {
+                font-size: 0.7rem;
+                padding: 4px 12px;
             }
         }
     </style>
@@ -1208,7 +1166,7 @@
             </div>
         </div>
 
-        <!-- ===== صفحه ویدیو ها (فقط یک کارت) ===== -->
+        <!-- ===== صفحه ویدیو ها (سبک قبلی) ===== -->
         <div id="page-videos" class="page">
             <div class="page-header">
                 <h1><i class="fas fa-video" style="color:#ff6b6b;"></i> ویدیو ها</h1>
@@ -1216,42 +1174,34 @@
             </div>
             <div class="page-content">
 
-                <!-- کارت اختصاصی -->
-                <div class="video-card-special">
+                <!-- کارت ویدیو به سبک قبلی -->
+                <div class="video-card">
                     <div class="video-thumb">
                         <img src="https://uploadkon.ir/uploads/3e9d14_2671129478-9827-l-3296.jpg" alt="داستان کامل بازی نه من انسان نیستم">
-                        <div class="play-overlay" onclick="window.open('https://www.aparat.com/v/itl9b8h', '_blank')">
-                            <div class="play-btn-big">
-                                <i class="fas fa-play"></i>
-                            </div>
+                        <div class="play-btn" onclick="window.open('https://www.aparat.com/v/itl9b8h', '_blank')">
+                            <i class="fas fa-play"></i>
                         </div>
                     </div>
-
-                    <div class="video-title">
+                    <h3>
                         داستان کامل بازی نه من انسان نیستم | ترند و ترسناک ترین بازی در سال ۲۰۲۵
                         <span class="trend-badge"><i class="fas fa-fire"></i> ترند</span>
-                    </div>
-
+                    </h3>
                     <div class="video-meta">
                         <span><i class="fas fa-user"></i> Zerox</span>
                         <span><i class="far fa-calendar-alt"></i> ۱ ماه پیش</span>
                         <span><i class="far fa-eye"></i> ۱۱۲ بازدید</span>
-                        <span><i class="fas fa-tag"></i> داستان بازی | من انسان نیستم</span>
+                        <span><i class="fas fa-tag"></i> داستان بازی</span>
                     </div>
-
-                    <div class="video-description">
-                        <i class="fas fa-quote-right"></i>
-                        سلام بر شما | من امروز درمورد داستان بازی من انسان نیستم صحبت کردم | تمام نکات و همچیو توضیح دادم | امیدوارم از ویدیو لذت کافی ببرید | پارت بعدی رو به زودی زود میذارم | داستان رو تماما گفتم براتون
-                        <i class="fas fa-quote-left" style="float: left;"></i>
+                    <div class="card-actions">
+                        <a href="https://www.aparat.com/v/itl9b8h" target="_blank" class="watch-btn">
+                            <i class="fas fa-play"></i> تماشا
+                        </a>
+                        <span class="video-desc-toggle" onclick="toggleDesc(this)">
+                            <i class="fas fa-chevron-down"></i> توضیحات
+                        </span>
                     </div>
-
-                    <div class="card-actions-special">
-                        <a href="https://www.aparat.com/v/itl9b8h" target="_blank" class="watch-btn-special">
-                            <i class="fas fa-play"></i> تماشا در آپارات
-                        </a>
-                        <a href="https://www.aparat.com/v/itl9b8h" target="_blank" class="aparat-link">
-                            <i class="fas fa-external-link-alt"></i> لینک مستقیم
-                        </a>
+                    <div class="video-desc">
+                        <p>سلام بر شما | من امروز درمورد داستان بازی من انسان نیستم صحبت کردم | تمام نکات و همچیو توضیح دادم | امیدوارم از ویدیو لذت کافی ببرید | پارت بعدی رو به زودی زود میذارم | داستان رو تماما گفتم براتون</p>
                     </div>
                 </div>
 
@@ -1367,6 +1317,19 @@
                 if (hamburger) hamburger.classList.remove('active');
             }
         });
+
+        function toggleDesc(element) {
+            var desc = element.parentElement.nextElementSibling;
+            var icon = element.querySelector('i');
+
+            if (desc.classList.contains('open')) {
+                desc.classList.remove('open');
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                desc.classList.add('open');
+                icon.className = 'fas fa-chevron-up';
+            }
+        }
     </script>
 </body>
-</html>
+                    </html>
