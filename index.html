@@ -116,7 +116,7 @@
             }
         }
 
-        /* ===== منوی درست ===== */
+        /* ===== منوی درست با گزینه خانه ===== */
         .dropdown-menu {
             position: absolute;
             top: calc(100% + 8px);
@@ -169,16 +169,20 @@
             text-align: center;
         }
 
-        .dropdown-menu a i.fa-video {
-            color: #ff6b6b;
-        }
-        .dropdown-menu a i.fa-gamepad {
-            color: #4ecdc4;
-        }
-        .dropdown-menu a i.fa-crown {
+        /* آیکون‌های کاستوم */
+        .dropdown-menu a i.fa-home-custom {
             color: #ffd93d;
         }
-        .dropdown-menu a i.fa-music {
+        .dropdown-menu a i.fa-video-custom {
+            color: #ff6b6b;
+        }
+        .dropdown-menu a i.fa-gamepad-custom {
+            color: #4ecdc4;
+        }
+        .dropdown-menu a i.fa-crown-custom {
+            color: #ffd93d;
+        }
+        .dropdown-menu a i.fa-music-custom {
             color: #a29bfe;
         }
 
@@ -850,17 +854,21 @@
                 <span class="dot"></span>
 
                 <div class="dropdown-menu">
+                    <!-- گزینه خانه اول -->
+                    <a onclick="showPage('home'); document.querySelector('.nav-dots').classList.remove('active')">
+                        <i class="fas fa-home" style="color:#ffd93d;"></i> خانه
+                    </a>
                     <a onclick="showPage('videos'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-video"></i> ویدیو ها
+                        <i class="fas fa-video" style="color:#ff6b6b;"></i> ویدیو ها
                     </a>
                     <a onclick="showPage('games'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-gamepad"></i> اخبار بازی
+                        <i class="fas fa-gamepad" style="color:#4ecdc4;"></i> اخبار بازی
                     </a>
                     <a onclick="showPage('old'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-crown"></i> زروکس آلد
+                        <i class="fas fa-crown" style="color:#ffd93d;"></i> زروکس آلد
                     </a>
                     <a onclick="showPage('music'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-music"></i> زروکس‌موزیک
+                        <i class="fas fa-music" style="color:#a29bfe;"></i> زروکس‌موزیک
                     </a>
                 </div>
             </div>
@@ -1206,4 +1214,4 @@
         }
     </script>
 </body>
-                            </html>
+    </html>
