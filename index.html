@@ -2,11 +2,18 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Zerox.ir | بازی با زروکس!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* ===== جلوگیری از اسکرول افقی ===== */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -20,6 +27,18 @@
             padding: 12px;
             padding-top: 80px;
             min-height: 100vh;
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ===== جلوگیری از خروج محتوا ===== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: hidden;
+            padding: 0 4px;
         }
 
         ::-webkit-scrollbar {
@@ -33,12 +52,6 @@
             background: linear-gradient(145deg, #b388ff, #7c4dff);
             border-radius: 20px;
             border: 2px solid #0b0d15;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
         }
 
         /* ===== HEADER ===== */
@@ -56,8 +69,10 @@
             margin-bottom: 24px;
             border: 1px solid rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(16px);
-            height: 54px;
+            height: 60px;
             width: 100%;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         header::after {
@@ -75,41 +90,46 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            flex-shrink: 0;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-weight: 900;
             font-size: 1.2rem;
             text-decoration: none;
+            flex-shrink: 0;
         }
         .logo img {
-            height: 32px;
+            height: 44px;
             width: auto;
-            border-radius: 8px;
+            border-radius: 10px;
         }
         .logo span {
             background: linear-gradient(135deg, #b388ff, #7c4dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 900;
+            white-space: nowrap;
         }
 
         .header-right {
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-shrink: 0;
         }
 
         .nav-divider {
             width: 2px;
-            height: 28px;
+            height: 32px;
             background: linear-gradient(180deg, transparent, rgba(179, 136, 255, 0.4), rgba(124, 77, 255, 0.4), transparent);
             border-radius: 10px;
+            flex-shrink: 0;
         }
 
         .nav-dots {
@@ -123,6 +143,7 @@
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid transparent;
             position: relative;
+            flex-shrink: 0;
         }
         .nav-dots:hover {
             background: rgba(124, 77, 255, 0.08);
@@ -130,8 +151,8 @@
         }
 
         .nav-dots .dot {
-            width: 5px;
-            height: 5px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: linear-gradient(145deg, #b388ff, #7c4dff);
             transition: 0.3s;
@@ -148,7 +169,7 @@
             50% { opacity: 1; transform: scale(1.4); }
         }
 
-        /* ===== منوی کشویی با فونت خوانا ===== */
+        /* ===== منوی کشویی ===== */
         .dropdown-menu {
             position: absolute;
             top: calc(100% + 10px);
@@ -190,28 +211,19 @@
             white-space: nowrap;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid transparent;
+            cursor: pointer;
         }
 
         .dropdown-menu a i {
             font-size: 1.2rem;
             width: 28px;
             text-align: center;
-            color: #b388ff;
         }
 
-        /* آیکون‌های کاستوم شده برای هر گزینه */
-        .dropdown-menu a i.fa-video {
-            color: #ff6b6b;
-        }
-        .dropdown-menu a i.fa-gamepad {
-            color: #4ecdc4;
-        }
-        .dropdown-menu a i.fa-crown {
-            color: #ffd93d;
-        }
-        .dropdown-menu a i.fa-music {
-            color: #a29bfe;
-        }
+        .dropdown-menu a i.fa-video { color: #ff6b6b; }
+        .dropdown-menu a i.fa-gamepad { color: #4ecdc4; }
+        .dropdown-menu a i.fa-crown { color: #ffd93d; }
+        .dropdown-menu a i.fa-music { color: #a29bfe; }
 
         .dropdown-menu a:hover {
             background: linear-gradient(145deg, rgba(124, 77, 255, 0.2), rgba(179, 136, 255, 0.1));
@@ -224,6 +236,78 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(179, 136, 255, 0.2), transparent);
             margin: 4px 12px;
+        }
+
+        /* ===== صفحات ===== */
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(179, 136, 255, 0.1);
+            width: 100%;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #b388ff, #7c4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            color: #8a7a9a;
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+
+        .page-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .page-card {
+            background: linear-gradient(145deg, #1b1f2e, #121624);
+            border-radius: 20px;
+            padding: 16px;
+            border: 1px solid #2b3147;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .page-card:hover {
+            border-color: #7c4dff;
+            transform: translateY(-4px);
+        }
+
+        .page-card h3 {
+            color: #d4c0ff;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .page-card p {
+            color: #b0a8c0;
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
 
         /* ===== کارت‌ها ===== */
@@ -462,36 +546,36 @@
             }
             header {
                 padding: 8px 24px;
-                height: 64px;
+                height: 72px;
                 border-radius: 60px;
                 top: 20px;
                 margin-bottom: 36px;
             }
             .logo img {
-                height: 40px;
+                height: 56px;
             }
             .logo span {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
             .nav-divider {
-                height: 32px;
+                height: 36px;
             }
             .nav-dots .dot {
-                width: 6px;
-                height: 6px;
+                width: 7px;
+                height: 7px;
             }
             .dropdown-menu {
-                min-width: 250px;
+                min-width: 260px;
                 padding: 14px 12px;
                 right: 0;
             }
             .dropdown-menu a {
-                font-size: 1.05rem;
+                font-size: 1.1rem;
                 padding: 14px 22px;
             }
             .dropdown-menu a i {
-                font-size: 1.3rem;
-                width: 32px;
+                font-size: 1.4rem;
+                width: 34px;
             }
 
             .card-grid {
@@ -555,6 +639,14 @@
                 margin-top: 60px;
                 padding: 24px 10px;
             }
+
+            .page-content {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
         }
 
         @media (max-width: 380px) {
@@ -563,20 +655,20 @@
                 padding-top: 70px;
             }
             header {
-                height: 46px;
+                height: 50px;
                 padding: 4px 10px;
                 border-radius: 30px;
                 top: 6px;
                 margin-bottom: 14px;
             }
             .logo img {
-                height: 26px;
+                height: 34px;
             }
             .logo span {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             .nav-divider {
-                height: 20px;
+                height: 22px;
             }
             .nav-dots {
                 padding: 3px 8px;
@@ -650,16 +742,44 @@
                 padding: 12px 10px;
                 margin-top: 20px;
             }
+            .page-header h1 {
+                font-size: 1.3rem;
+            }
+            .page-header p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* ============================================
+           جلوگیری از درگ کردن و انتخاب متن
+           ============================================ */
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img, a, button {
+            -webkit-touch-callout: none;
+            -webkit-user-drag: none;
+        }
+
+        /* جلوگیری از اسکرول افقی با touch */
+        .container, .page, .card-grid, .featured-row {
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
         }
     </style>
 </head>
 <body>
     <div class="container">
 
-        <!-- ===== HEADER با لوگوی جدید ===== -->
+        <!-- ===== HEADER ===== -->
         <header>
             <div class="header-left">
-                <a href="#" class="logo">
+                <a href="#" class="logo" onclick="showPage('home')">
                     <img src="https://uploadkon.ir/uploads/553e14_26Zerox.png" alt="زروکس">
                     <span>زروکـــــس!</span>
                 </a>
@@ -672,140 +792,251 @@
                     <span class="dot"></span>
                     <span class="dot"></span>
 
-                    <!-- منوی جدید با گزینه‌های درخواستی -->
                     <div class="dropdown-menu">
-                        <a href="#"><i class="fas fa-video"></i> ویدیو ها</a>
-                        <a href="#"><i class="fas fa-gamepad"></i> اخبار بازی</a>
-                        <a href="#"><i class="fas fa-crown"></i> زروکس آلد</a>
-                        <a href="#"><i class="fas fa-music"></i> زروکس‌موزیک</a>
+                        <a onclick="showPage('videos'); document.querySelector('.nav-dots').classList.remove('active')">
+                            <i class="fas fa-video"></i> ویدیو ها
+                        </a>
+                        <a onclick="showPage('games'); document.querySelector('.nav-dots').classList.remove('active')">
+                            <i class="fas fa-gamepad"></i> اخبار بازی
+                        </a>
+                        <a onclick="showPage('old'); document.querySelector('.nav-dots').classList.remove('active')">
+                            <i class="fas fa-crown"></i> زروکس آلد
+                        </a>
+                        <a onclick="showPage('music'); document.querySelector('.nav-dots').classList.remove('active')">
+                            <i class="fas fa-music"></i> زروکس‌موزیک
+                        </a>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- ===== کارت‌ها ===== -->
-        <div class="card-grid">
-
-            <div class="card">
-                <div class="card-image">
-                    <div class="placeholder">
-                        <i class="fas fa-film"></i>
-                        <span>اکران نوروزی</span>
+        <!-- ===== صفحه خانه ===== -->
+        <div id="page-home" class="page active">
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-image">
+                        <div class="placeholder">
+                            <i class="fas fa-film"></i>
+                            <span>اکران نوروزی</span>
+                        </div>
                     </div>
+                    <h3>اکران نوروزی</h3>
+                    <p>جدیدترین فیلم‌های سینمایی با بازیگران مطرح و داستان‌های نفس‌گیر.</p>
+                    <div class="meta">
+                        <span><i class="far fa-calendar-alt"></i> ۲۵ اسفند</span>
+                        <span class="badge">جدید</span>
+                    </div>
+                    <button class="btn-gradient"><i class="fas fa-ticket-alt"></i> خرید بلیط</button>
                 </div>
-                <h3>اکران نوروزی</h3>
-                <p>جدیدترین فیلم‌های سینمایی با بازیگران مطرح و داستان‌های نفس‌گیر.</p>
-                <div class="meta">
-                    <span><i class="far fa-calendar-alt"></i> ۲۵ اسفند</span>
-                    <span class="badge">جدید</span>
+
+                <div class="card">
+                    <div class="card-image">
+                        <div class="placeholder">
+                            <i class="fas fa-gamepad"></i>
+                            <span>بازی هفته</span>
+                        </div>
+                    </div>
+                    <h3>بازی هفته</h3>
+                    <p>بازی جدید «شبح تسویه‌» با گرافیک خیره‌کننده و گیم‌پلی هیجان‌انگیز.</p>
+                    <div class="meta">
+                        <span><i class="far fa-clock"></i> ۳ ساعت پیش</span>
+                        <span class="badge gold">داغ</span>
+                    </div>
+                    <button class="btn-gradient"><i class="fas fa-download"></i> دانلود</button>
                 </div>
-                <button class="btn-gradient"><i class="fas fa-ticket-alt"></i> خرید بلیط</button>
+
+                <div class="card">
+                    <div class="card-image">
+                        <div class="placeholder">
+                            <i class="fas fa-tv"></i>
+                            <span>سریال جدید</span>
+                        </div>
+                    </div>
+                    <h3>سریال جدید</h3>
+                    <p>فصل سوم سریال محبوب «شهر ابری» با اتفاقات غافلگیرکننده.</p>
+                    <div class="meta">
+                        <span><i class="far fa-star"></i> ۸.۹/۱۰</span>
+                        <span class="badge pink">پربیننده</span>
+                    </div>
+                    <button class="btn-gradient"><i class="fas fa-play"></i> تماشا</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <div class="placeholder">
+                            <i class="fas fa-microchip"></i>
+                            <span>تکنولوژی</span>
+                        </div>
+                    </div>
+                    <h3>تکنولوژی</h3>
+                    <p>کنسول نسل جدید با قدرت رندرینگ ۸K و قیمت مناسب وارد بازار شد.</p>
+                    <div class="meta">
+                        <span><i class="far fa-calendar-alt"></i> ۱۴ فروردین</span>
+                        <span class="badge blue">پیش‌فروش</span>
+                    </div>
+                    <button class="btn-gradient"><i class="fas fa-shopping-cart"></i> سفارش</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <div class="placeholder">
+                            <i class="fas fa-headphones-alt"></i>
+                            <span>موسیقی متن</span>
+                        </div>
+                    </div>
+                    <h3>موسیقی متن</h3>
+                    <p>آهنگساز برنده اسکار برای فیلم جدید «رودخانه‌های آتش» منتشر کرد.</p>
+                    <div class="meta">
+                        <span><i class="fas fa-music"></i> ۱۲ دی</span>
+                        <span class="badge gold">اکسپرسیو</span>
+                    </div>
+                    <button class="btn-gradient"><i class="fas fa-headphones"></i> پخش</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <div class="placeholder">
+                            <i class="fas fa-robot"></i>
+                            <span>هوش مصنوعی</span>
+                        </div>
+                    </div>
+                    <h3>هوش مصنوعی</h3>
+                    <p>ابزار جدید ساخت تریلر با هوش مصنوعی؛ فقط با یک متن، تریلر بسازید.</p>
+                    <div class="meta">
+                        <span><i class="far fa-eye"></i> ۲۴۰۰ بازدید</span>
+                        <span class="badge">آزمایشی</span>
+                    </div>
+                    <button class="btn-gradient"><i class="fas fa-rocket"></i> امتحان کن</button>
+                </div>
             </div>
 
-            <div class="card">
-                <div class="card-image">
-                    <div class="placeholder">
-                        <i class="fas fa-gamepad"></i>
-                        <span>بازی هفته</span>
-                    </div>
+            <div class="featured-row">
+                <div class="featured-box">
+                    <h2><i class="fas fa-crown" style="background:linear-gradient(145deg,#f7971e,#ffd200);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i> پربازدیدهای هفته</h2>
+                    <ul>
+                        <li><i class="fas fa-film"></i> مصاحبه اختصاصی با کارگردان «شب بی‌ستاره»</li>
+                        <li><i class="fas fa-gamepad"></i> نقد و بررسی بازی «افسانه‌های کهن»</li>
+                        <li><i class="fas fa-tv"></i> فصل پایانی سریال «مه‌آلود»</li>
+                        <li><i class="fas fa-microchip"></i> مقایسه کنسول‌های نسل ۹</li>
+                    </ul>
+                    <button class="btn-gradient" style="margin-top:14px;"><i class="fas fa-arrow-left"></i> مشاهده همه</button>
                 </div>
-                <h3>بازی هفته</h3>
-                <p>بازی جدید «شبح تسویه‌» با گرافیک خیره‌کننده و گیم‌پلی هیجان‌انگیز.</p>
-                <div class="meta">
-                    <span><i class="far fa-clock"></i> ۳ ساعت پیش</span>
-                    <span class="badge gold">داغ</span>
-                </div>
-                <button class="btn-gradient"><i class="fas fa-download"></i> دانلود</button>
-            </div>
 
-            <div class="card">
-                <div class="card-image">
-                    <div class="placeholder">
-                        <i class="fas fa-tv"></i>
-                        <span>سریال جدید</span>
+                <div class="featured-box">
+                    <h2><i class="fas fa-bolt" style="background:linear-gradient(145deg,#b388ff,#7c4dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i> اخبار فوری</h2>
+                    <ul>
+                        <li><i class="fas fa-circle" style="font-size:0.6rem; background:#b388ff; -webkit-text-fill-color:#b388ff;"></i> اکران آنلاین فیلم جدید نولان</li>
+                        <li><i class="fas fa-circle" style="font-size:0.6rem; background:#7c4dff; -webkit-text-fill-color:#7c4dff;"></i> عرضه دموی بازی «خون‌سرد»</li>
+                        <li><i class="fas fa-circle" style="font-size:0.6rem; background:#9a7aff; -webkit-text-fill-color:#9a7aff;"></i> تغییر تاریخ انتشار سریال</li>
+                    </ul>
+                    <div style="display:flex; gap:8px; margin-top:16px; flex-wrap:wrap;">
+                        <span class="badge gold" style="padding:4px 14px; font-size:0.65rem;"><i class="fas fa-bolt"></i> لحظه‌ای</span>
+                        <span class="badge pink" style="padding:4px 14px; font-size:0.65rem;"><i class="fas fa-fire"></i> داغ</span>
                     </div>
                 </div>
-                <h3>سریال جدید</h3>
-                <p>فصل سوم سریال محبوب «شهر ابری» با اتفاقات غافلگیرکننده.</p>
-                <div class="meta">
-                    <span><i class="far fa-star"></i> ۸.۹/۱۰</span>
-                    <span class="badge pink">پربیننده</span>
-                </div>
-                <button class="btn-gradient"><i class="fas fa-play"></i> تماشا</button>
-            </div>
-
-            <div class="card">
-                <div class="card-image">
-                    <div class="placeholder">
-                        <i class="fas fa-microchip"></i>
-                        <span>تکنولوژی</span>
-                    </div>
-                </div>
-                <h3>تکنولوژی</h3>
-                <p>کنسول نسل جدید با قدرت رندرینگ ۸K و قیمت مناسب وارد بازار شد.</p>
-                <div class="meta">
-                    <span><i class="far fa-calendar-alt"></i> ۱۴ فروردین</span>
-                    <span class="badge blue">پیش‌فروش</span>
-                </div>
-                <button class="btn-gradient"><i class="fas fa-shopping-cart"></i> سفارش</button>
-            </div>
-
-            <div class="card">
-                <div class="card-image">
-                    <div class="placeholder">
-                        <i class="fas fa-headphones-alt"></i>
-                        <span>موسیقی متن</span>
-                    </div>
-                </div>
-                <h3>موسیقی متن</h3>
-                <p>آهنگساز برنده اسکار برای فیلم جدید «رودخانه‌های آتش» منتشر کرد.</p>
-                <div class="meta">
-                    <span><i class="fas fa-music"></i> ۱۲ دی</span>
-                    <span class="badge gold">اکسپرسیو</span>
-                </div>
-                <button class="btn-gradient"><i class="fas fa-headphones"></i> پخش</button>
-            </div>
-
-            <div class="card">
-                <div class="card-image">
-                    <div class="placeholder">
-                        <i class="fas fa-robot"></i>
-                        <span>هوش مصنوعی</span>
-                    </div>
-                </div>
-                <h3>هوش مصنوعی</h3>
-                <p>ابزار جدید ساخت تریلر با هوش مصنوعی؛ فقط با یک متن، تریلر بسازید.</p>
-                <div class="meta">
-                    <span><i class="far fa-eye"></i> ۲۴۰۰ بازدید</span>
-                    <span class="badge">آزمایشی</span>
-                </div>
-                <button class="btn-gradient"><i class="fas fa-rocket"></i> امتحان کن</button>
             </div>
         </div>
 
-        <!-- ===== بخش ویژه ===== -->
-        <div class="featured-row">
-            <div class="featured-box">
-                <h2><i class="fas fa-crown" style="background:linear-gradient(145deg,#f7971e,#ffd200);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i> پربازدیدهای هفته</h2>
-                <ul>
-                    <li><i class="fas fa-film"></i> مصاحبه اختصاصی با کارگردان «شب بی‌ستاره»</li>
-                    <li><i class="fas fa-gamepad"></i> نقد و بررسی بازی «افسانه‌های کهن»</li>
-                    <li><i class="fas fa-tv"></i> فصل پایانی سریال «مه‌آلود»</li>
-                    <li><i class="fas fa-microchip"></i> مقایسه کنسول‌های نسل ۹</li>
-                </ul>
-                <button class="btn-gradient" style="margin-top:14px;"><i class="fas fa-arrow-left"></i> مشاهده همه</button>
+        <!-- ===== صفحه ویدیو ها ===== -->
+        <div id="page-videos" class="page">
+            <div class="page-header">
+                <h1><i class="fas fa-video" style="color:#ff6b6b;"></i> ویدیو ها</h1>
+                <p>جدیدترین ویدیوهای گیم‌پلی، تریلر فیلم و محتوای اختصاصی</p>
             </div>
+            <div class="page-content">
+                <div class="page-card">
+                    <h3>🎬 تریلر رسمی بازی جدید</h3>
+                    <p>تماشای تریلر نفس‌گیر بازی «شبح تسویه‌» با گرافیک خیره‌کننده.</p>
+                </div>
+                <div class="page-card">
+                    <h3>🎮 گیم‌پلی زنده</h3>
+                    <p>اجرای زنده بازی‌های جدید با کامنت‌های جذاب و تحلیلی.</p>
+                </div>
+                <div class="page-card">
+                    <h3>📽️ پشت صحنه فیلم</h3>
+                    <p>پشت صحنه فیلم‌های سینمایی با بازیگران و کارگردانان مطرح.</p>
+                </div>
+                <div class="page-card">
+                    <h3>🎞️ ویدیوهای کوتاه</h3>
+                    <p>ویدیوهای کوتاه و جذاب از دنیای بازی و فیلم.</p>
+                </div>
+            </div>
+        </div>
 
-            <div class="featured-box">
-                <h2><i class="fas fa-bolt" style="background:linear-gradient(145deg,#b388ff,#7c4dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i> اخبار فوری</h2>
-                <ul>
-                    <li><i class="fas fa-circle" style="font-size:0.6rem; background:#b388ff; -webkit-text-fill-color:#b388ff;"></i> اکران آنلاین فیلم جدید نولان</li>
-                    <li><i class="fas fa-circle" style="font-size:0.6rem; background:#7c4dff; -webkit-text-fill-color:#7c4dff;"></i> عرضه دموی بازی «خون‌سرد»</li>
-                    <li><i class="fas fa-circle" style="font-size:0.6rem; background:#9a7aff; -webkit-text-fill-color:#9a7aff;"></i> تغییر تاریخ انتشار سریال</li>
-                </ul>
-                <div style="display:flex; gap:8px; margin-top:16px; flex-wrap:wrap;">
-                    <span class="badge gold" style="padding:4px 14px; font-size:0.65rem;"><i class="fas fa-bolt"></i> لحظه‌ای</span>
-                    <span class="badge pink" style="padding:4px 14px; font-size:0.65rem;"><i class="fas fa-fire"></i> داغ</span>
+        <!-- ===== صفحه اخبار بازی ===== -->
+        <div id="page-games" class="page">
+            <div class="page-header">
+                <h1><i class="fas fa-gamepad" style="color:#4ecdc4;"></i> اخبار بازی</h1>
+                <p>آخرین اخبار دنیای بازی‌های ویدیویی و کنسول‌ها</p>
+            </div>
+            <div class="page-content">
+                <div class="page-card">
+                    <h3>🎮 عرضه بازی جدید</h3>
+                    <p>بازی «شبح تسویه‌» با استقبال بی‌نظیر منتشر شد.</p>
+                </div>
+                <div class="page-card">
+                    <h3>🕹️ آپدیت بزرگ</h3>
+                    <p>آپدیت جدید بازی محبوب با امکانات ویژه و نقشه‌های جدید.</p>
+                </div>
+                <div class="page-card">
+                    <h3>💻 کنسول نسل جدید</h3>
+                    <p>اطلاعات تازه از کنسول نسل ۹ با قدرت رندرینگ ۸K.</p>
+                </div>
+                <div class="page-card">
+                    <h3>🏆 مسابقات جهانی</h3>
+                    <p>نتایج مسابقات جهانی بازی‌های ویدیویی و تیم‌های برتر.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== صفحه زروکس آلد ===== -->
+        <div id="page-old" class="page">
+            <div class="page-header">
+                <h1><i class="fas fa-crown" style="color:#ffd93d;"></i> زروکس آلد</h1>
+                <p>بخش ویژه محتوای کلاسیک و قدیمی با کیفیت عالی</p>
+            </div>
+            <div class="page-content">
+                <div class="page-card">
+                    <h3>🎞️ فیلم‌های کلاسیک</h3>
+                    <p>بهترین فیلم‌های سینمای قدیم با کیفیت بازسازی‌شده.</p>
+                </div>
+                <div class="page-card">
+                    <h3>🎮 بازی‌های کلاسیک</h3>
+                    <p>بازی‌های قدیمی و خاطره‌انگیز با نسخه‌های بهبودیافته.</p>
+                </div>
+                <div class="page-card">
+                    <h3>📺 سریال‌های نوستالژی</h3>
+                    <p>سریال‌های محبوب دهه‌های گذشته با زیرنویس فارسی.</p>
+                </div>
+                <div class="page-card">
+                    <h3>🎵 موسیقی کلاسیک</h3>
+                    <p>آهنگ‌های ماندگار سینما و بازی‌های قدیمی.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== صفحه زروکس‌موزیک ===== -->
+        <div id="page-music" class="page">
+            <div class="page-header">
+                <h1><i class="fas fa-music" style="color:#a29bfe;"></i> زروکس‌موزیک</h1>
+                <p>جدیدترین آهنگ‌ها و موسیقی متن فیلم و بازی</p>
+            </div>
+            <div class="page-content">
+                <div class="page-card">
+                    <h3>🎵 موسیقی متن فیلم</h3>
+                    <p>آهنگ‌های جدید فیلم‌های سینمایی با کیفیت بالا.</p>
+                </div>
+                <div class="page-card">
+                    <h3>🎶 آهنگ‌های بازی</h3>
+                    <p>موسیقی متن بازی‌های محبوب با تم حماسی و احساسی.</p>
+                </div>
+                <div class="page-card">
+                    <h3>🎧 پلی‌لیست اختصاصی</h3>
+                    <p>لیست آهنگ‌های منتخب برای هر سلیقه‌ای.</p>
+                </div>
+                <div class="page-card">
+                    <h3>🎼 آهنگ‌های جدید</h3>
+                    <p>بروزترین آهنگ‌های منتشرشده در دنیای موسیقی.</p>
                 </div>
             </div>
         </div>
@@ -822,12 +1053,65 @@
     </div>
 
     <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(function(page) {
+                page.classList.remove('active');
+            });
+            var targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         document.addEventListener('click', function(event) {
             const dots = document.querySelector('.nav-dots');
             if (dots && !dots.contains(event.target)) {
                 dots.classList.remove('active');
             }
         });
+
+        // ===== قفل کردن صفحه با کشیدن =====
+        document.addEventListener('touchmove', function(e) {
+            // جلوگیری از اسکرول افقی
+            if (e.target.closest('.container') || e.target.closest('body')) {
+                var touch = e.touches[0];
+                var startX = touch.clientX;
+                // فقط اسکرول عمودی مجاز
+            }
+        }, { passive: false });
+
+        // جلوگیری از خروج از صفحه با دو انگشت (pinch)
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+
+        // جلوگیری از زوم با double tap
+        document.addEventListener('dblclick', function(e) {
+            e.preventDefault();
+        });
+
+        // جلوگیری از کشیدن صفحه به کنار
+        document.addEventListener('touchstart', function(e) {
+            var touch = e.touches[0];
+            var startX = touch.clientX;
+            var startY = touch.clientY;
+            
+            document.addEventListener('touchmove', function moveHandler(e) {
+                var touch = e.touches[0];
+                var deltaX = touch.clientX - startX;
+                var deltaY = touch.clientY - startY;
+                
+                // اگر حرکت افقی بیشتر از عمودی بود و به لبه رسیده بود، جلوگیری کن
+                if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', function() {
+                document.removeEventListener('touchmove', moveHandler);
+            });
+        }, { passive: true });
     </script>
 </body>
-    </html>
+</html>
