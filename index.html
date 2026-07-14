@@ -21,7 +21,7 @@
             color: #eef2f7;
             padding: 20px;
             min-height: 100vh;
-            padding-top: 100px; /* فاصله برای هدر sticky */
+            padding-top: 100px;
         }
 
         ::-webkit-scrollbar {
@@ -43,8 +43,8 @@
         }
 
         /* ============================================
-                   HEADER با منوی STICKY
-                   ============================================ */
+           HEADER با منوی STICKY (سبک ویجیاتو)
+           ============================================ */
         header {
             position: sticky;
             top: 20px;
@@ -52,196 +52,176 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            background: linear-gradient(135deg, #141826, #1f2336);
-            padding: 14px 28px;
-            border-radius: 80px;
+            background: rgba(20, 24, 38, 0.85);
+            padding: 8px 20px;
+            border-radius: 60px;
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.04);
             margin-bottom: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            position: sticky;
-            top: 20px;
-            z-index: 999;
-            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(16px);
             transition: all 0.3s ease;
+            height: 64px;
         }
 
-        /* افکت نور پس‌زمینه هدر - قرمز */
-        header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -20%;
-            width: 70%;
-            height: 200%;
-            background: radial-gradient(ellipse at 30% 50%, #ff222255, transparent 60%);
-            pointer-events: none;
-        }
-
-        /* خط براق قرمز زیر هدر */
         header::after {
             content: "";
             position: absolute;
             bottom: -1px;
-            left: 10%;
-            width: 80%;
+            left: 15%;
+            width: 70%;
             height: 2px;
             background: linear-gradient(90deg, transparent, #ff4444, #ff6a00, #ff4444, transparent);
-            opacity: 0.6;
+            opacity: 0.3;
             border-radius: 100%;
+        }
+
+        /* ===== بخش چپ: لوگو ===== */
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             font-weight: 900;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             letter-spacing: -0.5px;
-            position: relative;
-            z-index: 2;
+            text-decoration: none;
         }
         .logo i {
             background: linear-gradient(45deg, #ff2200, #ff6a00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 2.2rem;
+            font-size: 2rem;
             filter: drop-shadow(0 0 20px #ff440044);
         }
         .logo span {
             background: linear-gradient(135deg, #ff6a00, #ff2200);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-size: 1.4rem;
         }
 
-        /* ========== منوی خفن با گرادیانت قرمز ========== */
-        nav {
+        /* ===== بخش راست: سه نقطه + خط جداکننده ===== */
+        .header-right {
             display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 6px;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(8px);
+            align-items: center;
+            gap: 14px;
         }
 
-        nav a {
-            color: #a8b2d6;
+        /* خط جداکننده عمودی */
+        .nav-divider {
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(180deg, transparent, rgba(255, 68, 68, 0.4), rgba(255, 106, 0, 0.4), transparent);
+            border-radius: 10px;
+        }
+
+        /* سه نقطه منو */
+        .nav-dots {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            padding: 6px 14px;
+            border-radius: 60px;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            position: relative;
+        }
+        .nav-dots:hover {
+            background: rgba(255, 50, 50, 0.08);
+            border-color: rgba(255, 68, 68, 0.3);
+        }
+
+        .nav-dots .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #ff6666, #cc0000);
+            transition: 0.3s;
+        }
+        .nav-dots:hover .dot {
+            transform: scale(1.2);
+        }
+        .nav-dots .dot:nth-child(2) {
+            animation: pulse-dot 1.8s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.4); }
+        }
+
+        /* ===== منوی کشویی با سه نقطه ===== */
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            background: rgba(20, 24, 38, 0.95);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 12px 8px;
+            min-width: 220px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px) scale(0.95);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .nav-dots.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .dropdown-menu a {
+            color: #c8d0e8;
             text-decoration: none;
             font-weight: 700;
             font-size: 0.95rem;
-            padding: 10px 22px;
-            border-radius: 60px;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            padding: 12px 20px;
+            border-radius: 16px;
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
-            gap: 10px;
-            position: relative;
-            letter-spacing: 0.3px;
-            background: transparent;
-            border: 1px solid transparent;
+            gap: 12px;
+            font-family: 'Vazirmatn', sans-serif;
         }
 
-        nav a i {
+        .dropdown-menu a i {
             font-size: 1.1rem;
             background: linear-gradient(145deg, #ff6a6a, #cc0000);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            transition: 0.3s;
+            width: 24px;
+            text-align: center;
         }
 
-        /* هُوِر قرمز */
-        nav a:hover {
-            background: linear-gradient(145deg, rgba(255, 50, 50, 0.18), rgba(255, 100, 0, 0.08));
-            border-color: #ff444455;
+        .dropdown-menu a:hover {
+            background: linear-gradient(145deg, rgba(255, 50, 50, 0.15), rgba(255, 100, 0, 0.08));
             color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px -8px #ff444466, inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateX(-4px);
         }
 
-        nav a:hover i {
-            background: linear-gradient(145deg, #ff8888, #ff4400);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transform: scale(1.1);
-        }
-
-        /* آیتم فعال - قرمز */
-        nav a.active {
-            background: linear-gradient(145deg, #cc0000, #ff4400);
-            color: #0b0d15;
-            border-color: transparent;
-            box-shadow: 0 8px 30px -6px #ff4444aa;
-        }
-        nav a.active i {
-            background: transparent;
-            -webkit-text-fill-color: #0b0d15;
-        }
-        nav a.active:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 12px 40px -6px #ff4444cc;
-        }
-
-        /* ========== جستجو ========== */
-        .search-bar {
-            display: flex;
-            align-items: center;
-            background: rgba(20, 24, 38, 0.7);
-            border-radius: 60px;
-            padding: 4px 4px 4px 18px;
-            border: 1px solid #2d3349;
-            backdrop-filter: blur(8px);
-            transition: 0.3s;
-            position: relative;
-            z-index: 2;
-        }
-        .search-bar:focus-within {
-            border-color: #ff4444aa;
-            box-shadow: 0 0 30px #ff444433;
-        }
-        .search-bar input {
-            background: transparent;
-            border: none;
-            padding: 10px 0;
-            color: #eef2f7;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.95rem;
-            width: 160px;
-            outline: none;
-        }
-        .search-bar input::placeholder {
-            color: #5a6382;
-        }
-        .search-bar button {
-            background: linear-gradient(145deg, #ff4400, #cc0000);
-            border: none;
-            border-radius: 60px;
-            padding: 10px 20px;
-            color: #0b0d15;
-            font-weight: 900;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        .search-bar button i {
-            background: transparent;
-            -webkit-text-fill-color: #0b0d15;
-        }
-        .search-bar button:hover {
-            transform: scale(1.06);
-            box-shadow: 0 0 30px #ff4444aa;
+        .dropdown-menu .menu-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 68, 68, 0.2), transparent);
+            margin: 4px 12px;
         }
 
         /* ============================================
-                   کارت‌ها با تصویر 16:9 - گرادیانت قرمز
-                   ============================================ */
+           کارت‌ها با تصویر 16:9
+           ============================================ */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -285,7 +265,6 @@
             box-shadow: 0 30px 50px -18px #ff4444aa, 0 0 0 1px #ff444444 inset;
         }
 
-        /* ===== تصویر 16:9 ===== */
         .card-image {
             position: relative;
             width: 100%;
@@ -296,17 +275,6 @@
             background: linear-gradient(145deg, #1f253b, #0f121e);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
             border: 1px solid #2f3650;
-        }
-
-        .card-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border-radius: 24px;
         }
 
         .card-image .placeholder {
@@ -420,8 +388,8 @@
         }
 
         /* ============================================
-                   بخش ویژه
-                   ============================================ */
+           بخش ویژه
+           ============================================ */
         .featured-row {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -467,9 +435,6 @@
             width: 34px;
         }
 
-        /* ============================================
-                   فوتر
-                   ============================================ */
         footer {
             margin-top: 70px;
             text-align: center;
@@ -486,59 +451,33 @@
         }
 
         /* ============================================
-                   ریسپانسیو
-                   ============================================ */
-        @media (max-width: 1024px) {
-            header {
-                border-radius: 40px;
-                padding: 16px 22px;
-                top: 10px;
-            }
-            nav a {
-                padding: 8px 16px;
-                font-size: 0.85rem;
-            }
-            .search-bar input {
-                width: 120px;
-            }
-            body {
-                padding-top: 80px;
-            }
-        }
-
+           ریسپانسیو
+           ============================================ */
         @media (max-width: 820px) {
             header {
-                flex-direction: column;
-                gap: 16px;
-                align-items: stretch;
-                border-radius: 32px;
-                padding: 18px;
+                border-radius: 40px;
+                padding: 8px 16px;
+                height: 58px;
                 top: 10px;
             }
             .logo {
-                justify-content: center;
+                font-size: 1.3rem;
             }
-            nav {
-                justify-content: center;
-                border-radius: 40px;
-                padding: 4px;
-                flex-wrap: wrap;
+            .logo i {
+                font-size: 1.6rem;
             }
-            nav a {
-                font-size: 0.8rem;
-                padding: 8px 14px;
+            .logo span {
+                font-size: 1.2rem;
             }
-            .search-bar {
-                width: 100%;
+            .nav-dots {
+                padding: 4px 10px;
             }
-            .search-bar input {
-                width: 100%;
-            }
-            .featured-row {
-                grid-template-columns: 1fr;
+            .nav-dots .dot {
+                width: 5px;
+                height: 5px;
             }
             body {
-                padding-top: 70px;
+                padding-top: 80px;
             }
         }
 
@@ -548,28 +487,37 @@
                 gap: 22px;
             }
             .logo {
-                font-size: 1.4rem;
+                font-size: 1.1rem;
             }
             .logo i {
-                font-size: 1.8rem;
+                font-size: 1.4rem;
             }
-            nav a {
-                font-size: 0.7rem;
-                padding: 6px 12px;
-                gap: 6px;
+            .logo span {
+                font-size: 1rem;
             }
-            nav a i {
-                font-size: 0.8rem;
+            .nav-divider {
+                height: 20px;
             }
-            .card-image .placeholder i {
-                font-size: 2.8rem;
+            .dropdown-menu {
+                min-width: 180px;
+                right: 0;
+                left: auto;
+            }
+            .dropdown-menu a {
+                font-size: 0.85rem;
+                padding: 10px 16px;
+            }
+            .featured-row {
+                grid-template-columns: 1fr;
             }
             .featured-box {
                 padding: 20px;
             }
             header {
                 top: 5px;
-                padding: 14px;
+                padding: 6px 12px;
+                height: 50px;
+                border-radius: 30px;
             }
             body {
                 padding-top: 60px;
@@ -582,24 +530,36 @@
 <body>
     <div class="container">
 
-        <!-- ===== HEADER با منوی STICKY ===== -->
+        <!-- ===== HEADER به سبک ویجیاتو ===== -->
         <header>
-            <div class="logo">
-                <i class="fas fa-film"></i>
-                <span>سینماگیک</span>
+            <!-- بخش چپ: لوگو -->
+            <div class="header-left">
+                <a href="#" class="logo">
+                    <i class="fas fa-film"></i>
+                    <span>سینماگیک</span>
+                </a>
             </div>
 
-            <nav>
-                <a href="#" class="active"><i class="fas fa-home"></i> خانه</a>
-                <a href="#"><i class="fas fa-newspaper"></i> اخبار</a>
-                <a href="#"><i class="fas fa-gamepad"></i> بازی</a>
-                <a href="#"><i class="fas fa-tv"></i> سریال</a>
-                <a href="#"><i class="fas fa-star"></i> ویژه</a>
-            </nav>
+            <!-- بخش راست: خط جداکننده + سه نقطه -->
+            <div class="header-right">
+                <div class="nav-divider"></div>
+                <div class="nav-dots" onclick="this.classList.toggle('active')">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
 
-            <div class="search-bar">
-                <input type="text" placeholder="جستجو...">
-                <button><i class="fas fa-search"></i> برو</button>
+                    <!-- منوی کشویی -->
+                    <div class="dropdown-menu">
+                        <a href="#"><i class="fas fa-home"></i> خانه</a>
+                        <a href="#"><i class="fas fa-newspaper"></i> اخبار</a>
+                        <a href="#"><i class="fas fa-gamepad"></i> بازی</a>
+                        <a href="#"><i class="fas fa-tv"></i> سریال</a>
+                        <div class="menu-divider"></div>
+                        <a href="#"><i class="fas fa-star"></i> ویژه</a>
+                        <a href="#"><i class="fas fa-user"></i> پروفایل</a>
+                        <a href="#"><i class="fas fa-cog"></i> تنظیمات</a>
+                    </div>
+                </div>
             </div>
         </header>
 
@@ -625,7 +585,7 @@
             <div class="card">
                 <div class="card-image">
                     <div class="placeholder">
-                        <i class="fas fa-gamepad" style="background:linear-gradient(145deg,#ff6666,#cc0000);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i>
+                        <i class="fas fa-gamepad"></i>
                         <span>بازی هفته</span>
                     </div>
                 </div>
@@ -641,7 +601,7 @@
             <div class="card">
                 <div class="card-image">
                     <div class="placeholder">
-                        <i class="fas fa-tv" style="background:linear-gradient(145deg,#ff6666,#cc0000);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i>
+                        <i class="fas fa-tv"></i>
                         <span>سریال جدید</span>
                     </div>
                 </div>
@@ -657,7 +617,7 @@
             <div class="card">
                 <div class="card-image">
                     <div class="placeholder">
-                        <i class="fas fa-microchip" style="background:linear-gradient(145deg,#ff6666,#cc0000);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i>
+                        <i class="fas fa-microchip"></i>
                         <span>تکنولوژی</span>
                     </div>
                 </div>
@@ -673,7 +633,7 @@
             <div class="card">
                 <div class="card-image">
                     <div class="placeholder">
-                        <i class="fas fa-headphones-alt" style="background:linear-gradient(145deg,#ff6666,#cc0000);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i>
+                        <i class="fas fa-headphones-alt"></i>
                         <span>موسیقی متن</span>
                     </div>
                 </div>
@@ -689,7 +649,7 @@
             <div class="card">
                 <div class="card-image">
                     <div class="placeholder">
-                        <i class="fas fa-robot" style="background:linear-gradient(145deg,#ff6666,#cc0000);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i>
+                        <i class="fas fa-robot"></i>
                         <span>هوش مصنوعی</span>
                     </div>
                 </div>
@@ -740,5 +700,15 @@
         </footer>
 
     </div>
+
+    <!-- بستن منو با کلیک بیرون -->
+    <script>
+        document.addEventListener('click', function(event) {
+            const dots = document.querySelector('.nav-dots');
+            if (dots && !dots.contains(event.target)) {
+                dots.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
