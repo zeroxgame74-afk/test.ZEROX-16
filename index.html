@@ -2,22 +2,20 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Zerox.ir | بازی با زروکس!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* ===== جلوگیری از اسکرول افقی ===== */
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden;
-            position: relative;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         body {
@@ -27,18 +25,15 @@
             padding: 12px;
             padding-top: 80px;
             min-height: 100vh;
-            max-width: 100%;
+            overflow-y: auto;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* ===== جلوگیری از خروج محتوا ===== */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
             overflow-x: hidden;
-            padding: 0 4px;
         }
 
         ::-webkit-scrollbar {
@@ -69,10 +64,8 @@
             margin-bottom: 24px;
             border: 1px solid rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(16px);
-            height: 60px;
+            height: 65px;
             width: 100%;
-            max-width: 100%;
-            overflow: hidden;
         }
 
         header::after {
@@ -99,12 +92,11 @@
             align-items: center;
             gap: 10px;
             font-weight: 900;
-            font-size: 1.2rem;
             text-decoration: none;
-            flex-shrink: 0;
+            cursor: pointer;
         }
         .logo img {
-            height: 44px;
+            height: 50px;
             width: auto;
             border-radius: 10px;
         }
@@ -112,7 +104,7 @@
             background: linear-gradient(135deg, #b388ff, #7c4dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 900;
             white-space: nowrap;
         }
@@ -243,8 +235,6 @@
             display: none;
             animation: fadeIn 0.4s ease;
             width: 100%;
-            max-width: 100%;
-            overflow-x: hidden;
         }
 
         .page.active {
@@ -546,19 +536,19 @@
             }
             header {
                 padding: 8px 24px;
-                height: 72px;
+                height: 78px;
                 border-radius: 60px;
                 top: 20px;
                 margin-bottom: 36px;
             }
             .logo img {
-                height: 56px;
+                height: 62px;
             }
             .logo span {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             .nav-divider {
-                height: 36px;
+                height: 38px;
             }
             .nav-dots .dot {
                 width: 7px;
@@ -655,17 +645,17 @@
                 padding-top: 70px;
             }
             header {
-                height: 50px;
+                height: 54px;
                 padding: 4px 10px;
                 border-radius: 30px;
                 top: 6px;
                 margin-bottom: 14px;
             }
             .logo img {
-                height: 34px;
+                height: 38px;
             }
             .logo span {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             .nav-divider {
                 height: 22px;
@@ -750,26 +740,16 @@
             }
         }
 
-        /* ============================================
-           جلوگیری از درگ کردن و انتخاب متن
-           ============================================ */
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-touch-callout: none;
-        }
-
+        /* ===== فقط جلوگیری از اسکرول افقی ===== */
         img, a, button {
             -webkit-touch-callout: none;
             -webkit-user-drag: none;
+            user-select: none;
         }
 
-        /* جلوگیری از اسکرول افقی با touch */
-        .container, .page, .card-grid, .featured-row {
-            -webkit-overflow-scrolling: touch;
-            touch-action: pan-y;
+        body {
+            -webkit-user-select: none;
+            user-select: none;
         }
     </style>
 </head>
@@ -779,7 +759,7 @@
         <!-- ===== HEADER ===== -->
         <header>
             <div class="header-left">
-                <a href="#" class="logo" onclick="showPage('home')">
+                <a class="logo" onclick="showPage('home')">
                     <img src="https://uploadkon.ir/uploads/553e14_26Zerox.png" alt="زروکس">
                     <span>زروکـــــس!</span>
                 </a>
@@ -1070,48 +1050,6 @@
                 dots.classList.remove('active');
             }
         });
-
-        // ===== قفل کردن صفحه با کشیدن =====
-        document.addEventListener('touchmove', function(e) {
-            // جلوگیری از اسکرول افقی
-            if (e.target.closest('.container') || e.target.closest('body')) {
-                var touch = e.touches[0];
-                var startX = touch.clientX;
-                // فقط اسکرول عمودی مجاز
-            }
-        }, { passive: false });
-
-        // جلوگیری از خروج از صفحه با دو انگشت (pinch)
-        document.addEventListener('gesturestart', function(e) {
-            e.preventDefault();
-        });
-
-        // جلوگیری از زوم با double tap
-        document.addEventListener('dblclick', function(e) {
-            e.preventDefault();
-        });
-
-        // جلوگیری از کشیدن صفحه به کنار
-        document.addEventListener('touchstart', function(e) {
-            var touch = e.touches[0];
-            var startX = touch.clientX;
-            var startY = touch.clientY;
-            
-            document.addEventListener('touchmove', function moveHandler(e) {
-                var touch = e.touches[0];
-                var deltaX = touch.clientX - startX;
-                var deltaY = touch.clientY - startY;
-                
-                // اگر حرکت افقی بیشتر از عمودی بود و به لبه رسیده بود، جلوگیری کن
-                if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
-                    e.preventDefault();
-                }
-            }, { passive: false });
-            
-            document.addEventListener('touchend', function() {
-                document.removeEventListener('touchmove', moveHandler);
-            });
-        }, { passive: true });
     </script>
 </body>
-</html>
+    </html>
