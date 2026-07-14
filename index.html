@@ -23,81 +23,45 @@
             font-family: 'Vazirmatn', sans-serif;
             background: #0b0d15;
             color: #eef2f7;
-            padding: 12px;
+            padding: 10px;
             padding-top: 80px;
             min-height: 100vh;
-            overflow-y: auto;
-            overflow-x: hidden;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
-            overflow-x: hidden;
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1a1e2b;
-            border-radius: 20px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(145deg, #b388ff, #7c4dff);
-            border-radius: 20px;
-            border: 2px solid #0b0d15;
         }
 
         /* ===== HEADER ===== */
         header {
             position: sticky;
-            top: 12px;
+            top: 10px;
             z-index: 999;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(20, 24, 38, 0.92);
-            padding: 6px 16px;
-            border-radius: 50px;
+            background: rgba(20, 24, 38, 0.95);
+            padding: 8px 16px;
+            border-radius: 60px;
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8);
             margin-bottom: 24px;
             border: 1px solid rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(16px);
-            height: 74px;
+            height: 70px;
             width: 100%;
-        }
-
-        header::after {
-            content: "";
-            position: absolute;
-            bottom: -1px;
-            left: 15%;
-            width: 70%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #b388ff, #7c4dff, #b388ff, transparent);
-            opacity: 0.3;
-            border-radius: 100%;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: 900;
             text-decoration: none;
             cursor: pointer;
         }
         .logo img {
-            height: 60px;
+            height: 52px;
             width: auto;
             border-radius: 10px;
         }
@@ -107,23 +71,6 @@
             -webkit-text-fill-color: transparent;
             font-size: 1.3rem;
             font-weight: 900;
-            white-space: nowrap;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
-            position: relative;
-        }
-
-        .nav-divider {
-            width: 2px;
-            height: 34px;
-            background: linear-gradient(180deg, transparent, rgba(179, 136, 255, 0.4), rgba(124, 77, 255, 0.4), transparent);
-            border-radius: 10px;
-            flex-shrink: 0;
         }
 
         .nav-dots {
@@ -131,16 +78,15 @@
             align-items: center;
             gap: 5px;
             cursor: pointer;
-            padding: 6px 12px;
+            padding: 8px 14px;
             border-radius: 60px;
             transition: 0.3s;
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid transparent;
             position: relative;
-            flex-shrink: 0;
         }
         .nav-dots:hover {
-            background: rgba(124, 77, 255, 0.08);
+            background: rgba(124, 77, 255, 0.1);
             border-color: rgba(179, 136, 255, 0.3);
         }
 
@@ -170,16 +116,17 @@
             }
         }
 
-        /* ===== منوی کشویی درست شده ===== */
+        /* ===== منوی درست ===== */
         .dropdown-menu {
             position: absolute;
-            top: calc(100% + 6px);
-            right: -5px;
-            background: rgba(20, 24, 38, 0.97);
+            top: calc(100% + 8px);
+            left: 0;
+            right: auto;
+            background: rgba(20, 24, 38, 0.98);
             backdrop-filter: blur(20px);
-            border-radius: 18px;
-            padding: 10px 8px;
-            min-width: 210px;
+            border-radius: 16px;
+            padding: 8px 6px;
+            min-width: 200px;
             border: 1px solid rgba(179, 136, 255, 0.15);
             box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95);
             opacity: 0;
@@ -188,7 +135,7 @@
             transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 2px;
             z-index: 1000;
         }
 
@@ -202,7 +149,7 @@
             color: #e0e8ff;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             padding: 10px 16px;
             border-radius: 12px;
             transition: all 0.25s ease;
@@ -239,13 +186,6 @@
             background: linear-gradient(145deg, rgba(124, 77, 255, 0.2), rgba(179, 136, 255, 0.1));
             border-color: rgba(179, 136, 255, 0.2);
             color: #ffffff;
-            transform: translateX(-4px);
-        }
-
-        .dropdown-menu .menu-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(179, 136, 255, 0.2), transparent);
-            margin: 2px 12px;
         }
 
         /* ===== صفحات ===== */
@@ -272,14 +212,13 @@
 
         .page-header {
             text-align: center;
-            padding: 30px 0;
-            margin-bottom: 20px;
+            padding: 20px 0;
+            margin-bottom: 16px;
             border-bottom: 2px solid rgba(179, 136, 255, 0.1);
-            width: 100%;
         }
 
         .page-header h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             background: linear-gradient(135deg, #b388ff, #7c4dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -287,22 +226,22 @@
 
         .page-header p {
             color: #8a7a9a;
-            font-size: 1rem;
-            margin-top: 8px;
+            font-size: 0.9rem;
+            margin-top: 6px;
         }
 
         .page-content {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 14px;
             width: 100%;
         }
 
         /* ===== کارت ویدیو ===== */
         .video-card {
             background: linear-gradient(145deg, #1b1f2e, #121624);
-            border-radius: 20px;
-            padding: 16px;
+            border-radius: 18px;
+            padding: 14px;
             border: 1px solid #2b3147;
             transition: 0.3s;
             width: 100%;
@@ -310,38 +249,38 @@
 
         .video-card:hover {
             border-color: #7c4dff;
-            transform: translateY(-4px);
+            transform: translateY(-3px);
         }
 
         .video-card .video-thumb {
             width: 100%;
-            height: 180px;
+            height: 170px;
             background: radial-gradient(circle at 30% 30%, #2d2050, #0f0a1e);
-            border-radius: 14px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             border: 1px solid #2f3650;
             position: relative;
         }
 
         .video-card .video-thumb i {
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: #b388ff;
             opacity: 0.8;
         }
 
         .video-card .video-thumb .play-btn {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 54px;
+            height: 54px;
             background: linear-gradient(145deg, #b388ff, #7c4dff);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #0b0d15;
             cursor: pointer;
             transition: 0.3s;
@@ -354,14 +293,14 @@
 
         .video-card h3 {
             color: #d4c0ff;
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 4px;
         }
 
         .video-card .video-meta {
             color: #7a6a8a;
-            font-size: 0.75rem;
-            margin-bottom: 10px;
+            font-size: 0.7rem;
+            margin-bottom: 8px;
         }
 
         .video-card .video-meta i {
@@ -373,18 +312,17 @@
             background: linear-gradient(145deg, #b388ff, #7c4dff);
             border: none;
             border-radius: 60px;
-            padding: 8px 20px;
+            padding: 6px 16px;
             font-weight: 900;
             font-family: 'Vazirmatn', sans-serif;
             color: #0b0d15;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: 0.25s;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             box-shadow: 0 4px 14px #7c4dff55;
-            margin-top: 4px;
         }
 
         .watch-btn:hover {
@@ -395,12 +333,11 @@
         .video-desc-toggle {
             cursor: pointer;
             color: #b388ff;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            margin-top: 8px;
+            gap: 4px;
             transition: 0.3s;
         }
 
@@ -413,70 +350,52 @@
             overflow: hidden;
             transition: max-height 0.4s ease, padding 0.3s ease;
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            margin-top: 6px;
+            border-radius: 10px;
+            margin-top: 4px;
         }
 
         .video-desc.open {
             max-height: 300px;
-            padding: 14px;
+            padding: 12px;
         }
 
         .video-desc p {
             color: #b0a8c0;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             line-height: 1.8;
         }
 
         .video-card .card-actions {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             flex-wrap: wrap;
-            margin-top: 6px;
+            margin-top: 4px;
         }
 
         /* ===== کارت‌های خانه ===== */
         .card-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
-            margin-top: 8px;
+            gap: 14px;
+            margin-top: 6px;
             width: 100%;
         }
 
         .card {
             background: linear-gradient(145deg, #1b1f2e, #121624);
-            border-radius: 24px;
-            padding: 14px 14px 18px;
+            border-radius: 20px;
+            padding: 12px 12px 16px;
             box-shadow: 0 12px 30px -10px #000000cc;
             transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
             border: 1px solid #2b3147;
             display: flex;
             flex-direction: column;
-            position: relative;
-            overflow: hidden;
             width: 100%;
         }
 
-        .card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 20%, #7c4dff22, transparent 60%);
-            opacity: 0;
-            transition: 0.6s;
-            pointer-events: none;
-        }
-        .card:hover::before {
-            opacity: 1;
-        }
-
         .card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-4px);
             border-color: #9a7aff;
             box-shadow: 0 20px 40px -14px #7c4dffaa;
         }
@@ -485,9 +404,9 @@
             position: relative;
             width: 100%;
             padding-top: 56.25%;
-            border-radius: 16px;
+            border-radius: 14px;
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             background: linear-gradient(145deg, #1f253b, #0f121e);
             border: 1px solid #2f3650;
         }
@@ -500,20 +419,20 @@
             align-items: center;
             justify-content: center;
             background: radial-gradient(circle at 30% 30%, #2d2050, #0f0a1e);
-            border-radius: 16px;
+            border-radius: 14px;
             gap: 4px;
         }
         .card-image .placeholder i {
             background: linear-gradient(145deg, #b388ff, #7c4dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 3rem;
+            font-size: 2.5rem;
             filter: drop-shadow(0 0 30px #7c4dff44);
         }
         .card-image .placeholder span {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             background: rgba(255, 255, 255, 0.05);
-            padding: 3px 14px;
+            padding: 2px 12px;
             border-radius: 60px;
             border: 1px solid #6633aa88;
             font-weight: 700;
@@ -521,7 +440,7 @@
         }
 
         .card h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 900;
             margin-bottom: 4px;
             background: linear-gradient(to right, #d4c0ff, #b388ff);
@@ -532,8 +451,8 @@
         .card p {
             color: #b0a8c0;
             line-height: 1.5;
-            font-size: 0.8rem;
-            margin: 4px 0 10px;
+            font-size: 0.75rem;
+            margin: 4px 0 8px;
             flex: 1;
         }
 
@@ -541,10 +460,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #7a6a8a;
             border-top: 1px solid #2d2244;
-            padding-top: 10px;
+            padding-top: 8px;
             margin-top: 2px;
         }
         .card .meta i {
@@ -555,10 +474,10 @@
         }
         .card .badge {
             background: linear-gradient(145deg, #b388ff, #7c4dff);
-            padding: 2px 12px;
+            padding: 2px 10px;
             border-radius: 60px;
             font-weight: 700;
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: #0b0d15;
         }
         .badge.gold {
@@ -575,18 +494,18 @@
             background: linear-gradient(145deg, #b388ff, #7c4dff);
             border: none;
             border-radius: 60px;
-            padding: 8px 16px;
+            padding: 6px 14px;
             font-weight: 900;
             font-family: 'Vazirmatn', sans-serif;
             color: #0b0d15;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             cursor: pointer;
             transition: 0.25s;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             width: fit-content;
-            margin-top: 6px;
+            margin-top: 4px;
             box-shadow: 0 4px 14px #7c4dff55;
         }
         .btn-gradient i {
@@ -602,57 +521,57 @@
         .featured-row {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
-            margin: 28px 0;
+            gap: 14px;
+            margin: 24px 0;
             width: 100%;
         }
         .featured-box {
             background: linear-gradient(145deg, #1b1f2e, #11151f);
-            border-radius: 24px;
-            padding: 20px;
+            border-radius: 20px;
+            padding: 16px;
             border: 1px solid #2b3147;
             box-shadow: 0 12px 30px -10px #000000dd;
             width: 100%;
         }
         .featured-box h2 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
             background: linear-gradient(135deg, #b388ff, #7c4dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         .featured-box ul {
             list-style: none;
             padding: 0;
         }
         .featured-box li {
-            padding: 10px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #2d2244;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #c8c0d0;
         }
         .featured-box li i {
-            font-size: 1.2rem;
+            font-size: 1rem;
             background: linear-gradient(145deg, #b388ff, #7c4dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            width: 28px;
+            width: 24px;
         }
 
         footer {
-            margin-top: 30px;
+            margin-top: 24px;
             text-align: center;
-            padding: 16px 10px;
+            padding: 14px 10px;
             border-top: 1px solid #2d2244;
             color: #7a6a8a;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             width: 100%;
         }
         footer i {
@@ -662,123 +581,139 @@
             margin: 0 4px;
         }
 
-        /* ============================================
-           دسکتاپ
-           ============================================ */
+        .page-card {
+            background: linear-gradient(145deg, #1b1f2e, #121624);
+            border-radius: 18px;
+            padding: 14px;
+            border: 1px solid #2b3147;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .page-card:hover {
+            border-color: #7c4dff;
+            transform: translateY(-3px);
+        }
+
+        .page-card h3 {
+            color: #d4c0ff;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .page-card p {
+            color: #b0a8c0;
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* ===== دسکتاپ ===== */
         @media (min-width: 769px) {
             body {
                 padding: 20px;
                 padding-top: 100px;
             }
             header {
-                padding: 8px 24px;
-                height: 84px;
+                padding: 10px 28px;
+                height: 82px;
                 border-radius: 60px;
                 top: 20px;
-                margin-bottom: 36px;
+                margin-bottom: 32px;
             }
             .logo img {
-                height: 74px;
+                height: 64px;
             }
             .logo span {
-                font-size: 1.6rem;
-            }
-            .nav-divider {
-                height: 40px;
-            }
-            .nav-dots .dot {
-                width: 7px;
-                height: 7px;
+                font-size: 1.8rem;
             }
             .dropdown-menu {
-                min-width: 250px;
-                padding: 12px 10px;
-                right: 0;
-                top: calc(100% + 8px);
+                min-width: 240px;
+                padding: 10px 8px;
+                left: 0;
             }
             .dropdown-menu a {
-                font-size: 1.05rem;
+                font-size: 1rem;
                 padding: 12px 20px;
             }
             .dropdown-menu a i {
-                font-size: 1.3rem;
-                width: 32px;
+                font-size: 1.2rem;
+                width: 30px;
             }
 
             .card-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 24px;
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 20px;
             }
             .card {
-                padding: 16px 16px 22px;
-                border-radius: 28px;
+                padding: 16px 16px 20px;
+                border-radius: 24px;
             }
             .card-image .placeholder i {
-                font-size: 4rem;
+                font-size: 3.5rem;
             }
             .card-image .placeholder span {
-                font-size: 0.9rem;
-                padding: 4px 18px;
+                font-size: 0.85rem;
+                padding: 4px 16px;
             }
             .card h3 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
             .card p {
-                font-size: 0.9rem;
-                margin: 6px 0 14px;
+                font-size: 0.85rem;
+                margin: 6px 0 12px;
             }
             .card .meta {
-                font-size: 0.75rem;
-                padding-top: 14px;
+                font-size: 0.7rem;
+                padding-top: 12px;
             }
             .card .badge {
-                font-size: 0.65rem;
-                padding: 3px 16px;
+                font-size: 0.6rem;
+                padding: 3px 14px;
             }
             .btn-gradient {
-                font-size: 0.9rem;
-                padding: 10px 22px;
-                margin-top: 8px;
+                font-size: 0.8rem;
+                padding: 8px 18px;
+                margin-top: 6px;
             }
 
             .featured-row {
                 grid-template-columns: 2fr 1fr;
-                gap: 24px;
-                margin: 40px 0;
+                gap: 20px;
+                margin: 36px 0;
             }
             .featured-box {
-                padding: 28px;
-                border-radius: 32px;
+                padding: 24px;
+                border-radius: 28px;
             }
             .featured-box h2 {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
             }
             .featured-box li {
-                font-size: 0.9rem;
-                padding: 14px 0;
+                font-size: 0.85rem;
+                padding: 12px 0;
             }
             .featured-box li i {
-                font-size: 1.4rem;
-                width: 34px;
+                font-size: 1.2rem;
+                width: 30px;
             }
             footer {
-                font-size: 0.9rem;
-                margin-top: 60px;
-                padding: 24px 10px;
+                font-size: 0.85rem;
+                margin-top: 50px;
+                padding: 20px 10px;
             }
 
             .page-content {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-                gap: 20px;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 18px;
             }
             .page-header h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             .video-card .video-thumb {
-                height: 220px;
+                height: 200px;
             }
             .video-card .video-thumb i {
-                font-size: 5rem;
+                font-size: 4.5rem;
             }
         }
 
@@ -789,32 +724,28 @@
             }
             header {
                 height: 60px;
-                padding: 4px 10px;
+                padding: 6px 12px;
                 border-radius: 30px;
                 top: 6px;
-                margin-bottom: 14px;
+                margin-bottom: 16px;
             }
             .logo img {
-                height: 46px;
+                height: 44px;
             }
             .logo span {
                 font-size: 1rem;
             }
-            .nav-divider {
-                height: 24px;
-            }
             .nav-dots {
-                padding: 3px 8px;
+                padding: 5px 10px;
             }
             .nav-dots .dot {
                 width: 4px;
                 height: 4px;
             }
             .dropdown-menu {
-                min-width: 165px;
-                right: -10px;
-                padding: 8px 6px;
-                top: calc(100% + 4px);
+                min-width: 160px;
+                padding: 6px 4px;
+                left: -5px;
             }
             .dropdown-menu a {
                 font-size: 0.8rem;
@@ -826,86 +757,80 @@
                 width: 22px;
             }
             .card {
-                padding: 10px 10px 14px;
-                border-radius: 18px;
+                padding: 8px 8px 12px;
+                border-radius: 16px;
             }
             .card-image .placeholder i {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             .card-image .placeholder span {
-                font-size: 0.6rem;
-                padding: 2px 10px;
+                font-size: 0.55rem;
+                padding: 2px 8px;
             }
             .card h3 {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
             .card p {
-                font-size: 0.7rem;
-                margin: 3px 0 8px;
+                font-size: 0.65rem;
+                margin: 3px 0 6px;
             }
             .card .meta {
-                font-size: 0.6rem;
-                padding-top: 8px;
+                font-size: 0.55rem;
+                padding-top: 6px;
             }
             .card .badge {
-                font-size: 0.5rem;
-                padding: 1px 8px;
+                font-size: 0.45rem;
+                padding: 1px 6px;
             }
             .btn-gradient {
-                font-size: 0.65rem;
-                padding: 5px 12px;
-                margin-top: 4px;
+                font-size: 0.6rem;
+                padding: 4px 10px;
+                margin-top: 3px;
             }
             .featured-box {
-                padding: 14px;
-                border-radius: 18px;
+                padding: 12px;
+                border-radius: 16px;
             }
             .featured-box h2 {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
             .featured-box li {
-                font-size: 0.7rem;
-                padding: 8px 0;
+                font-size: 0.65rem;
+                padding: 6px 0;
             }
             .featured-box li i {
-                font-size: 1rem;
-                width: 22px;
+                font-size: 0.9rem;
+                width: 20px;
             }
             footer {
-                font-size: 0.65rem;
-                padding: 12px 10px;
-                margin-top: 20px;
+                font-size: 0.6rem;
+                padding: 10px 10px;
+                margin-top: 16px;
             }
             .page-header h1 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
             .page-header p {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
             }
             .video-card .video-thumb {
-                height: 140px;
+                height: 130px;
             }
             .video-card .video-thumb i {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
             .video-card .video-thumb .play-btn {
-                width: 48px;
-                height: 48px;
-                font-size: 1.4rem;
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
             }
-        }
-
-        img,
-        a,
-        button {
-            -webkit-touch-callout: none;
-            -webkit-user-drag: none;
-            user-select: none;
-        }
-
-        body {
-            -webkit-user-select: none;
-            user-select: none;
+            .video-card h3 {
+                font-size: 0.85rem;
+            }
+            .watch-btn {
+                font-size: 0.7rem;
+                padding: 4px 12px;
+            }
         }
     </style>
 </head>
@@ -914,34 +839,29 @@
 
         <!-- ===== HEADER ===== -->
         <header>
-            <div class="header-left">
-                <a class="logo" onclick="showPage('home')">
-                    <img src="https://uploadkon.ir/uploads/553e14_26Zerox.png" alt="زروکس">
-                    <span>زروکـــــس!</span>
-                </a>
-            </div>
+            <a class="logo" onclick="showPage('home')">
+                <img src="https://uploadkon.ir/uploads/553e14_26Zerox.png" alt="زروکس">
+                <span>زروکـــــس!</span>
+            </a>
 
-            <div class="header-right">
-                <div class="nav-divider"></div>
-                <div class="nav-dots" onclick="this.classList.toggle('active')">
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+            <div class="nav-dots" onclick="this.classList.toggle('active')">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
 
-                    <div class="dropdown-menu">
-                        <a onclick="showPage('videos'); document.querySelector('.nav-dots').classList.remove('active')">
-                            <i class="fas fa-video"></i> ویدیو ها
-                        </a>
-                        <a onclick="showPage('games'); document.querySelector('.nav-dots').classList.remove('active')">
-                            <i class="fas fa-gamepad"></i> اخبار بازی
-                        </a>
-                        <a onclick="showPage('old'); document.querySelector('.nav-dots').classList.remove('active')">
-                            <i class="fas fa-crown"></i> زروکس آلد
-                        </a>
-                        <a onclick="showPage('music'); document.querySelector('.nav-dots').classList.remove('active')">
-                            <i class="fas fa-music"></i> زروکس‌موزیک
-                        </a>
-                    </div>
+                <div class="dropdown-menu">
+                    <a onclick="showPage('videos'); document.querySelector('.nav-dots').classList.remove('active')">
+                        <i class="fas fa-video"></i> ویدیو ها
+                    </a>
+                    <a onclick="showPage('games'); document.querySelector('.nav-dots').classList.remove('active')">
+                        <i class="fas fa-gamepad"></i> اخبار بازی
+                    </a>
+                    <a onclick="showPage('old'); document.querySelector('.nav-dots').classList.remove('active')">
+                        <i class="fas fa-crown"></i> زروکس آلد
+                    </a>
+                    <a onclick="showPage('music'); document.querySelector('.nav-dots').classList.remove('active')">
+                        <i class="fas fa-music"></i> زروکس‌موزیک
+                    </a>
                 </div>
             </div>
         </header>
@@ -957,12 +877,12 @@
                         </div>
                     </div>
                     <h3>اکران نوروزی</h3>
-                    <p>جدیدترین فیلم‌های سینمایی با بازیگران مطرح و داستان‌های نفس‌گیر.</p>
+                    <p>جدیدترین فیلم‌های سینمایی با بازیگران مطرح.</p>
                     <div class="meta">
                         <span><i class="far fa-calendar-alt"></i> ۲۵ اسفند</span>
                         <span class="badge">جدید</span>
                     </div>
-                    <button class="btn-gradient"><i class="fas fa-ticket-alt"></i> خرید بلیط</button>
+                    <button class="btn-gradient"><i class="fas fa-ticket-alt"></i> خرید</button>
                 </div>
 
                 <div class="card">
@@ -973,7 +893,7 @@
                         </div>
                     </div>
                     <h3>بازی هفته</h3>
-                    <p>بازی جدید «شبح تسویه‌» با گرافیک خیره‌کننده و گیم‌پلی هیجان‌انگیز.</p>
+                    <p>بازی «شبح تسویه‌» با گرافیک خیره‌کننده.</p>
                     <div class="meta">
                         <span><i class="far fa-clock"></i> ۳ ساعت پیش</span>
                         <span class="badge gold">داغ</span>
@@ -989,7 +909,7 @@
                         </div>
                     </div>
                     <h3>سریال جدید</h3>
-                    <p>فصل سوم سریال محبوب «شهر ابری» با اتفاقات غافلگیرکننده.</p>
+                    <p>فصل سوم سریال محبوب «شهر ابری».</p>
                     <div class="meta">
                         <span><i class="far fa-star"></i> ۸.۹/۱۰</span>
                         <span class="badge pink">پربیننده</span>
@@ -1005,7 +925,7 @@
                         </div>
                     </div>
                     <h3>تکنولوژی</h3>
-                    <p>کنسول نسل جدید با قدرت رندرینگ ۸K و قیمت مناسب وارد بازار شد.</p>
+                    <p>کنسول نسل جدید با قدرت ۸K.</p>
                     <div class="meta">
                         <span><i class="far fa-calendar-alt"></i> ۱۴ فروردین</span>
                         <span class="badge blue">پیش‌فروش</span>
@@ -1021,7 +941,7 @@
                         </div>
                     </div>
                     <h3>موسیقی متن</h3>
-                    <p>آهنگساز برنده اسکار برای فیلم جدید «رودخانه‌های آتش» منتشر کرد.</p>
+                    <p>آهنگساز برنده اسکار برای فیلم جدید.</p>
                     <div class="meta">
                         <span><i class="fas fa-music"></i> ۱۲ دی</span>
                         <span class="badge gold">اکسپرسیو</span>
@@ -1037,12 +957,12 @@
                         </div>
                     </div>
                     <h3>هوش مصنوعی</h3>
-                    <p>ابزار جدید ساخت تریلر با هوش مصنوعی؛ فقط با یک متن، تریلر بسازید.</p>
+                    <p>ابزار جدید ساخت تریلر با هوش مصنوعی.</p>
                     <div class="meta">
                         <span><i class="far fa-eye"></i> ۲۴۰۰ بازدید</span>
                         <span class="badge">آزمایشی</span>
                     </div>
-                    <button class="btn-gradient"><i class="fas fa-rocket"></i> امتحان کن</button>
+                    <button class="btn-gradient"><i class="fas fa-rocket"></i> امتحان</button>
                 </div>
             </div>
 
@@ -1050,24 +970,24 @@
                 <div class="featured-box">
                     <h2><i class="fas fa-crown" style="background:linear-gradient(145deg,#f7971e,#ffd200);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i> پربازدیدهای هفته</h2>
                     <ul>
-                        <li><i class="fas fa-film"></i> مصاحبه اختصاصی با کارگردان «شب بی‌ستاره»</li>
-                        <li><i class="fas fa-gamepad"></i> نقد و بررسی بازی «افسانه‌های کهن»</li>
-                        <li><i class="fas fa-tv"></i> فصل پایانی سریال «مه‌آلود»</li>
+                        <li><i class="fas fa-film"></i> مصاحبه با کارگردان «شب بی‌ستاره»</li>
+                        <li><i class="fas fa-gamepad"></i> نقد بازی «افسانه‌های کهن»</li>
+                        <li><i class="fas fa-tv"></i> فصل پایانی «مه‌آلود»</li>
                         <li><i class="fas fa-microchip"></i> مقایسه کنسول‌های نسل ۹</li>
                     </ul>
-                    <button class="btn-gradient" style="margin-top:14px;"><i class="fas fa-arrow-left"></i> مشاهده همه</button>
+                    <button class="btn-gradient" style="margin-top:10px;"><i class="fas fa-arrow-left"></i> مشاهده همه</button>
                 </div>
 
                 <div class="featured-box">
                     <h2><i class="fas fa-bolt" style="background:linear-gradient(145deg,#b388ff,#7c4dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i> اخبار فوری</h2>
                     <ul>
-                        <li><i class="fas fa-circle" style="font-size:0.6rem; background:#b388ff; -webkit-text-fill-color:#b388ff;"></i> اکران آنلاین فیلم جدید نولان</li>
-                        <li><i class="fas fa-circle" style="font-size:0.6rem; background:#7c4dff; -webkit-text-fill-color:#7c4dff;"></i> عرضه دموی بازی «خون‌سرد»</li>
-                        <li><i class="fas fa-circle" style="font-size:0.6rem; background:#9a7aff; -webkit-text-fill-color:#9a7aff;"></i> تغییر تاریخ انتشار سریال</li>
+                        <li><i class="fas fa-circle" style="font-size:0.5rem; background:#b388ff; -webkit-text-fill-color:#b388ff;"></i> اکران آنلاین فیلم جدید نولان</li>
+                        <li><i class="fas fa-circle" style="font-size:0.5rem; background:#7c4dff; -webkit-text-fill-color:#7c4dff;"></i> عرضه دموی بازی «خون‌سرد»</li>
+                        <li><i class="fas fa-circle" style="font-size:0.5rem; background:#9a7aff; -webkit-text-fill-color:#9a7aff;"></i> تغییر تاریخ انتشار سریال</li>
                     </ul>
-                    <div style="display:flex; gap:8px; margin-top:16px; flex-wrap:wrap;">
-                        <span class="badge gold" style="padding:4px 14px; font-size:0.65rem;"><i class="fas fa-bolt"></i> لحظه‌ای</span>
-                        <span class="badge pink" style="padding:4px 14px; font-size:0.65rem;"><i class="fas fa-fire"></i> داغ</span>
+                    <div style="display:flex; gap:6px; margin-top:12px; flex-wrap:wrap;">
+                        <span class="badge gold" style="padding:4px 12px; font-size:0.6rem;"><i class="fas fa-bolt"></i> لحظه‌ای</span>
+                        <span class="badge pink" style="padding:4px 12px; font-size:0.6rem;"><i class="fas fa-fire"></i> داغ</span>
                     </div>
                 </div>
             </div>
@@ -1097,7 +1017,7 @@
                         </span>
                     </div>
                     <div class="video-desc">
-                        <p>🎮 تریلر رسمی بازی «شبح تسویه» با گرافیک خیره‌کننده و داستانی نفس‌گیر. این بازی در سبک اکشن-ماجراجویی ساخته شده و قرار است در پاییز ۱۴۰۵ منتشر شود.</p>
+                        <p>🎮 تریلر رسمی بازی «شبح تسویه» با گرافیک خیره‌کننده و داستانی نفس‌گیر.</p>
                     </div>
                 </div>
 
@@ -1106,7 +1026,7 @@
                         <i class="fas fa-play-circle"></i>
                         <div class="play-btn"><i class="fas fa-play"></i></div>
                     </div>
-                    <h3>🎮 گیم‌پلی زنده بازی «افسانه‌های کهن»</h3>
+                    <h3>🎮 گیم‌پلی زنده «افسانه‌های کهن»</h3>
                     <div class="video-meta">
                         <i class="far fa-clock"></i> ۵ روز پیش · <i class="far fa-eye"></i> ۸,۷۲۰ بازدید
                     </div>
@@ -1117,7 +1037,7 @@
                         </span>
                     </div>
                     <div class="video-desc">
-                        <p>🎮 گیم‌پلی زنده و بدون وقفه بازی «افسانه‌های کهن» با کیفیت ۴K. در این ویدیو مراحل اولیه بازی و مبارزات هیجان‌انگیز را مشاهده می‌کنید.</p>
+                        <p>🎮 گیم‌پلی زنده بازی «افسانه‌های کهن» با کیفیت ۴K و مبارزات هیجان‌انگیز.</p>
                     </div>
                 </div>
 
@@ -1137,7 +1057,7 @@
                         </span>
                     </div>
                     <div class="video-desc">
-                        <p>📽️ پشت صحنه فیلم سینمایی «رودخانه‌های آتش» به کارگردانی احمد مرادی. در این ویدیو با بازیگران، جلوه‌های ویژه و مراحل ساخت آشنا می‌شوید.</p>
+                        <p>📽️ پشت صحنه فیلم سینمایی «رودخانه‌های آتش» با بازیگران و جلوه‌های ویژه.</p>
                     </div>
                 </div>
 
@@ -1146,7 +1066,7 @@
                         <i class="fas fa-play-circle"></i>
                         <div class="play-btn"><i class="fas fa-play"></i></div>
                     </div>
-                    <h3>🎞️ ویدیو کوتاه: بهترین لحظات بازی‌های ۱۴۰۴</h3>
+                    <h3>🎞️ بهترین لحظات بازی‌های ۱۴۰۴</h3>
                     <div class="video-meta">
                         <i class="far fa-clock"></i> ۲ هفته پیش · <i class="far fa-eye"></i> ۲۱,۱۰۰ بازدید
                     </div>
@@ -1157,7 +1077,7 @@
                         </span>
                     </div>
                     <div class="video-desc">
-                        <p>🎞️ مجموعه‌ای از بهترین و هیجان‌انگیزترین لحظات بازی‌های ویدیویی سال ۱۴۰۴. شامل صحنه‌های نهایی بازی‌های محبوب و حرکت‌های ویژه.</p>
+                        <p>🎞️ بهترین لحظات بازی‌های ویدیویی سال ۱۴۰۴ در یک ویدیوی کوتاه.</p>
                     </div>
                 </div>
 
@@ -1246,7 +1166,7 @@
         <footer>
             <i class="fas fa-film"></i> Zerox.ir · بازی با زروکس! <i class="fas fa-gamepad"></i>
             <br>
-            <span style="display:inline-block; margin-top:6px; font-size:0.65rem; opacity:0.7;">
+            <span style="display:inline-block; margin-top:4px; font-size:0.6rem; opacity:0.7;">
                 <i class="fas fa-code"></i> با عشق و کد · زروکس · ۱۴۰۵
             </span>
         </footer>
@@ -1286,4 +1206,4 @@
         }
     </script>
 </body>
-    </html>
+                            </html>
