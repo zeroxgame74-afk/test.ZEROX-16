@@ -13,7 +13,8 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             max-width: 100%;
             overflow-x: hidden;
         }
@@ -64,7 +65,7 @@
             margin-bottom: 24px;
             border: 1px solid rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(16px);
-            height: 70px;
+            height: 74px;
             width: 100%;
         }
 
@@ -96,7 +97,7 @@
             cursor: pointer;
         }
         .logo img {
-            height: 55px;
+            height: 60px;
             width: auto;
             border-radius: 10px;
         }
@@ -114,11 +115,12 @@
             align-items: center;
             gap: 10px;
             flex-shrink: 0;
+            position: relative;
         }
 
         .nav-divider {
             width: 2px;
-            height: 32px;
+            height: 34px;
             background: linear-gradient(180deg, transparent, rgba(179, 136, 255, 0.4), rgba(124, 77, 255, 0.4), transparent);
             border-radius: 10px;
             flex-shrink: 0;
@@ -157,29 +159,37 @@
         }
 
         @keyframes pulse-dot {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.4); }
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.4);
+            }
         }
 
-        /* ===== منوی کشویی ===== */
+        /* ===== منوی کشویی درست شده ===== */
         .dropdown-menu {
             position: absolute;
-            top: calc(100% + 10px);
-            right: -10px;
+            top: calc(100% + 6px);
+            right: -5px;
             background: rgba(20, 24, 38, 0.97);
             backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 12px 10px;
-            min-width: 220px;
+            border-radius: 18px;
+            padding: 10px 8px;
+            min-width: 210px;
             border: 1px solid rgba(179, 136, 255, 0.15);
             box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95);
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px) scale(0.95);
+            transform: translateY(-8px) scale(0.95);
             transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
+            z-index: 1000;
         }
 
         .nav-dots.active .dropdown-menu {
@@ -192,13 +202,13 @@
             color: #e0e8ff;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1rem;
-            padding: 12px 18px;
-            border-radius: 14px;
+            font-size: 0.95rem;
+            padding: 10px 16px;
+            border-radius: 12px;
             transition: all 0.25s ease;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             font-family: 'Vazirmatn', sans-serif;
             white-space: nowrap;
             background: rgba(255, 255, 255, 0.02);
@@ -207,15 +217,23 @@
         }
 
         .dropdown-menu a i {
-            font-size: 1.2rem;
-            width: 28px;
+            font-size: 1.1rem;
+            width: 26px;
             text-align: center;
         }
 
-        .dropdown-menu a i.fa-video { color: #ff6b6b; }
-        .dropdown-menu a i.fa-gamepad { color: #4ecdc4; }
-        .dropdown-menu a i.fa-crown { color: #ffd93d; }
-        .dropdown-menu a i.fa-music { color: #a29bfe; }
+        .dropdown-menu a i.fa-video {
+            color: #ff6b6b;
+        }
+        .dropdown-menu a i.fa-gamepad {
+            color: #4ecdc4;
+        }
+        .dropdown-menu a i.fa-crown {
+            color: #ffd93d;
+        }
+        .dropdown-menu a i.fa-music {
+            color: #a29bfe;
+        }
 
         .dropdown-menu a:hover {
             background: linear-gradient(145deg, rgba(124, 77, 255, 0.2), rgba(179, 136, 255, 0.1));
@@ -227,7 +245,7 @@
         .dropdown-menu .menu-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(179, 136, 255, 0.2), transparent);
-            margin: 4px 12px;
+            margin: 2px 12px;
         }
 
         /* ===== صفحات ===== */
@@ -242,8 +260,14 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .page-header {
@@ -274,7 +298,7 @@
             width: 100%;
         }
 
-        /* ===== کارت ویدیو با دکمه تماشا و توضیحات کشویی ===== */
+        /* ===== کارت ویدیو ===== */
         .video-card {
             background: linear-gradient(145deg, #1b1f2e, #121624);
             border-radius: 20px;
@@ -345,7 +369,6 @@
             color: #b388ff;
         }
 
-        /* دکمه تماشا */
         .watch-btn {
             background: linear-gradient(145deg, #b388ff, #7c4dff);
             border: none;
@@ -369,7 +392,6 @@
             box-shadow: 0 8px 24px #7c4dffaa;
         }
 
-        /* توضیحات کشویی */
         .video-desc-toggle {
             cursor: pointer;
             color: #b388ff;
@@ -650,36 +672,37 @@
             }
             header {
                 padding: 8px 24px;
-                height: 80px;
+                height: 84px;
                 border-radius: 60px;
                 top: 20px;
                 margin-bottom: 36px;
             }
             .logo img {
-                height: 70px;
+                height: 74px;
             }
             .logo span {
                 font-size: 1.6rem;
             }
             .nav-divider {
-                height: 38px;
+                height: 40px;
             }
             .nav-dots .dot {
                 width: 7px;
                 height: 7px;
             }
             .dropdown-menu {
-                min-width: 260px;
-                padding: 14px 12px;
+                min-width: 250px;
+                padding: 12px 10px;
                 right: 0;
+                top: calc(100% + 8px);
             }
             .dropdown-menu a {
-                font-size: 1.1rem;
-                padding: 14px 22px;
+                font-size: 1.05rem;
+                padding: 12px 20px;
             }
             .dropdown-menu a i {
-                font-size: 1.4rem;
-                width: 34px;
+                font-size: 1.3rem;
+                width: 32px;
             }
 
             .card-grid {
@@ -765,20 +788,20 @@
                 padding-top: 70px;
             }
             header {
-                height: 58px;
+                height: 60px;
                 padding: 4px 10px;
                 border-radius: 30px;
                 top: 6px;
                 margin-bottom: 14px;
             }
             .logo img {
-                height: 42px;
+                height: 46px;
             }
             .logo span {
                 font-size: 1rem;
             }
             .nav-divider {
-                height: 22px;
+                height: 24px;
             }
             .nav-dots {
                 padding: 3px 8px;
@@ -788,18 +811,19 @@
                 height: 4px;
             }
             .dropdown-menu {
-                min-width: 170px;
-                right: -15px;
-                padding: 10px 8px;
+                min-width: 165px;
+                right: -10px;
+                padding: 8px 6px;
+                top: calc(100% + 4px);
             }
             .dropdown-menu a {
-                font-size: 0.85rem;
-                padding: 10px 14px;
-                gap: 10px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                gap: 8px;
             }
             .dropdown-menu a i {
-                font-size: 1rem;
-                width: 24px;
+                font-size: 0.9rem;
+                width: 22px;
             }
             .card {
                 padding: 10px 10px 14px;
@@ -871,7 +895,9 @@
             }
         }
 
-        img, a, button {
+        img,
+        a,
+        button {
             -webkit-touch-callout: none;
             -webkit-user-drag: none;
             user-select: none;
@@ -1047,7 +1073,7 @@
             </div>
         </div>
 
-        <!-- ===== صفحه ویدیو ها با کارت و توضیحات کشویی ===== -->
+        <!-- ===== صفحه ویدیو ها ===== -->
         <div id="page-videos" class="page">
             <div class="page-header">
                 <h1><i class="fas fa-video" style="color:#ff6b6b;"></i> ویدیو ها</h1>
@@ -1055,7 +1081,6 @@
             </div>
             <div class="page-content">
 
-                <!-- ویدیو ۱ -->
                 <div class="video-card">
                     <div class="video-thumb">
                         <i class="fas fa-play-circle"></i>
@@ -1072,11 +1097,10 @@
                         </span>
                     </div>
                     <div class="video-desc">
-                        <p>🎮 تریلر رسمی بازی «شبح تسویه» با گرافیک خیره‌کننده و داستانی نفس‌گیر. این بازی در سبک اکشن-ماجراجویی ساخته شده و قرار است در پاییز ۱۴۰۵ منتشر شود. داستان درباره یک مامور ویژه است که باید رازهای یک سازمان مخفی را کشف کند.</p>
+                        <p>🎮 تریلر رسمی بازی «شبح تسویه» با گرافیک خیره‌کننده و داستانی نفس‌گیر. این بازی در سبک اکشن-ماجراجویی ساخته شده و قرار است در پاییز ۱۴۰۵ منتشر شود.</p>
                     </div>
                 </div>
 
-                <!-- ویدیو ۲ -->
                 <div class="video-card">
                     <div class="video-thumb">
                         <i class="fas fa-play-circle"></i>
@@ -1093,11 +1117,10 @@
                         </span>
                     </div>
                     <div class="video-desc">
-                        <p>🎮 گیم‌پلی زنده و بدون وقفه بازی «افسانه‌های کهن» با کیفیت ۴K. در این ویدیو مراحل اولیه بازی و مبارزات هیجان‌انگیز را مشاهده می‌کنید. همچنین نکات و ترفندهای خاصی برای عبور از مراحل سخت ارائه شده است.</p>
+                        <p>🎮 گیم‌پلی زنده و بدون وقفه بازی «افسانه‌های کهن» با کیفیت ۴K. در این ویدیو مراحل اولیه بازی و مبارزات هیجان‌انگیز را مشاهده می‌کنید.</p>
                     </div>
                 </div>
 
-                <!-- ویدیو ۳ -->
                 <div class="video-card">
                     <div class="video-thumb">
                         <i class="fas fa-play-circle"></i>
@@ -1114,11 +1137,10 @@
                         </span>
                     </div>
                     <div class="video-desc">
-                        <p>📽️ پشت صحنه فیلم سینمایی «رودخانه‌های آتش» به کارگردانی احمد مرادی. در این ویدیو با بازیگران، جلوه‌های ویژه و مراحل ساخت این فیلم حماسی آشنا می‌شوید. فیلمبرداری در مناطق بکر و سخت‌گذر انجام شده است.</p>
+                        <p>📽️ پشت صحنه فیلم سینمایی «رودخانه‌های آتش» به کارگردانی احمد مرادی. در این ویدیو با بازیگران، جلوه‌های ویژه و مراحل ساخت آشنا می‌شوید.</p>
                     </div>
                 </div>
 
-                <!-- ویدیو ۴ -->
                 <div class="video-card">
                     <div class="video-thumb">
                         <i class="fas fa-play-circle"></i>
@@ -1135,7 +1157,7 @@
                         </span>
                     </div>
                     <div class="video-desc">
-                        <p>🎞️ مجموعه‌ای از بهترین و هیجان‌انگیزترین لحظات بازی‌های ویدیویی سال ۱۴۰۴. شامل صحنه‌های نهایی بازی‌های محبوب، حرکت‌های ویژه و داستان‌های فراموش‌نشدنی. این ویدیو یک مرور کلی بر بهترین تجربه‌های گیمینگ سال گذشته است.</p>
+                        <p>🎞️ مجموعه‌ای از بهترین و هیجان‌انگیزترین لحظات بازی‌های ویدیویی سال ۱۴۰۴. شامل صحنه‌های نهایی بازی‌های محبوب و حرکت‌های ویژه.</p>
                     </div>
                 </div>
 
@@ -1250,11 +1272,10 @@
             }
         });
 
-        // ===== توضیحات کشویی =====
         function toggleDesc(element) {
             var desc = element.parentElement.nextElementSibling;
             var icon = element.querySelector('i');
-            
+
             if (desc.classList.contains('open')) {
                 desc.classList.remove('open');
                 icon.className = 'fas fa-chevron-down';
