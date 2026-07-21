@@ -1,818 +1,442 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🔥 GAMING DASHBOARD · ULTIMATE UI</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-  <style>
-    /* ============================================================
-       RESET & BASE
-    ============================================================ */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Vazirmatn', sans-serif;
-      font-weight: 900;
-      background: #0a0c16;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1.5rem;
-      color: #fff;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* ============================================================
-       BACKGROUND · ORBS & PARTICLES
-    ============================================================ */
-    .bg-orbs {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.3;
-      animation: orbFloat 12s infinite alternate ease-in-out;
-    }
-
-    .orb-1 {
-      width: 500px;
-      height: 500px;
-      background: #ff0066;
-      top: -10%;
-      left: -10%;
-      animation-duration: 14s;
-    }
-
-    .orb-2 {
-      width: 400px;
-      height: 400px;
-      background: #00ccff;
-      bottom: -10%;
-      right: -10%;
-      animation-duration: 18s;
-      animation-delay: -3s;
-    }
-
-    .orb-3 {
-      width: 300px;
-      height: 300px;
-      background: #ffaa00;
-      top: 40%;
-      left: 50%;
-      animation-duration: 16s;
-      animation-delay: -6s;
-      opacity: 0.15;
-    }
-
-    @keyframes orbFloat {
-      0% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(80px, -60px) scale(1.1); }
-      66% { transform: translate(-40px, 80px) scale(0.9); }
-      100% { transform: translate(60px, 40px) scale(1.05); }
-    }
-
-    /* خطوط اسکنر */
-    .scanline {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(0deg, 
-        transparent 0px, 
-        transparent 3px, 
-        rgba(0, 255, 255, 0.015) 3px, 
-        rgba(0, 255, 255, 0.015) 4px
-      );
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* ============================================================
-       MAIN CARD · GLASS & NEON
-    ============================================================ */
-    .gaming-dash {
-      position: relative;
-      z-index: 2;
-      max-width: 1200px;
-      width: 100%;
-      background: rgba(8, 12, 25, 0.75);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 2.5rem;
-      padding: 2.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 
-        0 30px 80px rgba(0, 0, 0, 0.8),
-        0 0 0 1px rgba(255, 0, 200, 0.1),
-        0 0 60px rgba(255, 0, 200, 0.05);
-      animation: cardGlow 4s infinite alternate;
-    }
-
-    @keyframes cardGlow {
-      0% { box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 0, 200, 0.1), 0 0 40px rgba(255, 0, 200, 0.05); }
-      50% { box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(0, 255, 255, 0.2), 0 0 80px rgba(0, 255, 255, 0.08); }
-      100% { box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 215, 0, 0.2), 0 0 60px rgba(255, 215, 0, 0.06); }
-    }
-
-    /* ============================================================
-       HEADER · AVATAR + TITLE
-    ============================================================ */
-    .dash-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .profile-area {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-    }
-
-    .avatar-wrapper {
-      position: relative;
-      width: 70px;
-      height: 70px;
-    }
-
-    .avatar-ring {
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 3px solid transparent;
-      background: conic-gradient(from 0deg, #ff0066, #00ccff, #ffaa00, #ff0066) border-box;
-      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      animation: spinRing 4s linear infinite;
-    }
-
-    @keyframes spinRing {
-      to { transform: rotate(360deg); }
-    }
-
-    .avatar-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #1a1f35, #2a2f4a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      color: #ffd700;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      z-index: 2;
-    }
-
-    .online-badge {
-      position: absolute;
-      bottom: 2px;
-      right: 2px;
-      width: 18px;
-      height: 18px;
-      background: #00ff88;
-      border-radius: 50%;
-      border: 2px solid #0a0c16;
-      z-index: 3;
-      animation: dotBlink 1.2s infinite;
-      box-shadow: 0 0 15px #00ff88;
-    }
-
-    @keyframes dotBlink {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(0.8); }
-    }
-
-    .user-info h2 {
-      font-size: 1.6rem;
-      background: linear-gradient(135deg, #f5f7fa, #b8c6db);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .user-info span {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.3);
-      font-weight: 700;
-    }
-
-    .header-stats {
-      display: flex;
-      gap: 2rem;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 0.8rem 2rem;
-      border-radius: 3rem;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .hstat {
-      text-align: center;
-    }
-
-    .hstat .num {
-      font-size: 1.4rem;
-      color: #ffd700;
-    }
-
-    .hstat .label {
-      font-size: 0.7rem;
-      color: rgba(255, 255, 255, 0.3);
-      letter-spacing: 0.5px;
-    }
-
-    /* ============================================================
-       GREETING + GLITCH
-    ============================================================ */
-    .greeting {
-      font-size: 1.8rem;
-      margin-bottom: 0.3rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .greeting i {
-      color: #ff0066;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0.7; }
-    }
-
-    .glitch-text {
-      font-size: 2.8rem;
-      font-weight: 900;
-      background: linear-gradient(135deg, #ff0066, #ffaa00, #00ccff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 40px rgba(255, 0, 102, 0.2);
-      animation: glitch 3s infinite;
-      position: relative;
-      display: inline-block;
-    }
-
-    @keyframes glitch {
-      0%, 100% { transform: skew(0deg); }
-      2% { transform: skew(2deg); }
-      4% { transform: skew(-2deg); }
-      6% { transform: skew(0deg); }
-      10% { transform: skew(0deg); }
-      12% { transform: skew(-1deg); }
-      14% { transform: skew(1deg); }
-      16% { transform: skew(0deg); }
-    }
-
-    /* ============================================================
-       PROGRESS BARS · GAMING SKILLS
-    ============================================================ */
-    .skills-section {
-      margin: 2.5rem 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem 2.5rem;
-    }
-
-    .skill-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-
-    .skill-item .skill-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .skill-bar {
-      width: 100%;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .skill-fill {
-      height: 100%;
-      border-radius: 10px;
-      width: 0%;
-      animation: fillBar 1.5s ease forwards;
-      position: relative;
-    }
-
-    .skill-fill::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 30px;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2));
-      border-radius: 10px;
-      animation: shimmer 2s infinite;
-    }
-
-    @keyframes shimmer {
-      0% { transform: translateX(-30px); }
-      100% { transform: translateX(30px); }
-    }
-
-    .skill-fill.aim { width: 94%; background: linear-gradient(90deg, #ff0066, #ff6b6b); }
-    .skill-fill.reaction { width: 88%; background: linear-gradient(90deg, #00ccff, #4ecdc4); }
-    .skill-fill.tactics { width: 82%; background: linear-gradient(90deg, #ffaa00, #ffd700); }
-    .skill-fill.teamwork { width: 91%; background: linear-gradient(90deg, #a855f7, #d946ef); }
-
-    @keyframes fillBar {
-      from { width: 0%; }
-      to { width: var(--w); }
-    }
-
-    .skill-fill.aim { --w: 94%; }
-    .skill-fill.reaction { --w: 88%; }
-    .skill-fill.tactics { --w: 82%; }
-    .skill-fill.teamwork { --w: 91%; }
-
-    /* ============================================================
-       FRIENDS ONLINE
-    ============================================================ */
-    .friends-section {
-      margin: 2rem 0;
-    }
-
-    .friends-section h3 {
-      font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .friends-list {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .friend-avatar {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.3rem;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    .friend-avatar:hover {
-      transform: translateY(-6px);
-    }
-
-    .friend-avatar .favatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #1a1f35, #2a2f4a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      color: #ffd700;
-      border: 2px solid rgba(255, 255, 255, 0.05);
-      position: relative;
-    }
-
-    .friend-avatar .fonline {
-      position: absolute;
-      bottom: 2px;
-      right: 2px;
-      width: 12px;
-      height: 12px;
-      background: #00ff88;
-      border-radius: 50%;
-      border: 2px solid #0a0c16;
-      animation: dotBlink 1.2s infinite;
-    }
-
-    .friend-avatar .fname {
-      font-size: 0.7rem;
-      color: rgba(255, 255, 255, 0.3);
-    }
-
-    /* ============================================================
-       TOURNAMENTS
-    ============================================================ */
-    .tournaments {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.2rem;
-      margin: 2rem 0 1.5rem;
-    }
-
-    .tourney-card {
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      animation: fadeUp 0.7s ease backwards;
-      text-align: center;
-    }
-
-    .tourney-card:nth-child(1) { animation-delay: 0.1s; }
-    .tourney-card:nth-child(2) { animation-delay: 0.25s; }
-    .tourney-card:nth-child(3) { animation-delay: 0.4s; }
-
-    .tourney-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      border-color: rgba(255, 215, 0, 0.2);
-      background: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    }
-
-    .tourney-card .trophy {
-      font-size: 2.5rem;
-      color: #ffd700;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-      animation: float 3s infinite alternate;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-10px); }
-    }
-
-    .tourney-card h4 {
-      font-size: 1.1rem;
-      color: #fff;
-    }
-
-    .tourney-card .prize {
-      color: #ffd700;
-      font-size: 0.9rem;
-    }
-
-    .tourney-card .countdown {
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.3);
-      margin-top: 0.4rem;
-      display: flex;
-      justify-content: center;
-      gap: 0.8rem;
-    }
-
-    .countdown span {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 0.2rem 0.6rem;
-      border-radius: 0.5rem;
-      font-family: monospace;
-    }
-
-    /* ============================================================
-       ACTIONS
-    ============================================================ */
-    .dash-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-
-    .btn-dash {
-      flex: 1;
-      min-width: 140px;
-      padding: 0.9rem 1.8rem;
-      border: none;
-      border-radius: 3rem;
-      font-family: 'Vazirmatn', sans-serif;
-      font-weight: 900;
-      font-size: 1rem;
-      color: #fff;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.7rem;
-    }
-
-    .btn-dash.primary {
-      background: linear-gradient(135deg, #ff0066, #ff6b6b);
-      box-shadow: 0 4px 30px rgba(255, 0, 102, 0.3);
-    }
-
-    .btn-dash.primary:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 40px rgba(255, 0, 102, 0.5);
-    }
-
-    .btn-dash.secondary {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .btn-dash.secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: #00ccff;
-      transform: scale(1.05);
-      box-shadow: 0 0 40px rgba(0, 204, 255, 0.05);
-    }
-
-    .btn-dash.gold {
-      background: linear-gradient(135deg, #f7971e, #ffd200);
-      color: #0a0c16;
-      box-shadow: 0 4px 30px rgba(255, 215, 0, 0.2);
-    }
-
-    .btn-dash.gold:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 40px rgba(255, 215, 0, 0.4);
-    }
-
-    /* ریپل دکمه */
-    .btn-dash::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.15) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.4s;
-      pointer-events: none;
-    }
-
-    .btn-dash:active::after {
-      opacity: 1;
-      transition: 0s;
-    }
-
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-    .dash-footer {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.03);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.15);
-    }
-
-    .dash-footer i {
-      color: #ff0066;
-      animation: heartBeat 1.5s infinite;
-    }
-
-    @keyframes heartBeat {
-      0%, 100% { transform: scale(1); }
-      15% { transform: scale(1.3); }
-      30% { transform: scale(1); }
-      45% { transform: scale(1.2); }
-      60% { transform: scale(1); }
-    }
-
-    .social-links i {
-      font-size: 1.2rem;
-      margin: 0 0.5rem;
-      color: rgba(255, 255, 255, 0.1);
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    .social-links i:hover {
-      color: #ffd700;
-      transform: translateY(-3px);
-      text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-    }
-
-    /* ============================================================
-       ANIMATIONS
-    ============================================================ */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-    @media (max-width: 768px) {
-      .gaming-dash { padding: 1.5rem; }
-      .skills-section { grid-template-columns: 1fr; }
-      .header-stats { padding: 0.5rem 1.2rem; gap: 1rem; }
-      .glitch-text { font-size: 2rem; }
-      .greeting { font-size: 1.3rem; }
-      .dash-header { flex-direction: column; align-items: stretch; }
-      .profile-area { justify-content: center; }
-      .header-stats { justify-content: center; }
-    }
-
-    @media (max-width: 480px) {
-      .gaming-dash { padding: 1rem; border-radius: 1.5rem; }
-      .tournaments { grid-template-columns: 1fr; }
-      .btn-dash { min-width: 100px; font-size: 0.85rem; padding: 0.7rem 1rem; }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zerox | خفن‌ترین تجربه</title>
+    <!-- فونت وزیر (وزیرمتن) -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+    <!-- Font Awesome 6 (رایگان) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: #0b0d15;
+            color: #f0f4ff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* افکت پس‌زمینه‌ی خفن */
+        .bg-glow {
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(0, 255, 200, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            filter: blur(80px);
+            animation: floatGlow 12s infinite alternate ease-in-out;
+        }
+
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(120, 80, 255, 0.10) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            filter: blur(90px);
+            animation: floatGlow 15s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, -30px) scale(1.2); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(20, 25, 40, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 60px 60px 40px 40px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        /* هدر + لوگو */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo i {
+            font-size: 2.8rem;
+            color: #00f0d4;
+            filter: drop-shadow(0 0 12px #00f0d480);
+            transition: transform 0.2s;
+        }
+
+        .logo i:hover {
+            transform: scale(1.05) rotate(-3deg);
+        }
+
+        .logo h1 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #e0f2fe, #a5f3fc, #6ee7e7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 255, 220, 0.2);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.8rem;
+            font-size: 1.4rem;
+        }
+
+        .nav-icons a {
+            color: #b9c8f0;
+            transition: 0.25s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-icons a:hover {
+            color: #00f0d4;
+            transform: translateY(-3px);
+            text-shadow: 0 0 20px #00f0d460;
+        }
+
+        .nav-icons a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00f0d4;
+            transition: 0.3s;
+            border-radius: 4px;
+        }
+
+        .nav-icons a:hover::after {
+            width: 100%;
+        }
+
+        /* بخش hero */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 1.5rem 0 2.5rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 240, 212, 0.10);
+            border: 1px solid rgba(0, 240, 212, 0.2);
+            padding: 0.4rem 1.4rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            color: #b0f0e8;
+            width: fit-content;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-badge i {
+            margin-left: 8px;
+            color: #00f0d4;
+        }
+
+        .hero h2 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(to left, #f0faff, #b8e6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            max-width: 700px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #b3c7f0;
+            max-width: 550px;
+            line-height: 1.9;
+            opacity: 0.9;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+
+        .btn {
+            padding: 0.9rem 2.4rem;
+            border-radius: 80px;
+            border: none;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #1f2a44;
+            color: #d6e4ff;
+            transition: 0.25s ease;
+            cursor: pointer;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(145deg, #00d4b8, #009e8a);
+            color: #0b0d15;
+            border: none;
+            box-shadow: 0 8px 28px rgba(0, 220, 190, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02) translateY(-3px);
+            box-shadow: 0 14px 34px rgba(0, 220, 190, 0.5);
+            background: linear-gradient(145deg, #00e6c8, #00b09a);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: #00f0d460;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 240, 212, 0.15);
+        }
+
+        /* بخش کارت‌ها */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3.5rem 0 1rem;
+        }
+
+        .card {
+            background: rgba(30, 40, 65, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 1.8rem 1.2rem;
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: 0.25s ease;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(0, 240, 212, 0.2);
+            background: rgba(36, 48, 78, 0.6);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .card i {
+            font-size: 2.8rem;
+            color: #00f0d4;
+            margin-bottom: 0.8rem;
+            filter: drop-shadow(0 0 8px #00f0d450);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: #eaf2ff;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #9eb1db;
+            line-height: 1.6;
+        }
+
+        /* فوتر */
+        .footer {
+            margin-top: 3.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            color: #7a8bb8;
+        }
+
+        .social a {
+            color: #8a9ed0;
+            font-size: 1.5rem;
+            margin-right: 1.2rem;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .social a:hover {
+            color: #00f0d4;
+            transform: scale(1.1);
+            display: inline-block;
+            text-shadow: 0 0 20px #00f0d470;
+        }
+
+        .footer span i {
+            margin-left: 6px;
+            color: #00f0d4;
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 700px) {
+            .container {
+                padding: 2rem 1.2rem;
+                border-radius: 40px;
+            }
+
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+
+            .logo h1 {
+                font-size: 2rem;
+            }
+
+            .nav-icons {
+                gap: 1.2rem;
+                font-size: 1.2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
 
-  <!-- ===== BACKGROUND ORBS ===== -->
-  <div class="bg-orbs">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
-  <div class="scanline"></div>
+    <div class="container">
+        <!-- هدر -->
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                <h1>Zerox</h1>
+            </div>
+            <div class="nav-icons">
+                <a href="#" aria-label="خانه"><i class="fas fa-home"></i></a>
+                <a href="#" aria-label="محصولات"><i class="fas fa-cube"></i></a>
+                <a href="#" aria-label="درباره"><i class="fas fa-users"></i></a>
+                <a href="#" aria-label="تماس"><i class="fas fa-headset"></i></a>
+            </div>
+        </div>
 
-  <!-- ===== MAIN DASHBOARD ===== -->
-  <div class="gaming-dash">
+        <!-- محتوای اصلی -->
+        <div class="hero">
+            <div class="hero-badge">
+                <i class="fas fa-bolt"></i> نسخه ۳.۰ · فوق‌العاده سریع
+            </div>
+            <h2>متفاوت‌ترین <br />تجربه‌ی دیجیتال</h2>
+            <p>
+                <i class="fas fa-check-circle" style="color:#00f0d4; margin-left:6px;"></i>
+                Zerox با طراحی آینده‌نگر و سرعت نور، مرزهای خلاقیت را جابجا می‌کند.
+                آماده‌اید به دنیای جدید قدم بگذارید؟
+            </p>
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> شروع کنید
+                </a>
+                <a href="#" class="btn btn-outline">
+                    <i class="fas fa-play-circle"></i> نمایش زنده
+                </a>
+            </div>
+        </div>
 
-    <!-- HEADER -->
-    <div class="dash-header">
-      <div class="profile-area">
-        <div class="avatar-wrapper">
-          <div class="avatar-ring"></div>
-          <div class="avatar-img">
-            <i class="fas fa-user-astronaut"></i>
-          </div>
-          <span class="online-badge"></span>
+        <!-- کارت‌های ویژگی -->
+        <div class="features">
+            <div class="card">
+                <i class="fas fa-bolt"></i>
+                <h3>فوق‌سبک</h3>
+                <p>بهینه‌شده برای سرعت، بدون هیچ کندی</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-palette"></i>
+                <h3>طراحی خفن</h3>
+                <p>رنگ‌های زنده و افکت‌های نئونی</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>امنیت بالا</h3>
+                <p>محافظت در برابر تهدیدهای مدرن</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-infinity"></i>
+                <h3>بی‌نهایت</h3>
+                <p>مقیاس‌پذیر برای هر ایده‌ای</p>
+            </div>
         </div>
-        <div class="user-info">
-          <h2>ShadowX</h2>
-          <span><i class="fas fa-medal"></i>  سطح ۴۲ · افسانه</span>
+
+        <!-- فوتر -->
+        <div class="footer">
+            <div class="social">
+                <a href="#" aria-label="توییتر"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="گیت‌هاب"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="یوتیوب"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+            </div>
+            <span>
+                <i class="far fa-copyright"></i> ۲۰۲۶ Zerox · تمامی حقوق محفوظ
+            </span>
         </div>
-      </div>
-      <div class="header-stats">
-        <div class="hstat">
-          <div class="num">۱.۲۴۸</div>
-          <div class="label">پیروزی</div>
-        </div>
-        <div class="hstat">
-          <div class="num">۹۸%</div>
-          <div class="label">دقت</div>
-        </div>
-        <div class="hstat">
-          <div class="num">۳۲</div>
-          <div class="label">کمبو</div>
-        </div>
-      </div>
     </div>
-
-    <!-- GREETING -->
-    <div class="greeting">
-      <i class="fas fa-bolt"></i>
-      <span>خوش برگشتی،</span>
-      <span class="glitch-text">جنگجو!</span>
-    </div>
-
-    <!-- SKILLS -->
-    <div class="skills-section">
-      <div class="skill-item">
-        <div class="skill-label"><span>🎯 نشانه‌روی</span><span>۹۴%</span></div>
-        <div class="skill-bar"><div class="skill-fill aim"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-label"><span>⚡ واکنش</span><span>۸۸%</span></div>
-        <div class="skill-bar"><div class="skill-fill reaction"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-label"><span>🧠 تاکتیک</span><span>۸۲%</span></div>
-        <div class="skill-bar"><div class="skill-fill tactics"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-label"><span>🤝 تیم‌ورک</span><span>۹۱%</span></div>
-        <div class="skill-bar"><div class="skill-fill teamwork"></div></div>
-      </div>
-    </div>
-
-    <!-- FRIENDS ONLINE -->
-    <div class="friends-section">
-      <h3><i class="fas fa-circle" style="color: #00ff88; font-size: 0.5rem;"></i> دوستان آنلاین (۸)</h3>
-      <div class="friends-list">
-        <div class="friend-avatar">
-          <div class="favatar"><i class="fas fa-user-ninja"></i><span class="fonline"></span></div>
-          <span class="fname">Neo</span>
-        </div>
-        <div class="friend-avatar">
-          <div class="favatar"><i class="fas fa-user-robot"></i><span class="fonline"></span></div>
-          <span class="fname">Z3R0</span>
-        </div>
-        <div class="friend-avatar">
-          <div class="favatar"><i class="fas fa-user-cowboy"></i><span class="fonline"></span></div>
-          <span class="fname">Blaze</span>
-        </div>
-        <div class="friend-avatar">
-          <div class="favatar"><i class="fas fa-user-astronaut"></i><span class="fonline"></span></div>
-          <span class="fname">Luna</span>
-        </div>
-        <div class="friend-avatar">
-          <div class="favatar"><i class="fas fa-user-secret"></i><span class="fonline"></span></div>
-          <span class="fname">Ghost</span>
-        </div>
-        <div class="friend-avatar">
-          <div class="favatar"><i class="fas fa-user-tie"></i><span class="fonline"></span></div>
-          <span class="fname">Ace</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- TOURNAMENTS -->
-    <h3 style="font-size:1.1rem; color:rgba(255,255,255,0.4); margin-bottom:0.8rem;">
-      <i class="fas fa-trophy" style="color:#ffd700;"></i> تورنمنت‌های فعال
-    </h3>
-    <div class="tournaments">
-      <div class="tourney-card">
-        <div class="trophy"><i class="fas fa-crown"></i></div>
-        <h4>جنگجویان</h4>
-        <div class="prize">🏆 ۵۰۰ دلار</div>
-        <div class="countdown">
-          <span>۰۲</span>:<span>۱۴</span>:<span>۳۲</span>
-        </div>
-      </div>
-      <div class="tourney-card">
-        <div class="trophy"><i class="fas fa-skull"></i></div>
-        <h4>نبرد مرگ</h4>
-        <div class="prize">🏆 ۱۲۰۰ دلار</div>
-        <div class="countdown">
-          <span>۰۴</span>:<span>۲۸</span>:<span>۰۷</span>
-        </div>
-      </div>
-      <div class="tourney-card">
-        <div class="trophy"><i class="fas fa-star"></i></div>
-        <h4>ستاره‌ها</h4>
-        <div class="prize">🏆 ۷۵۰ دلار</div>
-        <div class="countdown">
-          <span>۰۱</span>:<span>۴۶</span>:<span>۱۹</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ACTIONS -->
-    <div class="dash-actions">
-      <button class="btn-dash primary"><i class="fas fa-play"></i> شروع مبارزه</button>
-      <button class="btn-dash gold"><i class="fas fa-gem"></i> ارتقا سطح</button>
-      <button class="btn-dash secondary"><i class="fas fa-users"></i> دعوت به تیم</button>
-    </div>
-
-    <!-- FOOTER -->
-    <div class="dash-footer">
-      <span><i class="fas fa-heart"></i>  با انرژی گیمینگ</span>
-      <div class="social-links">
-        <i class="fab fa-discord"></i>
-        <i class="fab fa-twitch"></i>
-        <i class="fab fa-youtube"></i>
-        <i class="fab fa-instagram"></i>
-        <i class="fab fa-tiktok"></i>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ===== MICRO-INTERACTION: ripple effect ===== -->
-  <script>
-    document.querySelectorAll('.btn-dash').forEach(btn => {
-      btn.addEventListener('pointermove', e => {
-        const rect = btn.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        btn.style.setProperty('--mx', x + '%');
-        btn.style.setProperty('--my', y + '%');
-      });
-    });
-  </script>
-
 </body>
-  </html>
+</html>
