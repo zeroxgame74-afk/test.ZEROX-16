@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>صفحه خفن انیمیشنی</title>
+    <title>صفحه گیمینگ خفن</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
@@ -17,7 +17,7 @@
 
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background: #0a0a0f;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -26,8 +26,8 @@
             overflow-x: hidden;
         }
 
-        /* ===== انیمیشن پس‌زمینه ===== */
-        .bg-animation {
+        /* ===== پس‌زمینه گیمینگ با ذرات ===== */
+        .bg-gaming {
             position: fixed;
             top: 0;
             left: 0;
@@ -36,65 +36,65 @@
             z-index: 0;
             overflow: hidden;
             pointer-events: none;
+            background: radial-gradient(ellipse at 20% 50%, #0d0d2b, #0a0a0f);
         }
 
-        .bg-animation span {
+        .bg-gaming .particle {
             position: absolute;
-            display: block;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 215, 0, 0.05);
+            width: 4px;
+            height: 4px;
+            background: #00ff88;
             border-radius: 50%;
-            animation: floatBg 15s infinite linear;
-            bottom: -100px;
+            box-shadow: 0 0 20px #00ff88, 0 0 60px #00ff88;
+            animation: particleFly 8s infinite linear;
         }
 
-        .bg-animation span:nth-child(1) {
+        .bg-gaming .particle:nth-child(1) {
             left: 10%;
-            animation-duration: 18s;
+            animation-duration: 10s;
             animation-delay: 0s;
-            width: 60px;
-            height: 60px;
+            width: 6px;
+            height: 6px;
         }
-        .bg-animation span:nth-child(2) {
+        .bg-gaming .particle:nth-child(2) {
             left: 25%;
-            animation-duration: 22s;
+            animation-duration: 12s;
             animation-delay: 2s;
-            width: 30px;
-            height: 30px;
+            background: #ff00ff;
+            box-shadow: 0 0 20px #ff00ff;
         }
-        .bg-animation span:nth-child(3) {
+        .bg-gaming .particle:nth-child(3) {
             left: 45%;
-            animation-duration: 20s;
+            animation-duration: 9s;
             animation-delay: 4s;
-            width: 80px;
-            height: 80px;
+            background: #ffaa00;
+            box-shadow: 0 0 20px #ffaa00;
         }
-        .bg-animation span:nth-child(4) {
+        .bg-gaming .particle:nth-child(4) {
             left: 65%;
-            animation-duration: 25s;
+            animation-duration: 14s;
             animation-delay: 1s;
-            width: 45px;
-            height: 45px;
+            width: 8px;
+            height: 8px;
         }
-        .bg-animation span:nth-child(5) {
+        .bg-gaming .particle:nth-child(5) {
             left: 85%;
-            animation-duration: 19s;
+            animation-duration: 11s;
             animation-delay: 3s;
-            width: 55px;
-            height: 55px;
+            background: #00ccff;
+            box-shadow: 0 0 20px #00ccff;
         }
-        .bg-animation span:nth-child(6) {
+        .bg-gaming .particle:nth-child(6) {
             left: 50%;
-            animation-duration: 23s;
+            animation-duration: 13s;
             animation-delay: 5s;
-            width: 35px;
-            height: 35px;
+            background: #ff0066;
+            box-shadow: 0 0 20px #ff0066;
         }
 
-        @keyframes floatBg {
+        @keyframes particleFly {
             0% {
-                transform: translateY(0) rotate(0deg) scale(1);
+                transform: translateY(100vh) scale(0) rotate(0deg);
                 opacity: 0;
             }
             10% {
@@ -104,25 +104,25 @@
                 opacity: 1;
             }
             100% {
-                transform: translateY(-110vh) rotate(720deg) scale(1.5);
+                transform: translateY(-10vh) scale(2) rotate(720deg);
                 opacity: 0;
             }
         }
 
-        /* ===== کارت اصلی ===== */
+        /* ===== کارت گیمینگ ===== */
         .hero {
             position: relative;
             z-index: 1;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(10, 10, 20, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(0, 255, 136, 0.15);
             border-radius: 40px;
             padding: 60px 50px;
             max-width: 750px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), inset 0 0 80px rgba(0, 255, 136, 0.03);
             animation: fadeInUp 0.8s ease forwards;
             opacity: 0;
         }
@@ -138,26 +138,28 @@
             }
         }
 
-        /* ===== آواتار با انیمیشن چرخش ===== */
+        /* ===== آواتار گیمینگ ===== */
         .avatar {
             width: 110px;
             height: 110px;
-            background: linear-gradient(145deg, #f7971e, #ffd200);
+            background: linear-gradient(145deg, #00ff88, #00cc66);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
             font-size: 52px;
-            color: #1a1a2e;
-            box-shadow: 0 15px 50px rgba(255, 210, 0, 0.3);
+            color: #0a0a0f;
+            box-shadow: 0 0 50px rgba(0, 255, 136, 0.3), 0 0 100px rgba(0, 255, 136, 0.1);
             animation: floatAvatar 3s ease-in-out infinite, pulseGlow 2s ease-in-out infinite;
             transition: 0.3s;
+            border: 2px solid rgba(0, 255, 136, 0.3);
         }
 
         .avatar:hover {
             animation-play-state: paused;
             transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 0 80px rgba(0, 255, 136, 0.6);
         }
 
         @keyframes floatAvatar {
@@ -173,24 +175,25 @@
         @keyframes pulseGlow {
             0%,
             100% {
-                box-shadow: 0 15px 50px rgba(255, 210, 0, 0.3);
+                box-shadow: 0 0 50px rgba(0, 255, 136, 0.3);
             }
             50% {
-                box-shadow: 0 20px 70px rgba(255, 210, 0, 0.6);
+                box-shadow: 0 0 80px rgba(0, 255, 136, 0.6), 0 0 120px rgba(0, 255, 136, 0.2);
             }
         }
 
-        /* ===== برچسب با انیمیشن چشمک ===== */
+        /* ===== برچسب ===== */
         .badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(0, 255, 136, 0.08);
             padding: 6px 22px;
             border-radius: 50px;
             font-size: 13px;
-            color: #ddd;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.15);
             margin-bottom: 16px;
             animation: blinkBadge 2s ease-in-out infinite;
+            letter-spacing: 1px;
         }
 
         @keyframes blinkBadge {
@@ -199,12 +202,12 @@
                 opacity: 1;
             }
             50% {
-                opacity: 0.4;
+                opacity: 0.3;
             }
         }
 
         .badge i {
-            color: #ffd700;
+            color: #ffaa00;
             margin-left: 6px;
             animation: spinIcon 4s linear infinite;
         }
@@ -218,7 +221,7 @@
             }
         }
 
-        /* ===== عنوان با انیمیشن گرادیانت متحرک ===== */
+        /* ===== عنوان ===== */
         h1 {
             font-size: 44px;
             font-weight: 900;
@@ -240,12 +243,12 @@
         }
 
         h1 span {
-            background: linear-gradient(90deg, #f7971e, #ffd700, #f7971e);
+            background: linear-gradient(90deg, #00ff88, #00ccff, #ff00ff, #00ff88);
             background-size: 300% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradientMove 3s ease-in-out infinite;
+            animation: gradientMove 4s ease-in-out infinite;
         }
 
         @keyframes gradientMove {
@@ -263,7 +266,7 @@
         /* ===== زیرنویس ===== */
         .subtitle {
             font-size: 18px;
-            color: rgba(255, 255, 255, 0.65);
+            color: rgba(255, 255, 255, 0.5);
             line-height: 1.9;
             margin-bottom: 30px;
             animation: fadeInUp 1s ease 0.5s both;
@@ -271,6 +274,7 @@
 
         .subtitle i {
             animation: pulseIcon 1.5s ease-in-out infinite;
+            color: #ff0066;
         }
 
         @keyframes pulseIcon {
@@ -280,11 +284,11 @@
             }
             50% {
                 transform: scale(1.3);
-                color: #ffd700;
+                color: #ff00ff;
             }
         }
 
-        /* ===== دکمه‌ها با انیمیشن ===== */
+        /* ===== دکمه‌ها ===== */
         .btn-group {
             display: flex;
             flex-wrap: wrap;
@@ -308,75 +312,47 @@
             transition: 0.3s ease;
             position: relative;
             overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #f7971e, #ffd700);
-            color: #1a1a2e;
-            box-shadow: 0 8px 30px rgba(255, 210, 0, 0.25);
+            background: linear-gradient(135deg, #00ff88, #00cc66);
+            color: #0a0a0f;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
             animation: btnPulse 2s ease-in-out infinite;
         }
 
         @keyframes btnPulse {
             0%,
             100% {
-                box-shadow: 0 8px 30px rgba(255, 210, 0, 0.25);
+                box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
             }
             50% {
-                box-shadow: 0 8px 50px rgba(255, 210, 0, 0.55);
+                box-shadow: 0 0 60px rgba(0, 255, 136, 0.5);
             }
         }
 
         .btn-primary:hover {
             transform: scale(1.08) translateY(-3px);
-            box-shadow: 0 12px 55px rgba(255, 210, 0, 0.7);
+            box-shadow: 0 0 80px rgba(0, 255, 136, 0.6);
             animation-play-state: paused;
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.04);
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.16);
+            background: rgba(255, 255, 255, 0.08);
             transform: scale(1.06) translateY(-3px);
+            border-color: rgba(0, 255, 136, 0.2);
         }
 
-        /* انیمیشن موج روی دکمه */
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-            opacity: 0;
-            transition: 0.5s;
-            transform: scale(0);
-        }
-
-        .btn:hover::after {
-            opacity: 1;
-            transform: scale(1);
-            animation: rippleWave 0.8s ease-out;
-        }
-
-        @keyframes rippleWave {
-            0% {
-                transform: scale(0);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-
-        /* ===== ویژگی‌ها با انیمیشن ===== */
+        /* ===== ویژگی‌های گیمینگ ===== */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -386,13 +362,13 @@
         }
 
         .feature-item {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             padding: 14px 10px;
             border-radius: 16px;
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 14px;
             font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             transition: 0.4s ease;
             animation: featureSlide 0.8s ease both;
             animation-delay: calc(0.2s * var(--i, 0));
@@ -423,26 +399,27 @@
         }
 
         .feature-item:hover {
-            background: rgba(255, 215, 0, 0.08);
+            background: rgba(0, 255, 136, 0.05);
             transform: translateY(-6px) scale(1.03);
-            border-color: rgba(255, 215, 0, 0.2);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.05);
+            border-color: rgba(0, 255, 136, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.05);
+            color: #fff;
         }
 
         .feature-item i {
-            color: #ffd700;
+            color: #00ff88;
             margin-left: 6px;
             animation: pulseIcon 2s ease-in-out infinite;
         }
 
-        /* ===== شبکه اجتماعی با انیمیشن ===== */
+        /* ===== شبکه اجتماعی ===== */
         .social-row {
             display: flex;
             justify-content: center;
             gap: 18px;
             flex-wrap: wrap;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
             animation: fadeInUp 1s ease 1.1s both;
         }
 
@@ -453,10 +430,10 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.04);
-            color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.02);
+            color: rgba(255, 255, 255, 0.3);
             font-size: 22px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             text-decoration: none;
             transition: 0.4s ease;
             animation: socialPop 0.6s ease both;
@@ -491,11 +468,11 @@
         }
 
         .social-row a:hover {
-            background: rgba(255, 215, 0, 0.15);
-            color: #ffd700;
+            background: rgba(0, 255, 136, 0.08);
+            color: #00ff88;
             transform: translateY(-6px) scale(1.12);
-            border-color: rgba(255, 215, 0, 0.25);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.15);
+            border-color: rgba(0, 255, 136, 0.2);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
         }
 
         /* ===== ریسپانسیو ===== */
@@ -524,62 +501,66 @@
 </head>
 <body>
 
-    <!-- ===== پس‌زمینه متحرک ===== -->
-    <div class="bg-animation">
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
+    <!-- ===== پس‌زمینه گیمینگ ===== -->
+    <div class="bg-gaming">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
 
-    <!-- ===== کارت اصلی ===== -->
+    <!-- ===== کارت گیمینگ ===== -->
     <div class="hero">
 
         <div class="avatar">
-            <i class="fa-solid fa-bolt"></i>
+            <i class="fa-solid fa-gamepad"></i>
         </div>
 
         <div class="badge">
-            <i class="fa-solid fa-circle-check"></i> نسخه 3.0
+            <i class="fa-solid fa-star"></i> سطح افسانه‌ای
         </div>
 
         <h1>
-            سلام، من <span>توسعه‌دهنده</span> ام
+            <span>GAMER</span> پرو
         </h1>
 
         <p class="subtitle">
-            <i class="fa-solid fa-code"></i>
-            طراحی UI/UX ، توسعه فرانت‌اند و ساخت تجربه‌های دیجیتال خفن
+            <i class="fa-solid fa-joystick"></i>
+            بازیکن حرفه‌ای | استریمر | عاشق بازی‌های رقابتی
         </p>
 
         <div class="btn-group">
             <a href="#" class="btn btn-primary">
-                <i class="fa-solid fa-rocket"></i> شروع کنید
+                <i class="fa-solid fa-play"></i> شروع ماجراجویی
             </a>
             <a href="#" class="btn btn-secondary">
-                <i class="fa-regular fa-eye"></i> نمونه کارها
+                <i class="fa-regular fa-eye"></i> تماشای جریان
             </a>
         </div>
 
         <div class="features">
             <div class="feature-item">
-                <i class="fa-solid fa-palette"></i> طراحی مدرن
+                <i class="fa-solid fa-trophy"></i> قهرمان
             </div>
             <div class="feature-item">
-                <i class="fa-solid fa-bolt"></i> فوق‌العاده سریع
+                <i class="fa-solid fa-bolt"></i> واکنش سریع
             </div>
             <div class="feature-item">
-                <i class="fa-solid fa-mobile-screen"></i> واکنش‌گرا
+                <i class="fa-solid fa-headset"></i> تیم‌بازی
             </div>
             <div class="feature-item">
-                <i class="fa-regular fa-heart"></i> با عشق
+                <i class="fa-solid fa-fire"></i> بی‌رحم
             </div>
         </div>
 
         <div class="social-row">
-            <a href="#"><i class="fa-brands fa-github"></i></a>
-            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitch"></i></a>
             <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-discord"></i></a>
+            <a href="#"><i class="fa-brands fa-steam"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
 
     </div>
