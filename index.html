@@ -1,1335 +1,512 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Tiva AI - با DeepSeek</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming UI · انیمیشن خفن</title>
+  <!-- Font Awesome 6 (رایگان) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- فونت وزیر (وزیرمتن بُلد) از CDN -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      font-weight: 900;  /* بُلد (Black) */
+      background: radial-gradient(circle at 20% 30%, #0b0e1a, #03050b);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-    <style>
-        /* ===== ریست کامل ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* ===== کارت اصلی ===== */
+    .gaming-card {
+      max-width: 1100px;
+      width: 100%;
+      background: rgba(12, 16, 28, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 3rem 1rem 3rem 1rem;
+      padding: 2.8rem 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(0, 255, 255, 0.15), 0 0 30px rgba(0, 255, 255, 0.2);
+      border: 1px solid rgba(0, 255, 255, 0.15);
+      transition: all 0.3s ease;
+      animation: cardPulse 5s infinite alternate;
+    }
 
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Vazirmatn', sans-serif;
-            background: #070714;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
+    @keyframes cardPulse {
+      0% { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(0, 255, 255, 0.1), 0 0 20px rgba(0, 255, 255, 0.1); }
+      100% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 3px rgba(255, 0, 200, 0.4), 0 0 60px rgba(255, 0, 200, 0.25); }
+    }
 
-        /* ===== پس‌زمینه ===== */
-        .bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: radial-gradient(ellipse at 30% 40%, #0d0d2b, #050510);
-        }
-        .bg .dot {
-            position: absolute;
-            border-radius: 50%;
-            animation: floatDot 10s infinite linear;
-            opacity: 0.3;
-        }
-        .bg .dot:nth-child(1) {
-            width: 4px;
-            height: 4px;
-            background: #00d4ff;
-            left: 15%;
-            animation-duration: 12s;
-            box-shadow: 0 0 20px #00d4ff;
-        }
-        .bg .dot:nth-child(2) {
-            width: 3px;
-            height: 3px;
-            background: #a855f7;
-            left: 45%;
-            animation-duration: 15s;
-            animation-delay: 2s;
-            box-shadow: 0 0 15px #a855f7;
-        }
-        .bg .dot:nth-child(3) {
-            width: 5px;
-            height: 5px;
-            background: #ec4899;
-            left: 75%;
-            animation-duration: 11s;
-            animation-delay: 4s;
-            box-shadow: 0 0 25px #ec4899;
-        }
-        .bg .dot:nth-child(4) {
-            width: 3px;
-            height: 3px;
-            background: #f59e0b;
-            left: 90%;
-            animation-duration: 14s;
-            animation-delay: 1s;
-            box-shadow: 0 0 15px #f59e0b;
-        }
-        @keyframes floatDot {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-            15% {
-                opacity: 0.4;
-            }
-            85% {
-                opacity: 0.4;
-            }
-            100% {
-                transform: translateY(-10vh) scale(2);
-                opacity: 0;
-            }
-        }
+    /* ===== HEADER ===== */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 1.2rem;
+    }
 
-        /* ================================================================
-                   صفحه اول (Welcome)
-                   ================================================================ */
-        #welcomePage {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(ellipse at 30% 40%, #0d0d2b, #050510);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        #welcomePage.hide {
-            opacity: 0;
-            transform: scale(1.05);
-            pointer-events: none;
-        }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
 
-        .welcome-card {
-            text-align: center;
-            max-width: 460px;
-            width: 90%;
-            background: rgba(10, 10, 30, 0.5);
-            backdrop-filter: blur(30px);
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 35px 25px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-        }
-        .welcome-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00d4ff, #7c3aed);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 14px;
-            font-size: 54px;
-            color: #fff;
-            box-shadow: 0 0 80px rgba(0, 212, 255, 0.2);
-            animation: floatAvatar 3s ease-in-out infinite;
-            border: 2px solid rgba(0, 212, 255, 0.1);
-        }
-        @keyframes floatAvatar {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-12px);
-            }
-        }
-        .welcome-title {
-            font-size: 32px;
-            font-weight: 900;
-            color: #fff;
-        }
-        .welcome-title span {
-            background: linear-gradient(90deg, #00d4ff, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .welcome-sub {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.2);
-            margin: 4px 0 8px;
-        }
-        .welcome-sub i {
-            color: #00d4ff;
-        }
-        .welcome-desc {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.12);
-            line-height: 1.8;
-            margin-bottom: 18px;
-        }
-        .welcome-desc i {
-            color: #a855f7;
-        }
-        .welcome-features {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .welcome-features span {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.02);
-            padding: 4px 12px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-        }
-        .welcome-features span i {
-            color: #00d4ff;
-            margin-left: 4px;
-        }
-        .btn-enter {
-            padding: 12px 38px;
-            border-radius: 60px;
-            border: none;
-            background: linear-gradient(135deg, #00d4ff, #7c3aed);
-            color: #fff;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Vazirmatn', sans-serif;
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
-            animation: btnPulse 2.5s ease-in-out infinite;
-        }
-        .btn-enter:hover {
-            transform: scale(1.04);
-            box-shadow: 0 0 70px rgba(0, 212, 255, 0.3);
-        }
-        @keyframes btnPulse {
-            0%,
-            100% {
-                box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
-            }
-            50% {
-                box-shadow: 0 0 70px rgba(0, 212, 255, 0.3);
-            }
-        }
+    .logo-icon {
+      font-size: 2.8rem;
+      color: #ff2d8f;
+      animation: iconSpin 6s infinite linear;
+      filter: drop-shadow(0 0 10px #ff2d8f);
+    }
 
-        /* ================================================================
-                   صفحه چت
-                   ================================================================ */
-        #chatPage {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
-        }
-        #chatPage.show {
-            opacity: 1;
-            pointer-events: all;
-        }
+    @keyframes iconSpin {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.1); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
 
-        .hero {
-            width: 94%;
-            max-width: 680px;
-            height: 90vh;
-            max-height: 660px;
-            background: rgba(10, 10, 30, 0.8);
-            backdrop-filter: blur(20px);
-            border-radius: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: relative;
-        }
+    .logo-text {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #f7971e, #ffd200);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+      letter-spacing: 1px;
+    }
 
-        /* ===== هدر ===== */
-        .header {
-            padding: 10px 14px 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-shrink: 0;
-            min-height: 46px;
-        }
-        .header .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .header .logo i {
-            font-size: 18px;
-            color: #00d4ff;
-            animation: iconPulse 2.5s ease-in-out infinite;
-        }
-        @keyframes iconPulse {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-        }
-        .header .logo h1 {
-            font-size: 16px;
-            color: #fff;
-            font-weight: 800;
-        }
-        .header .logo h1 span {
-            background: linear-gradient(90deg, #00d4ff, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .header .right {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .header .status {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.15);
-        }
-        .header .status .led {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: #22c55e;
-            animation: ledBlink 2s ease-in-out infinite;
-        }
-        @keyframes ledBlink {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.2;
-            }
-        }
+    .online-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 255, 200, 0.1);
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      border: 1px solid rgba(0, 255, 200, 0.2);
+      font-size: 0.9rem;
+      color: #7effe0;
+    }
 
-        /* ===== همبرگر ===== */
-        .hamburger {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255, 255, 255, 0.02);
-            color: rgba(255, 255, 255, 0.25);
-            font-size: 15px;
-            cursor: pointer;
-            transition: 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hamburger:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            transform: rotate(90deg);
-        }
-        .hamburger.active {
-            transform: rotate(90deg);
-            color: #00d4ff;
-        }
+    .online-dot {
+      width: 12px;
+      height: 12px;
+      background: #00ff88;
+      border-radius: 50%;
+      display: inline-block;
+      animation: dotBlink 1.2s infinite;
+      box-shadow: 0 0 12px #00ff88;
+    }
 
-        /* ===== منوی کناری ===== */
-        .side-menu {
-            position: absolute;
-            top: 0;
-            right: -280px;
-            width: 260px;
-            height: 100%;
-            background: rgba(10, 10, 30, 0.96);
-            backdrop-filter: blur(30px);
-            border-left: 1px solid rgba(255, 255, 255, 0.03);
-            z-index: 20;
-            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            padding: 14px 0;
-            border-radius: 0 24px 24px 0;
-        }
-        .side-menu.open {
-            right: 0;
-        }
-        .side-menu .menu-header {
-            padding: 0 14px 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .side-menu .menu-header h3 {
-            color: #fff;
-            font-size: 14px;
-            font-weight: 700;
-        }
-        .side-menu .menu-header h3 i {
-            color: #00d4ff;
-            margin-left: 6px;
-        }
-        .side-menu .menu-header .close-menu {
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.12);
-            font-size: 17px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .side-menu .menu-header .close-menu:hover {
-            color: #fff;
-            transform: rotate(90deg);
-        }
-        .side-menu .menu-actions {
-            padding: 10px 14px;
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-        }
-        .side-menu .menu-actions button {
-            padding: 5px 12px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            background: rgba(255, 255, 255, 0.01);
-            color: rgba(255, 255, 255, 0.18);
-            font-size: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Vazirmatn', sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .side-menu .menu-actions button:hover {
-            background: rgba(255, 255, 255, 0.04);
-            color: #fff;
-        }
-        .side-menu .menu-actions button.danger:hover {
-            border-color: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-        }
-        .side-menu .menu-actions button i {
-            font-size: 10px;
-        }
+    @keyframes dotBlink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.8); }
+    }
 
-        /* ===== تاریخچه ===== */
-        .history-list {
-            flex: 1;
-            overflow-y: auto;
-            padding: 6px 10px;
-        }
-        .history-list::-webkit-scrollbar {
-            width: 2px;
-        }
-        .history-list::-webkit-scrollbar-thumb {
-            background: rgba(0, 212, 255, 0.06);
-            border-radius: 10px;
-        }
-        .history-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 6px 10px;
-            border-radius: 8px;
-            margin-bottom: 2px;
-            background: rgba(255, 255, 255, 0.01);
-            transition: 0.3s;
-            border: 1px solid transparent;
-        }
-        .history-item:hover {
-            background: rgba(255, 255, 255, 0.03);
-        }
-        .history-item.pinned {
-            border-color: rgba(0, 212, 255, 0.06);
-            background: rgba(0, 212, 255, 0.02);
-        }
-        .history-item .h-text {
-            flex: 1;
-            color: rgba(255, 255, 255, 0.25);
-            font-size: 11px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-left: 6px;
-        }
-        .history-item .h-text i {
-            color: #a855f7;
-            margin-left: 4px;
-            font-size: 9px;
-        }
-        .history-item .h-actions {
-            display: flex;
-            gap: 2px;
-        }
-        .history-item .h-actions button {
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.05);
-            font-size: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-            padding: 2px 4px;
-            border-radius: 4px;
-        }
-        .history-item .h-actions button:hover {
-            color: rgba(255, 255, 255, 0.25);
-            background: rgba(255, 255, 255, 0.02);
-        }
-        .history-item .h-actions button.pin-btn:hover {
-            color: #f59e0b;
-        }
-        .history-item .h-actions button.delete-btn:hover {
-            color: #ef4444;
-        }
-        .history-empty {
-            color: rgba(255, 255, 255, 0.04);
-            text-align: center;
-            font-size: 11px;
-            padding: 25px 0;
-        }
-        .history-empty i {
-            font-size: 24px;
-            display: block;
-            margin-bottom: 6px;
-            color: rgba(255, 255, 255, 0.02);
-        }
+    /* ===== STATS ===== */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
 
-        .menu-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            z-index: 15;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s ease;
-        }
-        .menu-overlay.show {
-            opacity: 1;
-            pointer-events: all;
-        }
+    .stat-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 1.5rem;
+      padding: 1.2rem 0.8rem;
+      text-align: center;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.8s ease backwards;
+    }
 
-        /* ===== پروفایل ===== */
-        .profile {
-            padding: 6px 14px 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-            min-height: 44px;
-        }
-        .profile .avatar {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00d4ff, #7c3aed);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            color: #fff;
-            flex-shrink: 0;
-        }
-        .profile .info {
-            flex: 1;
-            min-width: 0;
-        }
-        .profile .info .name {
-            font-size: 12px;
-            font-weight: 700;
-            color: #fff;
-        }
-        .profile .info .name i {
-            color: #f59e0b;
-            font-size: 9px;
-            margin-right: 3px;
-        }
-        .profile .info .desc {
-            font-size: 9px;
-            color: rgba(255, 255, 255, 0.12);
-            margin-top: 1px;
-        }
-        .profile .info .desc i {
-            margin-left: 3px;
-            color: #a855f7;
-        }
-        .profile .version {
-            font-size: 8px;
-            color: rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.01);
-            padding: 2px 8px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.01);
-            flex-shrink: 0;
-        }
+    .stat-item:nth-child(1) { animation-delay: 0.1s; }
+    .stat-item:nth-child(2) { animation-delay: 0.2s; }
+    .stat-item:nth-child(3) { animation-delay: 0.3s; }
 
-        /* ===== نوار تنظیمات API ===== */
-        .api-bar {
-            padding: 6px 14px 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-            display: flex;
-            gap: 6px;
-            align-items: center;
-            flex-shrink: 0;
-            flex-wrap: wrap;
-            background: rgba(0, 0, 0, 0.15);
-        }
-        .api-bar label {
-            color: rgba(255, 255, 255, 0.12);
-            font-size: 9px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .api-bar label i {
-            color: #00d4ff;
-            font-size: 10px;
-        }
-        .api-bar input[type="password"] {
-            flex: 1;
-            min-width: 120px;
-            padding: 5px 12px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            background: rgba(255, 255, 255, 0.02);
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 11px;
-            font-family: 'Vazirmatn', sans-serif;
-            outline: none;
-        }
-        .api-bar input[type="password"]:focus {
-            border-color: rgba(0, 212, 255, 0.08);
-        }
-        .api-bar .save-key-btn {
-            padding: 5px 14px;
-            border-radius: 30px;
-            border: none;
-            background: rgba(0, 212, 255, 0.06);
-            color: #00d4ff;
-            font-size: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Vazirmatn', sans-serif;
-            white-space: nowrap;
-        }
-        .api-bar .save-key-btn:hover {
-            background: rgba(0, 212, 255, 0.12);
-        }
+    .stat-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(255, 0, 200, 0.3);
+      box-shadow: 0 8px 25px rgba(255, 0, 200, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+    }
 
-        /* ===== پیام‌ها ===== */
-        .chat-area {
-            flex: 1;
-            padding: 8px 14px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            min-height: 0;
-            scroll-behavior: smooth;
-        }
-        .chat-area::-webkit-scrollbar {
-            width: 2px;
-        }
-        .chat-area::-webkit-scrollbar-thumb {
-            background: rgba(0, 212, 255, 0.06);
-            border-radius: 10px;
-        }
+    .stat-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.3rem;
+      display: inline-block;
+      animation: float 3s infinite alternate ease-in-out;
+    }
 
-        .msg {
-            max-width: 82%;
-            padding: 7px 12px;
-            border-radius: 12px;
-            font-size: 13px;
-            line-height: 1.6;
-            animation: msgIn 0.2s ease forwards;
-            opacity: 0;
-            word-wrap: break-word;
-        }
-        @keyframes msgIn {
-            0% {
-                opacity: 0;
-                transform: translateY(4px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .msg.user {
-            align-self: flex-end;
-            background: linear-gradient(135deg, #00d4ff, #7c3aed);
-            color: #fff;
-            border-bottom-right-radius: 3px;
-        }
-        .msg.ai {
-            align-self: flex-start;
-            background: rgba(255, 255, 255, 0.03);
-            color: rgba(255, 255, 255, 0.65);
-            border-bottom-left-radius: 3px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-        }
+    .stat-icon.fa-trophy { color: #ffd700; }
+    .stat-icon.fa-crosshairs { color: #ff6b6b; }
+    .stat-icon.fa-users { color: #4ecdc4; }
 
-        .msg.ai .dot-load {
-            display: inline-flex;
-            gap: 3px;
-        }
-        .msg.ai .dot-load span {
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: dotJump 1.2s ease-in-out infinite;
-        }
-        .msg.ai .dot-load span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .msg.ai .dot-load span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        @keyframes dotJump {
-            0%,
-            80%,
-            100% {
-                transform: scale(0.5);
-                opacity: 0.3;
-            }
-            40% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-10px); }
+    }
 
-        /* ===== ورودی ===== */
-        .input-area {
-            padding: 6px 14px 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
-            display: flex;
-            gap: 6px;
-            flex-shrink: 0;
-            min-height: 48px;
-        }
-        .input-area input {
-            flex: 1;
-            padding: 8px 14px;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            background: rgba(255, 255, 255, 0.01);
-            color: #fff;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 13px;
-            outline: none;
-            transition: 0.2s;
-        }
-        .input-area input::placeholder {
-            color: rgba(255, 255, 255, 0.07);
-        }
-        .input-area input:focus {
-            border-color: rgba(0, 212, 255, 0.06);
-            background: rgba(255, 255, 255, 0.02);
-        }
-        .input-area input:disabled {
-            opacity: 0.3;
-        }
-        .input-area button {
-            padding: 8px 18px;
-            border-radius: 40px;
-            border: none;
-            background: linear-gradient(135deg, #00d4ff, #7c3aed);
-            color: #fff;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-shrink: 0;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        .input-area button:hover:not(:disabled) {
-            transform: scale(1.03);
-        }
-        .input-area button:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff, #a0c0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
 
-        /* ===== ریسپانسیو ===== */
-        @media (max-width: 600px) {
-            .welcome-card {
-                padding: 25px 16px;
-                border-radius: 24px;
-                margin: 10px;
-            }
-            .welcome-avatar {
-                width: 95px;
-                height: 95px;
-                font-size: 40px;
-            }
-            .welcome-title {
-                font-size: 26px;
-            }
-            .welcome-desc {
-                font-size: 12px;
-            }
-            .btn-enter {
-                padding: 11px 28px;
-                font-size: 14px;
-            }
-            .welcome-features span {
-                font-size: 9px;
-                padding: 3px 10px;
-            }
+    .stat-label {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 700;
+      margin-top: 0.2rem;
+    }
 
-            .hero {
-                width: 100%;
-                height: 100vh;
-                max-height: 100vh;
-                border-radius: 0;
-            }
-            .header {
-                padding: 8px 12px 6px;
-                min-height: 40px;
-            }
-            .header .logo h1 {
-                font-size: 14px;
-            }
-            .profile {
-                padding: 5px 12px 5px;
-                min-height: 38px;
-                gap: 6px;
-            }
-            .profile .avatar {
-                width: 28px;
-                height: 28px;
-                font-size: 12px;
-            }
-            .profile .info .name {
-                font-size: 11px;
-            }
-            .profile .info .desc {
-                font-size: 8px;
-            }
-            .profile .version {
-                font-size: 7px;
-                padding: 1px 6px;
-            }
-            .api-bar {
-                padding: 4px 12px 6px;
-                gap: 4px;
-            }
-            .api-bar label {
-                font-size: 8px;
-            }
-            .api-bar input[type="password"] {
-                font-size: 10px;
-                padding: 4px 10px;
-                min-width: 80px;
-            }
-            .api-bar .save-key-btn {
-                font-size: 9px;
-                padding: 4px 10px;
-            }
-            .chat-area {
-                padding: 6px 12px;
-                gap: 4px;
-            }
-            .msg {
-                max-width: 90%;
-                font-size: 12px;
-                padding: 6px 10px;
-            }
-            .input-area {
-                padding: 5px 12px 8px;
-                min-height: 42px;
-                gap: 5px;
-                flex-wrap: wrap;
-            }
-            .input-area input {
-                font-size: 12px;
-                padding: 7px 12px;
-                flex: 1 1 100%;
-            }
-            .input-area button {
-                padding: 7px 14px;
-                font-size: 12px;
-                width: 100%;
-                justify-content: center;
-            }
-            .side-menu {
-                width: 230px;
-                right: -240px;
-            }
-            .side-menu.open {
-                right: 0;
-            }
-            .hamburger {
-                width: 26px;
-                height: 26px;
-                font-size: 13px;
-            }
-        }
+    /* ===== ACTIONS ===== */
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 2.8rem;
+    }
 
-        @media (max-width: 380px) {
-            .welcome-avatar {
-                width: 80px;
-                height: 80px;
-                font-size: 34px;
-            }
-            .welcome-title {
-                font-size: 22px;
-            }
-            .btn-enter {
-                padding: 10px 20px;
-                font-size: 13px;
-            }
-            .side-menu {
-                width: 200px;
-                right: -210px;
-            }
-            .side-menu.open {
-                right: 0;
-            }
-        }
-    </style>
+    .btn {
+      flex: 1;
+      min-width: 150px;
+      padding: 0.9rem 1.8rem;
+      border: none;
+      border-radius: 3rem;
+      font-family: 'Vazirmatn', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      box-shadow: 0 4px 20px rgba(245, 87, 108, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.04);
+      box-shadow: 0 6px 30px rgba(245, 87, 108, 0.6);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #ffd700;
+      transform: scale(1.04);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.15);
+    }
+
+    /* شیمّر روی دکمه‌ها */
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+      transform: rotate(25deg);
+      transition: all 0.5s;
+    }
+
+    .btn:hover::after {
+      left: 60%;
+    }
+
+    /* ===== GAMES SECTION ===== */
+    .games-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .games-title i {
+      color: #ffd700;
+      animation: glowText 2s infinite alternate;
+    }
+
+    @keyframes glowText {
+      0% { text-shadow: 0 0 5px #ffd700; }
+      100% { text-shadow: 0 0 25px #ff6b00, 0 0 50px #ff6b00; }
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .game-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 2rem;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: fadeInUp 0.7s ease backwards;
+      backdrop-filter: blur(4px);
+    }
+
+    .game-card:nth-child(1) { animation-delay: 0.2s; }
+    .game-card:nth-child(2) { animation-delay: 0.35s; }
+    .game-card:nth-child(3) { animation-delay: 0.5s; }
+
+    .game-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: rgba(0, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 15px 40px rgba(0, 255, 255, 0.08);
+    }
+
+    .game-icon {
+      font-size: 3.5rem;
+      margin-bottom: 0.8rem;
+      display: inline-block;
+      animation: float 3.5s infinite alternate ease-in-out;
+    }
+
+    .game-icon.fa-robot { color: #00d4ff; }
+    .game-icon.fa-skull { color: #ff4757; }
+    .game-icon.fa-crown { color: #ffd700; }
+
+    .game-name {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+      background: linear-gradient(135deg, #f5f7fa, #b8c6db);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .game-desc {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .game-tag {
+      display: inline-block;
+      margin-top: 0.6rem;
+      background: rgba(255, 215, 0, 0.1);
+      padding: 0.2rem 1rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      color: #ffd700;
+      border: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      margin-top: 2.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .footer i {
+      color: #ff2d8f;
+      animation: heartBeat 1.5s infinite;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.3); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.2); }
+      60% { transform: scale(1); }
+    }
+
+    .footer-social i {
+      font-size: 1.2rem;
+      margin: 0 0.4rem;
+      color: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .footer-social i:hover {
+      color: #ffd700;
+      transform: translateY(-3px);
+      text-shadow: 0 0 20px #ffd700;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .gaming-card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 2rem 0.8rem 2rem 0.8rem;
+      }
+      .logo-text {
+        font-size: 1.5rem;
+      }
+      .logo-icon {
+        font-size: 2.2rem;
+      }
+      .stat-number {
+        font-size: 1.6rem;
+      }
+      .btn {
+        min-width: 120px;
+        font-size: 0.95rem;
+        padding: 0.7rem 1.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- ===== پس‌زمینه ===== -->
-    <div class="bg">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+<div class="gaming-card">
+
+  <!-- ===== HEADER ===== -->
+  <div class="header">
+    <div class="logo-area">
+      <i class="fas fa-gamepad logo-icon"></i>
+      <span class="logo-text">گیمرز هاب</span>
     </div>
-
-    <!-- ============================================================
-    صفحه اول
-    ============================================================ -->
-    <div id="welcomePage">
-        <div class="welcome-card">
-            <div class="welcome-avatar">
-                <i class="fas fa-brain"></i>
-            </div>
-            <h1 class="welcome-title">
-                <span>Tiva</span> AI
-            </h1>
-            <p class="welcome-sub">
-                <i class="fas fa-circle-check"></i> نسخه 3.0 · با DeepSeek
-            </p>
-            <p class="welcome-desc">
-                <i class="fas fa-comment"></i> پاسخ به همه سوالات · هوش مصنوعی پیشرفته
-                <br />
-                <i class="fas fa-shield-halved"></i> حریم خصوصی کامل
-            </p>
-            <div class="welcome-features">
-                <span><i class="fas fa-clock"></i> آنی</span>
-                <span><i class="fas fa-brain"></i> DeepSeek</span>
-                <span><i class="fas fa-infinity"></i> بی‌نهایت</span>
-            </div>
-            <button class="btn-enter" id="enterBtn">
-                <i class="fas fa-paper-plane"></i> شروع مکالمه
-            </button>
-        </div>
+    <div class="online-status">
+      <span class="online-dot"></span>
+      <span>۲۴۷ آنلاین</span>
     </div>
+  </div>
 
-    <!-- ============================================================
-    صفحه چت
-    ============================================================ -->
-    <div id="chatPage">
-        <div class="hero">
-
-            <!-- ===== منوی همبرگر ===== -->
-            <div class="menu-overlay" id="menuOverlay"></div>
-
-            <div class="side-menu" id="sideMenu">
-                <div class="menu-header">
-                    <h3><i class="fas fa-clock"></i> تاریخچه</h3>
-                    <button class="close-menu" id="closeMenuBtn">
-                        <i class="fas fa-xmark"></i>
-                    </button>
-                </div>
-                <div class="menu-actions">
-                    <button id="pinAllBtn"><i class="fas fa-thumbtack"></i> سنجاق همه</button>
-                    <button id="unpinAllBtn"><i class="fas fa-thumbtack-slash"></i> آزاد کردن</button>
-                    <button id="clearHistoryBtn" class="danger"><i class="fas fa-trash-can"></i> پاک کردن</button>
-                </div>
-                <div class="history-list" id="historyList"></div>
-            </div>
-
-            <!-- ===== هدر ===== -->
-            <div class="header">
-                <div class="logo">
-                    <i class="fas fa-microchip"></i>
-                    <h1><span>Tiva</span> AI</h1>
-                </div>
-                <div class="right">
-                    <div class="status">
-                        <span class="led"></span>
-                        <span>آماده</span>
-                    </div>
-                    <button class="hamburger" id="hamburgerBtn">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- ===== نوار تنظیمات API ===== -->
-            <div class="api-bar">
-                <label><i class="fas fa-key"></i> کلید DeepSeek:</label>
-                <input type="password" id="apiKeyInput" placeholder="کلید API خود را وارد کن..." />
-                <button class="save-key-btn" id="saveKeyBtn">
-                    <i class="fas fa-check"></i> ذخیره
-                </button>
-            </div>
-
-            <!-- ===== پروفایل ===== -->
-            <div class="profile">
-                <div class="avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="info">
-                    <div class="name">
-                        Tiva <i class="fas fa-circle-check"></i>
-                    </div>
-                    <div class="desc">
-                        <i class="fas fa-comment"></i> دستیار هوشمند
-                    </div>
-                </div>
-                <div class="version">v3.0</div>
-            </div>
-
-            <!-- ===== پیام‌ها ===== -->
-            <div class="chat-area" id="chatArea">
-                <div class="msg ai">
-                    <i class="fas fa-hand-peace" style="margin-left:4px;"></i>
-                    سلام! من <strong>Tiva</strong> هستم. کلید DeepSeek رو وارد کن و هر سوالی داری بپرس!
-                </div>
-            </div>
-
-            <!-- ===== ورودی ===== -->
-            <div class="input-area">
-                <input type="text" id="userInput" placeholder="سوال خود را بنویس..." />
-                <button id="sendBtn">
-                    <i class="fas fa-paper-plane"></i> ارسال
-                </button>
-            </div>
-
-        </div>
+  <!-- ===== STATS ===== -->
+  <div class="stats">
+    <div class="stat-item">
+      <i class="fas fa-trophy stat-icon"></i>
+      <div class="stat-number">۱,۲۴۸</div>
+      <div class="stat-label">پیروزی</div>
     </div>
+    <div class="stat-item">
+      <i class="fas fa-crosshairs stat-icon"></i>
+      <div class="stat-number">۹۸٪</div>
+      <div class="stat-label">دقت</div>
+    </div>
+    <div class="stat-item">
+      <i class="fas fa-users stat-icon"></i>
+      <div class="stat-number">۳.۲ک</div>
+      <div class="stat-label">بازیکن</div>
+    </div>
+  </div>
 
-    <script>
-        // ============================================================
-        //  Tiva AI v3.0 - با DeepSeek
-        // ============================================================
+  <!-- ===== ACTIONS ===== -->
+  <div class="actions">
+    <button class="btn btn-primary">
+      <i class="fas fa-play"></i> بازی کن
+    </button>
+    <button class="btn btn-secondary">
+      <i class="fas fa-chart-line"></i> مشاهده بیشتر
+    </button>
+  </div>
 
-        // ===== المنت‌ها =====
-        const welcomePage = document.getElementById('welcomePage');
-        const chatPage = document.getElementById('chatPage');
-        const enterBtn = document.getElementById('enterBtn');
-        const chatArea = document.getElementById('chatArea');
-        const userInput = document.getElementById('userInput');
-        const sendBtn = document.getElementById('sendBtn');
-        const apiKeyInput = document.getElementById('apiKeyInput');
-        const saveKeyBtn = document.getElementById('saveKeyBtn');
+  <!-- ===== GAMES ===== -->
+  <div class="games-title">
+    <i class="fas fa-fire"></i> بازی‌های داغ
+  </div>
 
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const sideMenu = document.getElementById('sideMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const closeMenuBtn = document.getElementById('closeMenuBtn');
-        const historyList = document.getElementById('historyList');
-        const clearHistoryBtn = document.getElementById('clearHistoryBtn');
-        const pinAllBtn = document.getElementById('pinAllBtn');
-        const unpinAllBtn = document.getElementById('unpinAllBtn');
+  <div class="games-grid">
+    <div class="game-card">
+      <i class="fas fa-robot game-icon"></i>
+      <div class="game-name">CYBERPUNK</div>
+      <div class="game-desc">شهر آینده</div>
+      <span class="game-tag"><i class="fas fa-star"></i> ۴.۸</span>
+    </div>
+    <div class="game-card">
+      <i class="fas fa-skull game-icon"></i>
+      <div class="game-name">VALORANT</div>
+      <div class="game-desc">تیراندازی تاکتیکی</div>
+      <span class="game-tag"><i class="fas fa-star"></i> ۴.۹</span>
+    </div>
+    <div class="game-card">
+      <i class="fas fa-crown game-icon"></i>
+      <div class="game-name">FORTNITE</div>
+      <div class="game-desc">بتل رویال</div>
+      <span class="game-tag"><i class="fas fa-star"></i> ۴.۷</span>
+    </div>
+  </div>
 
-        // ===== بارگذاری کلید API =====
-        const savedKey = localStorage.getItem('deepseek_api_key');
-        if (savedKey) {
-            apiKeyInput.value = savedKey;
-        }
+  <!-- ===== FOOTER ===== -->
+  <div class="footer">
+    <span>
+      <i class="fas fa-heart"></i> ساخته شده با عشق برای گیمرها
+    </span>
+    <div class="footer-social">
+      <i class="fab fa-discord"></i>
+      <i class="fab fa-twitch"></i>
+      <i class="fab fa-youtube"></i>
+      <i class="fab fa-instagram"></i>
+    </div>
+  </div>
 
-        saveKeyBtn.addEventListener('click', function() {
-            const key = apiKeyInput.value.trim();
-            if (key) {
-                localStorage.setItem('deepseek_api_key', key);
-                showMessage('ai', '✅ کلید DeepSeek با موفقیت ذخیره شد!');
-                apiKeyInput.value = '';
-            } else {
-                showMessage('ai', '⚠️ لطفاً کلید معتبر وارد کن.');
-            }
-        });
+</div>
 
-        // ===== تاریخچه =====
-        let history = [];
-        let pinnedIds = new Set();
-        let messageIdCounter = 0;
-
-        function loadHistory() {
-            try {
-                const saved = localStorage.getItem('tiva_history');
-                if (saved) {
-                    const data = JSON.parse(saved);
-                    history = data.history || [];
-                    pinnedIds = new Set(data.pinnedIds || []);
-                    messageIdCounter = data.counter || 0;
-                }
-            } catch (e) {}
-        }
-
-        function saveHistory() {
-            try {
-                localStorage.setItem('tiva_history', JSON.stringify({
-                    history: history,
-                    pinnedIds: Array.from(pinnedIds),
-                    counter: messageIdCounter
-                }));
-            } catch (e) {}
-        }
-
-        function addToHistory(text, isUser) {
-            const id = ++messageIdCounter;
-            history.push({ id, text, isUser, timestamp: Date.now() });
-            renderHistory();
-            saveHistory();
-        }
-
-        function deleteHistoryItem(id) {
-            history = history.filter(item => item.id !== id);
-            pinnedIds.delete(id);
-            renderHistory();
-            saveHistory();
-        }
-
-        function togglePin(id) {
-            if (pinnedIds.has(id)) pinnedIds.delete(id);
-            else pinnedIds.add(id);
-            renderHistory();
-            saveHistory();
-        }
-
-        function clearHistory() {
-            if (history.length === 0) return;
-            if (confirm('آیا مطمئنی می‌خوای کل تاریخچه رو پاک کنی؟')) {
-                history = [];
-                pinnedIds.clear();
-                renderHistory();
-                saveHistory();
-            }
-        }
-
-        function pinAll() {
-            history.forEach(item => pinnedIds.add(item.id));
-            renderHistory();
-            saveHistory();
-        }
-
-        function unpinAll() {
-            pinnedIds.clear();
-            renderHistory();
-            saveHistory();
-        }
-
-        function renderHistory() {
-            if (history.length === 0) {
-                historyList.innerHTML = `
-                            <div class="history-empty">
-                                <i class="fas fa-clock"></i>
-                                هنوز پیامی نیست
-                            </div>
-                        `;
-                return;
-            }
-            const sorted = [...history].sort((a, b) => {
-                const aPinned = pinnedIds.has(a.id) ? 1 : 0;
-                const bPinned = pinnedIds.has(b.id) ? 1 : 0;
-                if (aPinned !== bPinned) return bPinned - aPinned;
-                return b.timestamp - a.timestamp;
-            });
-            let html = '';
-            sorted.forEach(item => {
-                const isPinned = pinnedIds.has(item.id);
-                const icon = item.isUser ? 'fas fa-user' : 'fas fa-robot';
-                const label = item.isUser ? 'شما' : 'Tiva';
-                html += `
-                            <div class="history-item ${isPinned ? 'pinned' : ''}">
-                                <div class="h-text">
-                                    <i class="${icon}"></i>
-                                    ${label}: ${item.text.substring(0, 30)}${item.text.length > 30 ? '...' : ''}
-                                </div>
-                                <div class="h-actions">
-                                    <button class="pin-btn" onclick="togglePin(${item.id})" title="${isPinned ? 'آزاد کردن' : 'سنجاق'}">
-                                        <i class="fas ${isPinned ? 'fa-thumbtack' : 'fa-thumbtack-slash'}"></i>
-                                    </button>
-                                    <button class="delete-btn" onclick="deleteHistoryItem(${item.id})" title="حذف">
-                                        <i class="fas fa-trash-can"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        `;
-            });
-            historyList.innerHTML = html;
-        }
-
-        // ===== نمایش پیام =====
-        function showMessage(type, content, saveToHistory = false) {
-            const div = document.createElement('div');
-            div.className = `msg ${type}`;
-            if (type === 'ai' && content === '...') {
-                div.innerHTML = `
-                            <div class="dot-load">
-                                <span></span><span></span><span></span>
-                            </div>
-                        `;
-            } else {
-                div.textContent = content;
-                if (saveToHistory && content !== '...' && content !== '...') {
-                    addToHistory(content, type === 'user');
-                }
-            }
-            chatArea.appendChild(div);
-            chatArea.scrollTop = chatArea.scrollHeight;
-            return div;
-        }
-
-        // ============================================================
-        //  🧠 اتصال به DeepSeek API
-        // ============================================================
-        async function askDeepSeek(question) {
-            const apiKey = localStorage.getItem('deepseek_api_key');
-            if (!apiKey) {
-                return '⚠️ لطفاً ابتدا کلید DeepSeek خود را در نوار بالا وارد و ذخیره کن.';
-            }
-
-            try {
-                const response = await fetch('https://api.deepseek.com/chat/completions', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`
-                    },
-                    body: JSON.stringify({
-                        model: 'deepseek-chat',
-                        messages: [
-                            { role: 'system', content: 'تو یک دستیار هوشمند به نام Tiva هستی. به فارسی پاسخ بده.' },
-                            { role: 'user', content: question }
-                        ],
-                        temperature: 0.7,
-                        max_tokens: 500
-                    })
-                });
-
-                if (!response.ok) {
-                    const error = await response.json().catch(() => ({}));
-                    console.error('خطای DeepSeek:', error);
-                    return '❌ خطا در ارتباط با DeepSeek. کلید API خود را بررسی کن یا بعداً تلاش کن.';
-                }
-
-                const data = await response.json();
-                const reply = data.choices?.[0]?.message?.content;
-                return reply || '⚠️ پاسخی دریافت نشد. دوباره تلاش کن.';
-
-            } catch (error) {
-                console.error('خطا:', error);
-                return '❌ خطا در اتصال به سرور. اینترنت خود را بررسی کن.';
-            }
-        }
-
-        // ===== ارسال پیام =====
-        async function sendMessage() {
-            const text = userInput.value.trim();
-            if (!text) return;
-
-            showMessage('user', text, true);
-            userInput.value = '';
-            userInput.disabled = true;
-            sendBtn.disabled = true;
-
-            const loading = showMessage('ai', '...');
-
-            const reply = await askDeepSeek(text);
-
-            loading.remove();
-            showMessage('ai', reply, true);
-
-            userInput.disabled = false;
-            sendBtn.disabled = false;
-            userInput.focus();
-        }
-
-        // ===== منو =====
-        function toggleMenu() {
-            sideMenu.classList.toggle('open');
-            menuOverlay.classList.toggle('show');
-            hamburgerBtn.classList.toggle('active');
-        }
-
-        function closeMenu() {
-            sideMenu.classList.remove('open');
-            menuOverlay.classList.remove('show');
-            hamburgerBtn.classList.remove('active');
-        }
-
-        // ===== رویدادها =====
-        enterBtn.addEventListener('click', function() {
-            welcomePage.classList.add('hide');
-            chatPage.classList.add('show');
-            loadHistory();
-            renderHistory();
-            setTimeout(() => userInput.focus(), 400);
-        });
-
-        hamburgerBtn.addEventListener('click', toggleMenu);
-        closeMenuBtn.addEventListener('click', closeMenu);
-        menuOverlay.addEventListener('click', closeMenu);
-
-        clearHistoryBtn.addEventListener('click', clearHistory);
-        pinAllBtn.addEventListener('click', pinAll);
-        unpinAllBtn.addEventListener('click', unpinAll);
-
-        sendBtn.addEventListener('click', sendMessage);
-        userInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') sendMessage();
-        });
-
-        setTimeout(() => userInput.focus(), 500);
-
-        // ===== توابع گلوبال =====
-        window.deleteHistoryItem = deleteHistoryItem;
-        window.togglePin = togglePin;
-    </script>
+<!-- ===== (اختیاری) اسکریپت برای شمارشگر ===== -->
+<script>
+  // انیمیشن ساده برای اعداد (فقط جلوه بصری)
+  document.querySelectorAll('.stat-number').forEach(el => {
+    const original = el.textContent;
+    // فقط برای نمایش، عدد رو ثابت نگه میداریم ولی یه افکت کوچک اضافه میکنیم
+    el.addEventListener('mouseenter', function() {
+      this.style.transition = 'transform 0.2s';
+      this.style.transform = 'scale(1.2)';
+      setTimeout(() => { this.style.transform = 'scale(1)'; }, 200);
+    });
+  });
+</script>
 
 </body>
 </html>
