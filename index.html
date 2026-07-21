@@ -100,7 +100,7 @@
         }
 
         /* ================================================================
-                   صفحه اول (Welcome Page)
+                   صفحه اول (Welcome Page) - شیک و حرفه‌ای
                    ================================================================ */
         #welcomePage {
             position: fixed;
@@ -125,21 +125,26 @@
         .welcome-card {
             text-align: center;
             padding: 30px;
-            max-width: 480px;
+            max-width: 500px;
             width: 90%;
+            background: rgba(10, 10, 30, 0.5);
+            backdrop-filter: blur(30px);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 50px 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
         }
 
-        /* ===== آواتار بزرگ Tiva ===== */
         .welcome-avatar {
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             background: linear-gradient(135deg, #00d4ff, #7c3aed);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 72px;
+            margin: 0 auto 20px;
+            font-size: 68px;
             color: #fff;
             box-shadow: 0 0 80px rgba(0, 212, 255, 0.2), 0 0 160px rgba(124, 58, 237, 0.1);
             animation: floatAvatar 3s ease-in-out infinite;
@@ -157,10 +162,10 @@
         }
 
         .welcome-title {
-            font-size: 38px;
+            font-size: 40px;
             font-weight: 900;
             color: #fff;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .welcome-title span {
@@ -170,16 +175,21 @@
         }
 
         .welcome-sub {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.3);
-            margin-bottom: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.25);
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .welcome-sub i {
+            color: #00d4ff;
         }
 
         .welcome-desc {
-            font-size: 14px;
+            font-size: 15px;
             color: rgba(255, 255, 255, 0.2);
-            line-height: 1.8;
-            margin-bottom: 28px;
+            line-height: 2;
+            margin-bottom: 30px;
             padding: 0 10px;
         }
 
@@ -188,9 +198,30 @@
             margin: 0 4px;
         }
 
-        /* ===== دکمه ورود ===== */
+        .welcome-features {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .welcome-features span {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .welcome-features span i {
+            color: #00d4ff;
+            margin-left: 4px;
+        }
+
         .btn-enter {
-            padding: 16px 48px;
+            padding: 16px 50px;
             border-radius: 60px;
             border: none;
             background: linear-gradient(135deg, #00d4ff, #7c3aed);
@@ -218,7 +249,7 @@
                 box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
             }
             50% {
-                box-shadow: 0 0 80px rgba(0, 212, 255, 0.35), 0 0 120px rgba(124, 58, 237, 0.15);
+                box-shadow: 0 0 80px rgba(0, 212, 255, 0.35);
             }
         }
 
@@ -248,45 +279,28 @@
         .hero {
             width: 92%;
             max-width: 720px;
-            height: 88vh;
-            max-height: 680px;
+            height: 90vh;
+            max-height: 700px;
             background: rgba(10, 10, 30, 0.8);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border-radius: 32px;
             border: 1px solid rgba(255, 255, 255, 0.04);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            animation: fadeUp 0.6s ease forwards;
-            opacity: 0;
+            position: relative;
         }
 
-        #chatPage.show .hero {
-            opacity: 1;
-        }
-
-        @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* ===== هدر چت ===== */
+        /* ===== هدر چت با همبرگر ===== */
         .header {
-            padding: 16px 22px 12px;
+            padding: 14px 18px 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-shrink: 0;
-            min-height: 60px;
+            min-height: 56px;
         }
 
         .header .logo {
@@ -296,7 +310,7 @@
         }
 
         .header .logo i {
-            font-size: 24px;
+            font-size: 22px;
             color: #00d4ff;
             animation: iconPulse 2.5s ease-in-out infinite;
         }
@@ -312,7 +326,7 @@
         }
 
         .header .logo h1 {
-            font-size: 19px;
+            font-size: 18px;
             color: #fff;
             font-weight: 800;
         }
@@ -323,12 +337,18 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .header .right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
         .header .status {
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.3);
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.25);
         }
 
         .header .status .led {
@@ -349,26 +369,244 @@
             }
         }
 
-        /* ===== بخش مشخصات ===== */
-        .profile {
-            padding: 14px 22px 12px;
+        /* ===== دکمه همبرگر ===== */
+        .hamburger {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 14px;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hamburger:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .hamburger.active {
+            transform: rotate(90deg);
+            color: #00d4ff;
+        }
+
+        /* ===== منوی کناری (Slide Menu) ===== */
+        .side-menu {
+            position: absolute;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100%;
+            background: rgba(10, 10, 30, 0.95);
+            backdrop-filter: blur(30px);
+            border-left: 1px solid rgba(255, 255, 255, 0.04);
+            z-index: 20;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            border-radius: 0 32px 32px 0;
+        }
+
+        .side-menu.open {
+            right: 0;
+        }
+
+        .side-menu .menu-header {
+            padding: 0 20px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .side-menu .menu-header h3 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .side-menu .menu-header h3 i {
+            color: #00d4ff;
+            margin-left: 8px;
+        }
+
+        .side-menu .menu-header .close-menu {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .side-menu .menu-header .close-menu:hover {
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .side-menu .menu-actions {
+            padding: 14px 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .side-menu .menu-actions button {
+            padding: 8px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.02);
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Vazirmatn', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .side-menu .menu-actions button:hover {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+        }
+
+        .side-menu .menu-actions button.danger:hover {
+            border-color: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .side-menu .menu-actions button i {
+            font-size: 12px;
+        }
+
+        /* ===== لیست تاریخچه ===== */
+        .history-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 14px;
+        }
+
+        .history-list::-webkit-scrollbar {
+            width: 3px;
+        }
+        .history-list::-webkit-scrollbar-thumb {
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .history-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            border-radius: 12px;
+            margin-bottom: 4px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .history-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .history-item.pinned {
+            border-color: rgba(0, 212, 255, 0.1);
+            background: rgba(0, 212, 255, 0.03);
+        }
+
+        .history-item .h-text {
+            flex: 1;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-left: 10px;
+        }
+
+        .history-item .h-text i {
+            color: #a855f7;
+            margin-left: 6px;
+            font-size: 11px;
+        }
+
+        .history-item .h-actions {
+            display: flex;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+
+        .history-item .h-actions button {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            padding: 4px 6px;
+            border-radius: 6px;
+        }
+
+        .history-item .h-actions button:hover {
+            color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .history-item .h-actions button.pin-btn:hover {
+            color: #f59e0b;
+        }
+
+        .history-item .h-actions button.delete-btn:hover {
+            color: #ef4444;
+        }
+
+        .history-empty {
+            color: rgba(255, 255, 255, 0.08);
+            text-align: center;
+            font-size: 13px;
+            padding: 40px 0;
+        }
+
+        .history-empty i {
+            font-size: 32px;
+            display: block;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.04);
+        }
+
+        /* ===== بخش مشخصات ===== */
+        .profile {
+            padding: 10px 18px 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             flex-shrink: 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            min-height: 70px;
+            min-height: 60px;
         }
 
         .profile .avatar {
-            width: 52px;
-            height: 52px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: linear-gradient(135deg, #00d4ff, #7c3aed);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 20px;
             color: #fff;
             flex-shrink: 0;
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
@@ -380,21 +618,21 @@
         }
 
         .profile .info .name {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             color: #fff;
         }
 
         .profile .info .name i {
             color: #f59e0b;
-            font-size: 12px;
+            font-size: 11px;
             margin-right: 4px;
         }
 
         .profile .info .desc {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.35);
-            margin-top: 2px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.25);
+            margin-top: 1px;
         }
 
         .profile .info .desc i {
@@ -403,23 +641,23 @@
         }
 
         .profile .version {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.03);
-            padding: 4px 12px;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 3px 10px;
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.02);
             flex-shrink: 0;
         }
 
         /* ===== بخش پیام‌ها ===== */
         .chat-area {
             flex: 1;
-            padding: 14px 22px;
+            padding: 12px 18px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             min-height: 0;
             scroll-behavior: smooth;
         }
@@ -428,14 +666,14 @@
             width: 3px;
         }
         .chat-area::-webkit-scrollbar-thumb {
-            background: rgba(0, 212, 255, 0.15);
+            background: rgba(0, 212, 255, 0.1);
             border-radius: 10px;
         }
 
         .msg {
             max-width: 82%;
-            padding: 10px 16px;
-            border-radius: 16px;
+            padding: 9px 14px;
+            border-radius: 14px;
             font-size: 14px;
             line-height: 1.7;
             animation: msgIn 0.25s ease forwards;
@@ -464,9 +702,9 @@
         .msg.ai {
             align-self: flex-start;
             background: rgba(255, 255, 255, 0.04);
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.75);
             border-bottom-left-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         .msg.ai .dot-load {
@@ -477,7 +715,7 @@
         .msg.ai .dot-load span {
             width: 5px;
             height: 5px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 50%;
             animation: dotJump 1.2s ease-in-out infinite;
         }
@@ -504,17 +742,17 @@
 
         /* ===== بخش ورودی ===== */
         .input-area {
-            padding: 12px 22px 18px;
+            padding: 10px 18px 14px;
             border-top: 1px solid rgba(255, 255, 255, 0.03);
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-shrink: 0;
-            min-height: 68px;
+            min-height: 60px;
         }
 
         .input-area input {
             flex: 1;
-            padding: 12px 18px;
+            padding: 10px 16px;
             border-radius: 40px;
             border: 1px solid rgba(255, 255, 255, 0.04);
             background: rgba(255, 255, 255, 0.02);
@@ -526,12 +764,12 @@
         }
 
         .input-area input::placeholder {
-            color: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.12);
         }
 
         .input-area input:focus {
-            border-color: rgba(0, 212, 255, 0.1);
-            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(0, 212, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .input-area input:disabled {
@@ -539,7 +777,7 @@
         }
 
         .input-area button {
-            padding: 12px 24px;
+            padding: 10px 22px;
             border-radius: 40px;
             border: none;
             background: linear-gradient(135deg, #00d4ff, #7c3aed);
@@ -564,12 +802,36 @@
             cursor: not-allowed;
         }
 
-        /* ===== ریسپانسیو موبایل ===== */
+        /* ===== اورلی برای منو ===== */
+        .menu-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 15;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .menu-overlay.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* ===== ریسپانسیو ===== */
         @media (max-width: 600px) {
+            .welcome-card {
+                padding: 30px 20px;
+                border-radius: 28px;
+                margin: 20px;
+            }
             .welcome-avatar {
-                width: 120px;
-                height: 120px;
-                font-size: 54px;
+                width: 110px;
+                height: 110px;
+                font-size: 48px;
             }
             .welcome-title {
                 font-size: 28px;
@@ -578,8 +840,12 @@
                 font-size: 13px;
             }
             .btn-enter {
-                padding: 14px 36px;
+                padding: 14px 32px;
                 font-size: 16px;
+            }
+            .welcome-features span {
+                font-size: 10px;
+                padding: 4px 12px;
             }
 
             .hero {
@@ -589,72 +855,92 @@
                 border-radius: 0;
             }
             .header {
-                padding: 12px 16px 10px;
-                min-height: 52px;
+                padding: 10px 14px 8px;
+                min-height: 48px;
             }
             .header .logo h1 {
-                font-size: 17px;
+                font-size: 16px;
             }
             .profile {
-                padding: 10px 16px 10px;
-                min-height: 62px;
-                gap: 12px;
+                padding: 8px 14px 8px;
+                min-height: 52px;
+                gap: 10px;
             }
             .profile .avatar {
-                width: 44px;
-                height: 44px;
-                font-size: 20px;
+                width: 38px;
+                height: 38px;
+                font-size: 17px;
             }
             .profile .info .name {
-                font-size: 14px;
+                font-size: 13px;
             }
             .profile .info .desc {
-                font-size: 11px;
+                font-size: 10px;
             }
             .profile .version {
-                font-size: 10px;
-                padding: 2px 10px;
+                font-size: 9px;
+                padding: 2px 8px;
             }
             .chat-area {
-                padding: 10px 16px;
-                gap: 8px;
+                padding: 8px 14px;
+                gap: 6px;
             }
             .msg {
                 max-width: 90%;
                 font-size: 13px;
-                padding: 8px 14px;
+                padding: 8px 12px;
             }
             .input-area {
-                padding: 10px 16px 14px;
-                min-height: 62px;
-                gap: 8px;
+                padding: 8px 14px 12px;
+                min-height: 54px;
+                gap: 6px;
                 flex-wrap: wrap;
             }
             .input-area input {
                 font-size: 13px;
-                padding: 10px 14px;
+                padding: 8px 14px;
                 flex: 1 1 100%;
             }
             .input-area button {
-                padding: 10px 18px;
+                padding: 8px 16px;
                 font-size: 13px;
                 width: 100%;
                 justify-content: center;
+            }
+
+            .side-menu {
+                width: 280px;
+                right: -290px;
+            }
+            .side-menu.open {
+                right: 0;
+            }
+            .hamburger {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
             }
         }
 
         @media (max-width: 380px) {
             .welcome-avatar {
-                width: 100px;
-                height: 100px;
-                font-size: 44px;
+                width: 90px;
+                height: 90px;
+                font-size: 38px;
             }
             .welcome-title {
                 font-size: 24px;
             }
             .btn-enter {
-                padding: 12px 28px;
+                padding: 12px 24px;
                 font-size: 14px;
+            }
+            .side-menu {
+                width: 250px;
+                right: -260px;
+            }
+            .side-menu.open {
+                right: 0;
             }
         }
     </style>
@@ -674,33 +960,29 @@
     ============================================================ -->
     <div id="welcomePage">
         <div class="welcome-card">
-            <!-- آواتار بزرگ Tiva -->
             <div class="welcome-avatar">
                 <i class="fa-solid fa-brain"></i>
             </div>
-
-            <!-- عنوان -->
             <h1 class="welcome-title">
                 <span>Tiva</span> AI
             </h1>
-
-            <!-- زیرنویس -->
             <p class="welcome-sub">
-                <i class="fa-regular fa-circle-check" style="color:#00d4ff;"></i>
-                نسخه 2.0
+                <i class="fa-regular fa-circle-check"></i>
+                نسخه 2.0 · دستیار هوشمند
             </p>
-
-            <!-- توضیحات -->
             <p class="welcome-desc">
-                <i class="fa-regular fa-comment"></i> دستیار هوشمند شما
+                <i class="fa-regular fa-comment"></i> پاسخ‌های آنی · کاملاً آفلاین
                 <br />
-                پاسخ‌های آنی · کاملاً آفلاین · بدون نیاز به اینترنت
+                <i class="fa-regular fa-star"></i> بدون نیاز به اینترنت · حریم خصوصی کامل
             </p>
-
-            <!-- دکمه ورود -->
+            <div class="welcome-features">
+                <span><i class="fa-regular fa-clock"></i> آنی</span>
+                <span><i class="fa-regular fa-shield-halved"></i> امن</span>
+                <span><i class="fa-regular fa-brain"></i> هوشمند</span>
+            </div>
             <button class="btn-enter" id="enterBtn">
                 <i class="fa-regular fa-paper-plane"></i>
-                ورود به چت
+                شروع مکالمه
             </button>
         </div>
     </div>
@@ -711,19 +993,44 @@
     <div id="chatPage">
         <div class="hero">
 
-            <!-- هدر -->
+            <!-- ===== منوی همبرگر ===== -->
+            <div class="menu-overlay" id="menuOverlay"></div>
+
+            <div class="side-menu" id="sideMenu">
+                <div class="menu-header">
+                    <h3><i class="fa-regular fa-clock"></i> تاریخچه</h3>
+                    <button class="close-menu" id="closeMenuBtn">
+                        <i class="fa-regular fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="menu-actions">
+                    <button id="pinAllBtn"><i class="fa-regular fa-thumbtack"></i> سنجاق همه</button>
+                    <button id="unpinAllBtn"><i class="fa-regular fa-thumbtack-slash"></i> آزاد کردن</button>
+                    <button id="clearHistoryBtn" class="danger"><i class="fa-regular fa-trash-can"></i> پاک کردن</button>
+                </div>
+                <div class="history-list" id="historyList">
+                    <!-- تاریخچه اینجا ساخته میشه -->
+                </div>
+            </div>
+
+            <!-- ===== هدر ===== -->
             <div class="header">
                 <div class="logo">
                     <i class="fa-solid fa-microchip"></i>
                     <h1><span>Tiva</span> AI</h1>
                 </div>
-                <div class="status">
-                    <span class="led"></span>
-                    <span>آماده</span>
+                <div class="right">
+                    <div class="status">
+                        <span class="led"></span>
+                        <span>آماده</span>
+                    </div>
+                    <button class="hamburger" id="hamburgerBtn">
+                        <i class="fa-regular fa-bars"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- مشخصات -->
+            <!-- ===== مشخصات ===== -->
             <div class="profile">
                 <div class="avatar">
                     <i class="fa-regular fa-user"></i>
@@ -733,13 +1040,13 @@
                         Tiva <i class="fa-regular fa-circle-check"></i>
                     </div>
                     <div class="desc">
-                        <i class="fa-regular fa-comment"></i> دستیار هوشمند | پاسخ‌های آنی
+                        <i class="fa-regular fa-comment"></i> دستیار هوشمند
                     </div>
                 </div>
                 <div class="version">v2.0</div>
             </div>
 
-            <!-- پیام‌ها -->
+            <!-- ===== پیام‌ها ===== -->
             <div class="chat-area" id="chatArea">
                 <div class="msg ai">
                     <i class="fa-regular fa-hand-peace" style="margin-left:6px;"></i>
@@ -747,7 +1054,7 @@
                 </div>
             </div>
 
-            <!-- ورودی -->
+            <!-- ===== ورودی ===== -->
             <div class="input-area">
                 <input type="text" id="userInput" placeholder="سوال خود را بنویس..." />
                 <button id="sendBtn">
@@ -760,7 +1067,7 @@
 
     <script>
         // ============================================================
-        //  Tiva AI - کاملاً آفلاین و سریع
+        //  Tiva AI - با منوی همبرگر و تاریخچه
         // ============================================================
 
         // ===== المنت‌ها =====
@@ -770,15 +1077,176 @@
         const chatArea = document.getElementById('chatArea');
         const userInput = document.getElementById('userInput');
         const sendBtn = document.getElementById('sendBtn');
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const sideMenu = document.getElementById('sideMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const historyList = document.getElementById('historyList');
+        const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+        const pinAllBtn = document.getElementById('pinAllBtn');
+        const unpinAllBtn = document.getElementById('unpinAllBtn');
 
-        // ===== رفتن به صفحه چت =====
-        enterBtn.addEventListener('click', function() {
-            welcomePage.classList.add('hide');
-            chatPage.classList.add('show');
-            setTimeout(() => {
-                userInput.focus();
-            }, 400);
-        });
+        // ===== تاریخچه =====
+        let history = [];
+        let pinnedIds = new Set();
+        let messageIdCounter = 0;
+
+        // ===== بارگذاری تاریخچه از localStorage =====
+        function loadHistory() {
+            try {
+                const saved = localStorage.getItem('tiva_history');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    history = data.history || [];
+                    pinnedIds = new Set(data.pinnedIds || []);
+                    messageIdCounter = data.counter || 0;
+                }
+            } catch (e) {
+                console.log('خطا در بارگذاری تاریخچه');
+            }
+        }
+
+        // ===== ذخیره تاریخچه =====
+        function saveHistory() {
+            try {
+                localStorage.setItem('tiva_history', JSON.stringify({
+                    history: history,
+                    pinnedIds: Array.from(pinnedIds),
+                    counter: messageIdCounter
+                }));
+            } catch (e) {
+                console.log('خطا در ذخیره تاریخچه');
+            }
+        }
+
+        // ===== افزودن به تاریخچه =====
+        function addToHistory(text, isUser) {
+            const id = ++messageIdCounter;
+            const item = {
+                id: id,
+                text: text,
+                isUser: isUser,
+                timestamp: Date.now(),
+                pinned: false
+            };
+            history.push(item);
+            renderHistory();
+            saveHistory();
+        }
+
+        // ===== حذف از تاریخچه =====
+        function deleteHistoryItem(id) {
+            history = history.filter(item => item.id !== id);
+            pinnedIds.delete(id);
+            renderHistory();
+            saveHistory();
+        }
+
+        // ===== سنجاق/آزاد کردن =====
+        function togglePin(id) {
+            if (pinnedIds.has(id)) {
+                pinnedIds.delete(id);
+            } else {
+                pinnedIds.add(id);
+            }
+            renderHistory();
+            saveHistory();
+        }
+
+        // ===== پاک کردن کل تاریخچه =====
+        function clearHistory() {
+            if (history.length === 0) return;
+            if (confirm('آیا مطمئنی می‌خوای کل تاریخچه رو پاک کنی؟')) {
+                history = [];
+                pinnedIds.clear();
+                renderHistory();
+                saveHistory();
+            }
+        }
+
+        // ===== سنجاق همه =====
+        function pinAll() {
+            history.forEach(item => pinnedIds.add(item.id));
+            renderHistory();
+            saveHistory();
+        }
+
+        // ===== آزاد کردن همه =====
+        function unpinAll() {
+            pinnedIds.clear();
+            renderHistory();
+            saveHistory();
+        }
+
+        // ===== رندر تاریخچه =====
+        function renderHistory() {
+            if (history.length === 0) {
+                historyList.innerHTML = `
+                            <div class="history-empty">
+                                <i class="fa-regular fa-clock"></i>
+                                هنوز پیامی وجود ندارد
+                            </div>
+                        `;
+                return;
+            }
+
+            // مرتب‌سازی: سنجاق‌شده‌ها بالا
+            const sorted = [...history].sort((a, b) => {
+                const aPinned = pinnedIds.has(a.id) ? 1 : 0;
+                const bPinned = pinnedIds.has(b.id) ? 1 : 0;
+                if (aPinned !== bPinned) return bPinned - aPinned;
+                return b.timestamp - a.timestamp;
+            });
+
+            let html = '';
+            sorted.forEach(item => {
+                const isPinned = pinnedIds.has(item.id);
+                const icon = item.isUser ? 'fa-regular fa-user' : 'fa-regular fa-robot';
+                const label = item.isUser ? 'شما' : 'Tiva';
+                html += `
+                            <div class="history-item ${isPinned ? 'pinned' : ''}">
+                                <div class="h-text">
+                                    <i class="${icon}"></i>
+                                    ${label}: ${item.text.substring(0, 40)}${item.text.length > 40 ? '...' : ''}
+                                </div>
+                                <div class="h-actions">
+                                    <button class="pin-btn" onclick="togglePin(${item.id})" title="${isPinned ? 'آزاد کردن' : 'سنجاق'}">
+                                        <i class="fa-regular ${isPinned ? 'fa-thumbtack' : 'fa-thumbtack-slash'}"></i>
+                                    </button>
+                                    <button class="delete-btn" onclick="deleteHistoryItem(${item.id})" title="حذف">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+            });
+
+            historyList.innerHTML = html;
+        }
+
+        // ===== نمایش پیام در چت =====
+        function showMessage(type, content, saveToHistory = false) {
+            const div = document.createElement('div');
+            div.className = `msg ${type}`;
+
+            if (type === 'ai' && content === '...') {
+                div.innerHTML = `
+                            <div class="dot-load">
+                                <span></span><span></span><span></span>
+                            </div>
+                        `;
+            } else {
+                div.textContent = content;
+                if (saveToHistory && content !== '...') {
+                    const isUser = type === 'user';
+                    addToHistory(content, isUser);
+                }
+            }
+
+            chatArea.appendChild(div);
+            chatArea.scrollTop = chatArea.scrollHeight;
+            return div;
+        }
 
         // ===== دانش Tiva =====
         const knowledge = {
@@ -825,32 +1293,12 @@
             return defaults[Math.floor(Math.random() * defaults.length)];
         }
 
-        // ===== نمایش پیام =====
-        function showMessage(type, content) {
-            const div = document.createElement('div');
-            div.className = `msg ${type}`;
-
-            if (type === 'ai' && content === '...') {
-                div.innerHTML = `
-                            <div class="dot-load">
-                                <span></span><span></span><span></span>
-                            </div>
-                        `;
-            } else {
-                div.textContent = content;
-            }
-
-            chatArea.appendChild(div);
-            chatArea.scrollTop = chatArea.scrollHeight;
-            return div;
-        }
-
         // ===== ارسال پیام =====
         function sendMessage() {
             const text = userInput.value.trim();
             if (!text) return;
 
-            showMessage('user', text);
+            showMessage('user', text, true);
             userInput.value = '';
             userInput.disabled = true;
             sendBtn.disabled = true;
@@ -860,20 +1308,63 @@
             setTimeout(() => {
                 loading.remove();
                 const reply = getReply(text);
-                showMessage('ai', reply);
+                showMessage('ai', reply, true);
                 userInput.disabled = false;
                 sendBtn.disabled = false;
                 userInput.focus();
             }, 150);
         }
 
+        // ===== منوی همبرگر =====
+        function toggleMenu() {
+            const isOpen = sideMenu.classList.contains('open');
+            sideMenu.classList.toggle('open');
+            menuOverlay.classList.toggle('show');
+            hamburgerBtn.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            sideMenu.classList.remove('open');
+            menuOverlay.classList.remove('show');
+            hamburgerBtn.classList.remove('active');
+        }
+
         // ===== رویدادها =====
+        // ورود به چت
+        enterBtn.addEventListener('click', function() {
+            welcomePage.classList.add('hide');
+            chatPage.classList.add('show');
+            loadHistory();
+            renderHistory();
+            setTimeout(() => userInput.focus(), 400);
+        });
+
+        // منو
+        hamburgerBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // تاریخچه
+        clearHistoryBtn.addEventListener('click', clearHistory);
+        pinAllBtn.addEventListener('click', pinAll);
+        unpinAllBtn.addEventListener('click', unpinAll);
+
+        // چت
         sendBtn.addEventListener('click', sendMessage);
         userInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 sendMessage();
             }
         });
+
+        // فوکوس اولیه
+        setTimeout(() => userInput.focus(), 500);
+
+        // ============================================================
+        //  توابع گلوبال برای دکمه‌های تاریخچه (توسط onclick)
+        // ============================================================
+        window.deleteHistoryItem = deleteHistoryItem;
+        window.togglePin = togglePin;
     </script>
 
 </body>
