@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Tiva AI - دستیار هوشمند</title>
 
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
@@ -23,9 +23,12 @@
             overflow: hidden;
             font-family: 'Vazirmatn', sans-serif;
             background: #070714;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
 
-        /* ===== پس‌زمینه سبک (بهینه برای سرعت) ===== */
+        /* ===== پس‌زمینه ===== */
         .bg {
             position: fixed;
             top: 0;
@@ -36,7 +39,6 @@
             background: radial-gradient(ellipse at 30% 40%, #0d0d2b, #050510);
         }
 
-        /* فقط ۴ تا ذره (برای کاهش لگ) */
         .bg .dot {
             position: absolute;
             border-radius: 50%;
@@ -97,14 +99,157 @@
             }
         }
 
-        /* ===== کارت اصلی ===== */
+        /* ================================================================
+                   صفحه اول (Welcome Page)
+                   ================================================================ */
+        #welcomePage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at 30% 40%, #0d0d2b, #050510);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        #welcomePage.hide {
+            opacity: 0;
+            transform: scale(1.05);
+            pointer-events: none;
+        }
+
+        .welcome-card {
+            text-align: center;
+            padding: 30px;
+            max-width: 480px;
+            width: 90%;
+        }
+
+        /* ===== آواتار بزرگ Tiva ===== */
+        .welcome-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 72px;
+            color: #fff;
+            box-shadow: 0 0 80px rgba(0, 212, 255, 0.2), 0 0 160px rgba(124, 58, 237, 0.1);
+            animation: floatAvatar 3s ease-in-out infinite;
+            border: 2px solid rgba(0, 212, 255, 0.1);
+        }
+
+        @keyframes floatAvatar {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .welcome-title {
+            font-size: 38px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .welcome-title span {
+            background: linear-gradient(90deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .welcome-sub {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 8px;
+        }
+
+        .welcome-desc {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.2);
+            line-height: 1.8;
+            margin-bottom: 28px;
+            padding: 0 10px;
+        }
+
+        .welcome-desc i {
+            color: #a855f7;
+            margin: 0 4px;
+        }
+
+        /* ===== دکمه ورود ===== */
+        .btn-enter {
+            padding: 16px 48px;
+            border-radius: 60px;
+            border: none;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Vazirmatn', sans-serif;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+            animation: btnPulse 2.5s ease-in-out infinite;
+        }
+
+        .btn-enter:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 70px rgba(0, 212, 255, 0.3);
+        }
+
+        @keyframes btnPulse {
+            0%,
+            100% {
+                box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+            }
+            50% {
+                box-shadow: 0 0 80px rgba(0, 212, 255, 0.35), 0 0 120px rgba(124, 58, 237, 0.15);
+            }
+        }
+
+        /* ================================================================
+                   صفحه چت (Chat Page)
+                   ================================================================ */
+        #chatPage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+        }
+
+        #chatPage.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+
         .hero {
-            position: relative;
-            z-index: 1;
             width: 92%;
             max-width: 720px;
-            max-height: 92vh;
-            margin: 20px auto;
+            height: 88vh;
+            max-height: 680px;
             background: rgba(10, 10, 30, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -118,25 +263,30 @@
             opacity: 0;
         }
 
+        #chatPage.show .hero {
+            opacity: 1;
+        }
+
         @keyframes fadeUp {
             0% {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: scale(0.95);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: scale(1);
             }
         }
 
-        /* ===== هدر ===== */
+        /* ===== هدر چت ===== */
         .header {
-            padding: 18px 22px 14px;
+            padding: 16px 22px 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-shrink: 0;
+            min-height: 60px;
         }
 
         .header .logo {
@@ -146,7 +296,7 @@
         }
 
         .header .logo i {
-            font-size: 26px;
+            font-size: 24px;
             color: #00d4ff;
             animation: iconPulse 2.5s ease-in-out infinite;
         }
@@ -162,7 +312,7 @@
         }
 
         .header .logo h1 {
-            font-size: 20px;
+            font-size: 19px;
             color: #fff;
             font-weight: 800;
         }
@@ -201,23 +351,24 @@
 
         /* ===== بخش مشخصات ===== */
         .profile {
-            padding: 16px 22px 12px;
+            padding: 14px 22px 12px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             flex-shrink: 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            min-height: 70px;
         }
 
         .profile .avatar {
-            width: 56px;
-            height: 56px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             background: linear-gradient(135deg, #00d4ff, #7c3aed);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
+            font-size: 24px;
             color: #fff;
             flex-shrink: 0;
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
@@ -261,7 +412,7 @@
             flex-shrink: 0;
         }
 
-        /* ===== بخش پیام‌ها (با اسکرول نرم) ===== */
+        /* ===== بخش پیام‌ها ===== */
         .chat-area {
             flex: 1;
             padding: 14px 22px;
@@ -269,8 +420,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            min-height: 200px;
-            max-height: 400px;
+            min-height: 0;
             scroll-behavior: smooth;
         }
 
@@ -352,13 +502,14 @@
             }
         }
 
-        /* ===== بخش ورودی (سبک و سریع) ===== */
+        /* ===== بخش ورودی ===== */
         .input-area {
             padding: 12px 22px 18px;
             border-top: 1px solid rgba(255, 255, 255, 0.03);
             display: flex;
             gap: 10px;
             flex-shrink: 0;
+            min-height: 68px;
         }
 
         .input-area input {
@@ -413,23 +564,41 @@
             cursor: not-allowed;
         }
 
-        /* ===== ریسپانسیو ===== */
+        /* ===== ریسپانسیو موبایل ===== */
         @media (max-width: 600px) {
+            .welcome-avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 54px;
+            }
+            .welcome-title {
+                font-size: 28px;
+            }
+            .welcome-desc {
+                font-size: 13px;
+            }
+            .btn-enter {
+                padding: 14px 36px;
+                font-size: 16px;
+            }
+
             .hero {
                 width: 100%;
+                height: 100vh;
                 max-height: 100vh;
-                margin: 0;
                 border-radius: 0;
             }
             .header {
-                padding: 14px 16px 10px;
+                padding: 12px 16px 10px;
+                min-height: 52px;
             }
             .header .logo h1 {
                 font-size: 17px;
             }
             .profile {
-                padding: 12px 16px 10px;
-                flex-wrap: wrap;
+                padding: 10px 16px 10px;
+                min-height: 62px;
+                gap: 12px;
             }
             .profile .avatar {
                 width: 44px;
@@ -439,14 +608,16 @@
             .profile .info .name {
                 font-size: 14px;
             }
+            .profile .info .desc {
+                font-size: 11px;
+            }
             .profile .version {
                 font-size: 10px;
                 padding: 2px 10px;
             }
             .chat-area {
                 padding: 10px 16px;
-                min-height: 150px;
-                max-height: 300px;
+                gap: 8px;
             }
             .msg {
                 max-width: 90%;
@@ -455,12 +626,14 @@
             }
             .input-area {
                 padding: 10px 16px 14px;
+                min-height: 62px;
+                gap: 8px;
                 flex-wrap: wrap;
             }
             .input-area input {
                 font-size: 13px;
                 padding: 10px 14px;
-                min-width: 0;
+                flex: 1 1 100%;
             }
             .input-area button {
                 padding: 10px 18px;
@@ -469,10 +642,26 @@
                 justify-content: center;
             }
         }
+
+        @media (max-width: 380px) {
+            .welcome-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 44px;
+            }
+            .welcome-title {
+                font-size: 24px;
+            }
+            .btn-enter {
+                padding: 12px 28px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- ===== پس‌زمینه ===== -->
     <div class="bg">
         <div class="dot"></div>
         <div class="dot"></div>
@@ -480,64 +669,118 @@
         <div class="dot"></div>
     </div>
 
-    <div class="hero">
+    <!-- ============================================================
+    صفحه اول (Welcome)
+    ============================================================ -->
+    <div id="welcomePage">
+        <div class="welcome-card">
+            <!-- آواتار بزرگ Tiva -->
+            <div class="welcome-avatar">
+                <i class="fa-solid fa-brain"></i>
+            </div>
 
-        <!-- ===== هدر ===== -->
-        <div class="header">
-            <div class="logo">
-                <i class="fa-solid fa-microchip"></i>
-                <h1><span>Tiva</span> AI</h1>
-            </div>
-            <div class="status">
-                <span class="led"></span>
-                <span>آماده</span>
-            </div>
-        </div>
+            <!-- عنوان -->
+            <h1 class="welcome-title">
+                <span>Tiva</span> AI
+            </h1>
 
-        <!-- ===== مشخصات ===== -->
-        <div class="profile">
-            <div class="avatar">
-                <i class="fa-regular fa-user"></i>
-            </div>
-            <div class="info">
-                <div class="name">
-                    Tiva <i class="fa-regular fa-circle-check"></i>
-                </div>
-                <div class="desc">
-                    <i class="fa-regular fa-comment"></i> دستیار هوشمند | پاسخ‌های آنی
-                </div>
-            </div>
-            <div class="version">v2.0</div>
-        </div>
+            <!-- زیرنویس -->
+            <p class="welcome-sub">
+                <i class="fa-regular fa-circle-check" style="color:#00d4ff;"></i>
+                نسخه 2.0
+            </p>
 
-        <!-- ===== بخش پیام‌ها ===== -->
-        <div class="chat-area" id="chatArea">
-            <div class="msg ai">
-                <i class="fa-regular fa-hand-peace" style="margin-left:6px;"></i>
-                سلام! من <strong>Tiva</strong> هستم. هر سوالی داری بپرس.
-            </div>
-        </div>
+            <!-- توضیحات -->
+            <p class="welcome-desc">
+                <i class="fa-regular fa-comment"></i> دستیار هوشمند شما
+                <br />
+                پاسخ‌های آنی · کاملاً آفلاین · بدون نیاز به اینترنت
+            </p>
 
-        <!-- ===== بخش ورودی ===== -->
-        <div class="input-area">
-            <input type="text" id="userInput" placeholder="سوال خود را بنویس..." />
-            <button id="sendBtn">
-                <i class="fa-regular fa-paper-plane"></i> ارسال
+            <!-- دکمه ورود -->
+            <button class="btn-enter" id="enterBtn">
+                <i class="fa-regular fa-paper-plane"></i>
+                ورود به چت
             </button>
         </div>
+    </div>
 
+    <!-- ============================================================
+    صفحه چت
+    ============================================================ -->
+    <div id="chatPage">
+        <div class="hero">
+
+            <!-- هدر -->
+            <div class="header">
+                <div class="logo">
+                    <i class="fa-solid fa-microchip"></i>
+                    <h1><span>Tiva</span> AI</h1>
+                </div>
+                <div class="status">
+                    <span class="led"></span>
+                    <span>آماده</span>
+                </div>
+            </div>
+
+            <!-- مشخصات -->
+            <div class="profile">
+                <div class="avatar">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="info">
+                    <div class="name">
+                        Tiva <i class="fa-regular fa-circle-check"></i>
+                    </div>
+                    <div class="desc">
+                        <i class="fa-regular fa-comment"></i> دستیار هوشمند | پاسخ‌های آنی
+                    </div>
+                </div>
+                <div class="version">v2.0</div>
+            </div>
+
+            <!-- پیام‌ها -->
+            <div class="chat-area" id="chatArea">
+                <div class="msg ai">
+                    <i class="fa-regular fa-hand-peace" style="margin-left:6px;"></i>
+                    سلام! من <strong>Tiva</strong> هستم. هر سوالی داری بپرس.
+                </div>
+            </div>
+
+            <!-- ورودی -->
+            <div class="input-area">
+                <input type="text" id="userInput" placeholder="سوال خود را بنویس..." />
+                <button id="sendBtn">
+                    <i class="fa-regular fa-paper-plane"></i> ارسال
+                </button>
+            </div>
+
+        </div>
     </div>
 
     <script>
         // ============================================================
-        //  Tiva AI - کاملاً آفلاین و سریع (پردازش داخلی)
+        //  Tiva AI - کاملاً آفلاین و سریع
         // ============================================================
 
+        // ===== المنت‌ها =====
+        const welcomePage = document.getElementById('welcomePage');
+        const chatPage = document.getElementById('chatPage');
+        const enterBtn = document.getElementById('enterBtn');
         const chatArea = document.getElementById('chatArea');
         const userInput = document.getElementById('userInput');
         const sendBtn = document.getElementById('sendBtn');
 
-        // ===== دانش اولیه Tiva =====
+        // ===== رفتن به صفحه چت =====
+        enterBtn.addEventListener('click', function() {
+            welcomePage.classList.add('hide');
+            chatPage.classList.add('show');
+            setTimeout(() => {
+                userInput.focus();
+            }, 400);
+        });
+
+        // ===== دانش Tiva =====
         const knowledge = {
             'سلام': 'سلام! چطور می‌تونم کمکت کنم؟',
             'خوبی': 'عالی‌ام! ممنون که پرسیدی. تو چطوری؟',
@@ -551,42 +794,33 @@
             'باحالی': 'ممنون! تو هم باحالی 😎',
             'تاریخ': `امروز ${new Date().toLocaleDateString('fa-IR')} هست.`,
             'ساعت': `ساعت الان ${new Date().toLocaleTimeString('fa-IR')} هست.`,
+            'چند': 'سوال خوبی پرسیدی! ولی فعلاً دانش من محدوده. می‌تونی دقیق‌تر بپرسی؟',
+            'چطور': 'سوال خوبی پرسیدی! ولی فعلاً دانش من محدوده. می‌تونی دقیق‌تر بپرسی؟',
+            'چرا': 'سوال خوبی پرسیدی! ولی فعلاً دانش من محدوده. می‌تونی دقیق‌تر بپرسی؟',
+            'اسم': 'اسم من Tiva هست! خوشحالم که باهام حرف می‌زنی.',
+            'نام': 'اسم من Tiva هست! خوشحالم که باهام حرف می‌زنی.',
+            'کار': 'من یک دستیار هوشمند هستم و وظیفه‌ام کمک به شماست!',
+            'شغل': 'من یک دستیار هوشمند هستم و وظیفه‌ام کمک به شماست!',
+            'خنده': '😂 یه جوک: چرا کامپیوترها خوشحال نیستن؟ چون مادربردشون خرابه!',
+            'جک': '😂 یه جوک: چرا کامپیوترها خوشحال نیستن؟ چون مادربردشون خرابه!',
         };
 
-        // ===== جستجوی هوشمند (سریع) =====
+        // ===== جستجوی پاسخ =====
         function getReply(text) {
             const clean = text.trim().toLowerCase();
 
-            // بررسی تطابق کامل
             for (const [key, value] of Object.entries(knowledge)) {
                 if (clean.includes(key)) {
                     return value;
                 }
             }
 
-            // پاسخ‌های هوشمند ساده
-            if (clean.includes('چند') || clean.includes('چطور') || clean.includes('چرا')) {
-                return 'سوال خوبی پرسیدی! ولی فعلاً دانش من محدوده. می‌تونی دقیق‌تر بپرسی؟';
-            }
-
-            if (clean.includes('اسم') || clean.includes('نام')) {
-                return 'اسم من Tiva هست! خوشحالم که باهام حرف می‌زنی.';
-            }
-
-            if (clean.includes('کار') || clean.includes('شغل')) {
-                return 'من یک دستیار هوشمند هستم و وظیفه‌ام کمک به شماست!';
-            }
-
-            if (clean.includes('خنده') || clean.includes('جک')) {
-                return '😂 یه جوک: چرا کامپیوترها خوشحال نیستن؟ چون مادربردشون خرابه!';
-            }
-
-            // پاسخ پیش‌فرض
             const defaults = [
                 'سوال خوبی پرسیدی! بیشتر توضیح بده تا بهتر کمک کنم.',
                 'هوم... بذار فکر کنم. کمی دقیق‌تر بپرس.',
                 'متوجه شدم! ولی برای جواب دقیق‌تر، کمی بیشتر توضیح بده.',
                 'آره! ولی راستش رو بخوای فعلاً دانش من محدوده. سعی کن ساده‌تر بپرسی.',
+                'جالب بود! ولی راستش رو بخوای نمی‌دونم. سعی کن ساده‌تر بپرسی.',
             ];
             return defaults[Math.floor(Math.random() * defaults.length)];
         }
@@ -598,10 +832,10 @@
 
             if (type === 'ai' && content === '...') {
                 div.innerHTML = `
-                    <div class="dot-load">
-                        <span></span><span></span><span></span>
-                    </div>
-                `;
+                            <div class="dot-load">
+                                <span></span><span></span><span></span>
+                            </div>
+                        `;
             } else {
                 div.textContent = content;
             }
@@ -616,16 +850,13 @@
             const text = userInput.value.trim();
             if (!text) return;
 
-            // نمایش پیام کاربر
             showMessage('user', text);
             userInput.value = '';
             userInput.disabled = true;
             sendBtn.disabled = true;
 
-            // نمایش لودینگ سریع
             const loading = showMessage('ai', '...');
 
-            // پردازش با تأخیر بسیار کم (برای نمایش لودینگ)
             setTimeout(() => {
                 loading.remove();
                 const reply = getReply(text);
@@ -633,7 +864,7 @@
                 userInput.disabled = false;
                 sendBtn.disabled = false;
                 userInput.focus();
-            }, 180); // تأخیر ۱۸۰ میلی‌ثانیه (بی‌لگ)
+            }, 150);
         }
 
         // ===== رویدادها =====
@@ -643,8 +874,6 @@
                 sendMessage();
             }
         });
-
-        userInput.focus();
     </script>
 
 </body>
