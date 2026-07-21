@@ -1,1335 +1,220 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Zerox.ir | بازی با زروکس!</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background: #0b0d15;
-            color: #eef2f7;
-            padding: 10px;
-            padding-top: 80px;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        /* ===== HEADER ===== */
-        header {
-            position: sticky;
-            top: 10px;
-            z-index: 999;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(20, 24, 38, 0.95);
-            padding: 8px 16px;
-            border-radius: 60px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8);
-            margin-bottom: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(16px);
-            height: 70px;
-            width: 100%;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .logo img {
-            height: 52px;
-            width: auto;
-            border-radius: 10px;
-        }
-        .logo span {
-            background: linear-gradient(135deg, #b388ff, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 1.3rem;
-            font-weight: 900;
-        }
-
-        /* ===== همبرگر ===== */
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            cursor: pointer;
-            padding: 10px 14px;
-            border-radius: 60px;
-            transition: 0.3s;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid transparent;
-            position: relative;
-            width: 56px;
-            height: 52px;
-        }
-
-        .hamburger:hover {
-            background: rgba(124, 77, 255, 0.1);
-            border-color: rgba(179, 136, 255, 0.3);
-        }
-
-        .hamburger .line {
-            width: 28px;
-            height: 3px;
-            background: linear-gradient(145deg, #b388ff, #7c4dff);
-            border-radius: 10px;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transform-origin: center;
-            position: relative;
-        }
-
-        .hamburger .line:nth-child(1) {
-            transition-delay: 0.05s;
-        }
-        .hamburger .line:nth-child(2) {
-            transition-delay: 0.1s;
-        }
-        .hamburger .line:nth-child(3) {
-            transition-delay: 0.05s;
-        }
-
-        .hamburger.active .line:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-            background: linear-gradient(145deg, #ff6b6b, #ee5a24);
-        }
-
-        .hamburger.active .line:nth-child(2) {
-            transform: scaleX(0);
-            opacity: 0;
-        }
-
-        .hamburger.active .line:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
-            background: linear-gradient(145deg, #ff6b6b, #ee5a24);
-        }
-
-        .hamburger::before {
-            content: "";
-            position: absolute;
-            inset: -2px;
-            border-radius: 60px;
-            padding: 2px;
-            background: linear-gradient(135deg, transparent, #7c4dff55, transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: 0.5s;
-        }
-
-        .hamburger:hover::before {
-            opacity: 1;
-            animation: rotate-border 2s linear infinite;
-        }
-
-        @keyframes rotate-border {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .hamburger .ripple-dots {
-            position: absolute;
-            display: flex;
-            gap: 4px;
-            right: -18px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .hamburger .ripple-dots span {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: #7c4dff;
-            opacity: 0.3;
-            animation: ripple-dot 1.8s ease-in-out infinite;
-        }
-
-        .hamburger .ripple-dots span:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-        .hamburger .ripple-dots span:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        @keyframes ripple-dot {
-            0%,
-            100% {
-                opacity: 0.2;
-                transform: scale(0.8);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.4);
-            }
-        }
-
-        /* ===== منو ===== */
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 12px);
-            left: 0;
-            right: auto;
-            background: rgba(20, 24, 38, 0.98);
-            backdrop-filter: blur(24px);
-            border-radius: 20px;
-            padding: 12px 8px;
-            min-width: 230px;
-            border: 1px solid rgba(179, 136, 255, 0.15);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-15px) scale(0.92);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            z-index: 1000;
-            overflow: hidden;
-        }
-
-        .dropdown-menu::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #b388ff, #7c4dff, #b388ff, transparent);
-            opacity: 0.5;
-        }
-
-        .nav-dots.active .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
-        }
-
-        .dropdown-menu a {
-            color: #e0e8ff;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            padding: 12px 18px;
-            border-radius: 14px;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-family: 'Vazirmatn', sans-serif;
-            white-space: nowrap;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid transparent;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dropdown-menu a::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(124, 77, 255, 0.15), transparent 60%);
-            opacity: 0;
-            transition: 0.5s;
-            pointer-events: none;
-        }
-
-        .dropdown-menu a:hover::after {
-            opacity: 1;
-        }
-
-        .dropdown-menu a i {
-            font-size: 1.2rem;
-            width: 28px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .dropdown-menu a:hover i {
-            transform: scale(1.2) rotate(-8deg);
-        }
-
-        .dropdown-menu a i.fa-home {
-            color: #ffd93d;
-        }
-        .dropdown-menu a i.fa-video {
-            color: #ff6b6b;
-        }
-        .dropdown-menu a i.fa-gamepad {
-            color: #4ecdc4;
-        }
-        .dropdown-menu a i.fa-crown {
-            color: #ffd93d;
-        }
-        .dropdown-menu a i.fa-music {
-            color: #a29bfe;
-        }
-
-        .dropdown-menu a:hover {
-            background: linear-gradient(145deg, rgba(124, 77, 255, 0.15), rgba(179, 136, 255, 0.08));
-            border-color: rgba(179, 136, 255, 0.2);
-            color: #ffffff;
-            transform: translateX(-4px);
-        }
-
-        .dropdown-menu .menu-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(179, 136, 255, 0.15), transparent);
-            margin: 2px 12px;
-        }
-
-        /* ===== صفحات ===== */
-        .page {
-            display: none;
-            animation: fadeIn 0.4s ease;
-            width: 100%;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .page-header {
-            text-align: center;
-            padding: 20px 0;
-            margin-bottom: 16px;
-            border-bottom: 2px solid rgba(179, 136, 255, 0.1);
-        }
-
-        .page-header h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(135deg, #b388ff, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .page-header p {
-            color: #8a7a9a;
-            font-size: 0.9rem;
-            margin-top: 6px;
-        }
-
-        .page-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-            width: 100%;
-        }
-
-        /* ===== کارت ویدیو (سبک قبلی) ===== */
-        .video-card {
-            background: linear-gradient(145deg, #1b1f2e, #121624);
-            border-radius: 18px;
-            padding: 14px;
-            border: 1px solid #2b3147;
-            transition: 0.3s;
-            width: 100%;
-        }
-
-        .video-card:hover {
-            border-color: #7c4dff;
-            transform: translateY(-3px);
-        }
-
-        .video-card .video-thumb {
-            width: 100%;
-            height: 180px;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 10px;
-            border: 1px solid #2f3650;
-            position: relative;
-            background: #0f0a1e;
-        }
-
-        .video-card .video-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-card .video-thumb .play-btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 54px;
-            height: 54px;
-            background: linear-gradient(145deg, #b388ff, #7c4dff);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: #0b0d15;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 0 40px rgba(124, 77, 255, 0.5);
-        }
-
-        .video-card .video-thumb .play-btn:hover {
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        .video-card h3 {
-            color: #d4c0ff;
-            font-size: 1rem;
-            margin-bottom: 4px;
-            line-height: 1.5;
-        }
-
-        .video-card .video-meta {
-            color: #7a6a8a;
-            font-size: 0.7rem;
-            margin-bottom: 8px;
-        }
-
-        .video-card .video-meta i {
-            margin-left: 4px;
-            color: #b388ff;
-        }
-
-        .video-card .card-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-top: 4px;
-        }
-
-        .watch-btn {
-            background: linear-gradient(145deg, #b388ff, #7c4dff);
-            border: none;
-            border-radius: 60px;
-            padding: 6px 16px;
-            font-weight: 900;
-            font-family: 'Vazirmatn', sans-serif;
-            color: #0b0d15;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: 0.25s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 4px 14px #7c4dff55;
-            text-decoration: none;
-        }
-
-        .watch-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px #7c4dffaa;
-        }
-
-        .video-desc-toggle {
-            cursor: pointer;
-            color: #b388ff;
-            font-size: 0.8rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            transition: 0.3s;
-        }
-
-        .video-desc-toggle:hover {
-            color: #d4c0ff;
-        }
-
-        .video-desc {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            margin-top: 4px;
-        }
-
-        .video-desc.open {
-            max-height: 300px;
-            padding: 12px;
-        }
-
-        .video-desc p {
-            color: #b0a8c0;
-            font-size: 0.8rem;
-            line-height: 1.8;
-            white-space: pre-line;
-        }
-
-        .trend-badge {
-            display: inline-block;
-            background: linear-gradient(145deg, #ff6b6b, #ee5a24);
-            padding: 1px 10px;
-            border-radius: 60px;
-            font-size: 0.6rem;
-            color: #0b0d15;
-            margin-right: 6px;
-            font-weight: 900;
-        }
-
-        /* ===== کارت‌های خانه ===== */
-        .card-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-            margin-top: 6px;
-            width: 100%;
-        }
-
-        .card {
-            background: linear-gradient(145deg, #1b1f2e, #121624);
-            border-radius: 20px;
-            padding: 12px 12px 16px;
-            box-shadow: 0 12px 30px -10px #000000cc;
-            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-            border: 1px solid #2b3147;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: #9a7aff;
-            box-shadow: 0 20px 40px -14px #7c4dffaa;
-        }
-
-        .card-image {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            border-radius: 14px;
-            overflow: hidden;
-            margin-bottom: 8px;
-            background: linear-gradient(145deg, #1f253b, #0f121e);
-            border: 1px solid #2f3650;
-        }
-
-        .card-image .placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle at 30% 30%, #2d2050, #0f0a1e);
-            border-radius: 14px;
-            gap: 4px;
-        }
-        .card-image .placeholder i {
-            background: linear-gradient(145deg, #b388ff, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.5rem;
-            filter: drop-shadow(0 0 30px #7c4dff44);
-        }
-        .card-image .placeholder span {
-            font-size: 0.7rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2px 12px;
-            border-radius: 60px;
-            border: 1px solid #6633aa88;
-            font-weight: 700;
-            color: #c8aaff;
-        }
-
-        .card h3 {
-            font-size: 1rem;
-            font-weight: 900;
-            margin-bottom: 4px;
-            background: linear-gradient(to right, #d4c0ff, #b388ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card p {
-            color: #b0a8c0;
-            line-height: 1.5;
-            font-size: 0.75rem;
-            margin: 4px 0 8px;
-            flex: 1;
-        }
-
-        .card .meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.65rem;
-            color: #7a6a8a;
-            border-top: 1px solid #2d2244;
-            padding-top: 8px;
-            margin-top: 2px;
-        }
-        .card .meta i {
-            margin-left: 4px;
-            background: linear-gradient(145deg, #b388ff, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .card .badge {
-            background: linear-gradient(145deg, #b388ff, #7c4dff);
-            padding: 2px 10px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 0.55rem;
-            color: #0b0d15;
-        }
-        .badge.gold {
-            background: linear-gradient(145deg, #f7971e, #ffd200);
-        }
-        .badge.pink {
-            background: linear-gradient(145deg, #ff6a88, #ff99ac);
-        }
-        .badge.blue {
-            background: linear-gradient(145deg, #4facfe, #00f2fe);
-        }
-
-        .btn-gradient {
-            background: linear-gradient(145deg, #b388ff, #7c4dff);
-            border: none;
-            border-radius: 60px;
-            padding: 6px 14px;
-            font-weight: 900;
-            font-family: 'Vazirmatn', sans-serif;
-            color: #0b0d15;
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: 0.25s;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            width: fit-content;
-            margin-top: 4px;
-            box-shadow: 0 4px 14px #7c4dff55;
-        }
-        .btn-gradient i {
-            background: transparent;
-            -webkit-text-fill-color: #0b0d15;
-        }
-        .btn-gradient:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px #7c4dffaa;
-        }
-
-        /* ===== بخش ویژه ===== */
-        .featured-row {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-            margin: 24px 0;
-            width: 100%;
-        }
-        .featured-box {
-            background: linear-gradient(145deg, #1b1f2e, #11151f);
-            border-radius: 20px;
-            padding: 16px;
-            border: 1px solid #2b3147;
-            box-shadow: 0 12px 30px -10px #000000dd;
-            width: 100%;
-        }
-        .featured-box h2 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #b388ff, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .featured-box ul {
-            list-style: none;
-            padding: 0;
-        }
-        .featured-box li {
-            padding: 8px 0;
-            border-bottom: 1px solid #2d2244;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 0.75rem;
-            color: #c8c0d0;
-        }
-        .featured-box li i {
-            font-size: 1rem;
-            background: linear-gradient(145deg, #b388ff, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            width: 24px;
-        }
-
-        footer {
-            margin-top: 24px;
-            text-align: center;
-            padding: 14px 10px;
-            border-top: 1px solid #2d2244;
-            color: #7a6a8a;
-            font-size: 0.7rem;
-            width: 100%;
-        }
-        footer i {
-            background: linear-gradient(145deg, #b388ff, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 0 4px;
-        }
-
-        .page-card {
-            background: linear-gradient(145deg, #1b1f2e, #121624);
-            border-radius: 18px;
-            padding: 14px;
-            border: 1px solid #2b3147;
-            transition: 0.3s;
-            width: 100%;
-        }
-
-        .page-card:hover {
-            border-color: #7c4dff;
-            transform: translateY(-3px);
-        }
-
-        .page-card h3 {
-            color: #d4c0ff;
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
-
-        .page-card p {
-            color: #b0a8c0;
-            font-size: 0.8rem;
-            line-height: 1.6;
-        }
-
-        /* ===== دسکتاپ ===== */
-        @media (min-width: 769px) {
-            body {
-                padding: 20px;
-                padding-top: 100px;
-            }
-            header {
-                padding: 10px 28px;
-                height: 82px;
-                border-radius: 60px;
-                top: 20px;
-                margin-bottom: 32px;
-            }
-            .logo img {
-                height: 64px;
-            }
-            .logo span {
-                font-size: 1.8rem;
-            }
-            .hamburger {
-                width: 64px;
-                height: 58px;
-                padding: 12px 16px;
-            }
-            .hamburger .line {
-                width: 32px;
-                height: 3.5px;
-            }
-            .hamburger.active .line:nth-child(1) {
-                transform: translateY(10px) rotate(45deg);
-            }
-            .hamburger.active .line:nth-child(3) {
-                transform: translateY(-10px) rotate(-45deg);
-            }
-            .dropdown-menu {
-                min-width: 260px;
-                padding: 14px 10px;
-                left: 0;
-            }
-            .dropdown-menu a {
-                font-size: 1.05rem;
-                padding: 14px 22px;
-            }
-            .dropdown-menu a i {
-                font-size: 1.3rem;
-                width: 32px;
-            }
-
-            .card-grid {
-                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-                gap: 20px;
-            }
-            .card {
-                padding: 16px 16px 20px;
-                border-radius: 24px;
-            }
-            .card-image .placeholder i {
-                font-size: 3.5rem;
-            }
-            .card-image .placeholder span {
-                font-size: 0.85rem;
-                padding: 4px 16px;
-            }
-            .card h3 {
-                font-size: 1.2rem;
-            }
-            .card p {
-                font-size: 0.85rem;
-                margin: 6px 0 12px;
-            }
-            .card .meta {
-                font-size: 0.7rem;
-                padding-top: 12px;
-            }
-            .card .badge {
-                font-size: 0.6rem;
-                padding: 3px 14px;
-            }
-            .btn-gradient {
-                font-size: 0.8rem;
-                padding: 8px 18px;
-                margin-top: 6px;
-            }
-
-            .featured-row {
-                grid-template-columns: 2fr 1fr;
-                gap: 20px;
-                margin: 36px 0;
-            }
-            .featured-box {
-                padding: 24px;
-                border-radius: 28px;
-            }
-            .featured-box h2 {
-                font-size: 1.4rem;
-            }
-            .featured-box li {
-                font-size: 0.85rem;
-                padding: 12px 0;
-            }
-            .featured-box li i {
-                font-size: 1.2rem;
-                width: 30px;
-            }
-            footer {
-                font-size: 0.85rem;
-                margin-top: 50px;
-                padding: 20px 10px;
-            }
-
-            .page-content {
-                grid-template-columns: 1fr;
-                gap: 18px;
-            }
-            .page-header h1 {
-                font-size: 2.2rem;
-            }
-            .video-card .video-thumb {
-                height: 220px;
-            }
-            .video-card h3 {
-                font-size: 1.15rem;
-            }
-        }
-
-        @media (max-width: 380px) {
-            body {
-                padding: 6px;
-                padding-top: 70px;
-            }
-            header {
-                height: 60px;
-                padding: 6px 12px;
-                border-radius: 30px;
-                top: 6px;
-                margin-bottom: 16px;
-            }
-            .logo img {
-                height: 44px;
-            }
-            .logo span {
-                font-size: 1rem;
-            }
-            .hamburger {
-                width: 46px;
-                height: 44px;
-                padding: 6px 10px;
-                gap: 4px;
-            }
-            .hamburger .line {
-                width: 22px;
-                height: 2.5px;
-            }
-            .hamburger.active .line:nth-child(1) {
-                transform: translateY(7px) rotate(45deg);
-            }
-            .hamburger.active .line:nth-child(3) {
-                transform: translateY(-7px) rotate(-45deg);
-            }
-            .hamburger .ripple-dots {
-                display: none;
-            }
-            .dropdown-menu {
-                min-width: 170px;
-                padding: 8px 6px;
-                left: -5px;
-                top: calc(100% + 8px);
-            }
-            .dropdown-menu a {
-                font-size: 0.8rem;
-                padding: 8px 12px;
-                gap: 8px;
-            }
-            .dropdown-menu a i {
-                font-size: 0.9rem;
-                width: 22px;
-            }
-            .card {
-                padding: 8px 8px 12px;
-                border-radius: 16px;
-            }
-            .card-image .placeholder i {
-                font-size: 2rem;
-            }
-            .card-image .placeholder span {
-                font-size: 0.55rem;
-                padding: 2px 8px;
-            }
-            .card h3 {
-                font-size: 0.85rem;
-            }
-            .card p {
-                font-size: 0.65rem;
-                margin: 3px 0 6px;
-            }
-            .card .meta {
-                font-size: 0.55rem;
-                padding-top: 6px;
-            }
-            .card .badge {
-                font-size: 0.45rem;
-                padding: 1px 6px;
-            }
-            .btn-gradient {
-                font-size: 0.6rem;
-                padding: 4px 10px;
-                margin-top: 3px;
-            }
-            .featured-box {
-                padding: 12px;
-                border-radius: 16px;
-            }
-            .featured-box h2 {
-                font-size: 0.95rem;
-            }
-            .featured-box li {
-                font-size: 0.65rem;
-                padding: 6px 0;
-            }
-            .featured-box li i {
-                font-size: 0.9rem;
-                width: 20px;
-            }
-            footer {
-                font-size: 0.6rem;
-                padding: 10px 10px;
-                margin-top: 16px;
-            }
-            .page-header h1 {
-                font-size: 1.2rem;
-            }
-            .page-header p {
-                font-size: 0.75rem;
-            }
-            .video-card .video-thumb {
-                height: 140px;
-            }
-            .video-card .video-thumb .play-btn {
-                width: 42px;
-                height: 42px;
-                font-size: 1.2rem;
-            }
-            .video-card h3 {
-                font-size: 0.85rem;
-            }
-            .watch-btn {
-                font-size: 0.7rem;
-                padding: 4px 12px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نئو | فردای دیجیتال</title>
+  <!-- فونت عالی -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0b0d15;
+      color: #eef2ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      background-image: radial-gradient(circle at 20% 30%, #1a1f33 0%, #0b0d15 80%);
+    }
+
+    .card {
+      max-width: 1200px;
+      width: 100%;
+      background: rgba(22, 27, 45, 0.6);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 3.5rem;
+      padding: 3.5rem 4rem;
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.03);
+      transition: all 0.25s ease;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #2f3b6b;
+      color: #b7c9ff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 1.2rem;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+      border: 1px solid #4b5a8a;
+      box-shadow: 0 0 12px #2f3b6b44;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, #ffffff, #b3cbff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+    }
+
+    .desc {
+      font-size: 1.25rem;
+      color: #a5b5e0;
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 2.8rem;
+      font-weight: 400;
+      border-right: 3px solid #4b6bcf;
+      padding-right: 1.8rem;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 4rem;
+    }
+
+    .btn-primary {
+      background: #4b6bcf;
+      border: none;
+      padding: 0.9rem 2.8rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 6px 20px #3b56b044;
+      border: 1px solid #6b8aff;
+    }
+    .btn-primary:hover {
+      background: #5f7ee6;
+      transform: scale(1.02);
+      box-shadow: 0 10px 28px #3b56b088;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #3b4a78;
+      padding: 0.9rem 2.8rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #ccd9ff;
+      cursor: pointer;
+      transition: 0.2s;
+      backdrop-filter: blur(4px);
+    }
+    .btn-outline:hover {
+      background: #242d4f;
+      border-color: #6b82cf;
+      color: #fff;
+    }
+
+    .grid-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      margin-top: 1.8rem;
+      border-top: 1px solid #242d4f;
+      padding-top: 3rem;
+    }
+
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .feature-item .icon {
+      font-size: 2rem;
+      filter: drop-shadow(0 0 8px #4b6bcf66);
+    }
+    .feature-item h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+    .feature-item p {
+      color: #8b9ed6;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* افکت شیشه‌ای و هاله */
+    .glow {
+      position: relative;
+    }
+    .glow::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, #4b6bcf22 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      z-index: -1;
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+
+    @media (max-width: 700px) {
+      .card { padding: 2rem 1.5rem; border-radius: 2.5rem; }
+      h1 { font-size: 2.8rem; }
+      .desc { font-size: 1rem; padding-right: 1rem; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
+  <div class="card glow">
+    <!-- برچسب -->
+    <div class="badge">🚀 نسخه بتا</div>
 
-        <!-- ===== HEADER ===== -->
-        <header>
-            <a class="logo" onclick="showPage('home')">
-                <img src="https://uploadkon.ir/uploads/553e14_26Zerox.png" alt="زروکس">
-                <span>زروکـــــس!</span>
-            </a>
+    <!-- تایتل جذاب -->
+    <h1>نئو<br>افق‌های تازه</h1>
 
-            <div class="nav-dots" onclick="this.classList.toggle('active')">
-                <div class="hamburger" onclick="event.stopPropagation(); this.classList.toggle('active'); document.querySelector('.nav-dots').classList.toggle('active')">
-                    <span class="line"></span>
-                    <span class="line"></span>
-                    <span class="line"></span>
-                    <div class="ripple-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
+    <!-- توضیحات -->
+    <p class="desc">
+      پلتفرم هوشمند برای تیم‌های خلاق. 
+      طراحی، هم‌افزایی و اجرا در یک فضای یکپارچه.
+    </p>
 
-                <div class="dropdown-menu">
-                    <a onclick="showPage('home'); document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-home"></i> خانه
-                    </a>
-                    <a onclick="showPage('videos'); document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-video"></i> ویدیو ها
-                    </a>
-                    <a onclick="showPage('games'); document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-gamepad"></i> اخبار بازی
-                    </a>
-                    <a onclick="showPage('old'); document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-crown"></i> زروکس آلد
-                    </a>
-                    <a onclick="showPage('music'); document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-dots').classList.remove('active')">
-                        <i class="fas fa-music"></i> زروکس‌موزیک
-                    </a>
-                </div>
-            </div>
-        </header>
-
-        <!-- ===== صفحه خانه ===== -->
-        <div id="page-home" class="page active">
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-image">
-                        <div class="placeholder">
-                            <i class="fas fa-film"></i>
-                            <span>اکران نوروزی</span>
-                        </div>
-                    </div>
-                    <h3>اکران نوروزی</h3>
-                    <p>جدیدترین فیلم‌های سینمایی با بازیگران مطرح.</p>
-                    <div class="meta">
-                        <span><i class="far fa-calendar-alt"></i> ۲۵ اسفند</span>
-                        <span class="badge">جدید</span>
-                    </div>
-                    <button class="btn-gradient"><i class="fas fa-ticket-alt"></i> خرید</button>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <div class="placeholder">
-                            <i class="fas fa-gamepad"></i>
-                            <span>بازی هفته</span>
-                        </div>
-                    </div>
-                    <h3>بازی هفته</h3>
-                    <p>بازی «شبح تسویه‌» با گرافیک خیره‌کننده.</p>
-                    <div class="meta">
-                        <span><i class="far fa-clock"></i> ۳ ساعت پیش</span>
-                        <span class="badge gold">داغ</span>
-                    </div>
-                    <button class="btn-gradient"><i class="fas fa-download"></i> دانلود</button>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <div class="placeholder">
-                            <i class="fas fa-tv"></i>
-                            <span>سریال جدید</span>
-                        </div>
-                    </div>
-                    <h3>سریال جدید</h3>
-                    <p>فصل سوم سریال محبوب «شهر ابری».</p>
-                    <div class="meta">
-                        <span><i class="far fa-star"></i> ۸.۹/۱۰</span>
-                        <span class="badge pink">پربیننده</span>
-                    </div>
-                    <button class="btn-gradient"><i class="fas fa-play"></i> تماشا</button>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <div class="placeholder">
-                            <i class="fas fa-microchip"></i>
-                            <span>تکنولوژی</span>
-                        </div>
-                    </div>
-                    <h3>تکنولوژی</h3>
-                    <p>کنسول نسل جدید با قدرت ۸K.</p>
-                    <div class="meta">
-                        <span><i class="far fa-calendar-alt"></i> ۱۴ فروردین</span>
-                        <span class="badge blue">پیش‌فروش</span>
-                    </div>
-                    <button class="btn-gradient"><i class="fas fa-shopping-cart"></i> سفارش</button>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <div class="placeholder">
-                            <i class="fas fa-headphones-alt"></i>
-                            <span>موسیقی متن</span>
-                        </div>
-                    </div>
-                    <h3>موسیقی متن</h3>
-                    <p>آهنگساز برنده اسکار برای فیلم جدید.</p>
-                    <div class="meta">
-                        <span><i class="fas fa-music"></i> ۱۲ دی</span>
-                        <span class="badge gold">اکسپرسیو</span>
-                    </div>
-                    <button class="btn-gradient"><i class="fas fa-headphones"></i> پخش</button>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <div class="placeholder">
-                            <i class="fas fa-robot"></i>
-                            <span>هوش مصنوعی</span>
-                        </div>
-                    </div>
-                    <h3>هوش مصنوعی</h3>
-                    <p>ابزار جدید ساخت تریلر با هوش مصنوعی.</p>
-                    <div class="meta">
-                        <span><i class="far fa-eye"></i> ۲۴۰۰ بازدید</span>
-                        <span class="badge">آزمایشی</span>
-                    </div>
-                    <button class="btn-gradient"><i class="fas fa-rocket"></i> امتحان</button>
-                </div>
-            </div>
-
-            <div class="featured-row">
-                <div class="featured-box">
-                    <h2><i class="fas fa-crown" style="background:linear-gradient(145deg,#f7971e,#ffd200);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i> پربازدیدهای هفته</h2>
-                    <ul>
-                        <li><i class="fas fa-film"></i> مصاحبه با کارگردان «شب بی‌ستاره»</li>
-                        <li><i class="fas fa-gamepad"></i> نقد بازی «افسانه‌های کهن»</li>
-                        <li><i class="fas fa-tv"></i> فصل پایانی «مه‌آلود»</li>
-                        <li><i class="fas fa-microchip"></i> مقایسه کنسول‌های نسل ۹</li>
-                    </ul>
-                    <button class="btn-gradient" style="margin-top:10px;"><i class="fas fa-arrow-left"></i> مشاهده همه</button>
-                </div>
-
-                <div class="featured-box">
-                    <h2><i class="fas fa-bolt" style="background:linear-gradient(145deg,#b388ff,#7c4dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i> اخبار فوری</h2>
-                    <ul>
-                        <li><i class="fas fa-circle" style="font-size:0.5rem; background:#b388ff; -webkit-text-fill-color:#b388ff;"></i> اکران آنلاین فیلم جدید نولان</li>
-                        <li><i class="fas fa-circle" style="font-size:0.5rem; background:#7c4dff; -webkit-text-fill-color:#7c4dff;"></i> عرضه دموی بازی «خون‌سرد»</li>
-                        <li><i class="fas fa-circle" style="font-size:0.5rem; background:#9a7aff; -webkit-text-fill-color:#9a7aff;"></i> تغییر تاریخ انتشار سریال</li>
-                    </ul>
-                    <div style="display:flex; gap:6px; margin-top:12px; flex-wrap:wrap;">
-                        <span class="badge gold" style="padding:4px 12px; font-size:0.6rem;"><i class="fas fa-bolt"></i> لحظه‌ای</span>
-                        <span class="badge pink" style="padding:4px 12px; font-size:0.6rem;"><i class="fas fa-fire"></i> داغ</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== صفحه ویدیو ها (سبک قبلی) ===== -->
-        <div id="page-videos" class="page">
-            <div class="page-header">
-                <h1><i class="fas fa-video" style="color:#ff6b6b;"></i> ویدیو ها</h1>
-                <p>جدیدترین ویدیوهای گیم‌پلی، تریلر فیلم و محتوای اختصاصی</p>
-            </div>
-            <div class="page-content">
-
-                <!-- کارت ویدیو به سبک قبلی -->
-                <div class="video-card">
-                    <div class="video-thumb">
-                        <img src="https://uploadkon.ir/uploads/3e9d14_2671129478-9827-l-3296.jpg" alt="داستان کامل بازی نه من انسان نیستم">
-                        <div class="play-btn" onclick="window.open('https://www.aparat.com/v/itl9b8h', '_blank')">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                    <h3>
-                        داستان کامل بازی نه من انسان نیستم | ترند و ترسناک ترین بازی در سال ۲۰۲۵
-                        <span class="trend-badge"><i class="fas fa-fire"></i> ترند</span>
-                    </h3>
-                    <div class="video-meta">
-                        <span><i class="fas fa-user"></i> Zerox</span>
-                        <span><i class="far fa-calendar-alt"></i> ۱ ماه پیش</span>
-                        <span><i class="far fa-eye"></i> ۱۱۲ بازدید</span>
-                        <span><i class="fas fa-tag"></i> داستان بازی</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="https://www.aparat.com/v/itl9b8h" target="_blank" class="watch-btn">
-                            <i class="fas fa-play"></i> تماشا
-                        </a>
-                        <span class="video-desc-toggle" onclick="toggleDesc(this)">
-                            <i class="fas fa-chevron-down"></i> توضیحات
-                        </span>
-                    </div>
-                    <div class="video-desc">
-                        <p>سلام بر شما | من امروز درمورد داستان بازی من انسان نیستم صحبت کردم | تمام نکات و همچیو توضیح دادم | امیدوارم از ویدیو لذت کافی ببرید | پارت بعدی رو به زودی زود میذارم | داستان رو تماما گفتم براتون</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ===== صفحه اخبار بازی ===== -->
-        <div id="page-games" class="page">
-            <div class="page-header">
-                <h1><i class="fas fa-gamepad" style="color:#4ecdc4;"></i> اخبار بازی</h1>
-                <p>آخرین اخبار دنیای بازی‌های ویدیویی و کنسول‌ها</p>
-            </div>
-            <div class="page-content">
-                <div class="page-card">
-                    <h3>🎮 عرضه بازی جدید</h3>
-                    <p>بازی «شبح تسویه‌» با استقبال بی‌نظیر منتشر شد.</p>
-                </div>
-                <div class="page-card">
-                    <h3>🕹️ آپدیت بزرگ</h3>
-                    <p>آپدیت جدید بازی محبوب با امکانات ویژه و نقشه‌های جدید.</p>
-                </div>
-                <div class="page-card">
-                    <h3>💻 کنسول نسل جدید</h3>
-                    <p>اطلاعات تازه از کنسول نسل ۹ با قدرت رندرینگ ۸K.</p>
-                </div>
-                <div class="page-card">
-                    <h3>🏆 مسابقات جهانی</h3>
-                    <p>نتایج مسابقات جهانی بازی‌های ویدیویی و تیم‌های برتر.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== صفحه زروکس آلد ===== -->
-        <div id="page-old" class="page">
-            <div class="page-header">
-                <h1><i class="fas fa-crown" style="color:#ffd93d;"></i> زروکس آلد</h1>
-                <p>بخش ویژه محتوای کلاسیک و قدیمی با کیفیت عالی</p>
-            </div>
-            <div class="page-content">
-                <div class="page-card">
-                    <h3>🎞️ فیلم‌های کلاسیک</h3>
-                    <p>بهترین فیلم‌های سینمای قدیم با کیفیت بازسازی‌شده.</p>
-                </div>
-                <div class="page-card">
-                    <h3>🎮 بازی‌های کلاسیک</h3>
-                    <p>بازی‌های قدیمی و خاطره‌انگیز با نسخه‌های بهبودیافته.</p>
-                </div>
-                <div class="page-card">
-                    <h3>📺 سریال‌های نوستالژی</h3>
-                    <p>سریال‌های محبوب دهه‌های گذشته با زیرنویس فارسی.</p>
-                </div>
-                <div class="page-card">
-                    <h3>🎵 موسیقی کلاسیک</h3>
-                    <p>آهنگ‌های ماندگار سینما و بازی‌های قدیمی.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== صفحه زروکس‌موزیک ===== -->
-        <div id="page-music" class="page">
-            <div class="page-header">
-                <h1><i class="fas fa-music" style="color:#a29bfe;"></i> زروکس‌موزیک</h1>
-                <p>جدیدترین آهنگ‌ها و موسیقی متن فیلم و بازی</p>
-            </div>
-            <div class="page-content">
-                <div class="page-card">
-                    <h3>🎵 موسیقی متن فیلم</h3>
-                    <p>آهنگ‌های جدید فیلم‌های سینمایی با کیفیت بالا.</p>
-                </div>
-                <div class="page-card">
-                    <h3>🎶 آهنگ‌های بازی</h3>
-                    <p>موسیقی متن بازی‌های محبوب با تم حماسی و احساسی.</p>
-                </div>
-                <div class="page-card">
-                    <h3>🎧 پلی‌لیست اختصاصی</h3>
-                    <p>لیست آهنگ‌های منتخب برای هر سلیقه‌ای.</p>
-                </div>
-                <div class="page-card">
-                    <h3>🎼 آهنگ‌های جدید</h3>
-                    <p>بروزترین آهنگ‌های منتشرشده در دنیای موسیقی.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== فوتر ===== -->
-        <footer>
-            <i class="fas fa-film"></i> Zerox.ir · بازی با زروکس! <i class="fas fa-gamepad"></i>
-            <br>
-            <span style="display:inline-block; margin-top:4px; font-size:0.6rem; opacity:0.7;">
-                <i class="fas fa-code"></i> با عشق و کد · زروکس · ۱۴۰۵
-            </span>
-        </footer>
-
+    <!-- دکمه‌ها -->
+    <div class="btn-group">
+      <button class="btn-primary">شروع رایگان</button>
+      <button class="btn-outline">مشاهده دمو</button>
     </div>
 
-    <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(function(page) {
-                page.classList.remove('active');
-            });
-            var targetPage = document.getElementById('page-' + pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        document.addEventListener('click', function(event) {
-            const dots = document.querySelector('.nav-dots');
-            const hamburger = document.querySelector('.hamburger');
-            if (dots && !dots.contains(event.target)) {
-                dots.classList.remove('active');
-                if (hamburger) hamburger.classList.remove('active');
-            }
-        });
-
-        function toggleDesc(element) {
-            var desc = element.parentElement.nextElementSibling;
-            var icon = element.querySelector('i');
-
-            if (desc.classList.contains('open')) {
-                desc.classList.remove('open');
-                icon.className = 'fas fa-chevron-down';
-            } else {
-                desc.classList.add('open');
-                icon.className = 'fas fa-chevron-up';
-            }
-        }
-    </script>
+    <!-- ویژگی‌های خفن با آیکون -->
+    <div class="grid-features">
+      <div class="feature-item">
+        <span class="icon">⚡</span>
+        <h4>سرعت نور</h4>
+        <p>پاسخ‌دهی آنی با معماری لبه</p>
+      </div>
+      <div class="feature-item">
+        <span class="icon">🔒</span>
+        <h4>امنیت پیشرو</h4>
+        <p>رمزنگاری کامل و حریم خصوصی</p>
+      </div>
+      <div class="feature-item">
+        <span class="icon">🧩</span>
+        <h4>ماژولار</h4>
+        <p>قابل توسعه با هر نیاز</p>
+      </div>
+      <div class="feature-item">
+        <span class="icon">🌐</span>
+        <h4>همیشه آنلاین</h4>
+        <p>زیرساخت توزیع‌شده</p>
+      </div>
+    </div>
+  </div>
 </body>
-                    </html>
+</html>
