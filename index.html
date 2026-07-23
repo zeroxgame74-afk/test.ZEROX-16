@@ -1,1307 +1,525 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zerox | گیمینگ هاب</title>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <style>
-        /* ============================================================
-                   ROOT VARIABLES (تم‌های دارک/لایت)
-                   ============================================================ */
-        :root {
-            --bg-primary: #0a0808;
-            --bg-secondary: #161010;
-            --bg-card: rgba(26, 18, 18, 0.6);
-            --bg-card-hover: rgba(36, 20, 20, 0.7);
-            --text-primary: #f0e6e6;
-            --text-secondary: #c0a8a8;
-            --text-muted: #8a7070;
-            --border-color: rgba(182, 28, 28, 0.15);
-            --shadow-color: rgba(0, 0, 0, 0.8);
-            --glow-color: rgba(182, 28, 28, 0.12);
-            --container-bg: rgba(16, 12, 12, 0.7);
-            --accent: #B61C1C;
-            --accent-light: #cc2222;
-            --accent-dark: #8a1414;
-            --transition-speed: 0.3s;
-            --font-size-base: 1rem;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reward Ai | هوش مصنوعی پیشرو</title>
+  <!-- Font Awesome 6 (رایگان) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- فونت وزیر (وزیرمتن) -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* تم روشن (لایت) */
-        [data-theme="light"] {
-            --bg-primary: #f5f0ec;
-            --bg-secondary: #ede8e4;
-            --bg-card: rgba(255, 248, 244, 0.7);
-            --bg-card-hover: rgba(255, 240, 235, 0.9);
-            --text-primary: #1a1010;
-            --text-secondary: #4a3838;
-            --text-muted: #8a7a7a;
-            --border-color: rgba(182, 28, 28, 0.2);
-            --shadow-color: rgba(0, 0, 0, 0.15);
-            --glow-color: rgba(182, 28, 28, 0.08);
-            --container-bg: rgba(255, 248, 244, 0.75);
-        }
+    body {
+      font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at 20% 30%, #0b0d1e, #03050f);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      color: #f0f4ff;
+    }
 
-        /* ============================================================
-                   RESET & BASE
-                   ============================================================ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: none;
-        }
+    /* کانتینر اصلی با جلوۀ شیشه‌ای */
+    .glass-card {
+      max-width: 1000px;
+      width: 100%;
+      background: rgba(12, 16, 35, 0.65);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      border-radius: 3.5rem;
+      padding: 2.5rem 2.8rem;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.3s ease;
+    }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-        }
+    /* هدر با لوگو و عنوان */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 2.2rem;
+    }
 
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            min-height: 100vh;
-            padding: 0;
-            overflow-x: hidden;
-            position: relative;
-            transition: background var(--transition-speed), color var(--transition-speed);
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
 
-        /* ============================================================
-                   اسکرول بار پیشرفت (Progress Bar)
-                   ============================================================ */
-        #progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #B61C1C, #ff4444);
-            z-index: 10000;
-            width: 0%;
-            transition: width 0.1s;
-            box-shadow: 0 0 20px rgba(182, 28, 28, 0.3);
-        }
+    .brand i {
+      font-size: 3.2rem;
+      background: linear-gradient(145deg, #b388ff, #7c4dff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 12px #7c4dff88);
+    }
 
-        /* ============================================================
-                   CURSOR
-                   ============================================================ */
-        .cursor-follower {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(182, 28, 28, 0.7), rgba(200, 50, 50, 0.3));
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-            filter: blur(4px);
-            transition: width 0.2s, height 0.2s;
-            mix-blend-mode: screen;
-        }
-        .cursor-follower.active {
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, rgba(182, 28, 28, 0.9), rgba(255, 100, 50, 0.4));
-            filter: blur(10px);
-        }
+    .brand h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(to left, #e0e7ff, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        /* ============================================================
-                   PARTICLES
-                   ============================================================ */
-        #particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
+    .brand .badge {
+      font-size: 0.9rem;
+      background: rgba(124, 77, 255, 0.25);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      border: 1px solid rgba(124, 77, 255, 0.3);
+      color: #c4b5fd;
+      font-weight: 500;
+      margin-right: 0.5rem;
+      backdrop-filter: blur(4px);
+    }
 
-        /* ============================================================
-                   GLOW BACKGROUNDS
-                   ============================================================ */
-        .bg-glow {
-            position: fixed;
-            top: -20%;
-            left: -10%;
-            width: 70%;
-            height: 70%;
-            background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
-            filter: blur(80px);
-            animation: floatGlow 12s infinite alternate ease-in-out;
-            transition: background var(--transition-speed);
-        }
-        .bg-glow-2 {
-            position: fixed;
-            bottom: -20%;
-            right: -10%;
-            width: 60%;
-            height: 60%;
-            background: radial-gradient(circle, rgba(200, 60, 30, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
-            filter: blur(90px);
-            animation: floatGlow 15s infinite alternate-reverse ease-in-out;
-        }
-        @keyframes floatGlow {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            100% {
-                transform: translate(40px, -30px) scale(1.2);
-            }
-        }
+    .status-pulse {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(0, 255, 200, 0.08);
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      border: 1px solid rgba(0, 255, 200, 0.15);
+    }
 
-        /* ============================================================
-                   CONTAINER
-                   ============================================================ */
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            background: var(--container-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 60px 60px 40px 40px;
-            padding: 2.5rem 2.5rem;
-            box-shadow: 0 30px 80px var(--shadow-color), 0 0 0 1px var(--border-color);
-            border: 1px solid var(--border-color);
-            transition: background var(--transition-speed), box-shadow var(--transition-speed);
-            scroll-snap-align: start;
-        }
+    .status-pulse i {
+      color: #4ade80;
+      font-size: 0.9rem;
+      animation: pulse 1.8s infinite;
+    }
 
-        /* ============================================================
-                   HEADER
-                   ============================================================ */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-        }
+    .status-pulse span {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #b0e0d0;
+    }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .logo i {
-            font-size: 2.8rem;
-            color: var(--accent);
-            filter: drop-shadow(0 0 15px rgba(182, 28, 28, 0.4));
-            transition: transform 0.2s;
-        }
-        .logo i:hover {
-            transform: scale(1.05) rotate(-3deg);
-        }
-        .logo h1 {
-            font-size: 2.6rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ff6b6b, var(--accent), var(--accent-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(182, 28, 28, 0.2);
-        }
+    @keyframes pulse {
+      0% { opacity: 0.3; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0.3; transform: scale(0.9); }
+    }
 
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-        }
+    /* بخش پاسخ هوش مصنوعی */
+    .ai-response-box {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 2.5rem;
+      padding: 2rem 2.2rem;
+      margin: 1.8rem 0 2rem 0;
+      border-left: 4px solid #7c4dff;
+      box-shadow: inset 0 6px 20px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+    }
 
-        .nav-icons {
-            display: flex;
-            gap: 1.8rem;
-            font-size: 1.4rem;
-        }
-        .nav-icons a {
-            color: var(--text-secondary);
-            transition: 0.25s ease;
-            text-decoration: none;
-            position: relative;
-        }
-        .nav-icons a:hover {
-            color: var(--accent);
-            transform: translateY(-3px);
-            text-shadow: 0 0 20px rgba(182, 28, 28, 0.4);
-        }
-        .nav-icons a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: 0.3s;
-            border-radius: 4px;
-        }
-        .nav-icons a:hover::after {
-            width: 100%;
-        }
+    .ai-response-box .ai-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
 
-        /* دکمه تغییر تم */
-        .theme-toggle {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: 0.25s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(4px);
-        }
-        .theme-toggle:hover {
-            background: var(--bg-card-hover);
-            color: var(--accent);
-            transform: rotate(20deg) scale(1.05);
-            border-color: var(--accent);
-        }
+    .ai-response-box .ai-header i {
+      font-size: 1.8rem;
+      color: #a78bfa;
+    }
 
-        /* ============================================================
-                   TOOLTIP (برای آیکون‌ها)
-                   ============================================================ */
-        .nav-icons a {
-            position: relative;
-        }
-        .nav-icons a .tooltip {
-            position: absolute;
-            bottom: -32px;
-            left: 50%;
-            transform: translateX(-50%) scale(0.8);
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            padding: 0.2rem 0.8rem;
-            border-radius: 8px;
-            font-size: 0.65rem;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.25s ease;
-            border: 1px solid var(--border-color);
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        .nav-icons a:hover .tooltip {
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-        }
+    .ai-response-box .ai-header h3 {
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #ddd6fe;
+    }
 
-        /* ============================================================
-                   PAGE TABS
-                   ============================================================ */
-        .page-tabs {
-            display: flex;
-            gap: 0.8rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1rem;
-        }
-        .tab-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            padding: 0.6rem 1.8rem;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: 0.25s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid transparent;
-        }
-        .tab-btn i {
-            font-size: 1.1rem;
-        }
-        .tab-btn:hover {
-            color: var(--text-primary);
-            background: rgba(182, 28, 28, 0.08);
-        }
-        .tab-btn.active {
-            color: #fff;
-            background: rgba(182, 28, 28, 0.25);
-            border-color: rgba(182, 28, 28, 0.3);
-            box-shadow: 0 0 30px rgba(182, 28, 28, 0.1);
-        }
-        .tab-btn:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
+    .ai-response-box .response-content {
+      font-size: 1.2rem;
+      line-height: 2rem;
+      color: #e6edff;
+      font-weight: 350;
+      word-break: break-word;
+      min-height: 4.5rem;
+    }
 
-        /* ============================================================
-                   PAGES
-                   ============================================================ */
-        .page {
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
-        .page.active {
-            display: block;
-        }
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .ai-response-box .response-content i {
+      color: #c4b5fd;
+      margin: 0 0.2rem;
+    }
 
-        /* ============================================================
-                   HERO
-                   ============================================================ */
-        .hero-badge {
-            display: inline-block;
-            background: rgba(182, 28, 28, 0.12);
-            border: 1px solid rgba(182, 28, 28, 0.2);
-            padding: 0.4rem 1.4rem;
-            border-radius: 60px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            width: fit-content;
-            backdrop-filter: blur(4px);
-        }
-        .hero-badge i {
-            margin-left: 8px;
-            color: var(--accent);
-        }
+    .response-time {
+      margin-top: 1.2rem;
+      font-size: 0.8rem;
+      color: #7a84a8;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding-top: 1rem;
+    }
 
-        .hero h2 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 800;
-            line-height: 1.2;
-            background: linear-gradient(to left, #ff9999, var(--accent), #cc3333);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            max-width: 700px;
-            min-height: 5rem;
-            transition: font-size 0.2s ease;
-        }
-        .hero h2 .cursor-blink {
-            display: inline-block;
-            width: 3px;
-            height: 3rem;
-            background: var(--accent);
-            margin-right: 6px;
-            vertical-align: text-bottom;
-            animation: blink 0.8s step-end infinite;
-        }
-        @keyframes blink {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
-        }
+    /* بخش مدل‌ها با آیکون‌های awesome */
+    .models-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1rem;
+      margin: 2rem 0 2.2rem 0;
+      padding: 0.5rem 0;
+    }
 
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 550px;
-            line-height: 1.9;
-        }
+    .model-chip {
+      background: rgba(30, 34, 70, 0.5);
+      backdrop-filter: blur(4px);
+      padding: 0.6rem 1.5rem;
+      border-radius: 60px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.95rem;
+      font-weight: 450;
+      color: #d0d9ff;
+      transition: all 0.25s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
 
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 0.8rem;
-        }
+    .model-chip i {
+      font-size: 1.2rem;
+      color: #a78bfa;
+      transition: 0.2s;
+    }
 
-        /* ============================================================
-                   BUTTONS
-                   ============================================================ */
-        .btn {
-            position: relative;
-            overflow: hidden;
-            padding: 0.9rem 2.4rem;
-            border-radius: 80px;
-            border: none;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--bg-card);
-            color: var(--text-secondary);
-            transition: 0.25s ease;
-            cursor: pointer;
-            text-decoration: none;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 8px 20px var(--shadow-color);
-        }
-        .btn .ripple {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(0);
-            animation: rippleAnim 0.6s linear;
-            pointer-events: none;
-        }
-        @keyframes rippleAnim {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
+    .model-chip:hover {
+      background: rgba(124, 77, 255, 0.2);
+      border-color: #7c4dff55;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(124, 77, 255, 0.25);
+    }
 
-        .btn-primary {
-            background: linear-gradient(145deg, var(--accent-light), var(--accent-dark));
-            color: #fff;
-            border: none;
-            box-shadow: 0 8px 28px rgba(182, 28, 28, 0.3);
-        }
-        .btn-primary:hover {
-            transform: scale(1.02) translateY(-3px);
-            box-shadow: 0 14px 34px rgba(182, 28, 28, 0.5);
-            background: linear-gradient(145deg, #e03030, #a01818);
-        }
-        .btn-outline:hover {
-            background: rgba(182, 28, 28, 0.08);
-            border-color: rgba(182, 28, 28, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(182, 28, 28, 0.1);
-        }
+    .model-chip:hover i {
+      color: #c4b5fd;
+      transform: scale(1.2);
+    }
 
-        .btn:active {
-            transform: scale(0.96);
-        }
+    /* اینپوت و دکمه */
+    .input-area {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.8rem;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 80px;
+      padding: 0.4rem 0.4rem 0.4rem 1.8rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      margin-top: 0.8rem;
+    }
 
-        /* ============================================================
-                   CARDS
-                   ============================================================ */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 3.5rem 0 1rem;
-        }
-        .card {
-            position: relative;
-            background: var(--bg-card);
-            backdrop-filter: blur(8px);
-            padding: 1.8rem 1.2rem;
-            border-radius: 28px;
-            border: 1px solid var(--border-color);
-            transition: 0.35s ease;
-            text-align: center;
-            box-shadow: 0 8px 30px var(--shadow-color);
-            overflow: hidden;
-        }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 30px;
-            background: conic-gradient(from 0deg, var(--accent), #ff4444, var(--accent), var(--accent-dark), var(--accent));
-            z-index: -1;
-            animation: rotateBorder 4s linear infinite;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .card:hover::before {
-            opacity: 1;
-        }
-        @keyframes rotateBorder {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        .card:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: var(--bg-card-hover);
-            box-shadow: 0 20px 50px var(--shadow-color);
-        }
-        .card i {
-            font-size: 2.8rem;
-            color: var(--accent);
-            margin-bottom: 0.8rem;
-            filter: drop-shadow(0 0 12px rgba(182, 28, 28, 0.3));
-        }
-        .card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            color: var(--text-primary);
-        }
-        .card p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
+    .input-area input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 1rem 0.2rem;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 1rem;
+      color: #f0f4ff;
+      outline: none;
+      min-width: 0;
+    }
 
-        /* ============================================================
-                   NEWS
-                   ============================================================ */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-        .news-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(6px);
-            border-radius: 30px;
-            padding: 1.8rem;
-            border: 1px solid var(--border-color);
-            transition: 0.3s ease;
-            box-shadow: 0 8px 25px var(--shadow-color);
-        }
-        .news-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(182, 28, 28, 0.25);
-            background: var(--bg-card-hover);
-        }
-        .news-card .tag {
-            display: inline-block;
-            background: rgba(182, 28, 28, 0.15);
-            color: var(--text-secondary);
-            font-size: 0.7rem;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            margin-bottom: 0.8rem;
-            border: 1px solid rgba(182, 28, 28, 0.1);
-        }
-        .news-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.6rem;
-            color: var(--text-primary);
-        }
-        .news-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-        .news-card .meta {
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            display: flex;
-            gap: 1rem;
-        }
-        .news-card .meta i {
-            color: var(--accent);
-            margin-left: 4px;
-        }
+    .input-area input::placeholder {
+      color: #828bb0;
+      font-weight: 300;
+    }
 
-        /* ============================================================
-                   VIDEOS
-                   ============================================================ */
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-        .video-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(6px);
-            border-radius: 30px;
-            padding: 1.5rem;
-            border: 1px solid var(--border-color);
-            transition: 0.3s ease;
-            text-align: center;
-            box-shadow: 0 8px 25px var(--shadow-color);
-        }
-        .video-card:hover {
-            transform: translateY(-6px) scale(1.01);
-            border-color: rgba(182, 28, 28, 0.2);
-            background: var(--bg-card-hover);
-        }
-        .video-card .thumb {
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(145deg, #1a1010, #2a1818);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-            transition: background var(--transition-speed);
-        }
-        [data-theme="light"] .video-card .thumb {
-            background: linear-gradient(145deg, #e8ddd8, #d5c8c0);
-        }
-        .video-card .thumb .play-icon {
-            background: rgba(182, 28, 28, 0.15);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(182, 28, 28, 0.2);
-            backdrop-filter: blur(4px);
-            transition: 0.3s;
-        }
-        .video-card:hover .play-icon {
-            background: rgba(182, 28, 28, 0.3);
-            border-color: var(--accent);
-            transform: scale(1.05);
-        }
-        .video-card h4 {
-            color: var(--text-primary);
-            margin-bottom: 0.3rem;
-        }
-        .video-card p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
+    .input-area button {
+      background: linear-gradient(145deg, #6c4ce0, #4f33b0);
+      border: none;
+      padding: 0.9rem 1.8rem;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 0 20px #4f33b066;
+      font-family: 'Vazirmatn', sans-serif;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      letter-spacing: 0.3px;
+    }
 
-        /* ============================================================
-                   اسکلتون لودینگ (Skeleton)
-                   ============================================================ */
-        .skeleton {
-            animation: skeletonPulse 1.5s ease-in-out infinite;
-            background: var(--bg-card);
-            border-radius: 12px;
-        }
-        @keyframes skeletonPulse {
-            0%,
-            100% {
-                opacity: 0.4;
-            }
-            50% {
-                opacity: 0.8;
-            }
-        }
+    .input-area button i {
+      font-size: 1.2rem;
+    }
 
-        /* ============================================================
-                   توست نوتیفیکیشن
-                   ============================================================ */
-        #toast-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 99999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .toast {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            padding: 1rem 2rem;
-            border-radius: 16px;
-            border-right: 4px solid var(--accent);
-            box-shadow: 0 10px 40px var(--shadow-color);
-            backdrop-filter: blur(12px);
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.95rem;
-            animation: slideInToast 0.4s ease;
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .toast i {
-            color: var(--accent);
-            font-size: 1.3rem;
-        }
-        @keyframes slideInToast {
-            0% {
-                opacity: 0;
-                transform: translateX(60px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        .toast.hide {
-            animation: slideOutToast 0.3s ease forwards;
-        }
-        @keyframes slideOutToast {
-            0% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(60px);
-            }
-        }
+    .input-area button:hover {
+      transform: scale(1.02);
+      background: linear-gradient(145deg, #7c5cec, #5a3ec9);
+      box-shadow: 0 0 30px #6c4ce0aa;
+    }
 
-        /* ============================================================
-                   FOOTER
-                   ============================================================ */
-        .footer {
-            margin-top: 3.5rem;
-            border-top: 1px solid var(--border-color);
-            padding-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            color: var(--text-muted);
-        }
-        .social a {
-            color: var(--text-muted);
-            font-size: 1.5rem;
-            margin-right: 1.2rem;
-            transition: 0.2s;
-            text-decoration: none;
-        }
-        .social a:hover {
-            color: var(--accent);
-            transform: scale(1.1) rotate(-4deg);
-            display: inline-block;
-            text-shadow: 0 0 20px rgba(182, 28, 28, 0.3);
-        }
-        .footer span i {
-            margin-left: 6px;
-            color: var(--accent);
-        }
+    .input-area button:active {
+      transform: scale(0.97);
+    }
 
-        /* ============================================================
-                   RESPONSIVE
-                   ============================================================ */
-        @media (max-width: 700px) {
-            .container {
-                padding: 1.8rem 1.2rem;
-                border-radius: 40px;
-            }
-            .hero h2 {
-                font-size: 2.5rem;
-                min-height: 3.8rem;
-            }
-            .hero h2 .cursor-blink {
-                height: 2.2rem;
-            }
-            .logo h1 {
-                font-size: 2rem;
-            }
-            .nav-icons {
-                gap: 1.2rem;
-                font-size: 1.2rem;
-            }
-            .features {
-                grid-template-columns: 1fr 1fr;
-            }
-            .news-grid,
-            .videos-grid {
-                grid-template-columns: 1fr;
-            }
-            .page-tabs {
-                gap: 0.5rem;
-            }
-            .tab-btn {
-                padding: 0.4rem 1.2rem;
-                font-size: 0.85rem;
-            }
-            .header-actions {
-                gap: 0.8rem;
-            }
-            #toast-container {
-                right: 10px;
-                bottom: 10px;
-                left: 10px;
-            }
-            .toast {
-                padding: 0.8rem 1.2rem;
-                font-size: 0.85rem;
-            }
-        }
-        @media (max-width: 450px) {
-            .features {
-                grid-template-columns: 1fr;
-            }
-            .btn-group {
-                flex-direction: column;
-                width: 100%;
-            }
-            .btn {
-                justify-content: center;
-            }
-            .cursor-follower {
-                display: none;
-            }
-            body {
-                cursor: auto;
-            }
-        }
-    </style>
+    /* فوتر و آیکون‌های اجتماعی */
+    .footer-extra {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      font-size: 0.85rem;
+      color: #6a749b;
+    }
+
+    .footer-extra .social i {
+      font-size: 1.3rem;
+      margin-left: 0.8rem;
+      color: #7a84ae;
+      transition: 0.2s;
+      cursor: default;
+    }
+
+    .footer-extra .social i:hover {
+      color: #b7c0f0;
+      transform: scale(1.2);
+    }
+
+    .footer-extra .hint i {
+      margin-left: 0.3rem;
+    }
+
+    /* سازگاری موبایل */
+    @media (max-width: 700px) {
+      .glass-card {
+        padding: 1.8rem;
+        border-radius: 2.5rem;
+      }
+      .brand h1 {
+        font-size: 1.8rem;
+      }
+      .brand i {
+        font-size: 2.4rem;
+      }
+      .input-area {
+        flex-wrap: wrap;
+        background: transparent;
+        padding: 0;
+        border: none;
+        gap: 0.8rem;
+      }
+      .input-area input {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 1rem 1.5rem;
+        border-radius: 60px;
+        width: 100%;
+        border: 1px solid rgba(255,255,255,0.05);
+      }
+      .input-area button {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem;
+      }
+      .models-section {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .brand .badge {
+        display: none;
+      }
+      .status-pulse span {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <!-- ===== PROGRESS BAR ===== -->
-    <div id="progress-bar"></div>
-
-    <!-- ===== CURSOR ===== -->
-    <div class="cursor-follower" id="cursorFollower"></div>
-
-    <!-- ===== PARTICLES ===== -->
-    <canvas id="particles-canvas"></canvas>
-
-    <!-- ===== GLOWS ===== -->
-    <div class="bg-glow"></div>
-    <div class="bg-glow-2"></div>
-
-    <!-- ===== TOAST CONTAINER ===== -->
-    <div id="toast-container"></div>
-
-    <div class="container">
-        <!-- ===== HEADER ===== -->
-        <div class="header">
-            <div class="logo">
-                <i class="fas fa-skull"></i>
-                <h1>Zerox</h1>
-            </div>
-            <div class="header-actions">
-                <div class="nav-icons">
-                    <a href="#"><i class="fas fa-home"></i><span class="tooltip">خانه</span></a>
-                    <a href="#"><i class="fas fa-fire"></i><span class="tooltip">داغ‌ها</span></a>
-                    <a href="#"><i class="fas fa-trophy"></i><span class="tooltip">مسابقات</span></a>
-                    <a href="#"><i class="fas fa-headset"></i><span class="tooltip">پشتیبانی</span></a>
-                </div>
-                <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- ===== PAGE TABS ===== -->
-        <div class="page-tabs">
-            <button class="tab-btn active" data-page="home" id="tabHome"><i class="fas fa-home"></i> خانه</button>
-            <button class="tab-btn" data-page="news" id="tabNews"><i class="fas fa-newspaper"></i> اخبار</button>
-            <button class="tab-btn" data-page="videos" id="tabVideos"><i class="fas fa-video"></i> ویدیوها</button>
-        </div>
-
-        <!-- ============================================================
-        PAGE: HOME
-        ============================================================ -->
-        <div class="page active" id="page-home">
-            <div class="hero">
-                <div class="hero-badge">
-                    <i class="fas fa-fire"></i> جدیدترین آپدیت · نسخه ۳.۰
-                </div>
-                <h2 id="typewriter">
-                    <span id="typed-text"></span><span class="cursor-blink"></span>
-                </h2>
-                <p>
-                    <i class="fas fa-skull" style="color:var(--accent); margin-left:6px;"></i>
-                    Zerox Gaming Hub — جایی برای آخرین اخبار، ویدیوهای داغ و تازه‌ترین تریلرهای دنیای گیم.
-                </p>
-                <div class="btn-group">
-                    <a href="#" class="btn btn-primary" id="rippleBtn1">
-                        <i class="fas fa-gamepad"></i> ورود به هاب
-                    </a>
-                    <a href="#" class="btn btn-outline" id="rippleBtn2">
-                        <i class="fas fa-play-circle"></i> تماشای تریلر
-                    </a>
-                </div>
-            </div>
-
-            <div class="features">
-                <div class="card"><i class="fas fa-bolt"></i><h3>فوق‌سریع</h3><p>بهینه برای گیمینگ</p></div>
-                <div class="card"><i class="fas fa-fire"></i><h3>داغ‌ترین اخبار</h3><p>اولین نفر باش</p></div>
-                <div class="card"><i class="fas fa-shield-alt"></i><h3>امن</h3><p>محافظت از حساب</p></div>
-                <div class="card"><i class="fas fa-infinity"></i><h3>بی‌نهایت</h3><p>همیشه تازه</p></div>
-            </div>
-        </div>
-
-        <!-- ============================================================
-        PAGE: NEWS
-        ============================================================ -->
-        <div class="page" id="page-news">
-            <h2 style="margin-bottom: 1.5rem; color: var(--text-primary);">
-                <i class="fas fa-newspaper" style="color:var(--accent); margin-left:10px;"></i>
-                آخرین اخبار گیمینگ
-            </h2>
-            <div class="news-grid" id="newsGrid">
-                <!-- اسکلتون‌ها (Skeleton) -->
-                <div class="skeleton" style="height:200px; border-radius:30px;"></div>
-                <div class="skeleton" style="height:200px; border-radius:30px;"></div>
-                <div class="skeleton" style="height:200px; border-radius:30px;"></div>
-            </div>
-        </div>
-
-        <!-- ============================================================
-        PAGE: VIDEOS
-        ============================================================ -->
-        <div class="page" id="page-videos">
-            <h2 style="margin-bottom: 1.5rem; color: var(--text-primary);">
-                <i class="fas fa-video" style="color:var(--accent); margin-left:10px;"></i>
-                ویدیوهای داغ
-            </h2>
-            <div class="videos-grid" id="videosGrid">
-                <div class="skeleton" style="height:250px; border-radius:30px;"></div>
-                <div class="skeleton" style="height:250px; border-radius:30px;"></div>
-                <div class="skeleton" style="height:250px; border-radius:30px;"></div>
-            </div>
-        </div>
-
-        <!-- ===== FOOTER ===== -->
-        <div class="footer">
-            <div class="social">
-                <a href="#"><i class="fab fa-x-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-twitch"></i></a>
-            </div>
-            <span><i class="fas fa-skull"></i> ۲۰۲۶ Zerox · همه چیز برای گیم</span>
-        </div>
+  <div class="glass-card">
+    <!-- هدر با آیکون awesome و نام Reward Ai -->
+    <div class="header">
+      <div class="brand">
+        <i class="fas fa-robot"></i>
+        <h1>Reward Ai</h1>
+        <span class="badge"><i class="fas fa-crown" style="margin-left: 6px;"></i>نسخه ۳.۰</span>
+      </div>
+      <div class="status-pulse">
+        <i class="fas fa-circle"></i>
+        <span>آنلاین · پاسخ‌گو</span>
+        <i class="fas fa-bolt" style="color: #c084fc; margin-right: 6px;"></i>
+      </div>
     </div>
 
-    <script>
-        // ================================================================
-        // 1. PROGRESS BAR (نوار پیشرفت اسکرول)
-        // ================================================================
-        const progressBar = document.getElementById('progress-bar');
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-            progressBar.style.width = progress + '%';
-        });
+    <!-- جعبه پاسخ هوش مصنوعی (UX عالی) -->
+    <div class="ai-response-box" id="responseBox">
+      <div class="ai-header">
+        <i class="fas fa-brain"></i>
+        <h3>Reward Ai می‌گوید:</h3>
+      </div>
+      <div class="response-content" id="responseContent">
+        <i class="fas fa-sparkles" style="margin-left: 8px;"></i>
+        سلام! من Reward Ai هستم، آماده‌ام به سوالاتت پاسخ بدم.
+      </div>
+      <div class="response-time">
+        <i class="far fa-clock"></i>
+        <span id="timeStamp">همین الآن</span>
+        <span style="margin-right: auto; opacity:0.6;">
+          <i class="fas fa-database"></i> مدل‌های فعال: ۶
+        </span>
+      </div>
+    </div>
 
-        // ================================================================
-        // 2. CURSOR FOLLOWER
-        // ================================================================
-        const follower = document.getElementById('cursorFollower');
-        let mouseX = 0,
-            mouseY = 0;
-        let currentX = 0,
-            currentY = 0;
+    <!-- مدل‌ها با آیکون‌های awesome (تمامی مدل‌ها) -->
+    <div class="models-section">
+      <span class="model-chip"><i class="fas fa-microchip"></i> Reward-Neo</span>
+      <span class="model-chip"><i class="fas fa-cloud"></i> Reward-Cloud</span>
+      <span class="model-chip"><i class="fas fa-code"></i> Reward-Codex</span>
+      <span class="model-chip"><i class="fas fa-palette"></i> Reward-Art</span>
+      <span class="model-chip"><i class="fas fa-dna"></i> Reward-Bio</span>
+      <span class="model-chip"><i class="fas fa-globe"></i> Reward-Lingua</span>
+      <span class="model-chip"><i class="fas fa-cog"></i> Reward-Core</span>
+    </div>
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            follower.classList.add('active');
-        });
-        document.addEventListener('mouseleave', () => {
-            follower.classList.remove('active');
-        });
+    <!-- ناحیه ورودی + دکمه ارسال (با آیکون awesome) -->
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="چیزی بپرس... من Reward Ai هستم" />
+      <button id="sendBtn">
+        <i class="fas fa-paper-plane"></i> بفرست
+      </button>
+    </div>
 
-        function animateFollower() {
-            currentX += (mouseX - currentX) * 0.08;
-            currentY += (mouseY - currentY) * 0.08;
-            follower.style.left = currentX + 'px';
-            follower.style.top = currentY + 'px';
-            requestAnimationFrame(animateFollower);
-        }
-        animateFollower();
+    <!-- فوتر با آیکون‌های awesome و توضیح -->
+    <div class="footer-extra">
+      <div class="social">
+        <i class="fab fa-github"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-linkedin-in"></i>
+        <i class="fas fa-cube"></i>
+      </div>
+      <div class="hint">
+        <i class="fas fa-keyboard"></i> پرسش خود را تایپ کن &nbsp;•&nbsp; <i class="fas fa-bolt"></i> پاسخ‌گویی لحظه‌ای
+      </div>
+    </div>
+  </div>
 
-        // ================================================================
-        // 3. TYPEWRITER
-        // ================================================================
-        const texts = [
-            'متفاوت‌ترین هاب گیمینگ',
-            'Zerox ; خانه‌ی گیمرها',
-            'اخبار و ویدیوهای داغ'
+  <script>
+    (function() {
+      // عناصر
+      const responseContent = document.getElementById('responseContent');
+      const userInput = document.getElementById('userInput');
+      const sendBtn = document.getElementById('sendBtn');
+      const timeStamp = document.getElementById('timeStamp');
+
+      // تابع تولید پاسخ‌های هوشمندانه (شبیه‌سازی Reward Ai)
+      function generateRewardResponse(question) {
+        const q = question.trim().toLowerCase();
+        // چند پاسخ خفن و متنوع با آیکون‌های awesome
+        const responses = [
+          { keywords: ['سلام', 'درود', 'هی'], 
+            reply: `<i class="fas fa-hand-peace"></i> درود! من Reward Ai، مشتاق هم‌کلامی با تو هستم.` },
+          { keywords: ['چطوری', 'حالت', 'چی کار'], 
+            reply: `<i class="fas fa-laugh-beam"></i> عالی! با <i class="fas fa-heart" style="color:#f472b6;"></i> در خدمت شما.` },
+          { keywords: ['هوش مصنوعی', 'AI', 'مصنوعی'], 
+            reply: `<i class="fas fa-robot"></i> من یک هوش مصنوعی نسل جدید هستم با هسته Reward. همه مدل‌ها در کنار هم!` },
+          { keywords: ['نام', 'اسم', 'کیستی'], 
+            reply: `<i class="fas fa-id-badge"></i> اسم من Reward Ai است، اما دوستان صدام می‌کنند <i class="fas fa-star"></i> "ری‌وارد".` },
+          { keywords: ['قابلیت', 'توانایی', 'چه کار'], 
+            reply: `<i class="fas fa-cogs"></i> از کدنویسی تا شعر، تحلیل داده و خلق تصویر! تمام مدل‌های Reward فعالند.` },
+          { keywords: ['متشکرم', 'مرسی', 'ممنون'], 
+            reply: `<i class="fas fa-smile-wink"></i> خواهش می‌کنم! خوشحالم که می‌تونم کمک کنم.` },
+          { keywords: ['خداحافظ', 'بای'], 
+            reply: `<i class="fas fa-wave-square"></i> خدانگهدار! هر وقت نیاز بود، من همینجام.` }
         ];
-        let textIndex = 0,
-            charIndex = 0,
-            isDeleting = false;
-        const typedSpan = document.getElementById('typed-text');
 
-        function typeEffect() {
-            const currentText = texts[textIndex];
-            if (isDeleting) {
-                typedSpan.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-                if (charIndex === 0) {
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % texts.length;
-                    setTimeout(typeEffect, 600);
-                    return;
-                }
-                setTimeout(typeEffect, 40);
-            } else {
-                typedSpan.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-                if (charIndex === currentText.length) {
-                    isDeleting = true;
-                    setTimeout(typeEffect, 1800);
-                    return;
-                }
-                setTimeout(typeEffect, 70);
+        // بررسی کلمات کلیدی
+        for (let item of responses) {
+          for (let kw of item.keywords) {
+            if (q.includes(kw)) {
+              return item.reply;
             }
-        }
-        typeEffect();
-
-        // ================================================================
-        // 4. RIPPLE EFFECT
-        // ================================================================
-        function createRipple(e, btn) {
-            const rect = btn.getBoundingClientRect();
-            const ripple = document.createElement('span');
-            const size = Math.max(rect.width, rect.height);
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-            ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-            ripple.className = 'ripple';
-            btn.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 600);
-        }
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                createRipple(e, this);
-                showToast('عملیات با موفقیت انجام شد! 🎮');
-            });
-        });
-
-        // ================================================================
-        // 5. TAB SWITCHING + KEYBOARD SHORTCUTS (1,2,3)
-        // ================================================================
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const pages = {
-            home: document.getElementById('page-home'),
-            news: document.getElementById('page-news'),
-            videos: document.getElementById('page-videos')
-        };
-        const newsGrid = document.getElementById('newsGrid');
-        const videosGrid = document.getElementById('videosGrid');
-
-        function switchTab(pageName) {
-            tabBtns.forEach(b => b.classList.remove('active'));
-            Object.values(pages).forEach(p => p.classList.remove('active'));
-
-            const targetBtn = document.querySelector(`.tab-btn[data-page="${pageName}"]`);
-            if (targetBtn) targetBtn.classList.add('active');
-            if (pages[pageName]) pages[pageName].classList.add('active');
-
-            // لود محتوای واقعی (شبیه‌سازی)
-            if (pageName === 'news' && newsGrid.querySelector('.skeleton')) {
-                setTimeout(loadNews, 800);
-            }
-            if (pageName === 'videos' && videosGrid.querySelector('.skeleton')) {
-                setTimeout(loadVideos, 800);
-            }
+          }
         }
 
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                switchTab(this.dataset.page);
-            });
-        });
+        // پاسخ‌های تصادفی جذاب (در صورت عدم تطابق)
+        const randomReplies = [
+          `<i class="fas fa-brain"></i> فکر می‌کنم سوال جالبی پرسیدی! بذار دقیق‌تر بررسی کنم.`,
+          `<i class="fas fa-sync-alt fa-spin"></i> درحال پردازش با مدل Reward-Neo ... پاسخ: این سوال نیاز به تحلیل عمیق‌تر داره.`,
+          `<i class="fas fa-gem"></i> Reward Ai همیشه آماده‌ست! سوالت رو دقیق‌تر بپرس.`,
+          `<i class="fas fa-code"></i> با Reward-Codex می‌تونم کد بنویسم، اما الان حس شاعری دارم!`,
+          `<i class="fas fa-meteor"></i> پرسش تو مثل یک شهاب‌سنگ است! من Reward Ai پاسخ را می‌یابم.`,
+          `<i class="fas fa-chess-queen"></i> حرکت بعدی: پاسخ به سوال تو با بهترین مدل Reward.`
+        ];
+        return randomReplies[Math.floor(Math.random() * randomReplies.length)];
+      }
 
-        // کیبورد شورت‌کات: 1=خانه, 2=اخبار, 3=ویدیوها
-        document.addEventListener('keydown', (e) => {
-            if (e.key === '1') switchTab('home');
-            else if (e.key === '2') switchTab('news');
-            else if (e.key === '3') switchTab('videos');
-        });
+      // به‌روزرسانی تایم‌استمپ
+      function updateTimestamp() {
+        const now = new Date();
+        const hour = String(now.getHours()).padStart(2, '0');
+        const min = String(now.getMinutes()).padStart(2, '0');
+        timeStamp.innerText = `${hour}:${min} · امروز`;
+      }
 
-        // ================================================================
-        // 6. LOAD NEWS (شبیه‌سازی لود از سرور)
-        // ================================================================
-        function loadNews() {
-            const newsData = [{
-                tag: '🔥 داغ',
-                title: 'رونمایی از بازی جدید Zerox',
-                desc: 'یک تریلر سینمایی نفس‌گیر از جدیدترین عنوان استودیو Zerox منتشر شد...',
-                date: '۲۱ تیر ۱۴۰۴',
-                comments: 42
-            }, {
-                tag: '🏆 مسابقه',
-                title: 'رقابت بزرگ سال ۲۰۲۶',
-                desc: 'ثبت‌نام مسابقات جهانی Zerox Cup آغاز شد. جایزه ۱۰۰ هزار دلاری...',
-                date: '۲۰ تیر ۱۴۰۴',
-                comments: 128
-            }, {
-                tag: '⚡ آپدیت',
-                title: 'به‌روزرسانی بزرگ ۳.۰',
-                desc: 'جدیدترین پچ Zerox با امکانات آنلاین و نقشه‌های جدید عرضه شد...',
-                date: '۱۸ تیر ۱۴۰۴',
-                comments: 76
-            }];
-
-            newsGrid.innerHTML = newsData.map(item => `
-                        <div class="news-card">
-                            <span class="tag"><i class="fas fa-fire"></i> ${item.tag}</span>
-                            <h3>${item.title}</h3>
-                            <p>${item.desc}</p>
-                            <div class="meta">
-                                <span><i class="fas fa-calendar"></i> ${item.date}</span>
-                                <span><i class="fas fa-comment"></i> ${item.comments}</span>
-                            </div>
-                        </div>
-                    `).join('');
+      // تابع پردازش و نمایش پاسخ
+      function handleSend() {
+        const question = userInput.value.trim();
+        if (question === '') {
+          // اگر خالی بود، پاسخ پیش‌فرض با آیکون
+          responseContent.innerHTML = `<i class="fas fa-exclamation-triangle" style="color:#fbbf24;"></i> لطفاً یک سوال بنویسید!`;
+          updateTimestamp();
+          return;
         }
 
-        // ================================================================
-        // 7. LOAD VIDEOS (شبیه‌سازی لود از سرور)
-        // ================================================================
-        function loadVideos() {
-            const videosData = [
-                { title: 'تریلر رسمی Zerox', views: '۲۵۰٬۰۰۰', time: '۳ روز پیش' },
-                { title: 'گیم‌پلی ۴K', views: '۱۸۰٬۰۰۰', time: '۱ هفته پیش' },
-                { title: 'مصاحبه با سازندگان', views: '۹۲٬۰۰۰', time: '۲ هفته پیش' }
-            ];
+        // شبیه‌سازی دریافت پاسخ از Reward Ai
+        const reply = generateRewardResponse(question);
+        responseContent.innerHTML = reply;
+        updateTimestamp();
 
-            videosGrid.innerHTML = videosData.map(item => `
-                        <div class="video-card">
-                            <div class="thumb">
-                                <div class="play-icon"><i class="fas fa-play"></i></div>
-                            </div>
-                            <h4>${item.title}</h4>
-                            <p>${item.views} بازدید · ${item.time}</p>
-                        </div>
-                    `).join('');
+        // پاک کردن اینپوت بعد از ارسال (تجربه کاربری بهتر)
+        userInput.value = '';
+        // افکت کوچک
+        const box = document.getElementById('responseBox');
+        box.style.transition = '0.15s';
+        box.style.borderLeftColor = '#a78bfa';
+        setTimeout(() => {
+          box.style.borderLeftColor = '#7c4dff';
+        }, 200);
+      }
+
+      // رویدادها
+      sendBtn.addEventListener('click', handleSend);
+
+      userInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleSend();
         }
+      });
 
-        // لود اولیه برای صفحه خانه (کارت‌ها از قبل آماده‌ان)
+      // تایم‌استمپ اولیه
+      updateTimestamp();
 
-        // ================================================================
-        // 8. TOAST NOTIFICATION
-        // ================================================================
-        function showToast(message) {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
-            container.appendChild(toast);
-
-            setTimeout(() => {
-                toast.classList.add('hide');
-                setTimeout(() => toast.remove(), 300);
-            }, 2500);
-        }
-
-        // ================================================================
-        // 9. THEME TOGGLE (دارک/لایت)
-        // ================================================================
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        let currentTheme = 'dark';
-
-        themeToggle.addEventListener('click', () => {
-            if (currentTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                themeIcon.className = 'fas fa-sun';
-                currentTheme = 'light';
-                showToast('تم روشن فعال شد ☀️');
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-                themeIcon.className = 'fas fa-moon';
-                currentTheme = 'dark';
-                showToast('تم تیره فعال شد 🌙');
-            }
-        });
-
-        // ================================================================
-        // 10. PARTICLES
-        // ================================================================
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        const particles = [];
-        const PARTICLE_COUNT = 90;
-
-        function resizeCanvas() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.size = Math.random() * 2.5 + 0.8;
-                this.speedX = (Math.random() - 0.5) * 0.5;
-                this.speedY = (Math.random() - 0.5) * 0.5;
-                this.opacity = Math.random() * 0.4 + 0.15;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > width) this.speedX *= -1;
-                if (this.y < 0 || this.y > height) this.speedY *= -1;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(182, 28, 28, ${this.opacity})`;
-                ctx.fill();
-                ctx.shadowColor = 'rgba(182, 28, 28, 0.1)';
-                ctx.shadowBlur = 10;
-                ctx.fill();
-                ctx.shadowBlur = 0;
-            }
-        }
-
-        for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
-
-        function drawParticles() {
-            ctx.clearRect(0, 0, width, height);
-            particles.forEach(p => { p.update();
-                p.draw(); });
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 120) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(182, 28, 28, ${0.06 * (1 - dist / 120)})`;
-                        ctx.lineWidth = 0.6;
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(drawParticles);
-        }
-        drawParticles();
-
-        // ================================================================
-        // 11. اسکرول سینمایی: تغییر سایز هیرو هنگام اسکرول
-        // ================================================================
-        const heroTitle = document.querySelector('.hero h2');
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const maxScroll = 300;
-            const scale = Math.max(0.7, 1 - (scrollY / maxScroll) * 0.3);
-            if (heroTitle) {
-                heroTitle.style.fontSize = `clamp(2rem, ${scale * 4}rem, 4rem)`;
-            }
-        });
-
-        console.log('🔥 Zerox UX نسخه نهایی!');
-        console.log('⌨️ کلیدهای ۱، ۲، ۳ برای جابه‌جایی بین تب‌ها');
-        console.log('🌙 دکمه ماه/خورشید برای تغییر تم');
-    </script>
+      // پاسخ خوش‌آمدگویی هنگام لود (با تاخیر)
+      setTimeout(() => {
+        responseContent.innerHTML = `<i class="fas fa-sparkles" style="margin-left: 8px;"></i> 
+        سلام! من Reward Ai هستم، آماده‌ام به سوالاتت پاسخ بدم. 
+        <i class="fas fa-comment-dots" style="margin-right: 8px; color:#a78bfa;"></i>`;
+      }, 300);
+    })();
+  </script>
 </body>
-                        </html>
+</html>
