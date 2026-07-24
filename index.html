@@ -408,27 +408,20 @@
             margin: 0;
         }
 
-        /* ===== کارت‌های سایت (عریض و باریک) ===== */
-        .sites-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        /* کارت عریض (کل عرض) */
+        /* ===== کارت عریض ZEROX (تنها کارت) ===== */
         .site-card-wide {
-            grid-column: 1 / -1;
             background: #1a1111;
             border-radius: 24px;
-            padding: 1.5rem 2rem;
+            padding: 2rem 2.5rem;
             border-right: 6px solid #B61C1C;
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            justify-content: space-between;
+            gap: 2rem;
             flex-wrap: wrap;
             transition: 0.3s;
             border: 1px solid rgba(182, 28, 28, 0.2);
+            margin: 1.5rem 0;
         }
 
         .site-card-wide:hover {
@@ -437,90 +430,9 @@
             transform: translateX(-4px);
         }
 
-        /* کارت باریک */
-        .site-card-narrow {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 24px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .site-card-narrow:hover {
-            background: rgba(255, 215, 100, 0.04);
-            border-color: rgba(255, 215, 100, 0.12);
-            transform: translateY(-4px);
-        }
-
-        .site-card-narrow .card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .site-card-narrow .site-logo-sm {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: #0b0b0e;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-        }
-
-        .site-card-narrow .site-logo-sm img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .site-card-narrow .site-title {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #f5efe6;
-            margin: 0;
-        }
-
-        .site-card-narrow .site-desc {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 0.9rem;
-            color: #b0a99b;
-            margin: 0;
-            flex: 1;
-        }
-
-        .site-card-narrow .site-link {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            color: #f5b042;
-            text-decoration: none;
-            padding: 0.3rem 1rem;
-            border: 1px solid rgba(245, 176, 66, 0.2);
-            border-radius: 40px;
-            transition: 0.3s;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            align-self: flex-start;
-        }
-
-        .site-card-narrow .site-link:hover {
-            background: rgba(245, 176, 66, 0.1);
-            border-color: #f5b042;
-        }
-
         .site-card-wide .site-logo {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 16px;
             overflow: hidden;
             flex-shrink: 0;
@@ -542,14 +454,14 @@
         .site-card-wide .site-info h3 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: #f5efe6;
-            margin: 0 0 0.3rem 0;
+            margin: 0 0 0.5rem 0;
         }
 
         .site-card-wide .site-info p {
             font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #b0a99b;
             margin: 0;
         }
@@ -559,21 +471,20 @@
             font-weight: 600;
             color: #f5b042;
             text-decoration: none;
-            padding: 0.4rem 1.2rem;
+            padding: 0.5rem 1.8rem;
             border: 1px solid rgba(245, 176, 66, 0.2);
             border-radius: 40px;
             transition: 0.3s;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             white-space: nowrap;
         }
 
         .site-card-wide .site-link:hover {
             background: rgba(245, 176, 66, 0.1);
             border-color: #f5b042;
-        }
-
-        .site-card-wide .site-link i {
-            margin-left: 0.4rem;
         }
 
         /* ===== فوتر ===== */
@@ -637,13 +548,10 @@
             .home-design-cards {
                 grid-template-columns: 1fr;
             }
-            .sites-grid {
-                grid-template-columns: 1fr;
-            }
             .site-card-wide {
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 1.2rem;
+                padding: 1.5rem;
             }
             .site-card-wide .site-link {
                 align-self: flex-start;
@@ -685,11 +593,11 @@
                 width: 1.8rem;
             }
             .site-card-wide .site-logo {
-                width: 56px;
-                height: 56px;
+                width: 60px;
+                height: 60px;
             }
-            .site-card-narrow .card-header {
-                flex-wrap: wrap;
+            .site-card-wide {
+                padding: 1.2rem;
             }
         }
     </style>
@@ -822,70 +730,22 @@
             <!-- ===== سایت‌های طراحی شده ===== -->
             <div class="tab-content" id="sites">
                 <h2>سایت‌های طراحی شده</h2>
-                <p style="margin-bottom:1.5rem;">چند نمونه از پروژه‌هایی که با عشق و تعصب ساختم:</p>
+                <p style="margin-bottom:1.5rem;">نمونه‌ای از پروژه‌هایی که با عشق و تعصب ساختم:</p>
 
-                <div class="sites-grid">
-                    <!-- کارت عریض (اول) -->
-                    <div class="site-card-wide">
+                <!-- کارت عریض ZEROX (تنها کارت) -->
+                <div class="site-card-wide">
+                    <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
                         <div class="site-logo">
                             <img src="https://uploadkon.ir/uploads/0ddf24_26Negar-1780305389092.png" alt="لوگوی سایت ZEROX" />
                         </div>
                         <div class="site-info">
                             <h3>🎮 سایت خفن دنیای گیم با زروکس</h3>
-                            <p>پلتفرم تخصصی گیم و اخبار با طراحی مدرن</p>
+                            <p>پلتفرم تخصصی گیم و اخبار با طراحی مدرن و جذاب</p>
                         </div>
-                        <a href="https://zeroxgame74-afk.github.io/zeroxgamee/" target="_blank" class="site-link">
-                            <i class="fas fa-external-link-alt"></i> مشاهده سایت
-                        </a>
                     </div>
-
-                    <!-- کارت باریک ۱ -->
-                    <div class="site-card-narrow">
-                        <div class="card-header">
-                            <div class="site-logo-sm" style="background:#0b0b0e; color:#2a6b8f;">
-                                <i class="fas fa-store"></i>
-                            </div>
-                            <h4 class="site-title">🛍️ فروشگاه "نوین‌شاپ"</h4>
-                        </div>
-                        <p class="site-desc">طراحی کامل فرانت‌اند با React و Tailwind</p>
-                        <a href="#" class="site-link"><i class="fas fa-external-link-alt"></i> مشاهده</a>
-                    </div>
-
-                    <!-- کارت باریک ۲ -->
-                    <div class="site-card-narrow">
-                        <div class="card-header">
-                            <div class="site-logo-sm" style="background:#0b0b0e; color:#6b2a8f;">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h4 class="site-title">📊 پنل "داده‌ورز"</h4>
-                        </div>
-                        <p class="site-desc">داشبورد تحلیلی با Vue.js و Chart.js</p>
-                        <a href="#" class="site-link"><i class="fas fa-external-link-alt"></i> مشاهده</a>
-                    </div>
-
-                    <!-- کارت باریک ۳ -->
-                    <div class="site-card-narrow">
-                        <div class="card-header">
-                            <div class="site-logo-sm" style="background:#0b0b0e; color:#2a8f6b;">
-                                <i class="fas fa-user-md"></i>
-                            </div>
-                            <h4 class="site-title">👨‍⚕️ دکتر رضایی</h4>
-                        </div>
-                        <p class="site-desc">وب‌سایت شخصی با سیستم مدیریت محتوای ساده</p>
-                        <a href="#" class="site-link"><i class="fas fa-external-link-alt"></i> مشاهده</a>
-                    </div>
-
-                    <!-- کارت باریک ۴ -->
-                    <div class="site-card-narrow">
-                        <div class="card-header">
-                            <div class="site-logo-sm" style="background:#0b0b0e; color:#8f6b2a;">
-                                <i class="fas fa-tasks"></i>
-                            </div>
-                            <h4 class="site-title">📝 اپلیکیشن "یادآور"</h4>
-                        </div>
-                        <p class="site-desc">مدیریت تسک با قابلیت آفلاین (PWA)</p>
-                        <a href="#" class="site-link"><i class="fas fa-external-link-alt"></i> مشاهده</a>
-                    </div>
+                    <a href="https://zeroxgame74-afk.github.io/zeroxgamee/" target="_blank" class="site-link">
+                        <i class="fas fa-external-link-alt"></i> مشاهده سایت
+                    </a>
                 </div>
 
                 <div style="margin-top:1.5rem; padding:1rem; background:rgba(255,215,100,0.03); border-radius:16px; border:1px solid rgba(255,215,100,0.06);">
@@ -977,4 +837,4 @@
     </script>
 
 </body>
-</html>
+    </html>
