@@ -28,7 +28,6 @@
             color: #e8e8f0;
         }
 
-        /* ===== تیترها با Vazirmatn ===== */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
@@ -51,6 +50,7 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
             z-index: 1000;
             transition: 0.3s;
+            flex-direction: row-reverse; /* ===== لوگو سمت راست، منو سمت چپ ===== */
         }
 
         body.dark header {
@@ -58,7 +58,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        /* ===== LOGO با عکس ===== */
+        /* ===== LOGO ===== */
         .logo {
             display: flex;
             align-items: center;
@@ -137,7 +137,6 @@
             width: 100%;
         }
 
-        /* دکمه دارک/لایت */
         .theme-toggle {
             background: none;
             border: 1px solid rgba(0, 0, 0, 0.08);
@@ -215,7 +214,6 @@
             color: #b8b8d0;
         }
 
-        /* دکمه‌ها */
         .btn-group {
             display: flex;
             gap: 16px;
@@ -326,12 +324,14 @@
 
     <!-- ===== HEADER ===== -->
     <header>
+        <!-- لوگو سمت راست -->
         <a href="#" class="logo">
             <img src="https://uploadkon.ir/uploads/7ad824_26155.png" alt="Mohamad Hossein Sanati Logo" />
             <span class="name">محمدحسین</span>
             <span class="lname">ثناتی</span>
         </a>
 
+        <!-- منو سمت چپ -->
         <nav>
             <a href="#home">خانه</a>
             <a href="#about">درباره</a>
@@ -359,7 +359,6 @@
     </section>
 
     <script>
-        // ===== دارک/لایت مود =====
         const toggle = document.getElementById('themeToggle');
         const body = document.body;
 
@@ -368,7 +367,6 @@
             toggle.textContent = body.classList.contains('dark') ? '☀️' : '🌙';
         });
 
-        // ===== اسکرول نرم =====
         document.querySelectorAll('nav a[href^="#"]').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
