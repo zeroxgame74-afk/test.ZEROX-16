@@ -109,7 +109,7 @@
             letter-spacing: 1px;
         }
 
-        /* ========== دکمه همبرگر (با استایل جدید) ========== */
+        /* ========== دکمه همبرگر ========== */
         .hamburger {
             display: flex;
             flex-direction: column;
@@ -152,7 +152,7 @@
             background: #f5b042;
         }
 
-        /* ========== منوی همبرگری (اورلی با طراحی جدید) ========== */
+        /* ========== منوی همبرگری ========== */
         .nav-overlay {
             position: fixed;
             top: 0;
@@ -196,7 +196,6 @@
             padding: 0.8rem 1.5rem;
             border-radius: 20px;
             letter-spacing: 0.5px;
-            position: relative;
             border: 1px solid transparent;
         }
 
@@ -258,13 +257,13 @@
             }
         }
 
-        /* تیترها با Vazirmatn */
+        /* تیترها */
         .tab-content h2 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
             font-size: 2.6rem;
             color: #f5efe6;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             letter-spacing: -0.5px;
             border-right: 6px solid #f5b042;
             padding-right: 1.5rem;
@@ -286,25 +285,6 @@
             color: #d6d0c4;
             margin-bottom: 0.8rem;
             line-height: 2;
-        }
-
-        .tab-content ul {
-            list-style: none;
-            padding-right: 0.5rem;
-        }
-
-        .tab-content ul li {
-            position: relative;
-            padding-right: 2rem;
-            margin-bottom: 0.7rem;
-        }
-
-        .tab-content ul li::before {
-            content: "▹";
-            position: absolute;
-            right: 0;
-            color: #f5b042;
-            font-size: 1.3rem;
         }
 
         .highlight-box {
@@ -332,40 +312,266 @@
             color: #d4c9b8;
         }
 
-        /* استایل مخصوص بخش آپدیت‌ها (خانه) */
-        .update-item {
-            background: rgba(255, 215, 100, 0.03);
-            border-right: 3px solid #f5b042;
-            padding: 1rem 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 12px;
-            transition: 0.2s;
+        .tab-content ul {
+            list-style: none;
+            padding-right: 0.5rem;
         }
 
-        .update-item:hover {
-            background: rgba(255, 215, 100, 0.06);
+        .tab-content ul li {
+            position: relative;
+            padding-right: 2rem;
+            margin-bottom: 0.7rem;
         }
 
-        .update-item .date {
-            font-size: 0.85rem;
-            color: #b0a99b;
-            font-family: 'Noto Sans Arabic', sans-serif;
+        .tab-content ul li::before {
+            content: "▹";
+            position: absolute;
+            right: 0;
+            color: #f5b042;
+            font-size: 1.3rem;
         }
 
-        .update-item .title {
+        /* ===== کارت‌های خانه ===== */
+        .home-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1rem;
+        }
+
+        .home-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem;
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .home-card:hover {
+            background: rgba(255, 215, 100, 0.04);
+            border-color: rgba(255, 215, 100, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .home-card .icon {
+            font-size: 2.5rem;
+            color: #f5b042;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+        }
+
+        .home-card .icon i {
+            background: rgba(255, 215, 100, 0.08);
+            padding: 0.6rem;
+            border-radius: 16px;
+            transition: 0.3s;
+        }
+
+        .home-card:hover .icon i {
+            background: rgba(255, 215, 100, 0.15);
+            transform: scale(1.05);
+        }
+
+        .home-card h3 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 700;
+            font-size: 1.3rem;
             color: #f5efe6;
+            margin-bottom: 0.5rem;
+        }
+
+        .home-card p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.95rem;
+            color: #b0a99b;
+            margin: 0;
+        }
+
+        /* ===== کارت طراحی ===== */
+        .design-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 1.8rem;
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            margin: 1.5rem 0;
+            max-width: 500px;
+        }
+
+        .design-card .preview-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: linear-gradient(145deg, #1a1a22, #0f0f14);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #f5b042;
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            margin-bottom: 1.2rem;
+            overflow: hidden;
+        }
+
+        .design-card .preview-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .design-card .detail-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.6rem;
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.95rem;
+            color: #d6d0c4;
+        }
+
+        .design-card .detail-row i {
+            color: #f5b042;
+            width: 1.5rem;
             font-size: 1.1rem;
         }
 
-        .update-item .desc {
+        .design-card .download-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.8rem;
+            background: linear-gradient(145deg, #f5b042, #d48f2b);
+            color: #0b0b0e;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
             font-size: 0.95rem;
-            color: #c4bdb0;
-            margin-top: 0.3rem;
         }
 
-        /* ========== فوتر ========== */
+        .design-card .download-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(245, 176, 66, 0.2);
+        }
+
+        .design-card .download-btn i {
+            margin-left: 0.5rem;
+        }
+
+        /* ===== مودال ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: #15151e;
+            border-radius: 32px;
+            padding: 2.5rem;
+            max-width: 450px;
+            width: 90%;
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            animation: modalIn 0.3s ease;
+        }
+
+        @keyframes modalIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-box h2 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #f5efe6;
+            margin-bottom: 0.5rem;
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .modal-box p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            color: #b0a99b;
+            margin-bottom: 1.8rem;
+            font-size: 0.95rem;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .modal-options button {
+            padding: 0.8rem 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            color: #eaeef2;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-options button:hover {
+            background: rgba(255, 215, 100, 0.06);
+            border-color: rgba(255, 215, 100, 0.2);
+        }
+
+        .modal-options button .badge {
+            background: linear-gradient(145deg, #f5b042, #d48f2b);
+            color: #0b0b0e;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .modal-close {
+            margin-top: 1.5rem;
+            padding: 0.6rem;
+            width: 100%;
+            border: none;
+            background: rgba(255, 255, 255, 0.05);
+            color: #8f887c;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: 'Noto Sans Arabic', sans-serif;
+            transition: 0.2s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #eaeef2;
+        }
+
+        /* ===== فوتر ===== */
         .footer {
             margin-top: 2rem;
             padding-top: 1.5rem;
@@ -402,41 +608,40 @@
             .container {
                 padding: 1.5rem 1.5rem;
             }
-
             .brand-name {
                 font-size: 1.2rem;
             }
-
             .logo {
                 width: 48px;
                 height: 48px;
                 font-size: 1.6rem;
             }
-
             .tab-content h2 {
                 font-size: 2rem;
                 padding-right: 1rem;
             }
-
             .nav-menu a {
                 font-size: 1.6rem;
                 gap: 1rem;
                 padding: 0.6rem 1rem;
             }
-
             .nav-menu a i {
                 font-size: 1.5rem;
                 width: 2rem;
             }
-
+            .home-grid {
+                grid-template-columns: 1fr;
+            }
             .footer {
                 flex-direction: column-reverse;
                 align-items: center;
                 text-align: center;
             }
-
             .footer-social a {
                 margin: 0 0.8rem;
+            }
+            .modal-box {
+                padding: 2rem 1.5rem;
             }
         }
 
@@ -444,30 +649,24 @@
             .container {
                 padding: 1rem 1rem;
             }
-
             .tab-content h2 {
                 font-size: 1.6rem;
             }
-
             .tab-content p,
             .tab-content li {
                 font-size: 1rem;
             }
-
             .nav-menu a {
                 font-size: 1.3rem;
                 gap: 0.8rem;
                 padding: 0.5rem 0.8rem;
             }
-
             .nav-menu a i {
                 font-size: 1.2rem;
                 width: 1.8rem;
             }
-
-            .hamburger span {
-                width: 24px;
-                height: 2px;
+            .design-card {
+                padding: 1.2rem;
             }
         }
     </style>
@@ -485,8 +684,6 @@
                     <span class="brand-sub">Portfolio</span>
                 </div>
             </div>
-
-            <!-- دکمه همبرگر -->
             <div class="hamburger" id="hamburgerBtn">
                 <span></span>
                 <span></span>
@@ -494,7 +691,7 @@
             </div>
         </header>
 
-        <!-- ========== منوی همبرگری (اورلی) ========== -->
+        <!-- ========== منوی همبرگری ========== -->
         <div class="nav-overlay" id="navOverlay">
             <nav class="nav-menu" id="navMenu">
                 <a href="#" data-tab="home" class="active"><i class="fas fa-home"></i> خانه</a>
@@ -508,40 +705,46 @@
         <!-- ========== محتوای اصلی ========== -->
         <main class="main-content">
 
-            <!-- ===== خانه (آپدیت‌ها) ===== -->
+            <!-- ===== خانه ===== -->
             <div class="tab-content active" id="home">
-                <h2><i class="fas fa-newspaper" style="color:#f5b042; margin-left:0.8rem;"></i> آخرین آپدیت‌ها</h2>
-                <p style="margin-bottom:1.5rem;">همیشه در حال بهبود و به‌روزرسانی هستم. جدیدترین تغییرات رو اینجا ببین:</p>
+                <h2><i class="fas fa-home" style="color:#f5b042; margin-left:0.8rem;"></i> خانه</h2>
 
-                <div class="update-item">
-                    <div class="date">📅 ۲۵ تیر ۱۴۰۵</div>
-                    <div class="title">🚀 اضافه شدن بخش "سایت‌های طراحی شده"</div>
-                    <div class="desc">لیست کامل پروژه‌هایی که تا الان انجام دادم به همراه توضیحات هر کدوم اضافه شد.</div>
+                <!-- ۳ کارت اصلی -->
+                <div class="home-grid">
+                    <div class="home-card" id="designCard">
+                        <div class="icon"><i class="fas fa-pen-fancy"></i></div>
+                        <h3>🎨 طراحی</h3>
+                        <p>جزئیات زیبای سایت‌ها و المان‌های بصری</p>
+                    </div>
+                    <div class="home-card" id="sitesListCard">
+                        <div class="icon"><i class="fas fa-list-ul"></i></div>
+                        <h3>📋 لیست سایت‌ها</h3>
+                        <p>همه پروژه‌های طراحی شده در یک نگاه</p>
+                    </div>
+                    <div class="home-card" id="newSitesCard">
+                        <div class="icon"><i class="fas fa-rocket"></i></div>
+                        <h3>✨ سایت‌های جدید</h3>
+                        <p>آخرین پروژه‌هایی که اضافه شدن</p>
+                    </div>
                 </div>
 
-                <div class="update-item">
-                    <div class="date">📅 ۱۸ تیر ۱۴۰۵</div>
-                    <div class="title">🎨 طراحی مجدد منوی همبرگر</div>
-                    <div class="desc">منوی اصلی با انیمیشن و افکت‌های جدید بازطراحی شد تا تجربه کاربری بهتری داشته باشه.</div>
-                </div>
-
-                <div class="update-item">
-                    <div class="date">📅 ۱۰ تیر ۱۴۰۵</div>
-                    <div class="title">✨ اضافه شدن بخش "علایق"</div>
-                    <div class="desc">برای اینکه بیشتر با من آشنا بشید، علایق شخصی‌ام رو به سایت اضافه کردم.</div>
-                </div>
-
-                <div class="update-item">
-                    <div class="date">📅 ۵ تیر ۱۴۰۵</div>
-                    <div class="title">🔧 رفع باگ‌های جزئی</div>
-                    <div class="desc">بهبود عملکرد در موبایل و افزایش سرعت بارگذاری.</div>
-                </div>
-
-                <div style="margin-top:1.5rem; padding:1rem; background:rgba(255,215,100,0.03); border-radius:16px; border:1px dashed rgba(255,215,100,0.1);">
-                    <p style="margin:0; font-size:0.95rem; color:#b0a99b;">
-                        <i class="fas fa-code" style="color:#f5b042; margin-left:0.5rem;"></i>
-                        قراره به زودی: بخش وبلاگ + قابلیت جستجو + حالت شب/روز
-                    </p>
+                <!-- کارت طراحی با جزئیات -->
+                <div class="design-card" id="designDetail">
+                    <div class="preview-img">
+                        <i class="fas fa-image" style="font-size:5rem; opacity:0.3;"></i>
+                        <!-- برای عکس واقعی: <img src="your-image.jpg" alt="طراحی"> -->
+                    </div>
+                    <div class="detail-row">
+                        <i class="fas fa-tag"></i>
+                        <span><strong>عنوان:</strong> طراحی داشبورد مدیریت</span>
+                    </div>
+                    <div class="detail-row">
+                        <i class="fas fa-align-left"></i>
+                        <span><strong>توضیحات:</strong> طراحی مدرن و مینیمال برای پنل ادمین</span>
+                    </div>
+                    <button class="download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i> دانلود عکس
+                    </button>
                 </div>
             </div>
 
@@ -646,6 +849,25 @@
 
     </div>
 
+    <!-- ========== مودال ========== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <h2>📸 میخوای این عکسو دانلود کنی؟</h2>
+            <p>کیفیت هارو انتخاب کن:</p>
+            <div class="modal-options">
+                <button onclick="downloadImage('2k')">
+                    <span>2K <span style="font-size:0.7rem; color:#b0a99b;">(2560×1440)</span></span>
+                    <span class="badge">پیشنهادی</span>
+                </button>
+                <button onclick="downloadImage('1080')">
+                    <span>1080p <span style="font-size:0.7rem; color:#b0a99b;">(1920×1080)</span></span>
+                    <span class="badge">معمولی</span>
+                </button>
+            </div>
+            <button class="modal-close" id="modalCloseBtn">بستن</button>
+        </div>
+    </div>
+
     <!-- ========== اسکریپت ========== -->
     <script>
         (function() {
@@ -654,7 +876,7 @@
             const navLinks = document.querySelectorAll('#navMenu a');
             const tabContents = document.querySelectorAll('.tab-content');
 
-            // ---- باز/بستن منو ----
+            // ---- منو ----
             function toggleMenu() {
                 hamburger.classList.toggle('active');
                 overlay.classList.toggle('open');
@@ -663,45 +885,34 @@
 
             hamburger.addEventListener('click', toggleMenu);
 
-            // بستن منو با کلیک روی لینک
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const tabId = this.dataset.tab;
                     if (tabId) {
                         activateTab(tabId);
-                        // بستن منو
-                        if (overlay.classList.contains('open')) {
-                            toggleMenu();
-                        }
-                        // آپدیت URL
+                        if (overlay.classList.contains('open')) toggleMenu();
                         history.pushState(null, null, `#${tabId}`);
                     }
                 });
             });
 
-            // ---- فعال‌سازی تب ----
             function activateTab(tabId) {
                 tabContents.forEach(content => content.classList.remove('active'));
                 const target = document.getElementById(tabId);
                 if (target) target.classList.add('active');
-
-                // آپدیت کلاس active روی لینک‌های منو
                 navLinks.forEach(link => link.classList.remove('active'));
                 const activeLink = document.querySelector(`#navMenu a[data-tab="${tabId}"]`);
                 if (activeLink) activeLink.classList.add('active');
             }
 
-            // ---- بررسی هش در URL ----
             const hash = window.location.hash.replace('#', '');
             if (hash && document.getElementById(hash)) {
                 activateTab(hash);
             } else {
-                // پیش‌فرض: خانه
                 activateTab('home');
             }
 
-            // ---- گوش دادن به تغییر هش ----
             window.addEventListener('hashchange', function() {
                 const newHash = window.location.hash.replace('#', '');
                 if (newHash && document.getElementById(newHash)) {
@@ -709,21 +920,70 @@
                 }
             });
 
-            // ---- بستن منو با کلیک خارج از آن (روی پس‌زمینه) ----
             overlay.addEventListener('click', function(e) {
-                if (e.target === overlay && overlay.classList.contains('open')) {
-                    toggleMenu();
-                }
+                if (e.target === overlay && overlay.classList.contains('open')) toggleMenu();
             });
 
-            // ---- بستن منو با کلید ESC ----
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && overlay.classList.contains('open')) {
-                    toggleMenu();
-                }
+                if (e.key === 'Escape' && overlay.classList.contains('open')) toggleMenu();
             });
+
+            // ---- مودال ----
+            const modalOverlay = document.getElementById('modalOverlay');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+            function openModal() {
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            downloadBtn.addEventListener('click', openModal);
+
+            modalCloseBtn.addEventListener('click', closeModal);
+
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === modalOverlay) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
+            });
+
+            // ---- کارت‌های خانه (اسکرول به بخش‌های مربوطه) ----
+            document.getElementById('designCard').addEventListener('click', function() {
+                document.getElementById('designDetail').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+
+            document.getElementById('sitesListCard').addEventListener('click', function() {
+                // رفتن به تب سایت‌ها
+                activateTab('sites');
+                history.pushState(null, null, '#sites');
+            });
+
+            document.getElementById('newSitesCard').addEventListener('click', function() {
+                // رفتن به تب سایت‌ها و اسکرول به پایین
+                activateTab('sites');
+                history.pushState(null, null, '#sites');
+                setTimeout(() => {
+                    document.querySelector('#sites .tag-group').scrollIntoView({ behavior: 'smooth',
+                        block: 'center' });
+                }, 300);
+            });
+
+            // ---- تابع دانلود (سمبلیک) ----
+            window.downloadImage = function(quality) {
+                alert(`📥 دانلود عکس با کیفیت ${quality} شروع شد! (این یک دمو است)`);
+                closeModal();
+            };
+
         })();
     </script>
 
 </body>
-                            </html>
+</html>
