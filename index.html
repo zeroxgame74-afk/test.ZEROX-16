@@ -1,525 +1,416 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reward Ai | هوش مصنوعی پیشرو</title>
-  <!-- Font Awesome 6 (رایگان) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <!-- فونت وزیر (وزیرمتن) -->
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خفن‌ترین سایت | وزیرمتن بُلد</title>
+    <!-- Font Awesome 6 (رایگان) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- فونت وزیرمتن (Vazir) با وزن ۹۰۰ (بُلد) -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at 20% 30%, #0b0d1e, #03050f);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      color: #f0f4ff;
-    }
+        body {
+            font-family: 'Vazir', sans-serif;
+            font-weight: 900;   /* بُلدِ خفن */
+            background: linear-gradient(145deg, #0d0f1a 0%, #1a1e2f 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    /* کانتینر اصلی با جلوۀ شیشه‌ای */
-    .glass-card {
-      max-width: 1000px;
-      width: 100%;
-      background: rgba(12, 16, 35, 0.65);
-      backdrop-filter: blur(14px) saturate(180%);
-      -webkit-backdrop-filter: blur(14px) saturate(180%);
-      border-radius: 3.5rem;
-      padding: 2.5rem 2.8rem;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: all 0.3s ease;
-    }
+        /* کانتینر اصلی با حاشیه‌های درخشان */
+        .super-container {
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 70px 70px 40px 40px;
+            padding: 30px 35px 45px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            transition: all 0.3s ease;
+        }
 
-    /* هدر با لوگو و عنوان */
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin-bottom: 2.2rem;
-    }
+        /* منوی خفن با آیکون‌های awesome */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px 10px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.25);
+            margin-bottom: 35px;
+        }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 2.1rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, #f7d875, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 200, 50, 0.3);
+        }
 
-    .brand i {
-      font-size: 3.2rem;
-      background: linear-gradient(145deg, #b388ff, #7c4dff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 12px #7c4dff88);
-    }
+        .logo i {
+            font-size: 2.7rem;
+            color: #ffb347;
+            -webkit-text-fill-color: initial;
+            filter: drop-shadow(0 0 12px #f0b34b);
+        }
 
-    .brand h1 {
-      font-size: 2.4rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(to left, #e0e7ff, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
 
-    .brand .badge {
-      font-size: 0.9rem;
-      background: rgba(124, 77, 255, 0.25);
-      padding: 0.3rem 1rem;
-      border-radius: 40px;
-      border: 1px solid rgba(124, 77, 255, 0.3);
-      color: #c4b5fd;
-      font-weight: 500;
-      margin-right: 0.5rem;
-      backdrop-filter: blur(4px);
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: #f0f4ff;
+            font-size: 1.25rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 60px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.25s ease;
+            border: 1px solid transparent;
+            letter-spacing: 0.3px;
+        }
 
-    .status-pulse {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: rgba(0, 255, 200, 0.08);
-      padding: 0.5rem 1.2rem;
-      border-radius: 60px;
-      border: 1px solid rgba(0, 255, 200, 0.15);
-    }
+        .nav-links a i {
+            font-size: 1.5rem;
+            color: #f1c40f;
+            transition: transform 0.2s;
+        }
 
-    .status-pulse i {
-      color: #4ade80;
-      font-size: 0.9rem;
-      animation: pulse 1.8s infinite;
-    }
+        .nav-links a:hover {
+            background: rgba(255, 215, 0, 0.12);
+            border-color: #f1c40f;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(241, 196, 15, 0.25);
+            color: #fff7d6;
+        }
 
-    .status-pulse span {
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: #b0e0d0;
-    }
+        .nav-links a:hover i {
+            transform: rotate(8deg) scale(1.1);
+            color: #ffdd44;
+        }
 
-    @keyframes pulse {
-      0% { opacity: 0.3; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1.2); }
-      100% { opacity: 0.3; transform: scale(0.9); }
-    }
+        /* گرید خفن برای محتوا */
+        .grid-awesome {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 35px 25px;
+            margin: 40px 0 30px;
+        }
 
-    /* بخش پاسخ هوش مصنوعی */
-    .ai-response-box {
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 2.5rem;
-      padding: 2rem 2.2rem;
-      margin: 1.8rem 0 2rem 0;
-      border-left: 4px solid #7c4dff;
-      box-shadow: inset 0 6px 20px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(4px);
-    }
+        .card {
+            background: rgba(20, 24, 42, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 30px 25px;
+            border-radius: 50px 20px 50px 20px;
+            border-left: 4px solid #f1c40f;
+            border-bottom: 4px solid #f1c40f;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+            text-align: center;
+        }
 
-    .ai-response-box .ai-header {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 1.2rem;
-    }
+        .card:hover {
+            transform: translateY(-12px) scale(1.01);
+            background: rgba(30, 35, 60, 0.85);
+            border-color: #ffaa00;
+            box-shadow: 0 25px 50px rgba(241, 196, 15, 0.25);
+        }
 
-    .ai-response-box .ai-header i {
-      font-size: 1.8rem;
-      color: #a78bfa;
-    }
+        .card i {
+            font-size: 4.2rem;
+            margin-bottom: 20px;
+            color: #f7d44a;
+            filter: drop-shadow(0 8px 18px rgba(255, 200, 0, 0.3));
+            transition: 0.2s;
+        }
 
-    .ai-response-box .ai-header h3 {
-      font-weight: 600;
-      font-size: 1.3rem;
-      color: #ddd6fe;
-    }
+        .card:hover i {
+            transform: scale(1.12) rotate(-2deg);
+            color: #ffe066;
+        }
 
-    .ai-response-box .response-content {
-      font-size: 1.2rem;
-      line-height: 2rem;
-      color: #e6edff;
-      font-weight: 350;
-      word-break: break-word;
-      min-height: 4.5rem;
-    }
+        .card h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #f6e6b0, #ffc857);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .ai-response-box .response-content i {
-      color: #c4b5fd;
-      margin: 0 0.2rem;
-    }
+        .card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 900;
+            color: #c8d0e6;
+            margin-bottom: 10px;
+        }
 
-    .response-time {
-      margin-top: 1.2rem;
-      font-size: 0.8rem;
-      color: #7a84a8;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      border-top: 1px solid rgba(255,255,255,0.04);
-      padding-top: 1rem;
-    }
+        .card .badge {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 22px;
+            border-radius: 50px;
+            background: rgba(241, 196, 15, 0.15);
+            border: 1px solid #f1c40f;
+            color: #fadf8a;
+            font-weight: 900;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(4px);
+        }
 
-    /* بخش مدل‌ها با آیکون‌های awesome */
-    .models-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem 1rem;
-      margin: 2rem 0 2.2rem 0;
-      padding: 0.5rem 0;
-    }
+        /* بخش پایین با آیکون‌های خاص */
+        .ultra-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 215, 0, 0.15);
+        }
 
-    .model-chip {
-      background: rgba(30, 34, 70, 0.5);
-      backdrop-filter: blur(4px);
-      padding: 0.6rem 1.5rem;
-      border-radius: 60px;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-size: 0.95rem;
-      font-weight: 450;
-      color: #d0d9ff;
-      transition: all 0.25s;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+        .social-icons {
+            display: flex;
+            gap: 25px;
+            font-size: 2.1rem;
+        }
 
-    .model-chip i {
-      font-size: 1.2rem;
-      color: #a78bfa;
-      transition: 0.2s;
-    }
+        .social-icons a {
+            color: #d4d9f0;
+            transition: all 0.2s ease;
+            display: inline-block;
+            filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.1));
+        }
 
-    .model-chip:hover {
-      background: rgba(124, 77, 255, 0.2);
-      border-color: #7c4dff55;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(124, 77, 255, 0.25);
-    }
+        .social-icons a:hover {
+            color: #f5c842;
+            transform: scale(1.25) rotate(5deg);
+            filter: drop-shadow(0 0 20px #f1c40f);
+        }
 
-    .model-chip:hover i {
-      color: #c4b5fd;
-      transform: scale(1.2);
-    }
+        .stats {
+            display: flex;
+            gap: 35px;
+            font-size: 1.25rem;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px 30px;
+            border-radius: 80px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
 
-    /* اینپوت و دکمه */
-    .input-area {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 0.8rem;
-      background: rgba(0, 0, 0, 0.35);
-      border-radius: 80px;
-      padding: 0.4rem 0.4rem 0.4rem 1.8rem;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      margin-top: 0.8rem;
-    }
+        .stats span {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 900;
+        }
 
-    .input-area input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      padding: 1rem 0.2rem;
-      font-family: 'Vazirmatn', sans-serif;
-      font-size: 1rem;
-      color: #f0f4ff;
-      outline: none;
-      min-width: 0;
-    }
+        .stats i {
+            color: #f1c40f;
+            font-size: 1.8rem;
+        }
 
-    .input-area input::placeholder {
-      color: #828bb0;
-      font-weight: 300;
-    }
+        /* دکمه‌ی خفن */
+        .btn-awesome {
+            background: linear-gradient(145deg, #f1c40f, #e6a800);
+            border: none;
+            padding: 18px 48px;
+            border-radius: 80px;
+            color: #0d0f1a;
+            font-weight: 900;
+            font-size: 1.4rem;
+            font-family: 'Vazir', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 12px 35px rgba(241, 196, 15, 0.35);
+            transition: 0.25s;
+            cursor: pointer;
+            border: 2px solid #fad974;
+        }
 
-    .input-area button {
-      background: linear-gradient(145deg, #6c4ce0, #4f33b0);
-      border: none;
-      padding: 0.9rem 1.8rem;
-      border-radius: 50px;
-      color: white;
-      font-weight: 600;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 0 20px #4f33b066;
-      font-family: 'Vazirmatn', sans-serif;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      letter-spacing: 0.3px;
-    }
+        .btn-awesome i {
+            font-size: 2rem;
+            color: #1a1e2f;
+        }
 
-    .input-area button i {
-      font-size: 1.2rem;
-    }
+        .btn-awesome:hover {
+            transform: scale(1.06) translateY(-5px);
+            background: linear-gradient(145deg, #fad34a, #f0b800);
+            box-shadow: 0 20px 50px #f1c40f70;
+        }
 
-    .input-area button:hover {
-      transform: scale(1.02);
-      background: linear-gradient(145deg, #7c5cec, #5a3ec9);
-      box-shadow: 0 0 30px #6c4ce0aa;
-    }
+        /* ریسپانسیو و تنظیمات وزیر */
+        @media (max-width: 700px) {
+            .super-container {
+                padding: 20px 15px;
+                border-radius: 40px;
+            }
+            .navbar {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .nav-links a {
+                font-size: 1rem;
+                padding: 8px 16px;
+            }
+            .logo {
+                font-size: 1.7rem;
+                justify-content: center;
+            }
+            .ultra-footer {
+                flex-direction: column;
+                align-items: center;
+            }
+            .stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .btn-awesome {
+                padding: 14px 30px;
+                font-size: 1.1rem;
+            }
+        }
 
-    .input-area button:active {
-      transform: scale(0.97);
-    }
-
-    /* فوتر و آیکون‌های اجتماعی */
-    .footer-extra {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      font-size: 0.85rem;
-      color: #6a749b;
-    }
-
-    .footer-extra .social i {
-      font-size: 1.3rem;
-      margin-left: 0.8rem;
-      color: #7a84ae;
-      transition: 0.2s;
-      cursor: default;
-    }
-
-    .footer-extra .social i:hover {
-      color: #b7c0f0;
-      transform: scale(1.2);
-    }
-
-    .footer-extra .hint i {
-      margin-left: 0.3rem;
-    }
-
-    /* سازگاری موبایل */
-    @media (max-width: 700px) {
-      .glass-card {
-        padding: 1.8rem;
-        border-radius: 2.5rem;
-      }
-      .brand h1 {
-        font-size: 1.8rem;
-      }
-      .brand i {
-        font-size: 2.4rem;
-      }
-      .input-area {
-        flex-wrap: wrap;
-        background: transparent;
-        padding: 0;
-        border: none;
-        gap: 0.8rem;
-      }
-      .input-area input {
-        background: rgba(0, 0, 0, 0.3);
-        padding: 1rem 1.5rem;
-        border-radius: 60px;
-        width: 100%;
-        border: 1px solid rgba(255,255,255,0.05);
-      }
-      .input-area button {
-        width: 100%;
-        justify-content: center;
-        padding: 1rem;
-      }
-      .models-section {
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 500px) {
-      .brand .badge {
-        display: none;
-      }
-      .status-pulse span {
-        font-size: 0.7rem;
-      }
-    }
-  </style>
+        /* اسکرول‌بار خفن (اختیاری) */
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: #0d0f1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #f1c40f, #d49c00);
+            border-radius: 20px;
+            border: 2px solid #1a1e2f;
+        }
+    </style>
 </head>
 <body>
-  <div class="glass-card">
-    <!-- هدر با آیکون awesome و نام Reward Ai -->
-    <div class="header">
-      <div class="brand">
-        <i class="fas fa-robot"></i>
-        <h1>Reward Ai</h1>
-        <span class="badge"><i class="fas fa-crown" style="margin-left: 6px;"></i>نسخه ۳.۰</span>
-      </div>
-      <div class="status-pulse">
-        <i class="fas fa-circle"></i>
-        <span>آنلاین · پاسخ‌گو</span>
-        <i class="fas fa-bolt" style="color: #c084fc; margin-right: 6px;"></i>
-      </div>
+
+<div class="super-container">
+
+    <!-- ========== منوی خفن ========== -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-crown"></i>
+            <span>خَفن‌تِرین</span>
+        </div>
+        <div class="nav-links">
+            <a href="#"><i class="fas fa-home"></i> خانه</a>
+            <a href="#"><i class="fas fa-bolt"></i> خدمات</a>
+            <a href="#"><i class="fas fa-rocket"></i> پروژه‌ها</a>
+            <a href="#"><i class="fas fa-address-card"></i> تماس</a>
+        </div>
+    </nav>
+
+    <!-- ========== گرید کارت‌های خفن ========== -->
+    <div class="grid-awesome">
+
+        <div class="card">
+            <i class="fas fa-code"></i>
+            <h3>توسعه‌ی وب</h3>
+            <p>React, Next, Node ... با سرعت نور</p>
+            <span class="badge"><i class="fas fa-star"></i> حرفه‌ای</span>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-paint-brush"></i>
+            <h3>طراحی خفن</h3>
+            <p>UI/UX دیوانه‌وار، مدرن و جذاب</p>
+            <span class="badge"><i class="fas fa-palette"></i> ویژه</span>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-database"></i>
+            <h3>دیتابیس</h3>
+            <p>Mongo, Postgres, MySQL ... ابری</p>
+            <span class="badge"><i class="fas fa-cloud"></i> مقیاس‌پذیر</span>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-robot"></i>
+            <h3>هوش مصنوعی</h3>
+            <p>APIهای هوشمند، ربات‌های چت‌گرا</p>
+            <span class="badge"><i class="fas fa-microchip"></i> AI</span>
+        </div>
+
     </div>
 
-    <!-- جعبه پاسخ هوش مصنوعی (UX عالی) -->
-    <div class="ai-response-box" id="responseBox">
-      <div class="ai-header">
-        <i class="fas fa-brain"></i>
-        <h3>Reward Ai می‌گوید:</h3>
-      </div>
-      <div class="response-content" id="responseContent">
-        <i class="fas fa-sparkles" style="margin-left: 8px;"></i>
-        سلام! من Reward Ai هستم، آماده‌ام به سوالاتت پاسخ بدم.
-      </div>
-      <div class="response-time">
-        <i class="far fa-clock"></i>
-        <span id="timeStamp">همین الآن</span>
-        <span style="margin-right: auto; opacity:0.6;">
-          <i class="fas fa-database"></i> مدل‌های فعال: ۶
-        </span>
-      </div>
+    <!-- ========== دکمه‌ی بزرگ خفن ========== -->
+    <div style="display: flex; justify-content: center; margin: 20px 0 10px;">
+        <button class="btn-awesome">
+            <i class="fas fa-bolt"></i>
+            شروع پروژه‌ی خفن
+            <i class="fas fa-arrow-left"></i>
+        </button>
     </div>
 
-    <!-- مدل‌ها با آیکون‌های awesome (تمامی مدل‌ها) -->
-    <div class="models-section">
-      <span class="model-chip"><i class="fas fa-microchip"></i> Reward-Neo</span>
-      <span class="model-chip"><i class="fas fa-cloud"></i> Reward-Cloud</span>
-      <span class="model-chip"><i class="fas fa-code"></i> Reward-Codex</span>
-      <span class="model-chip"><i class="fas fa-palette"></i> Reward-Art</span>
-      <span class="model-chip"><i class="fas fa-dna"></i> Reward-Bio</span>
-      <span class="model-chip"><i class="fas fa-globe"></i> Reward-Lingua</span>
-      <span class="model-chip"><i class="fas fa-cog"></i> Reward-Core</span>
+    <!-- ========== فوتر با آیکون‌های عالی ========== -->
+    <div class="ultra-footer">
+
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <div class="stats">
+            <span><i class="fas fa-code-branch"></i> ۱۲۴+</span>
+            <span><i class="fas fa-users"></i> ۳.۲k</span>
+            <span><i class="fas fa-trophy"></i> #۱</span>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <i class="fas fa-shield-alt" style="color: #f1c40f; font-size: 1.8rem;"></i>
+            <span style="font-weight: 900; letter-spacing: 0.5px;">امنیت · بی‌نهایت</span>
+        </div>
+
     </div>
 
-    <!-- ناحیه ورودی + دکمه ارسال (با آیکون awesome) -->
-    <div class="input-area">
-      <input type="text" id="userInput" placeholder="چیزی بپرس... من Reward Ai هستم" />
-      <button id="sendBtn">
-        <i class="fas fa-paper-plane"></i> بفرست
-      </button>
+    <!-- یک خط زیرین با آیکون (فقط برای شیک‌تر شدن) -->
+    <div style="margin-top: 35px; display: flex; justify-content: center; gap: 25px; font-size: 0.9rem; opacity: 0.7; border-top: 1px solid rgba(255,215,0,0.05); padding-top: 20px;">
+        <span><i class="fas fa-check-circle" style="color: #f1c40f;"></i> ۱۰۰٪ خفن</span>
+        <span><i class="fas fa-infinity" style="color: #f1c40f;"></i> بدون محدودیت</span>
+        <span><i class="fas fa-bolt" style="color: #f1c40f;"></i> وزیرمتن بُلد</span>
     </div>
 
-    <!-- فوتر با آیکون‌های awesome و توضیح -->
-    <div class="footer-extra">
-      <div class="social">
-        <i class="fab fa-github"></i>
-        <i class="fab fa-twitter"></i>
-        <i class="fab fa-linkedin-in"></i>
-        <i class="fas fa-cube"></i>
-      </div>
-      <div class="hint">
-        <i class="fas fa-keyboard"></i> پرسش خود را تایپ کن &nbsp;•&nbsp; <i class="fas fa-bolt"></i> پاسخ‌گویی لحظه‌ای
-      </div>
-    </div>
-  </div>
+</div>
 
-  <script>
-    (function() {
-      // عناصر
-      const responseContent = document.getElementById('responseContent');
-      const userInput = document.getElementById('userInput');
-      const sendBtn = document.getElementById('sendBtn');
-      const timeStamp = document.getElementById('timeStamp');
-
-      // تابع تولید پاسخ‌های هوشمندانه (شبیه‌سازی Reward Ai)
-      function generateRewardResponse(question) {
-        const q = question.trim().toLowerCase();
-        // چند پاسخ خفن و متنوع با آیکون‌های awesome
-        const responses = [
-          { keywords: ['سلام', 'درود', 'هی'], 
-            reply: `<i class="fas fa-hand-peace"></i> درود! من Reward Ai، مشتاق هم‌کلامی با تو هستم.` },
-          { keywords: ['چطوری', 'حالت', 'چی کار'], 
-            reply: `<i class="fas fa-laugh-beam"></i> عالی! با <i class="fas fa-heart" style="color:#f472b6;"></i> در خدمت شما.` },
-          { keywords: ['هوش مصنوعی', 'AI', 'مصنوعی'], 
-            reply: `<i class="fas fa-robot"></i> من یک هوش مصنوعی نسل جدید هستم با هسته Reward. همه مدل‌ها در کنار هم!` },
-          { keywords: ['نام', 'اسم', 'کیستی'], 
-            reply: `<i class="fas fa-id-badge"></i> اسم من Reward Ai است، اما دوستان صدام می‌کنند <i class="fas fa-star"></i> "ری‌وارد".` },
-          { keywords: ['قابلیت', 'توانایی', 'چه کار'], 
-            reply: `<i class="fas fa-cogs"></i> از کدنویسی تا شعر، تحلیل داده و خلق تصویر! تمام مدل‌های Reward فعالند.` },
-          { keywords: ['متشکرم', 'مرسی', 'ممنون'], 
-            reply: `<i class="fas fa-smile-wink"></i> خواهش می‌کنم! خوشحالم که می‌تونم کمک کنم.` },
-          { keywords: ['خداحافظ', 'بای'], 
-            reply: `<i class="fas fa-wave-square"></i> خدانگهدار! هر وقت نیاز بود، من همینجام.` }
-        ];
-
-        // بررسی کلمات کلیدی
-        for (let item of responses) {
-          for (let kw of item.keywords) {
-            if (q.includes(kw)) {
-              return item.reply;
-            }
-          }
-        }
-
-        // پاسخ‌های تصادفی جذاب (در صورت عدم تطابق)
-        const randomReplies = [
-          `<i class="fas fa-brain"></i> فکر می‌کنم سوال جالبی پرسیدی! بذار دقیق‌تر بررسی کنم.`,
-          `<i class="fas fa-sync-alt fa-spin"></i> درحال پردازش با مدل Reward-Neo ... پاسخ: این سوال نیاز به تحلیل عمیق‌تر داره.`,
-          `<i class="fas fa-gem"></i> Reward Ai همیشه آماده‌ست! سوالت رو دقیق‌تر بپرس.`,
-          `<i class="fas fa-code"></i> با Reward-Codex می‌تونم کد بنویسم، اما الان حس شاعری دارم!`,
-          `<i class="fas fa-meteor"></i> پرسش تو مثل یک شهاب‌سنگ است! من Reward Ai پاسخ را می‌یابم.`,
-          `<i class="fas fa-chess-queen"></i> حرکت بعدی: پاسخ به سوال تو با بهترین مدل Reward.`
-        ];
-        return randomReplies[Math.floor(Math.random() * randomReplies.length)];
-      }
-
-      // به‌روزرسانی تایم‌استمپ
-      function updateTimestamp() {
-        const now = new Date();
-        const hour = String(now.getHours()).padStart(2, '0');
-        const min = String(now.getMinutes()).padStart(2, '0');
-        timeStamp.innerText = `${hour}:${min} · امروز`;
-      }
-
-      // تابع پردازش و نمایش پاسخ
-      function handleSend() {
-        const question = userInput.value.trim();
-        if (question === '') {
-          // اگر خالی بود، پاسخ پیش‌فرض با آیکون
-          responseContent.innerHTML = `<i class="fas fa-exclamation-triangle" style="color:#fbbf24;"></i> لطفاً یک سوال بنویسید!`;
-          updateTimestamp();
-          return;
-        }
-
-        // شبیه‌سازی دریافت پاسخ از Reward Ai
-        const reply = generateRewardResponse(question);
-        responseContent.innerHTML = reply;
-        updateTimestamp();
-
-        // پاک کردن اینپوت بعد از ارسال (تجربه کاربری بهتر)
-        userInput.value = '';
-        // افکت کوچک
-        const box = document.getElementById('responseBox');
-        box.style.transition = '0.15s';
-        box.style.borderLeftColor = '#a78bfa';
-        setTimeout(() => {
-          box.style.borderLeftColor = '#7c4dff';
-        }, 200);
-      }
-
-      // رویدادها
-      sendBtn.addEventListener('click', handleSend);
-
-      userInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          handleSend();
-        }
-      });
-
-      // تایم‌استمپ اولیه
-      updateTimestamp();
-
-      // پاسخ خوش‌آمدگویی هنگام لود (با تاخیر)
-      setTimeout(() => {
-        responseContent.innerHTML = `<i class="fas fa-sparkles" style="margin-left: 8px;"></i> 
-        سلام! من Reward Ai هستم، آماده‌ام به سوالاتت پاسخ بدم. 
-        <i class="fas fa-comment-dots" style="margin-right: 8px; color:#a78bfa;"></i>`;
-      }, 300);
-    })();
-  </script>
+<!-- (اختیاری) فقط برای نمایش خفن‌تر شدن فونت، هیچ اسکریپتی نیاز نیست -->
 </body>
 </html>
