@@ -1,582 +1,532 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>🎬 سینما خفن | همه‌چیز فیلم</title>
-  <!-- Font Awesome 6 (رایگان) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>VORTEX GAMES · استودیوی بازیسازی</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
 
-    body {
-      background: radial-gradient(circle at 20% 30%, #0b0e1a, #03050b);
-      min-height: 100vh;
-      color: #f0f4ff;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            background: #0b0d15;
+            color: #f0f4ff;
+        }
 
-    /* کانتینر اصلی با حال و هوای سینمایی */
-    .cinema-container {
-      max-width: 1400px;
-      width: 100%;
-      background: rgba(18, 25, 45, 0.55);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
-      border-radius: 3.5rem 3.5rem 2.5rem 2.5rem;
-      padding: 2rem 2rem 3rem;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 0 2px rgba(255, 215, 0, 0.15) inset;
-      border: 1px solid rgba(255, 215, 0, 0.2);
-      transition: all 0.3s ease;
-    }
+        /* ===== FULLSCREEN MODE ===== */
+        .fullscreen-wrap {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: radial-gradient(circle at 20% 20%, #151e2b, #07090f);
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* ===== منوی خفن ===== */
-    .navbar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.6rem 1.8rem;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 100px;
-      border: 1px solid rgba(255, 200, 50, 0.3);
-      box-shadow: 0 10px 30px -8px #000000cc, 0 0 0 1px #f7c94833 inset;
-      margin-bottom: 2.8rem;
-    }
+        /* ===== ANIMATED BG PARTICLES ===== */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background: transparent;
+        }
+        .bg-particles span {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(100, 180, 255, 0.25);
+            border-radius: 50%;
+            box-shadow: 0 0 20px #4a9eff55;
+            animation: floatParticle 18s infinite alternate ease-in-out;
+        }
+        @keyframes floatParticle {
+            0% { transform: translate(0, 0) scale(0.6); opacity: 0.2; }
+            100% { transform: translate(40px, -80px) scale(1.4); opacity: 0.9; }
+        }
+        /* 20 random particles via JS will be injected */
 
-    .logo {
-      font-size: 2rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #feda75, #ffb347, #ff7e5f);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 20px #f7b73180;
-      letter-spacing: -1px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+        /* ===== HEADER / NAV ===== */
+        .glass-nav {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background: rgba(10, 14, 26, 0.65);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #a0d0ff, #5b8cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px #3f7bff55;
+        }
+        .logo i {
+            -webkit-text-fill-color: initial;
+            color: #6a9cff;
+            margin-left: 8px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            font-weight: 500;
+        }
+        .nav-links a {
+            color: #d6e5ff;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 1.05rem;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: #5b8cff;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: white;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: #b0caff;
+        }
 
-    .logo i {
-      color: #ffd966;
-      font-size: 2.2rem;
-      filter: drop-shadow(0 0 8px gold);
-    }
+        /* ===== HERO SECTION ===== */
+        .hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3rem 5rem 5rem 5rem;
+            position: relative;
+            z-index: 5;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .hero-content {
+            max-width: 600px;
+            animation: fadeSlideUp 1s ease-out;
+        }
+        .hero-content h1 {
+            font-size: 4.2rem;
+            font-weight: 900;
+            line-height: 1.1;
+            background: linear-gradient(to right, #ffffff, #b6d6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            color: #a0bde0;
+            margin-bottom: 2rem;
+            border-left: 4px solid #4a8cff;
+            padding-left: 1.2rem;
+        }
+        .cta-btn {
+            background: linear-gradient(145deg, #3d7aff, #1f4fd0);
+            border: none;
+            padding: 1rem 2.8rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            box-shadow: 0 12px 30px -8px #1f4fd080;
+            transition: 0.2s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid #7aa3ff60;
+        }
+        .cta-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 18px 40px -6px #1f4fd0cc;
+            background: linear-gradient(145deg, #5690ff, #2b5fe0);
+        }
+        .hero-graphic {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-graphic img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 30px;
+            box-shadow: 0 30px 50px -10px #000000aa;
+            border: 1px solid #ffffff20;
+            transition: 0.5s;
+            animation: floatImage 6s infinite alternate ease-in-out;
+            background: #131b28;
+            object-fit: cover;
+        }
+        @keyframes floatImage {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-20px) scale(1.02); }
+        }
+        @keyframes fadeSlideUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
-    .menu-items {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.2rem 1.5rem;
-    }
+        /* ===== GAMES SHOWCASE ===== */
+        .games-section {
+            padding: 4rem 5rem;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(4px);
+            border-top: 1px solid #ffffff10;
+            border-bottom: 1px solid #ffffff10;
+            z-index: 5;
+            position: relative;
+        }
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title i {
+            color: #5b8cff;
+        }
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+        .game-card {
+            background: rgba(20, 30, 48, 0.6);
+            backdrop-filter: blur(6px);
+            border-radius: 28px;
+            padding: 1.5rem 1.5rem 2rem;
+            border: 1px solid #2b3e5e;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 30px -10px #00000077;
+            text-align: center;
+            animation: cardGlow 4s infinite alternate;
+        }
+        @keyframes cardGlow {
+            0% { box-shadow: 0 10px 20px -5px #1f3a6b; }
+            100% { box-shadow: 0 20px 40px -2px #3f7bff66; }
+        }
+        .game-card:hover {
+            transform: translateY(-12px) scale(1.01);
+            border-color: #4f8cff;
+            background: rgba(30, 45, 75, 0.7);
+        }
+        .game-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 18px;
+            margin-bottom: 1rem;
+            background: #1a2538;
+            border: 1px solid #3d5580;
+            transition: 0.3s;
+        }
+        .game-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.3rem;
+        }
+        .game-card .badge {
+            background: #1f4fd0;
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            letter-spacing: 0.5px;
+        }
 
-    .menu-items a {
-      color: #f0f4ff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.05rem;
-      padding: 0.5rem 0.2rem;
-      border-bottom: 2px solid transparent;
-      transition: 0.25s;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      letter-spacing: 0.3px;
-    }
+        /* ===== STUDIO / TEAM ===== */
+        .studio-section {
+            padding: 4rem 5rem;
+            z-index: 5;
+            position: relative;
+        }
+        .studio-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: center;
+        }
+        .studio-item {
+            background: #101826cc;
+            backdrop-filter: blur(8px);
+            border-radius: 40px;
+            padding: 2rem 2.5rem;
+            min-width: 200px;
+            border: 1px solid #2b4060;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .studio-item i {
+            font-size: 3.5rem;
+            color: #5b8cff;
+            margin-bottom: 0.6rem;
+        }
+        .studio-item h4 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        .studio-item p {
+            color: #a5bedd;
+        }
 
-    .menu-items a i {
-      color: #f7c948;
-      font-size: 1.2rem;
-      transition: 0.2s;
-    }
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 2.5rem 5rem;
+            border-top: 1px solid #1f2f47;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: #05080fcc;
+            backdrop-filter: blur(4px);
+            z-index: 5;
+            position: relative;
+        }
+        .footer a {
+            color: #8aadf0;
+            margin: 0 10px;
+            transition: 0.2s;
+            font-size: 1.4rem;
+        }
+        .footer a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
 
-    .menu-items a:hover {
-      color: #ffd966;
-      border-bottom-color: #f7c948;
-      transform: scale(1.02);
-      text-shadow: 0 0 12px #f7b731;
-    }
-
-    .menu-items a:hover i {
-      transform: rotate(5deg) scale(1.1);
-      color: #ffb82e;
-    }
-
-    .menu-extra {
-      display: flex;
-      gap: 0.8rem;
-    }
-
-    .menu-extra .icon-btn {
-      background: rgba(255, 215, 0, 0.08);
-      border: 1px solid #f7c94855;
-      border-radius: 40px;
-      padding: 0.5rem 1.2rem;
-      color: #f5e6c4;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: 0.25s;
-      cursor: default;
-      backdrop-filter: blur(4px);
-    }
-
-    .menu-extra .icon-btn i {
-      color: #f7c948;
-      font-size: 1.2rem;
-    }
-
-    .menu-extra .icon-btn:hover {
-      background: #f7c94820;
-      border-color: #f7c948;
-      box-shadow: 0 0 20px #f7b73140;
-    }
-
-    /* ===== بخش اصلی ===== */
-    .hero-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      margin: 1rem 0 3rem 0;
-      gap: 2rem;
-    }
-
-    .hero-text {
-      flex: 1 1 300px;
-    }
-
-    .hero-text h1 {
-      font-size: 3.2rem;
-      font-weight: 900;
-      line-height: 1.2;
-      background: linear-gradient(to left, #f9e3a0, #ffbb33, #ff8a5c);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 40px #f7b73160;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-text p {
-      font-size: 1.2rem;
-      color: #c8d6f0;
-      max-width: 500px;
-      margin-bottom: 1.8rem;
-      line-height: 1.6;
-      text-shadow: 0 2px 6px #00000080;
-    }
-
-    .hero-btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .btn-gold {
-      background: linear-gradient(145deg, #f7c948, #e5a832);
-      border: none;
-      padding: 0.9rem 2.4rem;
-      border-radius: 60px;
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: #0b0e1a;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      box-shadow: 0 10px 25px -5px #f7b73170;
-      transition: 0.2s;
-      cursor: default;
-    }
-
-    .btn-gold i {
-      font-size: 1.3rem;
-    }
-
-    .btn-gold:hover {
-      transform: scale(1.03) translateY(-2px);
-      box-shadow: 0 16px 35px -5px #f7b731b0;
-      background: linear-gradient(145deg, #fdd966, #f0b830);
-    }
-
-    .btn-outline-light {
-      background: transparent;
-      border: 2px solid #f7c948aa;
-      padding: 0.9rem 2.4rem;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #f5e6c4;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      transition: 0.2s;
-      cursor: default;
-      backdrop-filter: blur(6px);
-    }
-
-    .btn-outline-light i {
-      color: #f7c948;
-    }
-
-    .btn-outline-light:hover {
-      background: #f7c94820;
-      border-color: #f7c948;
-      box-shadow: 0 0 30px #f7b73160;
-      transform: scale(1.02);
-    }
-
-    .hero-poster {
-      flex: 1 1 260px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: radial-gradient(circle at 30% 40%, #2f2f5a, #121624);
-      border-radius: 3rem;
-      padding: 1.2rem 0.5rem;
-      border: 1px solid #f7c94855;
-      box-shadow: 0 20px 40px #000000aa, 0 0 0 1px #f7c94833 inset;
-      min-height: 200px;
-    }
-
-    .hero-poster i {
-      font-size: 7rem;
-      color: #f7c948;
-      filter: drop-shadow(0 0 30px #f7b731);
-      opacity: 0.8;
-    }
-
-    /* ===== کارت‌های فیلم ===== */
-    .section-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin: 2.5rem 0 1.5rem 0;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      border-right: 5px solid #f7c948;
-      padding-right: 1.2rem;
-    }
-
-    .section-title i {
-      color: #f7c948;
-      font-size: 2.2rem;
-    }
-
-    .movie-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 2rem 1.8rem;
-      margin-top: 1rem;
-    }
-
-    .movie-card {
-      background: rgba(10, 14, 30, 0.7);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 2.5rem 2.5rem 2rem 2rem;
-      padding: 1.6rem 1rem 1.8rem;
-      border: 1px solid #f7c94833;
-      box-shadow: 0 12px 30px -6px #000000dd, 0 0 0 1px #f7c94822 inset;
-      transition: 0.25s ease;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.7rem;
-      cursor: default;
-    }
-
-    .movie-card:hover {
-      transform: translateY(-10px) scale(1.01);
-      border-color: #f7c948aa;
-      box-shadow: 0 25px 45px -10px #000000, 0 0 0 2px #f7c94855 inset;
-      background: rgba(20, 28, 55, 0.8);
-    }
-
-    .movie-icon {
-      font-size: 3.8rem;
-      color: #f7c948;
-      filter: drop-shadow(0 8px 12px #00000099);
-      background: rgba(0, 0, 0, 0.3);
-      padding: 0.8rem;
-      border-radius: 50%;
-      width: 80px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #f7c94855;
-    }
-
-    .movie-card h3 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin: 0.2rem 0 0.1rem;
-      color: #f5e9d8;
-    }
-
-    .movie-card .badge {
-      background: #f7c94822;
-      border-radius: 40px;
-      padding: 0.3rem 1.2rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #f7c948;
-      border: 1px solid #f7c94844;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .movie-card .badge i {
-      font-size: 0.8rem;
-    }
-
-    .movie-card .desc {
-      color: #a8b9dd;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .movie-card .rate {
-      color: #ffd966;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-top: 0.3rem;
-    }
-
-    /* ===== فوتر خفن ===== */
-    .footer-glow {
-      margin-top: 4rem;
-      padding: 2rem 1rem 1.2rem;
-      border-top: 1px solid #f7c94833;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.2rem;
-      color: #9aacd0;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1.2rem;
-    }
-
-    .social-links i {
-      font-size: 2rem;
-      color: #f7c94888;
-      transition: 0.2s;
-      filter: drop-shadow(0 0 6px #f7b73130);
-    }
-
-    .social-links i:hover {
-      color: #f7c948;
-      transform: scale(1.2);
-      filter: drop-shadow(0 0 16px #f7b731);
-    }
-
-    .footer-glow span i {
-      margin-left: 0.5rem;
-      color: #f7c948;
-    }
-
-    /* ===== ریسپانسیو ===== */
-    @media (max-width: 700px) {
-      .cinema-container {
-        padding: 1.2rem 1rem;
-        border-radius: 2rem;
-      }
-      .navbar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.8rem;
-        border-radius: 2.5rem;
-        padding: 1rem 1.2rem;
-      }
-      .menu-items {
-        justify-content: center;
-        gap: 0.2rem 1rem;
-      }
-      .menu-extra {
-        justify-content: center;
-      }
-      .hero-text h1 {
-        font-size: 2.6rem;
-      }
-      .hero-poster i {
-        font-size: 5rem;
-      }
-      .section-title {
-        font-size: 1.9rem;
-      }
-    }
-
-    @media (max-width: 450px) {
-      .hero-text h1 {
-        font-size: 2rem;
-      }
-      .btn-gold, .btn-outline-light {
-        padding: 0.7rem 1.4rem;
-        font-size: 0.95rem;
-      }
-    }
-
-    /* افکت نئونی خفن برای دکور */
-    .glow-ring {
-      position: relative;
-    }
-    .glow-ring::after {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: inherit;
-      background: linear-gradient(45deg, #f7c94855, transparent, #f7c94855);
-      z-index: -1;
-      filter: blur(8px);
-    }
-  </style>
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .hero-graphic {
+                width: 100%;
+                height: auto;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 0.8rem;
+                margin-top: 1rem;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .games-section, .studio-section, .footer {
+                padding: 2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="cinema-container">
-  
-  <!-- ===== منوی خفن ===== -->
-  <nav class="navbar">
-    <div class="logo">
-      <i class="fas fa-film"></i> 
-      <span>سینما خفن</span>
-    </div>
-    <div class="menu-items">
-      <a href="#"><i class="fas fa-house"></i> خانه</a>
-      <a href="#"><i class="fas fa-fire"></i> اکران</a>
-      <a href="#"><i class="fas fa-star"></i> محبوب‌ها</a>
-      <a href="#"><i class="fas fa-ticket"></i> بلیط</a>
-      <a href="#"><i class="fas fa-user-astronaut"></i> من</a>
-    </div>
-    <div class="menu-extra">
-      <span class="icon-btn"><i class="fas fa-search"></i> جستجو</span>
-      <span class="icon-btn"><i class="fas fa-bell"></i> اعلان</span>
-    </div>
-  </nav>
+<div class="fullscreen-wrap">
 
-  <!-- ===== بخش قهرمان (Hero) ===== -->
-  <div class="hero-section">
-    <div class="hero-text">
-      <h1><i class="fas fa-play-circle" style="color:#f7c948; font-size:2.8rem; margin-left:0.5rem;"></i>سینمای بی‌نظیر</h1>
-      <p>جدیدترین، جذاب‌ترین و خفن‌ترین فیلم‌های روز جهان با کیفیت عالی و امکانات منحصربه‌فرد.</p>
-      <div class="hero-btn-group">
-        <span class="btn-gold"><i class="fas fa-play"></i> تماشا کن</span>
-        <span class="btn-outline-light"><i class="fas fa-list-ul"></i> لیست من</span>
-      </div>
-    </div>
-    <div class="hero-poster">
-      <i class="fas fa-clapperboard"></i>
-    </div>
-  </div>
+    <!-- animated particles (injected by JS) -->
+    <div class="bg-particles" id="particles"></div>
 
-  <!-- ===== بخش فیلم‌ها ===== -->
-  <div class="section-title">
-    <i class="fas fa-crown"></i> 
-    <span>خفن‌ترین فیلم‌های امروز</span>
-    <span style="font-size:1rem; margin-right:auto; background:#f7c94822; padding:0.2rem 1.2rem; border-radius:40px; border:1px solid #f7c94855;">
-      <i class="fas fa-bolt"></i> ۴K + Atmos
-    </span>
-  </div>
+    <!-- NAV -->
+    <nav class="glass-nav">
+        <div class="logo"><i class="fas fa-gamepad"></i> VORTEX</div>
+        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a href="#">خانه</a>
+            <a href="#">بازی‌ها</a>
+            <a href="#">استودیو</a>
+            <a href="#">اخبار</a>
+            <a href="#">تماس</a>
+        </div>
+    </nav>
 
-  <div class="movie-grid">
-    <!-- کارت ۱ -->
-    <div class="movie-card">
-      <div class="movie-icon"><i class="fas fa-skull"></i></div>
-      <h3>انتقام‌جو</h3>
-      <span class="badge"><i class="fas fa-tag"></i> اکشن • ماجراجویی</span>
-      <div class="desc">حماسه‌ای نفس‌گیر از دنیای مارول</div>
-      <div class="rate"><i class="fas fa-star"></i> ۸.۹/۱۰</div>
-    </div>
-    <!-- کارت ۲ -->
-    <div class="movie-card">
-      <div class="movie-icon"><i class="fas fa-robot"></i></div>
-      <h3>سایبرنتیک</h3>
-      <span class="badge"><i class="fas fa-tag"></i> علمی-تخیلی • هیجان</span>
-      <div class="desc">آینده‌ای تاریک با هوش مصنوعی</div>
-      <div class="rate"><i class="fas fa-star"></i> ۹.۲/۱۰</div>
-    </div>
-    <!-- کارت ۳ -->
-    <div class="movie-card">
-      <div class="movie-icon"><i class="fas fa-dragon"></i></div>
-      <h3>افسانه اژدها</h3>
-      <span class="badge"><i class="fas fa-tag"></i> فانتزی • حماسی</span>
-      <div class="desc">سلطنت آتش و خون</div>
-      <div class="rate"><i class="fas fa-star"></i> ۸.۷/۱۰</div>
-    </div>
-    <!-- کارت ۴ -->
-    <div class="movie-card">
-      <div class="movie-icon"><i class="fas fa-ghost"></i></div>
-      <h3>شب جن‌زده</h3>
-      <span class="badge"><i class="fas fa-tag"></i> وحشت • معمایی</span>
-      <div class="desc">ترسناک‌ترین فیلم سال</div>
-      <div class="rate"><i class="fas fa-star"></i> ۷.۹/۱۰</div>
-    </div>
-    <!-- کارت ۵ -->
-    <div class="movie-card">
-      <div class="movie-icon"><i class="fas fa-rocket"></i></div>
-      <h3>بین‌کهکشانی</h3>
-      <span class="badge"><i class="fas fa-tag"></i> علمی-تخیلی • درام</span>
-      <div class="desc">سفر به اعماق کیهان</div>
-      <div class="rate"><i class="fas fa-star"></i> ۹.۵/۱۰</div>
-    </div>
-    <!-- کارت ۶ -->
-    <div class="movie-card">
-      <div class="movie-icon"><i class="fas fa-mask"></i></div>
-      <h3>نقاب انتقام</h3>
-      <span class="badge"><i class="fas fa-tag"></i> جنایی • هیجان</span>
-      <div class="desc">داستان یک مبارز خیابانی</div>
-      <div class="rate"><i class="fas fa-star"></i> ۸.۳/۱۰</div>
-    </div>
-  </div>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ساخت جهان‌های<br>بازی بی‌نهایت</h1>
+            <div class="subtitle">استودیوی پیشرو در بازیسازی نسل جدید</div>
+            <button class="cta-btn"><i class="fas fa-rocket"></i> پروژه‌های ما</button>
+        </div>
+        <div class="hero-graphic">
+            <!-- تصویر از منبع اینترنتی -->
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop" alt="game studio hero">
+        </div>
+    </section>
 
-  <!-- ===== بخش ویژه (امکانات) ===== -->
-  <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:1.8rem; margin-top:3.5rem; background:rgba(0,0,0,0.4); border-radius:3rem; padding:1.8rem 2.2rem; border:1px solid #f7c94833; backdrop-filter:blur(8px);">
-    <div style="display:flex; align-items:center; gap:0.8rem;"><i class="fas fa-infinity" style="font-size:2.4rem; color:#f7c948;"></i> <span style="font-weight:600;">پخش بی‌نهایت</span></div>
-    <div style="display:flex; align-items:center; gap:0.8rem;"><i class="fas fa-download" style="font-size:2.4rem; color:#f7c948;"></i> <span style="font-weight:600;">دانلود آفلاین</span></div>
-    <div style="display:flex; align-items:center; gap:0.8rem;"><i class="fas fa-globe" style="font-size:2.4rem; color:#f7c948;"></i> <span style="font-weight:600;">زیرنویس حرفه‌ای</span></div>
-    <div style="display:flex; align-items:center; gap:0.8rem;"><i class="fas fa-headphones" style="font-size:2.4rem; color:#f7c948;"></i> <span style="font-weight:600;">دالبی اتموس</span></div>
-  </div>
+    <!-- GAMES SHOWCASE -->
+    <section class="games-section">
+        <div class="section-title"><i class="fas fa-trophy"></i> بازی‌های درخشان</div>
+        <div class="game-grid">
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400&auto=format&fit=crop" alt="game 1">
+                <h3>CYBER LEGION</h3>
+                <p>اکشن علمی-تخیلی در دنیای دیستوپیا</p>
+                <span class="badge"><i class="fas fa-star"></i> ۹.۲</span>
+            </div>
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1580327344181-c1163234e5a0?w=400&auto=format&fit=crop" alt="game 2">
+                <h3>MYSTIC FORGE</h3>
+                <p>فانتزی حماسی با المان‌های نقش‌آفرینی</p>
+                <span class="badge"><i class="fas fa-star"></i> ۸.۷</span>
+            </div>
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=400&auto=format&fit=crop" alt="game 3">
+                <h3>NEBULA RACER</h3>
+                <p>مسابقه‌های کهکشانی با سرعت نور</p>
+                <span class="badge"><i class="fas fa-star"></i> ۹.۰</span>
+            </div>
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1598387993281-cecf8b71b93c?w=400&auto=format&fit=crop" alt="game 4">
+                <h3>SHADOW STRIKE</h3>
+                <p>بازی مخفی کاری و تاکتیکی چندنفره</p>
+                <span class="badge"><i class="fas fa-star"></i> ۸.۹</span>
+            </div>
+        </div>
+    </section>
 
-  <!-- ===== فوتر با آیکون‌های Awesome ===== -->
-  <div class="footer-glow">
-    <div style="display:flex; align-items:center; gap:0.8rem;">
-      <i class="fas fa-crown" style="color:#f7c948;"></i>
-      <span>سینما خفن ۲۰۲۶</span>
-      <span style="opacity:0.5;">|</span>
-      <span><i class="fas fa-fire"></i> داغ‌ترین فیلم‌ها</span>
-    </div>
-    <div class="social-links">
-      <i class="fab fa-instagram"></i>
-      <i class="fab fa-youtube"></i>
-      <i class="fab fa-twitter"></i>
-      <i class="fab fa-telegram"></i>
-      <i class="fab fa-discord"></i>
-    </div>
-    <div>
-      <i class="fas fa-heart" style="color:#f7c948;"></i>
-      <span style="margin-right:0.3rem;">همیشه خفن</span>
-    </div>
-  </div>
-  
+    <!-- STUDIO INFO -->
+    <section class="studio-section">
+        <div class="section-title"><i class="fas fa-users"></i> قلب استودیو</div>
+        <div class="studio-grid">
+            <div class="studio-item">
+                <i class="fas fa-code"></i>
+                <h4>۴۲+</h4>
+                <p>توسعه‌دهنده حرفه‌ای</p>
+            </div>
+            <div class="studio-item">
+                <i class="fas fa-gamepad"></i>
+                <h4>۱۵</h4>
+                <p>بازی منتشر شده</p>
+            </div>
+            <div class="studio-item">
+                <i class="fas fa-globe"></i>
+                <h4>۲۰۲۶</h4>
+                <p>سال تأسیس · آینده‌ساز</p>
+            </div>
+            <div class="studio-item">
+                <i class="fas fa-award"></i>
+                <h4>۳۲</h4>
+                <p>جایزه بین‌المللی</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div style="color: #9bb2da;">© 2026 VORTEX GAMES · تمامی حقوق محفوظ است</div>
+    </footer>
 </div>
-<!-- پایان کانتینر -->
+
+<script>
+    (function() {
+        // ===== 1) PARTICLES =====
+        const particleContainer = document.getElementById('particles');
+        for (let i = 0; i < 35; i++) {
+            const span = document.createElement('span');
+            const size = 4 + Math.random() * 14;
+            span.style.width = size + 'px';
+            span.style.height = size + 'px';
+            span.style.left = Math.random() * 100 + '%';
+            span.style.top = Math.random() * 100 + '%';
+            span.style.animationDelay = (Math.random() * 10) + 's';
+            span.style.animationDuration = (14 + Math.random() * 20) + 's';
+            span.style.background = `rgba(90, 160, 255, ${0.15 + Math.random() * 0.3})`;
+            particleContainer.appendChild(span);
+        }
+
+        // ===== 2) MOBILE MENU TOGGLE =====
+        const toggleBtn = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navLinks.classList.toggle('open');
+            });
+        }
+        // close on link click (optional)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // ===== 3) DYNAMIC CARD IMAGES (fallback if unsplash fails, still beautiful) =====
+        // all images already set via src, but we ensure they load with alt
+        console.log('VORTEX GAMES · fully animated & interactive');
+    })();
+</script>
+<!-- additional small style for better fullscreen -->
+<style>
+    .fullscreen-wrap {
+        min-height: 100vh;
+        min-height: 100dvh; /* dynamic viewport */
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+        background: #0a0e1a;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #2a4d88;
+        border-radius: 20px;
+    }
+</style>
 </body>
 </html>
