@@ -41,7 +41,7 @@
         .container {
             min-height: 100vh;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 2rem 2.5rem;
             display: flex;
@@ -109,23 +109,24 @@
             letter-spacing: 1px;
         }
 
-        /* ========== دکمه همبرگر ========== */
+        /* ========== دکمه همبرگر (با استایل جدید) ========== */
         .hamburger {
             display: flex;
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
-            padding: 0.5rem;
+            padding: 0.6rem 0.8rem;
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            transition: 0.25s;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            transition: 0.3s;
             z-index: 1001;
             position: relative;
         }
 
         .hamburger:hover {
-            background: rgba(255, 215, 100, 0.06);
+            background: rgba(255, 215, 100, 0.08);
+            border-color: rgba(255, 215, 100, 0.15);
         }
 
         .hamburger span {
@@ -139,6 +140,7 @@
 
         .hamburger.active span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 6px);
+            background: #f5b042;
         }
 
         .hamburger.active span:nth-child(2) {
@@ -147,21 +149,22 @@
 
         .hamburger.active span:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -6px);
+            background: #f5b042;
         }
 
-        /* ========== منوی همبرگری (اورلی) ========== */
+        /* ========== منوی همبرگری (اورلی با طراحی جدید) ========== */
         .nav-overlay {
             position: fixed;
             top: 0;
             right: -100%;
             width: 100%;
             height: 100vh;
-            background: rgba(11, 11, 14, 0.97);
-            backdrop-filter: blur(16px);
+            background: rgba(11, 11, 14, 0.98);
+            backdrop-filter: blur(20px);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: right 0.5s cubic-bezier(0.22, 1, 0.36, 1);
             z-index: 1000;
         }
 
@@ -172,9 +175,11 @@
         .nav-menu {
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
+            gap: 2rem;
             text-align: center;
             padding: 2rem;
+            max-width: 500px;
+            width: 100%;
         }
 
         .nav-menu a {
@@ -182,32 +187,46 @@
             text-decoration: none;
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 700;
-            font-size: 2.2rem;
+            font-size: 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
-            transition: 0.25s;
-            padding: 0.5rem 1.5rem;
+            gap: 1.2rem;
+            transition: 0.3s;
+            padding: 0.8rem 1.5rem;
             border-radius: 20px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            position: relative;
+            border: 1px solid transparent;
         }
 
         .nav-menu a i {
             font-size: 1.8rem;
             color: #f5b042;
-            width: 2.2rem;
-            transition: 0.2s;
+            width: 2.5rem;
+            transition: 0.3s;
         }
 
         .nav-menu a:hover {
             color: #f5efe6;
             background: rgba(255, 215, 100, 0.06);
+            border-color: rgba(255, 215, 100, 0.1);
             transform: scale(1.02);
         }
 
         .nav-menu a:hover i {
-            transform: scale(1.15);
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .nav-menu a.active {
+            color: #f5efe6;
+            background: rgba(255, 215, 100, 0.08);
+            border-color: rgba(255, 215, 100, 0.15);
+        }
+
+        .nav-menu a.active i {
+            color: #f5b042;
+            transform: scale(1.1);
         }
 
         /* ========== محتوای اصلی ========== */
@@ -313,6 +332,39 @@
             color: #d4c9b8;
         }
 
+        /* استایل مخصوص بخش آپدیت‌ها (خانه) */
+        .update-item {
+            background: rgba(255, 215, 100, 0.03);
+            border-right: 3px solid #f5b042;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            transition: 0.2s;
+        }
+
+        .update-item:hover {
+            background: rgba(255, 215, 100, 0.06);
+        }
+
+        .update-item .date {
+            font-size: 0.85rem;
+            color: #b0a99b;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+
+        .update-item .title {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            color: #f5efe6;
+            font-size: 1.1rem;
+        }
+
+        .update-item .desc {
+            font-size: 0.95rem;
+            color: #c4bdb0;
+            margin-top: 0.3rem;
+        }
+
         /* ========== فوتر ========== */
         .footer {
             margin-top: 2rem;
@@ -368,12 +420,13 @@
 
             .nav-menu a {
                 font-size: 1.6rem;
-                gap: 0.8rem;
+                gap: 1rem;
+                padding: 0.6rem 1rem;
             }
 
             .nav-menu a i {
-                font-size: 1.4rem;
-                width: 1.8rem;
+                font-size: 1.5rem;
+                width: 2rem;
             }
 
             .footer {
@@ -403,6 +456,13 @@
 
             .nav-menu a {
                 font-size: 1.3rem;
+                gap: 0.8rem;
+                padding: 0.5rem 0.8rem;
+            }
+
+            .nav-menu a i {
+                font-size: 1.2rem;
+                width: 1.8rem;
             }
 
             .hamburger span {
@@ -437,6 +497,7 @@
         <!-- ========== منوی همبرگری (اورلی) ========== -->
         <div class="nav-overlay" id="navOverlay">
             <nav class="nav-menu" id="navMenu">
+                <a href="#" data-tab="home" class="active"><i class="fas fa-home"></i> خانه</a>
                 <a href="#" data-tab="about"><i class="fas fa-user"></i> درباره من</a>
                 <a href="#" data-tab="activities"><i class="fas fa-bolt"></i> فعالیت</a>
                 <a href="#" data-tab="interests"><i class="fas fa-heart"></i> علایق</a>
@@ -447,8 +508,45 @@
         <!-- ========== محتوای اصلی ========== -->
         <main class="main-content">
 
-            <!-- درباره من -->
-            <div class="tab-content active" id="about">
+            <!-- ===== خانه (آپدیت‌ها) ===== -->
+            <div class="tab-content active" id="home">
+                <h2><i class="fas fa-newspaper" style="color:#f5b042; margin-left:0.8rem;"></i> آخرین آپدیت‌ها</h2>
+                <p style="margin-bottom:1.5rem;">همیشه در حال بهبود و به‌روزرسانی هستم. جدیدترین تغییرات رو اینجا ببین:</p>
+
+                <div class="update-item">
+                    <div class="date">📅 ۲۵ تیر ۱۴۰۵</div>
+                    <div class="title">🚀 اضافه شدن بخش "سایت‌های طراحی شده"</div>
+                    <div class="desc">لیست کامل پروژه‌هایی که تا الان انجام دادم به همراه توضیحات هر کدوم اضافه شد.</div>
+                </div>
+
+                <div class="update-item">
+                    <div class="date">📅 ۱۸ تیر ۱۴۰۵</div>
+                    <div class="title">🎨 طراحی مجدد منوی همبرگر</div>
+                    <div class="desc">منوی اصلی با انیمیشن و افکت‌های جدید بازطراحی شد تا تجربه کاربری بهتری داشته باشه.</div>
+                </div>
+
+                <div class="update-item">
+                    <div class="date">📅 ۱۰ تیر ۱۴۰۵</div>
+                    <div class="title">✨ اضافه شدن بخش "علایق"</div>
+                    <div class="desc">برای اینکه بیشتر با من آشنا بشید، علایق شخصی‌ام رو به سایت اضافه کردم.</div>
+                </div>
+
+                <div class="update-item">
+                    <div class="date">📅 ۵ تیر ۱۴۰۵</div>
+                    <div class="title">🔧 رفع باگ‌های جزئی</div>
+                    <div class="desc">بهبود عملکرد در موبایل و افزایش سرعت بارگذاری.</div>
+                </div>
+
+                <div style="margin-top:1.5rem; padding:1rem; background:rgba(255,215,100,0.03); border-radius:16px; border:1px dashed rgba(255,215,100,0.1);">
+                    <p style="margin:0; font-size:0.95rem; color:#b0a99b;">
+                        <i class="fas fa-code" style="color:#f5b042; margin-left:0.5rem;"></i>
+                        قراره به زودی: بخش وبلاگ + قابلیت جستجو + حالت شب/روز
+                    </p>
+                </div>
+            </div>
+
+            <!-- ===== درباره من ===== -->
+            <div class="tab-content" id="about">
                 <h2>درباره من</h2>
                 <p>
                     سلام! من <strong>محمدحسین صنعتی</strong> هستم، توسعه‌دهنده‌ی وب با عشق به کد تمیز،
@@ -468,7 +566,7 @@
                 </p>
             </div>
 
-            <!-- فعالیت -->
+            <!-- ===== فعالیت ===== -->
             <div class="tab-content" id="activities">
                 <h2>فعالیت‌ها</h2>
                 <ul>
@@ -487,7 +585,7 @@
                 </div>
             </div>
 
-            <!-- علایق -->
+            <!-- ===== علایق ===== -->
             <div class="tab-content" id="interests">
                 <h2>علایق</h2>
                 <p>بزرگ‌ترین علاقه‌ی من فراتر از کد زدن، چیزهایی هست که به زندگیم رنگ می‌دن:</p>
@@ -506,21 +604,28 @@
                 </div>
             </div>
 
-            <!-- سایت‌های طراحی شده -->
+            <!-- ===== سایت‌های طراحی شده ===== -->
             <div class="tab-content" id="sites">
                 <h2>سایت‌های طراحی شده</h2>
                 <p>چند نمونه از پروژه‌هایی که با عشق و تعصب ساختم:</p>
                 <ul>
-                    <li><strong>🖥️ فروشگاه آنلاین “نوین‌شاپ”</strong> – طراحی کامل فرانت‌اند با React و Tailwind</li>
-                    <li><strong>🖥️ وب‌سایت استارتاپ “آرکا”</strong> – صفحه‌ی لندینگ مدرن با انیمیشن‌های روان</li>
-                    <li><strong>🖥️ پنل مدیریت “داده‌ورز”</strong> – داشبورد تحلیلی با Vue.js و Chart.js</li>
+                    <li><strong>🖥️ فروشگاه آنلاین "نوین‌شاپ"</strong> – طراحی کامل فرانت‌اند با React و Tailwind</li>
+                    <li><strong>🖥️ وب‌سایت استارتاپ "آرکا"</strong> – صفحه‌ی لندینگ مدرن با انیمیشن‌های روان</li>
+                    <li><strong>🖥️ پنل مدیریت "داده‌ورز"</strong> – داشبورد تحلیلی با Vue.js و Chart.js</li>
                     <li><strong>🖥️ وب‌سایت شخصی دکتر رضایی</strong> – طراحی اختصاصی با سیستم مدیریت محتوای ساده</li>
-                    <li><strong>🖥️ اپلیکیشن “یادآور”</strong> – اپلیکیشن مدیریت تسک با قابلیت آفلاین (PWA)</li>
+                    <li><strong>🖥️ اپلیکیشن "یادآور"</strong> – اپلیکیشن مدیریت تسک با قابلیت آفلاین (PWA)</li>
                 </ul>
                 <div class="tag-group">
                     <span class="tag"><i class="fas fa-check-circle" style="color:#f5b042;"></i> ۱۵+ پروژه</span>
                     <span class="tag"><i class="fas fa-users" style="color:#f5b042;"></i> ۲۰+ مشتری راضی</span>
                     <span class="tag"><i class="fas fa-star" style="color:#f5b042;"></i> ۴.۹/۵ میانگین امتیاز</span>
+                </div>
+                <div style="margin-top:1.5rem; padding:1rem; background:rgba(255,215,100,0.03); border-radius:16px; border:1px solid rgba(255,215,100,0.06);">
+                    <p style="margin:0; font-size:0.95rem; color:#b0a99b;">
+                        <i class="fas fa-rocket" style="color:#f5b042; margin-left:0.5rem;"></i>
+                        در حال اضافه کردن پروژه‌های جدید... 
+                        <span style="display:inline-block; font-weight:700; color:#f5b042;">(به‌زودی)</span>
+                    </p>
                 </div>
             </div>
 
@@ -592,8 +697,8 @@
             if (hash && document.getElementById(hash)) {
                 activateTab(hash);
             } else {
-                // پیش‌فرض: درباره من
-                activateTab('about');
+                // پیش‌فرض: خانه
+                activateTab('home');
             }
 
             // ---- گوش دادن به تغییر هش ----
@@ -621,4 +726,4 @@
     </script>
 
 </body>
-</html>
+                            </html>
