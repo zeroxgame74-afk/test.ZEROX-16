@@ -1,686 +1,384 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>سینما بازار · خرید، فروش، تماشا</title>
-  <!-- Font Awesome 6 (رایگان) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', 'Tahoma', system-ui, sans-serif;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohamad Hossein Sanati | Portfolio</title>
+    
+    <!-- فونت‌ها -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800;900&family=Noto+Sans+Arabic:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      background: linear-gradient(145deg, #0b0e1a 0%, #141a2b 100%);
-      color: #f0f4ff;
-      padding: 1.5rem 1rem 2.5rem;
-      min-height: 100vh;
-    }
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            background: #f8f9fc;
+            color: #1a1a2e;
+            line-height: 1.8;
+            transition: background 0.3s, color 0.3s;
+        }
 
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+        body.dark {
+            background: #0f0f1a;
+            color: #e8e8f0;
+        }
 
-    /* هدر خفن */
-    .header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(20, 28, 48, 0.7);
-      backdrop-filter: blur(12px);
-      padding: 1rem 2rem;
-      border-radius: 60px;
-      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 215, 0, 0.15);
-      margin-bottom: 3rem;
-    }
+        /* ===== تیترها با Vazirmatn ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
 
-    .logo h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #f6d365, #fda085);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 14px 56px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(248, 249, 252, 0.8);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            z-index: 1000;
+            transition: 0.3s;
+        }
 
-    .logo i {
-      color: #f6b73c;
-      text-shadow: 0 0 12px #f6b73c55;
-    }
+        body.dark header {
+            background: rgba(15, 15, 26, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
 
-    .nav-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1.2rem;
-    }
+        /* ===== LOGO با عکس ===== */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
 
-    .nav-actions a {
-      color: #c8d6f0;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      transition: all 0.2s ease;
-      background: transparent;
-      border: 1px solid transparent;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        .logo img {
+            height: 44px;
+            width: auto;
+            display: block;
+            transition: 0.3s;
+        }
 
-    .nav-actions a i {
-      font-size: 1.1rem;
-    }
+        .logo:hover img {
+            transform: scale(1.03);
+        }
 
-    .nav-actions a:hover {
-      background: rgba(255, 215, 0, 0.12);
-      border-color: #f6b73c88;
-      color: #ffe9a7;
-      transform: scale(1.02);
-    }
+        .logo .name {
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #1a1a2e;
+        }
 
-    .btn-gold {
-      background: linear-gradient(145deg, #f6b73c, #e0951f);
-      border: none;
-      color: #0b0e1a !important;
-      font-weight: 700;
-      box-shadow: 0 8px 20px -6px #f6b73c55;
-    }
+        body.dark .logo .name {
+            color: #e8e8f0;
+        }
 
-    .btn-gold:hover {
-      background: linear-gradient(145deg, #ffd966, #f6b73c);
-      box-shadow: 0 12px 28px -6px #f6b73caa;
-      color: #0a0c14 !important;
-    }
+        .logo .lname {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 300;
+            color: #6c6c8a;
+        }
 
-    /* بخش جستجو و فیلتر */
-    .search-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: space-between;
-      margin-bottom: 2.5rem;
-      align-items: center;
-    }
+        body.dark .logo .lname {
+            color: #a8a8c0;
+        }
 
-    .search-box {
-      flex: 2;
-      min-width: 240px;
-      background: rgba(12, 18, 34, 0.7);
-      backdrop-filter: blur(8px);
-      border-radius: 60px;
-      padding: 0.3rem 0.3rem 0.3rem 1.5rem;
-      display: flex;
-      align-items: center;
-      border: 1px solid #2a3452;
-      transition: 0.3s;
-    }
+        /* ===== NAV ===== */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
 
-    .search-box:focus-within {
-      border-color: #f6b73c;
-      box-shadow: 0 0 0 4px #f6b73c22;
-    }
+        nav a {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            text-decoration: none;
+            color: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            padding: 4px 0;
+            transition: 0.3s;
+            opacity: 0.7;
+        }
 
-    .search-box input {
-      background: transparent;
-      border: none;
-      padding: 0.9rem 0.2rem;
-      color: white;
-      font-size: 1rem;
-      flex: 1;
-      outline: none;
-    }
+        nav a:hover {
+            opacity: 1;
+        }
 
-    .search-box input::placeholder {
-      color: #8492b0;
-      font-weight: 300;
-    }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 0;
+            height: 2.5px;
+            background: #6c5ce7;
+            transition: 0.3s;
+            border-radius: 4px;
+        }
 
-    .search-box button {
-      background: #f6b73c;
-      border: none;
-      border-radius: 60px;
-      padding: 0.7rem 1.8rem;
-      font-weight: 700;
-      color: #0b0e1a;
-      cursor: pointer;
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        nav a:hover::after {
+            width: 100%;
+        }
 
-    .search-box button:hover {
-      background: #ffd966;
-      transform: scale(1.02);
-    }
+        /* دکمه دارک/لایت */
+        .theme-toggle {
+            background: none;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            background: transparent;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .filter-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
+        body.dark .theme-toggle {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
 
-    .filter-tabs span {
-      background: #1f2842;
-      padding: 0.6rem 1.4rem;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: default;
-      border: 1px solid #2e3a5a;
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+        .theme-toggle:hover {
+            transform: rotate(20deg) scale(1.05);
+        }
 
-    .filter-tabs span i {
-      color: #f6b73c;
-    }
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 24px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .filter-tabs .active {
-      background: #f6b73c;
-      color: #0b0e1a;
-      border-color: #f6b73c;
-      font-weight: 700;
-    }
+        .hero h1 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
 
-    .filter-tabs .active i {
-      color: #0b0e1a;
-    }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    /* شبکه کارت فیلم (ورق‌زننده) */
-    .movie-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 2rem 1.5rem;
-      margin: 2.5rem 0 3rem;
-    }
+        .hero .subtitle {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 20px;
+            font-weight: 300;
+            color: #6c6c8a;
+            margin-bottom: 32px;
+        }
 
-    .movie-card {
-      background: #141c30;
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
-      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2);
-      border: 1px solid #27314e;
-      transform: perspective(800px) rotateX(0deg) rotateY(0deg);
-      backdrop-filter: blur(4px);
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      position: relative;
-    }
+        body.dark .hero .subtitle {
+            color: #a8a8c0;
+        }
 
-    .movie-card:hover {
-      transform: translateY(-12px) scale(1.02);
-      border-color: #f6b73c99;
-      box-shadow: 0 30px 50px -18px #000000dd, 0 0 0 2px #f6b73c33;
-    }
+        .hero p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+            max-width: 560px;
+            color: #4a4a6a;
+            margin-bottom: 40px;
+        }
 
-    .poster-wrapper {
-      position: relative;
-      aspect-ratio: 2 / 3;
-      overflow: hidden;
-      background: #0f1424;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        body.dark .hero p {
+            color: #b8b8d0;
+        }
 
-    .poster-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
+        /* دکمه‌ها */
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-    .movie-card:hover .poster-wrapper img {
-      transform: scale(1.08) rotate(-1deg);
-    }
+        .btn {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            padding: 14px 36px;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
 
-    .card-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(6px);
-      padding: 0.3rem 0.9rem;
-      border-radius: 30px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      border: 1px solid #f6b73c77;
-      color: #f6d99e;
-      letter-spacing: 0.5px;
-    }
+        .btn-primary {
+            background: #6c5ce7;
+            color: #fff;
+        }
 
-    .card-actions {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      right: 12px;
-      display: flex;
-      justify-content: space-between;
-      gap: 6px;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.25s ease;
-    }
+        .btn-primary:hover {
+            background: #5a4bd1;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(108, 92, 231, 0.3);
+        }
 
-    .movie-card:hover .card-actions {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .btn-outline {
+            background: transparent;
+            color: #1a1a2e;
+            border: 2px solid rgba(26, 26, 46, 0.1);
+        }
 
-    .card-actions button {
-      background: rgba(10, 14, 28, 0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid #ffffff33;
-      color: white;
-      padding: 0.5rem 0.6rem;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      flex: 1;
-      justify-content: center;
-      transition: 0.15s;
-      cursor: pointer;
-    }
+        body.dark .btn-outline {
+            color: #e8e8f0;
+            border-color: rgba(232, 232, 240, 0.15);
+        }
 
-    .card-actions .buy-btn {
-      background: #f6b73c;
-      border-color: #f6b73c;
-      color: #0b0e1a;
-      font-weight: 700;
-    }
+        .btn-outline:hover {
+            border-color: #6c5ce7;
+            color: #6c5ce7;
+        }
 
-    .card-actions .buy-btn:hover {
-      background: #ffd966;
-      transform: scale(1.03);
-    }
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 20px;
+            }
 
-    .card-actions .watch-btn {
-      background: #1f2a46;
-      border-color: #3d4b70;
-    }
+            .logo img {
+                height: 36px;
+            }
 
-    .card-actions .watch-btn:hover {
-      background: #2f3d66;
-    }
+            .logo .name {
+                font-size: 16px;
+            }
 
-    .movie-info {
-      padding: 1rem 1rem 1.2rem;
-      background: #0f1629;
-      border-top: 1px solid #26304e;
-    }
+            nav {
+                gap: 18px;
+            }
 
-    .movie-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.2rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      color: #f0f4ff;
-    }
+            nav a {
+                font-size: 13px;
+            }
 
-    .movie-meta {
-      display: flex;
-      justify-content: space-between;
-      color: #9aabcf;
-      font-size: 0.8rem;
-      margin-top: 6px;
-    }
+            .hero h1 {
+                font-size: 34px;
+            }
 
-    .movie-meta i {
-      margin-left: 4px;
-      color: #f6b73c;
-    }
+            .hero .subtitle {
+                font-size: 17px;
+            }
 
-    .price-tag {
-      background: #1f284a;
-      padding: 0.2rem 0.8rem;
-      border-radius: 30px;
-      font-weight: 600;
-      color: #f6d99e;
-      font-size: 0.8rem;
-      border: 1px solid #3f4d74;
-    }
+            .hero p {
+                font-size: 15px;
+            }
 
-    /* بخش خرید و فروش و تماشا (بنر) */
-    .banner-cta {
-      background: radial-gradient(circle at 20% 30%, #212d4e, #0d1326);
-      border-radius: 48px;
-      padding: 2rem 2.5rem;
-      margin: 3rem 0 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid #f6b73c33;
-      box-shadow: inset 0 0 50px #00000066, 0 20px 40px -10px #000000bb;
-    }
+            .btn {
+                padding: 12px 28px;
+                font-size: 14px;
+            }
+        }
 
-    .banner-cta h3 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+        @media (max-width: 480px) {
+            .logo .name {
+                display: none;
+            }
 
-    .banner-cta h3 i {
-      color: #f6b73c;
-      font-size: 2.2rem;
-    }
+            .logo .lname {
+                display: none;
+            }
 
-    .banner-cta p {
-      color: #bdcaf0;
-      max-width: 400px;
-      line-height: 1.6;
-    }
+            nav a:not(:last-child) {
+                display: none;
+            }
 
-    .banner-btns {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-
-    .banner-btns .btn {
-      background: transparent;
-      border: 1px solid #596b96;
-      padding: 0.8rem 2rem;
-      border-radius: 60px;
-      font-weight: 600;
-      color: #e6edff;
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .banner-btns .btn-primary {
-      background: #f6b73c;
-      border-color: #f6b73c;
-      color: #0b0e1a;
-      font-weight: 700;
-      box-shadow: 0 8px 24px #f6b73c44;
-    }
-
-    .banner-btns .btn-primary:hover {
-      background: #ffd966;
-      transform: scale(1.03);
-    }
-
-    .banner-btns .btn-secondary:hover {
-      background: #2f3d66;
-      border-color: #8ba0d0;
-    }
-
-    /* فوتر */
-    .footer {
-      margin-top: 4rem;
-      text-align: center;
-      color: #5b6d93;
-      border-top: 1px solid #1f284a;
-      padding-top: 2rem;
-      font-size: 0.9rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    .footer i {
-      margin: 0 6px;
-      color: #f6b73c;
-    }
-
-    @media (max-width: 700px) {
-      .header {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: stretch;
-        border-radius: 40px;
-        padding: 1.2rem;
-      }
-      .nav-actions {
-        justify-content: center;
-      }
-      .banner-cta {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-      }
-      .movie-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 1.2rem;
-      }
-    }
-
-    /* افکت ورق زدن (hover شبیه ورق) */
-    .movie-card {
-      transform-style: preserve-3d;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .movie-card:hover {
-      transform: perspective(1200px) rotateX(2deg) rotateY(-4deg) translateY(-10px);
-    }
-  </style>
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
 
-  <!-- هدر خفن -->
-  <header class="header">
-    <div class="logo">
-      <h1><i class="fas fa-film"></i> سینما بازار</h1>
-    </div>
-    <div class="nav-actions">
-      <a href="#"><i class="fas fa-store"></i> فروشگاه</a>
-      <a href="#"><i class="fas fa-ticket-alt"></i> بلیت</a>
-      <a href="#"><i class="fas fa-play-circle"></i> تماشا</a>
-      <a href="#" class="btn-gold"><i class="fas fa-plus-circle"></i> فروش فیلم</a>
-    </div>
-  </header>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <a href="#" class="logo">
+            <img src="https://uploadkon.ir/uploads/7ad824_26155.png" alt="Mohamad Hossein Sanati Logo" />
+            <span class="name">محمدحسین</span>
+            <span class="lname">ثناتی</span>
+        </a>
 
-  <!-- جستجو و فیلتر -->
-  <div class="search-section">
-    <div class="search-box">
-      <input type="text" placeholder="جستجوی فیلم، بازیگر، کارگردان ...">
-      <button><i class="fas fa-search"></i> بگرد</button>
-    </div>
-    <div class="filter-tabs">
-      <span class="active"><i class="fas fa-fire"></i> داغ‌ها</span>
-      <span><i class="fas fa-star"></i> برتر</span>
-      <span><i class="fas fa-clock"></i> جدید</span>
-      <span><i class="fas fa-tag"></i> تخفیف</span>
-    </div>
-  </div>
+        <nav>
+            <a href="#home">خانه</a>
+            <a href="#about">درباره</a>
+            <a href="#work">نمونه‌کار</a>
+            <a href="#contact">تماس</a>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </nav>
+    </header>
 
-  <!-- شبکه فیلم‌ها با کارت ورق‌زن -->
-  <div class="movie-grid">
-
-    <!-- فیلم 1 -->
-    <div class="movie-card">
-      <div class="poster-wrapper">
-        <img src="https://picsum.photos/seed/gladiator/300/450" alt="پوستر فیلم">
-        <span class="card-badge"><i class="fas fa-crown"></i> برتر</span>
-        <div class="card-actions">
-          <button class="buy-btn"><i class="fas fa-shopping-bag"></i> خرید</button>
-          <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <h1>
+            سلام، من <br />
+            <span class="highlight">محمدحسین ثناتی</span> هستم
+        </h1>
+        <p class="subtitle">توسعه‌دهنده وب | عاشق کدنویسی مینیمال</p>
+        <p>
+            به دنیای دیجیتال من خوش آمدید. اینجا جایی است که ایده‌ها به کد تبدیل می‌شوند
+            و خلاقیت با تکنولوژی گره می‌خورد.
+        </p>
+        <div class="btn-group">
+            <a href="#work" class="btn btn-primary">مشاهده نمونه‌کارها</a>
+            <a href="#contact" class="btn btn-outline">ارتباط با من</a>
         </div>
-      </div>
-      <div class="movie-info">
-        <div class="movie-title">شوالیه تاریکی</div>
-        <div class="movie-meta">
-          <span><i class="fas fa-star" style="color: #f6b73c;"></i> ۸.۹</span>
-          <span><i class="far fa-clock"></i> ۲۰۲۴</span>
-          <span class="price-tag"><i class="fas fa-tag"></i> ۴۹,۰۰۰</span>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- فیلم 2 -->
-    <div class="movie-card">
-      <div class="poster-wrapper">
-        <img src="https://picsum.photos/seed/inception/300/450" alt="پوستر فیلم">
-        <span class="card-badge"><i class="fas fa-gem"></i> ویژه</span>
-        <div class="card-actions">
-          <button class="buy-btn"><i class="fas fa-shopping-bag"></i> خرید</button>
-          <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
-        </div>
-      </div>
-      <div class="movie-info">
-        <div class="movie-title">تلقین</div>
-        <div class="movie-meta">
-          <span><i class="fas fa-star" style="color: #f6b73c;"></i> ۹.۱</span>
-          <span><i class="far fa-clock"></i> ۲۰۲۳</span>
-          <span class="price-tag"><i class="fas fa-tag"></i> ۳۹,۰۰۰</span>
-        </div>
-      </div>
-    </div>
+    <script>
+        // ===== دارک/لایت مود =====
+        const toggle = document.getElementById('themeToggle');
+        const body = document.body;
 
-    <!-- فیلم 3 -->
-    <div class="movie-card">
-      <div class="poster-wrapper">
-        <img src="https://picsum.photos/seed/dune/300/450" alt="پوستر فیلم">
-        <span class="card-badge"><i class="fas fa-bolt"></i> اکشن</span>
-        <div class="card-actions">
-          <button class="buy-btn"><i class="fas fa-shopping-bag"></i> خرید</button>
-          <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
-        </div>
-      </div>
-      <div class="movie-info">
-        <div class="movie-title">تلماسه ۲</div>
-        <div class="movie-meta">
-          <span><i class="fas fa-star" style="color: #f6b73c;"></i> ۸.۷</span>
-          <span><i class="far fa-clock"></i> ۲۰۲۴</span>
-          <span class="price-tag"><i class="fas fa-tag"></i> ۵۹,۰۰۰</span>
-        </div>
-      </div>
-    </div>
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            toggle.textContent = body.classList.contains('dark') ? '☀️' : '🌙';
+        });
 
-    <!-- فیلم 4 -->
-    <div class="movie-card">
-      <div class="poster-wrapper">
-        <img src="https://picsum.photos/seed/avatar/300/450" alt="پوستر فیلم">
-        <span class="card-badge"><i class="fas fa-water"></i> فانتزی</span>
-        <div class="card-actions">
-          <button class="buy-btn"><i class="fas fa-shopping-bag"></i> خرید</button>
-          <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
-        </div>
-      </div>
-      <div class="movie-info">
-        <div class="movie-title">آواتار ۳</div>
-        <div class="movie-meta">
-          <span><i class="fas fa-star" style="color: #f6b73c;"></i> ۸.۴</span>
-          <span><i class="far fa-clock"></i> ۲۰۲۵</span>
-          <span class="price-tag"><i class="fas fa-tag"></i> ۶۹,۰۰۰</span>
-        </div>
-      </div>
-    </div>
+        // ===== اسکرول نرم =====
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 
-    <!-- فیلم 5 -->
-    <div class="movie-card">
-      <div class="poster-wrapper">
-        <img src="https://picsum.photos/seed/joker/300/450" alt="پوستر فیلم">
-        <span class="card-badge"><i class="fas fa-theater-masks"></i> درام</span>
-        <div class="card-actions">
-          <button class="buy-btn"><i class="fas fa-shopping-bag"></i> خرید</button>
-          <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
-        </div>
-      </div>
-      <div class="movie-info">
-        <div class="movie-title">جوکر: جنون</div>
-        <div class="movie-meta">
-          <span><i class="fas fa-star" style="color: #f6b73c;"></i> ۹.۰</span>
-          <span><i class="far fa-clock"></i> ۲۰۲۴</span>
-          <span class="price-tag"><i class="fas fa-tag"></i> ۴۴,۰۰۰</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- فیلم 6 -->
-    <div class="movie-card">
-      <div class="poster-wrapper">
-        <img src="https://picsum.photos/seed/interstellar/300/450" alt="پوستر فیلم">
-        <span class="card-badge"><i class="fas fa-rocket"></i> علمی</span>
-        <div class="card-actions">
-          <button class="buy-btn"><i class="fas fa-shopping-bag"></i> خرید</button>
-          <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
-        </div>
-      </div>
-      <div class="movie-info">
-        <div class="movie-title">میان‌ستاره‌ای</div>
-        <div class="movie-meta">
-          <span><i class="fas fa-star" style="color: #f6b73c;"></i> ۹.۳</span>
-          <span><i class="far fa-clock"></i> ۲۰۲۳</span>
-          <span class="price-tag"><i class="fas fa-tag"></i> ۵۴,۰۰۰</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- بخش خرید و فروش و تماشا (بنر خفن) -->
-  <div class="banner-cta">
-    <div>
-      <h3><i class="fas fa-crown"></i> سینما بازار</h3>
-      <p>خرید، فروش و تماشای فیلم‌های نایاب و جدید با کیفیت عالی. هر روز صدها فیلم اضافه می‌شود.</p>
-      <p style="margin-top: 8px;"><i class="fas fa-check-circle" style="color: #f6b73c;"></i> پشتیبانی ۲۴/۷ · ضمانت کیفیت</p>
-    </div>
-    <div class="banner-btns">
-      <a href="#" class="btn btn-primary"><i class="fas fa-cart-plus"></i> فروشنده شو</a>
-      <a href="#" class="btn btn-secondary"><i class="fas fa-tv"></i> تماشای رایگان</a>
-      <a href="#" class="btn btn-secondary"><i class="fas fa-gem"></i> خرید اشتراک</a>
-    </div>
-  </div>
-
-  <!-- فوتر -->
-  <div class="footer">
-    <span><i class="fas fa-copyright"></i> ۲۰۲۶ سینما بازار · همه چی خفن</span>
-    <span><i class="fas fa-phone-alt"></i> ۰۲۱-۱۲۳۴۵۶۷</span>
-    <span><i class="fas fa-envelope"></i> cinema@bazar.com</span>
-    <span><i class="fas fa-shield-alt"></i> امنیت بالا</span>
-  </div>
-
-</div>
-
-<!-- یکم کد برای شبیه‌سازی ورق زدن با کلیک (اختیاری) ولی زیباست -->
-<script>
-  (function() {
-    // فقط برای حال و هوا: وقتی کارت رو بزنی یه تلنگر کوچیک
-    const cards = document.querySelectorAll('.movie-card');
-    cards.forEach((card, index) => {
-      card.addEventListener('click', function(e) {
-        // اگه روی دکمه کلیک شده نادیده بگیر (برای اینکه دکمه‌ها کار کنن)
-        if (e.target.closest('button')) return;
-        this.style.transform = 'perspective(1200px) rotateX(2deg) rotateY(6deg) scale(0.98)';
-        setTimeout(() => {
-          this.style.transform = '';
-        }, 200);
-      });
-    });
-  })();
-</script>
 </body>
 </html>
