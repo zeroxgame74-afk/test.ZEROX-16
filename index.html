@@ -1,532 +1,686 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>VORTEX GAMES · استودیوی بازیسازی</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>سینما بازار · خرید، فروش، تماشا</title>
+  <!-- Font Awesome 6 (رایگان) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Tahoma', system-ui, sans-serif;
+    }
 
-        body, html {
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            background: #0b0d15;
-            color: #f0f4ff;
-        }
+    body {
+      background: linear-gradient(145deg, #0b0e1a 0%, #141a2b 100%);
+      color: #f0f4ff;
+      padding: 1.5rem 1rem 2.5rem;
+      min-height: 100vh;
+    }
 
-        /* ===== FULLSCREEN MODE ===== */
-        .fullscreen-wrap {
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background: radial-gradient(circle at 20% 20%, #151e2b, #07090f);
-            position: relative;
-            overflow: hidden;
-        }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
 
-        /* ===== ANIMATED BG PARTICLES ===== */
-        .bg-particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            background: transparent;
-        }
-        .bg-particles span {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: rgba(100, 180, 255, 0.25);
-            border-radius: 50%;
-            box-shadow: 0 0 20px #4a9eff55;
-            animation: floatParticle 18s infinite alternate ease-in-out;
-        }
-        @keyframes floatParticle {
-            0% { transform: translate(0, 0) scale(0.6); opacity: 0.2; }
-            100% { transform: translate(40px, -80px) scale(1.4); opacity: 0.9; }
-        }
-        /* 20 random particles via JS will be injected */
+    /* هدر خفن */
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(20, 28, 48, 0.7);
+      backdrop-filter: blur(12px);
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      margin-bottom: 3rem;
+    }
 
-        /* ===== HEADER / NAV ===== */
-        .glass-nav {
-            position: sticky;
-            top: 0;
-            z-index: 30;
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            background: rgba(10, 14, 26, 0.65);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 1rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #a0d0ff, #5b8cff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px #3f7bff55;
-        }
-        .logo i {
-            -webkit-text-fill-color: initial;
-            color: #6a9cff;
-            margin-left: 8px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            font-weight: 500;
-        }
-        .nav-links a {
-            color: #d6e5ff;
-            text-decoration: none;
-            transition: 0.2s;
-            font-size: 1.05rem;
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 0%;
-            height: 2px;
-            background: #5b8cff;
-            transition: 0.3s;
-        }
-        .nav-links a:hover {
-            color: white;
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        .menu-toggle {
-            display: none;
-            font-size: 1.8rem;
-            color: #b0caff;
-        }
+    .logo h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        /* ===== HERO SECTION ===== */
-        .hero {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 3rem 5rem 5rem 5rem;
-            position: relative;
-            z-index: 5;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        .hero-content {
-            max-width: 600px;
-            animation: fadeSlideUp 1s ease-out;
-        }
-        .hero-content h1 {
-            font-size: 4.2rem;
-            font-weight: 900;
-            line-height: 1.1;
-            background: linear-gradient(to right, #ffffff, #b6d6ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-        .hero-content .subtitle {
-            font-size: 1.3rem;
-            color: #a0bde0;
-            margin-bottom: 2rem;
-            border-left: 4px solid #4a8cff;
-            padding-left: 1.2rem;
-        }
-        .cta-btn {
-            background: linear-gradient(145deg, #3d7aff, #1f4fd0);
-            border: none;
-            padding: 1rem 2.8rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: white;
-            box-shadow: 0 12px 30px -8px #1f4fd080;
-            transition: 0.2s;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            border: 1px solid #7aa3ff60;
-        }
-        .cta-btn:hover {
-            transform: scale(1.04);
-            box-shadow: 0 18px 40px -6px #1f4fd0cc;
-            background: linear-gradient(145deg, #5690ff, #2b5fe0);
-        }
-        .hero-graphic {
-            position: relative;
-            width: 400px;
-            height: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .hero-graphic img {
-            width: 100%;
-            max-width: 420px;
-            border-radius: 30px;
-            box-shadow: 0 30px 50px -10px #000000aa;
-            border: 1px solid #ffffff20;
-            transition: 0.5s;
-            animation: floatImage 6s infinite alternate ease-in-out;
-            background: #131b28;
-            object-fit: cover;
-        }
-        @keyframes floatImage {
-            0% { transform: translateY(0px) scale(1); }
-            100% { transform: translateY(-20px) scale(1.02); }
-        }
-        @keyframes fadeSlideUp {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+    .logo i {
+      color: #f6b73c;
+      text-shadow: 0 0 12px #f6b73c55;
+    }
 
-        /* ===== GAMES SHOWCASE ===== */
-        .games-section {
-            padding: 4rem 5rem;
-            background: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(4px);
-            border-top: 1px solid #ffffff10;
-            border-bottom: 1px solid #ffffff10;
-            z-index: 5;
-            position: relative;
-        }
-        .section-title {
-            font-size: 2.6rem;
-            font-weight: 700;
-            margin-bottom: 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .section-title i {
-            color: #5b8cff;
-        }
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
-        }
-        .game-card {
-            background: rgba(20, 30, 48, 0.6);
-            backdrop-filter: blur(6px);
-            border-radius: 28px;
-            padding: 1.5rem 1.5rem 2rem;
-            border: 1px solid #2b3e5e;
-            transition: 0.3s ease;
-            box-shadow: 0 10px 30px -10px #00000077;
-            text-align: center;
-            animation: cardGlow 4s infinite alternate;
-        }
-        @keyframes cardGlow {
-            0% { box-shadow: 0 10px 20px -5px #1f3a6b; }
-            100% { box-shadow: 0 20px 40px -2px #3f7bff66; }
-        }
-        .game-card:hover {
-            transform: translateY(-12px) scale(1.01);
-            border-color: #4f8cff;
-            background: rgba(30, 45, 75, 0.7);
-        }
-        .game-card img {
-            width: 100%;
-            height: 170px;
-            object-fit: cover;
-            border-radius: 18px;
-            margin-bottom: 1rem;
-            background: #1a2538;
-            border: 1px solid #3d5580;
-            transition: 0.3s;
-        }
-        .game-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 0.3rem;
-        }
-        .game-card .badge {
-            background: #1f4fd0;
-            padding: 0.2rem 1.2rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            display: inline-block;
-            margin-top: 0.5rem;
-            letter-spacing: 0.5px;
-        }
+    .nav-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem;
+    }
 
-        /* ===== STUDIO / TEAM ===== */
-        .studio-section {
-            padding: 4rem 5rem;
-            z-index: 5;
-            position: relative;
-        }
-        .studio-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-            justify-content: center;
-        }
-        .studio-item {
-            background: #101826cc;
-            backdrop-filter: blur(8px);
-            border-radius: 40px;
-            padding: 2rem 2.5rem;
-            min-width: 200px;
-            border: 1px solid #2b4060;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .studio-item i {
-            font-size: 3.5rem;
-            color: #5b8cff;
-            margin-bottom: 0.6rem;
-        }
-        .studio-item h4 {
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
-        .studio-item p {
-            color: #a5bedd;
-        }
+    .nav-actions a {
+      color: #c8d6f0;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      transition: all 0.2s ease;
+      background: transparent;
+      border: 1px solid transparent;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        /* ===== FOOTER ===== */
-        .footer {
-            padding: 2.5rem 5rem;
-            border-top: 1px solid #1f2f47;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            background: #05080fcc;
-            backdrop-filter: blur(4px);
-            z-index: 5;
-            position: relative;
-        }
-        .footer a {
-            color: #8aadf0;
-            margin: 0 10px;
-            transition: 0.2s;
-            font-size: 1.4rem;
-        }
-        .footer a:hover {
-            color: white;
-            transform: scale(1.1);
-        }
+    .nav-actions a i {
+      font-size: 1.1rem;
+    }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 900px) {
-            .hero {
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem;
-            }
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-            .hero-graphic {
-                width: 100%;
-                height: auto;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                gap: 0.8rem;
-                margin-top: 1rem;
-            }
-            .nav-links.open {
-                display: flex;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .games-section, .studio-section, .footer {
-                padding: 2rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 2.4rem;
-            }
-        }
-    </style>
+    .nav-actions a:hover {
+      background: rgba(255, 215, 0, 0.12);
+      border-color: #f6b73c88;
+      color: #ffe9a7;
+      transform: scale(1.02);
+    }
+
+    .btn-gold {
+      background: linear-gradient(145deg, #f6b73c, #e0951f);
+      border: none;
+      color: #0b0e1a !important;
+      font-weight: 700;
+      box-shadow: 0 8px 20px -6px #f6b73c55;
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(145deg, #ffd966, #f6b73c);
+      box-shadow: 0 12px 28px -6px #f6b73caa;
+      color: #0a0c14 !important;
+    }
+
+    /* بخش جستجو و فیلتر */
+    .search-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 2;
+      min-width: 240px;
+      background: rgba(12, 18, 34, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 60px;
+      padding: 0.3rem 0.3rem 0.3rem 1.5rem;
+      display: flex;
+      align-items: center;
+      border: 1px solid #2a3452;
+      transition: 0.3s;
+    }
+
+    .search-box:focus-within {
+      border-color: #f6b73c;
+      box-shadow: 0 0 0 4px #f6b73c22;
+    }
+
+    .search-box input {
+      background: transparent;
+      border: none;
+      padding: 0.9rem 0.2rem;
+      color: white;
+      font-size: 1rem;
+      flex: 1;
+      outline: none;
+    }
+
+    .search-box input::placeholder {
+      color: #8492b0;
+      font-weight: 300;
+    }
+
+    .search-box button {
+      background: #f6b73c;
+      border: none;
+      border-radius: 60px;
+      padding: 0.7rem 1.8rem;
+      font-weight: 700;
+      color: #0b0e1a;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search-box button:hover {
+      background: #ffd966;
+      transform: scale(1.02);
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-tabs span {
+      background: #1f2842;
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: default;
+      border: 1px solid #2e3a5a;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-tabs span i {
+      color: #f6b73c;
+    }
+
+    .filter-tabs .active {
+      background: #f6b73c;
+      color: #0b0e1a;
+      border-color: #f6b73c;
+      font-weight: 700;
+    }
+
+    .filter-tabs .active i {
+      color: #0b0e1a;
+    }
+
+    /* شبکه کارت فیلم (ورق‌زننده) */
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem 1.5rem;
+      margin: 2.5rem 0 3rem;
+    }
+
+    .movie-card {
+      background: #141c30;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+      border: 1px solid #27314e;
+      transform: perspective(800px) rotateX(0deg) rotateY(0deg);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .movie-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: #f6b73c99;
+      box-shadow: 0 30px 50px -18px #000000dd, 0 0 0 2px #f6b73c33;
+    }
+
+    .poster-wrapper {
+      position: relative;
+      aspect-ratio: 2 / 3;
+      overflow: hidden;
+      background: #0f1424;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .poster-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .movie-card:hover .poster-wrapper img {
+      transform: scale(1.08) rotate(-1deg);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border: 1px solid #f6b73c77;
+      color: #f6d99e;
+      letter-spacing: 0.5px;
+    }
+
+    .card-actions {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.25s ease;
+    }
+
+    .movie-card:hover .card-actions {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-actions button {
+      background: rgba(10, 14, 28, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid #ffffff33;
+      color: white;
+      padding: 0.5rem 0.6rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex: 1;
+      justify-content: center;
+      transition: 0.15s;
+      cursor: pointer;
+    }
+
+    .card-actions .buy-btn {
+      background: #f6b73c;
+      border-color: #f6b73c;
+      color: #0b0e1a;
+      font-weight: 700;
+    }
+
+    .card-actions .buy-btn:hover {
+      background: #ffd966;
+      transform: scale(1.03);
+    }
+
+    .card-actions .watch-btn {
+      background: #1f2a46;
+      border-color: #3d4b70;
+    }
+
+    .card-actions .watch-btn:hover {
+      background: #2f3d66;
+    }
+
+    .movie-info {
+      padding: 1rem 1rem 1.2rem;
+      background: #0f1629;
+      border-top: 1px solid #26304e;
+    }
+
+    .movie-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #f0f4ff;
+    }
+
+    .movie-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #9aabcf;
+      font-size: 0.8rem;
+      margin-top: 6px;
+    }
+
+    .movie-meta i {
+      margin-left: 4px;
+      color: #f6b73c;
+    }
+
+    .price-tag {
+      background: #1f284a;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-weight: 600;
+      color: #f6d99e;
+      font-size: 0.8rem;
+      border: 1px solid #3f4d74;
+    }
+
+    /* بخش خرید و فروش و تماشا (بنر) */
+    .banner-cta {
+      background: radial-gradient(circle at 20% 30%, #212d4e, #0d1326);
+      border-radius: 48px;
+      padding: 2rem 2.5rem;
+      margin: 3rem 0 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #f6b73c33;
+      box-shadow: inset 0 0 50px #00000066, 0 20px 40px -10px #000000bb;
+    }
+
+    .banner-cta h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .banner-cta h3 i {
+      color: #f6b73c;
+      font-size: 2.2rem;
+    }
+
+    .banner-cta p {
+      color: #bdcaf0;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+
+    .banner-btns {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .banner-btns .btn {
+      background: transparent;
+      border: 1px solid #596b96;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      color: #e6edff;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .banner-btns .btn-primary {
+      background: #f6b73c;
+      border-color: #f6b73c;
+      color: #0b0e1a;
+      font-weight: 700;
+      box-shadow: 0 8px 24px #f6b73c44;
+    }
+
+    .banner-btns .btn-primary:hover {
+      background: #ffd966;
+      transform: scale(1.03);
+    }
+
+    .banner-btns .btn-secondary:hover {
+      background: #2f3d66;
+      border-color: #8ba0d0;
+    }
+
+    /* فوتر */
+    .footer {
+      margin-top: 4rem;
+      text-align: center;
+      color: #5b6d93;
+      border-top: 1px solid #1f284a;
+      padding-top: 2rem;
+      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .footer i {
+      margin: 0 6px;
+      color: #f6b73c;
+    }
+
+    @media (max-width: 700px) {
+      .header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+        border-radius: 40px;
+        padding: 1.2rem;
+      }
+      .nav-actions {
+        justify-content: center;
+      }
+      .banner-cta {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+      .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1.2rem;
+      }
+    }
+
+    /* افکت ورق زدن (hover شبیه ورق) */
+    .movie-card {
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .movie-card:hover {
+      transform: perspective(1200px) rotateX(2deg) rotateY(-4deg) translateY(-10px);
+    }
+  </style>
 </head>
 <body>
-<div class="fullscreen-wrap">
+<div class="container">
 
-    <!-- animated particles (injected by JS) -->
-    <div class="bg-particles" id="particles"></div>
+  <!-- هدر خفن -->
+  <header class="header">
+    <div class="logo">
+      <h1><i class="fas fa-film"></i> سینما بازار</h1>
+    </div>
+    <div class="nav-actions">
+      <a href="#"><i class="fas fa-store"></i> فروشگاه</a>
+      <a href="#"><i class="fas fa-ticket-alt"></i> بلیت</a>
+      <a href="#"><i class="fas fa-play-circle"></i> تماشا</a>
+      <a href="#" class="btn-gold"><i class="fas fa-plus-circle"></i> فروش فیلم</a>
+    </div>
+  </header>
 
-    <!-- NAV -->
-    <nav class="glass-nav">
-        <div class="logo"><i class="fas fa-gamepad"></i> VORTEX</div>
-        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-        <div class="nav-links" id="navLinks">
-            <a href="#">خانه</a>
-            <a href="#">بازی‌ها</a>
-            <a href="#">استودیو</a>
-            <a href="#">اخبار</a>
-            <a href="#">تماس</a>
-        </div>
-    </nav>
+  <!-- جستجو و فیلتر -->
+  <div class="search-section">
+    <div class="search-box">
+      <input type="text" placeholder="جستجوی فیلم، بازیگر، کارگردان ...">
+      <button><i class="fas fa-search"></i> بگرد</button>
+    </div>
+    <div class="filter-tabs">
+      <span class="active"><i class="fas fa-fire"></i> داغ‌ها</span>
+      <span><i class="fas fa-star"></i> برتر</span>
+      <span><i class="fas fa-clock"></i> جدید</span>
+      <span><i class="fas fa-tag"></i> تخفیف</span>
+    </div>
+  </div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>ساخت جهان‌های<br>بازی بی‌نهایت</h1>
-            <div class="subtitle">استودیوی پیشرو در بازیسازی نسل جدید</div>
-            <button class="cta-btn"><i class="fas fa-rocket"></i> پروژه‌های ما</button>
-        </div>
-        <div class="hero-graphic">
-            <!-- تصویر از منبع اینترنتی -->
-            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop" alt="game studio hero">
-        </div>
-    </section>
+  <!-- شبکه فیلم‌ها با کارت ورق‌زن -->
+  <div class="movie-grid">
 
-    <!-- GAMES SHOWCASE -->
-    <section class="games-section">
-        <div class="section-title"><i class="fas fa-trophy"></i> بازی‌های درخشان</div>
-        <div class="game-grid">
-            <div class="game-card">
-                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400&auto=format&fit=crop" alt="game 1">
-                <h3>CYBER LEGION</h3>
-                <p>اکشن علمی-تخیلی در دنیای دیستوپیا</p>
-                <span class="badge"><i class="fas fa-star"></i> ۹.۲</span>
-            </div>
-            <div class="game-card">
-                <img src="https://images.unsplash.com/photo-1580327344181-c1163234e5a0?w=400&auto=format&fit=crop" alt="game 2">
-                <h3>MYSTIC FORGE</h3>
-                <p>فانتزی حماسی با المان‌های نقش‌آفرینی</p>
-                <span class="badge"><i class="fas fa-star"></i> ۸.۷</span>
-            </div>
-            <div class="game-card">
-                <img src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=400&auto=format&fit=crop" alt="game 3">
-                <h3>NEBULA RACER</h3>
-                <p>مسابقه‌های کهکشانی با سرعت نور</p>
-                <span class="badge"><i class="fas fa-star"></i> ۹.۰</span>
-            </div>
-            <div class="game-card">
-                <img src="https://images.unsplash.com/photo-1598387993281-cecf8b71b93c?w=400&auto=format&fit=crop" alt="game 4">
-                <h3>SHADOW STRIKE</h3>
-                <p>بازی مخفی کاری و تاکتیکی چندنفره</p>
-                <span class="badge"><i class="fas fa-star"></i> ۸.۹</span>
-            </div>
+    <!-- فیلم 1 -->
+    <div class="movie-card">
+      <div class="poster-wrapper">
+        <img src="https://picsum.photos/seed/gladiator/300/450" alt="پوستر فیلم">
+        <span class="card-badge"><i class="fas fa-crown"></i> برتر</span>
+        <div class="card-actions">
+          <button class="buy-btn"><i class="fas fa-shopping-bag"></i> خرید</button>
+          <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
         </div>
-    </section>
+      </div>
+      <div class="movie-info">
+        <div class="movie-title">شوالیه تاریکی</div>
+        <div class="movie-meta">
+          <span><i class="fas fa-star" style="color: #f6b73c;"></i> ۸.۹</span>
+          <span><i class="far fa-clock"></i> ۲۰۲۴</span>
+          <span class="price-tag"><i class="fas fa-tag"></i> ۴۹,۰۰۰</span>
+        </div>
+      </div>
+    </div>
 
-    <!-- STUDIO INFO -->
-    <section class="studio-section">
-        <div class="section-title"><i class="fas fa-users"></i> قلب استودیو</div>
-        <div class="studio-grid">
-            <div class="studio-item">
-                <i class="fas fa-code"></i>
-                <h4>۴۲+</h4>
-                <p>توسعه‌دهنده حرفه‌ای</p>
-            </div>
-            <div class="studio-item">
-                <i class="fas fa-gamepad"></i>
-                <h4>۱۵</h4>
-                <p>بازی منتشر شده</p>
-            </div>
-            <div class="studio-item">
-                <i class="fas fa-globe"></i>
-                <h4>۲۰۲۶</h4>
-                <p>سال تأسیس · آینده‌ساز</p>
-            </div>
-            <div class="studio-item">
-                <i class="fas fa-award"></i>
-                <h4>۳۲</h4>
-                <p>جایزه بین‌المللی</p>
-            </div>
+    <!-- فیلم 2 -->
+    <div class="movie-card">
+      <div class="poster-wrapper">
+        <img src="https://picsum.photos/seed/inception/300/450" alt="پوستر فیلم">
+        <span class="card-badge"><i class="fas fa-gem"></i> ویژه</span>
+        <div class="card-actions">
+          <button class="buy-btn"><i class="fas fa-shopping-bag"></i> خرید</button>
+          <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
         </div>
-    </section>
+      </div>
+      <div class="movie-info">
+        <div class="movie-title">تلقین</div>
+        <div class="movie-meta">
+          <span><i class="fas fa-star" style="color: #f6b73c;"></i> ۹.۱</span>
+          <span><i class="far fa-clock"></i> ۲۰۲۳</span>
+          <span class="price-tag"><i class="fas fa-tag"></i> ۳۹,۰۰۰</span>
+        </div>
+      </div>
+    </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div style="display: flex; gap: 18px; flex-wrap: wrap;">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-discord"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+    <!-- فیلم 3 -->
+    <div class="movie-card">
+      <div class="poster-wrapper">
+        <img src="https://picsum.photos/seed/dune/300/450" alt="پوستر فیلم">
+        <span class="card-badge"><i class="fas fa-bolt"></i> اکشن</span>
+        <div class="card-actions">
+          <button class="buy-btn"><i class="fas fa-shopping-bag"></i> خرید</button>
+          <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
         </div>
-        <div style="color: #9bb2da;">© 2026 VORTEX GAMES · تمامی حقوق محفوظ است</div>
-    </footer>
+      </div>
+      <div class="movie-info">
+        <div class="movie-title">تلماسه ۲</div>
+        <div class="movie-meta">
+          <span><i class="fas fa-star" style="color: #f6b73c;"></i> ۸.۷</span>
+          <span><i class="far fa-clock"></i> ۲۰۲۴</span>
+          <span class="price-tag"><i class="fas fa-tag"></i> ۵۹,۰۰۰</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- فیلم 4 -->
+    <div class="movie-card">
+      <div class="poster-wrapper">
+        <img src="https://picsum.photos/seed/avatar/300/450" alt="پوستر فیلم">
+        <span class="card-badge"><i class="fas fa-water"></i> فانتزی</span>
+        <div class="card-actions">
+          <button class="buy-btn"><i class="fas fa-shopping-bag"></i> خرید</button>
+          <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
+        </div>
+      </div>
+      <div class="movie-info">
+        <div class="movie-title">آواتار ۳</div>
+        <div class="movie-meta">
+          <span><i class="fas fa-star" style="color: #f6b73c;"></i> ۸.۴</span>
+          <span><i class="far fa-clock"></i> ۲۰۲۵</span>
+          <span class="price-tag"><i class="fas fa-tag"></i> ۶۹,۰۰۰</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- فیلم 5 -->
+    <div class="movie-card">
+      <div class="poster-wrapper">
+        <img src="https://picsum.photos/seed/joker/300/450" alt="پوستر فیلم">
+        <span class="card-badge"><i class="fas fa-theater-masks"></i> درام</span>
+        <div class="card-actions">
+          <button class="buy-btn"><i class="fas fa-shopping-bag"></i> خرید</button>
+          <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
+        </div>
+      </div>
+      <div class="movie-info">
+        <div class="movie-title">جوکر: جنون</div>
+        <div class="movie-meta">
+          <span><i class="fas fa-star" style="color: #f6b73c;"></i> ۹.۰</span>
+          <span><i class="far fa-clock"></i> ۲۰۲۴</span>
+          <span class="price-tag"><i class="fas fa-tag"></i> ۴۴,۰۰۰</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- فیلم 6 -->
+    <div class="movie-card">
+      <div class="poster-wrapper">
+        <img src="https://picsum.photos/seed/interstellar/300/450" alt="پوستر فیلم">
+        <span class="card-badge"><i class="fas fa-rocket"></i> علمی</span>
+        <div class="card-actions">
+          <button class="buy-btn"><i class="fas fa-shopping-bag"></i> خرید</button>
+          <button class="watch-btn"><i class="fas fa-play"></i> تماشا</button>
+        </div>
+      </div>
+      <div class="movie-info">
+        <div class="movie-title">میان‌ستاره‌ای</div>
+        <div class="movie-meta">
+          <span><i class="fas fa-star" style="color: #f6b73c;"></i> ۹.۳</span>
+          <span><i class="far fa-clock"></i> ۲۰۲۳</span>
+          <span class="price-tag"><i class="fas fa-tag"></i> ۵۴,۰۰۰</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- بخش خرید و فروش و تماشا (بنر خفن) -->
+  <div class="banner-cta">
+    <div>
+      <h3><i class="fas fa-crown"></i> سینما بازار</h3>
+      <p>خرید، فروش و تماشای فیلم‌های نایاب و جدید با کیفیت عالی. هر روز صدها فیلم اضافه می‌شود.</p>
+      <p style="margin-top: 8px;"><i class="fas fa-check-circle" style="color: #f6b73c;"></i> پشتیبانی ۲۴/۷ · ضمانت کیفیت</p>
+    </div>
+    <div class="banner-btns">
+      <a href="#" class="btn btn-primary"><i class="fas fa-cart-plus"></i> فروشنده شو</a>
+      <a href="#" class="btn btn-secondary"><i class="fas fa-tv"></i> تماشای رایگان</a>
+      <a href="#" class="btn btn-secondary"><i class="fas fa-gem"></i> خرید اشتراک</a>
+    </div>
+  </div>
+
+  <!-- فوتر -->
+  <div class="footer">
+    <span><i class="fas fa-copyright"></i> ۲۰۲۶ سینما بازار · همه چی خفن</span>
+    <span><i class="fas fa-phone-alt"></i> ۰۲۱-۱۲۳۴۵۶۷</span>
+    <span><i class="fas fa-envelope"></i> cinema@bazar.com</span>
+    <span><i class="fas fa-shield-alt"></i> امنیت بالا</span>
+  </div>
+
 </div>
 
+<!-- یکم کد برای شبیه‌سازی ورق زدن با کلیک (اختیاری) ولی زیباست -->
 <script>
-    (function() {
-        // ===== 1) PARTICLES =====
-        const particleContainer = document.getElementById('particles');
-        for (let i = 0; i < 35; i++) {
-            const span = document.createElement('span');
-            const size = 4 + Math.random() * 14;
-            span.style.width = size + 'px';
-            span.style.height = size + 'px';
-            span.style.left = Math.random() * 100 + '%';
-            span.style.top = Math.random() * 100 + '%';
-            span.style.animationDelay = (Math.random() * 10) + 's';
-            span.style.animationDuration = (14 + Math.random() * 20) + 's';
-            span.style.background = `rgba(90, 160, 255, ${0.15 + Math.random() * 0.3})`;
-            particleContainer.appendChild(span);
-        }
-
-        // ===== 2) MOBILE MENU TOGGLE =====
-        const toggleBtn = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        if (toggleBtn) {
-            toggleBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                navLinks.classList.toggle('open');
-            });
-        }
-        // close on link click (optional)
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-            });
-        });
-
-        // ===== 3) DYNAMIC CARD IMAGES (fallback if unsplash fails, still beautiful) =====
-        // all images already set via src, but we ensure they load with alt
-        console.log('VORTEX GAMES · fully animated & interactive');
-    })();
+  (function() {
+    // فقط برای حال و هوا: وقتی کارت رو بزنی یه تلنگر کوچیک
+    const cards = document.querySelectorAll('.movie-card');
+    cards.forEach((card, index) => {
+      card.addEventListener('click', function(e) {
+        // اگه روی دکمه کلیک شده نادیده بگیر (برای اینکه دکمه‌ها کار کنن)
+        if (e.target.closest('button')) return;
+        this.style.transform = 'perspective(1200px) rotateX(2deg) rotateY(6deg) scale(0.98)';
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 200);
+      });
+    });
+  })();
 </script>
-<!-- additional small style for better fullscreen -->
-<style>
-    .fullscreen-wrap {
-        min-height: 100vh;
-        min-height: 100dvh; /* dynamic viewport */
-    }
-    ::-webkit-scrollbar {
-        width: 6px;
-        background: #0a0e1a;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #2a4d88;
-        border-radius: 20px;
-    }
-</style>
 </body>
 </html>
