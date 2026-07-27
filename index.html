@@ -3,694 +3,1397 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gaming Live | زنده‌ترین سایت گیمینگ</title>
+    <title>Mohamad Hossein Sanati | Portfolio</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Stedad&display=swap" rel="stylesheet" />
+    <!-- ===== فونت‌ها ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- ===== Font Awesome 6 ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
+        /* ========== RESET ========== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html,
         body {
-            background: #0b0e1a;
-            color: #e5e9f0;
-            font-family: 'Stedad', sans-serif;
-            padding: 20px;
-            transition: 0.3s;
-            min-height: 100vh;
+            height: 100%;
+            width: 100%;
         }
 
-        body.light-mode {
-            background: #f0f2f8;
-            color: #1a1f2e;
+        body {
+            background: #0b0b0e;
+            color: #eaeef2;
+            font-family: 'Noto Sans Arabic', 'Segoe UI', sans-serif;
+            font-weight: 400;
+            line-height: 1.8;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 30% 20%, rgba(255, 200, 80, 0.03) 0%, transparent 60%);
         }
 
-        h1,
-        h2,
-        h3,
-        .heading {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 900;
-            color: #f7c948;
-            text-shadow: 0 0 20px rgba(247, 201, 72, 0.3);
+        /* ========== اسکرول‌بار ========== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0b0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f5b042;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d48f2b;
         }
 
-        p,
-        .text {
-            font-family: 'Stedad', sans-serif;
-            font-size: 1.05rem;
-            line-height: 1.9;
-        }
-
+        /* ========== کانتینر ========== */
         .container {
-            max-width: 1300px;
+            min-height: 100vh;
+            width: 100%;
+            max-width: 1100px;
             margin: 0 auto;
-        }
-
-        /* ====== هدر ====== */
-        header {
+            padding: 2rem 2.5rem;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* ========== هدر ========== */
+        .header {
+            display: flex;
             align-items: center;
-            padding: 15px 0;
-            border-bottom: 2px solid #f7c94855;
+            justify-content: space-between;
+            padding: 0.5rem 0 1.8rem 0;
+            border-bottom: 1px solid rgba(255, 215, 100, 0.06);
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 1rem;
         }
 
-        .logo i {
-            font-size: 2.5rem;
-            color: #f7c948;
-            margin-left: 10px;
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
         }
 
-        .logo span {
+        .logo {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(145deg, #f5b042, #d48f2b);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 900;
-            font-size: 1.8rem;
-            color: #fff;
+            font-size: 2rem;
+            color: #0b0b0e;
+            box-shadow: 0 8px 18px -6px rgba(200, 150, 50, 0.25);
+            flex-shrink: 0;
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: floatLogo 4s ease-in-out infinite;
         }
 
-        .header-controls {
+        @keyframes floatLogo {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .logo:hover {
+            transform: scale(1.08) rotate(-4deg);
+            box-shadow: 0 12px 28px -8px rgba(200, 150, 50, 0.4);
+        }
+
+        .brand {
             display: flex;
-            gap: 15px;
-            align-items: center;
+            flex-direction: column;
+            line-height: 1.2;
         }
 
-        .header-controls button {
-            background: #1f2742;
-            border: none;
-            color: #f7c948;
+        .brand-name {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
             font-size: 1.5rem;
-            padding: 10px 16px;
-            border-radius: 50px;
+            letter-spacing: -0.5px;
+            color: #f5f0e8;
+            position: relative;
+            display: inline-block;
+        }
+
+        .brand-name::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #f5b042, transparent);
+            transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .brand-name:hover::after {
+            width: 100%;
+        }
+
+        .brand-sub {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 300;
+            font-size: 0.8rem;
+            color: #b0a99b;
+            letter-spacing: 1px;
+        }
+
+        /* ========== دکمه همبرگر ========== */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
             cursor: pointer;
+            padding: 0.6rem 0.8rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 215, 100, 0.08);
             transition: 0.3s;
+            z-index: 1001;
+            position: relative;
         }
 
-        .header-controls button:hover {
-            transform: scale(1.1);
-            background: #f7c948;
-            color: #0b0e1a;
+        .hamburger:hover {
+            background: rgba(255, 215, 100, 0.08);
+            border-color: rgba(255, 215, 100, 0.15);
+            transform: scale(1.05);
         }
 
-        /* ====== هیرو با تایمر زنده ====== */
-        .hero {
-            background: linear-gradient(145deg, #141a2b, #1f2742);
-            padding: 50px 30px;
-            border-radius: 40px;
-            margin: 30px 0;
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2.5px;
+            background: #eaeef2;
+            border-radius: 4px;
+            transition: 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+            background: #f5b042;
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+            background: #f5b042;
+        }
+
+        /* ========== منوی همبرگری ========== */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(11, 11, 14, 0.98);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: right 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 1000;
+        }
+
+        .nav-overlay.open {
+            right: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
             text-align: center;
-            border: 1px solid #f7c94833;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .nav-menu a {
+            color: #d6d0c4;
+            text-decoration: none;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            transition: 0.3s;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            border: 1px solid transparent;
             position: relative;
             overflow: hidden;
         }
 
-        .hero .live-badge {
+        .nav-menu a::before {
+            content: '';
             position: absolute;
-            top: 20px;
-            right: 30px;
-            background: #ff0040;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 900;
-            font-size: 0.9rem;
-            animation: pulse-badge 1.5s infinite;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 215, 100, 0.05);
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: -1;
+            border-radius: 20px;
         }
 
-        @keyframes pulse-badge {
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        .nav-menu a i {
+            font-size: 1.8rem;
+            color: #f5b042;
+            width: 2.5rem;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #f5efe6;
+            background: rgba(255, 215, 100, 0.06);
+            border-color: rgba(255, 215, 100, 0.1);
+            transform: scale(1.04) translateX(-4px);
+        }
+
+        .nav-menu a:hover i {
+            transform: scale(1.2) rotate(-8deg) translateX(-4px);
+        }
+
+        .nav-menu a.active {
+            color: #f5efe6;
+            background: rgba(255, 215, 100, 0.08);
+            border-color: rgba(255, 215, 100, 0.15);
+        }
+
+        .nav-menu a.active i {
+            color: #f5b042;
+            transform: scale(1.1);
+            animation: pulseIcon 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseIcon {
             0%,
             100% {
-                opacity: 1;
-                transform: scale(1);
+                transform: scale(1.1);
             }
             50% {
-                opacity: 0.6;
-                transform: scale(0.95);
+                transform: scale(1.25);
             }
         }
 
-        .hero .live-badge i {
-            margin-left: 8px;
-            animation: blink-dot 1s infinite;
+        /* ========== محتوای اصلی ========== */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 0 1.5rem 0;
         }
 
-        @keyframes blink-dot {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
+        .tab-content {
+            display: none;
+            animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            0% {
                 opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
             }
         }
 
-        .hero h1 {
-            font-size: 3.2rem;
-        }
-
-        .timer-box {
-            background: #0b0e1a88;
-            padding: 20px 40px;
-            border-radius: 60px;
-            display: inline-block;
-            margin: 20px auto;
-            border: 2px solid #f7c948;
-        }
-
-        .timer-box span {
+        .tab-content h2 {
             font-family: 'Vazirmatn', sans-serif;
-            font-weight: 900;
-            font-size: 3rem;
-            color: #fff;
-            min-width: 60px;
-            display: inline-block;
-        }
-
-        .timer-box .colon {
-            color: #f7c948;
-            font-size: 2.5rem;
-        }
-
-        /* ====== گرید بازی‌ها ====== */
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            margin: 35px 0;
-        }
-
-        .game-card {
-            background: #161e32;
-            padding: 25px 15px;
-            border-radius: 30px;
-            text-align: center;
-            border: 1px solid #f7c94822;
-            transition: 0.4s;
-            cursor: pointer;
+            font-weight: 800;
+            font-size: 2.6rem;
+            color: #f5efe6;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+            border-right: 6px solid #f5b042;
+            padding-right: 1.5rem;
             position: relative;
         }
 
-        .game-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: #f7c948;
-            box-shadow: 0 15px 40px #f7c94833;
+        .tab-content h2 i {
+            transition: 0.3s;
         }
 
-        .game-card .online-dot {
+        .tab-content h2:hover i {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .tab-content p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: #d6d0c4;
+            margin-bottom: 0.8rem;
+            line-height: 2;
+        }
+
+        .bio-intro {
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bio-intro::before {
+            content: '';
             position: absolute;
-            top: 15px;
-            left: 20px;
-            width: 12px;
-            height: 12px;
-            background: #4caf50;
-            border-radius: 50%;
-            animation: blink-dot 1.2s infinite;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 215, 100, 0.03), transparent 70%);
+            animation: shimmerBg 8s ease-in-out infinite alternate;
+            pointer-events: none;
         }
 
-        .game-card i {
-            font-size: 4rem;
-            color: #f7c948;
-            margin-bottom: 12px;
+        @keyframes shimmerBg {
+            0% {
+                transform: translate(-10%, -10%);
+            }
+            100% {
+                transform: translate(10%, 10%);
+            }
         }
 
-        .game-card h3 {
-            font-size: 1.5rem;
+        .bio-intro:hover {
+            border-color: rgba(255, 215, 100, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.4);
         }
 
-        .game-card .players {
-            font-size: 0.9rem;
-            color: #aab2c9;
-            margin-top: 8px;
+        .bio-intro p {
+            font-size: 1.15rem;
+            line-height: 2.2;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .game-card .players i {
-            font-size: 0.8rem;
-            margin-left: 5px;
-            color: #4caf50;
+        .bio-intro p:last-child {
+            margin-bottom: 0;
         }
 
-        /* ====== چت زنده ====== */
-        .chat-section {
-            background: #101624;
-            padding: 30px;
-            border-radius: 40px;
-            border: 1px solid #f7c94844;
-            margin: 35px 0;
+        /* ===== کارت‌های خانه ===== */
+        .home-design-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
         }
 
-        .chat-box {
-            background: #0b0e1a;
-            border-radius: 30px;
-            padding: 20px;
-            max-height: 300px;
-            overflow-y: auto;
-            margin: 20px 0;
-            border: 1px solid #f7c94833;
+        .home-design-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .chat-box::-webkit-scrollbar {
-            width: 6px;
-        }
-        .chat-box::-webkit-scrollbar-thumb {
-            background: #f7c948;
-            border-radius: 10px;
+        .home-design-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #f5b042, transparent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .chat-message {
-            padding: 10px 18px;
-            margin: 6px 0;
-            background: #1a2340;
+        .home-design-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .home-design-card:hover {
+            background: rgba(255, 215, 100, 0.04);
+            border-color: rgba(255, 215, 100, 0.12);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .home-design-card .icon {
+            font-size: 2.8rem;
+            color: #f5b042;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+
+        .home-design-card:nth-child(2) .icon {
+            animation-delay: 0.5s;
+        }
+        .home-design-card:nth-child(3) .icon {
+            animation-delay: 1s;
+        }
+
+        @keyframes floatIcon {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .home-design-card .icon i {
+            background: rgba(255, 215, 100, 0.08);
+            padding: 0.8rem;
             border-radius: 20px;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .home-design-card:hover .icon i {
+            background: rgba(255, 215, 100, 0.15);
+            transform: scale(1.1) rotate(-6deg);
+            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.2);
+        }
+
+        .home-design-card h3 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #f5efe6;
+            margin-bottom: 0.5rem;
+        }
+
+        .home-design-card p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.95rem;
+            color: #b0a99b;
+            margin: 0;
+        }
+
+        /* ===== کارت‌های سایت ===== */
+        .sites-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .site-card-wide {
+            grid-column: 1 / -1;
+            background: #1a1111;
+            border-radius: 24px;
+            padding: 1.5rem 2rem;
+            border-right: 6px solid #B61C1C;
             display: flex;
             align-items: center;
-            gap: 12px;
-            animation: slideIn 0.4s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .chat-message .user {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 900;
-            color: #f7c948;
-            min-width: 80px;
-        }
-
-        .chat-message .time {
-            font-size: 0.7rem;
-            color: #888;
-            margin-right: auto;
-        }
-
-        .chat-input-group {
-            display: flex;
-            gap: 12px;
+            gap: 1.5rem;
             flex-wrap: wrap;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(182, 28, 28, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
-        .chat-input-group input {
-            flex: 1;
-            padding: 14px 22px;
-            border-radius: 60px;
-            border: 2px solid #f7c94855;
-            background: #0b0e1a;
-            color: #fff;
-            font-family: 'Stedad', sans-serif;
-            font-size: 1rem;
-            outline: none;
+        .site-card-wide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(182, 28, 28, 0.03), transparent 60%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .site-card-wide:hover::before {
+            opacity: 1;
+        }
+
+        .site-card-wide:hover {
+            background: #1f1414;
+            border-color: rgba(182, 28, 28, 0.4);
+            transform: translateX(-6px) scale(1.005);
+            box-shadow: 0 12px 32px -12px rgba(182, 28, 28, 0.15);
+        }
+
+        .site-card-wide .site-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #0b0b0e;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.3s;
+        }
+
+        .site-card-wide:hover .site-logo {
+            transform: scale(1.05) rotate(-2deg);
+            border-color: rgba(255, 215, 100, 0.2);
+        }
+
+        .site-card-wide .site-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-card-wide .site-info {
+            flex: 1;
             min-width: 150px;
         }
 
-        .chat-input-group input:focus {
-            border-color: #f7c948;
-            box-shadow: 0 0 25px #f7c94844;
-        }
-
-        .chat-input-group button {
-            background: #f7c948;
-            color: #0b0e1a;
-            border: none;
-            padding: 14px 35px;
-            border-radius: 60px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 900;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .chat-input-group button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px #f7c94888;
-        }
-
-        /* ====== نوتیفیکیشن ====== */
-        .notification {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: #1f2742;
-            padding: 18px 30px;
-            border-radius: 60px;
-            border-right: 6px solid #f7c948;
-            box-shadow: 0 10px 40px #00000099;
+        .site-card-wide .site-info h3 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 700;
-            transform: translateX(-150%);
+            font-size: 1.3rem;
+            color: #f5efe6;
+            margin: 0 0 0.3rem 0;
+            transition: 0.3s;
+        }
+
+        .site-card-wide:hover .site-info h3 {
+            color: #f5b042;
+        }
+
+        .site-card-wide .site-info p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.95rem;
+            color: #b0a99b;
+            margin: 0;
+        }
+
+        .site-card-wide .site-link {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            color: #f5b042;
+            text-decoration: none;
+            padding: 0.4rem 1.5rem;
+            border: 1px solid rgba(245, 176, 66, 0.2);
+            border-radius: 40px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .site-card-wide .site-link::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 40px;
+            padding: 2px;
+            background: linear-gradient(135deg, #f5b042, transparent);
+            opacity: 0;
+            transition: 0.3s;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .site-card-wide .site-link:hover::after {
+            opacity: 1;
+        }
+
+        .site-card-wide .site-link:hover {
+            background: rgba(245, 176, 66, 0.1);
+            border-color: transparent;
+            transform: scale(1.04);
+            box-shadow: 0 0 20px -6px rgba(245, 176, 66, 0.15);
+        }
+
+        .site-card-wide .site-link i {
+            transition: 0.3s;
+        }
+        .site-card-wide .site-link:hover i {
+            transform: translateX(-4px) scale(1.1);
+        }
+
+        /* کارت کالفود با رنگ E97510 */
+        .site-card-wide.call-food {
+            border-right-color: #E97510;
+            border-color: rgba(233, 117, 16, 0.2);
+        }
+
+        .site-card-wide.call-food:hover {
+            border-color: rgba(233, 117, 16, 0.4);
+            box-shadow: 0 12px 32px -12px rgba(233, 117, 16, 0.15);
+        }
+
+        .site-card-wide.call-food .site-link {
+            color: #E97510;
+            border-color: rgba(233, 117, 16, 0.3);
+        }
+
+        .site-card-wide.call-food .site-link::after {
+            background: linear-gradient(135deg, #E97510, transparent);
+        }
+
+        .site-card-wide.call-food .site-link:hover {
+            background: rgba(233, 117, 16, 0.1);
+            border-color: transparent;
+        }
+
+        .site-card-wide.call-food:hover .site-info h3 {
+            color: #E97510;
+        }
+
+        /* ===== کارت طراحی ===== */
+        .design-card-new {
+            width: 1080px;
+            max-width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            margin: 1.5rem auto;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .design-card-new::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                    transparent 30%,
+                    rgba(255, 215, 0, 0.08) 50%,
+                    transparent 70%);
+            animation: shineDesign 4s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes shineDesign {
+            0% {
+                transform: translateX(-100%) rotate(25deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(25deg);
+            }
+        }
+
+        .design-card-new:hover {
+            background: rgba(255, 215, 100, 0.04);
+            border-color: rgba(255, 215, 100, 0.15);
+            transform: translateY(-6px) scale(1.005);
+            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .design-card-new>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .design-card-new .design-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+            background: #0b0b0e;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s;
+        }
+
+        .design-card-new:hover .design-image {
+            border-color: rgba(255, 215, 100, 0.15);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
+        }
+
+        .design-card-new .design-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 999;
+        }
+
+        .design-card-new:hover .design-image img {
+            transform: scale(1.03);
+        }
+
+        .design-card-new .design-header {
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
         }
 
-        .notification.show {
-            transform: translateX(0);
-        }
-
-        .notification i {
+        .design-card-new .design-title {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
             font-size: 1.8rem;
-            color: #f7c948;
-        }
-
-        /* ====== دکمه اسکرول به بالا ====== */
-        .scroll-top {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            background: #f7c948;
-            color: #0b0e1a;
-            border: none;
-            border-radius: 50%;
-            width: 55px;
-            height: 55px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            display: none;
+            color: #f5efe6;
             transition: 0.3s;
-            box-shadow: 0 0 30px #f7c94866;
-            z-index: 99;
         }
 
-        .scroll-top:hover {
-            transform: scale(1.1);
+        .design-card-new:hover .design-title {
+            color: #f5b042;
         }
 
-        /* ====== ریسپانسیو ====== */
+        .design-card-new .design-title i {
+            color: #f5b042;
+            margin-left: 0.5rem;
+            animation: heartBeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            15% {
+                transform: scale(1.25);
+            }
+            30% {
+                transform: scale(1);
+            }
+            45% {
+                transform: scale(1.15);
+            }
+            60% {
+                transform: scale(1);
+            }
+        }
+
+        .design-card-new .toggle-details {
+            background: none;
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            color: #f5b042;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .design-card-new .toggle-details:hover {
+            background: rgba(255, 215, 100, 0.08);
+            border-color: #f5b042;
+            transform: scale(1.04);
+        }
+
+        .design-card-new .toggle-details i {
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .design-card-new .toggle-details.open i {
+            transform: rotate(180deg);
+        }
+
+        .design-card-new .design-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, margin 0.3s ease;
+            opacity: 0;
+            margin: 0;
+        }
+
+        .design-card-new .design-details.open {
+            max-height: 500px;
+            opacity: 1;
+            margin: 1rem 0;
+        }
+
+        .design-card-new .design-desc {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 1rem;
+            color: #b0a99b;
+            margin-bottom: 0.5rem;
+        }
+
+        .design-card-new .design-author {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.95rem;
+            color: #f5b042;
+            margin-bottom: 1rem;
+        }
+
+        .design-card-new .download-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .design-card-new .download-buttons a {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            color: #f5efe6;
+            text-decoration: none;
+            padding: 0.4rem 1.2rem;
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            border-radius: 40px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 215, 100, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .design-card-new .download-buttons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 215, 100, 0.08);
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            border-radius: 40px;
+        }
+
+        .design-card-new .download-buttons a:hover::before {
+            width: 100%;
+        }
+
+        .design-card-new .download-buttons a:hover {
+            background: rgba(255, 215, 100, 0.12);
+            border-color: #f5b042;
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.15);
+        }
+
+        .design-card-new .download-buttons a i {
+            color: #f5b042;
+            transition: 0.3s;
+        }
+
+        .design-card-new .download-buttons a:hover i {
+            transform: translateY(-2px) scale(1.1);
+        }
+
+        /* ===== فوتر ===== */
+        .footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 215, 100, 0.06);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            color: #8f887c;
+            font-size: 0.9rem;
+        }
+
+        .footer-social a {
+            color: #b8b2a6;
+            font-size: 1.3rem;
+            margin-right: 1.2rem;
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .footer-social a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 50%;
+            width: 0;
+            height: 2px;
+            background: #f5b042;
+            transition: 0.3s;
+            transform: translateX(50%);
+        }
+
+        .footer-social a:hover::after {
+            width: 100%;
+        }
+
+        .footer-social a:hover {
+            color: #f5b042;
+            transform: translateY(-4px) scale(1.1);
+        }
+
+        .footer-copy {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* ========== ریسپانسیو ========== */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
+            .container {
+                padding: 1.5rem 1.5rem;
             }
-            .timer-box span {
+            .brand-name {
+                font-size: 1.2rem;
+            }
+            .logo {
+                width: 48px;
+                height: 48px;
+                font-size: 1.6rem;
+            }
+            .tab-content h2 {
                 font-size: 2rem;
-                min-width: 40px;
+                padding-right: 1rem;
             }
-            .timer-box {
-                padding: 15px 25px;
+            .nav-menu a {
+                font-size: 1.6rem;
+                gap: 1rem;
+                padding: 0.6rem 1rem;
             }
-            .chat-input-group input {
-                min-width: 100%;
+            .nav-menu a i {
+                font-size: 1.5rem;
+                width: 2rem;
             }
-            .chat-input-group button {
-                width: 100%;
+            .home-design-cards {
+                grid-template-columns: 1fr;
+            }
+            .sites-grid {
+                grid-template-columns: 1fr;
+            }
+            .site-card-wide {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.2rem;
+            }
+            .site-card-wide .site-link {
+                align-self: flex-start;
+            }
+            .design-card-new .design-title {
+                font-size: 1.4rem;
+            }
+            .design-card-new .design-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .footer {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-social a {
+                margin: 0 0.8rem;
+            }
+            .bio-intro {
+                padding: 1rem 1.2rem;
+            }
+            .bio-intro p {
+                font-size: 1rem;
+            }
+            .design-card-new .download-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .design-card-new .download-buttons a {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem 1rem;
+            }
+            .tab-content h2 {
+                font-size: 1.6rem;
+            }
+            .tab-content p {
+                font-size: 1rem;
+            }
+            .nav-menu a {
+                font-size: 1.3rem;
+                gap: 0.8rem;
+                padding: 0.5rem 0.8rem;
+            }
+            .nav-menu a i {
+                font-size: 1.2rem;
+                width: 1.8rem;
+            }
+            .site-card-wide {
+                padding: 1rem;
+            }
+            .site-card-wide .site-logo {
+                width: 56px;
+                height: 56px;
+            }
+            .site-card-wide .site-info h3 {
+                font-size: 1.1rem;
+            }
+            .design-card-new .design-title {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ====== نوتیفیکیشن ====== -->
-    <div class="notification" id="notification">
-        <i class="fas fa-bell"></i>
-        <span id="notifText">🎮 یه بازیکن جدید وارد شد!</span>
-    </div>
-
-    <!-- ====== دکمه اسکرول ====== -->
-    <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
-
     <div class="container">
 
-        <!-- ====== هدر ====== -->
-        <header>
-            <div class="logo">
-                <i class="fas fa-gamepad"></i>
-                <span>GamingLive</span>
+        <!-- ========== هدر ========== -->
+        <header class="header">
+            <div class="logo-area">
+                <div class="logo">M</div>
+                <div class="brand">
+                    <span class="brand-name">Mohamad Hossein Sanati</span>
+                    <span class="brand-sub">Portfolio</span>
+                </div>
             </div>
-            <div class="header-controls">
-                <button id="themeToggle" title="تغییر تم">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button id="notifToggle" title="نوتیفیکیشن تست">
-                    <i class="fas fa-bell"></i>
-                </button>
+            <div class="hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </header>
 
-        <!-- ====== هیرو با تایمر ====== -->
-        <section class="hero">
-            <div class="live-badge">
-                <i class="fas fa-circle"></i> زنده
-            </div>
-            <i class="fas fa-trophy" style="font-size: 4rem; color: #f7c948;"></i>
-            <h1>مسابقه زنده <span style="color:#fff;">بازی روز</span></h1>
-            <p style="font-size: 1.2rem;">تا شروع مسابقه وقت داری:</p>
-            <div class="timer-box">
-                <span id="hours">00</span>
-                <span class="colon">:</span>
-                <span id="minutes">05</span>
-                <span class="colon">:</span>
-                <span id="seconds">00</span>
-            </div>
-            <div>
-                <button class="btn" style="background:#f7c948; color:#0b0e1a; border:none; padding:14px 40px; border-radius:60px; font-family:'Vazirmatn'; font-weight:900; font-size:1.1rem; cursor:pointer; margin-top:15px;" onclick="resetTimer()">
-                    <i class="fas fa-rotate"></i> ریست تایمر
-                </button>
-            </div>
-        </section>
-
-        <!-- ====== بازی‌ها ====== -->
-        <h2><i class="fas fa-fire" style="margin-left:15px; color:#f7c948;"></i>بازی‌های آنلاین</h2>
-        <div class="game-grid" id="gameGrid">
-            <!-- توسط JS پر میشه -->
+        <!-- ========== منوی همبرگری ========== -->
+        <div class="nav-overlay" id="navOverlay">
+            <nav class="nav-menu" id="navMenu">
+                <a href="#" data-tab="home" class="active"><i class="fas fa-home"></i> خانه</a>
+                <a href="#" data-tab="about"><i class="fas fa-user"></i> درباره من</a>
+                <a href="#" data-tab="activities"><i class="fas fa-bolt"></i> فعالیت</a>
+                <a href="#" data-tab="sites"><i class="fas fa-laptop-code"></i> سایت‌های طراحی شده</a>
+                <a href="#" data-tab="design"><i class="fas fa-palette"></i> طراحی</a>
+            </nav>
         </div>
 
-        <!-- ====== چت زنده ====== -->
-        <section class="chat-section">
-            <h2><i class="fas fa-comments" style="margin-left:15px;"></i>چت زنده گیمینگ</h2>
-            <div class="chat-box" id="chatBox">
-                <!-- پیام‌ها اینجا میاد -->
-            </div>
-            <div class="chat-input-group">
-                <input type="text" id="chatInput" placeholder="پیامتو بزن..." />
-                <button id="sendChat"><i class="fas fa-paper-plane"></i> بفرست</button>
-            </div>
-        </section>
+        <!-- ========== محتوای اصلی ========== -->
+        <main class="main-content">
 
-        <!-- ====== فوتر ====== -->
-        <footer style="text-align:center; padding:30px 0; border-top:1px solid #f7c94833; margin-top:30px;">
-            <p style="font-family:'Vazirmatn';">
-                <i class="fas fa-crown" style="color:#f7c948;"></i>
-                ساخته شده با <i class="fas fa-heart" style="color:#ff4477;"></i> برای گیمرها
-            </p>
+            <!-- ===== خانه ===== -->
+            <div class="tab-content active" id="home">
+                <h2><i class="fas fa-home" style="color:#f5b042; margin-left:0.8rem;"></i> خانه</h2>
+                <div class="bio-intro">
+                    <p>سلام! من محمدحسین صنعتی هستم.</p>
+                    <p>عاشق ساختن چیزهای جدیدم؛ از طراحی و توسعه وب‌سایت گرفته تا طراحی گرافیک، تولید محتوا و پروژه‌های خلاقانه. بیشتر وقتم را صرف یاد گرفتن، تجربه کردن و ساختن ایده‌هایی می‌کنم که هم زیبا باشند و هم کاربردی.</p>
+                    <p>این سایت جایی است که پروژه‌ها، نمونه‌کارها، مهارت‌ها و فعالیت‌هایم را با شما به اشتراک می‌گذارم. اگر دوست دارید با کارهایم بیشتر آشنا شوید، خوشحال می‌شوم نگاهی به بخش‌های مختلف سایت بیندازید.</p>
+                    <p style="font-weight: 600; color: #f5b042;">به دنیای من خوش آمدید.</p>
+                </div>
+                <div class="home-design-cards">
+                    <div class="home-design-card">
+                        <div class="icon"><i class="fas fa-pen-fancy"></i></div>
+                        <h3>طراحی</h3>
+                        <p>طراحی مدرن و مینیمال برای وب‌سایت‌ها و برندها</p>
+                    </div>
+                    <div class="home-design-card">
+                        <div class="icon"><i class="fas fa-code"></i></div>
+                        <h3>توسعه</h3>
+                        <p>پیاده‌سازی حرفه‌ای با تکنولوژی‌های روز</p>
+                    </div>
+                    <div class="home-design-card">
+                        <div class="icon"><i class="fas fa-rocket"></i></div>
+                        <h3>خلاقیت</h3>
+                        <p>ایده‌های نو برای تجربه‌های دیجیتال متفاوت</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== درباره من ===== -->
+            <div class="tab-content" id="about">
+                <h2>درباره من</h2>
+                <p>سلام! من <strong>محمدحسین صنعتی</strong> هستم، توسعه‌دهنده‌ی وب با عشق به کد تمیز، طراحی مینیمال و تجربه‌ی کاربری روان. از سال ۱۴۰۰ وارد دنیای برنامه‌نویسی شدم و از اون موقع تا حالا پروژه‌های مختلفی رو از صفر تا صد اجرا کردم.</p>
+                <div style="background:rgba(255,215,100,0.04); border-radius:24px; padding:1.5rem 2rem; margin:1.5rem 0; border:1px solid rgba(255,215,100,0.06); transition:0.3s; position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:-50%; right:-50%; width:200%; height:200%; background:radial-gradient(circle at 30% 40%, rgba(255,215,100,0.03), transparent 70%); animation:shimmerBg 8s ease-in-out infinite alternate; pointer-events:none;"></div>
+                    <p style="margin:0; position:relative; z-index:1;"><i class="fas fa-quote-right" style="color:#f5b042; margin-left:0.5rem;"></i>هدف من اینه که با ترکیب هنر و تکنولوژی، فضاهای دیجیتالی بسازم که نه تنها کاربردی باشن، بلکه حس خوبی به کاربر منتقل کنن.</p>
+                </div>
+                <p>الان به عنوان فریلنسر و هم‌بنیان‌گذار یه استارتاپ کوچیک، روزانه دارم روی پروژه‌های فرانت‌اند و بک‌اند کار می‌کنم. عاشق یادگیری تکنولوژی‌های جدید و به‌اشتراک‌گذاری دانشم.</p>
+            </div>
+
+            <!-- ===== فعالیت ===== -->
+            <div class="tab-content" id="activities">
+                <h2>فعالیت‌ها</h2>
+                <ul style="list-style:none; padding-right:0.5rem;">
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ توسعه و طراحی بیش از ۱۵ وب‌سایت شرکتی و شخصی</span>
+                    </li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ همکاری با آژانس‌های دیجیتال مارکتینگ به عنوان توسعه‌دهنده فرانت‌اند</span>
+                    </li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ مدرس دوره‌های مقدماتی و پیشرفته HTML/CSS و JavaScript</span>
+                    </li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ شرکت در هکاتون‌های داخلی و کسب رتبه‌های برتر</span>
+                    </li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ ساخت اپلیکیشن‌های تک‌صفحه‌ای با React و Vue.js</span>
+                    </li>
+                </ul>
+                <div style="display:flex; flex-wrap:wrap; gap:0.6rem 1rem; margin:1.2rem 0;">
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fas fa-code" style="margin-left:0.3rem;"></i> HTML/CSS
+                    </span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fab fa-js" style="margin-left:0.3rem;"></i> JavaScript
+                    </span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fab fa-react" style="margin-left:0.3rem;"></i> React
+                    </span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fab fa-vuejs" style="margin-left:0.3rem;"></i> Vue
+                    </span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fas fa-database" style="margin-left:0.3rem;"></i> Node.js
+                    </span>
+                </div>
+            </div>
+
+            <!-- ===== سایت‌های طراحی شده ===== -->
+            <div class="tab-content" id="sites">
+                <h2>سایت‌های طراحی شده</h2>
+                <p style="margin-bottom:1.5rem;">نمونه‌ای از پروژه‌هایی که با عشق و تعصب ساختم:</p>
+
+                <div class="sites-grid">
+                    <!-- کارت عریض ZEROX -->
+                    <div class="site-card-wide">
+                        <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
+                            <div class="site-logo">
+                                <img src="https://uploadkon.ir/uploads/0ddf24_26Negar-1780305389092.png" alt="لوگوی سایت ZEROX" />
+                            </div>
+                            <div class="site-info">
+                                <h3>🎮 سایت خفن دنیای گیم با زروکس</h3>
+                                <p>پلتفرم تخصصی گیم و اخبار با طراحی مدرن و جذاب</p>
+                            </div>
+                        </div>
+                        <a href="https://zeroxgame74-afk.github.io/zeroxgamee/" target="_blank" class="site-link">
+                            <i class="fas fa-external-link-alt"></i> مشاهده سایت
+                        </a>
+                    </div>
+
+                    <!-- کارت عریض کالفود با رنگ E97510 -->
+                    <div class="site-card-wide call-food">
+                        <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
+                            <div class="site-logo">
+                                <img src="https://uploadkon.ir/uploads/bb4824_26IMG-20260616-172831.jpg" alt="لوگوی سایت کالفود" />
+                            </div>
+                            <div class="site-info">
+                                <h3>🍔 سایت خفن کالفود!</h3>
+                                <p>پلتفرم خاص برای سفارش غذای لذیذ!</p>
+                            </div>
+                        </div>
+                        <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="site-link">
+                            <i class="fas fa-external-link-alt"></i> مشاهده سایت
+                        </a>
+                    </div>
+                </div>
+
+                <div style="margin-top:1.5rem; padding:1rem; background:rgba(255,215,100,0.03); border-radius:16px; border:1px solid rgba(255,215,100,0.06); transition:0.3s;">
+                    <p style="margin:0; font-size:0.95rem; color:#b0a99b;">
+                        <i class="fas fa-rocket" style="color:#f5b042; margin-left:0.5rem; animation:floatIcon 3s ease-in-out infinite;"></i>
+                        در حال اضافه کردن پروژه‌های جدید... 
+                        <span style="display:inline-block; font-weight:700; color:#f5b042;">(به‌زودی)</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- ===== طراحی ===== -->
+            <div class="tab-content" id="design">
+                <h2><i class="fas fa-palette" style="color:#f5b042; margin-left:0.8rem;"></i> طراحی</h2>
+                <p style="margin-bottom:1.5rem;">نمونه‌ای از طراحی‌های هنری و گرافیکی:</p>
+
+                <div class="design-card-new">
+                    <div class="design-image">
+                        <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
+                    </div>
+                    <div class="design-header">
+                        <h3 class="design-title"><i class="fas fa-heart"></i> اهواز خاک غسل شده با شهیدانت...</h3>
+                        <button class="toggle-details" onclick="toggleDetails(this)">
+                            <span>توضیحات بیشتر</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="design-details">
+                        <p class="design-desc">کشویی شیک و زیبا: یک تصویر زیبا در وصف جنوب کشور ایران</p>
+                        <p class="design-author"><i class="fas fa-user-astronaut"></i> طراح: محمد حسین صنعتی</p>
+                    </div>
+                    <div class="download-buttons">
+                        <a href="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 2K
+                        </a>
+                        <a href="https://uploadkon.ir/uploads/828624_26jonnob-mohamad-hossein-sanati-.png" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 1080p
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ========== فوتر ========== -->
+        <footer class="footer">
+            <div class="footer-copy">
+                &copy; 2026 Mohamad Hossein Sanati — تمامی حقوق محفوظ است.
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="ایمیل"><i class="fas fa-envelope"></i></a>
+                <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="گیت‌هاب"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" aria-label="اینستاگرام">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
         </footer>
 
     </div>
 
+    <!-- ========== اسکریپت ========== -->
     <script>
-        // =============================================
-        // ۱. تایمر معکوس زنده (همیشه آپدیت میشه)
-        // =============================================
-        let totalSeconds = 300; // ۵ دقیقه
+        // ===== منو =====
+        (function() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const overlay = document.getElementById('navOverlay');
+            const navLinks = document.querySelectorAll('#navMenu a');
+            const tabContents = document.querySelectorAll('.tab-content');
 
-        function updateTimer() {
-            if (totalSeconds <= 0) {
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-                // نوتیفیکیشن وقت تمام
-                showNotification('⏰ وقت مسابقه تموم شد!');
-                return;
+            function toggleMenu() {
+                hamburger.classList.toggle('active');
+                overlay.classList.toggle('open');
+                document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
             }
-            const hrs = Math.floor(totalSeconds / 3600);
-            const mins = Math.floor((totalSeconds % 3600) / 60);
-            const secs = totalSeconds % 60;
 
-            document.getElementById('hours').textContent = String(hrs).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(mins).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(secs).padStart(2, '0');
+            hamburger.addEventListener('click', toggleMenu);
 
-            totalSeconds--;
-        }
-
-        // ریست تایمر
-        function resetTimer() {
-            totalSeconds = 300;
-            showNotification('🔄 تایمر ریست شد! ۵ دقیقه وقت داری.');
-        }
-
-        // اجرای تایمر هر ۱ ثانیه
-        setInterval(updateTimer, 1000);
-        updateTimer();
-
-        // =============================================
-        // ۲. لیست بازی‌ها (با تعداد آنلاین تصادفی)
-        // =============================================
-        const games = [
-            { name: 'Cyberpunk 2077', icon: 'fa-robot' },
-            { name: 'God of War', icon: 'fa-hat-wizard' },
-            { name: 'FIFA 24', icon: 'fa-futbol' },
-            { name: 'Call of Duty', icon: 'fa-crosshairs' },
-            { name: 'Minecraft', icon: 'fa-cubes' },
-            { name: 'Fortnite', icon: 'fa-bolt' }
-        ];
-
-        const grid = document.getElementById('gameGrid');
-
-        function renderGames() {
-            grid.innerHTML = '';
-            games.forEach(game => {
-                const players = Math.floor(Math.random() * 500) + 50;
-                const card = document.createElement('div');
-                card.className = 'game-card';
-                card.innerHTML = `
-                    <div class="online-dot"></div>
-                    <i class="fas ${game.icon}"></i>
-                    <h3>${game.name}</h3>
-                    <div class="players">
-                        <i class="fas fa-user"></i> ${players} نفر آنلاین
-                    </div>
-                `;
-                // کلیک روی کارت
-                card.addEventListener('click', () => {
-                    showNotification(`🎮 وارد بازی ${game.name} شدی!`);
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.dataset.tab;
+                    if (tabId) {
+                        activateTab(tabId);
+                        if (overlay.classList.contains('open')) toggleMenu();
+                        history.pushState(null, null, `#${tabId}`);
+                    }
                 });
-                grid.appendChild(card);
             });
-        }
 
-        renderGames();
-
-        // بروزرسانی تعداد بازیکنان هر ۵ ثانیه
-        setInterval(() => {
-            const allCards = document.querySelectorAll('.game-card .players');
-            allCards.forEach((p, index) => {
-                const newCount = Math.floor(Math.random() * 500) + 50;
-                p.innerHTML = `<i class="fas fa-user"></i> ${newCount} نفر آنلاین`;
-            });
-        }, 5000);
-
-        // =============================================
-        // ۳. چت زنده (با ذخیره تاریخچه)
-        // =============================================
-        const chatBox = document.getElementById('chatBox');
-        const chatInput = document.getElementById('chatInput');
-        const sendBtn = document.getElementById('sendChat');
-
-        const users = ['🎮 علی', '🔥 سارا', '⚡ رضا', '🕹️ نیما', '💪 مریم'];
-
-        function addChatMessage(user, text) {
-            const div = document.createElement('div');
-            div.className = 'chat-message';
-            const now = new Date();
-            const time = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
-            div.innerHTML = `
-                <span class="user">${user}</span>
-                <span>${text}</span>
-                <span class="time">${time}</span>
-            `;
-            chatBox.appendChild(div);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        // پیام‌های اولیه
-        addChatMessage('🤖 سیستم', 'به چت زنده خوش اومدی!');
-        addChatMessage('🎮 علی', 'چه خبر بچه‌ها؟');
-
-        // ارسال پیام
-        function sendMessage() {
-            const text = chatInput.value.trim();
-            if (!text) return;
-            const randomUser = users[Math.floor(Math.random() * users.length)];
-            addChatMessage(randomUser, text);
-            chatInput.value = '';
-            // نوتیفیکیشن برای پیام جدید
-            showNotification(`💬 ${randomUser}: ${text.substring(0, 20)}${text.length > 20 ? '...' : ''}`);
-        }
-
-        sendBtn.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
-        });
-
-        // پیام‌های تصادفی هر ۸ ثانیه (شبیه‌سازی کاربران واقعی)
-        const randomMessages = [
-            'چقد این بازی قشنگه!', 'کسی آنلاینه؟', 'بیایید تیم بزنیم',
-            'بهترین بازی تاریخ', 'من تازه وارد شدم', 'چه خبر؟',
-            'این سایت خفنه والا', 'کی میاد کالاف؟', 'فورتنایت رایگان شد؟'
-        ];
-
-        setInterval(() => {
-            const msg = randomMessages[Math.floor(Math.random() * randomMessages.length)];
-            const user = users[Math.floor(Math.random() * users.length)];
-            addChatMessage(user, msg);
-            showNotification(`💬 ${user}: ${msg}`);
-        }, 8000);
-
-        // =============================================
-        // ۴. نوتیفیکیشن پاپ‌آپ
-        // =============================================
-        const notifEl = document.getElementById('notification');
-        const notifText = document.getElementById('notifText');
-        let notifTimeout = null;
-
-        function showNotification(text) {
-            notifText.textContent = text;
-            notifEl.classList.add('show');
-            clearTimeout(notifTimeout);
-            notifTimeout = setTimeout(() => {
-                notifEl.classList.remove('show');
-            }, 4000);
-        }
-
-        // دکمه تست نوتیفیکیشن
-        document.getElementById('notifToggle').addEventListener('click', () => {
-            const msgs = ['🎯 یه کیل جدید ثبت شد!', '🔥 ۱۰۰ نفر آنلاین شدن!', '💎 جایزه گرفتی!'];
-            showNotification(msgs[Math.floor(Math.random() * msgs.length)]);
-        });
-
-        // =============================================
-        // ۵. دارک/لایت مود
-        // =============================================
-        let isDark = true;
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-            isDark = !isDark;
-            document.getElementById('themeToggle').innerHTML = isDark ?
-                '<i class="fas fa-moon"></i>' :
-                '<i class="fas fa-sun"></i>';
-            showNotification(isDark ? '🌙 حالت شب' : '☀️ حالت روز');
-        });
-
-        // =============================================
-        // ۶. دکمه اسکرول به بالا
-        // =============================================
-        const scrollBtn = document.getElementById('scrollTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                scrollBtn.style.display = 'block';
-            } else {
-                scrollBtn.style.display = 'none';
+            function activateTab(tabId) {
+                tabContents.forEach(content => content.classList.remove('active'));
+                const target = document.getElementById(tabId);
+                if (target) target.classList.add('active');
+                navLinks.forEach(link => link.classList.remove('active'));
+                const activeLink = document.querySelector(`#navMenu a[data-tab="${tabId}"]`);
+                if (activeLink) activeLink.classList.add('active');
             }
-        });
 
-        scrollBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+            const hash = window.location.hash.replace('#', '');
+            if (hash && document.getElementById(hash)) {
+                activateTab(hash);
+            } else {
+                activateTab('home');
+            }
 
-        // =============================================
-        // ۷. نوتیفیکیشن خوش‌آمدگویی بعد از ۲ ثانیه
-        // =============================================
-        setTimeout(() => {
-            showNotification('🎮 به GamingLive خوش اومدی!');
-        }, 2000);
+            window.addEventListener('hashchange', function() {
+                const newHash = window.location.hash.replace('#', '');
+                if (newHash && document.getElementById(newHash)) {
+                    activateTab(newHash);
+                }
+            });
+
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay && overlay.classList.contains('open')) toggleMenu();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && overlay.classList.contains('open')) toggleMenu();
+            });
+        })();
+
+        // ===== توضیحات بیشتر (کشویی) =====
+        function toggleDetails(btn) {
+            const card = btn.closest('.design-card-new');
+            const details = card.querySelector('.design-details');
+            const icon = btn.querySelector('i');
+
+            details.classList.toggle('open');
+            btn.classList.toggle('open');
+
+            if (details.classList.contains('open')) {
+                btn.innerHTML = 'بستن توضیحات <i class="fas fa-chevron-up"></i>';
+            } else {
+                btn.innerHTML = 'توضیحات بیشتر <i class="fas fa-chevron-down"></i>';
+            }
+        }
+
+        // ===== انیمیشن اسکرول =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.home-design-card, .site-card-wide, .design-card-new');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0) scale(1)';
+                        }, index * 100);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px) scale(0.97)';
+                card.style.transition = `opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)`;
+                observer.observe(card);
+            });
+
+            // نمایش کارت‌هایی که از قبل قابل مشاهده هستند
+            setTimeout(() => {
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    }
+                });
+            }, 100);
+        });
     </script>
 
 </body>
-</html>
+                        </html>
