@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gaming Zone | خفن‌ترین سایت گیمینگ</title>
+    <title>Gaming Live | زنده‌ترین سایت گیمینگ</title>
 
-    <!-- فونت Vazirmatn برای تیترها -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700;900&display=swap" rel="stylesheet" />
-    <!-- فونت Stedad برای متن‌ها -->
     <link href="https://fonts.googleapis.com/css2?family=Stedad&display=swap" rel="stylesheet" />
-    <!-- Font Awesome 6 (رایگان) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
-        /* ریست و تنظیمات پایه */
         * {
             margin: 0;
             padding: 0;
@@ -25,370 +21,676 @@
             color: #e5e9f0;
             font-family: 'Stedad', sans-serif;
             padding: 20px;
+            transition: 0.3s;
             min-height: 100vh;
         }
 
-        /* تیترها با Vazirmatn */
-        h1, h2, h3, .heading {
+        body.light-mode {
+            background: #f0f2f8;
+            color: #1a1f2e;
+        }
+
+        h1,
+        h2,
+        h3,
+        .heading {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 900;
             color: #f7c948;
             text-shadow: 0 0 20px rgba(247, 201, 72, 0.3);
         }
 
-        h1 {
-            font-size: 3.5rem;
-            letter-spacing: 2px;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            border-bottom: 3px solid #f7c948;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-
-        /* متن اصلی با Stedad */
-        p, li, .text, .card-text {
+        p,
+        .text {
             font-family: 'Stedad', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.9;
-            color: #c8d0e0;
         }
 
-        /* کانتینر */
         .container {
             max-width: 1300px;
             margin: 0 auto;
         }
 
-        /* هدر خفن */
+        /* ====== هدر ====== */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
             border-bottom: 2px solid #f7c94855;
             flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo i {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: #f7c948;
-            margin-left: 12px;
+            margin-left: 10px;
         }
 
         .logo span {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 900;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #fff;
         }
 
-        nav a {
-            color: #e5e9f0;
-            text-decoration: none;
-            margin: 0 18px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .header-controls button {
+            background: #1f2742;
+            border: none;
+            color: #f7c948;
+            font-size: 1.5rem;
+            padding: 10px 16px;
+            border-radius: 50px;
+            cursor: pointer;
             transition: 0.3s;
-            font-size: 1.1rem;
         }
 
-        nav a:hover {
-            color: #f7c948;
-            text-shadow: 0 0 15px #f7c948;
-        }
-
-        nav a i {
-            margin-left: 8px;
-        }
-
-        /* بخش Hero */
-        .hero {
-            background: linear-gradient(145deg, #141a2b, #1f2742);
-            padding: 60px 40px;
-            border-radius: 40px;
-            margin: 40px 0;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-            border: 1px solid #f7c94833;
-            text-align: center;
-        }
-
-        .hero i {
-            font-size: 5rem;
-            color: #f7c948;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            max-width: 700px;
-            margin: 20px auto;
-        }
-
-        .btn {
-            display: inline-block;
+        .header-controls button:hover {
+            transform: scale(1.1);
             background: #f7c948;
             color: #0b0e1a;
+        }
+
+        /* ====== هیرو با تایمر زنده ====== */
+        .hero {
+            background: linear-gradient(145deg, #141a2b, #1f2742);
+            padding: 50px 30px;
+            border-radius: 40px;
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid #f7c94833;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .live-badge {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #ff0040;
+            padding: 8px 20px;
+            border-radius: 50px;
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 900;
-            padding: 16px 40px;
+            font-size: 0.9rem;
+            animation: pulse-badge 1.5s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(0.95);
+            }
+        }
+
+        .hero .live-badge i {
+            margin-left: 8px;
+            animation: blink-dot 1s infinite;
+        }
+
+        @keyframes blink-dot {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+        }
+
+        .timer-box {
+            background: #0b0e1a88;
+            padding: 20px 40px;
             border-radius: 60px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: 0.3s;
-            box-shadow: 0 0 30px #f7c94866;
-            margin-top: 20px;
+            display: inline-block;
+            margin: 20px auto;
+            border: 2px solid #f7c948;
         }
 
-        .btn i {
-            margin-left: 12px;
+        .timer-box span {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            color: #fff;
+            min-width: 60px;
+            display: inline-block;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 60px #f7c948aa;
+        .timer-box .colon {
+            color: #f7c948;
+            font-size: 2.5rem;
         }
 
-        /* کارت‌های بازی */
+        /* ====== گرید بازی‌ها ====== */
         .game-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 35px 0;
         }
 
         .game-card {
             background: #161e32;
-            padding: 30px 20px;
+            padding: 25px 15px;
             border-radius: 30px;
             text-align: center;
             border: 1px solid #f7c94822;
             transition: 0.4s;
             cursor: pointer;
+            position: relative;
         }
 
         .game-card:hover {
-            transform: translateY(-12px);
+            transform: translateY(-10px) scale(1.02);
             border-color: #f7c948;
             box-shadow: 0 15px 40px #f7c94833;
         }
 
+        .game-card .online-dot {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            width: 12px;
+            height: 12px;
+            background: #4caf50;
+            border-radius: 50%;
+            animation: blink-dot 1.2s infinite;
+        }
+
         .game-card i {
-            font-size: 4.5rem;
+            font-size: 4rem;
             color: #f7c948;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .game-card h3 {
-            font-size: 1.8rem;
-            margin: 10px 0;
+            font-size: 1.5rem;
         }
 
-        .game-card .status {
-            display: inline-block;
-            background: #f7c94822;
-            padding: 6px 18px;
-            border-radius: 50px;
+        .game-card .players {
             font-size: 0.9rem;
-            color: #f7c948;
-            margin-top: 10px;
+            color: #aab2c9;
+            margin-top: 8px;
         }
 
-        /* بخش پویا با JS */
-        .live-section {
+        .game-card .players i {
+            font-size: 0.8rem;
+            margin-left: 5px;
+            color: #4caf50;
+        }
+
+        /* ====== چت زنده ====== */
+        .chat-section {
             background: #101624;
-            padding: 40px;
+            padding: 30px;
             border-radius: 40px;
             border: 1px solid #f7c94844;
-            margin: 40px 0;
+            margin: 35px 0;
         }
 
-        .live-stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            text-align: center;
-        }
-
-        .stat-item {
-            background: #1a2340;
-            padding: 25px 35px;
+        .chat-box {
+            background: #0b0e1a;
             border-radius: 30px;
-            min-width: 150px;
-            border-bottom: 4px solid #f7c948;
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 20px 0;
+            border: 1px solid #f7c94833;
         }
 
-        .stat-item i {
-            font-size: 2.5rem;
-            color: #f7c948;
-            display: block;
-            margin-bottom: 10px;
+        .chat-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-box::-webkit-scrollbar-thumb {
+            background: #f7c948;
+            border-radius: 10px;
         }
 
-        .stat-number {
+        .chat-message {
+            padding: 10px 18px;
+            margin: 6px 0;
+            background: #1a2340;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .chat-message .user {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 900;
-            font-size: 2.8rem;
-            color: #fff;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: #aab2c9;
-        }
-
-        /* فوتر */
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid #f7c94833;
-            margin-top: 40px;
-        }
-
-        footer i {
             color: #f7c948;
-            margin: 0 10px;
+            min-width: 80px;
         }
 
-        /* ریسپانسیو */
+        .chat-message .time {
+            font-size: 0.7rem;
+            color: #888;
+            margin-right: auto;
+        }
+
+        .chat-input-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .chat-input-group input {
+            flex: 1;
+            padding: 14px 22px;
+            border-radius: 60px;
+            border: 2px solid #f7c94855;
+            background: #0b0e1a;
+            color: #fff;
+            font-family: 'Stedad', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+            min-width: 150px;
+        }
+
+        .chat-input-group input:focus {
+            border-color: #f7c948;
+            box-shadow: 0 0 25px #f7c94844;
+        }
+
+        .chat-input-group button {
+            background: #f7c948;
+            color: #0b0e1a;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 60px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 900;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .chat-input-group button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px #f7c94888;
+        }
+
+        /* ====== نوتیفیکیشن ====== */
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #1f2742;
+            padding: 18px 30px;
+            border-radius: 60px;
+            border-right: 6px solid #f7c948;
+            box-shadow: 0 10px 40px #00000099;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            transform: translateX(-150%);
+            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification i {
+            font-size: 1.8rem;
+            color: #f7c948;
+        }
+
+        /* ====== دکمه اسکرول به بالا ====== */
+        .scroll-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #f7c948;
+            color: #0b0e1a;
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            display: none;
+            transition: 0.3s;
+            box-shadow: 0 0 30px #f7c94866;
+            z-index: 99;
+        }
+
+        .scroll-top:hover {
+            transform: scale(1.1);
+        }
+
+        /* ====== ریسپانسیو ====== */
         @media (max-width: 768px) {
-            h1 { font-size: 2.4rem; }
-            header { flex-direction: column; gap: 20px; }
-            nav a { display: inline-block; margin: 8px; }
-            .hero { padding: 30px 20px; }
-            .stat-item { min-width: 120px; padding: 15px; }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .timer-box span {
+                font-size: 2rem;
+                min-width: 40px;
+            }
+            .timer-box {
+                padding: 15px 25px;
+            }
+            .chat-input-group input {
+                min-width: 100%;
+            }
+            .chat-input-group button {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-
-    <!-- هدر -->
-    <header>
-        <div class="logo">
-            <i class="fas fa-gamepad"></i>
-            <span>GamingZone</span>
-        </div>
-        <nav>
-            <a href="#"><i class="fas fa-home"></i>خانه</a>
-            <a href="#"><i class="fas fa-fire"></i>بازی‌ها</a>
-            <a href="#"><i class="fas fa-trophy"></i>رتبه‌بندی</a>
-            <a href="#"><i class="fas fa-users"></i>انجمن</a>
-        </nav>
-    </header>
-
-    <!-- هیرو -->
-    <section class="hero">
-        <i class="fas fa-robot"></i>
-        <h1>به جنگل بازی خوش اومدی!</h1>
-        <p>با <strong>GamingZone</strong> به روزترین اخبار، بروزرسانی‌ها و تریلرهای بازی‌های دنیا رو لحظه‌ای دنبال کن.</p>
-        <a href="#" class="btn"><i class="fas fa-rocket"></i>شروع ماجراجویی</a>
-    </section>
-
-    <!-- لیست بازی‌ها (پویا با JS) -->
-    <h2><i class="fas fa-gamepad" style="margin-left: 15px;"></i>بازی‌های داغ امروز</h2>
-    <div class="game-grid" id="gameGrid">
-        <!-- کارت‌ها توسط جاوااسکریپت پر می‌شوند -->
+    <!-- ====== نوتیفیکیشن ====== -->
+    <div class="notification" id="notification">
+        <i class="fas fa-bell"></i>
+        <span id="notifText">🎮 یه بازیکن جدید وارد شد!</span>
     </div>
 
-    <!-- بخش آمار زنده (پویا) -->
-    <section class="live-section">
-        <h2><i class="fas fa-chart-line" style="margin-left: 15px;"></i>آمار لحظه‌ای</h2>
-        <div class="live-stats" id="liveStats">
-            <!-- توسط JS پر می‌شه -->
+    <!-- ====== دکمه اسکرول ====== -->
+    <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+
+    <div class="container">
+
+        <!-- ====== هدر ====== -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-gamepad"></i>
+                <span>GamingLive</span>
+            </div>
+            <div class="header-controls">
+                <button id="themeToggle" title="تغییر تم">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="notifToggle" title="نوتیفیکیشن تست">
+                    <i class="fas fa-bell"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- ====== هیرو با تایمر ====== -->
+        <section class="hero">
+            <div class="live-badge">
+                <i class="fas fa-circle"></i> زنده
+            </div>
+            <i class="fas fa-trophy" style="font-size: 4rem; color: #f7c948;"></i>
+            <h1>مسابقه زنده <span style="color:#fff;">بازی روز</span></h1>
+            <p style="font-size: 1.2rem;">تا شروع مسابقه وقت داری:</p>
+            <div class="timer-box">
+                <span id="hours">00</span>
+                <span class="colon">:</span>
+                <span id="minutes">05</span>
+                <span class="colon">:</span>
+                <span id="seconds">00</span>
+            </div>
+            <div>
+                <button class="btn" style="background:#f7c948; color:#0b0e1a; border:none; padding:14px 40px; border-radius:60px; font-family:'Vazirmatn'; font-weight:900; font-size:1.1rem; cursor:pointer; margin-top:15px;" onclick="resetTimer()">
+                    <i class="fas fa-rotate"></i> ریست تایمر
+                </button>
+            </div>
+        </section>
+
+        <!-- ====== بازی‌ها ====== -->
+        <h2><i class="fas fa-fire" style="margin-left:15px; color:#f7c948;"></i>بازی‌های آنلاین</h2>
+        <div class="game-grid" id="gameGrid">
+            <!-- توسط JS پر میشه -->
         </div>
-    </section>
 
-    <!-- فوتر -->
-    <footer>
-        <p>
-            <i class="fas fa-crown"></i>
-            ساخته شده با عشق و کد
-            <i class="fas fa-heart" style="color: #ff4477;"></i>
-            | تمامی حقوق برای گیمینگ‌زونه
-        </p>
-        <p style="margin-top: 10px; font-size: 0.9rem;">
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-discord"></i>
-            <i class="fab fa-youtube"></i>
-        </p>
-    </footer>
+        <!-- ====== چت زنده ====== -->
+        <section class="chat-section">
+            <h2><i class="fas fa-comments" style="margin-left:15px;"></i>چت زنده گیمینگ</h2>
+            <div class="chat-box" id="chatBox">
+                <!-- پیام‌ها اینجا میاد -->
+            </div>
+            <div class="chat-input-group">
+                <input type="text" id="chatInput" placeholder="پیامتو بزن..." />
+                <button id="sendChat"><i class="fas fa-paper-plane"></i> بفرست</button>
+            </div>
+        </section>
 
-</div>
+        <!-- ====== فوتر ====== -->
+        <footer style="text-align:center; padding:30px 0; border-top:1px solid #f7c94833; margin-top:30px;">
+            <p style="font-family:'Vazirmatn';">
+                <i class="fas fa-crown" style="color:#f7c948;"></i>
+                ساخته شده با <i class="fas fa-heart" style="color:#ff4477;"></i> برای گیمرها
+            </p>
+        </footer>
 
-<script>
-    // ---------- داده‌های بازی‌ها (پویا) ----------
-    const games = [
-        { name: 'Cyberpunk 2077', icon: 'fa-robot', status: '🔥 بروزرسانی جدید' },
-        { name: 'God of War', icon: 'fa-hat-wizard', status: '⚡ محبوب ترین' },
-        { name: 'FIFA 24', icon: 'fa-futbol', status: '🏆 لیگ جدید' },
-        { name: 'Call of Duty', icon: 'fa-crosshairs', status: '🎯 بتا آنلاین' },
-        { name: 'Minecraft', icon: 'fa-cubes', status: '🛠 آپدیت 1.21' },
-        { name: 'Fortnite', icon: 'fa-bolt', status: '💃 رویداد ویژه' }
-    ];
+    </div>
 
-    const grid = document.getElementById('gameGrid');
-    games.forEach(game => {
-        const card = document.createElement('div');
-        card.className = 'game-card';
-        card.innerHTML = `
-            <i class="fas ${game.icon}"></i>
-            <h3>${game.name}</h3>
-            <div class="status"><i class="fas fa-circle" style="color: #4caf50; font-size: 0.6rem; margin-left: 6px;"></i>${game.status}</div>
-        `;
-        grid.appendChild(card);
-    });
+    <script>
+        // =============================================
+        // ۱. تایمر معکوس زنده (همیشه آپدیت میشه)
+        // =============================================
+        let totalSeconds = 300; // ۵ دقیقه
 
-    // ---------- آمار لحظه‌ای (تغییر تصادفی هر ۳ ثانیه) ----------
-    const stats = [
-        { label: 'بازیکن آنلاین', icon: 'fa-user', value: 1247 },
-        { label: 'بازی در حال اجرا', icon: 'fa-play', value: 89 },
-        { label: 'کامنت جدید', icon: 'fa-comment', value: 312 },
-        { label: 'توییت گیمینگ', icon: 'fa-twitter', value: 567 }
-    ];
+        function updateTimer() {
+            if (totalSeconds <= 0) {
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                // نوتیفیکیشن وقت تمام
+                showNotification('⏰ وقت مسابقه تموم شد!');
+                return;
+            }
+            const hrs = Math.floor(totalSeconds / 3600);
+            const mins = Math.floor((totalSeconds % 3600) / 60);
+            const secs = totalSeconds % 60;
 
-    const statsContainer = document.getElementById('liveStats');
+            document.getElementById('hours').textContent = String(hrs).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(mins).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(secs).padStart(2, '0');
 
-    function renderStats() {
-        statsContainer.innerHTML = '';
-        stats.forEach(stat => {
-            const div = document.createElement('div');
-            div.className = 'stat-item';
-            div.innerHTML = `
-                <i class="fas ${stat.icon}"></i>
-                <div class="stat-number">${stat.value}</div>
-                <div class="stat-label">${stat.label}</div>
-            `;
-            statsContainer.appendChild(div);
-        });
-    }
-
-    // تغییر تصادفی اعداد
-    function updateStats() {
-        stats.forEach(stat => {
-            const change = Math.floor(Math.random() * 21) - 10; // -10 تا +10
-            stat.value = Math.max(0, stat.value + change);
-        });
-        renderStats();
-    }
-
-    // اجرا هر ۳ ثانیه
-    renderStats();
-    setInterval(updateStats, 3000);
-
-    // کلیک روی کارت‌ها (پویا)
-    document.addEventListener('click', function(e) {
-        const card = e.target.closest('.game-card');
-        if (card) {
-            const name = card.querySelector('h3').innerText;
-            alert(`🎮 وارد بازی ${name} شدی! آماده‌ای؟`);
+            totalSeconds--;
         }
-    });
-</script>
+
+        // ریست تایمر
+        function resetTimer() {
+            totalSeconds = 300;
+            showNotification('🔄 تایمر ریست شد! ۵ دقیقه وقت داری.');
+        }
+
+        // اجرای تایمر هر ۱ ثانیه
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // =============================================
+        // ۲. لیست بازی‌ها (با تعداد آنلاین تصادفی)
+        // =============================================
+        const games = [
+            { name: 'Cyberpunk 2077', icon: 'fa-robot' },
+            { name: 'God of War', icon: 'fa-hat-wizard' },
+            { name: 'FIFA 24', icon: 'fa-futbol' },
+            { name: 'Call of Duty', icon: 'fa-crosshairs' },
+            { name: 'Minecraft', icon: 'fa-cubes' },
+            { name: 'Fortnite', icon: 'fa-bolt' }
+        ];
+
+        const grid = document.getElementById('gameGrid');
+
+        function renderGames() {
+            grid.innerHTML = '';
+            games.forEach(game => {
+                const players = Math.floor(Math.random() * 500) + 50;
+                const card = document.createElement('div');
+                card.className = 'game-card';
+                card.innerHTML = `
+                    <div class="online-dot"></div>
+                    <i class="fas ${game.icon}"></i>
+                    <h3>${game.name}</h3>
+                    <div class="players">
+                        <i class="fas fa-user"></i> ${players} نفر آنلاین
+                    </div>
+                `;
+                // کلیک روی کارت
+                card.addEventListener('click', () => {
+                    showNotification(`🎮 وارد بازی ${game.name} شدی!`);
+                });
+                grid.appendChild(card);
+            });
+        }
+
+        renderGames();
+
+        // بروزرسانی تعداد بازیکنان هر ۵ ثانیه
+        setInterval(() => {
+            const allCards = document.querySelectorAll('.game-card .players');
+            allCards.forEach((p, index) => {
+                const newCount = Math.floor(Math.random() * 500) + 50;
+                p.innerHTML = `<i class="fas fa-user"></i> ${newCount} نفر آنلاین`;
+            });
+        }, 5000);
+
+        // =============================================
+        // ۳. چت زنده (با ذخیره تاریخچه)
+        // =============================================
+        const chatBox = document.getElementById('chatBox');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendChat');
+
+        const users = ['🎮 علی', '🔥 سارا', '⚡ رضا', '🕹️ نیما', '💪 مریم'];
+
+        function addChatMessage(user, text) {
+            const div = document.createElement('div');
+            div.className = 'chat-message';
+            const now = new Date();
+            const time = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+            div.innerHTML = `
+                <span class="user">${user}</span>
+                <span>${text}</span>
+                <span class="time">${time}</span>
+            `;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // پیام‌های اولیه
+        addChatMessage('🤖 سیستم', 'به چت زنده خوش اومدی!');
+        addChatMessage('🎮 علی', 'چه خبر بچه‌ها؟');
+
+        // ارسال پیام
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+            const randomUser = users[Math.floor(Math.random() * users.length)];
+            addChatMessage(randomUser, text);
+            chatInput.value = '';
+            // نوتیفیکیشن برای پیام جدید
+            showNotification(`💬 ${randomUser}: ${text.substring(0, 20)}${text.length > 20 ? '...' : ''}`);
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        // پیام‌های تصادفی هر ۸ ثانیه (شبیه‌سازی کاربران واقعی)
+        const randomMessages = [
+            'چقد این بازی قشنگه!', 'کسی آنلاینه؟', 'بیایید تیم بزنیم',
+            'بهترین بازی تاریخ', 'من تازه وارد شدم', 'چه خبر؟',
+            'این سایت خفنه والا', 'کی میاد کالاف؟', 'فورتنایت رایگان شد؟'
+        ];
+
+        setInterval(() => {
+            const msg = randomMessages[Math.floor(Math.random() * randomMessages.length)];
+            const user = users[Math.floor(Math.random() * users.length)];
+            addChatMessage(user, msg);
+            showNotification(`💬 ${user}: ${msg}`);
+        }, 8000);
+
+        // =============================================
+        // ۴. نوتیفیکیشن پاپ‌آپ
+        // =============================================
+        const notifEl = document.getElementById('notification');
+        const notifText = document.getElementById('notifText');
+        let notifTimeout = null;
+
+        function showNotification(text) {
+            notifText.textContent = text;
+            notifEl.classList.add('show');
+            clearTimeout(notifTimeout);
+            notifTimeout = setTimeout(() => {
+                notifEl.classList.remove('show');
+            }, 4000);
+        }
+
+        // دکمه تست نوتیفیکیشن
+        document.getElementById('notifToggle').addEventListener('click', () => {
+            const msgs = ['🎯 یه کیل جدید ثبت شد!', '🔥 ۱۰۰ نفر آنلاین شدن!', '💎 جایزه گرفتی!'];
+            showNotification(msgs[Math.floor(Math.random() * msgs.length)]);
+        });
+
+        // =============================================
+        // ۵. دارک/لایت مود
+        // =============================================
+        let isDark = true;
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            isDark = !isDark;
+            document.getElementById('themeToggle').innerHTML = isDark ?
+                '<i class="fas fa-moon"></i>' :
+                '<i class="fas fa-sun"></i>';
+            showNotification(isDark ? '🌙 حالت شب' : '☀️ حالت روز');
+        });
+
+        // =============================================
+        // ۶. دکمه اسکرول به بالا
+        // =============================================
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollBtn.style.display = 'block';
+            } else {
+                scrollBtn.style.display = 'none';
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // =============================================
+        // ۷. نوتیفیکیشن خوش‌آمدگویی بعد از ۲ ثانیه
+        // =============================================
+        setTimeout(() => {
+            showNotification('🎮 به GamingLive خوش اومدی!');
+        }, 2000);
+    </script>
 
 </body>
 </html>
