@@ -650,6 +650,7 @@
             transform: translateX(-4px) scale(1.1);
         }
 
+        /* کارت کالفود با رنگ E97510 */
         .site-card-wide.call-food {
             border-right-color: #E97510;
             border-color: rgba(233, 117, 16, 0.2);
@@ -678,9 +679,7 @@
             color: #E97510;
         }
 
-        /* ============================================
-                   ===== کارت طراحی با افکت ۳D =====
-                   ============================================ */
+        /* ===== کارت طراحی ===== */
         .design-card-new {
             width: 1080px;
             max-width: 100%;
@@ -731,8 +730,8 @@
             z-index: 1;
         }
 
-        /* ===== کانتینر تصویر با افکت ۳D ===== */
-        .design-image-wrapper {
+        /* ===== تصویر با افکت 3D ===== */
+        .design-image {
             width: 100%;
             aspect-ratio: 1/1;
             border-radius: 16px;
@@ -740,177 +739,102 @@
             margin-bottom: 1.2rem;
             background: #0b0b0e;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s;
             position: relative;
-            perspective: 1200px;
             cursor: pointer;
-            transition: 0.3s;
+            perspective: 1000px;
         }
 
-        .design-image-wrapper:hover {
-            border-color: rgba(255, 215, 100, 0.15);
-            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
-        }
-
-        .design-image-inner {
+        .design-image .image-wrapper {
             width: 100%;
             height: 100%;
-            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             transform-style: preserve-3d;
             position: relative;
         }
 
-        .design-image-inner.flipped {
-            transform: rotateY(-25deg) scale(1.05) rotateX(3deg);
-            box-shadow: -20px 20px 40px -10px rgba(0, 0, 0, 0.6);
+        .design-image .image-wrapper.rotated {
+            transform: rotateY(15deg) rotateX(5deg) scale(1.02);
         }
 
-        .design-image-inner img {
+        .design-image .image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             display: block;
-            transition: 0.3s;
         }
 
-        /* ===== اوورلی شیشه‌ای ===== */
-        .glass-overlay {
+        .design-image .image-overlay {
             position: absolute;
             top: 0;
             right: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(2px);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-            border-radius: 16px;
-            pointer-events: none;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             gap: 0.5rem;
+            border-radius: 16px;
         }
 
-        .glass-overlay.show {
+        .design-image:hover .image-overlay {
             opacity: 1;
         }
 
-        .glass-overlay i {
-            font-size: 3rem;
+        .design-image .image-overlay i {
+            font-size: 2.5rem;
             color: #f5b042;
-            text-shadow: 0 0 30px rgba(245, 176, 66, 0.3);
-            animation: pulseIcon 1.5s ease-in-out infinite;
+            animation: floatIcon 2s ease-in-out infinite;
         }
 
-        .glass-overlay .glass-text {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
+        .design-image .image-overlay span {
             color: #f5efe6;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            padding: 0 1rem;
-        }
-
-        .glass-overlay .glass-sub {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 0.85rem;
-            color: #b0a99b;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        /* ===== دکمه‌های کنترل ===== */
-        .design-controls {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            margin: 0.5rem 0 1rem 0;
-        }
-
-        .design-controls button {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 600;
-            padding: 0.4rem 1.2rem;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.3rem 1.2rem;
             border-radius: 40px;
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            background: rgba(255, 215, 100, 0.05);
-            color: #f5efe6;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
         }
 
-        .design-controls button:hover {
-            background: rgba(255, 215, 100, 0.12);
-            border-color: #f5b042;
-            transform: scale(1.04);
+        .design-card-new:hover .design-image {
+            border-color: rgba(255, 215, 100, 0.15);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
         }
 
-        .design-controls button i {
-            color: #f5b042;
+        .design-card-new:hover .design-image img {
+            transform: scale(1.03);
         }
 
-        .design-controls button.active-3d {
-            background: rgba(245, 176, 66, 0.15);
-            border-color: #f5b042;
-            box-shadow: 0 0 20px -8px rgba(245, 176, 66, 0.2);
-        }
-
-        /* ===== دکمه کپی‌رایت ===== */
-        .copyright-btn {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            background: rgba(255, 215, 100, 0.05);
-            color: #f5efe6;
-            cursor: pointer;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-        }
-
-        .copyright-btn:hover {
-            background: rgba(255, 215, 100, 0.12);
-            border-color: #f5b042;
-            transform: scale(1.04);
-        }
-
-        .copyright-btn i {
-            color: #f5b042;
-        }
-
-        /* ===== مودال کپی‌رایت ===== */
-        .copyright-modal {
+        /* ===== مودال شیشه‌ای ===== */
+        .modal-overlay {
             position: fixed;
             top: 0;
             right: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(12px);
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
-            padding: 2rem;
-            animation: fadeIn 0.4s ease;
+            z-index: 2000;
+            animation: fadeInModal 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            padding: 1rem;
         }
 
-        .copyright-modal.show {
+        .modal-overlay.active {
             display: flex;
         }
 
-        @keyframes fadeIn {
+        @keyframes fadeInModal {
             0% {
                 opacity: 0;
                 transform: scale(0.95);
@@ -921,70 +845,184 @@
             }
         }
 
-        .copyright-modal-content {
-            max-width: 600px;
+        .modal-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            border-radius: 32px;
+            padding: 2rem;
+            max-width: 700px;
             width: 100%;
-            background: rgba(20, 20, 25, 0.95);
-            border-radius: 24px;
-            padding: 2.5rem;
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            box-shadow: 0 24px 64px -16px rgba(0, 0, 0, 0.6);
+            max-height: 90vh;
+            overflow-y: auto;
             position: relative;
-            text-align: center;
+            box-shadow: 0 24px 80px -16px rgba(0, 0, 0, 0.6);
+            animation: slideUpModal 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .copyright-modal-content .close-modal {
+        @keyframes slideUpModal {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-content .modal-close {
             position: absolute;
             top: 1rem;
             left: 1rem;
-            background: none;
-            border: none;
-            color: #b0a99b;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            color: #f5efe6;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.5rem;
             cursor: pointer;
             transition: 0.3s;
+            z-index: 10;
         }
 
-        .copyright-modal-content .close-modal:hover {
-            color: #f5b042;
-            transform: rotate(90deg);
+        .modal-content .modal-close:hover {
+            background: rgba(255, 215, 100, 0.15);
+            transform: rotate(90deg) scale(1.1);
+            border-color: #f5b042;
         }
 
-        .copyright-modal-content .modal-icon {
-            font-size: 3rem;
-            color: #f5b042;
-            margin-bottom: 1rem;
+        .modal-content .modal-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
-        .copyright-modal-content h3 {
+        .modal-content .modal-image .modal-img-wrapper {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+        }
+
+        .modal-content .modal-image .modal-img-wrapper.rotated-3d {
+            transform: rotateY(180deg) rotateX(10deg) scale(1.05);
+        }
+
+        .modal-content .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-content .modal-title {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: #f5efe6;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
         }
 
-        .copyright-modal-content p {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 1rem;
-            color: #d6d0c4;
-            line-height: 2.2;
-            text-align: justify;
-        }
-
-        .copyright-modal-content .copy-badge {
-            display: inline-block;
-            background: rgba(245, 176, 66, 0.1);
-            border: 1px solid rgba(245, 176, 66, 0.2);
-            padding: 0.3rem 1.5rem;
-            border-radius: 40px;
-            font-size: 0.9rem;
+        .modal-content .modal-title i {
             color: #f5b042;
-            margin-top: 1rem;
         }
 
-        /* ===== طراحی هدر ===== */
-        .design-header {
+        .modal-content .modal-controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .modal-content .modal-controls button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            color: #d6d0c4;
+            padding: 0.7rem 1rem;
+            border-radius: 16px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .modal-content .modal-controls button i {
+            color: #f5b042;
+            font-size: 1.1rem;
+        }
+
+        .modal-content .modal-controls button:hover {
+            background: rgba(255, 215, 100, 0.08);
+            border-color: rgba(255, 215, 100, 0.25);
+            transform: scale(1.04);
+            color: #f5efe6;
+        }
+
+        .modal-content .modal-controls button:active {
+            transform: scale(0.96);
+        }
+
+        .modal-content .modal-controls button.active-3d {
+            background: rgba(245, 176, 66, 0.15);
+            border-color: #f5b042;
+            color: #f5b042;
+        }
+
+        .modal-content .modal-controls button.active-3d i {
+            color: #f5b042;
+        }
+
+        .modal-content .modal-copyright {
+            background: rgba(255, 215, 100, 0.05);
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            border-radius: 16px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+
+        .modal-content .modal-copyright.active {
+            display: block;
+        }
+
+        .modal-content .modal-copyright p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.9rem;
+            color: #b0a99b;
+            line-height: 2;
+            margin: 0;
+        }
+
+        .modal-content .modal-copyright p strong {
+            color: #f5b042;
+        }
+
+        .modal-content .modal-footer-text {
+            text-align: center;
+            margin-top: 1rem;
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.8rem;
+            color: #8f887c;
+        }
+
+        .design-card-new .design-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -993,7 +1031,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .design-title {
+        .design-card-new .design-title {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
             font-size: 1.8rem;
@@ -1005,7 +1043,7 @@
             color: #f5b042;
         }
 
-        .design-title i {
+        .design-card-new .design-title i {
             color: #f5b042;
             margin-left: 0.5rem;
             animation: heartBeat 2s ease-in-out infinite;
@@ -1030,7 +1068,7 @@
             }
         }
 
-        .toggle-details {
+        .design-card-new .toggle-details {
             background: none;
             border: 1px solid rgba(255, 215, 100, 0.15);
             color: #f5b042;
@@ -1046,21 +1084,21 @@
             gap: 0.5rem;
         }
 
-        .toggle-details:hover {
+        .design-card-new .toggle-details:hover {
             background: rgba(255, 215, 100, 0.08);
             border-color: #f5b042;
             transform: scale(1.04);
         }
 
-        .toggle-details i {
+        .design-card-new .toggle-details i {
             transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .toggle-details.open i {
+        .design-card-new .toggle-details.open i {
             transform: rotate(180deg);
         }
 
-        .design-details {
+        .design-card-new .design-details {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, margin 0.3s ease;
@@ -1068,33 +1106,33 @@
             margin: 0;
         }
 
-        .design-details.open {
+        .design-card-new .design-details.open {
             max-height: 500px;
             opacity: 1;
             margin: 1rem 0;
         }
 
-        .design-desc {
+        .design-card-new .design-desc {
             font-family: 'Noto Sans Arabic', sans-serif;
             font-size: 1rem;
             color: #b0a99b;
             margin-bottom: 0.5rem;
         }
 
-        .design-author {
+        .design-card-new .design-author {
             font-family: 'Noto Sans Arabic', sans-serif;
             font-size: 0.95rem;
             color: #f5b042;
             margin-bottom: 1rem;
         }
 
-        .download-buttons {
+        .design-card-new .download-buttons {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
 
-        .download-buttons a {
+        .design-card-new .download-buttons a {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 600;
             color: #f5efe6;
@@ -1112,7 +1150,7 @@
             overflow: hidden;
         }
 
-        .download-buttons a::before {
+        .design-card-new .download-buttons a::before {
             content: '';
             position: absolute;
             top: 0;
@@ -1124,23 +1162,23 @@
             border-radius: 40px;
         }
 
-        .download-buttons a:hover::before {
+        .design-card-new .download-buttons a:hover::before {
             width: 100%;
         }
 
-        .download-buttons a:hover {
+        .design-card-new .download-buttons a:hover {
             background: rgba(255, 215, 100, 0.12);
             border-color: #f5b042;
             transform: scale(1.04) translateY(-2px);
             box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.15);
         }
 
-        .download-buttons a i {
+        .design-card-new .download-buttons a i {
             color: #f5b042;
             transition: 0.3s;
         }
 
-        .download-buttons a:hover i {
+        .design-card-new .download-buttons a:hover i {
             transform: translateY(-2px) scale(1.1);
         }
 
@@ -1235,10 +1273,10 @@
             .site-card-wide .site-link {
                 align-self: flex-start;
             }
-            .design-title {
+            .design-card-new .design-title {
                 font-size: 1.4rem;
             }
-            .design-header {
+            .design-card-new .design-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
@@ -1256,24 +1294,19 @@
             .bio-intro p {
                 font-size: 1rem;
             }
-            .download-buttons {
+            .design-card-new .download-buttons {
                 flex-direction: column;
                 align-items: stretch;
             }
-            .download-buttons a {
+            .design-card-new .download-buttons a {
                 justify-content: center;
             }
-            .glass-overlay .glass-text {
-                font-size: 1rem;
-            }
-            .glass-overlay i {
-                font-size: 2.2rem;
-            }
-            .copyright-modal-content {
+            .modal-content {
                 padding: 1.5rem;
+                margin: 0.5rem;
             }
-            .design-controls {
-                justify-content: center;
+            .modal-content .modal-controls {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -1306,14 +1339,16 @@
             .site-card-wide .site-info h3 {
                 font-size: 1.1rem;
             }
-            .design-title {
+            .design-card-new .design-title {
                 font-size: 1.2rem;
             }
-            .glass-overlay .glass-text {
-                font-size: 0.9rem;
+            .modal-content .modal-controls {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
             }
-            .glass-overlay i {
-                font-size: 1.8rem;
+            .modal-content .modal-controls button {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.8rem;
             }
         }
     </style>
@@ -1436,6 +1471,7 @@
                 <p style="margin-bottom:1.5rem;">نمونه‌ای از پروژه‌هایی که با عشق و تعصب ساختم:</p>
 
                 <div class="sites-grid">
+                    <!-- کارت عریض ZEROX -->
                     <div class="site-card-wide">
                         <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
                             <div class="site-logo">
@@ -1451,6 +1487,7 @@
                         </a>
                     </div>
 
+                    <!-- کارت عریض کالفود با رنگ E97510 -->
                     <div class="site-card-wide call-food">
                         <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
                             <div class="site-logo">
@@ -1476,43 +1513,21 @@
                 </div>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- ===== طراحی (با افکت ۳D و کپی‌رایت) ===== -->
-            <!-- ========================================================== -->
+            <!-- ===== طراحی ===== -->
             <div class="tab-content" id="design">
                 <h2><i class="fas fa-palette" style="color:#f5b042; margin-left:0.8rem;"></i> طراحی</h2>
                 <p style="margin-bottom:1.5rem;">نمونه‌ای از طراحی‌های هنری و گرافیکی:</p>
 
                 <div class="design-card-new">
-
-                    <!-- ===== کانتینر تصویر با افکت ۳D ===== -->
-                    <div class="design-image-wrapper" id="imageWrapper">
-                        <div class="design-image-inner" id="imageInner">
+                    <div class="design-image" id="designImage" onclick="openModal()">
+                        <div class="image-wrapper" id="imageWrapper">
                             <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
-
-                            <!-- اوورلی شیشه‌ای -->
-                            <div class="glass-overlay" id="glassOverlay">
-                                <i class="fas fa-cube"></i>
-                                <span class="glass-text">✨ مدل ۳D فعال شد!</span>
-                                <span class="glass-sub">برای خاموش کردن دوباره کلیک کن</span>
-                            </div>
+                        </div>
+                        <div class="image-overlay">
+                            <i class="fas fa-expand"></i>
+                            <span>برای مشاهده کلیک کن</span>
                         </div>
                     </div>
-
-                    <!-- ===== کنترل‌ها ===== -->
-                    <div class="design-controls">
-                        <button id="toggle3dBtn" class="active-3d">
-                            <i class="fas fa-cube"></i> مدل ۳D
-                        </button>
-                        <button id="copyrightBtn">
-                            <i class="fas fa-copyright"></i> کپی‌رایت
-                        </button>
-                        <button id="resetViewBtn">
-                            <i class="fas fa-undo-alt"></i> ریست
-                        </button>
-                    </div>
-
-                    <!-- ===== هدر ===== -->
                     <div class="design-header">
                         <h3 class="design-title"><i class="fas fa-heart"></i> اهواز خاک غسل شده با شهیدانت...</h3>
                         <button class="toggle-details" onclick="toggleDetails(this)">
@@ -1520,14 +1535,10 @@
                             <i class="fas fa-chevron-down"></i>
                         </button>
                     </div>
-
-                    <!-- ===== جزئیات ===== -->
                     <div class="design-details">
                         <p class="design-desc">کشویی شیک و زیبا: یک تصویر زیبا در وصف جنوب کشور ایران</p>
                         <p class="design-author"><i class="fas fa-user-astronaut"></i> طراح: محمد حسین صنعتی</p>
                     </div>
-
-                    <!-- ===== دکمه‌های دانلود ===== -->
                     <div class="download-buttons">
                         <a href="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" download target="_blank">
                             <i class="fas fa-download"></i> دانلود 2K
@@ -1558,32 +1569,59 @@
 
     </div>
 
-    <!-- ===== مودال کپی‌رایت ===== -->
-    <div class="copyright-modal" id="copyrightModal">
-        <div class="copyright-modal-content">
-            <button class="close-modal" id="closeModalBtn">
+    <!-- ========== مودال شیشه‌ای ========== -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="modal-icon">
-                <i class="fas fa-copyright"></i>
+
+            <div class="modal-image" id="modalImage">
+                <div class="modal-img-wrapper" id="modalImgWrapper">
+                    <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
+                </div>
             </div>
-            <h3>© 2026 Mohammad Hossein Sanati</h3>
-            <p>
-                تمامی حقوق محفوظ است. تمامی محتوای این وب‌سایت، از جمله متن‌ها، تصاویر، طرح‌ها، لوگو، پروژه‌ها، کدها و سایر آثار، متعلق به <strong>Mohammad Hossein Sanati</strong> است.
-                <br><br>
-                هرگونه کپی، بازنشر، انتشار، ویرایش یا استفاده از این محتوا بدون کسب اجازه کتبی ممنوع بوده و مطابق قوانین مربوط به حقوق مالکیت فکری قابل پیگیری است.
-            </p>
-            <div class="copy-badge">
-                <i class="fas fa-shield-alt"></i> محافظت شده توسط کپی‌رایت
+
+            <h3 class="modal-title"><i class="fas fa-heart"></i> اهواز خاک غسل شده با شهیدانت...</h3>
+
+            <div class="modal-controls">
+                <button onclick="rotate3D('left')">
+                    <i class="fas fa-arrow-left"></i> چپ
+                </button>
+                <button onclick="rotate3D('right')">
+                    <i class="fas fa-arrow-right"></i> راست
+                </button>
+                <button onclick="rotate3D('up')">
+                    <i class="fas fa-arrow-up"></i> بالا
+                </button>
+                <button onclick="rotate3D('down')">
+                    <i class="fas fa-arrow-down"></i> پایین
+                </button>
+                <button onclick="toggle3D()" id="btn3d">
+                    <i class="fas fa-cube"></i> ۳D
+                </button>
+                <button onclick="showCopyright()">
+                    <i class="fas fa-copyright"></i> کپی رایت
+                </button>
+            </div>
+
+            <div class="modal-copyright" id="copyrightBox">
+                <p>
+                    <strong>© 2026 Mohammad Hossein Sanati.</strong> تمامی حقوق محفوظ است.
+                    <br><br>
+                    تمامی محتوای این وب‌سایت، از جمله متن‌ها، تصاویر، طرح‌ها، لوگو، پروژه‌ها، کدها و سایر آثار، متعلق به <strong>Mohammad Hossein Sanati</strong> است. هرگونه کپی، بازنشر، انتشار، ویرایش یا استفاده از این محتوا بدون کسب اجازه کتبی ممنوع بوده و مطابق قوانین مربوط به حقوق مالکیت فکری قابل پیگیری است.
+                </p>
+            </div>
+
+            <div class="modal-footer-text">
+                <i class="fas fa-arrows-alt" style="color:#f5b042;"></i> برای چرخش ۳D از دکمه‌ها استفاده کنید
             </div>
         </div>
     </div>
 
     <!-- ========== اسکریپت ========== -->
     <script>
-        // ============================================================
-        // 1. منو
-        // ============================================================
+        // ===== منو =====
         (function() {
             const hamburger = document.getElementById('hamburgerBtn');
             const overlay = document.getElementById('navOverlay');
@@ -1642,12 +1680,11 @@
             });
         })();
 
-        // ============================================================
-        // 2. توضیحات بیشتر (کشویی)
-        // ============================================================
+        // ===== توضیحات بیشتر (کشویی) =====
         function toggleDetails(btn) {
             const card = btn.closest('.design-card-new');
             const details = card.querySelector('.design-details');
+            const icon = btn.querySelector('i');
 
             details.classList.toggle('open');
             btn.classList.toggle('open');
@@ -1659,95 +1696,81 @@
             }
         }
 
-        // ============================================================
-        // 3. افکت ۳D روی تصویر
-        // ============================================================
-        const imageWrapper = document.getElementById('imageWrapper');
-        const imageInner = document.getElementById('imageInner');
-        const glassOverlay = document.getElementById('glassOverlay');
-        const toggle3dBtn = document.getElementById('toggle3dBtn');
-        const resetViewBtn = document.getElementById('resetViewBtn');
-        let isFlipped = true; // پیش‌فرض: فعال
+        // ===== مودال =====
+        let is3D = false;
+        let currentRotationX = 0;
+        let currentRotationY = 0;
 
-        // فعال کردن ۳D از اول
-        imageInner.classList.add('flipped');
-        glassOverlay.classList.add('show');
-        toggle3dBtn.classList.add('active-3d');
-
-        // کلیک روی تصویر → تغییر وضعیت
-        imageWrapper.addEventListener('click', function(e) {
-            // اگه روی دکمه‌ها یا لینک‌ها کلیک شده باشه، نادیده بگیر
-            if (e.target.closest('button') || e.target.closest('a')) return;
-
-            isFlipped = !isFlipped;
-            update3DState();
-        });
-
-        function update3DState() {
-            if (isFlipped) {
-                imageInner.classList.add('flipped');
-                glassOverlay.classList.add('show');
-                toggle3dBtn.classList.add('active-3d');
-            } else {
-                imageInner.classList.remove('flipped');
-                glassOverlay.classList.remove('show');
-                toggle3dBtn.classList.remove('active-3d');
-            }
-        }
-
-        // دکمه ۳D
-        toggle3dBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            isFlipped = !isFlipped;
-            update3DState();
-        });
-
-        // دکمه ریست
-        resetViewBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            isFlipped = true;
-            update3DState();
-        });
-
-        // ============================================================
-        // 4. مودال کپی‌رایت
-        // ============================================================
-        const copyrightBtn = document.getElementById('copyrightBtn');
-        const copyrightModal = document.getElementById('copyrightModal');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-
-        function openCopyrightModal() {
-            copyrightModal.classList.add('show');
+        function openModal() {
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            // ریست چرخش‌ها
+            currentRotationX = 0;
+            currentRotationY = 0;
+            const wrapper = document.getElementById('modalImgWrapper');
+            wrapper.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+            is3D = false;
+            document.getElementById('btn3d').classList.remove('active-3d');
+            document.getElementById('copyrightBox').classList.remove('active');
         }
 
-        function closeCopyrightModal() {
-            copyrightModal.classList.remove('show');
+        function closeModal() {
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        copyrightBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            openCopyrightModal();
-        });
-
-        closeModalBtn.addEventListener('click', closeCopyrightModal);
-
-        copyrightModal.addEventListener('click', function(e) {
-            if (e.target === copyrightModal) {
-                closeCopyrightModal();
+        function closeModalOutside(e) {
+            if (e.target === e.currentTarget) {
+                closeModal();
             }
-        });
+        }
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && copyrightModal.classList.contains('show')) {
-                closeCopyrightModal();
+        function rotate3D(direction) {
+            const wrapper = document.getElementById('modalImgWrapper');
+            const step = 20;
+
+            switch (direction) {
+                case 'left':
+                    currentRotationY -= step;
+                    break;
+                case 'right':
+                    currentRotationY += step;
+                    break;
+                case 'up':
+                    currentRotationX += step;
+                    break;
+                case 'down':
+                    currentRotationX -= step;
+                    break;
             }
-        });
 
-        // ============================================================
-        // 5. انیمیشن اسکرول
-        // ============================================================
+            wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(${is3D ? 1.05 : 1})`;
+        }
+
+        function toggle3D() {
+            const wrapper = document.getElementById('modalImgWrapper');
+            const btn = document.getElementById('btn3d');
+            is3D = !is3D;
+
+            if (is3D) {
+                wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(1.05)`;
+                btn.classList.add('active-3d');
+                btn.innerHTML = '<i class="fas fa-cube"></i> ۳D (فعال)';
+            } else {
+                wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(1)`;
+                btn.classList.remove('active-3d');
+                btn.innerHTML = '<i class="fas fa-cube"></i> ۳D';
+            }
+        }
+
+        function showCopyright() {
+            const box = document.getElementById('copyrightBox');
+            box.classList.toggle('active');
+        }
+
+        // ===== انیمیشن اسکرول =====
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.home-design-card, .site-card-wide, .design-card-new');
 
@@ -1780,7 +1803,17 @@
                 });
             }, 100);
         });
+
+        // ===== کیبورد برای بستن مودال =====
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('modalOverlay');
+                if (overlay.classList.contains('active')) {
+                    closeModal();
+                }
+            }
+        });
     </script>
 
 </body>
-    </html>
+                        </html>
