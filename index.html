@@ -14,64 +14,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
-        /* ========== RESET ========== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html,
-        body {
-            height: 100%;
-            width: 100%;
-        }
-
         body {
             background: #0b0b0e;
             color: #eaeef2;
             font-family: 'Noto Sans Arabic', 'Segoe UI', sans-serif;
-            font-weight: 400;
-            line-height: 1.8;
-            overflow: hidden;
-            background-image: radial-gradient(circle at 30% 20%, rgba(255, 200, 80, 0.03) 0%, transparent 60%);
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-        }
-
-        /* ===== کانتینر ۴۰۴ ===== */
-        .error-container {
-            max-width: 800px;
-            width: 100%;
             padding: 2rem;
-            text-align: center;
-            position: relative;
+            background-image: radial-gradient(circle at 30% 20%, rgba(255, 200, 80, 0.03) 0%, transparent 60%);
         }
 
-        /* ===== لوگوی کوچک ===== */
+        .error-container {
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+        }
+
         .mini-logo {
             display: inline-block;
-            width: 56px;
-            height: 56px;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
             background: linear-gradient(145deg, #f5b042, #d48f2b);
             border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 900;
             font-size: 2rem;
             color: #0b0b0e;
             box-shadow: 0 8px 18px -6px rgba(200, 150, 50, 0.25);
-            margin: 0 auto 1.5rem auto;
+            margin-bottom: 2rem;
             transition: 0.3s;
             animation: floatLogo 4s ease-in-out infinite;
             text-decoration: none;
-            width: 60px;
-            height: 60px;
-            line-height: 60px;
         }
 
         @keyframes floatLogo {
@@ -89,31 +71,22 @@
             box-shadow: 0 12px 28px -8px rgba(200, 150, 50, 0.4);
         }
 
-        /* ===== دایناسور ===== */
-        .dino-area {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto 1.5rem auto;
-            aspect-ratio: 1/1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         .dino {
-            font-size: 10rem;
-            line-height: 1;
+            font-size: 8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
             animation: dinoJump 2s ease-in-out infinite;
             filter: drop-shadow(0 12px 40px rgba(245, 176, 66, 0.15));
-            transition: 0.3s;
-            cursor: default;
+            cursor: pointer;
             user-select: none;
         }
 
-        .dino:hover {
-            transform: scale(1.08);
-            filter: drop-shadow(0 16px 56px rgba(245, 176, 66, 0.25));
+        .dino.running {
+            animation: dinoRun 0.4s steps(2) infinite;
+        }
+
+        .dino.jumping {
+            animation: dinoJumpBig 0.6s ease-in-out;
         }
 
         @keyframes dinoJump {
@@ -126,31 +99,16 @@
             }
         }
 
-        /* ===== دایناسور با حرکت ===== */
-        .dino.running {
-            animation: dinoRun 0.4s steps(2) infinite;
-        }
-
         @keyframes dinoRun {
             0% {
                 transform: translateX(0px) scaleX(1);
             }
-            25% {
-                transform: translateX(8px) scaleX(1.02) rotate(-1deg);
-            }
             50% {
-                transform: translateX(0px) scaleX(1);
-            }
-            75% {
-                transform: translateX(-8px) scaleX(0.98) rotate(1deg);
+                transform: translateX(10px) scaleX(1.02);
             }
             100% {
                 transform: translateX(0px) scaleX(1);
             }
-        }
-
-        .dino.jumping {
-            animation: dinoJumpBig 0.6s ease-in-out;
         }
 
         @keyframes dinoJumpBig {
@@ -168,88 +126,24 @@
             }
         }
 
-        /* ===== کاکتوس‌ها (تزئینی) ===== */
-        .cactus {
-            position: absolute;
-            font-size: 2.5rem;
-            opacity: 0.3;
-            animation: cactusFloat 4s ease-in-out infinite;
-            user-select: none;
-            pointer-events: none;
-        }
-
-        .cactus:nth-child(2) {
-            bottom: 10%;
-            right: 5%;
-            animation-delay: 0.5s;
-            font-size: 3rem;
-            opacity: 0.2;
-        }
-
-        .cactus:nth-child(3) {
-            top: 10%;
-            left: 5%;
-            animation-delay: 1s;
-            font-size: 2rem;
-            opacity: 0.25;
-        }
-
-        .cactus:nth-child(4) {
-            bottom: 20%;
-            left: 15%;
-            animation-delay: 1.5s;
-            font-size: 2.8rem;
-            opacity: 0.15;
-        }
-
-        @keyframes cactusFloat {
-            0%,
-            100% {
-                transform: translateY(0px) rotate(-3deg);
-            }
-            50% {
-                transform: translateY(-8px) rotate(3deg);
-            }
-        }
-
-        /* ===== متن‌ها ===== */
         .error-code {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 900;
-            font-size: 8rem;
+            font-size: 7rem;
             background: linear-gradient(135deg, #f5b042, #d48f2b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1;
             margin-bottom: 0.5rem;
-            text-shadow: 0 8px 32px rgba(245, 176, 66, 0.15);
-            animation: pulse404 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse404 {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.02);
-                opacity: 0.9;
-            }
         }
 
         .error-title {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: #f5efe6;
-            margin-bottom: 0.8rem;
-        }
-
-        .error-title i {
-            color: #f5b042;
-            margin-left: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .error-title .highlight {
@@ -257,22 +151,19 @@
         }
 
         .error-desc {
-            font-family: 'Noto Sans Arabic', sans-serif;
             font-size: 1.1rem;
             color: #b0a99b;
             margin-bottom: 2rem;
-            max-width: 500px;
+            max-width: 450px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* ===== دکمه‌ها ===== */
         .error-buttons {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             justify-content: center;
-            margin-top: 0.5rem;
         }
 
         .error-buttons a {
@@ -281,45 +172,21 @@
             text-decoration: none;
             padding: 0.8rem 2rem;
             border-radius: 40px;
-            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: 0.3s;
             display: inline-flex;
             align-items: center;
             gap: 0.7rem;
-            font-size: 1.05rem;
-            position: relative;
-            overflow: hidden;
+            font-size: 1rem;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #f5b042, #d48f2b);
             color: #0b0b0e;
-            border: none;
         }
 
         .btn-primary:hover {
             transform: scale(1.05) translateY(-3px);
             box-shadow: 0 12px 32px -8px rgba(245, 176, 66, 0.3);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-            animation: shineBtn 3s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        @keyframes shineBtn {
-            0% {
-                transform: translateX(-100%) rotate(25deg);
-            }
-            100% {
-                transform: translateX(100%) rotate(25deg);
-            }
         }
 
         .btn-secondary {
@@ -332,17 +199,15 @@
             background: rgba(255, 215, 100, 0.08);
             border-color: rgba(255, 215, 100, 0.25);
             transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.3);
         }
 
         .btn-secondary i {
             color: #f5b042;
         }
 
-        /* ===== بخش شوخی ===== */
         .fun-section {
             margin-top: 2rem;
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             background: rgba(255, 215, 100, 0.03);
             border-radius: 20px;
             border: 1px solid rgba(255, 215, 100, 0.06);
@@ -350,7 +215,6 @@
         }
 
         .fun-section p {
-            font-family: 'Noto Sans Arabic', sans-serif;
             font-size: 0.9rem;
             color: #8f887c;
             margin: 0;
@@ -358,56 +222,43 @@
 
         .fun-section p i {
             color: #f5b042;
-            animation: floatIcon 2s ease-in-out infinite;
         }
 
-        @keyframes floatIcon {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-4px);
-            }
+        .fun-section kbd {
+            background: rgba(255, 215, 100, 0.1);
+            padding: 0.1rem 0.6rem;
+            border-radius: 6px;
+            color: #f5b042;
+            font-size: 0.85rem;
         }
 
-        /* ===== راهنمای کیبورد ===== */
         .keyboard-hint {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Noto Sans Arabic', sans-serif;
+            margin-top: 2rem;
             font-size: 0.8rem;
             color: #5a5550;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 0.5rem 1.5rem;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 215, 100, 0.04);
-            backdrop-filter: blur(8px);
-            user-select: none;
-            pointer-events: none;
-            white-space: nowrap;
         }
 
         .keyboard-hint i {
             color: #f5b042;
-            margin: 0 0.3rem;
         }
 
-        /* ===== ریسپانسیو ===== */
-        @media (max-width: 768px) {
+        .keyboard-hint kbd {
+            background: rgba(255, 215, 100, 0.08);
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            color: #b0a99b;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 600px) {
             .error-code {
                 font-size: 5rem;
             }
             .error-title {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
             .dino {
-                font-size: 7rem;
-            }
-            .error-container {
-                padding: 1.5rem;
+                font-size: 6rem;
             }
             .error-buttons {
                 flex-direction: column;
@@ -417,36 +268,6 @@
                 width: 100%;
                 justify-content: center;
             }
-            .keyboard-hint {
-                font-size: 0.7rem;
-                padding: 0.3rem 1rem;
-                bottom: 1rem;
-                white-space: normal;
-            }
-            .cactus {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .error-code {
-                font-size: 4rem;
-            }
-            .error-title {
-                font-size: 1.3rem;
-            }
-            .dino {
-                font-size: 5rem;
-            }
-            .error-desc {
-                font-size: 0.95rem;
-            }
-            .mini-logo {
-                width: 48px;
-                height: 48px;
-                font-size: 1.6rem;
-                line-height: 48px;
-            }
         }
     </style>
 </head>
@@ -454,157 +275,114 @@
 
     <div class="error-container">
 
-        <!-- ===== لوگو ===== -->
         <a href="/" class="mini-logo">M</a>
 
-        <!-- ===== دایناسور با کاکتوس‌ها ===== -->
-        <div class="dino-area">
-            <div class="cactus">🌵</div>
-            <div class="cactus">🌵</div>
-            <div class="cactus">🌵</div>
-            <div class="cactus">🌵</div>
-            <div class="dino" id="dino">🦖</div>
-        </div>
+        <div class="dino" id="dino">🦖</div>
 
-        <!-- ===== متن‌ها ===== -->
         <div class="error-code">۴۰۴</div>
+
         <h1 class="error-title">
-            <i class="fas fa-compass"></i> 
             <span class="highlight">Mohamad Hossein</span> | پیدا نشد!
         </h1>
+
         <p class="error-desc">
-            ای وای! به نظر می‌رسه دایناسور کوچولو این صفحه رو خورده! 🦖<br>
-            صفحه‌ای که دنبالش هستی وجود نداره یا منتقل شده.
+            ای وای! دایناسور کوچولو این صفحه رو خورده! 🦖<br>
+            صفحه‌ای که دنبالش هستی وجود نداره.
         </p>
 
-        <!-- ===== دکمه‌ها ===== -->
         <div class="error-buttons">
             <a href="javascript:history.back()" class="btn-secondary">
-                <i class="fas fa-arrow-right"></i> بازگشت به صفحه قبل
+                <i class="fas fa-arrow-right"></i> بازگشت
             </a>
             <a href="/" class="btn-primary">
-                <i class="fas fa-home"></i> برو به خانه
+                <i class="fas fa-home"></i> خانه
             </a>
             <a href="javascript:location.reload()" class="btn-secondary">
-                <i class="fas fa-sync"></i> دوباره امتحان کن
+                <i class="fas fa-sync"></i> تلاش مجدد
             </a>
         </div>
 
-        <!-- ===== بخش شوخی ===== -->
         <div class="fun-section">
             <p>
                 <i class="fas fa-gamepad"></i>
-                فشار دهید <kbd style="background:rgba(255,215,100,0.1); padding:0.1rem 0.6rem; border-radius:6px; color:#f5b042; font-size:0.85rem;">Space</kbd> یا <kbd style="background:rgba(255,215,100,0.1); padding:0.1rem 0.6rem; border-radius:6px; color:#f5b042; font-size:0.85rem;">↑</kbd> تا دایناسور بپره!
-                <span style="color:#5a5550; font-size:0.8rem;">(باحاله، نه؟)</span>
+                <kbd>Space</kbd> یا <kbd>↑</kbd> برای پرش دایناسور!
             </p>
+        </div>
+
+        <div class="keyboard-hint">
+            <i class="fas fa-keyboard"></i>
+            <kbd>←</kbd> <kbd>→</kbd> برای حرکت دایناسور
         </div>
 
     </div>
 
-    <!-- ===== راهنمای کیبورد ===== -->
-    <div class="keyboard-hint">
-        <i class="fas fa-keyboard"></i>
-        برای حرکت دایناسور کلیدهای <kbd style="background:rgba(255,215,100,0.08); padding:0.1rem 0.5rem; border-radius:4px; color:#b0a99b; font-size:0.7rem;">←</kbd> <kbd style="background:rgba(255,215,100,0.08); padding:0.1rem 0.5rem; border-radius:4px; color:#b0a99b; font-size:0.7rem;">→</kbd> رو بزن
-    </div>
-
     <script>
-        // ===== دایناسور متحرک =====
-        (function() {
-            const dino = document.getElementById('dino');
-            let isJumping = false;
-            let isRunning = false;
-            let runInterval = null;
+        const dino = document.getElementById('dino');
+        let isJumping = false;
+        let isRunning = false;
 
-            // ===== پرش =====
-            function jump() {
-                if (isJumping) return;
-                isJumping = true;
-                dino.classList.remove('running');
-                dino.classList.add('jumping');
+        function jump() {
+            if (isJumping) return;
+            isJumping = true;
+            dino.classList.remove('running');
+            dino.classList.add('jumping');
 
-                if (runInterval) {
-                    clearInterval(runInterval);
-                    runInterval = null;
-                    isRunning = false;
-                }
+            setTimeout(() => {
+                dino.classList.remove('jumping');
+                isJumping = false;
+                if (isRunning) dino.classList.add('running');
+            }, 600);
+        }
 
-                setTimeout(() => {
-                    dino.classList.remove('jumping');
-                    isJumping = false;
-                    if (isRunning) {
-                        dino.classList.add('running');
-                    }
-                }, 600);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === ' ' || e.key === 'Space' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                jump();
             }
-
-            // ===== حرکت چپ/راست =====
-            function startRunning() {
-                if (isRunning) return;
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
                 isRunning = true;
-                if (!isJumping) {
-                    dino.classList.add('running');
-                }
+                if (!isJumping) dino.classList.add('running');
+                dino.style.transform = 'scaleX(-1)';
             }
+            if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                isRunning = true;
+                if (!isJumping) dino.classList.add('running');
+                dino.style.transform = 'scaleX(1)';
+            }
+        });
 
-            function stopRunning() {
+        document.addEventListener('keyup', function(e) {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
                 isRunning = false;
                 dino.classList.remove('running');
+                dino.style.transform = 'scaleX(1)';
             }
+        });
 
-            // ===== کنترل با کیبورد =====
-            document.addEventListener('keydown', function(e) {
-                if (e.key === ' ' || e.key === 'Space' || e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    jump();
-                }
+        dino.addEventListener('click', jump);
 
-                if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    startRunning();
-                    dino.style.transform = 'scaleX(-1)';
-                }
+        // حرکت خودکار
+        setTimeout(() => {
+            if (!isJumping) {
+                isRunning = true;
+                dino.classList.add('running');
+            }
+        }, 2000);
 
-                if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    startRunning();
-                    dino.style.transform = 'scaleX(1)';
-                }
-            });
-
-            document.addEventListener('keyup', function(e) {
-                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-                    stopRunning();
-                    dino.style.transform = 'scaleX(1)';
-                }
-            });
-
-            // ===== کلیک روی دایناسور =====
-            dino.addEventListener('click', function() {
-                jump();
-            });
-
-            // ===== حرکت خودکار =====
-            setTimeout(() => {
-                if (!isJumping) {
-                    isRunning = true;
-                    dino.classList.add('running');
-                }
-            }, 2000);
-
-            // ===== حرکت تصادفی =====
-            setInterval(() => {
-                if (!isJumping && !isRunning) {
-                    isRunning = true;
-                    dino.classList.add('running');
-                    setTimeout(() => {
-                        if (!isJumping) {
-                            isRunning = false;
-                            dino.classList.remove('running');
-                        }
-                    }, 1500);
-                }
-            }, 5000);
-        })();
+        setInterval(() => {
+            if (!isJumping && !isRunning) {
+                isRunning = true;
+                dino.classList.add('running');
+                setTimeout(() => {
+                    if (!isJumping) {
+                        isRunning = false;
+                        dino.classList.remove('running');
+                    }
+                }, 1500);
+            }
+        }, 5000);
     </script>
 
 </body>
