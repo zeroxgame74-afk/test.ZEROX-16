@@ -2,8 +2,24 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mohamad Hossein | پیدا نشد</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Mohamad Hossein Sanati | Portfolio</title>
+
+    <!-- ===== PWA ===== -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#f5b042" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="MHS Portfolio" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- ===== Favicon ===== -->
+    <link rel="icon" type="image/png" sizes="16x16" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
 
     <!-- ===== فونت‌ها ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,46 +30,89 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
+        /* ========== RESET ========== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
         body {
             background: #0b0b0e;
             color: #eaeef2;
             font-family: 'Noto Sans Arabic', 'Segoe UI', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 2rem;
+            font-weight: 400;
+            line-height: 1.8;
+            overflow-x: hidden;
             background-image: radial-gradient(circle at 30% 20%, rgba(255, 200, 80, 0.03) 0%, transparent 60%);
         }
 
-        .error-container {
-            max-width: 700px;
-            width: 100%;
-            text-align: center;
+        /* ========== اسکرول‌بار ========== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0b0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f5b042;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d48f2b;
         }
 
-        .mini-logo {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            line-height: 60px;
+        /* ========== کانتینر ========== */
+        .container {
+            min-height: 100vh;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* ========== هدر ========== */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 0 1.8rem 0;
+            border-bottom: 1px solid rgba(255, 215, 100, 0.06);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .logo {
+            width: 56px;
+            height: 56px;
             background: linear-gradient(145deg, #f5b042, #d48f2b);
             border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 900;
             font-size: 2rem;
             color: #0b0b0e;
             box-shadow: 0 8px 18px -6px rgba(200, 150, 50, 0.25);
-            margin-bottom: 2rem;
-            transition: 0.3s;
+            flex-shrink: 0;
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             animation: floatLogo 4s ease-in-out infinite;
-            text-decoration: none;
         }
 
         @keyframes floatLogo {
@@ -66,324 +125,1882 @@
             }
         }
 
-        .mini-logo:hover {
+        .logo:hover {
             transform: scale(1.08) rotate(-4deg);
             box-shadow: 0 12px 28px -8px rgba(200, 150, 50, 0.4);
         }
 
-        .dino {
-            font-size: 8rem;
+        .brand {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .brand-name {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            color: #f5f0e8;
+            position: relative;
             display: inline-block;
-            margin-bottom: 1rem;
-            animation: dinoJump 2s ease-in-out infinite;
-            filter: drop-shadow(0 12px 40px rgba(245, 176, 66, 0.15));
+        }
+
+        .brand-name::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #f5b042, transparent);
+            transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .brand-name:hover::after {
+            width: 100%;
+        }
+
+        .brand-sub {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 300;
+            font-size: 0.8rem;
+            color: #b0a99b;
+            letter-spacing: 1px;
+        }
+
+        /* ========== دکمه همبرگر ========== */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
             cursor: pointer;
-            user-select: none;
+            padding: 0.6rem 0.8rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            transition: 0.3s;
+            z-index: 1001;
+            position: relative;
         }
 
-        .dino.running {
-            animation: dinoRun 0.4s steps(2) infinite;
+        .hamburger:hover {
+            background: rgba(255, 215, 100, 0.08);
+            border-color: rgba(255, 215, 100, 0.15);
+            transform: scale(1.05);
         }
 
-        .dino.jumping {
-            animation: dinoJumpBig 0.6s ease-in-out;
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2.5px;
+            background: #eaeef2;
+            border-radius: 4px;
+            transition: 0.3s ease;
         }
 
-        @keyframes dinoJump {
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+            background: #f5b042;
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+            background: #f5b042;
+        }
+
+        /* ========== منوی همبرگری ========== */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(11, 11, 14, 0.98);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: right 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 1000;
+        }
+
+        .nav-overlay.open {
+            right: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            text-align: center;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .nav-menu a {
+            color: #d6d0c4;
+            text-decoration: none;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            transition: 0.3s;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 215, 100, 0.05);
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: -1;
+            border-radius: 20px;
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        .nav-menu a i {
+            font-size: 1.8rem;
+            color: #f5b042;
+            width: 2.5rem;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #f5efe6;
+            background: rgba(255, 215, 100, 0.06);
+            border-color: rgba(255, 215, 100, 0.1);
+            transform: scale(1.04) translateX(-4px);
+        }
+
+        .nav-menu a:hover i {
+            transform: scale(1.2) rotate(-8deg) translateX(-4px);
+        }
+
+        .nav-menu a.active {
+            color: #f5efe6;
+            background: rgba(255, 215, 100, 0.08);
+            border-color: rgba(255, 215, 100, 0.15);
+        }
+
+        .nav-menu a.active i {
+            color: #f5b042;
+            transform: scale(1.1);
+            animation: pulseIcon 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseIcon {
             0%,
             100% {
-                transform: translateY(0px) rotate(-2deg);
+                transform: scale(1.1);
             }
             50% {
-                transform: translateY(-18px) rotate(2deg);
+                transform: scale(1.25);
             }
         }
 
-        @keyframes dinoRun {
+        /* ========== محتوای اصلی ========== */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 0 1.5rem 0;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
             0% {
-                transform: translateX(0px) scaleX(1);
-            }
-            50% {
-                transform: translateX(10px) scaleX(1.02);
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
             }
             100% {
-                transform: translateX(0px) scaleX(1);
+                opacity: 1;
+                transform: translateY(0) scale(1);
             }
         }
 
-        @keyframes dinoJumpBig {
-            0% {
-                transform: translateY(0px) scale(1);
-            }
-            40% {
-                transform: translateY(-60px) scale(1.08);
-            }
-            60% {
-                transform: translateY(-60px) scale(1.08);
-            }
-            100% {
-                transform: translateY(0px) scale(1);
-            }
-        }
-
-        .error-code {
+        .tab-content h2 {
             font-family: 'Vazirmatn', sans-serif;
-            font-weight: 900;
-            font-size: 7rem;
-            background: linear-gradient(135deg, #f5b042, #d48f2b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
+            font-weight: 800;
+            font-size: 2.6rem;
+            color: #f5efe6;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+            border-right: 6px solid #f5b042;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+
+        .tab-content h2 i {
+            transition: 0.3s;
+        }
+
+        .tab-content h2:hover i {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .tab-content p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: #d6d0c4;
+            margin-bottom: 0.8rem;
+            line-height: 2;
+        }
+
+        .bio-intro {
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bio-intro::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 215, 100, 0.03), transparent 70%);
+            animation: shimmerBg 8s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes shimmerBg {
+            0% {
+                transform: translate(-10%, -10%);
+            }
+            100% {
+                transform: translate(10%, 10%);
+            }
+        }
+
+        .bio-intro:hover {
+            border-color: rgba(255, 215, 100, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.4);
+        }
+
+        .bio-intro p {
+            font-size: 1.15rem;
+            line-height: 2.2;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bio-intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== کارت‌های خانه ===== */
+        .home-design-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .home-design-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-design-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #f5b042, transparent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .home-design-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .home-design-card:hover {
+            background: rgba(255, 215, 100, 0.04);
+            border-color: rgba(255, 215, 100, 0.12);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .home-design-card .icon {
+            font-size: 2.8rem;
+            color: #f5b042;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+
+        .home-design-card:nth-child(2) .icon {
+            animation-delay: 0.5s;
+        }
+        .home-design-card:nth-child(3) .icon {
+            animation-delay: 1s;
+        }
+
+        @keyframes floatIcon {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .home-design-card .icon i {
+            background: rgba(255, 215, 100, 0.08);
+            padding: 0.8rem;
+            border-radius: 20px;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .home-design-card:hover .icon i {
+            background: rgba(255, 215, 100, 0.15);
+            transform: scale(1.1) rotate(-6deg);
+            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.2);
+        }
+
+        .home-design-card h3 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #f5efe6;
             margin-bottom: 0.5rem;
         }
 
-        .error-title {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 2rem;
-            color: #f5efe6;
-            margin-bottom: 1rem;
-        }
-
-        .error-title .highlight {
-            color: #f5b042;
-        }
-
-        .error-desc {
-            font-size: 1.1rem;
+        .home-design-card p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.95rem;
             color: #b0a99b;
-            margin-bottom: 2rem;
-            max-width: 450px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .error-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .error-buttons a {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 0.8rem 2rem;
-            border-radius: 40px;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #f5b042, #d48f2b);
-            color: #0b0b0e;
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 12px 32px -8px rgba(245, 176, 66, 0.3);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: #f5efe6;
-            border: 1px solid rgba(255, 215, 100, 0.15);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 215, 100, 0.08);
-            border-color: rgba(255, 215, 100, 0.25);
-            transform: scale(1.05) translateY(-3px);
-        }
-
-        .btn-secondary i {
-            color: #f5b042;
-        }
-
-        .fun-section {
-            margin-top: 2rem;
-            padding: 0.8rem 1.5rem;
-            background: rgba(255, 215, 100, 0.03);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            display: inline-block;
-        }
-
-        .fun-section p {
-            font-size: 0.9rem;
-            color: #8f887c;
             margin: 0;
         }
 
-        .fun-section p i {
+        /* ===== کارت‌های سایت ===== */
+        .sites-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .site-card-wide {
+            grid-column: 1 / -1;
+            background: #1a1111;
+            border-radius: 24px;
+            padding: 1.5rem 2rem;
+            border-right: 6px solid #B61C1C;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(182, 28, 28, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .site-card-wide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(182, 28, 28, 0.03), transparent 60%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .site-card-wide:hover::before {
+            opacity: 1;
+        }
+
+        .site-card-wide:hover {
+            background: #1f1414;
+            border-color: rgba(182, 28, 28, 0.4);
+            transform: translateX(-6px) scale(1.005);
+            box-shadow: 0 12px 32px -12px rgba(182, 28, 28, 0.15);
+        }
+
+        .site-card-wide .site-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #0b0b0e;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .site-card-wide:hover .site-logo {
+            transform: scale(1.05) rotate(-2deg);
+            border-color: rgba(255, 215, 100, 0.2);
+        }
+
+        .site-card-wide .site-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-card-wide .site-info {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .site-card-wide .site-info h3 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #f5efe6;
+            margin: 0 0 0.3rem 0;
+            transition: 0.3s;
+        }
+
+        .site-card-wide:hover .site-info h3 {
             color: #f5b042;
         }
 
-        .fun-section kbd {
-            background: rgba(255, 215, 100, 0.1);
-            padding: 0.1rem 0.6rem;
-            border-radius: 6px;
-            color: #f5b042;
-            font-size: 0.85rem;
-        }
-
-        .keyboard-hint {
-            margin-top: 2rem;
-            font-size: 0.8rem;
-            color: #5a5550;
-        }
-
-        .keyboard-hint i {
-            color: #f5b042;
-        }
-
-        .keyboard-hint kbd {
-            background: rgba(255, 215, 100, 0.08);
-            padding: 0.1rem 0.5rem;
-            border-radius: 4px;
+        .site-card-wide .site-info p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.95rem;
             color: #b0a99b;
-            font-size: 0.7rem;
+            margin: 0;
         }
 
-        @media (max-width: 600px) {
-            .error-code {
-                font-size: 5rem;
+        .site-card-wide .site-link {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            color: #f5b042;
+            text-decoration: none;
+            padding: 0.4rem 1.5rem;
+            border: 1px solid rgba(245, 176, 66, 0.2);
+            border-radius: 40px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .site-card-wide .site-link::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 40px;
+            padding: 2px;
+            background: linear-gradient(135deg, #f5b042, transparent);
+            opacity: 0;
+            transition: 0.3s;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .site-card-wide .site-link:hover::after {
+            opacity: 1;
+        }
+
+        .site-card-wide .site-link:hover {
+            background: rgba(245, 176, 66, 0.1);
+            border-color: transparent;
+            transform: scale(1.04);
+            box-shadow: 0 0 20px -6px rgba(245, 176, 66, 0.15);
+        }
+
+        .site-card-wide .site-link i {
+            transition: 0.3s;
+        }
+        .site-card-wide .site-link:hover i {
+            transform: translateX(-4px) scale(1.1);
+        }
+
+        /* کارت کالفود با رنگ E97510 */
+        .site-card-wide.call-food {
+            border-right-color: #E97510;
+            border-color: rgba(233, 117, 16, 0.2);
+        }
+
+        .site-card-wide.call-food:hover {
+            border-color: rgba(233, 117, 16, 0.4);
+            box-shadow: 0 12px 32px -12px rgba(233, 117, 16, 0.15);
+        }
+
+        .site-card-wide.call-food .site-link {
+            color: #E97510;
+            border-color: rgba(233, 117, 16, 0.3);
+        }
+
+        .site-card-wide.call-food .site-link::after {
+            background: linear-gradient(135deg, #E97510, transparent);
+        }
+
+        .site-card-wide.call-food .site-link:hover {
+            background: rgba(233, 117, 16, 0.1);
+            border-color: transparent;
+        }
+
+        .site-card-wide.call-food:hover .site-info h3 {
+            color: #E97510;
+        }
+
+        /* ===== کارت طراحی ===== */
+        .design-card-new {
+            width: 1080px;
+            max-width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            margin: 1.5rem auto;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .design-card-new::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                    transparent 30%,
+                    rgba(255, 215, 0, 0.08) 50%,
+                    transparent 70%);
+            animation: shineDesign 4s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes shineDesign {
+            0% {
+                transform: translateX(-100%) rotate(25deg);
             }
-            .error-title {
+            100% {
+                transform: translateX(100%) rotate(25deg);
+            }
+        }
+
+        .design-card-new:hover {
+            background: rgba(255, 215, 100, 0.04);
+            border-color: rgba(255, 215, 100, 0.15);
+            transform: translateY(-6px) scale(1.005);
+            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .design-card-new>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== تصویر با افکت 3D ===== */
+        .design-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+            background: #0b0b0e;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s;
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .design-image .image-wrapper {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .design-image .image-wrapper.rotated {
+            transform: rotateY(15deg) rotateX(5deg) scale(1.02);
+        }
+
+        .design-image .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: block;
+        }
+
+        .design-image .image-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(2px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            gap: 0.5rem;
+            border-radius: 16px;
+        }
+
+        .design-image:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .design-image .image-overlay i {
+            font-size: 2.5rem;
+            color: #f5b042;
+            animation: floatIcon 2s ease-in-out infinite;
+        }
+
+        .design-image .image-overlay span {
+            color: #f5efe6;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+        }
+
+        .design-card-new:hover .design-image {
+            border-color: rgba(255, 215, 100, 0.15);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
+        }
+
+        .design-card-new:hover .design-image img {
+            transform: scale(1.03);
+        }
+
+        /* ===== مودال شیشه‌ای ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fadeInModal 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeInModal {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            border-radius: 32px;
+            padding: 2rem;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 24px 80px -16px rgba(0, 0, 0, 0.6);
+            animation: slideUpModal 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes slideUpModal {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-content .modal-close {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            color: #f5efe6;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .modal-content .modal-close:hover {
+            background: rgba(255, 215, 100, 0.15);
+            transform: rotate(90deg) scale(1.1);
+            border-color: #f5b042;
+        }
+
+        .modal-content .modal-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .modal-content .modal-image .modal-img-wrapper {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+        }
+
+        .modal-content .modal-image .modal-img-wrapper.rotated-3d {
+            transform: rotateY(180deg) rotateX(10deg) scale(1.05);
+        }
+
+        .modal-content .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-content .modal-title {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #f5efe6;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .modal-content .modal-title i {
+            color: #f5b042;
+        }
+
+        .modal-content .modal-controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .modal-content .modal-controls button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            color: #d6d0c4;
+            padding: 0.7rem 1rem;
+            border-radius: 16px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .modal-content .modal-controls button i {
+            color: #f5b042;
+            font-size: 1.1rem;
+        }
+
+        .modal-content .modal-controls button:hover {
+            background: rgba(255, 215, 100, 0.08);
+            border-color: rgba(255, 215, 100, 0.25);
+            transform: scale(1.04);
+            color: #f5efe6;
+        }
+
+        .modal-content .modal-controls button:active {
+            transform: scale(0.96);
+        }
+
+        .modal-content .modal-controls button.active-3d {
+            background: rgba(245, 176, 66, 0.15);
+            border-color: #f5b042;
+            color: #f5b042;
+        }
+
+        .modal-content .modal-controls button.active-3d i {
+            color: #f5b042;
+        }
+
+        .modal-content .modal-copyright {
+            background: rgba(255, 215, 100, 0.05);
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            border-radius: 16px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+
+        .modal-content .modal-copyright.active {
+            display: block;
+        }
+
+        .modal-content .modal-copyright p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.9rem;
+            color: #b0a99b;
+            line-height: 2;
+            margin: 0;
+        }
+
+        .modal-content .modal-copyright p strong {
+            color: #f5b042;
+        }
+
+        .modal-content .modal-footer-text {
+            text-align: center;
+            margin-top: 1rem;
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.8rem;
+            color: #8f887c;
+        }
+
+        .design-card-new .design-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .design-card-new .design-title {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #f5efe6;
+            transition: 0.3s;
+        }
+
+        .design-card-new:hover .design-title {
+            color: #f5b042;
+        }
+
+        .design-card-new .design-title i {
+            color: #f5b042;
+            margin-left: 0.5rem;
+            animation: heartBeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            15% {
+                transform: scale(1.25);
+            }
+            30% {
+                transform: scale(1);
+            }
+            45% {
+                transform: scale(1.15);
+            }
+            60% {
+                transform: scale(1);
+            }
+        }
+
+        .design-card-new .toggle-details {
+            background: none;
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            color: #f5b042;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .design-card-new .toggle-details:hover {
+            background: rgba(255, 215, 100, 0.08);
+            border-color: #f5b042;
+            transform: scale(1.04);
+        }
+
+        .design-card-new .toggle-details i {
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .design-card-new .toggle-details.open i {
+            transform: rotate(180deg);
+        }
+
+        .design-card-new .design-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, margin 0.3s ease;
+            opacity: 0;
+            margin: 0;
+        }
+
+        .design-card-new .design-details.open {
+            max-height: 500px;
+            opacity: 1;
+            margin: 1rem 0;
+        }
+
+        .design-card-new .design-desc {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 1rem;
+            color: #b0a99b;
+            margin-bottom: 0.5rem;
+        }
+
+        .design-card-new .design-author {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.95rem;
+            color: #f5b042;
+            margin-bottom: 1rem;
+        }
+
+        .design-card-new .download-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .design-card-new .download-buttons a {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            color: #f5efe6;
+            text-decoration: none;
+            padding: 0.4rem 1.2rem;
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            border-radius: 40px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 215, 100, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .design-card-new .download-buttons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 215, 100, 0.08);
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            border-radius: 40px;
+        }
+
+        .design-card-new .download-buttons a:hover::before {
+            width: 100%;
+        }
+
+        .design-card-new .download-buttons a:hover {
+            background: rgba(255, 215, 100, 0.12);
+            border-color: #f5b042;
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.15);
+        }
+
+        .design-card-new .download-buttons a i {
+            color: #f5b042;
+            transition: 0.3s;
+        }
+
+        .design-card-new .download-buttons a:hover i {
+            transform: translateY(-2px) scale(1.1);
+        }
+
+        /* ===== فوتر ===== */
+        .footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 215, 100, 0.06);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            color: #8f887c;
+            font-size: 0.9rem;
+        }
+
+        .footer-social a {
+            color: #b8b2a6;
+            font-size: 1.3rem;
+            margin-right: 1.2rem;
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .footer-social a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 50%;
+            width: 0;
+            height: 2px;
+            background: #f5b042;
+            transition: 0.3s;
+            transform: translateX(50%);
+        }
+
+        .footer-social a:hover::after {
+            width: 100%;
+        }
+
+        .footer-social a:hover {
+            color: #f5b042;
+            transform: translateY(-4px) scale(1.1);
+        }
+
+        .footer-copy {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== بنر نصب PWA ===== */
+        .install-banner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            left: 20px;
+            background: rgba(255, 215, 100, 0.08);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            z-index: 3000;
+            animation: slideUpBanner 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.5);
+        }
+
+        .install-banner.active {
+            display: flex;
+        }
+
+        @keyframes slideUpBanner {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .install-banner .banner-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 215, 100, 0.1);
+        }
+
+        .install-banner .banner-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .install-banner .banner-text {
+            flex: 1;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .install-banner .banner-text h4 {
+            color: #f5efe6;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.1rem;
+        }
+
+        .install-banner .banner-text p {
+            color: #b0a99b;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .install-banner .banner-buttons {
+            display: flex;
+            gap: 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .install-banner .banner-buttons button {
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .install-banner .banner-buttons .btn-install {
+            background: linear-gradient(145deg, #f5b042, #d48f2b);
+            color: #0b0b0e;
+        }
+
+        .install-banner .banner-buttons .btn-install:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.3);
+        }
+
+        .install-banner .banner-buttons .btn-close {
+            background: rgba(255, 255, 255, 0.05);
+            color: #b0a99b;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .install-banner .banner-buttons .btn-close:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #f5efe6;
+        }
+
+        /* ========== ریسپانسیو ========== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1.5rem;
+            }
+            .brand-name {
+                font-size: 1.2rem;
+            }
+            .logo {
+                width: 48px;
+                height: 48px;
+                font-size: 1.6rem;
+            }
+            .tab-content h2 {
+                font-size: 2rem;
+                padding-right: 1rem;
+            }
+            .nav-menu a {
+                font-size: 1.6rem;
+                gap: 1rem;
+                padding: 0.6rem 1rem;
+            }
+            .nav-menu a i {
                 font-size: 1.5rem;
+                width: 2rem;
             }
-            .dino {
-                font-size: 6rem;
+            .home-design-cards {
+                grid-template-columns: 1fr;
             }
-            .error-buttons {
+            .sites-grid {
+                grid-template-columns: 1fr;
+            }
+            .site-card-wide {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
+                padding: 1.2rem;
             }
-            .error-buttons a {
+            .site-card-wide .site-link {
+                align-self: flex-start;
+            }
+            .design-card-new .design-title {
+                font-size: 1.4rem;
+            }
+            .design-card-new .design-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .footer {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-social a {
+                margin: 0 0.8rem;
+            }
+            .bio-intro {
+                padding: 1rem 1.2rem;
+            }
+            .bio-intro p {
+                font-size: 1rem;
+            }
+            .design-card-new .download-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .design-card-new .download-buttons a {
+                justify-content: center;
+            }
+            .modal-content {
+                padding: 1.5rem;
+                margin: 0.5rem;
+            }
+            .modal-content .modal-controls {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .install-banner {
+                flex-wrap: wrap;
+                padding: 0.8rem 1rem;
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+            }
+            .install-banner .banner-buttons {
                 width: 100%;
                 justify-content: center;
+            }
+            .install-banner .banner-text h4 {
+                font-size: 0.9rem;
+            }
+            .install-banner .banner-text p {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem 1rem;
+            }
+            .tab-content h2 {
+                font-size: 1.6rem;
+            }
+            .tab-content p {
+                font-size: 1rem;
+            }
+            .nav-menu a {
+                font-size: 1.3rem;
+                gap: 0.8rem;
+                padding: 0.5rem 0.8rem;
+            }
+            .nav-menu a i {
+                font-size: 1.2rem;
+                width: 1.8rem;
+            }
+            .site-card-wide {
+                padding: 1rem;
+            }
+            .site-card-wide .site-logo {
+                width: 56px;
+                height: 56px;
+            }
+            .site-card-wide .site-info h3 {
+                font-size: 1.1rem;
+            }
+            .design-card-new .design-title {
+                font-size: 1.2rem;
+            }
+            .modal-content .modal-controls {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
+            }
+            .modal-content .modal-controls button {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.8rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="error-container">
+    <div class="container">
 
-        <a href="/" class="mini-logo">M</a>
+        <!-- ========== هدر ========== -->
+        <header class="header">
+            <div class="logo-area">
+                <div class="logo">M</div>
+                <div class="brand">
+                    <span class="brand-name">Mohamad Hossein Sanati</span>
+                    <span class="brand-sub">Portfolio</span>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
 
-        <div class="dino" id="dino">🦖</div>
-
-        <div class="error-code">۴۰۴</div>
-
-        <h1 class="error-title">
-            <span class="highlight">Mohamad Hossein</span> | پیدا نشد!
-        </h1>
-
-        <p class="error-desc">
-            ای وای! دایناسور کوچولو این صفحه رو خورده! 🦖<br>
-            صفحه‌ای که دنبالش هستی وجود نداره.
-        </p>
-
-        <div class="error-buttons">
-            <a href="javascript:history.back()" class="btn-secondary">
-                <i class="fas fa-arrow-right"></i> بازگشت
-            </a>
-            <a href="/" class="btn-primary">
-                <i class="fas fa-home"></i> خانه
-            </a>
-            <a href="javascript:location.reload()" class="btn-secondary">
-                <i class="fas fa-sync"></i> تلاش مجدد
-            </a>
+        <!-- ========== منوی همبرگری ========== -->
+        <div class="nav-overlay" id="navOverlay">
+            <nav class="nav-menu" id="navMenu">
+                <a href="#" data-tab="home" class="active"><i class="fas fa-home"></i> خانه</a>
+                <a href="#" data-tab="about"><i class="fas fa-user"></i> درباره من</a>
+                <a href="#" data-tab="activities"><i class="fas fa-bolt"></i> فعالیت</a>
+                <a href="#" data-tab="sites"><i class="fas fa-laptop-code"></i> سایت‌های طراحی شده</a>
+                <a href="#" data-tab="design"><i class="fas fa-palette"></i> طراحی</a>
+            </nav>
         </div>
 
-        <div class="fun-section">
-            <p>
-                <i class="fas fa-gamepad"></i>
-                <kbd>Space</kbd> یا <kbd>↑</kbd> برای پرش دایناسور!
-            </p>
-        </div>
+        <!-- ========== محتوای اصلی ========== -->
+        <main class="main-content">
 
-        <div class="keyboard-hint">
-            <i class="fas fa-keyboard"></i>
-            <kbd>←</kbd> <kbd>→</kbd> برای حرکت دایناسور
-        </div>
+            <!-- ===== خانه ===== -->
+            <div class="tab-content active" id="home">
+                <h2><i class="fas fa-home" style="color:#f5b042; margin-left:0.8rem;"></i> خانه</h2>
+                <div class="bio-intro">
+                    <p>سلام! من محمدحسین صنعتی هستم.</p>
+                    <p>عاشق ساختن چیزهای جدیدم؛ از طراحی و توسعه وب‌سایت گرفته تا طراحی گرافیک، تولید محتوا و پروژه‌های خلاقانه. بیشتر وقتم را صرف یاد گرفتن، تجربه کردن و ساختن ایده‌هایی می‌کنم که هم زیبا باشند و هم کاربردی.</p>
+                    <p>این سایت جایی است که پروژه‌ها، نمونه‌کارها، مهارت‌ها و فعالیت‌هایم را با شما به اشتراک می‌گذارم. اگر دوست دارید با کارهایم بیشتر آشنا شوید، خوشحال می‌شوم نگاهی به بخش‌های مختلف سایت بیندازید.</p>
+                    <p style="font-weight: 600; color: #f5b042;">به دنیای من خوش آمدید.</p>
+                </div>
+                <div class="home-design-cards">
+                    <div class="home-design-card">
+                        <div class="icon"><i class="fas fa-pen-fancy"></i></div>
+                        <h3>طراحی</h3>
+                        <p>طراحی مدرن و مینیمال برای وب‌سایت‌ها و برندها</p>
+                    </div>
+                    <div class="home-design-card">
+                        <div class="icon"><i class="fas fa-code"></i></div>
+                        <h3>توسعه</h3>
+                        <p>پیاده‌سازی حرفه‌ای با تکنولوژی‌های روز</p>
+                    </div>
+                    <div class="home-design-card">
+                        <div class="icon"><i class="fas fa-rocket"></i></div>
+                        <h3>خلاقیت</h3>
+                        <p>ایده‌های نو برای تجربه‌های دیجیتال متفاوت</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== درباره من ===== -->
+            <div class="tab-content" id="about">
+                <h2>درباره من</h2>
+                <p>سلام! من <strong>محمدحسین صنعتی</strong> هستم، توسعه‌دهنده‌ی وب با عشق به کد تمیز، طراحی مینیمال و تجربه‌ی کاربری روان. از سال ۱۴۰۰ وارد دنیای برنامه‌نویسی شدم و از اون موقع تا حالا پروژه‌های مختلفی رو از صفر تا صد اجرا کردم.</p>
+                <div style="background:rgba(255,215,100,0.04); border-radius:24px; padding:1.5rem 2rem; margin:1.5rem 0; border:1px solid rgba(255,215,100,0.06); transition:0.3s; position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:-50%; right:-50%; width:200%; height:200%; background:radial-gradient(circle at 30% 40%, rgba(255,215,100,0.03), transparent 70%); animation:shimmerBg 8s ease-in-out infinite alternate; pointer-events:none;"></div>
+                    <p style="margin:0; position:relative; z-index:1;"><i class="fas fa-quote-right" style="color:#f5b042; margin-left:0.5rem;"></i>هدف من اینه که با ترکیب هنر و تکنولوژی، فضاهای دیجیتالی بسازم که نه تنها کاربردی باشن، بلکه حس خوبی به کاربر منتقل کنن.</p>
+                </div>
+                <p>الان به عنوان فریلنسر و هم‌بنیان‌گذار یه استارتاپ کوچیک، روزانه دارم روی پروژه‌های فرانت‌اند و بک‌اند کار می‌کنم. عاشق یادگیری تکنولوژی‌های جدید و به‌اشتراک‌گذاری دانشم.</p>
+            </div>
+
+            <!-- ===== فعالیت ===== -->
+            <div class="tab-content" id="activities">
+                <h2>فعالیت‌ها</h2>
+                <ul style="list-style:none; padding-right:0.5rem;">
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ توسعه و طراحی بیش از ۱۵ وب‌سایت شرکتی و شخصی</span>
+                    </li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ همکاری با آژانس‌های دیجیتال مارکتینگ به عنوان توسعه‌دهنده فرانت‌اند</span>
+                    </li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ مدرس دوره‌های مقدماتی و پیشرفته HTML/CSS و JavaScript</span>
+                    </li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ شرکت در هکاتون‌های داخلی و کسب رتبه‌های برتر</span>
+                    </li>
+                    <li style="position:relative; padding-right:2rem; margin-bottom:0.7rem; transition:0.3s;">
+                        <span style="display:inline-block; transition:0.3s;">▹ ساخت اپلیکیشن‌های تک‌صفحه‌ای با React و Vue.js</span>
+                    </li>
+                </ul>
+                <div style="display:flex; flex-wrap:wrap; gap:0.6rem 1rem; margin:1.2rem 0;">
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fas fa-code" style="margin-left:0.3rem;"></i> HTML/CSS
+                    </span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fab fa-js" style="margin-left:0.3rem;"></i> JavaScript
+                    </span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fab fa-react" style="margin-left:0.3rem;"></i> React
+                    </span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fab fa-vuejs" style="margin-left:0.3rem;"></i> Vue
+                    </span>
+                    <span style="background:rgba(255,215,100,0.06); border:1px solid rgba(255,215,100,0.08); padding:0.3rem 1.2rem; border-radius:40px; font-size:0.95rem; color:#d4c9b8; transition:0.3s; cursor:default;">
+                        <i class="fas fa-database" style="margin-left:0.3rem;"></i> Node.js
+                    </span>
+                </div>
+            </div>
+
+            <!-- ===== سایت‌های طراحی شده ===== -->
+            <div class="tab-content" id="sites">
+                <h2>سایت‌های طراحی شده</h2>
+                <p style="margin-bottom:1.5rem;">نمونه‌ای از پروژه‌هایی که با عشق و تعصب ساختم:</p>
+
+                <div class="sites-grid">
+                    <!-- کارت عریض ZEROX -->
+                    <div class="site-card-wide">
+                        <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
+                            <div class="site-logo">
+                                <img src="https://uploadkon.ir/uploads/0ddf24_26Negar-1780305389092.png" alt="لوگوی سایت ZEROX" />
+                            </div>
+                            <div class="site-info">
+                                <h3>🎮 سایت خفن دنیای گیم با زروکس</h3>
+                                <p>پلتفرم تخصصی گیم و اخبار با طراحی مدرن و جذاب</p>
+                            </div>
+                        </div>
+                        <a href="https://zeroxgame74-afk.github.io/zeroxgamee/" target="_blank" class="site-link">
+                            <i class="fas fa-external-link-alt"></i> مشاهده سایت
+                        </a>
+                    </div>
+
+                    <!-- کارت عریض کالفود با رنگ E97510 -->
+                    <div class="site-card-wide call-food">
+                        <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
+                            <div class="site-logo">
+                                <img src="https://uploadkon.ir/uploads/bb4824_26IMG-20260616-172831.jpg" alt="لوگوی سایت کالفود" />
+                            </div>
+                            <div class="site-info">
+                                <h3>🍔 سایت خفن کالفود!</h3>
+                                <p>پلتفرم خاص برای سفارش غذای لذیذ!</p>
+                            </div>
+                        </div>
+                        <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="site-link">
+                            <i class="fas fa-external-link-alt"></i> مشاهده سایت
+                        </a>
+                    </div>
+                </div>
+
+                <div style="margin-top:1.5rem; padding:1rem; background:rgba(255,215,100,0.03); border-radius:16px; border:1px solid rgba(255,215,100,0.06); transition:0.3s;">
+                    <p style="margin:0; font-size:0.95rem; color:#b0a99b;">
+                        <i class="fas fa-rocket" style="color:#f5b042; margin-left:0.5rem; animation:floatIcon 3s ease-in-out infinite;"></i>
+                        در حال اضافه کردن پروژه‌های جدید... 
+                        <span style="display:inline-block; font-weight:700; color:#f5b042;">(به‌زودی)</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- ===== طراحی ===== -->
+            <div class="tab-content" id="design">
+                <h2><i class="fas fa-palette" style="color:#f5b042; margin-left:0.8rem;"></i> طراحی</h2>
+                <p style="margin-bottom:1.5rem;">نمونه‌ای از طراحی‌های هنری و گرافیکی:</p>
+
+                <div class="design-card-new">
+                    <div class="design-image" id="designImage" onclick="openModal()">
+                        <div class="image-wrapper" id="imageWrapper">
+                            <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
+                        </div>
+                        <div class="image-overlay">
+                            <i class="fas fa-expand"></i>
+                            <span>برای مشاهده کلیک کن</span>
+                        </div>
+                    </div>
+                    <div class="design-header">
+                        <h3 class="design-title"><i class="fas fa-heart"></i> اهواز خاک غسل شده با شهیدانت...</h3>
+                        <button class="toggle-details" onclick="toggleDetails(this)">
+                            <span>توضیحات بیشتر</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="design-details">
+                        <p class="design-desc">کشویی شیک و زیبا: یک تصویر زیبا در وصف جنوب کشور ایران</p>
+                        <p class="design-author"><i class="fas fa-user-astronaut"></i> طراح: محمد حسین صنعتی</p>
+                    </div>
+                    <div class="download-buttons">
+                        <a href="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 2K
+                        </a>
+                        <a href="https://uploadkon.ir/uploads/828624_26jonnob-mohamad-hossein-sanati-.png" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 1080p
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ========== فوتر ========== -->
+        <footer class="footer">
+            <div class="footer-copy">
+                &copy; 2026 Mohamad Hossein Sanati — تمامی حقوق محفوظ است.
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="ایمیل"><i class="fas fa-envelope"></i></a>
+                <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="گیت‌هاب"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" aria-label="اینستاگرام">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </footer>
 
     </div>
 
+    <!-- ========== بنر نصب PWA ========== -->
+    <div class="install-banner" id="installBanner">
+        <div class="banner-icon">
+            <img src="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" alt="آیکون برنامه" />
+        </div>
+        <div class="banner-text">
+            <h4>نصب برنامه</h4>
+            <p>این سایت رو مثل یه اپ روی گوشی نصب کن!</p>
+        </div>
+        <div class="banner-buttons">
+            <button class="btn-install" id="installBtn">نصب</button>
+            <button class="btn-close" id="closeBannerBtn">✕</button>
+        </div>
+    </div>
+
+    <!-- ========== مودال شیشه‌ای ========== -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="modal-image" id="modalImage">
+                <div class="modal-img-wrapper" id="modalImgWrapper">
+                    <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
+                </div>
+            </div>
+
+            <h3 class="modal-title"><i class="fas fa-heart"></i> اهواز خاک غسل شده با شهیدانت...</h3>
+
+            <div class="modal-controls">
+                <button onclick="rotate3D('left')">
+                    <i class="fas fa-arrow-left"></i> چپ
+                </button>
+                <button onclick="rotate3D('right')">
+                    <i class="fas fa-arrow-right"></i> راست
+                </button>
+                <button onclick="rotate3D('up')">
+                    <i class="fas fa-arrow-up"></i> بالا
+                </button>
+                <button onclick="rotate3D('down')">
+                    <i class="fas fa-arrow-down"></i> پایین
+                </button>
+                <button onclick="toggle3D()" id="btn3d">
+                    <i class="fas fa-cube"></i> ۳D
+                </button>
+                <button onclick="showCopyright()">
+                    <i class="fas fa-copyright"></i> کپی رایت
+                </button>
+            </div>
+
+            <div class="modal-copyright" id="copyrightBox">
+                <p>
+                    <strong>© 2026 Mohammad Hossein Sanati.</strong> تمامی حقوق محفوظ است.
+                    <br><br>
+                    تمامی محتوای این وب‌سایت، از جمله متن‌ها، تصاویر، طرح‌ها، لوگو، پروژه‌ها، کدها و سایر آثار، متعلق به <strong>Mohammad Hossein Sanati</strong> است. هرگونه کپی، بازنشر، انتشار، ویرایش یا استفاده از این محتوا بدون کسب اجازه کتبی ممنوع بوده و مطابق قوانین مربوط به حقوق مالکیت فکری قابل پیگیری است.
+                </p>
+            </div>
+
+            <div class="modal-footer-text">
+                <i class="fas fa-arrows-alt" style="color:#f5b042;"></i> برای چرخش ۳D از دکمه‌ها استفاده کنید
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== اسکریپت ========== -->
     <script>
-        const dino = document.getElementById('dino');
-        let isJumping = false;
-        let isRunning = false;
+        // ===== منو =====
+        (function() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const overlay = document.getElementById('navOverlay');
+            const navLinks = document.querySelectorAll('#navMenu a');
+            const tabContents = document.querySelectorAll('.tab-content');
 
-        function jump() {
-            if (isJumping) return;
-            isJumping = true;
-            dino.classList.remove('running');
-            dino.classList.add('jumping');
+            function toggleMenu() {
+                hamburger.classList.toggle('active');
+                overlay.classList.toggle('open');
+                document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+            }
 
-            setTimeout(() => {
-                dino.classList.remove('jumping');
-                isJumping = false;
-                if (isRunning) dino.classList.add('running');
-            }, 600);
+            hamburger.addEventListener('click', toggleMenu);
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.dataset.tab;
+                    if (tabId) {
+                        activateTab(tabId);
+                        if (overlay.classList.contains('open')) toggleMenu();
+                        history.pushState(null, null, `#${tabId}`);
+                    }
+                });
+            });
+
+            function activateTab(tabId) {
+                tabContents.forEach(content => content.classList.remove('active'));
+                const target = document.getElementById(tabId);
+                if (target) target.classList.add('active');
+                navLinks.forEach(link => link.classList.remove('active'));
+                const activeLink = document.querySelector(`#navMenu a[data-tab="${tabId}"]`);
+                if (activeLink) activeLink.classList.add('active');
+            }
+
+            const hash = window.location.hash.replace('#', '');
+            if (hash && document.getElementById(hash)) {
+                activateTab(hash);
+            } else {
+                activateTab('home');
+            }
+
+            window.addEventListener('hashchange', function() {
+                const newHash = window.location.hash.replace('#', '');
+                if (newHash && document.getElementById(newHash)) {
+                    activateTab(newHash);
+                }
+            });
+
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay && overlay.classList.contains('open')) toggleMenu();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && overlay.classList.contains('open')) toggleMenu();
+            });
+        })();
+
+        // ===== توضیحات بیشتر (کشویی) =====
+        function toggleDetails(btn) {
+            const card = btn.closest('.design-card-new');
+            const details = card.querySelector('.design-details');
+            const icon = btn.querySelector('i');
+
+            details.classList.toggle('open');
+            btn.classList.toggle('open');
+
+            if (details.classList.contains('open')) {
+                btn.innerHTML = 'بستن توضیحات <i class="fas fa-chevron-up"></i>';
+            } else {
+                btn.innerHTML = 'توضیحات بیشتر <i class="fas fa-chevron-down"></i>';
+            }
         }
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === ' ' || e.key === 'Space' || e.key === 'ArrowUp') {
-                e.preventDefault();
-                jump();
-            }
-            if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                isRunning = true;
-                if (!isJumping) dino.classList.add('running');
-                dino.style.transform = 'scaleX(-1)';
-            }
-            if (e.key === 'ArrowRight') {
-                e.preventDefault();
-                isRunning = true;
-                if (!isJumping) dino.classList.add('running');
-                dino.style.transform = 'scaleX(1)';
-            }
-        });
+        // ===== مودال =====
+        let is3D = false;
+        let currentRotationX = 0;
+        let currentRotationY = 0;
 
-        document.addEventListener('keyup', function(e) {
-            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-                isRunning = false;
-                dino.classList.remove('running');
-                dino.style.transform = 'scaleX(1)';
+        function openModal() {
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            currentRotationX = 0;
+            currentRotationY = 0;
+            const wrapper = document.getElementById('modalImgWrapper');
+            wrapper.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+            is3D = false;
+            document.getElementById('btn3d').classList.remove('active-3d');
+            document.getElementById('copyrightBox').classList.remove('active');
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeModalOutside(e) {
+            if (e.target === e.currentTarget) {
+                closeModal();
             }
-        });
+        }
 
-        dino.addEventListener('click', jump);
+        function rotate3D(direction) {
+            const wrapper = document.getElementById('modalImgWrapper');
+            const step = 20;
 
-        // حرکت خودکار
-        setTimeout(() => {
-            if (!isJumping) {
-                isRunning = true;
-                dino.classList.add('running');
+            switch (direction) {
+                case 'left':
+                    currentRotationY -= step;
+                    break;
+                case 'right':
+                    currentRotationY += step;
+                    break;
+                case 'up':
+                    currentRotationX += step;
+                    break;
+                case 'down':
+                    currentRotationX -= step;
+                    break;
             }
-        }, 2000);
 
-        setInterval(() => {
-            if (!isJumping && !isRunning) {
-                isRunning = true;
-                dino.classList.add('running');
-                setTimeout(() => {
-                    if (!isJumping) {
-                        isRunning = false;
-                        dino.classList.remove('running');
+            wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(${is3D ? 1.05 : 1})`;
+        }
+
+        function toggle3D() {
+            const wrapper = document.getElementById('modalImgWrapper');
+            const btn = document.getElementById('btn3d');
+            is3D = !is3D;
+
+            if (is3D) {
+                wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(1.05)`;
+                btn.classList.add('active-3d');
+                btn.innerHTML = '<i class="fas fa-cube"></i> ۳D (فعال)';
+            } else {
+                wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(1)`;
+                btn.classList.remove('active-3d');
+                btn.innerHTML = '<i class="fas fa-cube"></i> ۳D';
+            }
+        }
+
+        function showCopyright() {
+            const box = document.getElementById('copyrightBox');
+            box.classList.toggle('active');
+        }
+
+        // ===== انیمیشن اسکرول =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.home-design-card, .site-card-wide, .design-card-new');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0) scale(1)';
+                        }, index * 100);
                     }
-                }, 1500);
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px) scale(0.97)';
+                card.style.transition =
+                    `opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)`;
+                observer.observe(card);
+            });
+
+            setTimeout(() => {
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    }
+                });
+            }, 100);
+        });
+
+        // ===== کیبورد برای بستن مودال =====
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('modalOverlay');
+                if (overlay.classList.contains('active')) {
+                    closeModal();
+                }
             }
-        }, 5000);
+        });
+
+        // ===== PWA - نصب =====
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installBanner').classList.add('active');
+        });
+
+        document.getElementById('installBtn').addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const result = await deferredPrompt.userChoice;
+                if (result.outcome === 'accepted') {
+                    console.log('نصب شد!');
+                    document.getElementById('installBanner').classList.remove('active');
+                }
+                deferredPrompt = null;
+            }
+        });
+
+        document.getElementById('closeBannerBtn').addEventListener('click', () => {
+            document.getElementById('installBanner').classList.remove('active');
+        });
+
+        // ===== ثبت Service Worker =====
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker ثبت شد!'))
+                    .catch(err => console.log('خطا در ثبت Service Worker:', err));
+            });
+        }
     </script>
 
 </body>
-</html>
+    </html>
