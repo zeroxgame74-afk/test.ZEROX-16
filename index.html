@@ -1,311 +1,476 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamad Hossein S.N.T.I | Type Designer & Photoshop Artist</title>
-    
-    <!-- Font Awesome Icons CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Fonts: Estedad & Ordibehesht -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/estedad-font@v3.0.0/dist/estedad-font-face.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/ordibehesht-font@v1.0.0/dist/ordibehesht-font-face.css" rel="stylesheet">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مجله دیجیتال | وردپرس حرفه‌ای</title>
+    <!-- فونت وزیر -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
     <style>
-        :root {
-            --bg: #090a0f;
-            --card-bg: #12141d;
-            --accent-cyan: #00f2fe;
-            --accent-purple: #9b51e0;
-            --text-main: #ffffff;
-            --text-sub: #8b949e;
-            --font-body: 'Estedad', sans-serif;
-            --font-display: 'Ordibehesht', 'Estedad', sans-serif;
-        }
-
+        /* === ریست و پایه === */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: var(--font-body);
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'Vazirmatn', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.7;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header */
+        /* === هدر === */
         header {
-            padding: 30px 0;
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
-        .brand {
-            font-family: var(--font-display);
+
+        .logo {
             font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .social-links a {
-            color: var(--text-sub);
-            font-size: 1.3rem;
-            margin-right: 15px;
-            transition: 0.3s color;
-        }
-        .social-links a:hover {
-            color: var(--accent-cyan);
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 70px 0 40px;
-        }
-        .hero .badge {
-            background: rgba(0, 242, 254, 0.1);
-            color: var(--accent-cyan);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(0, 242, 254, 0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        .hero h1 {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-        .hero p {
-            color: var(--text-sub);
-            font-size: 1.15rem;
-            max-width: 650px;
-            margin: 0 auto 30px;
-        }
-
-        /* Interactive Font Previewer */
-        .font-tester {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 30px;
-            margin: 40px 0;
-            text-align: right;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-        .font-tester h3 {
-            font-family: var(--font-display);
-            color: var(--accent-cyan);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .font-tester input {
-            width: 100%;
-            background: #000;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 15px;
-            color: #fff;
-            border-radius: 12px;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            outline: none;
-        }
-        .font-tester input:focus {
-            border-color: var(--accent-cyan);
-        }
-        .preview-output {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            color: #fff;
-            word-break: break-all;
-            min-height: 80px;
-            line-height: 1.4;
-            background: linear-gradient(90deg, #fff, var(--text-sub));
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Photoshop Showcase Grid */
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 2.2rem;
-            margin: 60px 0 30px;
-            text-align: center;
+        .nav-menu {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
+            gap: 28px;
+            font-weight: 500;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        .art-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s ease;
-        }
-        .art-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-purple);
-        }
-        .art-placeholder {
-            width: 100%;
-            height: 220px;
-            background: linear-gradient(135deg, #1e1b4b, #311042);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 2.5rem;
-            gap: 10px;
-        }
-        .art-placeholder span {
-            font-size: 0.9rem;
-            font-family: var(--font-body);
-        }
-        .art-info {
-            padding: 20px;
-        }
-        .art-info h4 { 
-            font-family: var(--font-display);
-            font-size: 1.3rem; 
-            margin-bottom: 5px; 
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .art-info p { color: var(--text-sub); font-size: 0.9rem; }
 
-        /* Footer / Contact */
-        footer {
-            text-align: center;
-            padding: 60px 0 30px;
-            color: var(--text-sub);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 80px;
-        }
-        .btn-contact {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-            color: #000;
-            font-weight: bold;
-            padding: 12px 30px;
-            border-radius: 30px;
+        .nav-menu a {
             text-decoration: none;
-            margin-top: 20px;
-            transition: 0.3s;
-        }
-        .btn-contact:hover {
-            opacity: 0.9;
-            transform: scale(1.05);
+            color: #1e293b;
+            transition: color 0.2s;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.4rem; }
-            .preview-output { font-size: 1.8rem; }
+        .nav-menu a:hover {
+            color: #3b82f6;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: #fff;
+            padding: 8px 22px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        /* === بنر اصلی (Hero) === */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+
+        /* === بخش مقالات === */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 48px 0 24px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            right: 0;
+            width: 60px;
+            height: 4px;
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 10px;
+        }
+
+        .post-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            transition: transform 0.25s, box-shadow 0.3s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .post-thumb {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(145deg, #dbeafe, #ede9fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #3b82f6;
+        }
+
+        .post-content {
+            padding: 20px 22px 26px;
+        }
+
+        .post-meta {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .post-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .post-excerpt {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 14px;
+            color: #3b82f6;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* === ویدجت کناری (سایدبار) === */
+        .row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin: 20px 0 50px;
+        }
+
+        .widget {
+            background: #fff;
+            padding: 24px 28px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            margin-bottom: 28px;
+        }
+
+        .widget-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+
+        .widget ul {
+            list-style: none;
+        }
+
+        .widget ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .widget ul li:last-child {
+            border-bottom: none;
+        }
+
+        .widget ul li a {
+            text-decoration: none;
+            color: #1e293b;
+            transition: color 0.2s;
+        }
+
+        .widget ul li a:hover {
+            color: #3b82f6;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #f1f5f9;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #1e293b;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .tag:hover {
+            background: #3b82f6;
+            color: #fff;
+        }
+
+        /* === فوتر === */
+        footer {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            display: block;
+            margin: 4px 0;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .copy {
+            text-align: center;
+            border-top: 1px solid #1e293b;
+            padding-top: 24px;
+            margin-top: 24px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* === واکنش‌گرایی === */
+        @media (max-width: 820px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-menu {
+                gap: 16px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <header>
-            <div class="brand"><i class="fa-solid fa-pen-nib"></i> M.H. S.N.T.I</div>
-            <div class="social-links">
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-behance"></i></a>
-                <a href="#"><i class="fa-brands fa-telegram"></i></a>
-            </div>
-        </header>
+    <!-- ========== هدر ========== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">مجله‌دیجیتال</div>
+            <nav class="nav-menu">
+                <a href="#">خانه</a>
+                <a href="#">مقالات</a>
+                <a href="#">درباره</a>
+                <a href="#">تماس</a>
+            </nav>
+            <a href="#" class="btn-primary">عضویت</a>
+        </div>
+    </header>
 
+    <main class="container">
+
+        <!-- ========== بنر ========== -->
         <section class="hero">
-            <span class="badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Type Designer & Photoshop Artist</span>
-            <h1>MOHAMAD HOSSEIN S.N.T.I</h1>
-            <p>خلق فونت‌های ماندگار و فتومانتاژهای سورئال. جایی که تایپوگرافی با هنر دیجیتال ملاقات می‌کند.</p>
+            <h1>دانش و الهام برای فردای بهتر</h1>
+            <p>مجله‌ای برای علاقه‌مندان به تکنولوژی، طراحی، و زندگی هوشمند.</p>
+            <a href="#" class="btn-primary" style="background:#8b5cf6;">مشاهده مقالات</a>
         </section>
 
-        <!-- بخش تست زنده فونت -->
-        <section class="font-tester">
-            <h3><i class="fa-solid fa-font"></i> پیش‌نمایش تایپوگرافی (فونت اردیبهشت)</h3>
-            <input type="text" id="fontInput" placeholder="اینجا یک متن بنویسید..." value="هنر، زبان روح است.">
-            <div class="preview-output" id="fontPreview">هنر، زبان روح است.</div>
-        </section>
+        <!-- ========== آخرین مطالب ========== -->
+        <h2 class="section-title">🔥 جدیدترین نوشته‌ها</h2>
+        <div class="posts-grid">
 
-        <!-- بخش نمونه کارهای فتوشاپ -->
-        <h2 class="section-title"><i class="fa-solid fa-palette"></i> آرت‌ورک‌ها و فتومانتاژها</h2>
-        <section class="grid">
-            <div class="art-card">
-                <div class="art-placeholder">
-                    <i class="fa-solid fa-image"></i>
-                    <span>تصویر آرت‌ورک 1</span>
+            <article class="post-card">
+                <div class="post-thumb">🧠</div>
+                <div class="post-content">
+                    <div class="post-meta"><span>۱۴۰۵/۰۲/۱۰</span> <span>•</span> <span>۳ دقیقه</span></div>
+                    <h3 class="post-title">۱۰ عادت افراد موفق</h3>
+                    <p class="post-excerpt">روزانه چه کارهایی انجام می‌دهند که به موفقیت می‌رسند؟...</p>
+                    <a href="#" class="read-more">ادامه مطلب ←</a>
                 </div>
-                <div class="art-info">
-                    <h4><i class="fa-solid fa-layer-group"></i> فتومانتاژ سورئال</h4>
-                    <p>ترکیب‌بندی دیجیتال و نورپردازی اختصاصی در فتوشاپ</p>
+            </article>
+
+            <article class="post-card">
+                <div class="post-thumb">⚡</div>
+                <div class="post-content">
+                    <div class="post-meta"><span>۱۴۰۵/۰۲/۰۸</span> <span>•</span> <span>۵ دقیقه</span></div>
+                    <h3 class="post-title">آینده هوش مصنوعی در طراحی</h3>
+                    <p class="post-excerpt">چگونه AI دنیای طراحی گرافیک و UX را دگرگون می‌کند؟...</p>
+                    <a href="#" class="read-more">ادامه مطلب ←</a>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-thumb">📈</div>
+                <div class="post-content">
+                    <div class="post-meta"><span>۱۴۰۵/۰۲/۰۵</span> <span>•</span> <span>۴ دقیقه</span></div>
+                    <h3 class="post-title">مدیریت زمان به سبک وردپرس</h3>
+                    <p class="post-excerpt">با پلاگین‌ها و ترفندهای ساده بهره‌وری خود را بالا ببرید...</p>
+                    <a href="#" class="read-more">ادامه مطلب ←</a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- ========== دو ستون (محتوای اصلی + سایدبار) ========== -->
+        <div class="row">
+            <!-- ستون اصلی -->
+            <section>
+                <h2 class="section-title">📝 ویژه‌های این هفته</h2>
+                <div style="background:#fff;border-radius:20px;padding:24px;box-shadow:0 4px 10px rgba(0,0,0,0.02);">
+                    <h3 style="font-size:1.5rem;">چگونه یک وب‌سایت وردپرسی راه‌اندازی کنیم؟</h3>
+                    <p style="color:#475569;margin:8px 0 12px;">از انتخاب هاست تا نصب قالب و اولین پست — همه چیز در یک مقاله جامع.</p>
+                    <a href="#" class="read-more">مشاهده کامل →</a>
+                </div>
+
+                <div style="margin-top:28px;background:#fff;border-radius:20px;padding:24px;box-shadow:0 4px 10px rgba(0,0,0,0.02);">
+                    <h3 style="font-size:1.5rem;">بهترین افزونه‌های امنیتی</h3>
+                    <p style="color:#475569;margin:8px 0 12px;">با این افزونه‌ها سایت خود را در برابر حملات ایمن کنید.</p>
+                    <a href="#" class="read-more">مشاهده کامل →</a>
+                </div>
+            </section>
+
+            <!-- سایدبار -->
+            <aside>
+                <div class="widget">
+                    <h4 class="widget-title">📂 دسته‌بندی‌ها</h4>
+                    <ul>
+                        <li><a href="#">تکنولوژی</a> (۱۴)</li>
+                        <li><a href="#">طراحی وب</a> (۲۲)</li>
+                        <li><a href="#">سئو و بازاریابی</a> (۹)</li>
+                        <li><a href="#">زندگی دیجیتال</a> (۱۷)</li>
+                    </ul>
+                </div>
+
+                <div class="widget">
+                    <h4 class="widget-title">🏷️ برچسب‌ها</h4>
+                    <div class="tag-cloud">
+                        <a href="#" class="tag">وردپرس</a>
+                        <a href="#" class="tag">طراحی</a>
+                        <a href="#" class="tag">هوش مصنوعی</a>
+                        <a href="#" class="tag">پلاگین</a>
+                        <a href="#" class="tag">سرعت</a>
+                        <a href="#" class="tag">امنیت</a>
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <h4 class="widget-title">📬 خبرنامه</h4>
+                    <p style="font-size:0.9rem;">برای دریافت جدیدترین مطالب ایمیل خود را وارد کنید.</p>
+                    <div style="display:flex;gap:6px;margin-top:12px;">
+                        <input type="email" placeholder="ایمیل شما" style="flex:1;padding:8px 12px;border:1px solid #e2e8f0;border-radius:40px;font-family:inherit;" />
+                        <button style="background:#3b82f6;color:#fff;border:none;padding:8px 18px;border-radius:40px;font-weight:600;cursor:pointer;">عضویت</button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+    </main>
+
+    <!-- ========== فوتر ========== -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-col">
+                    <h4>مجله دیجیتال</h4>
+                    <p style="color:#94a3b8;max-width:250px;">محتوای باکیفیت برای دنیای مدرن.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>دسترسی سریع</h4>
+                    <a href="#">خانه</a>
+                    <a href="#">مقالات</a>
+                    <a href="#">درباره ما</a>
+                </div>
+                <div class="footer-col">
+                    <h4>شبکه‌های اجتماعی</h4>
+                    <a href="#">اینستاگرام</a>
+                    <a href="#">تلگرام</a>
+                    <a href="#">توییتر</a>
                 </div>
             </div>
-            <div class="art-card">
-                <div class="art-placeholder">
-                    <i class="fa-solid fa-font-case"></i>
-                    <span>نمونه فونت 2</span>
-                </div>
-                <div class="art-info">
-                    <h4><i class="fa-solid fa-pen-ruler"></i> طراحی تایپ‌فیس اختصاصی</h4>
-                    <p>طراحی فونت فارسی با هندسه دقیق و استایل هنری</p>
-                </div>
+            <div class="copy">
+                © ۱۴۰۵ تمامی حقوق محفوظ است.
             </div>
-            <div class="art-card">
-                <div class="art-placeholder">
-                    <i class="fa-solid fa-sliders"></i>
-                    <span>تصویر کاور 3</span>
-                </div>
-                <div class="art-info">
-                    <h4><i class="fa-solid fa-brush"></i> پوستر ترکیبی گرافیکی</h4>
-                    <p>استفاده از افکت‌های نئونی، اصلاح رنگ و کالیبراسیون</p>
-                </div>
-            </div>
-        </section>
+        </div>
+    </footer>
 
-        <footer>
-            <p>آماده همکاری برای پروژه‌های سفارشی، طراحی فونت و آرت‌ورک‌های فتوشاپ</p>
-            <a href="#" class="btn-contact"><i class="fa-solid fa-paper-plane"></i> سفارش پروژه</a>
-            <p style="margin-top: 25px; font-size: 0.85rem;">© 2026 Mohamad Hossein S.N.T.I - All rights reserved.</p>
-        </footer>
-    </div>
-
-    <script>
-        const input = document.getElementById('fontInput');
-        const preview = document.getElementById('fontPreview');
-
-        input.addEventListener('input', (e) => {
-            preview.innerText = e.target.value || 'متن خود را وارد کنید...';
-        });
-    </script>
 </body>
 </html>
