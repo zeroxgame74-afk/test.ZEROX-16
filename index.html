@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>میثاق جامه | لباس هیئتی</title>
-    <!-- فونت‌ها -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>استودیو بازیسازی نکسوس</title>
+    <!-- فونت‌های اختصاصی -->
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@700&family=Sahel&display=swap" rel="stylesheet" />
     <style>
+        /* ریست و پایه */
         * {
             margin: 0;
             padding: 0;
@@ -15,579 +15,547 @@
         }
 
         body {
-            font-family: 'Noto Naskh Arabic', serif;
-            background: #0b0a0a;
-            color: #f0ece4;
-            line-height: 1.8;
+            background: #0b0e1a;
+            font-family: 'Sahel', sans-serif;
+            color: #eef2ff;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1a1515;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #c9a84c;
-            border-radius: 10px;
+        /* تایپوگرافی اختصاصی */
+        .estedad-bold {
+            font-family: 'Estedad', sans-serif;
+            font-weight: 700;
         }
 
+        .sahel-regular {
+            font-family: 'Sahel', sans-serif;
+        }
+
+        /* کانتینر اصلی */
         .container {
-            max-width: 1400px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 0 30px;
         }
 
-        .top-bar {
-            background: linear-gradient(135deg, #1a1308, #2f1f0e);
-            padding: 12px 0;
-            border-bottom: 2px solid #c9a84c;
-            text-align: center;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            color: #d4b86a;
-            box-shadow: 0 4px 30px rgba(201, 168, 76, 0.1);
-        }
-
+        /* هدر با افکت شیشه‌ای */
         header {
+            padding: 22px 0;
+            background: rgba(11, 14, 26, 0.7);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 0;
-            border-bottom: 1px solid #2a2218;
             flex-wrap: wrap;
         }
 
-        .logo h1 {
-            font-family: 'Markazi Text', serif;
-            font-weight: 700;
-            font-size: 2.8rem;
-            background: linear-gradient(45deg, #f5e6b0, #c9a84c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(201, 168, 76, 0.2);
+        .logo {
+            font-size: 2rem;
             letter-spacing: 2px;
-        }
-        .logo h1 i {
-            -webkit-text-fill-color: #c9a84c;
-            font-size: 2.2rem;
-            margin-left: 10px;
-        }
-        .logo span {
-            font-size: 1rem;
-            color: #b8a07a;
-            -webkit-text-fill-color: #b8a07a;
-            background: none;
-            display: block;
-            font-weight: 400;
-            letter-spacing: 3px;
-        }
-
-        nav {
-            display: flex;
-            gap: 35px;
-            font-size: 1.1rem;
-        }
-        nav a {
-            color: #ded6c4;
-            text-decoration: none;
-            transition: 0.3s;
-            position: relative;
-            font-weight: 400;
-        }
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: #c9a84c;
-            transition: 0.3s;
-        }
-        nav a:hover {
-            color: #f5e6b0;
-        }
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .header-icons {
-            display: flex;
-            gap: 20px;
-            color: #c9a84c;
-            font-size: 1.4rem;
-        }
-        .header-icons i {
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .header-icons i:hover {
-            color: #f5e6b0;
-            transform: scale(1.1);
-        }
-
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 70px 0;
-            flex-wrap: wrap;
-            background: radial-gradient(circle at 20% 30%, #1f170e, #0b0a0a 80%);
-            border-radius: 30px;
-            margin: 40px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(201, 168, 76, 0.08), transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        .hero-text {
-            flex: 1 1 400px;
-            padding: 20px 40px;
-            z-index: 2;
-        }
-        .hero-text h2 {
-            font-family: 'Markazi Text', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.2;
-            background: linear-gradient(to left, #f5e6b0, #b8943c);
+            background: linear-gradient(135deg, #f7d875, #f5b342);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(245, 179, 66, 0.3);
         }
-        .hero-text p {
-            font-size: 1.3rem;
-            color: #ccc3b0;
-            margin: 25px 0;
-            max-width: 500px;
-        }
-        .btn {
-            display: inline-block;
-            background: linear-gradient(145deg, #c9a84c, #a8872e);
-            color: #0b0a0a;
-            padding: 16px 50px;
-            border-radius: 50px;
+
+        .logo span {
+            font-family: 'Estedad', sans-serif;
             font-weight: 700;
-            font-size: 1.2rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #d1d9f0;
             text-decoration: none;
+            font-size: 1.05rem;
             transition: 0.3s;
-            box-shadow: 0 8px 25px rgba(201, 168, 76, 0.3);
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+            font-family: 'Sahel', sans-serif;
+        }
+
+        nav a:hover {
+            color: #f7d875;
+            border-bottom-color: #f7d875;
+        }
+
+        /* دکمه سفارشی */
+        .btn-glow {
+            background: linear-gradient(145deg, #f7d875, #e6a820);
             border: none;
-            cursor: pointer;
-            font-family: 'Noto Naskh Arabic', serif;
-        }
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(201, 168, 76, 0.5);
-            background: #dbb95c;
-            color: #0b0a0a;
-        }
-
-        .hero-image {
-            flex: 1 1 300px;
-            text-align: center;
-            z-index: 2;
-            font-size: 12rem;
-            filter: drop-shadow(0 10px 40px rgba(201, 168, 76, 0.2));
-            color: #c9a84c;
-            opacity: 0.9;
-        }
-
-        .section-title {
-            font-family: 'Markazi Text', serif;
-            font-size: 2.8rem;
+            padding: 12px 34px;
+            border-radius: 60px;
+            font-family: 'Estedad', sans-serif;
             font-weight: 700;
-            margin: 60px 0 30px;
-            position: relative;
-            display: inline-block;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 0;
-            width: 70px;
-            height: 4px;
-            background: #c9a84c;
-            border-radius: 5px;
+            font-size: 1rem;
+            color: #0b0e1a;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 25px rgba(247, 216, 117, 0.3);
         }
 
-        .categories {
+        .btn-glow:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 45px rgba(247, 216, 117, 0.6);
+        }
+
+        /* هیرو */
+        .hero {
+            padding: 90px 0 70px;
+            background: radial-gradient(circle at 20% 30%, #1a1f33, #0b0e1a 80%);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .hero-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin: 40px 0 60px;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
         }
-        .category-card {
-            background: #161210;
-            padding: 30px 15px;
+
+        .hero-title {
+            font-size: 3.7rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, #f7d875, #f5b342);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: #b6c3e6;
+            margin-bottom: 35px;
+            max-width: 550px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
             text-align: center;
-            border-radius: 20px;
-            border: 1px solid #2a2218;
-            transition: 0.4s;
-            cursor: pointer;
         }
-        .category-card:hover {
-            transform: translateY(-10px);
-            border-color: #c9a84c;
-            box-shadow: 0 15px 40px rgba(201, 168, 76, 0.15);
-            background: #1e1914;
-        }
-        .category-card i {
-            font-size: 3.5rem;
-            color: #c9a84c;
-            margin-bottom: 15px;
-        }
-        .category-card h3 {
-            font-family: 'Markazi Text', serif;
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-family: 'Estedad', sans-serif;
             font-weight: 700;
-            font-size: 1.6rem;
-            color: #f0ece4;
+            color: #f7d875;
         }
-        .category-card p {
-            color: #a0907a;
+
+        .stat-label {
+            color: #97a6d4;
             font-size: 0.95rem;
         }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 35px;
-            margin: 40px 0 70px;
+        /* شبه‌تصویر (باکس بازی) */
+        .hero-image {
+            background: linear-gradient(145deg, #1e2642, #12172b);
+            border-radius: 40px;
+            padding: 30px 20px;
+            border: 1px solid rgba(247, 216, 117, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .product-card {
-            background: #13100d;
-            border-radius: 25px;
-            overflow: hidden;
-            border: 1px solid #221c16;
-            transition: 0.4s;
-            position: relative;
+        .hero-image::before {
+            content: "🎮";
+            font-size: 8rem;
+            opacity: 0.08;
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            transform: rotate(12deg);
         }
-        .product-card:hover {
-            transform: scale(1.02);
-            border-color: #c9a84c;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(201, 168, 76, 0.1);
+
+        .game-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .product-img {
-            height: 280px;
-            background: #1f1914;
+
+        .game-card .icon {
+            font-size: 4.8rem;
+            margin-bottom: 10px;
+        }
+
+        .game-card h3 {
+            font-family: 'Estedad', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #f7d875;
+        }
+
+        .game-card p {
+            color: #b6c3e6;
+        }
+
+        /* بخش بازی‌ها (شبکه) */
+        .games-section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Estedad', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #f7d875, #f5b342);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .section-header p {
+            color: #97a6d4;
+            font-size: 1.2rem;
+            margin-top: 8px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .game-box {
+            background: linear-gradient(145deg, #181f36, #11172a);
+            padding: 35px 20px;
+            border-radius: 32px;
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            transition: 0.35s ease;
+            text-align: center;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-box:hover {
+            transform: translateY(-12px);
+            border-color: #f7d875;
+            box-shadow: 0 20px 50px rgba(247, 216, 117, 0.15);
+        }
+
+        .game-box .emoji-big {
+            font-size: 3.8rem;
+            margin-bottom: 12px;
+        }
+
+        .game-box h4 {
+            font-family: 'Estedad', sans-serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: #f7d875;
+        }
+
+        .game-box p {
+            color: #b6c3e6;
+            margin: 12px 0 18px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(247, 216, 117, 0.15);
+            padding: 4px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #f7d875;
+            border: 1px solid rgba(247, 216, 117, 0.2);
+        }
+
+        /* تیم و آمار */
+        .team-section {
+            padding: 60px 0 80px;
+            background: radial-gradient(circle at 80% 20%, #1a1f33, #0b0e1a);
+            border-top: 1px solid rgba(255, 215, 0, 0.06);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.06);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-member .avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(145deg, #f7d875, #d4941a);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
-            color: #c9a84c;
-            position: relative;
-        }
-        .product-img .badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #c9a84c;
-            color: #0b0a0a;
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-        .product-info {
-            padding: 25px;
-        }
-        .product-info h4 {
-            font-family: 'Markazi Text', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #f5e6b0;
-        }
-        .product-info .price {
-            color: #c9a84c;
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin: 10px 0;
-        }
-        .product-info .price small {
-            font-size: 1rem;
-            color: #7a6e5a;
-            text-decoration: line-through;
-            margin-right: 15px;
-            font-weight: 400;
-        }
-        .product-info .desc {
-            color: #b0a690;
-            margin: 10px 0 20px;
-        }
-        .product-info .btn-sm {
-            background: transparent;
-            border: 2px solid #c9a84c;
-            color: #c9a84c;
-            padding: 8px 25px;
-            border-radius: 30px;
-            font-weight: 700;
-            transition: 0.3s;
-            cursor: pointer;
-            font-family: 'Noto Naskh Arabic', serif;
-        }
-        .product-info .btn-sm:hover {
-            background: #c9a84c;
-            color: #0b0a0a;
+            font-size: 3.2rem;
+            margin: 0 auto 15px;
+            box-shadow: 0 0 40px rgba(247, 216, 117, 0.2);
         }
 
-        .banner-cta {
-            background: linear-gradient(135deg, #1a1308, #0f0c08);
-            padding: 60px 40px;
-            border-radius: 30px;
-            border-right: 6px solid #c9a84c;
-            margin: 50px 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .banner-cta h3 {
-            font-family: 'Markazi Text', serif;
-            font-size: 2.8rem;
-            color: #f5e6b0;
-        }
-        .banner-cta p {
-            color: #b8a07a;
-            font-size: 1.2rem;
-            max-width: 500px;
+        .team-member h5 {
+            font-family: 'Estedad', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #f7d875;
         }
 
+        .team-member p {
+            color: #97a6d4;
+        }
+
+        /* فوتر */
         footer {
-            border-top: 1px solid #221c16;
-            padding: 50px 0 30px;
-            margin-top: 60px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 40px;
+            padding: 40px 0 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.05);
+            text-align: center;
+            color: #6f7daa;
         }
-        .footer-col h5 {
-            font-family: 'Markazi Text', serif;
-            font-size: 1.6rem;
-            color: #c9a84c;
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
             margin-bottom: 20px;
         }
-        .footer-col p, .footer-col a {
-            color: #a0907a;
+
+        .footer-links a {
+            color: #b6c3e6;
             text-decoration: none;
-            display: block;
-            margin: 10px 0;
-            transition: 0.3s;
-        }
-        .footer-col a:hover {
-            color: #f5e6b0;
-            padding-right: 5px;
-        }
-        .footer-bottom {
-            width: 100%;
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #1a1515;
-            color: #5f5544;
-            font-size: 0.9rem;
+            transition: 0.2s;
         }
 
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 20px;
+        .footer-links a:hover {
+            color: #f7d875;
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 850px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-            nav {
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .header-inner {
+                flex-direction: column;
+                gap: 16px;
+            }
+            nav ul {
+                gap: 18px;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 15px;
             }
-            .hero-text h2 {
-                font-size: 3rem;
+            .hero-title {
+                font-size: 2.6rem;
             }
-            .hero-image {
-                font-size: 8rem;
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
             }
-            .hero-text {
-                padding: 20px;
+            .stat-number {
+                font-size: 1.6rem;
             }
-            .banner-cta {
-                flex-direction: column;
-                text-align: center;
+            .btn-glow {
+                padding: 10px 24px;
+            }
+        }
+
+        /* افکت محو */
+        .fade-in {
+            animation: fadeUp 0.9s ease forwards;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
-    <div class="top-bar">
-        <i class="fas fa-star" style="color: #c9a84c;"></i> 
-        ارسال رایگان برای خریدهای بالای ۲ میلیون تومان 
-        <i class="fas fa-star" style="color: #c9a84c; margin-right: 15px;"></i>
-    </div>
-
-    <div class="container">
-
-        <header>
+    <!-- هدر -->
+    <header>
+        <div class="container header-inner">
             <div class="logo">
-                <h1><i class="fas fa-handshake"></i> میثاق جامه</h1>
-                <span>— پوشاک آیینی و هیئتی —</span>
+                <span>NEXUS</span> STUDIO
             </div>
             <nav>
-                <a href="#">خانه</a>
-                <a href="#">محصولات</a>
-                <a href="#">هیئت‌ها</a>
-                <a href="#">درباره ما</a>
-                <a href="#">تماس</a>
+                <ul>
+                    <li><a href="#">خانه</a></li>
+                    <li><a href="#">بازی‌ها</a></li>
+                    <li><a href="#">تیم</a></li>
+                    <li><a href="#">تماس</a></li>
+                </ul>
             </nav>
-            <div class="header-icons">
-                <i class="fas fa-search"></i>
-                <i class="fas fa-user"></i>
-                <i class="fas fa-shopping-bag"></i>
-            </div>
-        </header>
+            <button class="btn-glow">شروع ماجرا</button>
+        </div>
+    </header>
 
-        <section class="hero">
-            <div class="hero-text">
-                <h2>میثاقی <br>با جامه‌ای نو</h2>
-                <p>طراحی‌های منحصربه‌فرد با کیفیت عالی، برای مجالس و هیئت‌های مذهبی</p>
-                <a href="#" class="btn">مشاهده مجموعه</a>
+    <!-- هیرو -->
+    <section class="hero fade-in">
+        <div class="container hero-grid">
+            <div>
+                <h1 class="hero-title estedad-bold">
+                    دنیای <span class="highlight">جدید</span> بازی‌ها
+                </h1>
+                <p class="hero-desc sahel-regular">
+                    ما در استودیو نکسوس، مرزهای تخیل را جابه‌جا می‌کنیم.
+                    از ایده تا اجرا، بازی‌هایی می‌سازیم که تا سال‌ها در خاطر می‌مانند.
+                </p>
+                <button class="btn-glow">مشاهده پروژه‌ها</button>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">+۳۵</div>
+                        <div class="stat-label">بازی منتشر شده</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">۴.۹</div>
+                        <div class="stat-label">میانگین امتیاز</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">۱۲۰</div>
+                        <div class="stat-label">نفر تیم</div>
+                    </div>
+                </div>
             </div>
             <div class="hero-image">
-                <i class="fas fa-tshirt"></i>
-            </div>
-        </section>
-
-        <h2 class="section-title">دسته‌بندی‌ها</h2>
-        <div class="categories">
-            <div class="category-card">
-                <i class="fas fa-male"></i>
-                <h3>مردانه</h3>
-                <p>لباس‌های رسمی و سنتی</p>
-            </div>
-            <div class="category-card">
-                <i class="fas fa-female"></i>
-                <h3>زنانه</h3>
-                <p>چادر، مانتو و مقنعه</p>
-            </div>
-            <div class="category-card">
-                <i class="fas fa-child"></i>
-                <h3>نوجوانان</h3>
-                <p>ست‌های شیک و راحت</p>
-            </div>
-            <div class="category-card">
-                <i class="fas fa-star-and-crescent"></i>
-                <h3>مذهبی</h3>
-                <p>طرح‌های آیینی و متبرک</p>
-            </div>
-        </div>
-
-        <h2 class="section-title">پرطرفدارترین‌ها</h2>
-        <div class="products-grid">
-
-            <div class="product-card">
-                <div class="product-img">
-                    <i class="fas fa-user-tie"></i>
-                    <span class="badge">حراج</span>
-                </div>
-                <div class="product-info">
-                    <h4>کت و شلوار هیئتی</h4>
-                    <div class="price">۱,۲۹۰,۰۰۰ <small>۱,۶۹۰,۰۰۰</small></div>
-                    <p class="desc">پارچه مرغوب با طرح‌های ساده و شیک</p>
-                    <button class="btn-sm">افزودن به سبد</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <i class="fas fa-vest"></i>
-                </div>
-                <div class="product-info">
-                    <h4>جلیقه مخمل</h4>
-                    <div class="price">۷۹۰,۰۰۰</div>
-                    <p class="desc">مخمل نرم با گلدوزی‌های ظریف</p>
-                    <button class="btn-sm">افزودن به سبد</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <i class="fas fa-headscarf"></i>
-                    <span class="badge">ویژه</span>
-                </div>
-                <div class="product-info">
-                    <h4>مقنعه حریر</h4>
-                    <div class="price">۵۹۰,۰۰۰ <small>۷۹۰,۰۰۰</small></div>
-                    <p class="desc">حریر درجه یک با دوخت بی‌نظیر</p>
-                    <button class="btn-sm">افزودن به سبد</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <i class="fas fa-tshirt"></i>
-                </div>
-                <div class="product-info">
-                    <h4>ست پسرانه هیئتی</h4>
-                    <div class="price">۴۹۰,۰۰۰</div>
-                    <p class="desc">شلوار و پیراهن با طرح‌های مذهبی</p>
-                    <button class="btn-sm">افزودن به سبد</button>
+                <div class="game-card">
+                    <div class="icon">🚀</div>
+                    <h3>پروژه آلفا</h3>
+                    <p>اکشن ماجراجویی در کهکشان</p>
+                    <span style="display:inline-block; margin-top:12px; background: #f7d87520; padding:6px 20px; border-radius:40px; border:1px solid #f7d87540;">Coming 2026</span>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="banner-cta">
-            <div>
-                <h3>تخفیف ویژه هیئتی‌ها</h3>
-                <p>با ثبت نام در خبرنامه، ۱۵٪ تخفیف اولین خرید بگیرید.</p>
+    <!-- بازی‌ها -->
+    <section class="games-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>بازی‌های درخشنده</h2>
+                <p class="sahel-regular">آخرین ساخته‌های استودیو نکسوس</p>
             </div>
-            <a href="#" class="btn" style="padding: 14px 40px;">ثبت نام</a>
-        </div>
-
-        <footer>
-            <div class="footer-col">
-                <h5><i class="fas fa-handshake" style="margin-left: 10px;"></i> میثاق جامه</h5>
-                <p>تأمین‌کننده پوشاک باکیفیت برای هیئت‌ها و مجالس مذهبی از سال ۱۳۹۰</p>
-                <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 1.5rem; color: #c9a84c;">
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-telegram"></i>
-                    <i class="fab fa-whatsapp"></i>
+            <div class="games-grid">
+                <div class="game-box">
+                    <div class="emoji-big">⚔️</div>
+                    <h4>افسانه سرزمین</h4>
+                    <p>یک آرپی‌جی حماسی با داستانی عمیق</p>
+                    <span class="tag">اکشن</span>
+                </div>
+                <div class="game-box">
+                    <div class="emoji-big">🏎️</div>
+                    <h4>مسیر آتش</h4>
+                    <p>مسابقه‌های نفس‌گیر در جاده‌های خطرناک</p>
+                    <span class="tag">مسابقه‌ای</span>
+                </div>
+                <div class="game-box">
+                    <div class="emoji-big">🧙</div>
+                    <h4>جادوگران کیهان</h4>
+                    <p>دنیایی پر از جادو و رمز و راز</p>
+                    <span class="tag">فانتزی</span>
+                </div>
+                <div class="game-box">
+                    <div class="emoji-big">🤖</div>
+                    <h4>شورش ماشین‌ها</h4>
+                    <p>نبرد ربات‌ها در آینده‌ای نزدیک</p>
+                    <span class="tag">علمی‑تخیلی</span>
                 </div>
             </div>
-            <div class="footer-col">
-                <h5>دسترسی سریع</h5>
-                <a href="#">محصولات مردانه</a>
-                <a href="#">محصولات زنانه</a>
-                <a href="#">محصولات کودکان</a>
-                <a href="#">تخفیف‌ها</a>
-            </div>
-            <div class="footer-col">
-                <h5>راهنمای خرید</h5>
-                <a href="#">روش‌های ارسال</a>
-                <a href="#">روش‌های پرداخت</a>
-                <a href="#">ضمانت بازگشت</a>
-                <a href="#">سؤالات متداول</a>
-            </div>
-            <div class="footer-col">
-                <h5>تماس با ما</h5>
-                <p><i class="fas fa-phone" style="color: #c9a84c;"></i> ۰۲۱-۱۲۳۴۵۶۷۸</p>
-                <p><i class="fas fa-envelope" style="color: #c9a84c;"></i> info@misaghjameh.ir</p>
-                <p><i class="fas fa-map-marker-alt" style="color: #c9a84c;"></i> تهران، خیابان ولیعصر</p>
-            </div>
-            <div class="footer-bottom">
-                <p>© ۱۴۰۴ تمامی حقوق متعلق به میثاق جامه است. طراحی شده با عشق و طلا</p>
-            </div>
-        </footer>
+        </div>
+    </section>
 
-    </div>
+    <!-- تیم -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>تیم خلاق</h2>
+                <p class="sahel-regular">مغزهای پشت صحنه</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="avatar">👩‍💻</div>
+                    <h5>سارا کریمی</h5>
+                    <p>مدیر هنری</p>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">👨‍💻</div>
+                    <h5>محمدرضا حسینی</h5>
+                    <p>برنامه‌نویس ارشد</p>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">🧑‍🎨</div>
+                    <h5>لیلا محمدی</h5>
+                    <p>طراح شخصیت</p>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">🎮</div>
+                    <h5>امیر رضایی</h5>
+                    <p>طراح گیم‌پلی</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- فوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">درباره ما</a>
+                <a href="#">بلاگ</a>
+                <a href="#">فرصت‌های شغلی</a>
+                <a href="#">پشتیبانی</a>
+            </div>
+            <p style="font-size:0.9rem;">
+                © ۲۰۲۶ استودیو نکسوس — تمامی حقوق محفوظ است.
+            </p>
+            <p style="font-size:0.8rem; color:#4f5b7a; margin-top:6px;">
+                ساخته شده با عشق و کد
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
