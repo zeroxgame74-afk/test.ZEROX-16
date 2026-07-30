@@ -50,6 +50,7 @@
             font-weight: 400;
             line-height: 1.8;
             overflow-x: hidden;
+            background-image: radial-gradient(circle at 30% 20%, rgba(255, 200, 80, 0.03) 0%, transparent 60%);
         }
 
         /* ========== اسکرول‌بار ========== */
@@ -88,8 +89,6 @@
             border-bottom: 1px solid rgba(255, 215, 100, 0.06);
             flex-wrap: wrap;
             gap: 1rem;
-            position: relative;
-            z-index: 10;
         }
 
         .logo-area {
@@ -319,35 +318,6 @@
             }
         }
 
-        /* ========== پس‌زمینه ویدئویی ========== */
-        .video-bg {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .video-bg video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-        }
-
-        .video-bg .overlay {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(11, 11, 14, 0.5);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-        }
-
         /* ========== محتوای اصلی ========== */
         .main-content {
             flex: 1;
@@ -355,8 +325,6 @@
             flex-direction: column;
             justify-content: center;
             padding: 2rem 0 1.5rem 0;
-            position: relative;
-            z-index: 5;
         }
 
         .tab-content {
@@ -379,152 +347,6 @@
             }
         }
 
-        /* ===== خانه (نسخه جدید با ویدئو) ===== */
-        #home {
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        #home .home-title {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 900;
-            font-size: 3.5rem;
-            color: #f5efe6;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            animation: fadeInDown 1s ease;
-        }
-
-        #home .home-title span {
-            color: #f5b042;
-        }
-
-        #home .home-subtitle {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 1.2rem;
-            color: #d6d0c4;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInDown 1.2s ease;
-        }
-
-        #home .home-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInDown 1.4s ease;
-        }
-
-        #home .home-buttons .btn {
-            padding: 0.8rem 2rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            border: none;
-            cursor: pointer;
-        }
-
-        #home .home-buttons .btn-primary {
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            color: #0b0b0e;
-            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.3);
-        }
-
-        #home .home-buttons .btn-primary:hover {
-            transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 12px 32px -8px rgba(245, 176, 66, 0.4);
-        }
-
-        #home .home-buttons .btn-glass {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            color: #f5efe6;
-        }
-
-        #home .home-buttons .btn-glass:hover {
-            background: rgba(255, 215, 100, 0.08);
-            border-color: rgba(255, 215, 100, 0.25);
-            transform: scale(1.05) translateY(-3px);
-        }
-
-        #home .home-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.8rem;
-            margin-top: 3rem;
-            animation: fadeInUp 1.6s ease;
-        }
-
-        #home .home-card {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            border-radius: 24px;
-            padding: 2rem 1.5rem;
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-align: center;
-        }
-
-        #home .home-card:hover {
-            background: rgba(255, 215, 100, 0.06);
-            border-color: rgba(255, 215, 100, 0.15);
-            transform: translateY(-6px) scale(1.01);
-        }
-
-        #home .home-card .icon {
-            font-size: 2.8rem;
-            color: #f5b042;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        #home .home-card h3 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: #f5efe6;
-            margin-bottom: 0.5rem;
-        }
-
-        #home .home-card p {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 0.95rem;
-            color: #b0a99b;
-            margin: 0;
-        }
-
-        /* ===== انیمیشن‌های ورود ===== */
-        @keyframes fadeInDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ===== سایر بخش‌ها (درباره من، سایت‌ها، طراحی‌هام) ===== */
         .tab-content h2 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
@@ -554,55 +376,292 @@
             line-height: 2;
         }
 
-        .bio-intro {
-            max-width: 800px;
-            margin: 0 auto 2.5rem auto;
-            padding: 1.5rem 2rem;
+        /* ===== صفحه خانه جدید و خوشگل ===== */
+        .home-hero {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .home-hero .hero-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .home-hero .hero-text .badge {
+            display: inline-block;
+            background: rgba(245, 176, 66, 0.12);
+            border: 1px solid rgba(245, 176, 66, 0.15);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #f5b042;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .home-hero .hero-text h1 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            color: #f5efe6;
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
+
+        .home-hero .hero-text h1 span {
+            color: #f5b042;
+            position: relative;
+        }
+
+        .home-hero .hero-text h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #f5b042, transparent);
+            border-radius: 4px;
+        }
+
+        .home-hero .hero-text .typing-text {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #b0a99b;
+            margin-bottom: 1rem;
+            min-height: 2.5rem;
+        }
+
+        .home-hero .hero-text .typing-text .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2rem;
+            background: #f5b042;
+            animation: blink 0.8s step-end infinite;
+            vertical-align: text-bottom;
+            margin-right: 2px;
+        }
+
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .home-hero .hero-text p {
+            font-size: 1.05rem;
+            color: #d6d0c4;
+            line-height: 2;
+            max-width: 500px;
+        }
+
+        .home-hero .hero-text .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .home-hero .hero-text .hero-buttons a {
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .home-hero .hero-text .hero-buttons .btn-primary {
+            background: linear-gradient(145deg, #f5b042, #d48f2b);
+            color: #0b0b0e;
+            border: none;
+            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.25);
+        }
+
+        .home-hero .hero-text .hero-buttons .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 32px -8px rgba(245, 176, 66, 0.35);
+        }
+
+        .home-hero .hero-text .hero-buttons .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            color: #d6d0c4;
+        }
+
+        .home-hero .hero-text .hero-buttons .btn-secondary:hover {
+            background: rgba(255, 215, 100, 0.06);
+            border-color: rgba(255, 215, 100, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .home-hero .hero-avatar {
+            flex-shrink: 0;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(245, 176, 66, 0.08), rgba(245, 176, 66, 0.02));
+            border: 2px solid rgba(245, 176, 66, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #f5b042;
+            animation: floatAvatar 6s ease-in-out infinite;
+            position: relative;
+            box-shadow: 0 0 60px -20px rgba(245, 176, 66, 0.1);
+            transition: 0.4s;
+        }
+
+        .home-hero .hero-avatar:hover {
+            transform: scale(1.04);
+            border-color: rgba(245, 176, 66, 0.25);
+            box-shadow: 0 0 80px -20px rgba(245, 176, 66, 0.2);
+        }
+
+        .home-hero .hero-avatar::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 1px solid rgba(245, 176, 66, 0.06);
+            animation: pulseRing 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.08);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes floatAvatar {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .home-hero .hero-avatar i {
+            filter: drop-shadow(0 0 20px rgba(245, 176, 66, 0.15));
+        }
+
+        /* ===== کارت‌های خانه ===== */
+        .home-design-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1rem;
+        }
+
+        .home-design-card {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 24px;
+            padding: 2rem 1.5rem;
             border: 1px solid rgba(255, 215, 100, 0.06);
-            transition: 0.3s;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .bio-intro::before {
+        .home-design-card::after {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(255, 215, 100, 0.03), transparent 70%);
-            animation: shimmerBg 8s ease-in-out infinite alternate;
-            pointer-events: none;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #f5b042, transparent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        @keyframes shimmerBg {
-            0% {
-                transform: translate(-10%, -10%);
-            }
-            100% {
-                transform: translate(10%, 10%);
-            }
+        .home-design-card:hover::after {
+            transform: scaleX(1);
         }
 
-        .bio-intro:hover {
-            border-color: rgba(255, 215, 100, 0.15);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.4);
+        .home-design-card:hover {
+            background: rgba(255, 215, 100, 0.04);
+            border-color: rgba(255, 215, 100, 0.12);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .bio-intro p {
-            font-size: 1.15rem;
-            line-height: 2.2;
+        .home-design-card .icon {
+            font-size: 2.8rem;
+            color: #f5b042;
             margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
+            display: inline-block;
+            animation: floatIcon 3s ease-in-out infinite;
         }
 
-        .bio-intro p:last-child {
-            margin-bottom: 0;
+        .home-design-card:nth-child(2) .icon {
+            animation-delay: 0.5s;
+        }
+        .home-design-card:nth-child(3) .icon {
+            animation-delay: 1s;
+        }
+
+        @keyframes floatIcon {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .home-design-card .icon i {
+            background: rgba(255, 215, 100, 0.08);
+            padding: 0.8rem;
+            border-radius: 20px;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .home-design-card:hover .icon i {
+            background: rgba(255, 215, 100, 0.15);
+            transform: scale(1.1) rotate(-6deg);
+            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.2);
+        }
+
+        .home-design-card h3 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #f5efe6;
+            margin-bottom: 0.5rem;
+        }
+
+        .home-design-card p {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.95rem;
+            color: #b0a99b;
+            margin: 0;
         }
 
         /* ===== کارت‌های سایت ===== */
@@ -615,8 +674,7 @@
 
         .site-card-wide {
             grid-column: 1 / -1;
-            background: rgba(26, 17, 17, 0.8);
-            backdrop-filter: blur(8px);
+            background: #1a1111;
             border-radius: 24px;
             padding: 1.5rem 2rem;
             border-right: 6px solid #B61C1C;
@@ -647,7 +705,7 @@
         }
 
         .site-card-wide:hover {
-            background: rgba(31, 20, 20, 0.9);
+            background: #1f1414;
             border-color: rgba(182, 28, 28, 0.4);
             transform: translateX(-6px) scale(1.005);
             box-shadow: 0 12px 32px -12px rgba(182, 28, 28, 0.15);
@@ -749,6 +807,7 @@
             transform: translateX(-4px) scale(1.1);
         }
 
+        /* کارت کالفود با رنگ E97510 */
         .site-card-wide.call-food {
             border-right-color: #E97510;
             border-color: rgba(233, 117, 16, 0.2);
@@ -779,9 +838,9 @@
 
         /* ===== کارت طراحی ===== */
         .design-card-new {
+            width: 1080px;
             max-width: 100%;
             background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(8px);
             border-radius: 24px;
             padding: 1.5rem;
             border: 1px solid rgba(255, 215, 100, 0.06);
@@ -828,7 +887,8 @@
             z-index: 1;
         }
 
-        .design-card-new .design-image {
+        /* ===== تصویر با افکت 3D ===== */
+        .design-image {
             width: 100%;
             aspect-ratio: 1/1;
             border-radius: 16px;
@@ -842,7 +902,7 @@
             perspective: 1000px;
         }
 
-        .design-card-new .design-image .image-wrapper {
+        .design-image .image-wrapper {
             width: 100%;
             height: 100%;
             transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -850,7 +910,11 @@
             position: relative;
         }
 
-        .design-card-new .design-image .image-wrapper img {
+        .design-image .image-wrapper.rotated {
+            transform: rotateY(15deg) rotateX(5deg) scale(1.02);
+        }
+
+        .design-image .image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -858,7 +922,7 @@
             display: block;
         }
 
-        .design-card-new .design-image .image-overlay {
+        .design-image .image-overlay {
             position: absolute;
             top: 0;
             right: 0;
@@ -876,17 +940,17 @@
             border-radius: 16px;
         }
 
-        .design-card-new .design-image:hover .image-overlay {
+        .design-image:hover .image-overlay {
             opacity: 1;
         }
 
-        .design-card-new .design-image .image-overlay i {
+        .design-image .image-overlay i {
             font-size: 2.5rem;
             color: #f5b042;
             animation: floatIcon 2s ease-in-out infinite;
         }
 
-        .design-card-new .design-image .image-overlay span {
+        .design-image .image-overlay span {
             color: #f5efe6;
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 600;
@@ -897,326 +961,13 @@
             backdrop-filter: blur(4px);
         }
 
-        .design-card-new .design-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.5rem;
-        }
-
-        .design-card-new .design-title {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: #f5efe6;
-            transition: 0.3s;
-        }
-
-        .design-card-new:hover .design-title {
-            color: #f5b042;
-        }
-
-        .design-card-new .design-title i {
-            color: #f5b042;
-            margin-left: 0.5rem;
-            animation: heartBeat 2s ease-in-out infinite;
-        }
-
-        @keyframes heartBeat {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            15% {
-                transform: scale(1.25);
-            }
-            30% {
-                transform: scale(1);
-            }
-            45% {
-                transform: scale(1.15);
-            }
-            60% {
-                transform: scale(1);
-            }
-        }
-
-        .design-card-new .toggle-details {
-            background: none;
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            color: #f5b042;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .design-card-new .toggle-details:hover {
-            background: rgba(255, 215, 100, 0.08);
-            border-color: #f5b042;
-            transform: scale(1.04);
-        }
-
-        .design-card-new .toggle-details i {
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .design-card-new .toggle-details.open i {
-            transform: rotate(180deg);
-        }
-
-        .design-card-new .design-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, margin 0.3s ease;
-            opacity: 0;
-            margin: 0;
-        }
-
-        .design-card-new .design-details.open {
-            max-height: 500px;
-            opacity: 1;
-            margin: 1rem 0;
-        }
-
-        .design-card-new .design-desc {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 1rem;
-            color: #b0a99b;
-            margin-bottom: 0.5rem;
-        }
-
-        .design-card-new .design-author {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 0.95rem;
-            color: #f5b042;
-            margin-bottom: 1rem;
-        }
-
-        .design-card-new .download-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .design-card-new .download-buttons a {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            color: #f5efe6;
-            text-decoration: none;
-            padding: 0.4rem 1.2rem;
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            border-radius: 40px;
-            transition: 0.3s;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 215, 100, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .design-card-new .download-buttons a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: rgba(255, 215, 100, 0.08);
-            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            border-radius: 40px;
-        }
-
-        .design-card-new .download-buttons a:hover::before {
-            width: 100%;
-        }
-
-        .design-card-new .download-buttons a:hover {
-            background: rgba(255, 215, 100, 0.12);
-            border-color: #f5b042;
-            transform: scale(1.04) translateY(-2px);
-            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.15);
-        }
-
-        .design-card-new .download-buttons a i {
-            color: #f5b042;
-            transition: 0.3s;
-        }
-
-        .design-card-new .download-buttons a:hover i {
-            transform: translateY(-2px) scale(1.1);
-        }
-
-        .design-3d-hint {
-            background: rgba(255, 215, 100, 0.04);
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            border-radius: 16px;
-            padding: 0.6rem 1.2rem;
-            margin-top: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.85rem;
-            color: #b0a99b;
-            transition: 0.3s;
-        }
-
-        .design-3d-hint i {
-            color: #f5b042;
-            font-size: 1rem;
-        }
-
-        .design-3d-hint:hover {
-            background: rgba(255, 215, 100, 0.07);
+        .design-card-new:hover .design-image {
             border-color: rgba(255, 215, 100, 0.15);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
         }
 
-        /* ===== فوتر ===== */
-        .footer {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 215, 100, 0.06);
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            color: #8f887c;
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .footer-social a {
-            color: #b8b2a6;
-            font-size: 1.3rem;
-            margin-right: 1.2rem;
-            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: inline-flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .footer-social a:hover {
-            color: #f5b042;
-            transform: translateY(-4px) scale(1.1);
-        }
-
-        .footer-copy {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-
-        /* ===== نوتیفیکیشن ===== */
-        .welcome-notification {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            border-radius: 20px;
-            padding: 1.2rem 2rem;
-            z-index: 5000;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.6);
-            animation: slideUpNotif 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .welcome-notification.hide {
-            opacity: 0;
-            transform: translateX(-50%) translateY(30px) scale(0.95);
-            pointer-events: none;
-        }
-
-        @keyframes slideUpNotif {
-            0% {
-                opacity: 0;
-                transform: translateX(-50%) translateY(40px) scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0) scale(1);
-            }
-        }
-
-        .welcome-notification .notif-header {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .welcome-notification .notif-header i {
-            font-size: 1.8rem;
-            color: #f5b042;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-
-        .welcome-notification .notif-header h3 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: #f5efe6;
-            margin: 0;
-        }
-
-        .welcome-notification .notif-body {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 0.9rem;
-            color: #b0a99b;
-            line-height: 1.8;
-            padding-right: 0.5rem;
-        }
-
-        .welcome-notification .notif-body ul {
-            list-style: none;
-            padding-right: 0.5rem;
-            margin: 0.3rem 0;
-        }
-
-        .welcome-notification .notif-body ul li {
-            position: relative;
-            padding-right: 1.5rem;
-            margin-bottom: 0.2rem;
-            font-size: 0.85rem;
-        }
-
-        .welcome-notification .notif-body ul li i {
-            position: absolute;
-            right: 0;
-            top: 4px;
-            color: #f5b042;
-            font-size: 0.8rem;
-            width: 1.2rem;
-            text-align: center;
-        }
-
-        .welcome-notification .notif-body .notif-update-title {
-            color: #f5b042;
-            font-weight: 600;
-            font-size: 0.85rem;
-            display: block;
-            margin-top: 0.3rem;
-        }
-
-        .welcome-notification .notif-body .notif-update-title i {
-            margin-left: 0.3rem;
+        .design-card-new:hover .design-image img {
+            transform: scale(1.03);
         }
 
         /* ===== مودال شیشه‌ای ===== */
@@ -1428,14 +1179,325 @@
             color: #8f887c;
         }
 
-        @keyframes floatIcon {
+        .design-card-new .design-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .design-card-new .design-title {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #f5efe6;
+            transition: 0.3s;
+        }
+
+        .design-card-new:hover .design-title {
+            color: #f5b042;
+        }
+
+        .design-card-new .design-title i {
+            color: #f5b042;
+            margin-left: 0.5rem;
+            animation: heartBeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
             0%,
             100% {
-                transform: translateY(0px);
+                transform: scale(1);
             }
-            50% {
-                transform: translateY(-6px);
+            15% {
+                transform: scale(1.25);
             }
+            30% {
+                transform: scale(1);
+            }
+            45% {
+                transform: scale(1.15);
+            }
+            60% {
+                transform: scale(1);
+            }
+        }
+
+        .design-card-new .toggle-details {
+            background: none;
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            color: #f5b042;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .design-card-new .toggle-details:hover {
+            background: rgba(255, 215, 100, 0.08);
+            border-color: #f5b042;
+            transform: scale(1.04);
+        }
+
+        .design-card-new .toggle-details i {
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .design-card-new .toggle-details.open i {
+            transform: rotate(180deg);
+        }
+
+        .design-card-new .design-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, margin 0.3s ease;
+            opacity: 0;
+            margin: 0;
+        }
+
+        .design-card-new .design-details.open {
+            max-height: 500px;
+            opacity: 1;
+            margin: 1rem 0;
+        }
+
+        .design-card-new .design-desc {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 1rem;
+            color: #b0a99b;
+            margin-bottom: 0.5rem;
+        }
+
+        .design-card-new .design-author {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.95rem;
+            color: #f5b042;
+            margin-bottom: 1rem;
+        }
+
+        .design-card-new .download-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .design-card-new .download-buttons a {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            color: #f5efe6;
+            text-decoration: none;
+            padding: 0.4rem 1.2rem;
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            border-radius: 40px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 215, 100, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .design-card-new .download-buttons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 215, 100, 0.08);
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            border-radius: 40px;
+        }
+
+        .design-card-new .download-buttons a:hover::before {
+            width: 100%;
+        }
+
+        .design-card-new .download-buttons a:hover {
+            background: rgba(255, 215, 100, 0.12);
+            border-color: #f5b042;
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.15);
+        }
+
+        .design-card-new .download-buttons a i {
+            color: #f5b042;
+            transition: 0.3s;
+        }
+
+        .design-card-new .download-buttons a:hover i {
+            transform: translateY(-2px) scale(1.1);
+        }
+
+        /* ===== کادر راهنمای 3D ===== */
+        .design-3d-hint {
+            background: rgba(255, 215, 100, 0.04);
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            border-radius: 16px;
+            padding: 0.6rem 1.2rem;
+            margin-top: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 0.85rem;
+            color: #b0a99b;
+            transition: 0.3s;
+        }
+
+        .design-3d-hint i {
+            color: #f5b042;
+            font-size: 1rem;
+        }
+
+        .design-3d-hint:hover {
+            background: rgba(255, 215, 100, 0.07);
+            border-color: rgba(255, 215, 100, 0.15);
+        }
+
+        /* ===== فوتر (بدون خط زیر آیکون‌ها) ===== */
+        .footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 215, 100, 0.06);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            color: #8f887c;
+            font-size: 0.9rem;
+        }
+
+        .footer-social a {
+            color: #b8b2a6;
+            font-size: 1.3rem;
+            margin-right: 1.2rem;
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .footer-social a:hover {
+            color: #f5b042;
+            transform: translateY(-4px) scale(1.1);
+        }
+
+        .footer-copy {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== نوتیفیکیشن خوش‌آمدگویی (پایین صفحه) ===== */
+        .welcome-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            border-radius: 20px;
+            padding: 1.2rem 2rem;
+            z-index: 5000;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.6);
+            animation: slideUpNotif 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .welcome-notification.hide {
+            opacity: 0;
+            transform: translateX(-50%) translateY(30px) scale(0.95);
+            pointer-events: none;
+        }
+
+        @keyframes slideUpNotif {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(40px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+        }
+
+        .welcome-notification .notif-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-notification .notif-header i {
+            font-size: 1.8rem;
+            color: #f5b042;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+
+        .welcome-notification .notif-header h3 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #f5efe6;
+            margin: 0;
+        }
+
+        .welcome-notification .notif-body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.9rem;
+            color: #b0a99b;
+            line-height: 1.8;
+            padding-right: 0.5rem;
+        }
+
+        .welcome-notification .notif-body ul {
+            list-style: none;
+            padding-right: 0.5rem;
+            margin: 0.3rem 0;
+        }
+
+        .welcome-notification .notif-body ul li {
+            position: relative;
+            padding-right: 1.5rem;
+            margin-bottom: 0.2rem;
+            font-size: 0.85rem;
+        }
+
+        .welcome-notification .notif-body ul li i {
+            position: absolute;
+            right: 0;
+            top: 4px;
+            color: #f5b042;
+            font-size: 0.8rem;
+            width: 1.2rem;
+            text-align: center;
+        }
+
+        .welcome-notification .notif-body .notif-update-title {
+            color: #f5b042;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: block;
+            margin-top: 0.3rem;
+        }
+
+        .welcome-notification .notif-body .notif-update-title i {
+            margin-left: 0.3rem;
         }
 
         /* ========== ریسپانسیو ========== */
@@ -1464,13 +1526,26 @@
                 font-size: 1.5rem;
                 width: 2rem;
             }
-            #home .home-title {
-                font-size: 2.5rem;
+            .home-hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 1.5rem;
             }
-            #home .home-subtitle {
-                font-size: 1rem;
+            .home-hero .hero-text p {
+                max-width: 100%;
             }
-            #home .home-cards {
+            .home-hero .hero-text .hero-buttons {
+                justify-content: center;
+            }
+            .home-hero .hero-avatar {
+                width: 140px;
+                height: 140px;
+                font-size: 4rem;
+            }
+            .home-hero .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .home-design-cards {
                 grid-template-columns: 1fr;
             }
             .sites-grid {
@@ -1555,12 +1630,13 @@
                 font-size: 1.2rem;
                 width: 1.8rem;
             }
-            #home .home-title {
-                font-size: 2rem;
+            .home-hero .hero-text h1 {
+                font-size: 1.8rem;
             }
-            #home .home-buttons .btn {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
+            .home-hero .hero-avatar {
+                width: 110px;
+                height: 110px;
+                font-size: 3rem;
             }
             .site-card-wide {
                 padding: 1rem;
@@ -1606,14 +1682,6 @@
 </head>
 <body>
 
-    <!-- ========== پس‌زمینه ویدئویی ========== -->
-    <div class="video-bg">
-        <video autoplay muted loop playsinline>
-            <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2732_1440_25fps.mp4" type="video/mp4" />
-        </video>
-        <div class="overlay"></div>
-    </div>
-
     <div class="container">
 
         <!-- ========== هدر ========== -->
@@ -1647,28 +1715,42 @@
 
             <!-- ===== خانه ===== -->
             <div class="tab-content active" id="home">
-                <h1 class="home-title">سلام! من <span>Mohamad Hossein SNTI</span> هستم</h1>
-                <p class="home-subtitle">توسعه‌دهنده وب | طراح گرافیک | عاشق خلق کردن</p>
-                <div class="home-buttons">
-                    <a href="#" data-tab="design" class="btn btn-primary" onclick="switchTab('design')">
-                        <i class="fas fa-palette"></i> مشاهده کارها
-                    </a>
-                    <a href="#" data-tab="about" class="btn btn-glass" onclick="switchTab('about')">
-                        <i class="fas fa-user"></i> درباره من
-                    </a>
+                <!-- هدر خوشگل جدید -->
+                <div class="home-hero">
+                    <div class="hero-text">
+                        <div class="badge">✨ خوش آمدید</div>
+                        <h1>سلام! من <span>Mohamad Hossein SNTI</span> هستم</h1>
+                        <div class="typing-text" id="typingText">
+                            <span id="typed"></span><span class="cursor"></span>
+                        </div>
+                        <p>کلاً عاشق ساختن و خلق کردنم؛ از طراحی سایت و گرافیک گرفته تا تولید محتوا و هر پروژه‌ی خلاقانه‌ای که بشه باهاش یه چیز باحال ساخت.</p>
+                        <div class="hero-buttons">
+                            <a href="#" onclick="document.querySelector('[data-tab=about]').click(); return false;" class="btn-primary">
+                                <i class="fas fa-user"></i> درباره من
+                            </a>
+                            <a href="#" onclick="document.querySelector('[data-tab=design]').click(); return false;" class="btn-secondary">
+                                <i class="fas fa-palette"></i> نمونه کارها
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
                 </div>
-                <div class="home-cards">
-                    <div class="home-card">
+
+                <!-- کارت‌های زیرین -->
+                <div class="home-design-cards">
+                    <div class="home-design-card">
                         <div class="icon"><i class="fas fa-pen-fancy"></i></div>
                         <h3>طراحی</h3>
                         <p>طراحی مدرن و مینیمال برای وب‌سایت‌ها و برندها</p>
                     </div>
-                    <div class="home-card">
+                    <div class="home-design-card">
                         <div class="icon"><i class="fas fa-code"></i></div>
                         <h3>توسعه</h3>
                         <p>پیاده‌سازی حرفه‌ای با تکنولوژی‌های روز</p>
                     </div>
-                    <div class="home-card">
+                    <div class="home-design-card">
                         <div class="icon"><i class="fas fa-rocket"></i></div>
                         <h3>خلاقیت</h3>
                         <p>ایده‌های نو برای تجربه‌های دیجیتال متفاوت</p>
@@ -1691,7 +1773,9 @@
             <div class="tab-content" id="sites">
                 <h2>سایت‌های طراحی شده</h2>
                 <p style="margin-bottom:1.5rem;">نمونه‌ای از پروژه‌هایی که با عشق و تعصب ساختم:</p>
+
                 <div class="sites-grid">
+                    <!-- کارت عریض ZEROX -->
                     <div class="site-card-wide">
                         <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
                             <div class="site-logo">
@@ -1706,6 +1790,8 @@
                             <i class="fas fa-external-link-alt"></i> مشاهده سایت
                         </a>
                     </div>
+
+                    <!-- کارت عریض کالفود با رنگ E97510 -->
                     <div class="site-card-wide call-food">
                         <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
                             <div class="site-logo">
@@ -1721,6 +1807,7 @@
                         </a>
                     </div>
                 </div>
+
                 <div style="margin-top:1.5rem; padding:1rem; background:rgba(255,215,100,0.03); border-radius:16px; border:1px solid rgba(255,215,100,0.06); transition:0.3s;">
                     <p style="margin:0; font-size:0.95rem; color:#b0a99b;">
                         <i class="fas fa-rocket" style="color:#f5b042; margin-left:0.5rem; animation:floatIcon 3s ease-in-out infinite;"></i>
@@ -1735,9 +1822,9 @@
                 <h2><i class="fas fa-palette" style="color:#f5b042; margin-left:0.8rem;"></i> طراحی‌هام</h2>
                 <p style="margin-bottom:1.5rem;">نمونه‌ای از طراحی‌های هنری و گرافیکی:</p>
 
-                <!-- کارت اول: گفتند زلف یار... -->
+                <!-- کارت اول: گفتند زلف یار... (بالا) -->
                 <div class="design-card-new">
-                    <div class="design-image" onclick="openModal('https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg', 'گفتند زلف یار، شنیدم ذوالفقار...')">
+                    <div class="design-image" id="designImage2" onclick="openModal('https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg', 'گفتند زلف یار، شنیدم ذوالفقار...')">
                         <div class="image-wrapper">
                             <img src="https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg" alt="طراحی یا علی" />
                         </div>
@@ -1773,9 +1860,9 @@
                     </div>
                 </div>
 
-                <!-- کارت دوم: اهواز... -->
+                <!-- کارت دوم: اهواز... (پایین) -->
                 <div class="design-card-new">
-                    <div class="design-image" onclick="openModal('https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png', 'اهواز... خاک غسل‌شده با شهیدانت')">
+                    <div class="design-image" id="designImage1" onclick="openModal('https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png', 'اهواز... خاک غسل‌شده با شهیدانت')">
                         <div class="image-wrapper">
                             <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
                         </div>
@@ -1833,7 +1920,7 @@
 
     </div>
 
-    <!-- ========== نوتیفیکیشن ========== -->
+    <!-- ========== نوتیفیکیشن (۸ ثانیه) ========== -->
     <div class="welcome-notification" id="welcomeNotif">
         <div class="notif-header">
             <i class="fas fa-hand-peace"></i>
@@ -1855,20 +1942,36 @@
             <button class="modal-close" onclick="closeModal()">
                 <i class="fas fa-times"></i>
             </button>
+
             <div class="modal-image" id="modalImage">
                 <div class="modal-img-wrapper" id="modalImgWrapper">
                     <img id="modalImg" src="" alt="طراحی" />
                 </div>
             </div>
+
             <h3 class="modal-title" id="modalTitle"><i class="fas fa-heart"></i></h3>
+
             <div class="modal-controls">
-                <button onclick="rotate3D('left')"><i class="fas fa-arrow-left"></i> چپ</button>
-                <button onclick="rotate3D('right')"><i class="fas fa-arrow-right"></i> راست</button>
-                <button onclick="rotate3D('up')"><i class="fas fa-arrow-up"></i> بالا</button>
-                <button onclick="rotate3D('down')"><i class="fas fa-arrow-down"></i> پایین</button>
-                <button onclick="toggle3D()" id="btn3d"><i class="fas fa-cube"></i> ۳D</button>
-                <button onclick="showCopyright()"><i class="fas fa-copyright"></i> کپی رایت</button>
+                <button onclick="rotate3D('left')">
+                    <i class="fas fa-arrow-left"></i> چپ
+                </button>
+                <button onclick="rotate3D('right')">
+                    <i class="fas fa-arrow-right"></i> راست
+                </button>
+                <button onclick="rotate3D('up')">
+                    <i class="fas fa-arrow-up"></i> بالا
+                </button>
+                <button onclick="rotate3D('down')">
+                    <i class="fas fa-arrow-down"></i> پایین
+                </button>
+                <button onclick="toggle3D()" id="btn3d">
+                    <i class="fas fa-cube"></i> ۳D
+                </button>
+                <button onclick="showCopyright()">
+                    <i class="fas fa-copyright"></i> کپی رایت
+                </button>
             </div>
+
             <div class="modal-copyright" id="copyrightBox">
                 <p>
                     <strong>© 2026 mohamad hossein snti.</strong> تمامی حقوق محفوظ است.
@@ -1876,6 +1979,7 @@
                     تمامی محتوای این وب‌سایت، از جمله متن‌ها، تصاویر، طرح‌ها، لوگو، پروژه‌ها، کدها و سایر آثار، متعلق به <strong>mohamad hossein snti</strong> است. هرگونه کپی، بازنشر، انتشار، ویرایش یا استفاده از این محتوا بدون کسب اجازه کتبی ممنوع بوده و مطابق قوانین مربوط به حقوق مالکیت فکری قابل پیگیری است.
                 </p>
             </div>
+
             <div class="modal-footer-text">
                 <i class="fas fa-arrows-alt" style="color:#f5b042;"></i> برای چرخش ۳D از دکمه‌ها استفاده کنید
             </div>
@@ -1904,33 +2008,33 @@
                     e.preventDefault();
                     const tabId = this.dataset.tab;
                     if (tabId) {
-                        switchTab(tabId);
+                        activateTab(tabId);
                         if (overlay.classList.contains('open')) toggleMenu();
                         history.pushState(null, null, `#${tabId}`);
                     }
                 });
             });
 
-            window.switchTab = function(tabId) {
+            function activateTab(tabId) {
                 tabContents.forEach(content => content.classList.remove('active'));
                 const target = document.getElementById(tabId);
                 if (target) target.classList.add('active');
                 navLinks.forEach(link => link.classList.remove('active'));
                 const activeLink = document.querySelector(`#navMenu a[data-tab="${tabId}"]`);
                 if (activeLink) activeLink.classList.add('active');
-            };
+            }
 
             const hash = window.location.hash.replace('#', '');
             if (hash && document.getElementById(hash)) {
-                switchTab(hash);
+                activateTab(hash);
             } else {
-                switchTab('home');
+                activateTab('home');
             }
 
             window.addEventListener('hashchange', function() {
                 const newHash = window.location.hash.replace('#', '');
                 if (newHash && document.getElementById(newHash)) {
-                    switchTab(newHash);
+                    activateTab(newHash);
                 }
             });
 
@@ -1943,12 +2047,15 @@
             });
         })();
 
-        // ===== توضیحات بیشتر =====
+        // ===== توضیحات بیشتر (کشویی) =====
         function toggleDetails(btn) {
             const card = btn.closest('.design-card-new');
             const details = card.querySelector('.design-details');
-            btn.classList.toggle('open');
+            const icon = btn.querySelector('i');
+
             details.classList.toggle('open');
+            btn.classList.toggle('open');
+
             if (details.classList.contains('open')) {
                 btn.innerHTML = 'بستن توضیحات <i class="fas fa-chevron-up"></i>';
             } else {
@@ -1983,12 +2090,15 @@
         }
 
         function closeModalOutside(e) {
-            if (e.target === e.currentTarget) closeModal();
+            if (e.target === e.currentTarget) {
+                closeModal();
+            }
         }
 
         function rotate3D(direction) {
             const wrapper = document.getElementById('modalImgWrapper');
             const step = 20;
+
             switch (direction) {
                 case 'left':
                     currentRotationY -= step;
@@ -2003,6 +2113,7 @@
                     currentRotationX -= step;
                     break;
             }
+
             wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(${is3D ? 1.05 : 1})`;
         }
 
@@ -2010,6 +2121,7 @@
             const wrapper = document.getElementById('modalImgWrapper');
             const btn = document.getElementById('btn3d');
             is3D = !is3D;
+
             if (is3D) {
                 wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(1.05)`;
                 btn.classList.add('active-3d');
@@ -2022,19 +2134,14 @@
         }
 
         function showCopyright() {
-            document.getElementById('copyrightBox').classList.toggle('active');
+            const box = document.getElementById('copyrightBox');
+            box.classList.toggle('active');
         }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                const overlay = document.getElementById('modalOverlay');
-                if (overlay.classList.contains('active')) closeModal();
-            }
-        });
 
         // ===== انیمیشن اسکرول =====
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.home-design-card, .site-card-wide, .design-card-new, .home-card');
+            const cards = document.querySelectorAll('.home-design-card, .site-card-wide, .design-card-new');
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
@@ -2045,6 +2152,7 @@
                     }
                 });
             }, { threshold: 0.1 });
+
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px) scale(0.97)';
@@ -2052,6 +2160,7 @@
                     `opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)`;
                 observer.observe(card);
             });
+
             setTimeout(() => {
                 cards.forEach(card => {
                     const rect = card.getBoundingClientRect();
@@ -2063,19 +2172,73 @@
             }, 100);
         });
 
-        // ===== نوتیفیکیشن =====
+        // ===== کیبورد برای بستن مودال =====
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('modalOverlay');
+                if (overlay.classList.contains('active')) {
+                    closeModal();
+                }
+            }
+        });
+
+        // ===== تایپ‌رایتر =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const texts = [
+                'توسعه‌دهنده وب',
+                'طراح گرافیک',
+                'عاشق کد و خلاقیت'
+            ];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typedElement = document.getElementById('typed');
+
+            function typeEffect() {
+                const currentText = texts[textIndex];
+
+                if (isDeleting) {
+                    typedElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typedElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                let speed = isDeleting ? 60 : 100;
+
+                if (!isDeleting && charIndex === currentText.length) {
+                    speed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    speed = 500;
+                }
+
+                setTimeout(typeEffect, speed);
+            }
+
+            typeEffect();
+        });
+
+        // ===== نوتیفیکیشن (۸ ثانیه) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
             const APP_VERSION = '1.4.0';
+
             const hasSeen = localStorage.getItem('mhs_notification_version');
+
             if (hasSeen !== APP_VERSION) {
                 notif.style.display = 'block';
+
                 setTimeout(() => {
                     notif.classList.add('hide');
                     setTimeout(() => {
                         notif.style.display = 'none';
                     }, 500);
                 }, 8000);
+
                 localStorage.setItem('mhs_notification_version', APP_VERSION);
             } else {
                 notif.style.display = 'none';
@@ -2084,4 +2247,4 @@
     </script>
 
 </body>
-</html>
+                </html>
