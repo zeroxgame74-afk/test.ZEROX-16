@@ -327,77 +327,62 @@
             padding: 2rem 0 1.5rem 0;
         }
 
-        /* ===== کارت خوش‌آمدگویی جدید (شبیه فیلیمو) ===== */
+        /* ===== کارت خوش‌آمدگویی جدید با عکس فول‌وید ===== */
         .hero-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 215, 100, 0.08);
+            position: relative;
             border-radius: 32px;
-            padding: 2.5rem;
+            overflow: hidden;
             margin-bottom: 2.5rem;
+            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.4);
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            min-height: 260px;
             display: flex;
             align-items: center;
-            gap: 2.5rem;
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.4);
         }
 
-        .hero-card::before {
-            content: '';
+        .hero-card .hero-bg {
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 70% 30%, rgba(255, 215, 100, 0.05), transparent 60%);
-            animation: shimmerBg 8s ease-in-out infinite alternate;
-            pointer-events: none;
-        }
-
-        .hero-card:hover {
-            border-color: rgba(255, 215, 100, 0.15);
-            transform: translateY(-4px);
-            box-shadow: 0 24px 64px -16px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-card .hero-image {
-            flex-shrink: 0;
-            width: 180px;
-            height: 180px;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 2px solid rgba(255, 215, 100, 0.1);
-            position: relative;
-            z-index: 1;
-            transition: 0.3s;
-        }
-
-        .hero-card .hero-image img {
+            top: 0;
+            right: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            z-index: 0;
             transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .hero-card:hover .hero-image img {
-            transform: scale(1.05);
+        .hero-card:hover .hero-bg {
+            transform: scale(1.04);
+        }
+
+        .hero-card .hero-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(11, 11, 14, 0.85) 0%, rgba(11, 11, 14, 0.4) 50%, rgba(11, 11, 14, 0.7) 100%);
+            z-index: 1;
+            backdrop-filter: blur(2px);
         }
 
         .hero-card .hero-content {
-            flex: 1;
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            padding: 2.5rem 3rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
         }
 
         .hero-card .hero-content h1 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #f5efe6;
-            margin-bottom: 0.3rem;
             line-height: 1.3;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
         }
 
         .hero-card .hero-content h1 span {
@@ -406,15 +391,17 @@
 
         .hero-card .hero-content .hero-sub {
             font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 1rem;
-            color: #b0a99b;
-            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            color: #d6d0c4;
+            max-width: 600px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
         }
 
         .hero-card .hero-buttons {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            margin-top: 0.3rem;
         }
 
         .hero-card .hero-buttons a {
@@ -428,9 +415,9 @@
             font-size: 0.95rem;
             text-decoration: none;
             transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
             color: #f5efe6;
             position: relative;
             overflow: hidden;
@@ -443,7 +430,7 @@
             right: 0;
             width: 0;
             height: 100%;
-            background: rgba(255, 215, 100, 0.06);
+            background: rgba(255, 215, 100, 0.08);
             transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
@@ -458,9 +445,10 @@
         }
 
         .hero-card .hero-buttons a:hover {
-            border-color: rgba(255, 215, 100, 0.2);
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.1);
+            border-color: rgba(255, 215, 100, 0.3);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 32px -8px rgba(245, 176, 66, 0.15);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .hero-card .hero-buttons a:hover i {
@@ -469,17 +457,12 @@
 
         .hero-card .hero-buttons a.btn-primary {
             background: linear-gradient(145deg, rgba(245, 176, 66, 0.15), rgba(212, 143, 43, 0.05));
-            border-color: rgba(245, 176, 66, 0.2);
-        }
-
-        .hero-card .hero-buttons a.btn-primary i {
-            color: #f5b042;
+            border-color: rgba(245, 176, 66, 0.25);
         }
 
         .hero-card .hero-buttons a.btn-primary:hover {
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.2), rgba(212, 143, 43, 0.08));
-            border-color: rgba(245, 176, 66, 0.3);
-            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.2);
+            background: linear-gradient(145deg, rgba(245, 176, 66, 0.25), rgba(212, 143, 43, 0.1));
+            border-color: rgba(245, 176, 66, 0.4);
         }
 
         /* ===== بخش‌های دیگر ===== */
@@ -1517,19 +1500,12 @@
 
         /* ========== ریسپانسیو ========== */
         @media (max-width: 992px) {
-            .hero-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 2rem 1.5rem;
+            .hero-card .hero-content {
+                padding: 2rem 1.8rem;
             }
 
-            .hero-card .hero-image {
-                width: 140px;
-                height: 140px;
-            }
-
-            .hero-card .hero-buttons {
-                justify-content: center;
+            .hero-card .hero-content h1 {
+                font-size: 1.8rem;
             }
         }
 
@@ -1622,8 +1598,23 @@
             .welcome-notification .notif-body ul li {
                 font-size: 0.75rem;
             }
+            .hero-card .hero-content {
+                padding: 1.5rem 1.2rem;
+                text-align: center;
+            }
             .hero-card .hero-content h1 {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
+            }
+            .hero-card .hero-content .hero-sub {
+                font-size: 0.9rem;
+                margin: 0 auto;
+            }
+            .hero-card .hero-buttons {
+                justify-content: center;
+            }
+            .hero-card .hero-buttons a {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.85rem;
             }
         }
 
@@ -1685,19 +1676,18 @@
                 font-size: 0.75rem;
                 padding: 0.4rem 0.8rem;
             }
-            .hero-card .hero-image {
-                width: 100px;
-                height: 100px;
-            }
             .hero-card .hero-content h1 {
                 font-size: 1.2rem;
             }
-            .hero-card .hero-buttons a {
-                padding: 0.4rem 1.2rem;
+            .hero-card .hero-content .hero-sub {
                 font-size: 0.8rem;
             }
-            .hero-card .hero-content .hero-sub {
-                font-size: 0.85rem;
+            .hero-card .hero-buttons a {
+                padding: 0.4rem 1rem;
+                font-size: 0.75rem;
+            }
+            .hero-card .hero-buttons a i {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -1735,11 +1725,10 @@
         <!-- ========== محتوای اصلی ========== -->
         <main class="main-content">
 
-            <!-- ===== کارت خوش‌آمدگویی جدید (شبیه فیلیمو) ===== -->
+            <!-- ===== کارت خوش‌آمدگویی با عکس فول‌وید ===== -->
             <div class="hero-card" id="heroCard">
-                <div class="hero-image">
-                    <img src="https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg" alt="mohamad hossein" />
-                </div>
+                <img class="hero-bg" src="https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg" alt="mohamad hossein" />
+                <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <h1>سلام! من <span>mohamad hossein</span> هستم</h1>
                     <p class="hero-sub">به سایت من خوش آمدید! اینجا جاییه که هنر، کد و خلاقیت به هم می‌رسن.</p>
@@ -1754,7 +1743,7 @@
                 </div>
             </div>
 
-            <!-- ===== خانه (محتوای قدیمی) ===== -->
+            <!-- ===== خانه ===== -->
             <div class="tab-content active" id="home">
                 <h2><i class="fas fa-home" style="color:#f5b042; margin-left:0.8rem;"></i> خانه</h2>
                 <div class="bio-intro">
@@ -2076,7 +2065,6 @@
             event.preventDefault();
             activateTab(tabId);
             document.querySelector(`#navMenu a[data-tab="${tabId}"]`)?.click();
-            // اسکرول به بالای بخش
             document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
@@ -2231,7 +2219,7 @@
         // ===== نوتیفیکیشن (۸ ثانیه) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '1.4.0';
+            const APP_VERSION = '1.5.0';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
@@ -2253,4 +2241,4 @@
     </script>
 
 </body>
-    </html>
+</html>
