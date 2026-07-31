@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>استودیو بازیسازی نکسوس</title>
-    <!-- فونت‌های اختصاصی -->
-    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@700&family=Sahel&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سینماچی | تماشای آنلاین فیلم و سریال</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ریست و پایه */
         * {
             margin: 0;
             padding: 0;
@@ -15,547 +13,478 @@
         }
 
         body {
-            background: #0b0e1a;
-            font-family: 'Sahel', sans-serif;
-            color: #eef2ff;
-            line-height: 1.7;
-            overflow-x: hidden;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+            background: #0b0b0e;
+            color: #eee;
+            padding: 20px;
+            direction: rtl;
         }
 
-        /* تایپوگرافی اختصاصی */
-        .estedad-bold {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 700;
-        }
-
-        .sahel-regular {
-            font-family: 'Sahel', sans-serif;
-        }
-
-        /* کانتینر اصلی */
         .container {
-            max-width: 1280px;
+            max-width: 1360px;
             margin: 0 auto;
-            padding: 0 30px;
         }
 
-        /* هدر با افکت شیشه‌ای */
-        header {
-            padding: 22px 0;
-            background: rgba(11, 14, 26, 0.7);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 99;
-        }
-
-        .header-inner {
+        /* ===== هدر ===== */
+        .header {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            padding: 12px 0 18px;
+            border-bottom: 2px solid #1e1e24;
         }
 
         .logo {
-            font-size: 2rem;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #f7d875, #f5b342);
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f7971e, #fdc830);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(245, 179, 66, 0.3);
         }
 
-        .logo span {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 700;
+        .logo i {
+            -webkit-text-fill-color: initial;
+            color: #f7971e;
+            margin-left: 6px;
         }
 
-        nav ul {
+        .header-left {
             display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        nav a {
-            color: #d1d9f0;
-            text-decoration: none;
-            font-size: 1.05rem;
-            transition: 0.3s;
-            border-bottom: 2px solid transparent;
-            padding-bottom: 4px;
-            font-family: 'Sahel', sans-serif;
-        }
-
-        nav a:hover {
-            color: #f7d875;
-            border-bottom-color: #f7d875;
-        }
-
-        /* دکمه سفارشی */
-        .btn-glow {
-            background: linear-gradient(145deg, #f7d875, #e6a820);
-            border: none;
-            padding: 12px 34px;
-            border-radius: 60px;
-            font-family: 'Estedad', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            color: #0b0e1a;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 0 25px rgba(247, 216, 117, 0.3);
-        }
-
-        .btn-glow:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 45px rgba(247, 216, 117, 0.6);
-        }
-
-        /* هیرو */
-        .hero {
-            padding: 90px 0 70px;
-            background: radial-gradient(circle at 20% 30%, #1a1f33, #0b0e1a 80%);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
             align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        .hero-title {
-            font-size: 3.7rem;
-            line-height: 1.2;
+        .search-box {
+            background: #1a1a1f;
+            border-radius: 30px;
+            padding: 8px 18px;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .search-box:focus-within {
+            border-color: #f7971e;
+            box-shadow: 0 0 20px rgba(247, 151, 30, 0.15);
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            padding: 6px 10px;
+            color: #eee;
+            font-size: 0.95rem;
+            outline: none;
+            width: 180px;
+        }
+
+        .search-box button {
+            background: transparent;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .search-box button:hover {
+            color: #f7971e;
+        }
+
+        .user-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .user-btns a {
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .user-btns .login {
+            border: 1px solid #f7971e;
+            color: #f7971e;
+        }
+
+        .user-btns .login:hover {
+            background: #f7971e;
+            color: #0b0b0e;
+        }
+
+        .user-btns .register {
+            background: #f7971e;
+            color: #0b0b0e;
+        }
+
+        .user-btns .register:hover {
+            background: #fdc830;
+            transform: scale(1.03);
+        }
+
+        /* ===== لینک‌های بالایی (مخصوص نابینایان و ...) ===== */
+        .top-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 25px;
+            padding: 14px 0 10px;
+            border-bottom: 1px solid #1e1e24;
+            font-size: 0.85rem;
+        }
+
+        .top-links a {
+            color: #999;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .top-links a i {
+            color: #f7971e;
+            font-size: 0.8rem;
+        }
+
+        .top-links a:hover {
+            color: #fff;
+        }
+
+        /* ===== دسته‌بندی اصلی (فیلم و سریال) ===== */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 30px 0 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: #f7971e;
+            font-size: 1.8rem;
+        }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
             margin-bottom: 20px;
         }
 
-        .hero-title .highlight {
-            background: linear-gradient(135deg, #f7d875, #f5b342);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .cat-item {
+            background: #151518;
+            padding: 14px 10px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #232328;
+            transition: 0.3s;
+            cursor: default;
+            color: #ddd;
         }
 
-        .hero-desc {
-            font-size: 1.2rem;
-            color: #b6c3e6;
-            margin-bottom: 35px;
-            max-width: 550px;
+        .cat-item:hover {
+            background: #1f1f26;
+            border-color: #f7971e;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(247, 151, 30, 0.08);
+            color: #fff;
         }
 
-        .hero-stats {
+        .cat-item i {
+            display: block;
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+            color: #f7971e;
+        }
+
+        /* ===== لیست‌های ویژه ===== */
+        .special-lists {
             display: flex;
-            gap: 40px;
-            margin-top: 30px;
+            flex-wrap: wrap;
+            gap: 10px 25px;
+            padding: 18px 0;
+            border-top: 1px solid #1e1e24;
+            border-bottom: 1px solid #1e1e24;
+            margin: 25px 0;
         }
 
-        .stat-item {
-            text-align: center;
+        .special-lists a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
         }
 
-        .stat-number {
-            font-size: 2.2rem;
-            font-family: 'Estedad', sans-serif;
-            font-weight: 700;
-            color: #f7d875;
+        .special-lists a:hover {
+            color: #f7971e;
+            border-bottom-color: #f7971e;
         }
 
-        .stat-label {
-            color: #97a6d4;
-            font-size: 0.95rem;
+        .special-lists a i {
+            margin-left: 5px;
+            color: #f7971e;
+            font-size: 0.8rem;
         }
 
-        /* شبه‌تصویر (باکس بازی) */
-        .hero-image {
-            background: linear-gradient(145deg, #1e2642, #12172b);
-            border-radius: 40px;
-            padding: 30px 20px;
-            border: 1px solid rgba(247, 216, 117, 0.2);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        /* ===== بخش کودک ===== */
+        .kids-section {
+            background: linear-gradient(145deg, #111116, #18181e);
+            border-radius: 18px;
+            padding: 22px 25px;
+            margin: 25px 0;
+            border: 1px solid #282830;
         }
 
-        .hero-image::before {
-            content: "🎮";
-            font-size: 8rem;
-            opacity: 0.08;
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            transform: rotate(12deg);
+        .kids-section .section-title {
+            margin-top: 0;
         }
 
-        .game-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .game-card .icon {
-            font-size: 4.8rem;
-            margin-bottom: 10px;
-        }
-
-        .game-card h3 {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: #f7d875;
-        }
-
-        .game-card p {
-            color: #b6c3e6;
-        }
-
-        /* بخش بازی‌ها (شبکه) */
-        .games-section {
-            padding: 80px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 700;
-            font-size: 2.8rem;
-            background: linear-gradient(135deg, #f7d875, #f5b342);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-        }
-
-        .section-header p {
-            color: #97a6d4;
-            font-size: 1.2rem;
-            margin-top: 8px;
-        }
-
-        .games-grid {
+        .kids-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
         }
 
-        .game-box {
-            background: linear-gradient(145deg, #181f36, #11172a);
-            padding: 35px 20px;
-            border-radius: 32px;
-            border: 1px solid rgba(255, 215, 0, 0.08);
-            transition: 0.35s ease;
-            text-align: center;
-            backdrop-filter: blur(6px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        .kids-grid .cat-item {
+            background: #1c1c23;
         }
 
-        .game-box:hover {
-            transform: translateY(-12px);
-            border-color: #f7d875;
-            box-shadow: 0 20px 50px rgba(247, 216, 117, 0.15);
+        .kids-grid .cat-item:hover {
+            background: #26262e;
         }
 
-        .game-box .emoji-big {
-            font-size: 3.8rem;
-            margin-bottom: 12px;
-        }
-
-        .game-box h4 {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 700;
-            font-size: 1.6rem;
-            color: #f7d875;
-        }
-
-        .game-box p {
-            color: #b6c3e6;
-            margin: 12px 0 18px;
-        }
-
-        .tag {
-            display: inline-block;
-            background: rgba(247, 216, 117, 0.15);
-            padding: 4px 18px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: #f7d875;
-            border: 1px solid rgba(247, 216, 117, 0.2);
-        }
-
-        /* تیم و آمار */
-        .team-section {
-            padding: 60px 0 80px;
-            background: radial-gradient(circle at 80% 20%, #1a1f33, #0b0e1a);
-            border-top: 1px solid rgba(255, 215, 0, 0.06);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.06);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 40px;
-            margin-top: 30px;
-        }
-
-        .team-member {
-            text-align: center;
-        }
-
-        .team-member .avatar {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(145deg, #f7d875, #d4941a);
-            border-radius: 50%;
+        /* ===== فوتر ===== */
+        .footer {
+            margin-top: 45px;
+            padding: 25px 0 10px;
+            border-top: 1px solid #1e1e24;
             display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            font-size: 3.2rem;
-            margin: 0 auto 15px;
-            box-shadow: 0 0 40px rgba(247, 216, 117, 0.2);
-        }
-
-        .team-member h5 {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: #f7d875;
-        }
-
-        .team-member p {
-            color: #97a6d4;
-        }
-
-        /* فوتر */
-        footer {
-            padding: 40px 0 30px;
-            border-top: 1px solid rgba(255, 215, 0, 0.05);
-            text-align: center;
-            color: #6f7daa;
+            font-size: 0.8rem;
+            color: #777;
         }
 
         .footer-links {
             display: flex;
-            justify-content: center;
-            gap: 30px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            gap: 12px 22px;
         }
 
         .footer-links a {
-            color: #b6c3e6;
+            color: #888;
             text-decoration: none;
-            transition: 0.2s;
+            transition: 0.3s;
         }
 
         .footer-links a:hover {
-            color: #f7d875;
+            color: #f7971e;
         }
 
-        /* ریسپانسیو */
-        @media (max-width: 850px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-desc {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero-stats {
-                justify-content: center;
-            }
-            .header-inner {
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 1.3rem;
+        }
+
+        .social-icons a {
+            color: #666;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #f7971e;
+            transform: scale(1.1);
+        }
+
+        /* ===== ریسپانسیو ===== */
+        @media (max-width: 700px) {
+            .header {
                 flex-direction: column;
-                gap: 16px;
+                align-items: stretch;
+                gap: 12px;
             }
-            nav ul {
-                gap: 18px;
-                flex-wrap: wrap;
+
+            .header-left {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box input {
+                width: 100%;
+            }
+
+            .user-btns {
                 justify-content: center;
             }
-            .hero-title {
-                font-size: 2.6rem;
-            }
-        }
 
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
+            .cat-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             }
-            .stat-number {
-                font-size: 1.6rem;
-            }
-            .btn-glow {
-                padding: 10px 24px;
-            }
-        }
 
-        /* افکت محو */
-        .fade-in {
-            animation: fadeUp 0.9s ease forwards;
-        }
-        @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
+            .special-lists {
+                justify-content: center;
             }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
+
+            .footer {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- هدر -->
-    <header>
-        <div class="container header-inner">
+    <div class="container">
+
+        <!-- ========== هدر ========== -->
+        <header class="header">
             <div class="logo">
-                <span>NEXUS</span> STUDIO
+                <i class="fas fa-film"></i> سینماچی
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#">خانه</a></li>
-                    <li><a href="#">بازی‌ها</a></li>
-                    <li><a href="#">تیم</a></li>
-                    <li><a href="#">تماس</a></li>
-                </ul>
-            </nav>
-            <button class="btn-glow">شروع ماجرا</button>
-        </div>
-    </header>
+            <div class="header-left">
+                <div class="search-box">
+                    <input type="text" placeholder="جستجوی فیلم، سریال...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-btns">
+                    <a href="#" class="login">ورود</a>
+                    <a href="#" class="register">خرید اشتراک</a>
+                </div>
+            </div>
+        </header>
 
-    <!-- هیرو -->
-    <section class="hero fade-in">
-        <div class="container hero-grid">
-            <div>
-                <h1 class="hero-title estedad-bold">
-                    دنیای <span class="highlight">جدید</span> بازی‌ها
-                </h1>
-                <p class="hero-desc sahel-regular">
-                    ما در استودیو نکسوس، مرزهای تخیل را جابه‌جا می‌کنیم.
-                    از ایده تا اجرا، بازی‌هایی می‌سازیم که تا سال‌ها در خاطر می‌مانند.
-                </p>
-                <button class="btn-glow">مشاهده پروژه‌ها</button>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">+۳۵</div>
-                        <div class="stat-label">بازی منتشر شده</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">۴.۹</div>
-                        <div class="stat-label">میانگین امتیاز</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">۱۲۰</div>
-                        <div class="stat-label">نفر تیم</div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="game-card">
-                    <div class="icon">🚀</div>
-                    <h3>پروژه آلفا</h3>
-                    <p>اکشن ماجراجویی در کهکشان</p>
-                    <span style="display:inline-block; margin-top:12px; background: #f7d87520; padding:6px 20px; border-radius:40px; border:1px solid #f7d87540;">Coming 2026</span>
-                </div>
-            </div>
+        <!-- ========== لینک‌های دسترسی ========== -->
+        <div class="top-links">
+            <a href="#"><i class="fas fa-universal-access"></i> مخصوص نابینایان</a>
+            <a href="#"><i class="fas fa-deaf"></i> مخصوص ناشنوایان</a>
+            <a href="#"><i class="fas fa-tv"></i> تماشا با تلویزیون</a>
+            <a href="#"><i class="fas fa-mobile-alt"></i> اپلیکیشن‌ها</a>
+            <a href="#"><i class="fas fa-headset"></i> تماس و پشتیبانی</a>
+            <a href="#"><i class="fas fa-store"></i> فروشگاه</a>
+            <a href="#"><i class="fas fa-gavel"></i> قوانین</a>
+            <a href="#"><i class="fas fa-users"></i> به ما بپیوندید</a>
+            <a href="#"><i class="fas fa-ad"></i> تبلیغات در سینماچی</a>
         </div>
-    </section>
 
-    <!-- بازی‌ها -->
-    <section class="games-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>بازی‌های درخشنده</h2>
-                <p class="sahel-regular">آخرین ساخته‌های استودیو نکسوس</p>
-            </div>
-            <div class="games-grid">
-                <div class="game-box">
-                    <div class="emoji-big">⚔️</div>
-                    <h4>افسانه سرزمین</h4>
-                    <p>یک آرپی‌جی حماسی با داستانی عمیق</p>
-                    <span class="tag">اکشن</span>
-                </div>
-                <div class="game-box">
-                    <div class="emoji-big">🏎️</div>
-                    <h4>مسیر آتش</h4>
-                    <p>مسابقه‌های نفس‌گیر در جاده‌های خطرناک</p>
-                    <span class="tag">مسابقه‌ای</span>
-                </div>
-                <div class="game-box">
-                    <div class="emoji-big">🧙</div>
-                    <h4>جادوگران کیهان</h4>
-                    <p>دنیایی پر از جادو و رمز و راز</p>
-                    <span class="tag">فانتزی</span>
-                </div>
-                <div class="game-box">
-                    <div class="emoji-big">🤖</div>
-                    <h4>شورش ماشین‌ها</h4>
-                    <p>نبرد ربات‌ها در آینده‌ای نزدیک</p>
-                    <span class="tag">علمی‑تخیلی</span>
-                </div>
-            </div>
+        <!-- ========== دسته‌بندی فیلم ========== -->
+        <div class="section-title">
+            <i class="fas fa-clapperboard"></i> فیلم
         </div>
-    </section>
+        <div class="cat-grid">
+            <div class="cat-item"><i class="fas fa-cat"></i> انیمیشن</div>
+            <div class="cat-item"><i class="fas fa-laugh-beam"></i> کمدی</div>
+            <div class="cat-item"><i class="fas fa-ghost"></i> وحشت</div>
+            <div class="cat-item"><i class="fas fa-fist-raised"></i> اکشن</div>
+            <div class="cat-item"><i class="fas fa-bolt"></i> هیجان‌انگیز</div>
+            <div class="cat-item"><i class="fas fa-crosshairs"></i> جنگی</div>
+            <div class="cat-item"><i class="fas fa-rocket"></i> علمی‌تخیلی</div>
+            <div class="cat-item"><i class="fas fa-heart"></i> عاشقانه</div>
+            <div class="cat-item"><i class="fas fa-compass"></i> ماجراجویی</div>
+            <div class="cat-item"><i class="fas fa-users"></i> خانوادگی</div>
+            <div class="cat-item"><i class="fas fa-gavel"></i> جنایی</div>
+            <div class="cat-item"><i class="fas fa-dragon"></i> فانتزی</div>
+            <div class="cat-item"><i class="fas fa-search"></i> معمایی</div>
+            <div class="cat-item"><i class="fas fa-horse"></i> وسترن</div>
+            <div class="cat-item"><i class="fas fa-video"></i> مستند</div>
+            <div class="cat-item"><i class="fas fa-theater-masks"></i> درام</div>
+            <div class="cat-item"><i class="fas fa-landmark"></i> تاریخی</div>
+            <div class="cat-item"><i class="fas fa-running"></i> ورزشی</div>
+            <div class="cat-item"><i class="fas fa-user-astronaut"></i> بیوگرافی</div>
+        </div>
 
-    <!-- تیم -->
-    <section class="team-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>تیم خلاق</h2>
-                <p class="sahel-regular">مغزهای پشت صحنه</p>
+        <!-- ========== دسته‌بندی سریال ========== -->
+        <div class="section-title">
+            <i class="fas fa-tv"></i> سریال
+        </div>
+        <div class="cat-grid">
+            <div class="cat-item"><i class="fas fa-laugh-squint"></i> کمدی</div>
+            <div class="cat-item"><i class="fas fa-cat"></i> انیمیشن</div>
+            <div class="cat-item"><i class="fas fa-user-tie"></i> ریلیتی شو</div>
+            <div class="cat-item"><i class="fas fa-users"></i> خانوادگی</div>
+            <div class="cat-item"><i class="fas fa-heart"></i> عاشقانه</div>
+            <div class="cat-item"><i class="fas fa-ghost"></i> وحشت</div>
+            <div class="cat-item"><i class="fas fa-fist-raised"></i> اکشن</div>
+            <div class="cat-item"><i class="fas fa-crosshairs"></i> جنگی</div>
+            <div class="cat-item"><i class="fas fa-video"></i> مستند</div>
+            <div class="cat-item"><i class="fas fa-gavel"></i> جنایی</div>
+            <div class="cat-item"><i class="fas fa-landmark"></i> تاریخی</div>
+            <div class="cat-item"><i class="fas fa-rocket"></i> علمی‌تخیلی</div>
+            <div class="cat-item"><i class="fas fa-bolt"></i> هیجان‌انگیز</div>
+            <div class="cat-item"><i class="fas fa-theater-masks"></i> درام</div>
+            <div class="cat-item"><i class="fas fa-search"></i> معمایی</div>
+            <div class="cat-item"><i class="fas fa-microphone-alt"></i> تاک شو</div>
+            <div class="cat-item"><i class="fas fa-compass"></i> ماجراجویی</div>
+            <div class="cat-item"><i class="fas fa-dice"></i> گیم شو</div>
+            <div class="cat-item"><i class="fas fa-dragon"></i> فانتزی</div>
+        </div>
+
+        <!-- ========== لینک‌های ویژه ========== -->
+        <div class="special-lists">
+            <a href="#"><i class="fas fa-flag"></i> ایرانی</a>
+            <a href="#"><i class="fas fa-globe"></i> خارجی</a>
+            <a href="#"><i class="fas fa-layer-group"></i> مجموعه‌ها</a>
+            <a href="#"><i class="fas fa-broadcast-tower"></i> پخش زنده</a>
+            <a href="#"><i class="fas fa-trophy"></i> ۲۵۰ فیلم برتر IMDB</a>
+            <a href="#"><i class="fas fa-award"></i> برگزیدگان جشنواره‌ها</a>
+            <a href="#"><i class="fas fa-ticket-alt"></i> پرفروش‌های سینمای ایران</a>
+            <a href="#"><i class="fas fa-star"></i> فیلم و سریال کرهای</a>
+            <a href="#"><i class="fas fa-star"></i> سریال ترکی</a>
+            <a href="#"><i class="fas fa-star"></i> فیلم هندی</a>
+            <a href="#"><i class="fas fa-japan"></i> انیمه</a>
+            <a href="#"><i class="fas fa-list-ul"></i> همه لیست‌ها</a>
+        </div>
+
+        <!-- ========== بخش کودک ========== -->
+        <div class="kids-section">
+            <div class="section-title">
+                <i class="fas fa-child"></i> فیلیموکودک <span style="font-size:0.9rem; color:#888; margin-right:10px;">| کودک</span>
             </div>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="avatar">👩‍💻</div>
-                    <h5>سارا کریمی</h5>
-                    <p>مدیر هنری</p>
-                </div>
-                <div class="team-member">
-                    <div class="avatar">👨‍💻</div>
-                    <h5>محمدرضا حسینی</h5>
-                    <p>برنامه‌نویس ارشد</p>
-                </div>
-                <div class="team-member">
-                    <div class="avatar">🧑‍🎨</div>
-                    <h5>لیلا محمدی</h5>
-                    <p>طراح شخصیت</p>
-                </div>
-                <div class="team-member">
-                    <div class="avatar">🎮</div>
-                    <h5>امیر رضایی</h5>
-                    <p>طراح گیم‌پلی</p>
-                </div>
+            <div class="kids-grid">
+                <div class="cat-item"><i class="fas fa-tv"></i> شبکه کودک</div>
+                <div class="cat-item"><i class="fas fa-flag"></i> کودک ایرانی</div>
+                <div class="cat-item"><i class="fas fa-sponge"></i> باب اسفنجی</div>
+                <div class="cat-item"><i class="fas fa-dog"></i> سگ‌های نگهبان</div>
+                <div class="cat-item"><i class="fas fa-map-signs"></i> ماجراجویی</div>
+                <div class="cat-item"><i class="fas fa-bug"></i> دختر کفشدوزکی</div>
+                <div class="cat-item"><i class="fas fa-microphone"></i> دوبله اختصاصی</div>
+                <div class="cat-item"><i class="fas fa-hotel"></i> هتل ترانسیلوانیا</div>
+                <div class="cat-item"><i class="fas fa-baby"></i> بچه رئیس</div>
+                <div class="cat-item"><i class="fas fa-dragon"></i> اژدها و هیولاها</div>
+                <div class="cat-item"><i class="fas fa-car"></i> ماشین‌ها</div>
+                <div class="cat-item"><i class="fas fa-crown"></i> پرنسس</div>
+                <div class="cat-item"><i class="fas fa-newspaper"></i> تازه‌های فیلیمو کودک</div>
             </div>
         </div>
-    </section>
 
-    <!-- فوتر -->
-    <footer>
-        <div class="container">
+        <!-- ========== فوتر ========== -->
+        <footer class="footer">
             <div class="footer-links">
-                <a href="#">درباره ما</a>
-                <a href="#">بلاگ</a>
-                <a href="#">فرصت‌های شغلی</a>
-                <a href="#">پشتیبانی</a>
+                <a href="#">دانلود فیلم و سریال</a>
+                <a href="#">قوانین</a>
+                <a href="#">به ما بپیوندید</a>
+                <a href="#">تبلیغات در سینماچی</a>
+                <a href="#">تماس با ما</a>
             </div>
-            <p style="font-size:0.9rem;">
-                © ۲۰۲۶ استودیو نکسوس — تمامی حقوق محفوظ است.
-            </p>
-            <p style="font-size:0.8rem; color:#4f5b7a; margin-top:6px;">
-                ساخته شده با عشق و کد
-            </p>
-        </div>
-    </footer>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-aparat"></i></a>
+                <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+
+    </div>
 </body>
 </html>
