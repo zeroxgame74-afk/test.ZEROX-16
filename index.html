@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MH Assistant | دستیار هوشمند</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,65 +17,75 @@
       height: 100%;
       width: 100%;
       overflow: hidden;
+      background: #0b0b0e;
     }
 
     body {
-      background: #0b0b0e;
-      color: #eaeef2;
-      font-family: 'Noto Sans Arabic', 'Segoe UI', sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.5rem;
-      background-image: 
-        radial-gradient(circle at 20% 30%, rgba(255, 200, 80, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(255, 200, 80, 0.03) 0%, transparent 50%);
+      font-family: 'Noto Sans Arabic', 'Segoe UI', sans-serif;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 200, 80, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 200, 80, 0.02) 0%, transparent 50%);
     }
 
     .chat-container {
       width: 100%;
-      max-width: 100%;
       height: 100vh;
-      max-height: 100vh;
+      max-width: 480px;
       background: rgba(255, 255, 255, 0.02);
       backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 215, 100, 0.08);
-      border-radius: 28px;
-      padding: 1.2rem 1.5rem 1.2rem;
-      box-shadow: 0 32px 96px -16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 215, 100, 0.05);
       display: flex;
       flex-direction: column;
-      transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      padding: 0.8rem 1rem 0.8rem;
+      box-shadow: 0 0 60px -16px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
     }
 
-    .chat-container:hover {
-      border-color: rgba(255, 215, 100, 0.15);
+    @media (min-width: 481px) {
+      .chat-container {
+        max-width: 480px;
+        height: 95vh;
+        border-radius: 32px;
+        box-shadow: 0 32px 96px -16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 215, 100, 0.05);
+      }
     }
 
-    /* ===== هدر ===== */
+    @media (max-width: 480px) {
+      .chat-container {
+        max-width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        padding: 0.6rem 0.8rem 0.6rem;
+      }
+    }
+
     .chat-header {
       display: flex;
       align-items: center;
       gap: 0.8rem;
-      padding-bottom: 0.8rem;
+      padding-bottom: 0.6rem;
       border-bottom: 1px solid rgba(255, 215, 100, 0.06);
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
       flex-shrink: 0;
     }
 
     .chat-avatar {
-      width: 50px;
-      height: 50px;
+      width: 44px;
+      height: 44px;
       background: linear-gradient(145deg, #f5b042, #d48f2b);
-      border-radius: 18px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Vazirmatn', sans-serif;
       font-weight: 900;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       color: #0b0b0e;
-      box-shadow: 0 8px 24px -6px rgba(200, 150, 50, 0.3);
+      box-shadow: 0 8px 20px -6px rgba(200, 150, 50, 0.25);
       flex-shrink: 0;
       animation: floatLogo 3s ease-in-out infinite;
       position: relative;
@@ -84,29 +94,29 @@
     .chat-avatar::after {
       content: '';
       position: absolute;
-      inset: -3px;
-      border-radius: 20px;
-      background: linear-gradient(145deg, rgba(245, 176, 66, 0.3), transparent);
+      inset: -2px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(245, 176, 66, 0.25), transparent);
       z-index: -1;
       animation: glowRing 3s ease-in-out infinite;
     }
 
     @keyframes glowRing {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.05); }
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
     }
 
     @keyframes floatLogo {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+      50% { transform: translateY(-4px); }
     }
 
     .chat-title {
       font-family: 'Vazirmatn', sans-serif;
       font-weight: 800;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       color: #f5efe6;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.3px;
     }
 
     .chat-title .highlight {
@@ -120,9 +130,9 @@
       display: block;
       font-family: 'Noto Sans Arabic', sans-serif;
       font-weight: 300;
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       color: #b0a99b;
-      margin-top: 1px;
+      margin-top: 0px;
       letter-spacing: 0.5px;
       -webkit-text-fill-color: #b0a99b;
     }
@@ -130,33 +140,27 @@
     .chat-title small i {
       color: #f5b042;
       -webkit-text-fill-color: #f5b042;
-      animation: pulseIcon 2s ease-in-out infinite;
-    }
-
-    @keyframes pulseIcon {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.3); }
     }
 
     .chat-status {
       margin-right: auto;
-      background: rgba(245, 176, 66, 0.12);
-      border: 1px solid rgba(245, 176, 66, 0.15);
+      background: rgba(245, 176, 66, 0.1);
+      border: 1px solid rgba(245, 176, 66, 0.1);
       border-radius: 40px;
-      padding: 0.15rem 1rem;
-      font-size: 0.65rem;
+      padding: 0.1rem 0.8rem;
+      font-size: 0.55rem;
       color: #f5b042;
       font-family: 'Vazirmatn', sans-serif;
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.3rem;
       backdrop-filter: blur(4px);
       flex-shrink: 0;
     }
 
     .chat-status i {
-      font-size: 0.5rem;
+      font-size: 0.45rem;
       color: #4caf50;
       animation: pulseDot 1.8s ease-in-out infinite;
     }
@@ -166,35 +170,29 @@
       50% { opacity: 0.2; transform: scale(0.6); }
     }
 
-    /* ===== پیام‌ها (قفل اسکرول) ===== */
     .messages {
       flex: 1;
       overflow-y: auto;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
-      padding-right: 0.2rem;
+      gap: 0.6rem;
+      padding: 0.2rem 0.1rem;
       min-height: 0;
       scroll-behavior: smooth;
       scrollbar-width: thin;
       scrollbar-color: rgba(255, 215, 100, 0.15) transparent;
     }
 
-    .messages::-webkit-scrollbar { width: 4px; }
+    .messages::-webkit-scrollbar { width: 3px; }
     .messages::-webkit-scrollbar-track { background: transparent; }
-    .messages::-webkit-scrollbar-thumb { background: rgba(255, 215, 100, 0.25); border-radius: 10px; }
-
-    /* ===== قفل اسکرول خودکار ===== */
-    .messages.locked {
-      overflow-y: auto !important;
-    }
+    .messages::-webkit-scrollbar-thumb { background: rgba(255, 215, 100, 0.2); border-radius: 10px; }
 
     .message {
       display: flex;
-      gap: 0.7rem;
+      gap: 0.6rem;
       align-items: flex-start;
-      animation: msgIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      animation: msgIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
       flex-shrink: 0;
     }
 
@@ -202,18 +200,18 @@
     .message.user { flex-direction: row-reverse; }
 
     @keyframes msgIn {
-      0% { opacity: 0; transform: translateY(16px) scale(0.96); }
+      0% { opacity: 0; transform: translateY(12px) scale(0.97); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .message .avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       flex-shrink: 0;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 215, 100, 0.06);
@@ -233,16 +231,16 @@
 
     .message .bubble {
       max-width: 82%;
-      padding: 0.6rem 1.2rem;
-      border-radius: 18px;
+      padding: 0.5rem 1rem;
+      border-radius: 16px;
       font-family: 'Noto Sans Arabic', sans-serif;
-      font-size: 0.9rem;
-      line-height: 1.9;
+      font-size: 0.85rem;
+      line-height: 1.8;
       word-break: break-word;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 215, 100, 0.06);
       color: #d6d0c4;
-      box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 10px -4px rgba(0, 0, 0, 0.2);
     }
 
     .message.bot .bubble {
@@ -259,30 +257,30 @@
     }
 
     .message .bubble strong { color: #f5b042; font-weight: 700; }
-    .message .bubble i { color: #f5b042; margin-left: 0.3rem; }
+    .message .bubble i { color: #f5b042; margin-left: 0.2rem; }
 
     .message .bubble .site-card {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 215, 100, 0.08);
-      border-radius: 14px;
-      padding: 0.6rem 0.8rem;
-      margin: 0.4rem 0;
+      border-radius: 12px;
+      padding: 0.5rem 0.6rem;
+      margin: 0.3rem 0;
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.6rem;
       transition: 0.3s;
+      flex-wrap: wrap;
     }
 
     .message .bubble .site-card:hover {
       background: rgba(255, 215, 100, 0.04);
       border-color: rgba(255, 215, 100, 0.15);
-      transform: translateX(-4px);
     }
 
     .message .bubble .site-card .site-img {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
       object-fit: cover;
       background: #0b0b0e;
       border: 1px solid rgba(255, 215, 100, 0.05);
@@ -291,26 +289,27 @@
 
     .message .bubble .site-card .site-info {
       flex: 1;
+      min-width: 80px;
     }
 
     .message .bubble .site-card .site-info .site-name {
       font-family: 'Vazirmatn', sans-serif;
       font-weight: 700;
       color: #f5efe6;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
 
     .message .bubble .site-card .site-info .site-desc {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: #b0a99b;
     }
 
     .message .bubble .site-card .site-link {
       color: #f5b042;
       text-decoration: none;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 600;
-      padding: 0.2rem 0.8rem;
+      padding: 0.15rem 0.7rem;
       border: 1px solid rgba(245, 176, 66, 0.15);
       border-radius: 40px;
       transition: 0.3s;
@@ -323,15 +322,14 @@
     .message .bubble .site-card .site-link:hover {
       background: rgba(245, 176, 66, 0.08);
       border-color: #f5b042;
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
 
-    /* ===== دکمه‌های سریع ===== */
     .quick-replies {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
+      gap: 0.4rem;
+      margin-bottom: 0.4rem;
       flex-shrink: 0;
     }
 
@@ -339,38 +337,37 @@
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 215, 100, 0.08);
       color: #b0a99b;
-      padding: 0.2rem 1rem;
+      padding: 0.15rem 0.8rem;
       border-radius: 40px;
       font-family: 'Vazirmatn', sans-serif;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
       backdrop-filter: blur(4px);
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.3rem;
     }
 
-    .quick-replies button i { color: #f5b042; font-size: 0.65rem; }
+    .quick-replies button i { color: #f5b042; font-size: 0.6rem; }
 
     .quick-replies button:hover {
       background: rgba(245, 176, 66, 0.08);
       border-color: rgba(245, 176, 66, 0.2);
       color: #f5efe6;
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 4px 16px -6px rgba(245, 176, 66, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px -6px rgba(245, 176, 66, 0.1);
     }
 
-    /* ===== ورودی ===== */
     .input-area {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 215, 100, 0.06);
       border-radius: 60px;
-      padding: 0.2rem 0.2rem 0.2rem 1rem;
+      padding: 0.15rem 0.15rem 0.15rem 0.8rem;
       transition: 0.3s;
       flex-shrink: 0;
     }
@@ -387,8 +384,8 @@
       border: none;
       color: #eaeef2;
       font-family: 'Noto Sans Arabic', sans-serif;
-      font-size: 0.9rem;
-      padding: 0.6rem 0;
+      font-size: 0.85rem;
+      padding: 0.5rem 0;
       outline: none;
       min-width: 0;
     }
@@ -399,37 +396,36 @@
       background: linear-gradient(145deg, #f5b042, #d48f2b);
       border: none;
       color: #0b0b0e;
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      font-size: 1.1rem;
+      font-size: 1rem;
       cursor: pointer;
       transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 4px 16px -6px rgba(245, 176, 66, 0.25);
+      box-shadow: 0 4px 14px -6px rgba(245, 176, 66, 0.25);
     }
 
     .input-area button:hover {
-      transform: scale(1.06) rotate(-3deg);
-      box-shadow: 0 8px 28px -6px rgba(245, 176, 66, 0.4);
+      transform: scale(1.05) rotate(-3deg);
+      box-shadow: 0 6px 24px -6px rgba(245, 176, 66, 0.4);
     }
 
     .input-area button:active { transform: scale(0.93); }
 
-    /* ===== تایپینگ ===== */
     .typing-indicator {
       display: none;
-      padding: 0.3rem 1rem;
+      padding: 0.2rem 0.8rem;
       background: rgba(255, 215, 100, 0.04);
       border: 1px solid rgba(255, 215, 100, 0.06);
       border-radius: 40px;
       color: #b0a99b;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       align-self: flex-start;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
       animation: msgIn 0.3s ease;
       flex-shrink: 0;
     }
@@ -439,66 +435,74 @@
       animation: pulseIcon 1s ease-in-out infinite;
     }
 
-    .typing-indicator.show { display: inline-flex; align-items: center; gap: 0.4rem; }
+    @keyframes pulseIcon {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
 
-    /* ===== اسکرول ===== */
-    ::-webkit-scrollbar { width: 4px; }
+    .typing-indicator.show { display: inline-flex; align-items: center; gap: 0.3rem; }
+
+    .message .bubble .design-mini {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 215, 100, 0.06);
+      border-radius: 10px;
+      padding: 0.3rem 0.6rem;
+      margin: 0.2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .message .bubble .design-mini .d-icon {
+      font-size: 1.1rem;
+      color: #f5b042;
+    }
+
+    .message .bubble .design-mini .d-name {
+      font-family: 'Vazirmatn', sans-serif;
+      font-weight: 600;
+      color: #f5efe6;
+      font-size: 0.8rem;
+    }
+
+    .message .bubble .design-mini .d-desc {
+      font-size: 0.65rem;
+      color: #b0a99b;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: rgba(255, 215, 100, 0.2); border-radius: 10px; }
-
-    /* ===== ریسپانسیو ===== */
-    @media (max-width: 600px) {
-      .chat-container { padding: 0.8rem 1rem; border-radius: 20px; }
-      .chat-title { font-size: 1.1rem; }
-      .chat-avatar { width: 42px; height: 42px; font-size: 1.3rem; }
-      .message .bubble { font-size: 0.8rem; padding: 0.4rem 1rem; max-width: 90%; }
-      .input-area input { font-size: 0.8rem; }
-      .quick-replies button { font-size: 0.65rem; padding: 0.15rem 0.8rem; }
-      .message .bubble .site-card { flex-wrap: wrap; }
-      .message .bubble .site-card .site-img { width: 36px; height: 36px; }
-      .chat-status { font-size: 0.55rem; padding: 0.1rem 0.6rem; }
-    }
-
-    @media (max-width: 400px) {
-      .chat-container { padding: 0.6rem 0.6rem; border-radius: 16px; }
-      .message .avatar { width: 28px; height: 28px; font-size: 0.7rem; }
-      .chat-title { font-size: 0.95rem; }
-      .chat-avatar { width: 36px; height: 36px; font-size: 1.1rem; }
-      .input-area button { width: 38px; height: 38px; font-size: 0.9rem; }
-    }
   </style>
 </head>
 <body>
 
 <div class="chat-container">
-  
-  <!-- ===== هدر ===== -->
+
   <div class="chat-header">
     <div class="chat-avatar">M</div>
     <div class="chat-title">
       <span class="highlight">MH Assistant</span>
-      <small><i class="fas fa-robot"></i> پردازش کلمه‌به‌کلمه</small>
+      <small><i class="fas fa-robot"></i> پردازش هوشمند کلمات</small>
     </div>
     <div class="chat-status">
       <i class="fas fa-circle"></i> آنلاین
     </div>
   </div>
 
-  <!-- ===== پیام‌ها (قفل اسکرول) ===== -->
-  <div class="messages locked" id="messagesBox">
+  <div class="messages" id="messagesBox">
     <div class="message bot">
       <div class="avatar"><i class="fas fa-robot"></i></div>
       <div class="bubble">
         <i class="fas fa-hand-peace"></i> سلام! من <strong>MH Assistant</strong> هستم.<br>
         <strong>هر کلمه‌ای</strong> بگی، پردازش میکنم و جواب میدم.<br>
-        <span style="color:#f5b042; font-size:0.8rem;">👇 حتی یه کلمه واحد بپرس، میفهمم!</span>
+        <span style="color:#f5b042; font-size:0.75rem;">👇 حتی یه کلمه واحد بپرس، میفهمم!</span>
       </div>
     </div>
   </div>
 
-  <!-- ===== دکمه‌های سریع ===== -->
   <div class="quick-replies">
-    <button onclick="askQuestion('کی')"><i class="fas fa-question"></i> کی</button>
+    <button onclick="askQuestion('کی هستی؟')"><i class="fas fa-question"></i> کی هستی؟</button>
     <button onclick="askQuestion('سایت')"><i class="fas fa-laptop-code"></i> سایت</button>
     <button onclick="askQuestion('طراحی')"><i class="fas fa-palette"></i> طراحی</button>
     <button onclick="askQuestion('برنامه')"><i class="fas fa-puzzle-piece"></i> برنامه</button>
@@ -506,7 +510,6 @@
     <button onclick="askQuestion('ارتباط')"><i class="fas fa-share-alt"></i> ارتباط</button>
   </div>
 
-  <!-- ===== ورودی ===== -->
   <div class="input-area">
     <input type="text" id="userInput" placeholder="هر چیزی بگو..." autocomplete="off">
     <button onclick="sendMessage()" aria-label="ارسال">
@@ -526,7 +529,6 @@
     startYear: '۱۴۰۳',
     skills: ['HTML', 'CSS', 'JavaScript', 'طراحی گرافیک', 'تولید محتوا', 'UI/UX', 'React', 'Node.js'],
     goal: 'ترکیب هنر و تکنولوژی برای خلق فضاهای دیجیتال خاص',
-    bio: 'توسعه‌دهنده وب و طراح گرافیک از سال ۱۴۰۳. عاشق کد تمیز، طراحی مینیمال و تجربه کاربری روان.',
     
     sites: [
       { 
@@ -550,16 +552,8 @@
     ],
     
     designs: [
-      { 
-        name: 'گفتند زلف یار...', 
-        desc: 'ادای احترام به نام علی (ع)',
-        img: 'https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg'
-      },
-      { 
-        name: 'اهواز... خاک غسل‌شده', 
-        desc: 'یاد شهدای جنوب ایران',
-        img: 'https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png'
-      }
+      { name: 'گفتند زلف یار...', desc: 'ادای احترام به نام علی (ع)' },
+      { name: 'اهواز... خاک غسل‌شده', desc: 'یاد شهدای جنوب ایران' }
     ],
     
     apps: 'در حال توسعه',
@@ -571,53 +565,54 @@
   };
 
   // ============================================================
-  //  موتور پردازش کلمه‌به‌کلمه
+  //  موتور پردازش کلمه‌به‌کلمه (نسخه نهایی)
   // ============================================================
   function getSmartReply(input) {
     const text = input.trim().toLowerCase();
-    const words = text.split(/\s+/);
     
-    // تشخیص موضوعات
-    const detected = {
-      identity: false, sites: false, designs: false, 
-      apps: false, skills: false, social: false,
-      greeting: false, feeling: false, thank: false
-    };
+    // اگر خالی بود
+    if (!text) {
+      return `
+        <i class="fas fa-robot"></i> <strong>سلام!</strong><br>
+        چیزی ننوشتی. هر سوالی داری بپرس!<br>
+        <span style="color:#b0a99b; font-size:0.75rem;">مثلاً <strong style="color:#f5b042;">کی هستی؟</strong> یا <strong style="color:#f5b042;">سایت</strong></span>
+      `;
+    }
 
-    const keywords = {
-      identity: ['کی', 'هستی', 'کیا', 'کیایی', 'چه', 'کاره', 'خودت', 'معرفی', 'شناخت', 'درباره', 'من', 'بیو', 'رزومه'],
-      sites: ['سایت', 'وب', 'پروژه', 'لینک', 'zerox', 'کالفود', 'کوروش', 'گیم', 'نمونه', 'کار', 'ساختی'],
-      designs: ['طراحی', 'گرافیک', 'هنری', 'عکس', 'تصویر', 'یا علی', 'اهواز', 'شهید', 'پالت', 'نقاشی'],
-      apps: ['برنامه', 'اپ', 'نرم', 'افزار', 'ابزار', 'اپلیکیشن', 'موبایل'],
-      skills: ['مهارت', 'توانایی', 'بلد', 'تخصص', 'چه چیزایی', 'یاد', 'چه کارهایی'],
-      social: ['تلگرام', 'اینستاگرام', 'شبکه', 'اجتماعی', 'تماس', 'ارتباط', 'پیام', 'آیدی'],
-      greeting: ['سلام', 'درود', 'هی', 'الو', 'هلو', 'صبح', 'عصر', 'شب'],
-      feeling: ['خوب', 'چطوری', 'حالت', 'اوضاع', 'خبر', 'چی می‌کنی', 'خوشی'],
-      thank: ['ممنون', 'مرسی', 'متشکرم', 'دمت گرم', 'دستت', 'تشکر', 'سپاس']
-    };
-
-    words.forEach(word => {
-      for (const [topic, kws] of Object.entries(keywords)) {
-        if (kws.some(kw => word.includes(kw) || kw.includes(word))) {
-          detected[topic] = true;
-        }
-      }
-    });
-
-    // اولویت‌بندی پاسخ‌ها
-    if (detected.identity || text === 'کی' || text === 'هستی') {
+    // ===== تشخیص مستقیم =====
+    
+    // 1. کی هستی؟
+    if (text === 'کی' || text === 'هستی' || text === 'کیا' || text === 'کیایی' || 
+        text.includes('کی هستی') || text.includes('کی هست') || text.includes('تو کی') ||
+        text.includes('چه کسی') || text.includes('چیستی') || text.includes('هستید')) {
       return `
         <i class="fas fa-robot"></i> <strong>من ربات دستیار MH Assistant هستم!</strong><br><br>
         <i class="fas fa-user-astronaut"></i> ساخته‌شده توسط <strong>${siteData.name}</strong><br>
         <i class="fas fa-code"></i> وظیفه‌ام: پاسخ به سوالات شما<br>
-        <i class="fas fa-heart" style="color:#f5b042;"></i> هدفم: کمک سریع و هوشمندانه<br><br>
-        <span style="color:#b0a99b; font-size:0.8rem;">
-          <i class="fas fa-smile"></i> هر سوالی داری، بپرس!
+        <i class="fas fa-heart" style="color:#f5b042;"></i> هدفم: کمک سریع و هوشمندانه
+      `;
+    }
+
+    // 2. معرفی
+    if (text.includes('معرفی') || text.includes('خودت') || text.includes('چه کاره') || 
+        text.includes('شناخت') || text.includes('درباره من') || text.includes('بیو') || 
+        text.includes('رزومه') || text.includes('کی هست') || text.includes('کیایی')) {
+      return `
+        <i class="fas fa-user-astronaut"></i> <strong>${siteData.name}</strong><br>
+        ${siteData.job}<br>
+        از سال ${siteData.startYear} وارد دنیای برنامه‌نویسی شدم.<br>
+        <i class="fas fa-heart" style="color:#f5b042;"></i> هدف: ${siteData.goal}<br><br>
+        <span style="color:#b0a99b; font-size:0.75rem;">
+          <i class="fas fa-tools"></i> مهارت‌ها: ${siteData.skills.join(' • ')}
         </span>
       `;
     }
 
-    if (detected.sites || text === 'سایت' || text === 'پروژه') {
+    // 3. سایت
+    if (text.includes('سایت') || text.includes('وب') || text.includes('پروژه') || 
+        text.includes('لینک') || text.includes('zerox') || text.includes('کالفود') || 
+        text.includes('کوروش') || text.includes('گیم') || text.includes('نمونه کار') ||
+        text.includes('آدرس') || text.includes('ساختی')) {
       let reply = `<i class="fas fa-laptop-code"></i> <strong>سایت‌های ${siteData.name}:</strong><br>`;
       siteData.sites.forEach(s => {
         reply += `
@@ -636,15 +631,19 @@
       return reply;
     }
 
-    if (detected.designs || text === 'طراحی' || text === 'گرافیک') {
+    // 4. طراحی
+    if (text.includes('طراحی') || text.includes('گرافیک') || text.includes('هنری') || 
+        text.includes('عکس') || text.includes('تصویر') || text.includes('یا علی') || 
+        text.includes('اهواز') || text.includes('شهید') || text.includes('پالت') ||
+        text.includes('نقاشی') || text.includes('اثر') || text.includes('هنر')) {
       let reply = `<i class="fas fa-palette"></i> <strong>طراحی‌های ${siteData.name}:</strong><br>`;
       siteData.designs.forEach(d => {
         reply += `
-          <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,215,100,0.06); border-radius:12px; padding:0.4rem 0.8rem; margin:0.3rem 0; display:flex; align-items:center; gap:0.6rem;">
-            <div style="font-size:1.3rem; color:#f5b042;"><i class="fas fa-paint-brush"></i></div>
+          <div class="design-mini">
+            <div class="d-icon"><i class="fas fa-paint-brush"></i></div>
             <div>
-              <div style="font-family:'Vazirmatn',sans-serif; font-weight:600; color:#f5efe6; font-size:0.85rem;">🖼 ${d.name}</div>
-              <div style="font-size:0.75rem; color:#b0a99b;">${d.desc}</div>
+              <div class="d-name">🖼 ${d.name}</div>
+              <div class="d-desc">${d.desc}</div>
             </div>
           </div>
         `;
@@ -652,7 +651,10 @@
       return reply;
     }
 
-    if (detected.apps || text === 'برنامه' || text === 'اپ') {
+    // 5. برنامه
+    if (text.includes('برنامه') || text.includes('اپ') || text.includes('نرم') || 
+        text.includes('افزار') || text.includes('ابزار') || text.includes('اپلیکیشن') ||
+        text.includes('موبایل') || text.includes('اندروید') || text.includes('ios')) {
       return `
         <i class="fas fa-puzzle-piece"></i> بخش <strong>برنامه‌ها</strong> ${siteData.apps} است.<br>
         به زودی اپلیکیشن‌های جدید اضافه می‌شه.<br>
@@ -660,76 +662,87 @@
       `;
     }
 
-    if (detected.skills || text === 'مهارت' || text === 'تخصص') {
+    // 6. مهارت
+    if (text.includes('مهارت') || text.includes('توانایی') || text.includes('بلد') || 
+        text.includes('تخصص') || text.includes('چه چیزایی') || text.includes('یاد') ||
+        text.includes('چه کارهایی') || text.includes('چی بلدی')) {
       return `
         <i class="fas fa-code"></i> <strong>مهارت‌ها:</strong><br>
-        ${siteData.skills.map(s => `🔹 ${s}`).join('<br>')}<br><br>
-        <span style="color:#b0a99b; font-size:0.8rem;">
-          <i class="fas fa-rocket"></i> همیشه در حال یادگیری
-        </span>
+        ${siteData.skills.map(s => `🔹 ${s}`).join('<br>')}
       `;
     }
 
-    if (detected.social || text === 'ارتباط' || text === 'تماس') {
+    // 7. ارتباط
+    if (text.includes('تلگرام') || text.includes('اینستاگرام') || text.includes('شبکه') || 
+        text.includes('اجتماعی') || text.includes('تماس') || text.includes('ارتباط') ||
+        text.includes('پیام') || text.includes('آیدی') || text.includes('کانال') ||
+        text.includes('راه') || text.includes('سوشال')) {
       return `
         <i class="fas fa-share-alt"></i> <strong>راه‌های ارتباطی:</strong><br>
-        <div style="display:flex; gap:0.6rem; margin-top:0.4rem; flex-wrap:wrap;">
-          <a href="${siteData.social.telegram}" target="_blank" style="color:#f5b042; text-decoration:none; background:rgba(255,215,100,0.05); padding:0.3rem 1rem; border-radius:40px; border:1px solid rgba(255,215,100,0.1); display:inline-flex; align-items:center; gap:0.4rem; font-size:0.8rem; transition:0.3s;">
+        <div style="display:flex; gap:0.4rem; margin-top:0.3rem; flex-wrap:wrap;">
+          <a href="${siteData.social.telegram}" target="_blank" style="color:#f5b042; text-decoration:none; background:rgba(255,215,100,0.05); padding:0.2rem 0.8rem; border-radius:40px; border:1px solid rgba(255,215,100,0.1); display:inline-flex; align-items:center; gap:0.3rem; font-size:0.75rem; transition:0.3s;">
             <i class="fab fa-telegram-plane"></i> تلگرام
           </a>
-          <a href="${siteData.social.instagram}" target="_blank" style="color:#f5b042; text-decoration:none; background:rgba(255,215,100,0.05); padding:0.3rem 1rem; border-radius:40px; border:1px solid rgba(255,215,100,0.1); display:inline-flex; align-items:center; gap:0.4rem; font-size:0.8rem; transition:0.3s;">
+          <a href="${siteData.social.instagram}" target="_blank" style="color:#f5b042; text-decoration:none; background:rgba(255,215,100,0.05); padding:0.2rem 0.8rem; border-radius:40px; border:1px solid rgba(255,215,100,0.1); display:inline-flex; align-items:center; gap:0.3rem; font-size:0.75rem; transition:0.3s;">
             <i class="fab fa-instagram"></i> اینستاگرام
           </a>
         </div>
       `;
     }
 
-    if (detected.greeting) {
+    // 8. سلام
+    if (text.includes('سلام') || text.includes('درود') || text.includes('هی') || 
+        text.includes('الو') || text.includes('هلو') || text.includes('صبح') || 
+        text.includes('عصر') || text.includes('شب') || text.includes('بخیر')) {
       return `
         <i class="fas fa-hand-peace"></i> سلام! خوش اومدی به <strong>MH Assistant</strong>.<br>
         من دستیار هوشمند اینجام.<br>
-        <span style="color:#b0a99b; font-size:0.8rem;">
-          <i class="fas fa-lightbulb"></i> هر چیزی بپرس، پردازش میکنم!
-        </span>
+        <span style="color:#b0a99b; font-size:0.75rem;">هر چیزی بپرس، پردازش میکنم!</span>
       `;
     }
 
-    if (detected.feeling) {
+    // 9. احوالپرسی
+    if (text.includes('خوب') || text.includes('چطوری') || text.includes('حالت') || 
+        text.includes('اوضاع') || text.includes('خبر') || text.includes('چی می‌کنی') ||
+        text.includes('خوشی') || text.includes('چه خبر')) {
       return `
         <i class="fas fa-smile"></i> ممنون! من <strong>MH Assistant</strong> هستم و عالی‌ام.<br>
         <i class="fas fa-rocket" style="color:#f5b042;"></i> منتظر سوال بعدی‌ات.
       `;
     }
 
-    if (detected.thank) {
+    // 10. تشکر
+    if (text.includes('ممنون') || text.includes('مرسی') || text.includes('متشکرم') || 
+        text.includes('دمت گرم') || text.includes('دستت') || text.includes('تشکر') ||
+        text.includes('سپاس')) {
       return `
         <i class="fas fa-heart" style="color:#f5b042;"></i> خواهش می‌کنم!<br>
         خوشحالم که به عنوان <strong>MH Assistant</strong> کمک کردم.
       `;
     }
 
-    // پاسخ پیش‌فرض
+    // ===== پاسخ پیش‌فرض (همیشه جواب میده) =====
     return `
       <i class="fas fa-robot"></i> <strong>من MH Assistant هستم!</strong><br>
-      کلمه "<strong>${words[0] || '...'}</strong>" رو پردازش کردم.<br>
-      می‌تونی از اینا بپرسی:<br><br>
-      <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.15rem 0.7rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.15rem; font-size:0.85rem;">
-        <i class="fas fa-question"></i> کی
+      کلمه "<strong>${text}</strong>" رو پردازش کردم.<br><br>
+      می‌تونی از اینا بپرسی:<br>
+      <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.1rem 0.6rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.15rem; font-size:0.8rem;">
+        <i class="fas fa-question"></i> کی هستی؟
       </span>
-      <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.15rem 0.7rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.15rem; font-size:0.85rem;">
+      <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.1rem 0.6rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.15rem; font-size:0.8rem;">
         <i class="fas fa-laptop-code"></i> سایت
       </span>
-      <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.15rem 0.7rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.15rem; font-size:0.85rem;">
+      <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.1rem 0.6rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.15rem; font-size:0.8rem;">
         <i class="fas fa-palette"></i> طراحی
       </span>
-      <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.15rem 0.7rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.15rem; font-size:0.85rem;">
+      <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.1rem 0.6rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.15rem; font-size:0.8rem;">
         <i class="fas fa-code"></i> مهارت
       </span>
     `;
   }
 
   // ============================================================
-  //  توابع اصلی با قفل اسکرول
+  //  توابع اصلی
   // ============================================================
 
   const messagesBox = document.getElementById('messagesBox');
@@ -737,14 +750,9 @@
   let isTyping = false;
   let isUserScrolled = false;
 
-  // تشخیص اسکرول دستی کاربر
   messagesBox.addEventListener('scroll', function() {
-    const isAtBottom = messagesBox.scrollHeight - messagesBox.scrollTop <= messagesBox.clientHeight + 50;
-    if (!isAtBottom) {
-      isUserScrolled = true;
-    } else {
-      isUserScrolled = false;
-    }
+    const isAtBottom = messagesBox.scrollHeight - messagesBox.scrollTop <= messagesBox.clientHeight + 30;
+    isUserScrolled = !isAtBottom;
   });
 
   function scrollToBottom() {
@@ -769,7 +777,7 @@
       const reply = getSmartReply(text);
       addMessage('bot', reply);
       isTyping = false;
-    }, 400);
+    }, 350);
   }
 
   function askQuestion(text) {
@@ -793,7 +801,6 @@
     div.appendChild(bubble);
     messagesBox.appendChild(div);
     
-    // اسکرول فقط اگر کاربر پایین نرفته باشه
     setTimeout(scrollToBottom, 50);
   }
 
@@ -802,7 +809,7 @@
     if (!typing) {
       typing = document.createElement('div');
       typing.className = 'typing-indicator';
-      typing.innerHTML = '<i class="fas fa-robot"></i> <strong>MH Assistant</strong> در حال پردازش...';
+      typing.innerHTML = '<i class="fas fa-robot"></i> در حال پردازش...';
       messagesBox.appendChild(typing);
     }
     typing.classList.add('show');
