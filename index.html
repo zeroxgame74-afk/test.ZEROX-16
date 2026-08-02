@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>dastyar.m | دستیار هوشمند</title>
+  <title>MH Assistant | دستیار هوشمند</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -306,56 +306,6 @@
       transform: scale(1.04);
     }
 
-    .message .bubble .design-card-mini {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 215, 100, 0.06);
-      border-radius: 14px;
-      padding: 0.6rem 1rem;
-      margin: 0.4rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .message .bubble .design-card-mini .design-icon {
-      font-size: 1.5rem;
-      color: #f5b042;
-    }
-
-    .message .bubble .design-card-mini .design-name {
-      font-family: 'Vazirmatn', sans-serif;
-      font-weight: 600;
-      color: #f5efe6;
-    }
-
-    .message .bubble .design-card-mini .design-desc {
-      font-size: 0.8rem;
-      color: #b0a99b;
-    }
-
-    .message .bubble .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1.2rem;
-      border-radius: 40px;
-      background: rgba(245, 176, 66, 0.08);
-      border: 1px solid rgba(245, 176, 66, 0.15);
-      color: #f5b042;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: 0.3s;
-      margin: 0.2rem 0;
-      font-family: 'Vazirmatn', sans-serif;
-    }
-
-    .message .bubble .download-btn:hover {
-      background: rgba(245, 176, 66, 0.15);
-      border-color: #f5b042;
-      transform: scale(1.04);
-    }
-
     .quick-replies {
       display: flex;
       flex-wrap: wrap;
@@ -496,7 +446,7 @@
   <div class="chat-header">
     <div class="chat-avatar">M</div>
     <div class="chat-title">
-      <span class="highlight">dastyar.m</span>
+      <span class="highlight">MH Assistant</span>
       <small><i class="fas fa-robot"></i> دستیار هوشمند حرفه‌ای</small>
     </div>
     <div class="chat-status">
@@ -508,7 +458,7 @@
     <div class="message bot">
       <div class="avatar"><i class="fas fa-robot"></i></div>
       <div class="bubble">
-        <i class="fas fa-hand-peace"></i> سلام! من <strong>dastyar.m</strong> هستم.<br>
+        <i class="fas fa-hand-peace"></i> سلام! من <strong>MH Assistant</strong> هستم.<br>
         <strong>هر سوالی</strong> داری، هر چیزی که می‌خوای بدونی، بپرس.<br>
         <span style="color:#f5b042; font-size:0.85rem;">👇 از دکمه‌های پایین استفاده کن یا هر چیزی بنویس!</span>
       </div>
@@ -516,12 +466,12 @@
   </div>
 
   <div class="quick-replies">
-    <button onclick="askQuestion('معرفی خودت')"><i class="fas fa-user-astronaut"></i> معرفی</button>
+    <button onclick="askQuestion('کی هستی؟')"><i class="fas fa-user-astronaut"></i> کی هستی؟</button>
     <button onclick="askQuestion('چه سایت‌هایی ساختی؟')"><i class="fas fa-laptop-code"></i> سایت‌ها</button>
-    <button onclick="askQuestion('نمونه طراحی‌هات رو بگو')"><i class="fas fa-palette"></i> طراحی‌ها</button>
+    <button onclick="askQuestion('نمونه طراحی‌هات')"><i class="fas fa-palette"></i> طراحی‌ها</button>
     <button onclick="askQuestion('برنامه‌ها')"><i class="fas fa-puzzle-piece"></i> برنامه‌ها</button>
-    <button onclick="askQuestion('درباره من')"><i class="fas fa-info-circle"></i> درباره من</button>
     <button onclick="askQuestion('مهارت‌هات')"><i class="fas fa-code"></i> مهارت‌ها</button>
+    <button onclick="askQuestion('راه‌های ارتباطی')"><i class="fas fa-share-alt"></i> ارتباط</button>
   </div>
 
   <div class="input-area">
@@ -535,7 +485,7 @@
 
 <script>
   // ============================================================
-  //  دیتابیس کامل اطلاعات (همه محتوای سایت با جزئیات)
+  //  دیتابیس کامل اطلاعات
   // ============================================================
   const siteData = {
     name: 'mohamad hossein snti',
@@ -543,7 +493,7 @@
     startYear: '۱۴۰۳',
     skills: ['HTML', 'CSS', 'JavaScript', 'طراحی گرافیک', 'تولید محتوا', 'UI/UX', 'React', 'Node.js'],
     goal: 'ترکیب هنر و تکنولوژی برای خلق فضاهای دیجیتال خاص',
-    bio: 'توسعه‌دهنده وب و طراح گرافیک از سال ۱۴۰۳. عاشق کد تمیز، طراحی مینیمال و تجربه کاربری روان. هم‌بنیان‌گذار یه استارتاپ کوچیک و فریلنسر.',
+    bio: 'توسعه‌دهنده وب و طراح گرافیک از سال ۱۴۰۳. عاشق کد تمیز، طراحی مینیمال و تجربه کاربری روان.',
     
     sites: [
       { 
@@ -570,16 +520,12 @@
       { 
         name: 'گفتند زلف یار...', 
         desc: 'ادای احترام به نام علی (ع)',
-        img: 'https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg',
-        download4k: 'https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg',
-        download2k: 'https://uploadkon.ir/uploads/e46c28_26m-h-snti-ya-ali.jpg'
+        img: 'https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg'
       },
       { 
         name: 'اهواز... خاک غسل‌شده', 
         desc: 'یاد شهدای جنوب ایران',
-        img: 'https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png',
-        download2k: 'https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png',
-        download1080: 'https://uploadkon.ir/uploads/828624_26jonnob-mohamad-hossein-sanati-.png'
+        img: 'https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png'
       }
     ],
     
@@ -592,19 +538,32 @@
   };
 
   // ============================================================
-  //  موتور هوشمند پاسخ‌گویی (فوق‌پیشرفته)
+  //  موتور هوشمند پاسخ‌گویی (نسخه نهایی)
   // ============================================================
   function getSmartReply(input) {
     const text = input.trim().toLowerCase();
     
-    // ===== ۱. تشخیص موضوعات اصلی با کلمات کلیدی گسترده =====
-    
-    // موضوع: معرفی / درباره من
-    if (text.includes('معرفی') || text.includes('کی هستی') || text.includes('خودت') || 
-        text.includes('چه کاره') || text.includes('کیایی') || text.includes('شناخت') ||
-        text.includes('درباره من') || text.includes('بیو') || text.includes('رزومه') ||
-        text.includes('کی هست') || text.includes('چیه') || text.includes('چه کسی') ||
-        text.includes('هستید') || text.includes('هستی')) {
+    // ===== ۱. سوال "کی هستی؟" - پاسخ اختصاصی =====
+    if (text.includes('کی هستی') || text.includes('کی هست') || text.includes('چیستی') || 
+        text.includes('هستی') || text.includes('کیایی') || text.includes('چه کسی') ||
+        text.includes('تو کی') || text.includes('کیا هستی') || text.includes('تو چیستی') ||
+        text.includes('چه کاری') || text.includes('چی هستی')) {
+      return `
+        <i class="fas fa-robot"></i> <strong>من ربات دستیار MH Assistant هستم!</strong><br><br>
+        <i class="fas fa-user-astronaut"></i> ساخته‌شده توسط <strong>${siteData.name}</strong><br>
+        <i class="fas fa-code"></i> وظیفه‌ام: پاسخ به سوالات شما درباره سایت، طراحی‌ها و پروژه‌ها<br>
+        <i class="fas fa-heart" style="color:#f5b042;"></i> هدفم: کمک سریع و هوشمندانه به کاربران<br><br>
+        <span style="color:#b0a99b; font-size:0.85rem;">
+          <i class="fas fa-smile"></i> هر سوالی داری، بپرس!
+        </span>
+      `;
+    }
+
+    // ===== ۲. معرفی صاحب سایت =====
+    if (text.includes('معرفی') || text.includes('کی هست') || text.includes('خودت') || 
+        text.includes('چه کاره') || text.includes('شناخت') || text.includes('درباره من') || 
+        text.includes('بیو') || text.includes('رزومه') || text.includes('چه کسی') ||
+        text.includes('هستید') && !text.includes('کی هستی') && !text.includes('هستی')) {
       return `
         <i class="fas fa-user-astronaut"></i> <strong>${siteData.name}</strong><br>
         ${siteData.job}<br>
@@ -616,9 +575,10 @@
       `;
     }
 
-    // موضوع: مهارت‌ها
+    // ===== ۳. مهارت‌ها =====
     if (text.includes('مهارت') || text.includes('توانایی') || text.includes('بلد') || 
-        text.includes('چه چیزایی') || text.includes('چی یاد') || text.includes('تخصص')) {
+        text.includes('تخصص') || text.includes('چه چیزایی') || text.includes('چی یاد') ||
+        text.includes('چه کارهایی') || text.includes('توانمندی')) {
       return `
         <i class="fas fa-code"></i> <strong>مهارت‌های من:</strong><br>
         ${siteData.skills.map(s => `🔹 ${s}`).join('<br>')}<br><br>
@@ -628,15 +588,15 @@
       `;
     }
 
-    // موضوع: سایت‌ها / پروژه‌ها
+    // ===== ۴. سایت‌ها =====
     if (text.includes('سایت') || text.includes('وب') || text.includes('پروژه') || 
         text.includes('نمونه کار') || text.includes('لینک') || text.includes('zerox') ||
         text.includes('کالفود') || text.includes('کوروش') || text.includes('گیم') ||
-        text.includes('آدرس') || text.includes('مشاهده') || text.includes('کار') ||
-        text.includes('چی ساختی') || text.includes('چه سایت') || text.includes('ساختی') ||
-        text.includes('نمونه') || text.includes('پروژه‌ها')) {
+        text.includes('آدرس') || text.includes('مشاهده') || text.includes('چی ساختی') ||
+        text.includes('چه سایت') || text.includes('ساختی') || text.includes('نمونه') ||
+        text.includes('پروژه‌ها') || text.includes('کارها') || text.includes('وب‌سایت')) {
       
-      let reply = `<i class="fas fa-laptop-code"></i> <strong>سایت‌های طراحی شده:</strong><br>`;
+      let reply = `<i class="fas fa-laptop-code"></i> <strong>سایت‌های طراحی شده توسط ${siteData.name}:</strong><br>`;
       
       siteData.sites.forEach(s => {
         reply += `
@@ -657,22 +617,22 @@
       return reply;
     }
 
-    // موضوع: طراحی‌ها / گرافیک
+    // ===== ۵. طراحی‌ها =====
     if (text.includes('طراحی') || text.includes('گرافیک') || text.includes('هنری') || 
         text.includes('عکس') || text.includes('تصویر') || text.includes('یا علی') || 
         text.includes('اهواز') || text.includes('شهید') || text.includes('پالت') ||
         text.includes('نقاشی') || text.includes('اثر') || text.includes('هنر') ||
-        text.includes('ساخت') || text.includes('خلق') || text.includes('نمونه طراحی')) {
+        text.includes('نمونه طراحی')) {
       
-      let reply = `<i class="fas fa-palette"></i> <strong>نمونه طراحی‌های هنری:</strong><br>`;
+      let reply = `<i class="fas fa-palette"></i> <strong>نمونه طراحی‌های هنری ${siteData.name}:</strong><br>`;
       
       siteData.designs.forEach(d => {
         reply += `
-          <div class="design-card-mini">
-            <div class="design-icon"><i class="fas fa-paint-brush"></i></div>
+          <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,215,100,0.06); border-radius:14px; padding:0.6rem 1rem; margin:0.4rem 0; display:flex; align-items:center; gap:0.8rem;">
+            <div style="font-size:1.5rem; color:#f5b042;"><i class="fas fa-paint-brush"></i></div>
             <div>
-              <div class="design-name">🖼 ${d.name}</div>
-              <div class="design-desc">${d.desc}</div>
+              <div style="font-family:'Vazirmatn',sans-serif; font-weight:600; color:#f5efe6;">🖼 ${d.name}</div>
+              <div style="font-size:0.8rem; color:#b0a99b;">${d.desc}</div>
             </div>
           </div>
         `;
@@ -682,11 +642,11 @@
       return reply;
     }
 
-    // موضوع: برنامه‌ها / اپلیکیشن
+    // ===== ۶. برنامه‌ها =====
     if (text.includes('برنامه') || text.includes('اپ') || text.includes('نرم‌افزار') || 
         text.includes('ابزار') || text.includes('اپلیکیشن') || text.includes('موبایل') ||
         text.includes('اندروید') || text.includes('ios') || text.includes('ویندوز') ||
-        text.includes('ساخت اپ') || text.includes('نرم افزار')) {
+        text.includes('ساخت اپ') || text.includes('نرم افزار') || text.includes('اپلیکیشن‌ها')) {
       return `
         <i class="fas fa-puzzle-piece"></i> بخش <strong>برنامه‌ها</strong> ${siteData.apps} است.<br>
         به زودی اپلیکیشن‌ها و ابزارهای جدیدی اضافه می‌شه.<br>
@@ -697,17 +657,18 @@
       `;
     }
 
-    // موضوع: شبکه‌های اجتماعی
+    // ===== ۷. شبکه‌های اجتماعی =====
     if (text.includes('تلگرام') || text.includes('اینستاگرام') || text.includes('شبکه') || 
         text.includes('اجتماعی') || text.includes('تماس') || text.includes('ارتباط') ||
-        text.includes('پیام') || text.includes('آیدی') || text.includes('کانال')) {
+        text.includes('پیام') || text.includes('آیدی') || text.includes('کانال') ||
+        text.includes('راه ارتباطی') || text.includes('چت') || text.includes('پشتیبانی')) {
       return `
-        <i class="fas fa-share-alt"></i> <strong>راه‌های ارتباطی:</strong><br>
+        <i class="fas fa-share-alt"></i> <strong>راه‌های ارتباطی با ${siteData.name}:</strong><br>
         <div style="display:flex; gap:0.8rem; margin-top:0.5rem; flex-wrap:wrap;">
-          <a href="${siteData.social.telegram}" target="_blank" style="color:#f5b042; text-decoration:none; background:rgba(255,215,100,0.05); padding:0.3rem 1rem; border-radius:40px; border:1px solid rgba(255,215,100,0.1); display:inline-flex; align-items:center; gap:0.4rem;">
+          <a href="${siteData.social.telegram}" target="_blank" style="color:#f5b042; text-decoration:none; background:rgba(255,215,100,0.05); padding:0.4rem 1.2rem; border-radius:40px; border:1px solid rgba(255,215,100,0.1); display:inline-flex; align-items:center; gap:0.5rem; transition:0.3s;">
             <i class="fab fa-telegram-plane"></i> تلگرام
           </a>
-          <a href="${siteData.social.instagram}" target="_blank" style="color:#f5b042; text-decoration:none; background:rgba(255,215,100,0.05); padding:0.3rem 1rem; border-radius:40px; border:1px solid rgba(255,215,100,0.1); display:inline-flex; align-items:center; gap:0.4rem;">
+          <a href="${siteData.social.instagram}" target="_blank" style="color:#f5b042; text-decoration:none; background:rgba(255,215,100,0.05); padding:0.4rem 1.2rem; border-radius:40px; border:1px solid rgba(255,215,100,0.1); display:inline-flex; align-items:center; gap:0.5rem; transition:0.3s;">
             <i class="fab fa-instagram"></i> اینستاگرام
           </a>
         </div>
@@ -715,52 +676,54 @@
       `;
     }
 
-    // ===== ۲. سوالات عمومی =====
-    
-    // سلام و احوالپرسی
+    // ===== ۸. سلام و احوالپرسی =====
     if (text.includes('سلام') || text.includes('درود') || text.includes('هی') || 
         text.includes('الو') || text.includes('هلو') || text.includes('سلامت') ||
-        text.includes('صبح') || text.includes('عصر') || text.includes('شب')) {
+        text.includes('صبح') || text.includes('عصر') || text.includes('شب') ||
+        text.includes('بخیر')) {
       return `
-        <i class="fas fa-hand-peace"></i> سلام! خوش اومدی به <strong>dastyar.m</strong>.<br>
+        <i class="fas fa-hand-peace"></i> سلام! خوش اومدی به <strong>MH Assistant</strong>.<br>
+        من <strong>دستیار هوشمند</strong> این سایت هستم.<br>
         هر سوالی داری بپرس، <strong>همون لحظه</strong> جواب میدم.<br><br>
         <span style="color:#b0a99b; font-size:0.85rem;">
           <i class="fas fa-lightbulb"></i> مثلاً بپرس: 
-          <strong style="color:#f5b042;">چه سایت‌هایی ساختی؟</strong> 
-          یا <strong style="color:#f5b042;">معرفی خودت</strong>
+          <strong style="color:#f5b042;">کی هستی؟</strong> 
+          یا <strong style="color:#f5b042;">چه سایت‌هایی ساختی؟</strong>
         </span>
       `;
     }
 
-    // حال و احوال
+    // ===== ۹. حال و احوال =====
     if (text.includes('خوب') || text.includes('چطوری') || text.includes('حالت') || 
         text.includes('اوضاع') || text.includes('چه خبر') || text.includes('خبر') ||
-        text.includes('چی می‌کنی') || text.includes('چی کار') || text.includes('چیز') ||
-        text.includes('خوشی') || text.includes('خسته') || text.includes('انرژی')) {
+        text.includes('چی می‌کنی') || text.includes('چی کار') || text.includes('خوشی') ||
+        text.includes('خسته') || text.includes('انرژی') || text.includes('احساس')) {
       return `
-        <i class="fas fa-smile"></i> ممنون که پرسیدی! عالی‌ام و پر انرژی.<br>
-        <i class="fas fa-rocket" style="color:#f5b042;"></i> منتظر سوال بعدی‌ات هستم.<br>
+        <i class="fas fa-smile"></i> ممنون که پرسیدی!<br>
+        من <strong>MH Assistant</strong> هستم و همیشه آماده کمکم.<br>
+        <i class="fas fa-rocket" style="color:#f5b042;"></i> پر انرژی و منتظر سوال بعدی‌ات.<br>
         <span style="color:#b0a99b; font-size:0.85rem;">اگه سوال خاصی داری، بپرس!</span>
       `;
     }
 
-    // تشکر
+    // ===== ۱۰. تشکر =====
     if (text.includes('ممنون') || text.includes('مرسی') || text.includes('متشکرم') || 
         text.includes('دمت گرم') || text.includes('دستت') || text.includes('تشکر') ||
         text.includes('سپاس') || text.includes('مرحمت') || text.includes('احسان')) {
       return `
-        <i class="fas fa-heart" style="color:#f5b042;"></i> خواهش می‌کنم! خوشحالم که تونستم کمک کنم.<br>
+        <i class="fas fa-heart" style="color:#f5b042;"></i> خواهش می‌کنم!<br>
+        خوشحالم که تونستم به عنوان <strong>MH Assistant</strong> کمک کنم.<br>
         <i class="fas fa-smile"></i> هر وقت سوالی داشتی، من اینجام.<br>
         <span style="color:#b0a99b; font-size:0.85rem;">🙏 بازم خوش اومدی!</span>
       `;
     }
 
-    // ===== ۳. پاسخ پیش‌فرض هوشمند با پیشنهادات =====
+    // ===== ۱۱. پاسخ پیش‌فرض =====
     return `
-      <i class="fas fa-robot"></i> <strong>متوجه شدم!</strong><br>
-      می‌تونی از اینا بپرسی:<br><br>
+      <i class="fas fa-robot"></i> <strong>من MH Assistant هستم!</strong><br>
+      متوجه شدم، ولی برای کمک بهتر این سوالات رو بپرس:<br><br>
       <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.2rem 0.8rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.2rem;">
-        <i class="fas fa-user-astronaut"></i> معرفی خودت
+        <i class="fas fa-question"></i> کی هستی؟
       </span>
       <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.2rem 0.8rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.2rem;">
         <i class="fas fa-laptop-code"></i> چه سایت‌هایی ساختی؟
@@ -795,7 +758,6 @@
     userInput.value = '';
     userInput.focus();
 
-    // نمایش تایپینگ
     isTyping = true;
     showTyping();
 
@@ -836,7 +798,7 @@
     if (!typing) {
       typing = document.createElement('div');
       typing.className = 'typing-indicator';
-      typing.innerHTML = '<i class="fas fa-robot"></i> در حال تایپ...';
+      typing.innerHTML = '<i class="fas fa-robot"></i> <strong>MH Assistant</strong> در حال تایپ...';
       messagesBox.appendChild(typing);
     }
     typing.classList.add('show');
@@ -861,4 +823,4 @@
 </script>
 
 </body>
-  </html>
+</html>
