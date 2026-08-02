@@ -3,24 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>دستیار mohamad hossein snti</title>
+  <title>dastyar.m | دستیار هوشمند</title>
 
-  <!-- فونت‌های مشابه سایت اصلی -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <style>
-    /* ===== بازنشانی و رنگ‌های اصلی ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
       background: #0b0b0e;
       color: #eaeef2;
@@ -30,28 +22,29 @@
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
-      background-image: radial-gradient(circle at 30% 20%, rgba(255, 200, 80, 0.03) 0%, transparent 60%);
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 200, 80, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 200, 80, 0.03) 0%, transparent 50%);
     }
 
-    /* ===== جعبه ربات ===== */
     .chat-container {
       width: 100%;
-      max-width: 720px;
+      max-width: 880px;
       background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 215, 100, 0.08);
-      border-radius: 32px;
-      padding: 1.8rem 2rem 2rem;
-      box-shadow: 0 24px 64px -16px rgba(0, 0, 0, 0.6);
-      transition: 0.3s;
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 215, 100, 0.12);
+      border-radius: 40px;
+      padding: 2rem 2.2rem 2.2rem;
+      box-shadow: 0 32px 96px -16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 215, 100, 0.05);
+      transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .chat-container:hover {
-      border-color: rgba(255, 215, 100, 0.15);
-      box-shadow: 0 28px 72px -16px rgba(0, 0, 0, 0.7);
+      border-color: rgba(255, 215, 100, 0.25);
+      box-shadow: 0 40px 120px -16px rgba(245, 176, 66, 0.12), inset 0 1px 0 rgba(255, 215, 100, 0.08);
+      transform: translateY(-3px);
     }
 
-    /* ===== هدر ربات ===== */
     .chat-header {
       display: flex;
       align-items: center;
@@ -62,27 +55,56 @@
     }
 
     .chat-avatar {
-      width: 52px;
-      height: 52px;
+      width: 60px;
+      height: 60px;
       background: linear-gradient(145deg, #f5b042, #d48f2b);
-      border-radius: 18px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Vazirmatn', sans-serif;
       font-weight: 900;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       color: #0b0b0e;
-      box-shadow: 0 8px 18px -6px rgba(200, 150, 50, 0.25);
+      box-shadow: 0 8px 28px -6px rgba(200, 150, 50, 0.35);
       flex-shrink: 0;
+      animation: floatLogo 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    .chat-avatar::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(245, 176, 66, 0.3), transparent);
+      z-index: -1;
+      animation: glowRing 3s ease-in-out infinite;
+    }
+
+    @keyframes glowRing {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
 
     .chat-title {
       font-family: 'Vazirmatn', sans-serif;
       font-weight: 800;
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       color: #f5efe6;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.5px;
+    }
+
+    .chat-title .highlight {
+      background: linear-gradient(145deg, #f5b042, #d48f2b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .chat-title small {
@@ -91,8 +113,20 @@
       font-weight: 300;
       font-size: 0.75rem;
       color: #b0a99b;
-      letter-spacing: 0.5px;
       margin-top: 2px;
+      letter-spacing: 0.5px;
+      -webkit-text-fill-color: #b0a99b;
+    }
+
+    .chat-title small i {
+      color: #f5b042;
+      -webkit-text-fill-color: #f5b042;
+      animation: pulseIcon 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseIcon {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
     }
 
     .chat-status {
@@ -100,14 +134,15 @@
       background: rgba(245, 176, 66, 0.12);
       border: 1px solid rgba(245, 176, 66, 0.15);
       border-radius: 40px;
-      padding: 0.2rem 1rem;
+      padding: 0.2rem 1.2rem;
       font-size: 0.7rem;
       color: #f5b042;
       font-family: 'Vazirmatn', sans-serif;
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
+      backdrop-filter: blur(4px);
     }
 
     .chat-status i {
@@ -118,62 +153,48 @@
 
     @keyframes pulseDot {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(0.7); }
+      50% { opacity: 0.2; transform: scale(0.6); }
     }
 
-    /* ===== جعبه پیام‌ها ===== */
     .messages {
-      max-height: 380px;
+      max-height: 460px;
       overflow-y: auto;
-      padding-left: 0.2rem;
       margin-bottom: 1.2rem;
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
+      gap: 1rem;
+      padding-right: 0.2rem;
       scrollbar-width: thin;
       scrollbar-color: rgba(255, 215, 100, 0.15) transparent;
     }
 
-    .messages::-webkit-scrollbar {
-      width: 4px;
-    }
-    .messages::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .messages::-webkit-scrollbar-thumb {
-      background: rgba(255, 215, 100, 0.2);
-      border-radius: 10px;
-    }
+    .messages::-webkit-scrollbar { width: 4px; }
+    .messages::-webkit-scrollbar-track { background: transparent; }
+    .messages::-webkit-scrollbar-thumb { background: rgba(255, 215, 100, 0.25); border-radius: 10px; }
 
-    /* ===== هر پیام ===== */
     .message {
       display: flex;
-      gap: 0.7rem;
+      gap: 0.8rem;
       align-items: flex-start;
-      animation: msgIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      animation: msgIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .message.bot {
-      flex-direction: row;
-    }
-
-    .message.user {
-      flex-direction: row-reverse;
-    }
+    .message.bot { flex-direction: row; }
+    .message.user { flex-direction: row-reverse; }
 
     @keyframes msgIn {
-      0% { opacity: 0; transform: translateY(12px) scale(0.97); }
+      0% { opacity: 0; transform: translateY(16px) scale(0.96); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .message .avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
+      font-size: 1rem;
       flex-shrink: 0;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 215, 100, 0.06);
@@ -193,16 +214,16 @@
 
     .message .bubble {
       max-width: 80%;
-      padding: 0.6rem 1.2rem;
-      border-radius: 18px;
+      padding: 0.8rem 1.4rem;
+      border-radius: 20px;
       font-family: 'Noto Sans Arabic', sans-serif;
       font-size: 0.95rem;
-      line-height: 1.8;
+      line-height: 2;
       word-break: break-word;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 215, 100, 0.06);
       color: #d6d0c4;
-      box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.3);
     }
 
     .message.bot .bubble {
@@ -218,33 +239,136 @@
       color: #f5efe6;
     }
 
-    .message .bubble strong {
+    .message .bubble strong { color: #f5b042; font-weight: 700; }
+    .message .bubble i { color: #f5b042; margin-left: 0.3rem; }
+
+    .message .bubble .site-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 215, 100, 0.08);
+      border-radius: 16px;
+      padding: 0.8rem 1rem;
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: 0.3s;
+    }
+
+    .message .bubble .site-card:hover {
+      background: rgba(255, 215, 100, 0.04);
+      border-color: rgba(255, 215, 100, 0.15);
+      transform: translateX(-4px);
+    }
+
+    .message .bubble .site-card .site-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #0b0b0e;
+      border: 1px solid rgba(255, 215, 100, 0.05);
+      flex-shrink: 0;
+    }
+
+    .message .bubble .site-card .site-info {
+      flex: 1;
+    }
+
+    .message .bubble .site-card .site-info .site-name {
+      font-family: 'Vazirmatn', sans-serif;
+      font-weight: 700;
+      color: #f5efe6;
+      font-size: 0.95rem;
+    }
+
+    .message .bubble .site-card .site-info .site-desc {
+      font-size: 0.8rem;
+      color: #b0a99b;
+    }
+
+    .message .bubble .site-card .site-link {
       color: #f5b042;
+      text-decoration: none;
+      font-size: 0.8rem;
       font-weight: 600;
+      padding: 0.3rem 1rem;
+      border: 1px solid rgba(245, 176, 66, 0.15);
+      border-radius: 40px;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
-    .message .bubble i {
+    .message .bubble .site-card .site-link:hover {
+      background: rgba(245, 176, 66, 0.08);
+      border-color: #f5b042;
+      transform: scale(1.04);
+    }
+
+    .message .bubble .design-card-mini {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 215, 100, 0.06);
+      border-radius: 14px;
+      padding: 0.6rem 1rem;
+      margin: 0.4rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .message .bubble .design-card-mini .design-icon {
+      font-size: 1.5rem;
       color: #f5b042;
-      margin-left: 0.3rem;
     }
 
-    .message .bubble .fa-robot {
-      font-size: 1rem;
+    .message .bubble .design-card-mini .design-name {
+      font-family: 'Vazirmatn', sans-serif;
+      font-weight: 600;
+      color: #f5efe6;
     }
 
-    /* ===== پیام‌های سریع (دکمه‌های پیشنهادی) ===== */
+    .message .bubble .design-card-mini .design-desc {
+      font-size: 0.8rem;
+      color: #b0a99b;
+    }
+
+    .message .bubble .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      background: rgba(245, 176, 66, 0.08);
+      border: 1px solid rgba(245, 176, 66, 0.15);
+      color: #f5b042;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: 0.3s;
+      margin: 0.2rem 0;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    .message .bubble .download-btn:hover {
+      background: rgba(245, 176, 66, 0.15);
+      border-color: #f5b042;
+      transform: scale(1.04);
+    }
+
     .quick-replies {
       display: flex;
       flex-wrap: wrap;
       gap: 0.6rem;
       margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
     }
 
     .quick-replies button {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 215, 100, 0.08);
       color: #b0a99b;
-      padding: 0.3rem 1rem;
+      padding: 0.3rem 1.2rem;
       border-radius: 40px;
       font-family: 'Vazirmatn', sans-serif;
       font-size: 0.75rem;
@@ -257,20 +381,16 @@
       gap: 0.5rem;
     }
 
-    .quick-replies button i {
-      color: #f5b042;
-      font-size: 0.7rem;
-    }
+    .quick-replies button i { color: #f5b042; font-size: 0.7rem; }
 
     .quick-replies button:hover {
       background: rgba(245, 176, 66, 0.08);
       border-color: rgba(245, 176, 66, 0.2);
       color: #f5efe6;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px -6px rgba(245, 176, 66, 0.1);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 4px 20px -6px rgba(245, 176, 66, 0.12);
     }
 
-    /* ===== ورودی ===== */
     .input-area {
       display: flex;
       align-items: center;
@@ -280,13 +400,13 @@
       border-radius: 60px;
       padding: 0.3rem 0.3rem 0.3rem 1.2rem;
       transition: 0.3s;
-      margin-top: 0.5rem;
+      margin-top: 0.3rem;
     }
 
     .input-area:focus-within {
       border-color: rgba(245, 176, 66, 0.25);
       background: rgba(255, 255, 255, 0.04);
-      box-shadow: 0 0 0 3px rgba(245, 176, 66, 0.05);
+      box-shadow: 0 0 0 4px rgba(245, 176, 66, 0.04);
     }
 
     .input-area input {
@@ -296,143 +416,116 @@
       color: #eaeef2;
       font-family: 'Noto Sans Arabic', sans-serif;
       font-size: 0.95rem;
-      padding: 0.6rem 0;
+      padding: 0.7rem 0;
       outline: none;
       min-width: 0;
     }
 
-    .input-area input::placeholder {
-      color: #5f5a50;
-      font-weight: 300;
-    }
+    .input-area input::placeholder { color: #5f5a50; font-weight: 300; }
 
     .input-area button {
       background: linear-gradient(145deg, #f5b042, #d48f2b);
       border: none;
       color: #0b0b0e;
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       cursor: pointer;
       transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 4px 16px -6px rgba(245, 176, 66, 0.25);
+      box-shadow: 0 4px 20px -6px rgba(245, 176, 66, 0.3);
     }
 
     .input-area button:hover {
-      transform: scale(1.08);
-      box-shadow: 0 8px 24px -6px rgba(245, 176, 66, 0.4);
+      transform: scale(1.08) rotate(-4deg);
+      box-shadow: 0 8px 32px -6px rgba(245, 176, 66, 0.5);
     }
 
-    .input-area button:active {
-      transform: scale(0.95);
+    .input-area button:active { transform: scale(0.93); }
+
+    .typing-indicator {
+      display: none;
+      padding: 0.5rem 1.2rem;
+      background: rgba(255, 215, 100, 0.04);
+      border: 1px solid rgba(255, 215, 100, 0.06);
+      border-radius: 40px;
+      color: #b0a99b;
+      font-size: 0.8rem;
+      align-self: flex-start;
+      margin-bottom: 0.5rem;
+      animation: msgIn 0.3s ease;
     }
 
-    .input-area button i {
-      margin: 0;
+    .typing-indicator i {
+      color: #f5b042;
+      animation: pulseIcon 1s ease-in-out infinite;
     }
 
-    /* ===== ریسپانسیو ===== */
+    .typing-indicator.show { display: inline-flex; align-items: center; gap: 0.5rem; }
+
     @media (max-width: 600px) {
-      .chat-container {
-        padding: 1.2rem 1rem;
-        border-radius: 24px;
-      }
-      .chat-title {
-        font-size: 1.1rem;
-      }
-      .chat-avatar {
-        width: 42px;
-        height: 42px;
-        font-size: 1.2rem;
-      }
-      .message .bubble {
-        font-size: 0.85rem;
-        padding: 0.5rem 1rem;
-        max-width: 90%;
-      }
-      .input-area input {
-        font-size: 0.85rem;
-      }
-      .quick-replies button {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.8rem;
-      }
+      .chat-container { padding: 1.2rem 1rem; border-radius: 28px; }
+      .chat-title { font-size: 1.2rem; }
+      .chat-avatar { width: 48px; height: 48px; font-size: 1.4rem; }
+      .message .bubble { font-size: 0.85rem; padding: 0.5rem 1rem; max-width: 90%; }
+      .input-area input { font-size: 0.85rem; }
+      .quick-replies button { font-size: 0.7rem; padding: 0.2rem 0.8rem; }
+      .message .bubble .site-card { flex-wrap: wrap; }
+      .message .bubble .site-card .site-img { width: 40px; height: 40px; }
     }
 
     @media (max-width: 400px) {
-      .chat-container {
-        padding: 1rem 0.8rem;
-      }
-      .chat-status {
-        font-size: 0.6rem;
-        padding: 0.1rem 0.6rem;
-      }
-      .message .avatar {
-        width: 28px;
-        height: 28px;
-        font-size: 0.7rem;
-      }
+      .chat-container { padding: 1rem 0.8rem; }
+      .chat-status { font-size: 0.6rem; padding: 0.1rem 0.6rem; }
+      .message .avatar { width: 30px; height: 30px; font-size: 0.7rem; }
     }
 
-    /* ===== اسکرول‌بار کلی ===== */
-    ::-webkit-scrollbar {
-      width: 5px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0b0b0e;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #f5b042;
-      border-radius: 10px;
-    }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0b0b0e; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(145deg, #f5b042, #d48f2b); border-radius: 10px; }
   </style>
 </head>
 <body>
 
 <div class="chat-container">
   
-  <!-- هدر -->
   <div class="chat-header">
     <div class="chat-avatar">M</div>
     <div class="chat-title">
-      دستیار mohamad hossein
-      <small><i class="fas fa-robot" style="color:#f5b042;"></i> همراه همیشگی</small>
+      <span class="highlight">dastyar.m</span>
+      <small><i class="fas fa-robot"></i> دستیار هوشمند حرفه‌ای</small>
     </div>
     <div class="chat-status">
       <i class="fas fa-circle"></i> آنلاین
     </div>
   </div>
 
-  <!-- محوطه پیام‌ها -->
   <div class="messages" id="messagesBox">
-    <!-- پیام خوش‌آمدگویی (ربات) -->
     <div class="message bot">
       <div class="avatar"><i class="fas fa-robot"></i></div>
       <div class="bubble">
-        <i class="fas fa-hand-peace"></i> سلام! من <strong>دستیار mohamad hossein</strong> هستم.<br>
-        می‌تونم درباره <strong>سایت‌ها، طراحی‌ها، پروژه‌ها</strong> و هرچیزی که توی سایت هست کمک کنم.<br>
-        <span style="color:#f5b042; font-size:0.85rem;">👇 یه سوال بپرس یا از دکمه‌های زیر استفاده کن.</span>
+        <i class="fas fa-hand-peace"></i> سلام! من <strong>dastyar.m</strong> هستم.<br>
+        <strong>هر سوالی</strong> داری، هر چیزی که می‌خوای بدونی، بپرس.<br>
+        <span style="color:#f5b042; font-size:0.85rem;">👇 از دکمه‌های پایین استفاده کن یا هر چیزی بنویس!</span>
       </div>
     </div>
   </div>
 
-  <!-- دکمه‌های سریع -->
-  <div class="quick-replies" id="quickReplies">
-    <button onclick="askQuestion('معرفی کن')"><i class="fas fa-user-astronaut"></i> معرفی</button>
-    <button onclick="askQuestion('سایت‌ها')"><i class="fas fa-laptop-code"></i> سایت‌ها</button>
-    <button onclick="askQuestion('طراحی‌ها')"><i class="fas fa-palette"></i> طراحی‌ها</button>
+  <div class="quick-replies">
+    <button onclick="askQuestion('معرفی خودت')"><i class="fas fa-user-astronaut"></i> معرفی</button>
+    <button onclick="askQuestion('چه سایت‌هایی ساختی؟')"><i class="fas fa-laptop-code"></i> سایت‌ها</button>
+    <button onclick="askQuestion('نمونه طراحی‌هات رو بگو')"><i class="fas fa-palette"></i> طراحی‌ها</button>
     <button onclick="askQuestion('برنامه‌ها')"><i class="fas fa-puzzle-piece"></i> برنامه‌ها</button>
     <button onclick="askQuestion('درباره من')"><i class="fas fa-info-circle"></i> درباره من</button>
+    <button onclick="askQuestion('مهارت‌هات')"><i class="fas fa-code"></i> مهارت‌ها</button>
   </div>
 
-  <!-- ورودی -->
   <div class="input-area">
-    <input type="text" id="userInput" placeholder="سوال یا پیامت رو بنویس..." autocomplete="off">
+    <input type="text" id="userInput" placeholder="هر سوالی داری بپرس..." autocomplete="off">
     <button onclick="sendMessage()" aria-label="ارسال">
       <i class="fas fa-paper-plane"></i>
     </button>
@@ -442,85 +535,248 @@
 
 <script>
   // ============================================================
-  //  دیتابیس پاسخ‌های هوشمند (همان محتوای سایت)
+  //  دیتابیس کامل اطلاعات (همه محتوای سایت با جزئیات)
   // ============================================================
-  const botResponses = {
-
-    // ----- معرفی کلی -----
-    'معرفی کن': `
-      <i class="fas fa-user-astronaut"></i> من <strong>mohamad hossein snti</strong> هستم، توسعه‌دهنده وب و طراح گرافیک.<br>
-      از سال ۱۴۰۳ وارد دنیای برنامه‌نویسی شدم و عاشق خلق چیزهای جدیدم.<br>
-      <i class="fas fa-heart" style="color:#f5b042;"></i> ترکیب <strong>هنر و تکنولوژی</strong> هدف منه.
-    `,
-    'معرفی': `
-      <i class="fas fa-user-astronaut"></i> من <strong>mohamad hossein snti</strong> هستم، توسعه‌دهنده وب و طراح گرافیک.<br>
-      از سال ۱۴۰۳ وارد دنیای برنامه‌نویسی شدم و عاشق خلق چیزهای جدیدم.<br>
-      <i class="fas fa-heart" style="color:#f5b042;"></i> ترکیب <strong>هنر و تکنولوژی</strong> هدف منه.
-    `,
-
-    // ----- سایت‌ها -----
-    'سایت‌ها': `
-      <i class="fas fa-laptop-code"></i> <strong>سایت‌های طراحی شده:</strong><br>
-      🎮 <strong>ZEROX</strong> – پلتفرم تخصصی گیم و اخبار<br>
-      🍔 <strong>کالفود</strong> – پلتفرم سفارش غذای لذیذ<br>
-      🎮 <strong>کوروش گیم</strong> – فروشگاه اکانت گیم<br>
-      <span style="color:#b0a99b; font-size:0.85rem;">برای مشاهده هرکدوم به بخش <strong>سایت‌های طراحی شده</strong> برو.</span>
-    `,
-    'سایت': `
-      <i class="fas fa-laptop-code"></i> <strong>سایت‌های طراحی شده:</strong><br>
-      🎮 <strong>ZEROX</strong> – پلتفرم تخصصی گیم و اخبار<br>
-      🍔 <strong>کالفود</strong> – پلتفرم سفارش غذای لذیذ<br>
-      🎮 <strong>کوروش گیم</strong> – فروشگاه اکانت گیم<br>
-      <span style="color:#b0a99b; font-size:0.85rem;">برای مشاهده هرکدوم به بخش <strong>سایت‌های طراحی شده</strong> برو.</span>
-    `,
-
-    // ----- طراحی‌ها -----
-    'طراحی‌ها': `
-      <i class="fas fa-palette"></i> <strong>نمونه طراحی‌های هنری:</strong><br>
-      🖼 <strong>«گفتند زلف یار...»</strong> – ادای احترام به نام علی (ع)<br>
-      🖼 <strong>«اهواز... خاک غسل‌شده»</strong> – یاد شهدای جنوب ایران<br>
-      <span style="color:#b0a99b; font-size:0.85rem;">هر دو در بخش <strong>طراحی‌هام</strong> قابل مشاهده و دانلود هستن.</span>
-    `,
-    'طراحی': `
-      <i class="fas fa-palette"></i> <strong>نمونه طراحی‌های هنری:</strong><br>
-      🖼 <strong>«گفتند زلف یار...»</strong> – ادای احترام به نام علی (ع)<br>
-      🖼 <strong>«اهواز... خاک غسل‌شده»</strong> – یاد شهدای جنوب ایران<br>
-      <span style="color:#b0a99b; font-size:0.85rem;">هر دو در بخش <strong>طراحی‌هام</strong> قابل مشاهده و دانلود هستن.</span>
-    `,
-
-    // ----- برنامه‌ها -----
-    'برنامه‌ها': `
-      <i class="fas fa-puzzle-piece"></i> بخش <strong>برنامه‌ها</strong> در حال توسعه است.<br>
-      به زودی اپلیکیشن‌ها و ابزارهای جدیدی اضافه می‌شه.<br>
-      <i class="fas fa-code" style="color:#f5b042;"></i> منتظر آپدیت‌های بعدی باش!
-    `,
-    'برنامه': `
-      <i class="fas fa-puzzle-piece"></i> بخش <strong>برنامه‌ها</strong> در حال توسعه است.<br>
-      به زودی اپلیکیشن‌ها و ابزارهای جدیدی اضافه می‌شه.<br>
-      <i class="fas fa-code" style="color:#f5b042;"></i> منتظر آپدیت‌های بعدی باش!
-    `,
-
-    // ----- درباره من -----
-    'درباره من': `
-      <i class="fas fa-user"></i> <strong>mohamad hossein snti</strong><br>
-      توسعه‌دهنده وب و طراح گرافیک از سال ۱۴۰۳.<br>
-      عاشق کد تمیز، طراحی مینیمال و تجربه کاربری روان.<br>
-      <i class="fas fa-rocket" style="color:#f5b042;"></i> هدف: ترکیب هنر و تکنولوژی برای خلق فضاهای دیجیتال خاص.
-    `,
-    'درباره': `
-      <i class="fas fa-user"></i> <strong>mohamad hossein snti</strong><br>
-      توسعه‌دهنده وب و طراح گرافیک از سال ۱۴۰۳.<br>
-      عاشق کد تمیز، طراحی مینیمال و تجربه کاربری روان.<br>
-      <i class="fas fa-rocket" style="color:#f5b042;"></i> هدف: ترکیب هنر و تکنولوژی برای خلق فضاهای دیجیتال خاص.
-    `,
-
-    // ----- پیش‌فرض (fallback) -----
-    'default': `
-      <i class="fas fa-question-circle"></i> متوجه نشدم!<br>
-      می‌تونی از اینا بپرسی:<br>
-      <span style="color:#f5b042;">معرفی</span> • <span style="color:#f5b042;">سایت‌ها</span> • <span style="color:#f5b042;">طراحی‌ها</span> • <span style="color:#f5b042;">برنامه‌ها</span> • <span style="color:#f5b042;">درباره من</span>
-    `
+  const siteData = {
+    name: 'mohamad hossein snti',
+    job: 'توسعه‌دهنده وب و طراح گرافیک',
+    startYear: '۱۴۰۳',
+    skills: ['HTML', 'CSS', 'JavaScript', 'طراحی گرافیک', 'تولید محتوا', 'UI/UX', 'React', 'Node.js'],
+    goal: 'ترکیب هنر و تکنولوژی برای خلق فضاهای دیجیتال خاص',
+    bio: 'توسعه‌دهنده وب و طراح گرافیک از سال ۱۴۰۳. عاشق کد تمیز، طراحی مینیمال و تجربه کاربری روان. هم‌بنیان‌گذار یه استارتاپ کوچیک و فریلنسر.',
+    
+    sites: [
+      { 
+        name: 'ZEROX', 
+        desc: 'پلتفرم تخصصی گیم و اخبار', 
+        link: 'https://zeroxgame74-afk.github.io/zeroxgamee/',
+        img: 'https://uploadkon.ir/uploads/511301_26Zerox-۱۲۱۲.jpg'
+      },
+      { 
+        name: 'کالفود', 
+        desc: 'پلتفرم سفارش غذای لذیذ', 
+        link: 'https://zeroxgame74-afk.github.io/call-food.ir/',
+        img: 'https://uploadkon.ir/uploads/481d01_26call-food-۱۲۱۲۳.jpg'
+      },
+      { 
+        name: 'کوروش گیم', 
+        desc: 'فروشگاه اکانت گیم', 
+        link: 'https://zeroxgame74-afk.github.io/Kourosh-Game.ir/',
+        img: 'https://uploadkon.ir/uploads/d66b01_26Kourosh-Gameir۱۲.jpg'
+      }
+    ],
+    
+    designs: [
+      { 
+        name: 'گفتند زلف یار...', 
+        desc: 'ادای احترام به نام علی (ع)',
+        img: 'https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg',
+        download4k: 'https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg',
+        download2k: 'https://uploadkon.ir/uploads/e46c28_26m-h-snti-ya-ali.jpg'
+      },
+      { 
+        name: 'اهواز... خاک غسل‌شده', 
+        desc: 'یاد شهدای جنوب ایران',
+        img: 'https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png',
+        download2k: 'https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png',
+        download1080: 'https://uploadkon.ir/uploads/828624_26jonnob-mohamad-hossein-sanati-.png'
+      }
+    ],
+    
+    apps: 'در حال توسعه',
+    
+    social: {
+      telegram: 'https://t.me/@mohamad_hossein_ev18',
+      instagram: 'https://www.instagram.com/mohamad_hossein_ev18'
+    }
   };
+
+  // ============================================================
+  //  موتور هوشمند پاسخ‌گویی (فوق‌پیشرفته)
+  // ============================================================
+  function getSmartReply(input) {
+    const text = input.trim().toLowerCase();
+    
+    // ===== ۱. تشخیص موضوعات اصلی با کلمات کلیدی گسترده =====
+    
+    // موضوع: معرفی / درباره من
+    if (text.includes('معرفی') || text.includes('کی هستی') || text.includes('خودت') || 
+        text.includes('چه کاره') || text.includes('کیایی') || text.includes('شناخت') ||
+        text.includes('درباره من') || text.includes('بیو') || text.includes('رزومه') ||
+        text.includes('کی هست') || text.includes('چیه') || text.includes('چه کسی') ||
+        text.includes('هستید') || text.includes('هستی')) {
+      return `
+        <i class="fas fa-user-astronaut"></i> <strong>${siteData.name}</strong><br>
+        ${siteData.job}<br>
+        از سال ${siteData.startYear} وارد دنیای برنامه‌نویسی شدم.<br>
+        <i class="fas fa-heart" style="color:#f5b042;"></i> هدف: ${siteData.goal}<br><br>
+        <span style="color:#b0a99b; font-size:0.85rem;">
+          <i class="fas fa-tools"></i> مهارت‌ها: ${siteData.skills.join(' • ')}
+        </span>
+      `;
+    }
+
+    // موضوع: مهارت‌ها
+    if (text.includes('مهارت') || text.includes('توانایی') || text.includes('بلد') || 
+        text.includes('چه چیزایی') || text.includes('چی یاد') || text.includes('تخصص')) {
+      return `
+        <i class="fas fa-code"></i> <strong>مهارت‌های من:</strong><br>
+        ${siteData.skills.map(s => `🔹 ${s}`).join('<br>')}<br><br>
+        <span style="color:#b0a99b; font-size:0.85rem;">
+          <i class="fas fa-rocket"></i> همیشه در حال یادگیری و به‌روزرسانی
+        </span>
+      `;
+    }
+
+    // موضوع: سایت‌ها / پروژه‌ها
+    if (text.includes('سایت') || text.includes('وب') || text.includes('پروژه') || 
+        text.includes('نمونه کار') || text.includes('لینک') || text.includes('zerox') ||
+        text.includes('کالفود') || text.includes('کوروش') || text.includes('گیم') ||
+        text.includes('آدرس') || text.includes('مشاهده') || text.includes('کار') ||
+        text.includes('چی ساختی') || text.includes('چه سایت') || text.includes('ساختی') ||
+        text.includes('نمونه') || text.includes('پروژه‌ها')) {
+      
+      let reply = `<i class="fas fa-laptop-code"></i> <strong>سایت‌های طراحی شده:</strong><br>`;
+      
+      siteData.sites.forEach(s => {
+        reply += `
+          <div class="site-card">
+            <img class="site-img" src="${s.img}" alt="${s.name}" onerror="this.style.display='none'">
+            <div class="site-info">
+              <div class="site-name">🎮 ${s.name}</div>
+              <div class="site-desc">${s.desc}</div>
+            </div>
+            <a href="${s.link}" target="_blank" class="site-link">
+              <i class="fas fa-external-link-alt"></i> مشاهده
+            </a>
+          </div>
+        `;
+      });
+      
+      reply += `<span style="color:#b0a99b; font-size:0.85rem;">🔗 برای مشاهده هرکدوم روی دکمه <strong>مشاهده</strong> بزن.</span>`;
+      return reply;
+    }
+
+    // موضوع: طراحی‌ها / گرافیک
+    if (text.includes('طراحی') || text.includes('گرافیک') || text.includes('هنری') || 
+        text.includes('عکس') || text.includes('تصویر') || text.includes('یا علی') || 
+        text.includes('اهواز') || text.includes('شهید') || text.includes('پالت') ||
+        text.includes('نقاشی') || text.includes('اثر') || text.includes('هنر') ||
+        text.includes('ساخت') || text.includes('خلق') || text.includes('نمونه طراحی')) {
+      
+      let reply = `<i class="fas fa-palette"></i> <strong>نمونه طراحی‌های هنری:</strong><br>`;
+      
+      siteData.designs.forEach(d => {
+        reply += `
+          <div class="design-card-mini">
+            <div class="design-icon"><i class="fas fa-paint-brush"></i></div>
+            <div>
+              <div class="design-name">🖼 ${d.name}</div>
+              <div class="design-desc">${d.desc}</div>
+            </div>
+          </div>
+        `;
+      });
+      
+      reply += `<br><span style="color:#b0a99b; font-size:0.85rem;">📥 برای دانلود به بخش <strong>طراحی‌هام</strong> برو.</span>`;
+      return reply;
+    }
+
+    // موضوع: برنامه‌ها / اپلیکیشن
+    if (text.includes('برنامه') || text.includes('اپ') || text.includes('نرم‌افزار') || 
+        text.includes('ابزار') || text.includes('اپلیکیشن') || text.includes('موبایل') ||
+        text.includes('اندروید') || text.includes('ios') || text.includes('ویندوز') ||
+        text.includes('ساخت اپ') || text.includes('نرم افزار')) {
+      return `
+        <i class="fas fa-puzzle-piece"></i> بخش <strong>برنامه‌ها</strong> ${siteData.apps} است.<br>
+        به زودی اپلیکیشن‌ها و ابزارهای جدیدی اضافه می‌شه.<br>
+        <i class="fas fa-code" style="color:#f5b042;"></i> منتظر آپدیت‌های بعدی باش!<br><br>
+        <span style="color:#b0a99b; font-size:0.85rem;">
+          <i class="fas fa-lightbulb"></i> اگه ایده‌ای داری، خوشحال می‌شم بشنوم.
+        </span>
+      `;
+    }
+
+    // موضوع: شبکه‌های اجتماعی
+    if (text.includes('تلگرام') || text.includes('اینستاگرام') || text.includes('شبکه') || 
+        text.includes('اجتماعی') || text.includes('تماس') || text.includes('ارتباط') ||
+        text.includes('پیام') || text.includes('آیدی') || text.includes('کانال')) {
+      return `
+        <i class="fas fa-share-alt"></i> <strong>راه‌های ارتباطی:</strong><br>
+        <div style="display:flex; gap:0.8rem; margin-top:0.5rem; flex-wrap:wrap;">
+          <a href="${siteData.social.telegram}" target="_blank" style="color:#f5b042; text-decoration:none; background:rgba(255,215,100,0.05); padding:0.3rem 1rem; border-radius:40px; border:1px solid rgba(255,215,100,0.1); display:inline-flex; align-items:center; gap:0.4rem;">
+            <i class="fab fa-telegram-plane"></i> تلگرام
+          </a>
+          <a href="${siteData.social.instagram}" target="_blank" style="color:#f5b042; text-decoration:none; background:rgba(255,215,100,0.05); padding:0.3rem 1rem; border-radius:40px; border:1px solid rgba(255,215,100,0.1); display:inline-flex; align-items:center; gap:0.4rem;">
+            <i class="fab fa-instagram"></i> اینستاگرام
+          </a>
+        </div>
+        <span style="color:#b0a99b; font-size:0.85rem;">📩 خوشحال می‌شم پیام بدی!</span>
+      `;
+    }
+
+    // ===== ۲. سوالات عمومی =====
+    
+    // سلام و احوالپرسی
+    if (text.includes('سلام') || text.includes('درود') || text.includes('هی') || 
+        text.includes('الو') || text.includes('هلو') || text.includes('سلامت') ||
+        text.includes('صبح') || text.includes('عصر') || text.includes('شب')) {
+      return `
+        <i class="fas fa-hand-peace"></i> سلام! خوش اومدی به <strong>dastyar.m</strong>.<br>
+        هر سوالی داری بپرس، <strong>همون لحظه</strong> جواب میدم.<br><br>
+        <span style="color:#b0a99b; font-size:0.85rem;">
+          <i class="fas fa-lightbulb"></i> مثلاً بپرس: 
+          <strong style="color:#f5b042;">چه سایت‌هایی ساختی؟</strong> 
+          یا <strong style="color:#f5b042;">معرفی خودت</strong>
+        </span>
+      `;
+    }
+
+    // حال و احوال
+    if (text.includes('خوب') || text.includes('چطوری') || text.includes('حالت') || 
+        text.includes('اوضاع') || text.includes('چه خبر') || text.includes('خبر') ||
+        text.includes('چی می‌کنی') || text.includes('چی کار') || text.includes('چیز') ||
+        text.includes('خوشی') || text.includes('خسته') || text.includes('انرژی')) {
+      return `
+        <i class="fas fa-smile"></i> ممنون که پرسیدی! عالی‌ام و پر انرژی.<br>
+        <i class="fas fa-rocket" style="color:#f5b042;"></i> منتظر سوال بعدی‌ات هستم.<br>
+        <span style="color:#b0a99b; font-size:0.85rem;">اگه سوال خاصی داری، بپرس!</span>
+      `;
+    }
+
+    // تشکر
+    if (text.includes('ممنون') || text.includes('مرسی') || text.includes('متشکرم') || 
+        text.includes('دمت گرم') || text.includes('دستت') || text.includes('تشکر') ||
+        text.includes('سپاس') || text.includes('مرحمت') || text.includes('احسان')) {
+      return `
+        <i class="fas fa-heart" style="color:#f5b042;"></i> خواهش می‌کنم! خوشحالم که تونستم کمک کنم.<br>
+        <i class="fas fa-smile"></i> هر وقت سوالی داشتی، من اینجام.<br>
+        <span style="color:#b0a99b; font-size:0.85rem;">🙏 بازم خوش اومدی!</span>
+      `;
+    }
+
+    // ===== ۳. پاسخ پیش‌فرض هوشمند با پیشنهادات =====
+    return `
+      <i class="fas fa-robot"></i> <strong>متوجه شدم!</strong><br>
+      می‌تونی از اینا بپرسی:<br><br>
+      <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.2rem 0.8rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.2rem;">
+        <i class="fas fa-user-astronaut"></i> معرفی خودت
+      </span>
+      <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.2rem 0.8rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.2rem;">
+        <i class="fas fa-laptop-code"></i> چه سایت‌هایی ساختی؟
+      </span>
+      <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.2rem 0.8rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.2rem;">
+        <i class="fas fa-palette"></i> نمونه طراحی‌هات
+      </span>
+      <span style="color:#f5b042; display:inline-block; background:rgba(245,176,66,0.04); padding:0.2rem 0.8rem; border-radius:40px; border:1px solid rgba(245,176,66,0.06); margin:0.2rem;">
+        <i class="fas fa-code"></i> مهارت‌هات
+      </span>
+      <br><br>
+      <span style="color:#b0a99b; font-size:0.85rem;">
+        <i class="fas fa-comment"></i> یا هر چیزی که دوست داری بپرس!
+      </span>
+    `;
+  }
 
   // ============================================================
   //  توابع اصلی
@@ -529,31 +785,34 @@
   const messagesBox = document.getElementById('messagesBox');
   const userInput = document.getElementById('userInput');
 
-  // ارسال پیام کاربر
+  let isTyping = false;
+
   function sendMessage() {
     const text = userInput.value.trim();
-    if (!text) return;
+    if (!text || isTyping) return;
 
     addMessage('user', text);
     userInput.value = '';
     userInput.focus();
 
-    // پاسخ ربات با تأخیر
+    // نمایش تایپینگ
+    isTyping = true;
+    showTyping();
+
     setTimeout(() => {
-      const reply = getBotReply(text);
+      hideTyping();
+      const reply = getSmartReply(text);
       addMessage('bot', reply);
-      // اسکرول به پایین
       messagesBox.scrollTop = messagesBox.scrollHeight;
+      isTyping = false;
     }, 400);
   }
 
-  // سوال از طریق دکمه‌های سریع
   function askQuestion(text) {
     userInput.value = text;
     sendMessage();
   }
 
-  // اضافه کردن پیام به جعبه
   function addMessage(type, content) {
     const div = document.createElement('div');
     div.className = `message ${type}`;
@@ -572,33 +831,23 @@
     messagesBox.scrollTop = messagesBox.scrollHeight;
   }
 
-  // پیدا کردن پاسخ مناسب
-  function getBotReply(input) {
-    const lower = input.trim().toLowerCase();
-
-    // کلمات کلیدی
-    const keywords = {
-      'معرفی': ['معرفی', 'کی هستی', 'شناخت', 'درباره', 'خودت'],
-      'سایت': ['سایت', 'وب', 'لینک', 'نمونه کار', 'پروژه', 'zerox', 'کالفود', 'کوروش', 'گیم'],
-      'طراحی': ['طراحی', 'گرافیک', 'هنری', 'عکس', 'تصویر', 'یا علی', 'اهواز', 'شهید'],
-      'برنامه': ['برنامه', 'اپ', 'نرم‌افزار', 'ابزار', 'اپلیکیشن'],
-      'درباره من': ['درباره من', 'چه کاره', 'توسعه‌دهنده', 'فریلنسر']
-    };
-
-    // بررسی تطابق
-    for (const [key, words] of Object.entries(keywords)) {
-      for (const w of words) {
-        if (lower.includes(w)) {
-          return botResponses[key] || botResponses['default'];
-        }
-      }
+  function showTyping() {
+    let typing = document.querySelector('.typing-indicator');
+    if (!typing) {
+      typing = document.createElement('div');
+      typing.className = 'typing-indicator';
+      typing.innerHTML = '<i class="fas fa-robot"></i> در حال تایپ...';
+      messagesBox.appendChild(typing);
     }
-
-    // اگر هیچ‌کدام تطابق نداشت
-    return botResponses['default'];
+    typing.classList.add('show');
+    messagesBox.scrollTop = messagesBox.scrollHeight;
   }
 
-  // ارسال با کلید Enter
+  function hideTyping() {
+    const typing = document.querySelector('.typing-indicator');
+    if (typing) typing.classList.remove('show');
+  }
+
   userInput.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -606,17 +855,10 @@
     }
   });
 
-  // ====== اسکرول خودکار به پایین بعد از لود ======
   window.addEventListener('load', function() {
     messagesBox.scrollTop = messagesBox.scrollHeight;
   });
-
-  // ====== خوش‌آمدگویی دوباره بعد از ۳ ثانیه (اختیاری) ======
-  setTimeout(() => {
-    // اگر پیامی وجود نداشت (یا فقط خوش‌آمدگویی اولیه)، پیام اضافی نمی‌فرستیم
-    // قبلاً خوش‌آمدگویی در HTML هست.
-  }, 1000);
 </script>
 
 </body>
-</html>
+  </html>
