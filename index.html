@@ -21,15 +21,83 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
 
-    <!-- ===== فونت‌ها ===== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-
     <!-- ===== Font Awesome 6 ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
+        /* ========== فونت‌های اختصاصی YekanBakh ========== */
+        @font-face {
+            font-family: 'YekanBakh';
+            src: url('https://up.20script.ir/do.php?filename=6135-YekanBakhFaNum-Thin.woff') format('woff');
+            font-weight: 100;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'YekanBakh';
+            src: url('https://up.20script.ir/do.php?filename=6135-YekanBakhFaNum-Thin.woff') format('woff');
+            font-weight: 200;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'YekanBakh';
+            src: url('https://up.20script.ir/do.php?filename=6135-YekanBakhFaNum-Thin.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'YekanBakh';
+            src: url('https://up.20script.ir/do.php?filename=6135-YekanBakhFaNum-Thin.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'YekanBakh';
+            src: url('https://up.20script.ir/do.php?filename=6135-YekanBakhFaNum-Thin.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'YekanBakh';
+            src: url('https://up.20script.ir/do.php?filename=6135-YekanBakhFaNum-Thin.woff') format('woff');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'YekanBakh';
+            src: url('https://up.20script.ir/do.php?filename=6135-YekanBakhFaNum-Thin.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'YekanBakh';
+            src: url('https://up.20script.ir/do.php?filename=0429-YekanBakhFaNum-Black.woff') format('woff');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'YekanBakh';
+            src: url('https://up.20script.ir/do.php?filename=0429-YekanBakhFaNum-Black.woff') format('woff');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
         /* ========== RESET ========== */
         * {
             margin: 0;
@@ -37,360 +105,28 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
+        html,
+        body {
+            height: 100%;
+            width: 100%;
         }
 
         body {
-            font-family: 'Noto Sans Arabic', 'Segoe UI', sans-serif;
+            background: #0b0b0e;
+            color: #eaeef2;
+            font-family: 'YekanBakh', 'Noto Sans Arabic', 'Segoe UI', sans-serif;
             font-weight: 400;
             line-height: 1.8;
             overflow-x: hidden;
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-
-        /* ===== تم دارک (پیش‌فرض) ===== */
-        body.dark-mode {
-            background: #0b0b0e;
-            color: #eaeef2;
             background-image: radial-gradient(circle at 30% 20%, rgba(255, 200, 80, 0.03) 0%, transparent 60%);
         }
 
-        /* ===== تم لایت ===== */
-        body.light-mode {
-            background: #f5f0e8;
-            color: #1a1a1e;
-            background-image: radial-gradient(circle at 30% 20%, rgba(200, 150, 50, 0.05) 0%, transparent 60%);
-        }
-
-        body.light-mode .header {
-            border-bottom-color: rgba(0, 0, 0, 0.08);
-        }
-
-        body.light-mode .brand-name {
-            color: #1a1a1e;
-        }
-
-        body.light-mode .brand-sub {
-            color: #6a6a6e;
-        }
-
-        body.light-mode .logo {
-            background: linear-gradient(145deg, #d48f2b, #b87820);
-            color: #f5f0e8;
-        }
-
-        body.light-mode .hamburger span {
-            background: #1a1a1e;
-        }
-
-        body.light-mode .hamburger:hover {
-            background: rgba(0, 0, 0, 0.05);
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-mode .hamburger.active span:nth-child(1),
-        body.light-mode .hamburger.active span:nth-child(3) {
-            background: #d48f2b;
-        }
-
-        body.light-mode .nav-overlay {
-            background: rgba(245, 240, 232, 0.98);
-        }
-
-        body.light-mode .nav-menu a {
-            color: #3a3a3e;
-        }
-
-        body.light-mode .nav-menu a:hover {
-            color: #1a1a1e;
-            background: rgba(0, 0, 0, 0.04);
-            border-color: rgba(0, 0, 0, 0.06);
-        }
-
-        body.light-mode .nav-menu a.active {
-            color: #1a1a1e;
-            background: rgba(0, 0, 0, 0.06);
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-mode .tab-content h2 {
-            color: #1a1a1e;
-            border-right-color: #d48f2b;
-        }
-
-        body.light-mode .tab-content p {
-            color: #4a4a4e;
-        }
-
-        body.light-mode .bio-intro {
-            background: rgba(0, 0, 0, 0.02);
-            border-color: rgba(0, 0, 0, 0.06);
-        }
-
-        body.light-mode .bio-intro:hover {
-            border-color: rgba(0, 0, 0, 0.12);
-        }
-
-        body.light-mode .bio-intro p {
-            color: #4a4a4e;
-        }
-
-        body.light-mode .home-design-card {
-            background: rgba(0, 0, 0, 0.02);
-            border-color: rgba(0, 0, 0, 0.06);
-        }
-
-        body.light-mode .home-design-card:hover {
-            background: rgba(0, 0, 0, 0.04);
-            border-color: rgba(0, 0, 0, 0.12);
-        }
-
-        body.light-mode .home-design-card h3 {
-            color: #1a1a1e;
-        }
-
-        body.light-mode .home-design-card p {
-            color: #6a6a6e;
-        }
-
-        body.light-mode .site-card-wide {
-            background: rgba(0, 0, 0, 0.03);
-            border-color: rgba(0, 0, 0, 0.08);
-        }
-
-        body.light-mode .site-card-wide:hover {
-            background: rgba(0, 0, 0, 0.05);
-            border-color: rgba(0, 0, 0, 0.15);
-        }
-
-        body.light-mode .site-card-wide .site-info h3 {
-            color: #1a1a1e;
-        }
-
-        body.light-mode .site-card-wide .site-info p {
-            color: #6a6a6e;
-        }
-
-        body.light-mode .design-card-new {
-            background: rgba(0, 0, 0, 0.02);
-            border-color: rgba(0, 0, 0, 0.06);
-        }
-
-        body.light-mode .design-card-new:hover {
-            background: rgba(0, 0, 0, 0.04);
-            border-color: rgba(0, 0, 0, 0.12);
-        }
-
-        body.light-mode .design-card-new .design-title {
-            color: #1a1a1e;
-        }
-
-        body.light-mode .design-card-new .design-desc {
-            color: #6a6a6e;
-        }
-
-        body.light-mode .footer {
-            border-top-color: rgba(0, 0, 0, 0.06);
-            color: #6a6a6e;
-        }
-
-        body.light-mode .footer-social a {
-            color: #8a8a8e;
-        }
-
-        body.light-mode .footer-social a:hover {
-            color: #d48f2b;
-        }
-
-        body.light-mode .footer-copy {
-            color: #6a6a6e;
-        }
-
-        body.light-mode .welcome-notification {
-            background: rgba(255, 255, 255, 0.7);
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-mode .welcome-notification .notif-header h3 {
-            color: #1a1a1e;
-        }
-
-        body.light-mode .welcome-notification .notif-body {
-            color: #4a4a4e;
-        }
-
-        body.light-mode .welcome-notification .notif-body ul li {
-            color: #4a4a4e;
-        }
-
-        body.light-mode .vod-section .vod-title {
-            color: #1a1a1e;
-            border-right-color: #d48f2b;
-        }
-
-        body.light-mode .vod-slider .slider-header h4 {
-            color: #1a1a1e;
-            border-right-color: #d48f2b;
-        }
-
-        body.light-mode .vod-slider .slider-item {
-            background: rgba(0, 0, 0, 0.03);
-            border-color: rgba(0, 0, 0, 0.06);
-        }
-
-        body.light-mode .vod-slider .slider-item:hover {
-            background: rgba(0, 0, 0, 0.05);
-            border-color: rgba(0, 0, 0, 0.12);
-        }
-
-        body.light-mode .vod-slider .slider-item .item-info h5 {
-            color: #1a1a1e;
-        }
-
-        body.light-mode .vod-slider .slider-item .item-info p {
-            color: #6a6a6e;
-        }
-
-        body.light-mode .design-3d-hint {
-            color: #4a4a4e;
-            border-color: rgba(0, 0, 0, 0.08);
-        }
-
-        body.light-mode .design-3d-hint:hover {
-            background: rgba(0, 0, 0, 0.03);
-            border-color: rgba(0, 0, 0, 0.12);
-        }
-
-        body.light-mode .apps-content h2 {
-            color: #1a1a1e;
-        }
-
-        body.light-mode .apps-content .apps-sub {
-            color: #6a6a6e;
-        }
-
-        body.light-mode .hero-card .hero-overlay {
-            background: linear-gradient(135deg, rgba(245, 240, 232, 0.85) 0%, rgba(245, 240, 232, 0.4) 50%, rgba(245, 240, 232, 0.7) 100%);
-        }
-
-        body.light-mode .hero-card .hero-content h1 {
-            color: #1a1a1e;
-            text-shadow: 0 2px 20px rgba(255, 255, 255, 0.2);
-        }
-
-        body.light-mode .hero-card .hero-content .hero-sub {
-            color: #4a4a4e;
-            text-shadow: 0 2px 12px rgba(255, 255, 255, 0.1);
-        }
-
-        body.light-mode .hero-card .hero-buttons a {
-            border-color: rgba(0, 0, 0, 0.1);
-            background: rgba(255, 255, 255, 0.2);
-            color: #1a1a1e;
-        }
-
-        body.light-mode .hero-card .hero-buttons a:hover {
-            border-color: rgba(0, 0, 0, 0.2);
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        body.light-mode .hero-card .hero-buttons a.btn-primary {
-            background: linear-gradient(145deg, rgba(212, 143, 43, 0.15), rgba(184, 120, 32, 0.05));
-            border-color: rgba(0, 0, 0, 0.15);
-        }
-
-        body.light-mode .hero-card .hero-buttons a.btn-primary:hover {
-            background: linear-gradient(145deg, rgba(212, 143, 43, 0.25), rgba(184, 120, 32, 0.1));
-            border-color: rgba(0, 0, 0, 0.25);
-        }
-
-        body.light-mode .hero-card .hero-buttons a i {
-            color: #d48f2b;
-        }
-
-        body.light-mode .modal-content {
-            background: rgba(255, 255, 255, 0.85);
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-mode .modal-content .modal-title {
-            color: #1a1a1e;
-        }
-
-        body.light-mode .modal-content .modal-controls button {
-            background: rgba(0, 0, 0, 0.03);
-            border-color: rgba(0, 0, 0, 0.08);
-            color: #4a4a4e;
-        }
-
-        body.light-mode .modal-content .modal-controls button:hover {
-            background: rgba(0, 0, 0, 0.06);
-            border-color: rgba(0, 0, 0, 0.15);
-            color: #1a1a1e;
-        }
-
-        body.light-mode .modal-content .modal-copyright {
-            background: rgba(0, 0, 0, 0.03);
-            border-color: rgba(0, 0, 0, 0.08);
-        }
-
-        body.light-mode .modal-content .modal-copyright p {
-            color: #4a4a4e;
-        }
-
-        body.light-mode .modal-content .modal-footer-text {
-            color: #6a6a6e;
-        }
-
-        body.light-mode .modal-content .modal-close {
-            background: rgba(0, 0, 0, 0.05);
-            border-color: rgba(0, 0, 0, 0.08);
-            color: #1a1a1e;
-        }
-
-        body.light-mode .modal-content .modal-close:hover {
-            background: rgba(0, 0, 0, 0.1);
-            border-color: rgba(0, 0, 0, 0.15);
-        }
-
-        body.light-mode .design-card-new .download-buttons a {
-            color: #1a1a1e;
-            border-color: rgba(0, 0, 0, 0.08);
-            background: rgba(0, 0, 0, 0.03);
-        }
-
-        body.light-mode .design-card-new .download-buttons a:hover {
-            background: rgba(0, 0, 0, 0.06);
-            border-color: rgba(0, 0, 0, 0.15);
-        }
-
-        body.light-mode .design-card-new .toggle-details {
-            color: #d48f2b;
-            border-color: rgba(0, 0, 0, 0.08);
-        }
-
-        body.light-mode .design-card-new .toggle-details:hover {
-            background: rgba(0, 0, 0, 0.04);
-            border-color: #d48f2b;
-        }
-
-        body.light-mode .back-to-top {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            color: #f5f0e8;
-        }
-
-        body.light-mode .back-to-top:hover {
-            background: rgba(0, 0, 0, 0.85);
-        }
-
-        /* ===== اسکرول‌بار ===== */
+        /* ========== اسکرول‌بار ========== */
         ::-webkit-scrollbar {
             width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: transparent;
+            background: #0b0b0e;
         }
         ::-webkit-scrollbar-thumb {
             background: #f5b042;
@@ -400,11 +136,7 @@
             background: #d48f2b;
         }
 
-        body.light-mode ::-webkit-scrollbar-thumb {
-            background: #d48f2b;
-        }
-
-        /* ===== کانتینر ===== */
+        /* ========== کانتینر ========== */
         .container {
             min-height: 100vh;
             width: 100%;
@@ -414,116 +146,9 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            position: relative;
-            z-index: 2;
         }
 
-        /* ===== ذرات پس‌زمینه ===== */
-        #particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* ===== لودینگ اسکرین ===== */
-        .loader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0b0b0e;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        body.light-mode .loader-wrapper {
-            background: #f5f0e8;
-        }
-
-        .loader-wrapper.hide {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-wrapper .loader-logo {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 900;
-            font-size: 3rem;
-            color: #0b0b0e;
-            animation: pulseLogo 1.2s ease-in-out infinite;
-            box-shadow: 0 0 40px rgba(245, 176, 66, 0.2);
-        }
-
-        body.light-mode .loader-wrapper .loader-logo {
-            color: #f5f0e8;
-        }
-
-        @keyframes pulseLogo {
-            0%,
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 40px rgba(245, 176, 66, 0.2);
-            }
-            50% {
-                transform: scale(1.08);
-                box-shadow: 0 0 60px rgba(245, 176, 66, 0.4);
-            }
-        }
-
-        .loader-wrapper .loader-spinner {
-            margin-top: 1.5rem;
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(245, 176, 66, 0.1);
-            border-top: 3px solid #f5b042;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        body.light-mode .loader-wrapper .loader-spinner {
-            border-color: rgba(212, 143, 43, 0.1);
-            border-top-color: #d48f2b;
-        }
-
-        .loader-wrapper .loader-text {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: #b0a99b;
-            margin-top: 1rem;
-            letter-spacing: 2px;
-        }
-
-        body.light-mode .loader-wrapper .loader-text {
-            color: #6a6a6e;
-        }
-
-        /* ===== هدر ===== */
+        /* ========== هدر ========== */
         .header {
             display: flex;
             align-items: center;
@@ -532,8 +157,6 @@
             border-bottom: 1px solid rgba(255, 215, 100, 0.06);
             flex-wrap: wrap;
             gap: 1rem;
-            position: relative;
-            z-index: 10;
         }
 
         .logo-area {
@@ -550,7 +173,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 900;
             font-size: 2rem;
             color: #0b0b0e;
@@ -582,14 +205,13 @@
         }
 
         .brand-name {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 800;
             font-size: 1.5rem;
             letter-spacing: -0.5px;
             color: #f5f0e8;
             position: relative;
             display: inline-block;
-            transition: color 0.3s ease;
         }
 
         .brand-name::after {
@@ -608,56 +230,14 @@
         }
 
         .brand-sub {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 300;
             font-size: 0.8rem;
             color: #b0a99b;
             letter-spacing: 1px;
-            transition: color 0.3s ease;
         }
 
-        /* دکمه تغییر تم */
-        .theme-toggle {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-size: 1.2rem;
-            color: #f5efe6;
-            position: relative;
-            z-index: 10;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255, 215, 100, 0.08);
-            border-color: rgba(255, 215, 100, 0.15);
-            transform: scale(1.05);
-        }
-
-        body.light-mode .theme-toggle {
-            background: rgba(0, 0, 0, 0.03);
-            border-color: rgba(0, 0, 0, 0.08);
-            color: #1a1a1e;
-        }
-
-        body.light-mode .theme-toggle:hover {
-            background: rgba(0, 0, 0, 0.06);
-            border-color: rgba(0, 0, 0, 0.12);
-        }
-
-        .header-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        /* ===== دکمه همبرگر ===== */
+        /* ========== دکمه همبرگر ========== */
         .hamburger {
             display: flex;
             flex-direction: column;
@@ -700,7 +280,7 @@
             background: #f5b042;
         }
 
-        /* ===== منوی همبرگری ===== */
+        /* ========== منوی همبرگری ========== */
         .nav-overlay {
             position: fixed;
             top: 0;
@@ -733,7 +313,7 @@
         .nav-menu a {
             color: #d6d0c4;
             text-decoration: none;
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 700;
             font-size: 2rem;
             display: flex;
@@ -806,65 +386,16 @@
             }
         }
 
-        /* ===== محتوای اصلی ===== */
+        /* ========== محتوای اصلی ========== */
         .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: 2rem 0 1.5rem 0;
-            position: relative;
-            z-index: 2;
         }
 
-        /* ===== تایپ‌رایتر ===== */
-        .typewriter-container {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .typewriter-container .typewriter-text {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: #f5b042;
-            min-height: 3rem;
-            display: inline-block;
-            border-left: 2px solid #f5b042;
-            padding-left: 0.5rem;
-            animation: blinkCursor 0.8s step-end infinite;
-        }
-
-        @keyframes blinkCursor {
-            0%,
-            100% {
-                border-color: #f5b042;
-            }
-            50% {
-                border-color: transparent;
-            }
-        }
-
-        body.light-mode .typewriter-container .typewriter-text {
-            color: #d48f2b;
-            border-color: #d48f2b;
-        }
-
-        body.light-mode .typewriter-container .typewriter-text {
-            animation-name: blinkCursorLight;
-        }
-
-        @keyframes blinkCursorLight {
-            0%,
-            100% {
-                border-color: #d48f2b;
-            }
-            50% {
-                border-color: transparent;
-            }
-        }
-
-        /* ===== کارت خوش‌آمدگویی ===== */
+        /* ===== کارت خوش‌آمدگویی با عکس فول‌وید ===== */
         .hero-card {
             position: relative;
             border-radius: 32px;
@@ -901,7 +432,6 @@
             background: linear-gradient(135deg, rgba(11, 11, 14, 0.85) 0%, rgba(11, 11, 14, 0.4) 50%, rgba(11, 11, 14, 0.7) 100%);
             z-index: 1;
             backdrop-filter: blur(2px);
-            transition: background 0.5s ease;
         }
 
         .hero-card .hero-content {
@@ -915,13 +445,12 @@
         }
 
         .hero-card .hero-content h1 {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 800;
             font-size: 2.2rem;
             color: #f5efe6;
             line-height: 1.3;
             text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-            transition: color 0.3s ease;
         }
 
         .hero-card .hero-content h1 span {
@@ -929,12 +458,11 @@
         }
 
         .hero-card .hero-content .hero-sub {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-size: 1.05rem;
             color: #d6d0c4;
             max-width: 600px;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-            transition: color 0.3s ease;
         }
 
         .hero-card .hero-buttons {
@@ -950,7 +478,7 @@
             gap: 0.6rem;
             padding: 0.6rem 1.8rem;
             border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 600;
             font-size: 0.95rem;
             text-decoration: none;
@@ -1027,7 +555,7 @@
         }
 
         .tab-content h2 {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 800;
             font-size: 2.6rem;
             color: #f5efe6;
@@ -1036,7 +564,6 @@
             border-right: 6px solid #f5b042;
             padding-right: 1.5rem;
             position: relative;
-            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         .tab-content h2 i {
@@ -1048,13 +575,12 @@
         }
 
         .tab-content p {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 400;
             font-size: 1.1rem;
             color: #d6d0c4;
             margin-bottom: 0.8rem;
             line-height: 2;
-            transition: color 0.3s ease;
         }
 
         .bio-intro {
@@ -1102,7 +628,6 @@
             margin-bottom: 1rem;
             position: relative;
             z-index: 1;
-            transition: color 0.3s ease;
         }
 
         .bio-intro p:last-child {
@@ -1191,30 +716,28 @@
         }
 
         .home-design-card h3 {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 700;
             font-size: 1.4rem;
             color: #f5efe6;
             margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
         }
 
         .home-design-card p {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-size: 0.95rem;
             color: #b0a99b;
             margin: 0;
-            transition: color 0.3s ease;
         }
 
-        /* ===== بخش VOD ===== */
+        /* ===== بخش VOD (سایت‌های طراحی شده) - بازطراحی شده ===== */
         .vod-section {
             margin: 1.5rem 0;
             text-align: center;
         }
 
         .vod-section .vod-title {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 800;
             font-size: 2rem;
             color: #f5efe6;
@@ -1223,10 +746,9 @@
             border-right: 4px solid #f5b042;
             display: inline-block;
             text-align: right;
-            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* ===== بنر اسلایدر ===== */
+        /* ===== بنر اصلی (اسلایدر خودکار) ===== */
         .vod-hero-slider {
             position: relative;
             border-radius: 24px;
@@ -1286,7 +808,6 @@
             flex-direction: column;
             justify-content: flex-end;
             padding: 2.5rem 2rem;
-            transition: background 0.5s ease;
         }
 
         .vod-hero-slider .hero-slide .hero-overlay .hero-badge {
@@ -1295,7 +816,7 @@
             border: 1px solid rgba(245, 176, 66, 0.2);
             border-radius: 40px;
             padding: 0.2rem 1rem;
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 600;
             font-size: 0.7rem;
             color: #f5b042;
@@ -1305,7 +826,7 @@
         }
 
         .vod-hero-slider .hero-slide .hero-overlay h3 {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 800;
             font-size: 1.8rem;
             color: #f5efe6;
@@ -1314,7 +835,7 @@
         }
 
         .vod-hero-slider .hero-slide .hero-overlay p {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-size: 0.95rem;
             color: #d6d0c4;
             max-width: 80%;
@@ -1328,7 +849,7 @@
             gap: 0.6rem;
             padding: 0.5rem 1.8rem;
             border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 600;
             font-size: 0.9rem;
             text-decoration: none;
@@ -1349,6 +870,7 @@
             font-size: 0.9rem;
         }
 
+        /* دکمه‌های ناوبری اسلایدر */
         .hero-slider-nav {
             position: absolute;
             top: 50%;
@@ -1380,10 +902,12 @@
         .hero-slider-nav.prev {
             right: 12px;
         }
+
         .hero-slider-nav.next {
             left: 12px;
         }
 
+        /* نقطه‌های ناوبری */
         .hero-slider-dots {
             position: absolute;
             bottom: 16px;
@@ -1418,7 +942,7 @@
             background: rgba(255, 215, 100, 0.5);
         }
 
-        /* ===== اسلایدر افقی ===== */
+        /* ===== اسلایدر افقی (سایت‌های پیشنهادی) ===== */
         .vod-slider {
             margin-top: 1rem;
         }
@@ -1431,13 +955,12 @@
         }
 
         .vod-slider .slider-header h4 {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 700;
             font-size: 1.2rem;
             color: #f5efe6;
             padding-right: 1rem;
             border-right: 3px solid #f5b042;
-            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         .vod-slider .slider-header .slider-nav {
@@ -1479,9 +1002,11 @@
         .vod-slider .slider-track-wrapper::-webkit-scrollbar {
             height: 4px;
         }
+
         .vod-slider .slider-track-wrapper::-webkit-scrollbar-track {
             background: transparent;
         }
+
         .vod-slider .slider-track-wrapper::-webkit-scrollbar-thumb {
             background: rgba(255, 215, 100, 0.2);
             border-radius: 10px;
@@ -1534,7 +1059,7 @@
         }
 
         .vod-slider .slider-item .item-info h5 {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 700;
             font-size: 0.85rem;
             color: #f5efe6;
@@ -1542,18 +1067,16 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            transition: color 0.3s ease;
         }
 
         .vod-slider .slider-item .item-info p {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-size: 0.7rem;
             color: #b0a99b;
             margin: 0;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            transition: color 0.3s ease;
         }
 
         .vod-slider .slider-item .item-overlay-link {
@@ -1566,284 +1089,8 @@
             text-indent: -9999px;
         }
 
-        /* ===== مهارت‌ها ===== */
-        .skills-section {
-            margin: 2rem 0;
-        }
-
-        .skills-section .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-            margin-top: 1.5rem;
-        }
-
-        .skills-section .skill-item {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
-            padding: 1rem 1.2rem;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            transition: 0.3s;
-        }
-
-        .skills-section .skill-item:hover {
-            background: rgba(255, 215, 100, 0.04);
-            border-color: rgba(255, 215, 100, 0.12);
-            transform: translateY(-2px);
-        }
-
-        .skills-section .skill-item .skill-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.3rem;
-        }
-
-        .skills-section .skill-item .skill-header span {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #d6d0c4;
-            transition: color 0.3s ease;
-        }
-
-        .skills-section .skill-item .skill-header .skill-percent {
-            color: #f5b042;
-            font-weight: 700;
-            font-size: 0.85rem;
-        }
-
-        .skills-section .skill-item .skill-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .skills-section .skill-item .skill-bar .skill-fill {
-            height: 100%;
-            border-radius: 10px;
-            background: linear-gradient(90deg, #d48f2b, #f5b042);
-            width: 0%;
-            transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        body.light-mode .skills-section .skill-item {
-            background: rgba(0, 0, 0, 0.02);
-            border-color: rgba(0, 0, 0, 0.06);
-        }
-
-        body.light-mode .skills-section .skill-item:hover {
-            background: rgba(0, 0, 0, 0.04);
-            border-color: rgba(0, 0, 0, 0.12);
-        }
-
-        body.light-mode .skills-section .skill-item .skill-header span {
-            color: #4a4a4e;
-        }
-
-        body.light-mode .skills-section .skill-item .skill-bar {
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        body.light-mode .skills-section .skill-item .skill-bar .skill-fill {
-            background: linear-gradient(90deg, #b87820, #d48f2b);
-        }
-
-        /* ===== تستیمونیال ===== */
-        .testimonials-section {
-            margin: 2rem 0;
-        }
-
-        .testimonials-section .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .testimonials-section .testimonial-card {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .testimonials-section .testimonial-card:hover {
-            background: rgba(255, 215, 100, 0.04);
-            border-color: rgba(255, 215, 100, 0.12);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.2);
-        }
-
-        .testimonials-section .testimonial-card .testi-avatar {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            margin: 0 auto 0.8rem;
-            overflow: hidden;
-            border: 2px solid rgba(245, 176, 66, 0.2);
-        }
-
-        .testimonials-section .testimonial-card .testi-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .testimonials-section .testimonial-card .testi-name {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            color: #f5efe6;
-            margin-bottom: 0.2rem;
-            transition: color 0.3s ease;
-        }
-
-        .testimonials-section .testimonial-card .testi-role {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 0.75rem;
-            color: #b0a99b;
-            margin-bottom: 0.6rem;
-            transition: color 0.3s ease;
-        }
-
-        .testimonials-section .testimonial-card .testi-text {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 0.9rem;
-            color: #d6d0c4;
-            line-height: 1.8;
-            transition: color 0.3s ease;
-        }
-
-        body.light-mode .testimonials-section .testimonial-card {
-            background: rgba(0, 0, 0, 0.02);
-            border-color: rgba(0, 0, 0, 0.06);
-        }
-
-        body.light-mode .testimonials-section .testimonial-card:hover {
-            background: rgba(0, 0, 0, 0.04);
-            border-color: rgba(0, 0, 0, 0.12);
-        }
-
-        body.light-mode .testimonials-section .testimonial-card .testi-name {
-            color: #1a1a1e;
-        }
-
-        body.light-mode .testimonials-section .testimonial-card .testi-role {
-            color: #6a6a6e;
-        }
-
-        body.light-mode .testimonials-section .testimonial-card .testi-text {
-            color: #4a4a4e;
-        }
-
-        /* ===== فرم تماس ===== */
-        .contact-form {
-            max-width: 600px;
-            margin: 1.5rem auto 0;
-        }
-
-        .contact-form .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .contact-form .form-group label {
-            display: block;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #d6d0c4;
-            margin-bottom: 0.3rem;
-            transition: color 0.3s ease;
-        }
-
-        .contact-form .form-group input,
-        .contact-form .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            background: rgba(255, 255, 255, 0.03);
-            color: #f5efe6;
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 0.95rem;
-            transition: 0.3s;
-            outline: none;
-        }
-
-        .contact-form .form-group input:focus,
-        .contact-form .form-group textarea:focus {
-            border-color: rgba(245, 176, 66, 0.3);
-            background: rgba(255, 215, 100, 0.04);
-            box-shadow: 0 0 20px -8px rgba(245, 176, 66, 0.1);
-        }
-
-        .contact-form .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .contact-form .form-group input::placeholder,
-        .contact-form .form-group textarea::placeholder {
-            color: #6a6a6e;
-        }
-
-        .contact-form .submit-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.7rem 2.5rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            border: none;
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            color: #0b0b0e;
-            cursor: pointer;
-            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 4px 20px -6px rgba(245, 176, 66, 0.3);
-        }
-
-        .contact-form .submit-btn:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 32px -6px rgba(245, 176, 66, 0.5);
-        }
-
-        body.light-mode .contact-form .form-group label {
-            color: #4a4a4e;
-        }
-
-        body.light-mode .contact-form .form-group input,
-        body.light-mode .contact-form .form-group textarea {
-            border-color: rgba(0, 0, 0, 0.08);
-            background: rgba(0, 0, 0, 0.02);
-            color: #1a1a1e;
-        }
-
-        body.light-mode .contact-form .form-group input:focus,
-        body.light-mode .contact-form .form-group textarea:focus {
-            border-color: rgba(212, 143, 43, 0.3);
-            background: rgba(0, 0, 0, 0.04);
-        }
-
-        body.light-mode .contact-form .form-group input::placeholder,
-        body.light-mode .contact-form .form-group textarea::placeholder {
-            color: #8a8a8e;
-        }
-
-        body.light-mode .contact-form .submit-btn {
-            background: linear-gradient(145deg, #d48f2b, #b87820);
-            color: #f5f0e8;
-        }
-
         /* ===== کارت طراحی ===== */
         .design-card-new {
-            width: 1080px;
             max-width: 100%;
             background: rgba(255, 255, 255, 0.02);
             border-radius: 24px;
@@ -1892,6 +1139,7 @@
             z-index: 1;
         }
 
+        /* ===== تصویر با افکت 3D ===== */
         .design-image {
             width: 100%;
             aspect-ratio: 1/1;
@@ -1956,7 +1204,7 @@
 
         .design-image .image-overlay span {
             color: #f5efe6;
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 600;
             font-size: 1rem;
             background: rgba(0, 0, 0, 0.5);
@@ -1974,7 +1222,7 @@
             transform: scale(1.03);
         }
 
-        /* ===== مودال ===== */
+        /* ===== مودال شیشه‌ای ===== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -2087,13 +1335,12 @@
         }
 
         .modal-content .modal-title {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 800;
             font-size: 1.5rem;
             color: #f5efe6;
             margin-bottom: 0.5rem;
             text-align: center;
-            transition: color 0.3s ease;
         }
 
         .modal-content .modal-title i {
@@ -2114,7 +1361,7 @@
             padding: 0.7rem 1rem;
             border-radius: 16px;
             cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 600;
             font-size: 0.95rem;
             transition: 0.3s;
@@ -2165,12 +1412,11 @@
         }
 
         .modal-content .modal-copyright p {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-size: 0.9rem;
             color: #b0a99b;
             line-height: 2;
             margin: 0;
-            transition: color 0.3s ease;
         }
 
         .modal-content .modal-copyright p strong {
@@ -2180,10 +1426,9 @@
         .modal-content .modal-footer-text {
             text-align: center;
             margin-top: 1rem;
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-size: 0.8rem;
             color: #8f887c;
-            transition: color 0.3s ease;
         }
 
         .design-card-new .design-header {
@@ -2196,11 +1441,11 @@
         }
 
         .design-card-new .design-title {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 800;
             font-size: 1.8rem;
             color: #f5efe6;
-            transition: color 0.3s ease;
+            transition: 0.3s;
         }
 
         .design-card-new:hover .design-title {
@@ -2239,7 +1484,7 @@
             padding: 0.3rem 1rem;
             border-radius: 40px;
             cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 600;
             font-size: 0.9rem;
             transition: 0.3s;
@@ -2277,15 +1522,14 @@
         }
 
         .design-card-new .design-desc {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-size: 1rem;
             color: #b0a99b;
             margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
         }
 
         .design-card-new .design-author {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-size: 0.95rem;
             color: #f5b042;
             margin-bottom: 1rem;
@@ -2298,7 +1542,7 @@
         }
 
         .design-card-new .download-buttons a {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 600;
             color: #f5efe6;
             text-decoration: none;
@@ -2357,7 +1601,7 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-size: 0.85rem;
             color: #b0a99b;
             transition: 0.3s;
@@ -2373,7 +1617,7 @@
             border-color: rgba(255, 215, 100, 0.15);
         }
 
-        /* ===== برنامه‌ها ===== */
+        /* ===== بخش برنامه‌ها (با آیکون پازل) ===== */
         .apps-content {
             display: flex;
             flex-direction: column;
@@ -2405,23 +1649,21 @@
         }
 
         .apps-content h2 {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 800;
             font-size: 2.6rem;
             color: #f5efe6;
             margin-bottom: 0.5rem;
             border: none;
             padding: 0;
-            transition: color 0.3s ease;
         }
 
         .apps-content .apps-sub {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-size: 1.1rem;
             color: #b0a99b;
             margin-top: 0.2rem;
             font-weight: 400;
-            transition: color 0.3s ease;
         }
 
         .apps-content .apps-sub i {
@@ -2430,53 +1672,7 @@
             animation: floatIcon 3s ease-in-out infinite;
         }
 
-        /* ===== دکمه بازگشت به بالا ===== */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: rgba(255, 215, 100, 0.1);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            color: #f5efe6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.3);
-            border: none;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .back-to-top:hover {
-            background: rgba(255, 215, 100, 0.2);
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 12px 32px -8px rgba(245, 176, 66, 0.2);
-        }
-
-        body.light-mode .back-to-top {
-            background: rgba(0, 0, 0, 0.05);
-            border-color: rgba(0, 0, 0, 0.08);
-            color: #1a1a1e;
-        }
-
-        body.light-mode .back-to-top:hover {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        /* ===== فوتر ===== */
+        /* ===== فوتر (بدون خط زیر آیکون‌ها) ===== */
         .footer {
             margin-top: 2rem;
             padding-top: 1.5rem;
@@ -2488,7 +1684,6 @@
             gap: 1rem;
             color: #8f887c;
             font-size: 0.9rem;
-            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         .footer-social a {
@@ -2507,16 +1702,15 @@
         }
 
         .footer-copy {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 300;
             letter-spacing: 0.5px;
-            transition: color 0.3s ease;
         }
 
-        /* ===== نوتیفیکیشن ===== */
+        /* ===== نوتیفیکیشن خوش‌آمدگویی (پایین صفحه) - فقط آپدیت‌های جدید ===== */
         .welcome-notification {
             position: fixed;
-            bottom: 100px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(255, 255, 255, 0.06);
@@ -2529,7 +1723,7 @@
             width: 90%;
             box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.6);
             animation: slideUpNotif 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            transition: opacity 0.5s ease, transform 0.5s ease, background 0.5s ease, border-color 0.5s ease;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .welcome-notification.hide {
@@ -2563,21 +1757,19 @@
         }
 
         .welcome-notification .notif-header h3 {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-weight: 800;
             font-size: 1.2rem;
             color: #f5efe6;
             margin: 0;
-            transition: color 0.3s ease;
         }
 
         .welcome-notification .notif-body {
-            font-family: 'Noto Sans Arabic', sans-serif;
+            font-family: 'YekanBakh', sans-serif;
             font-size: 0.9rem;
             color: #b0a99b;
             line-height: 1.8;
             padding-right: 0.5rem;
-            transition: color 0.3s ease;
         }
 
         .welcome-notification .notif-body ul {
@@ -2620,20 +1812,21 @@
             .hero-card .hero-content {
                 padding: 2rem 1.8rem;
             }
+
             .hero-card .hero-content h1 {
                 font-size: 1.8rem;
             }
+
             .apps-content .apps-icon {
                 font-size: 4.5rem;
             }
+
             .apps-content h2 {
                 font-size: 2.2rem;
             }
+
             .vod-hero-slider .hero-slide .hero-overlay h3 {
                 font-size: 1.4rem;
-            }
-            .skills-section .skills-grid {
-                grid-template-columns: 1fr 1fr;
             }
         }
 
@@ -2694,7 +1887,7 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             .welcome-notification {
-                bottom: 85px;
+                bottom: 15px;
                 padding: 0.8rem 1.2rem;
                 width: 92%;
                 max-width: 400px;
@@ -2767,22 +1960,6 @@
             .hero-slider-dots .dot.active {
                 width: 18px;
             }
-            .skills-section .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            .testimonials-section .testimonials-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .typewriter-container .typewriter-text {
-                font-size: 1.1rem;
-            }
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -2816,7 +1993,7 @@
                 padding: 0.5rem 0.8rem;
             }
             .welcome-notification {
-                bottom: 75px;
+                bottom: 10px;
                 padding: 0.6rem 1rem;
                 width: 94%;
             }
@@ -2891,41 +2068,11 @@
             .hero-slider-dots .dot.active {
                 width: 14px;
             }
-            .testimonials-section .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            .typewriter-container .typewriter-text {
-                font-size: 0.9rem;
-                min-height: 2.5rem;
-            }
-            .contact-form .submit-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .header-controls {
-                gap: 0.4rem;
-            }
-            .theme-toggle {
-                width: 38px;
-                height: 38px;
-                font-size: 1rem;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ========== لودینگ اسکرین ========== -->
-    <div class="loader-wrapper" id="loaderWrapper">
-        <div class="loader-logo">M</div>
-        <div class="loader-spinner"></div>
-        <div class="loader-text">بارگذاری...</div>
-    </div>
-
-    <!-- ========== ذرات پس‌زمینه ========== -->
-    <canvas id="particles-canvas"></canvas>
-
-    <!-- ========== کانتینر اصلی ========== -->
     <div class="container">
 
         <!-- ========== هدر ========== -->
@@ -2937,16 +2084,10 @@
                     <span class="brand-sub">Portfolio</span>
                 </div>
             </div>
-            <div class="header-controls">
-                <!-- دکمه تغییر تم -->
-                <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <div class="hamburger" id="hamburgerBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+            <div class="hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </header>
 
@@ -2956,24 +2097,18 @@
                 <a href="#" data-tab="home" class="active"><i class="fas fa-home"></i> خانه</a>
                 <a href="#" data-tab="about"><i class="fas fa-user"></i> درباره من</a>
                 <a href="#" data-tab="sites"><i class="fas fa-laptop-code"></i> سایت‌های طراحی شده</a>
-                <a href="#" data-tab="skills"><i class="fas fa-chart-bar"></i> مهارت‌ها</a>
-                <a href="#" data-tab="testimonials"><i class="fas fa-comments"></i> نظرات</a>
                 <a href="#" data-tab="apps"><i class="fas fa-puzzle-piece"></i> برنامه‌ها</a>
                 <a href="#" data-tab="design"><i class="fas fa-palette"></i> طراحی‌هام</a>
-                <a href="#" data-tab="contact"><i class="fas fa-envelope"></i> تماس</a>
             </nav>
         </div>
 
         <!-- ========== محتوای اصلی ========== -->
         <main class="main-content">
 
-            <!-- ===== تایپ‌رایتر ===== -->
-            <div class="typewriter-container">
-                <span class="typewriter-text" id="typewriterText"></span>
-            </div>
-
-            <!-- ===== تب خانه ===== -->
+            <!-- ===== تب خانه (شامل کارت خوش‌آمدگویی + محتوای خانه) ===== -->
             <div class="tab-content active" id="home">
+
+                <!-- کارت خوش‌آمدگویی با عکس فول‌وید -->
                 <div class="hero-card" id="heroCard">
                     <img class="hero-bg" src="https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg" alt="mohamad hossein" />
                     <div class="hero-overlay"></div>
@@ -2991,6 +2126,7 @@
                     </div>
                 </div>
 
+                <!-- محتوای خانه -->
                 <h2><i class="fas fa-home" style="color:#f5b042; margin-left:0.8rem;"></i> خانه</h2>
                 <div class="bio-intro">
                     <p>سلام! من mohamad hossein snti هستم.</p>
@@ -3028,11 +2164,14 @@
                 <p>الان به عنوان فریلنسر و هم‌بنیان‌گذار یه استارتاپ کوچیک، روزانه دارم روی پروژه‌های فرانت‌اند و بک‌اند کار می‌کنم. عاشق یادگیری تکنولوژی‌های جدید و به‌اشتراک‌گذاری دانشم.</p>
             </div>
 
-            <!-- ===== سایت‌های طراحی شده ===== -->
+            <!-- ===== سایت‌های طراحی شده (بازطراحی شده) ===== -->
             <div class="tab-content" id="sites">
                 <div class="vod-section">
                     <h2 class="vod-title"><i class="fas fa-laptop-code" style="color:#f5b042; margin-left:0.8rem;"></i> سایت‌های طراحی شده</h2>
+
+                    <!-- ===== بنر اسلایدر خودکار ===== -->
                     <div class="vod-hero-slider" id="heroSlider">
+                        <!-- اسلاید ۱: ZEROX -->
                         <div class="hero-slide active" data-index="0">
                             <img class="hero-img" src="https://uploadkon.ir/uploads/511301_26Zerox-۱۲۱۲.jpg" alt="ZEROX" />
                             <div class="hero-overlay">
@@ -3044,6 +2183,7 @@
                                 </a>
                             </div>
                         </div>
+                        <!-- اسلاید ۲: کالفود -->
                         <div class="hero-slide" data-index="1">
                             <img class="hero-img" src="https://uploadkon.ir/uploads/481d01_26call-food-۱۲۱۲۳.jpg" alt="کالفود" />
                             <div class="hero-overlay">
@@ -3055,6 +2195,7 @@
                                 </a>
                             </div>
                         </div>
+                        <!-- اسلاید ۳: کوروش گیم -->
                         <div class="hero-slide" data-index="2">
                             <img class="hero-img" src="https://uploadkon.ir/uploads/d66b01_26Kourosh-Gameir۱۲.jpg" alt="کوروش گیم" />
                             <div class="hero-overlay">
@@ -3066,18 +2207,24 @@
                                 </a>
                             </div>
                         </div>
+
+                        <!-- دکمه‌های ناوبری -->
                         <button class="hero-slider-nav prev" onclick="changeHeroSlide(-1)" aria-label="اسلاید قبلی">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                         <button class="hero-slider-nav next" onclick="changeHeroSlide(1)" aria-label="اسلاید بعدی">
                             <i class="fas fa-chevron-left"></i>
                         </button>
+
+                        <!-- دکمه‌های نقطه‌ای (وسط) -->
                         <div class="hero-slider-dots" id="heroDots">
                             <button class="dot active" data-index="0" onclick="goToHeroSlide(0)"></button>
                             <button class="dot" data-index="1" onclick="goToHeroSlide(1)"></button>
                             <button class="dot" data-index="2" onclick="goToHeroSlide(2)"></button>
                         </div>
                     </div>
+
+                    <!-- ===== اسلایدر افقی (سایت‌های پیشنهادی) ===== -->
                     <div class="vod-slider">
                         <div class="slider-header">
                             <h4><i class="fas fa-fire" style="color:#f5b042; margin-left:0.3rem;"></i> سایت‌های پیشنهادی</h4>
@@ -3092,6 +2239,7 @@
                         </div>
                         <div class="slider-track-wrapper" id="sitesSlider">
                             <div class="slider-track">
+                                <!-- ZEROX -->
                                 <div class="slider-item">
                                     <a href="https://zeroxgame74-afk.github.io/zeroxgamee/" target="_blank" class="item-overlay-link"></a>
                                     <img class="item-img" src="https://uploadkon.ir/uploads/511301_26Zerox-۱۲۱۲.jpg" alt="ZEROX" />
@@ -3100,6 +2248,7 @@
                                         <p>پلتفرم گیم</p>
                                     </div>
                                 </div>
+                                <!-- کالفود -->
                                 <div class="slider-item">
                                     <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="item-overlay-link"></a>
                                     <img class="item-img" src="https://uploadkon.ir/uploads/481d01_26call-food-۱۲۱۲۳.jpg" alt="کالفود" />
@@ -3108,6 +2257,7 @@
                                         <p>پلتفرم سفارش غذا</p>
                                     </div>
                                 </div>
+                                <!-- کوروش گیم -->
                                 <div class="slider-item">
                                     <a href="https://zeroxgame74-afk.github.io/Kourosh-Game.ir/" target="_blank" class="item-overlay-link"></a>
                                     <img class="item-img" src="https://uploadkon.ir/uploads/d66b01_26Kourosh-Gameir۱۲.jpg" alt="کوروش گیم" />
@@ -3116,6 +2266,7 @@
                                         <p>فروشگاه اکانت</p>
                                     </div>
                                 </div>
+                                <!-- پروژه جدید ۱ -->
                                 <div class="slider-item">
                                     <div class="item-img" style="display:flex; align-items:center; justify-content:center; background:rgba(255,215,100,0.05);">
                                         <i class="fas fa-rocket" style="font-size:2.5rem; color:#f5b042;"></i>
@@ -3125,6 +2276,7 @@
                                         <p>به زودی...</p>
                                     </div>
                                 </div>
+                                <!-- پروژه جدید ۲ -->
                                 <div class="slider-item">
                                     <div class="item-img" style="display:flex; align-items:center; justify-content:center; background:rgba(255,215,100,0.05);">
                                         <i class="fas fa-code" style="font-size:2.5rem; color:#f5b042;"></i>
@@ -3140,105 +2292,7 @@
                 </div>
             </div>
 
-            <!-- ===== مهارت‌ها ===== -->
-            <div class="tab-content" id="skills">
-                <h2><i class="fas fa-chart-bar" style="color:#f5b042; margin-left:0.8rem;"></i> مهارت‌ها</h2>
-                <div class="skills-section">
-                    <p style="margin-bottom:0.5rem;">تکنولوژی‌ها و ابزارهایی که باهاشون کار می‌کنم:</p>
-                    <div class="skills-grid" id="skillsGrid">
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>HTML &amp; CSS</span>
-                                <span class="skill-percent">90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-fill" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>JavaScript</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-fill" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>React</span>
-                                <span class="skill-percent">75%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-fill" data-width="75"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Vue.js</span>
-                                <span class="skill-percent">70%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-fill" data-width="70"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Node.js</span>
-                                <span class="skill-percent">65%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-fill" data-width="65"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Photoshop / Illustrator</span>
-                                <span class="skill-percent">80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-fill" data-width="80"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== نظرات ===== -->
-            <div class="tab-content" id="testimonials">
-                <h2><i class="fas fa-comments" style="color:#f5b042; margin-left:0.8rem;"></i> نظرات</h2>
-                <div class="testimonials-section">
-                    <p style="margin-bottom:0.5rem;">نظر دوستان و همکاران درباره من:</p>
-                    <div class="testimonials-grid">
-                        <div class="testimonial-card">
-                            <div class="testi-avatar">
-                                <img src="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" alt="کاربر" />
-                            </div>
-                            <div class="testi-name">امیرمحمد</div>
-                            <div class="testi-role">مدیر کوروش گیم</div>
-                            <div class="testi-text">"یکی از بهترین همکاری‌هایی که داشتم. دقت و تعصبش به کار واقعاً ستودنیه."</div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testi-avatar">
-                                <img src="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" alt="کاربر" />
-                            </div>
-                            <div class="testi-name">سارا</div>
-                            <div class="testi-role">طراح گرافیک</div>
-                            <div class="testi-text">"طراحی‌هاش یه چیز دیگست. همیشه از دیدن کارهاش الهام می‌گیرم."</div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testi-avatar">
-                                <img src="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" alt="کاربر" />
-                            </div>
-                            <div class="testi-name">رضا</div>
-                            <div class="testi-role">توسعه‌دهنده</div>
-                            <div class="testi-text">"کد تمیز، ساختار منظم و تحویل به موقع. بهترین کسی که باهاش کار کردم."</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== برنامه‌ها ===== -->
+            <!-- ===== برنامه‌ها (با آیکون پازل) ===== -->
             <div class="tab-content" id="apps">
                 <div class="apps-content">
                     <i class="fas fa-puzzle-piece apps-icon"></i>
@@ -3252,6 +2306,7 @@
                 <h2><i class="fas fa-palette" style="color:#f5b042; margin-left:0.8rem;"></i> طراحی‌هام</h2>
                 <p style="margin-bottom:1.5rem;">نمونه‌ای از طراحی‌های هنری و گرافیکی:</p>
 
+                <!-- کارت اول: گفتند زلف یار... (بالا) -->
                 <div class="design-card-new">
                     <div class="design-image" id="designImage2" onclick="openModal('https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg', 'گفتند زلف یار، شنیدم ذوالفقار...')">
                         <div class="image-wrapper">
@@ -3289,6 +2344,7 @@
                     </div>
                 </div>
 
+                <!-- کارت دوم: اهواز... (پایین) -->
                 <div class="design-card-new">
                     <div class="design-image" id="designImage1" onclick="openModal('https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png', 'اهواز... خاک غسل‌شده با شهیدانت')">
                         <div class="image-wrapper">
@@ -3327,35 +2383,7 @@
                 </div>
             </div>
 
-            <!-- ===== تماس ===== -->
-            <div class="tab-content" id="contact">
-                <h2><i class="fas fa-envelope" style="color:#f5b042; margin-left:0.8rem;"></i> تماس با من</h2>
-                <p style="margin-bottom:0.5rem;">خوشحال می‌شوم پیامتان را دریافت کنم! :)</p>
-                <form class="contact-form" id="contactForm" onsubmit="return handleContact(event)">
-                    <div class="form-group">
-                        <label for="contactName">نام شما</label>
-                        <input type="text" id="contactName" placeholder="نام خود را وارد کنید..." required />
-                    </div>
-                    <div class="form-group">
-                        <label for="contactEmail">ایمیل</label>
-                        <input type="email" id="contactEmail" placeholder="ایمیل خود را وارد کنید..." required />
-                    </div>
-                    <div class="form-group">
-                        <label for="contactMessage">پیام</label>
-                        <textarea id="contactMessage" placeholder="پیام خود را بنویسید..." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i> ارسال پیام
-                    </button>
-                </form>
-            </div>
-
         </main>
-
-        <!-- ========== دکمه بازگشت به بالا ========== -->
-        <button class="back-to-top" id="backToTop" aria-label="بازگشت به بالا">
-            <i class="fas fa-arrow-up"></i>
-        </button>
 
         <!-- ========== فوتر ========== -->
         <footer class="footer">
@@ -3376,7 +2404,7 @@
 
     </div>
 
-    <!-- ========== نوتیفیکیشن ========== -->
+    <!-- ========== نوتیفیکیشن (۸ ثانیه) - فقط آپدیت‌های جدید ========== -->
     <div class="welcome-notification" id="welcomeNotif">
         <div class="notif-header">
             <i class="fas fa-hand-peace"></i>
@@ -3388,39 +2416,46 @@
                 <li><i class="fas fa-paint-brush"></i> بازطراحی بخش VOD</li>
                 <li><i class="fas fa-gamepad"></i> اضافه شدن سایت کوروش گیم</li>
                 <li><i class="fas fa-sliders-h"></i> اسلایدر خودکار در بخش سایت‌ها</li>
-                <li><i class="fas fa-moon"></i> اضافه شدن دارک/لایت مود</li>
-                <li><i class="fas fa-typewriter"></i> تایپ‌رایتر</li>
-                <li><i class="fas fa-chart-bar"></i> بخش مهارت‌ها</li>
-                <li><i class="fas fa-comments"></i> بخش نظرات</li>
-                <li><i class="fas fa-envelope"></i> فرم تماس</li>
-                <li><i class="fas fa-arrow-up"></i> دکمه بازگشت به بالا</li>
-                <li><i class="fas fa-spinner"></i> لودینگ اسکرین</li>
-                <li><i class="fas fa-star"></i> ذرات پس‌زمینه</li>
-                <li><i class="fas fa-layer-group"></i> افکت پارالاکس</li>
             </ul>
         </div>
     </div>
 
-    <!-- ========== مودال ========== -->
+    <!-- ========== مودال شیشه‌ای ========== -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">
                 <i class="fas fa-times"></i>
             </button>
+
             <div class="modal-image" id="modalImage">
                 <div class="modal-img-wrapper" id="modalImgWrapper">
                     <img id="modalImg" src="" alt="طراحی" />
                 </div>
             </div>
+
             <h3 class="modal-title" id="modalTitle"><i class="fas fa-heart"></i></h3>
+
             <div class="modal-controls">
-                <button onclick="rotate3D('left')"><i class="fas fa-arrow-left"></i> چپ</button>
-                <button onclick="rotate3D('right')"><i class="fas fa-arrow-right"></i> راست</button>
-                <button onclick="rotate3D('up')"><i class="fas fa-arrow-up"></i> بالا</button>
-                <button onclick="rotate3D('down')"><i class="fas fa-arrow-down"></i> پایین</button>
-                <button onclick="toggle3D()" id="btn3d"><i class="fas fa-cube"></i> ۳D</button>
-                <button onclick="showCopyright()"><i class="fas fa-copyright"></i> کپی رایت</button>
+                <button onclick="rotate3D('left')">
+                    <i class="fas fa-arrow-left"></i> چپ
+                </button>
+                <button onclick="rotate3D('right')">
+                    <i class="fas fa-arrow-right"></i> راست
+                </button>
+                <button onclick="rotate3D('up')">
+                    <i class="fas fa-arrow-up"></i> بالا
+                </button>
+                <button onclick="rotate3D('down')">
+                    <i class="fas fa-arrow-down"></i> پایین
+                </button>
+                <button onclick="toggle3D()" id="btn3d">
+                    <i class="fas fa-cube"></i> ۳D
+                </button>
+                <button onclick="showCopyright()">
+                    <i class="fas fa-copyright"></i> کپی رایت
+                </button>
             </div>
+
             <div class="modal-copyright" id="copyrightBox">
                 <p>
                     <strong>© 2026 mohamad hossein snti.</strong> تمامی حقوق محفوظ است.
@@ -3428,6 +2463,7 @@
                     تمامی محتوای این وب‌سایت، از جمله متن‌ها، تصاویر، طرح‌ها، لوگو، پروژه‌ها، کدها و سایر آثار، متعلق به <strong>mohamad hossein snti</strong> است. هرگونه کپی، بازنشر، انتشار، ویرایش یا استفاده از این محتوا بدون کسب اجازه کتبی ممنوع بوده و مطابق قوانین مربوط به حقوق مالکیت فکری قابل پیگیری است.
                 </p>
             </div>
+
             <div class="modal-footer-text">
                 <i class="fas fa-arrows-alt" style="color:#f5b042;"></i> برای چرخش ۳D از دکمه‌ها استفاده کنید
             </div>
@@ -3436,162 +2472,6 @@
 
     <!-- ========== اسکریپت ========== -->
     <script>
-        // ===== لودینگ اسکرین =====
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loaderWrapper');
-            loader.classList.add('hide');
-            setTimeout(() => {
-                loader.style.display = 'none';
-            }, 800);
-            initParticles();
-            initTypewriter();
-            animateSkills();
-        });
-
-        // ===== ذرات پس‌زمینه =====
-        function initParticles() {
-            const canvas = document.getElementById('particles-canvas');
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            let animationId;
-            let isDark = true; // پیش‌فرض دارک
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 3 + 1;
-                    this.speedX = (Math.random() - 0.5) * 0.4;
-                    this.speedY = (Math.random() - 0.5) * 0.4;
-                    this.opacity = Math.random() * 0.5 + 0.2;
-                }
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-                    if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = isDark ? `rgba(255, 215, 100, ${this.opacity})` : `rgba(200, 150, 50, ${this.opacity * 0.6})`;
-                    ctx.fill();
-                }
-            }
-
-            function createParticles() {
-                particles = [];
-                const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
-                for (let i = 0; i < count; i++) {
-                    particles.push(new Particle());
-                }
-            }
-            createParticles();
-
-            function connectParticles() {
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-                        if (distance < 150) {
-                            ctx.beginPath();
-                            ctx.strokeStyle = isDark ?
-                                `rgba(255, 215, 100, ${0.08 * (1 - distance / 150)})` :
-                                `rgba(200, 150, 50, ${0.06 * (1 - distance / 150)})`;
-                            ctx.lineWidth = 0.6;
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
-
-            function animateParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => {
-                    p.update();
-                    p.draw();
-                });
-                connectParticles();
-                animationId = requestAnimationFrame(animateParticles);
-            }
-            animateParticles();
-
-            // به‌روزرسانی رنگ ذرات با تغییر تم
-            document.addEventListener('themeChanged', function(e) {
-                isDark = e.detail.isDark;
-            });
-        }
-
-        // ===== تایپ‌رایتر =====
-        function initTypewriter() {
-            const texts = [
-                'توسعه‌دهنده وب | طراح گرافیک | عاشق کد',
-                'خلاقیت + کدنویسی = ❤️',
-                'ساختن چیزهای جدید رو دوست دارم'
-            ];
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            const element = document.getElementById('typewriterText');
-            const speed = 80;
-
-            function type() {
-                const currentText = texts[textIndex];
-                if (isDeleting) {
-                    element.textContent = currentText.substring(0, charIndex - 1);
-                    charIndex--;
-                } else {
-                    element.textContent = currentText.substring(0, charIndex + 1);
-                    charIndex++;
-                }
-
-                if (!isDeleting && charIndex === currentText.length) {
-                    isDeleting = true;
-                    setTimeout(type, 2000);
-                    return;
-                }
-                if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % texts.length;
-                    setTimeout(type, 500);
-                    return;
-                }
-                setTimeout(type, isDeleting ? speed / 2 : speed);
-            }
-            type();
-        }
-
-        // ===== مهارت‌ها (انیمیشن نوارها) =====
-        function animateSkills() {
-            const fills = document.querySelectorAll('.skill-fill');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const fill = entry.target;
-                        const width = fill.dataset.width;
-                        setTimeout(() => {
-                            fill.style.width = width + '%';
-                        }, 300);
-                    }
-                });
-            }, { threshold: 0.3 });
-
-            fills.forEach(fill => {
-                fill.style.width = '0%';
-                observer.observe(fill);
-            });
-        }
-
         // ===== منو و تب =====
         (function() {
             const hamburger = document.getElementById('hamburgerBtn');
@@ -3651,7 +2531,7 @@
             });
         })();
 
-        // ===== تابع switchTab =====
+        // ===== تابع switchTab برای دکمه‌های هدر =====
         function switchTab(tabId) {
             event.preventDefault();
             activateTab(tabId);
@@ -3659,26 +2539,29 @@
             document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // ===== اسلایدر خودکار =====
+        // ===== اسلایدر خودکار بنر =====
         let currentSlide = 0;
         let slideInterval;
 
         function showSlide(index) {
             const slides = document.querySelectorAll('.hero-slide');
             const dots = document.querySelectorAll('.hero-slider-dots .dot');
+
             slides.forEach((slide, i) => {
                 slide.classList.toggle('active', i === index);
             });
+
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === index);
             });
+
             currentSlide = index;
         }
 
         function changeHeroSlide(direction) {
             const slides = document.querySelectorAll('.hero-slide');
-            const total = slides.length;
-            let newIndex = (currentSlide + direction + total) % total;
+            const totalSlides = slides.length;
+            let newIndex = (currentSlide + direction + totalSlides) % totalSlides;
             showSlide(newIndex);
             resetSlideTimer();
         }
@@ -3692,35 +2575,42 @@
             clearInterval(slideInterval);
             slideInterval = setInterval(() => {
                 const slides = document.querySelectorAll('.hero-slide');
-                const next = (currentSlide + 1) % slides.length;
-                showSlide(next);
+                const nextIndex = (currentSlide + 1) % slides.length;
+                showSlide(nextIndex);
             }, 5000);
         }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            showSlide(0);
-            slideInterval = setInterval(() => {
-                const slides = document.querySelectorAll('.hero-slide');
-                const next = (currentSlide + 1) % slides.length;
-                showSlide(next);
-            }, 5000);
-        });
 
         // ===== اسکرول اسلایدر افقی =====
         function scrollSlider(containerId, direction) {
             const container = document.getElementById(containerId);
             if (!container) return;
             const scrollAmount = container.clientWidth * 0.8;
-            const target = container.scrollLeft + (scrollAmount * direction);
-            container.scrollTo({ left: target, behavior: 'smooth' });
+            const targetScroll = container.scrollLeft + (scrollAmount * direction);
+            container.scrollTo({
+                left: targetScroll,
+                behavior: 'smooth'
+            });
         }
+
+        // ===== شروع اسلایدر =====
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlide(0);
+            slideInterval = setInterval(() => {
+                const slides = document.querySelectorAll('.hero-slide');
+                const nextIndex = (currentSlide + 1) % slides.length;
+                showSlide(nextIndex);
+            }, 5000);
+        });
 
         // ===== توضیحات بیشتر (کشویی) =====
         function toggleDetails(btn) {
             const card = btn.closest('.design-card-new');
             const details = card.querySelector('.design-details');
+            const icon = btn.querySelector('i');
+
             details.classList.toggle('open');
             btn.classList.toggle('open');
+
             if (details.classList.contains('open')) {
                 btn.innerHTML = 'بستن توضیحات <i class="fas fa-chevron-up"></i>';
             } else {
@@ -3755,12 +2645,15 @@
         }
 
         function closeModalOutside(e) {
-            if (e.target === e.currentTarget) closeModal();
+            if (e.target === e.currentTarget) {
+                closeModal();
+            }
         }
 
         function rotate3D(direction) {
             const wrapper = document.getElementById('modalImgWrapper');
             const step = 20;
+
             switch (direction) {
                 case 'left':
                     currentRotationY -= step;
@@ -3775,6 +2668,7 @@
                     currentRotationX -= step;
                     break;
             }
+
             wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(${is3D ? 1.05 : 1})`;
         }
 
@@ -3782,6 +2676,7 @@
             const wrapper = document.getElementById('modalImgWrapper');
             const btn = document.getElementById('btn3d');
             is3D = !is3D;
+
             if (is3D) {
                 wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(1.05)`;
                 btn.classList.add('active-3d');
@@ -3798,102 +2693,50 @@
             box.classList.toggle('active');
         }
 
-        // ===== دارک/لایت مود =====
-        const themeToggle = document.getElementById('themeToggle');
-        let isDarkMode = true;
-
-        function toggleTheme() {
-            isDarkMode = !isDarkMode;
-            const body = document.body;
-            const icon = themeToggle.querySelector('i');
-            if (isDarkMode) {
-                body.classList.remove('light-mode');
-                body.classList.add('dark-mode');
-                icon.className = 'fas fa-moon';
-                document.documentElement.style.colorScheme = 'dark';
-            } else {
-                body.classList.remove('dark-mode');
-                body.classList.add('light-mode');
-                icon.className = 'fas fa-sun';
-                document.documentElement.style.colorScheme = 'light';
-            }
-            // اعلان به ذرات
-            document.dispatchEvent(new CustomEvent('themeChanged', {
-                detail: { isDark: isDarkMode }
-            }));
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        }
-
-        themeToggle.addEventListener('click', toggleTheme);
-
-        // بازیابی تم از localStorage
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            isDarkMode = false;
-            document.body.classList.remove('dark-mode');
-            document.body.classList.add('light-mode');
-            themeToggle.querySelector('i').className = 'fas fa-sun';
-            document.documentElement.style.colorScheme = 'light';
-            document.dispatchEvent(new CustomEvent('themeChanged', {
-                detail: { isDark: false }
-            }));
-        } else {
-            document.body.classList.add('dark-mode');
-        }
-
-        // ===== دکمه بازگشت به بالا =====
-        const backToTopBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        });
-
-        backToTopBtn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // ===== فرم تماس =====
-        function handleContact(e) {
-            e.preventDefault();
-            const name = document.getElementById('contactName').value.trim();
-            const email = document.getElementById('contactEmail').value.trim();
-            const message = document.getElementById('contactMessage').value.trim();
-            if (!name || !email || !message) {
-                alert('لطفاً همه فیلدها را پر کنید.');
-                return false;
-            }
-            if (!email.includes('@') || !email.includes('.')) {
-                alert('لطفاً یک ایمیل معتبر وارد کنید.');
-                return false;
-            }
-            alert('✅ پیام شما با موفقیت ارسال شد!\n\n' +
-                'نام: ' + name + '\n' +
-                'ایمیل: ' + email + '\n' +
-                'پیام: ' + message
-            );
-            document.getElementById('contactForm').reset();
-            return false;
-        }
-
-        // ===== نوتیفیکیشن =====
+        // ===== انیمیشن اسکرول =====
         document.addEventListener('DOMContentLoaded', function() {
-            const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '3.0.0';
-            const hasSeen = localStorage.getItem('mhs_notification_version');
-            if (hasSeen !== APP_VERSION) {
-                notif.style.display = 'block';
+            const cards = document.querySelectorAll('.home-design-card, .design-card-new');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0) scale(1)';
+                        }, index * 100);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px) scale(0.97)';
+                card.style.transition =
+                    `opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)`;
+                observer.observe(card);
+            });
+
+            setTimeout(() => {
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    }
+                });
+            }, 100);
+
+            // انیمیشن کارت خوش‌آمدگویی
+            const heroCard = document.getElementById('heroCard');
+            if (heroCard) {
+                heroCard.style.opacity = '0';
+                heroCard.style.transform = 'translateY(30px) scale(0.97)';
                 setTimeout(() => {
-                    notif.classList.add('hide');
-                    setTimeout(() => {
-                        notif.style.display = 'none';
-                    }, 500);
-                }, 8000);
-                localStorage.setItem('mhs_notification_version', APP_VERSION);
-            } else {
-                notif.style.display = 'none';
+                    heroCard.style.transition =
+                        'opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
+                    heroCard.style.opacity = '1';
+                    heroCard.style.transform = 'translateY(0) scale(1)';
+                }, 100);
             }
         });
 
@@ -3907,12 +2750,26 @@
             }
         });
 
-        // ===== پارالاکس اسکرول (افکت ساده) =====
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-card .hero-bg');
-            if (hero) {
-                hero.style.transform = `scale(${1 + scrolled * 0.0002})`;
+        // ===== نوتیفیکیشن (۸ ثانیه) - فقط آپدیت‌های جدید =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const notif = document.getElementById('welcomeNotif');
+            const APP_VERSION = '2.3.0';
+
+            const hasSeen = localStorage.getItem('mhs_notification_version');
+
+            if (hasSeen !== APP_VERSION) {
+                notif.style.display = 'block';
+
+                setTimeout(() => {
+                    notif.classList.add('hide');
+                    setTimeout(() => {
+                        notif.style.display = 'none';
+                    }, 500);
+                }, 8000);
+
+                localStorage.setItem('mhs_notification_version', APP_VERSION);
+            } else {
+                notif.style.display = 'none';
             }
         });
     </script>
