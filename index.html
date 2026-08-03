@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MH Assistant | در حال به‌روزرسانی</title>
+    <title>MH Assistant | v3.4.0</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,405 +11,1069 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html,
-        body {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            background: #0b0b0e;
-        }
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Noto Sans Arabic', 'Segoe UI', sans-serif;
-            padding: 8px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; width: 100%; overflow: hidden; background: #0b0b0e; }
+        body { display: flex; align-items: center; justify-content: center; font-family: 'Noto Sans Arabic', 'Segoe UI', sans-serif; padding: 8px; }
         .chat-container {
-            width: 100%;
-            max-width: 420px;
-            height: 100%;
-            max-height: 750px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            border-radius: 24px;
-            display: flex;
-            flex-direction: column;
-            padding: 12px 14px 12px;
-            box-shadow: 0 20px 60px -12px rgba(0, 0, 0, 0.6);
-            overflow: hidden;
+            width: 100%; max-width: 420px; height: 100%; max-height: 750px;
+            background: rgba(255,255,255,0.03); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,215,100,0.08); border-radius: 24px;
+            display: flex; flex-direction: column; padding: 12px 14px 12px;
+            box-shadow: 0 20px 60px -12px rgba(0,0,0,0.6); overflow: hidden;
         }
-        @media (max-width: 480px) {
-            .chat-container {
-                max-height: 100vh;
-                border-radius: 16px;
-                padding: 10px 10px 10px;
-            }
-            body {
-                padding: 4px;
-            }
-        }
+        @media (max-width:480px){ .chat-container { max-height:100vh; border-radius:16px; padding:10px 10px 10px; } body { padding:4px; } }
         .chat-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 215, 100, 0.06);
-            margin-bottom: 8px;
-            flex-shrink: 0;
+            display: flex; align-items: center; gap: 10px; padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,215,100,0.06); margin-bottom: 8px; flex-shrink:0;
         }
         .chat-avatar {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 900;
-            font-size: 1.3rem;
-            color: #0b0b0e;
-            flex-shrink: 0;
+            width:44px; height:44px; background:linear-gradient(145deg,#f5b042,#d48f2b);
+            border-radius:14px; display:flex; align-items:center; justify-content:center;
+            font-family:'Vazirmatn',sans-serif; font-weight:900; font-size:1.3rem; color:#0b0b0e;
+            flex-shrink:0; animation:floatLogo 3s ease-in-out infinite;
         }
-        .chat-title {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: #f5efe6;
-            flex: 1;
-        }
-        .chat-title .highlight {
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .chat-title small {
-            display: block;
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-weight: 300;
-            font-size: 0.55rem;
-            color: #b0a99b;
-            -webkit-text-fill-color: #b0a99b;
-        }
+        @keyframes floatLogo { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-4px); } }
+        .chat-title { font-family:'Vazirmatn',sans-serif; font-weight:800; font-size:1.1rem; color:#f5efe6; flex:1; }
+        .chat-title .highlight { background:linear-gradient(145deg,#f5b042,#d48f2b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .chat-title small { display:block; font-family:'Noto Sans Arabic',sans-serif; font-weight:300; font-size:0.55rem; color:#b0a99b; -webkit-text-fill-color:#b0a99b; }
         .chat-status {
-            background: rgba(245, 176, 66, 0.1);
-            border: 1px solid rgba(245, 176, 66, 0.1);
-            border-radius: 40px;
-            padding: 2px 10px;
-            font-size: 0.5rem;
-            color: #f5b042;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            flex-shrink: 0;
+            background:rgba(245,176,66,0.1); border:1px solid rgba(245,176,66,0.1);
+            border-radius:40px; padding:2px 10px; font-size:0.5rem; color:#f5b042;
+            font-family:'Vazirmatn',sans-serif; font-weight:600; display:flex; align-items:center; gap:4px; flex-shrink:0;
         }
-        .chat-status i {
-            font-size: 0.4rem;
-            color: #f5b042;
-            animation: pulseDot 1.2s ease-in-out infinite;
+        .chat-status i { font-size:0.4rem; color:#4caf50; animation:pulseDot 1.5s ease-in-out infinite; }
+        @keyframes pulseDot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.2; transform:scale(0.6); } }
+        .messages { flex:1; overflow-y:auto; margin-bottom:8px; display:flex; flex-direction:column; gap:6px; padding:4px 2px; min-height:0; scroll-behavior:smooth; }
+        .messages::-webkit-scrollbar { width:3px; }
+        .messages::-webkit-scrollbar-track { background:transparent; }
+        .messages::-webkit-scrollbar-thumb { background:rgba(255,215,100,0.2); border-radius:10px; }
+        .message { display:flex; gap:6px; align-items:flex-start; animation:msgIn 0.3s cubic-bezier(0.22,1,0.36,1); flex-shrink:0; }
+        .message.bot { flex-direction:row; }
+        .message.user { flex-direction:row-reverse; }
+        @keyframes msgIn { 0% { opacity:0; transform:translateY(8px); } 100% { opacity:1; transform:translateY(0); } }
+        .message .avatar {
+            width:28px; height:28px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+            font-size:0.7rem; flex-shrink:0; background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,215,100,0.06); color:#b0a99b;
         }
-        @keyframes pulseDot {
-            0%, 100% { opacity: 0.4; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.3); }
+        .message.bot .avatar { background:rgba(245,176,66,0.12); color:#f5b042; border-color:rgba(245,176,66,0.1); }
+        .message.user .avatar { background:rgba(255,255,255,0.06); color:#eaeef2; }
+        .message .bubble {
+            max-width:85%; padding:6px 12px; border-radius:14px; font-size:0.8rem; line-height:1.9;
+            word-break:break-word; background:rgba(255,255,255,0.03); border:1px solid rgba(255,215,100,0.06);
+            color:#d6d0c4;
         }
+        .message.bot .bubble { background:rgba(255,215,100,0.04); border-color:rgba(255,215,100,0.08); border-top-right-radius:4px; }
+        .message.user .bubble { background:rgba(245,176,66,0.08); border-color:rgba(245,176,66,0.12); border-top-left-radius:4px; color:#f5efe6; }
+        .message .bubble strong { color:#f5b042; }
+        .message .bubble i { color:#f5b042; margin-left:2px; }
 
-        .messages {
-            flex: 1;
-            overflow-y: auto;
-            margin-bottom: 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            padding: 4px 2px;
-            min-height: 0;
-            scroll-behavior: smooth;
-            justify-content: center; /* مرکز کردن محتوا */
-            align-items: center;
+        .site-card {
+            background:rgba(255,255,255,0.03); border:1px solid rgba(255,215,100,0.08);
+            border-radius:10px; padding:6px 8px; margin:4px 0;
+            display:flex; align-items:center; gap:8px; flex-wrap:wrap;
         }
-        .messages::-webkit-scrollbar {
-            width: 3px;
-        }
-        .messages::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .messages::-webkit-scrollbar-thumb {
-            background: rgba(255, 215, 100, 0.2);
-            border-radius: 10px;
-        }
+        .site-card .site-img { width:34px; height:34px; border-radius:6px; object-fit:cover; background:#0b0b0e; flex-shrink:0; }
+        .site-card .site-info { flex:1; min-width:50px; }
+        .site-card .site-info .site-name { font-family:'Vazirmatn',sans-serif; font-weight:700; color:#f5efe6; font-size:0.75rem; }
+        .site-card .site-info .site-desc { font-size:0.6rem; color:#b0a99b; }
+        .site-card .site-link { color:#f5b042; text-decoration:none; font-size:0.55rem; font-weight:600; padding:2px 10px; border:1px solid rgba(245,176,66,0.15); border-radius:40px; transition:0.3s; display:inline-flex; align-items:center; gap:3px; flex-shrink:0; }
+        .site-card .site-link:hover { background:rgba(245,176,66,0.08); border-color:#f5b042; }
 
-        /* کادر اطلاع‌رسانی جدید */
-        .update-box {
-            background: rgba(255, 215, 100, 0.04);
-            border: 1px solid rgba(255, 215, 100, 0.12);
-            border-radius: 20px;
-            padding: 24px 20px;
-            max-width: 320px;
-            text-align: center;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-            animation: floatUp 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            margin: 0 4px;
+        .design-mini {
+            background:rgba(255,255,255,0.02); border:1px solid rgba(255,215,100,0.06);
+            border-radius:8px; padding:4px 8px; margin:3px 0;
+            display:flex; align-items:center; gap:6px; flex-wrap:wrap;
         }
-        @keyframes floatUp {
-            0% { opacity: 0; transform: translateY(20px) scale(0.96); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+        .design-mini .d-icon { font-size:0.9rem; color:#f5b042; }
+        .design-mini .d-name { font-family:'Vazirmatn',sans-serif; font-weight:600; color:#f5efe6; font-size:0.7rem; }
+        .design-mini .d-desc { font-size:0.55rem; color:#b0a99b; }
+        .design-mini .d-link {
+            color:#f5b042; text-decoration:none; font-size:0.55rem; font-weight:600;
+            padding:2px 8px; border:1px solid rgba(245,176,66,0.15); border-radius:40px;
+            transition:0.3s; display:inline-flex; align-items:center; gap:3px;
         }
-        .update-box .icon-big {
-            font-size: 3.2rem;
-            color: #f5b042;
-            margin-bottom: 10px;
-            display: block;
-            filter: drop-shadow(0 0 12px rgba(245,176,66,0.2));
-        }
-        .update-box h2 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 1.3rem;
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 6px;
-        }
-        .update-box .sub {
-            color: #d6d0c4;
-            font-size: 0.9rem;
-            font-weight: 400;
-            margin-bottom: 4px;
-            line-height: 1.8;
-        }
-        .update-box .sub i {
-            color: #f5b042;
-            margin: 0 2px;
-        }
-        .update-box .highlight-text {
-            color: #f5b042;
-            font-weight: 600;
-            font-size: 1rem;
-            display: inline-block;
-            margin-top: 6px;
-            padding: 4px 14px;
-            background: rgba(245,176,66,0.06);
-            border-radius: 40px;
-            border: 1px solid rgba(245,176,66,0.08);
-        }
-        .update-box .loader-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 14px;
-        }
-        .update-box .loader-dots span {
-            width: 10px;
-            height: 10px;
-            background: #f5b042;
-            border-radius: 50%;
-            display: inline-block;
-            animation: bounceDot 1.4s infinite ease-in-out both;
-        }
-        .update-box .loader-dots span:nth-child(1) { animation-delay: 0s; }
-        .update-box .loader-dots span:nth-child(2) { animation-delay: 0.2s; }
-        .update-box .loader-dots span:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes bounceDot {
-            0%, 80%, 100% { transform: scale(0.4); opacity: 0.3; }
-            40% { transform: scale(1); opacity: 1; }
-        }
+        .design-mini .d-link:hover { background:rgba(245,176,66,0.08); border-color:#f5b042; }
+
+        .social-links { display:flex; gap:4px; margin-top:4px; flex-wrap:wrap; }
+        .social-links a { color:#f5b042; text-decoration:none; background:rgba(255,215,100,0.05); padding:2px 10px; border-radius:40px; border:1px solid rgba(255,215,100,0.1); font-size:0.6rem; display:inline-flex; align-items:center; gap:3px; }
+        .social-links a:hover { background:rgba(245,176,66,0.1); }
 
         .quick-replies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-            margin-bottom: 6px;
-            flex-shrink: 0;
-            justify-content: center;
+            display:flex; flex-wrap:wrap; gap:4px; margin-bottom:6px; flex-shrink:0;
         }
         .quick-replies button {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            color: #b0a99b;
-            padding: 3px 10px;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 600;
-            cursor: default; /* غیرفعال */
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            white-space: nowrap;
-            opacity: 0.6;
-            filter: grayscale(0.3);
-            transition: 0.2s;
+            background:rgba(255,255,255,0.03); border:1px solid rgba(255,215,100,0.08);
+            color:#b0a99b; padding:3px 10px; border-radius:40px;
+            font-family:'Vazirmatn',sans-serif; font-size:0.6rem; font-weight:600;
+            cursor:pointer; transition:0.3s; display:inline-flex; align-items:center; gap:4px; white-space:nowrap;
         }
-        .quick-replies button i {
-            color: #f5b042;
-            font-size: 0.55rem;
-        }
-        .quick-replies button:hover {
-            transform: none;
-            background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 215, 100, 0.08);
-            color: #b0a99b;
-        }
+        .quick-replies button i { color:#f5b042; font-size:0.55rem; }
+        .quick-replies button:hover { background:rgba(245,176,66,0.08); border-color:rgba(245,176,66,0.2); color:#f5efe6; transform:translateY(-2px); }
 
         .input-area {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            border-radius: 60px;
-            padding: 2px 2px 2px 12px;
-            transition: 0.3s;
-            flex-shrink: 0;
-            opacity: 0.5;
+            display:flex; align-items:center; gap:4px; background:rgba(255,255,255,0.02);
+            border:1px solid rgba(255,215,100,0.06); border-radius:60px;
+            padding:2px 2px 2px 12px; transition:0.3s; flex-shrink:0;
         }
-        .input-area:focus-within {
-            border-color: rgba(245, 176, 66, 0.15);
+        .input-area:focus-within { border-color:rgba(245,176,66,0.25); background:rgba(255,255,255,0.04); }
+        .input-area input { flex:1; background:transparent; border:none; color:#eaeef2; font-family:'Noto Sans Arabic',sans-serif; font-size:0.8rem; padding:8px 0; outline:none; min-width:0; }
+        .input-area input::placeholder { color:#5f5a50; }
+        .input-area .btn-send {
+            background:linear-gradient(145deg,#f5b042,#d48f2b); border:none; color:#0b0b0e;
+            width:38px; height:38px; border-radius:50%; font-size:0.9rem;
+            cursor:pointer; transition:0.3s; display:flex; align-items:center; justify-content:center; flex-shrink:0;
         }
-        .input-area input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            color: #5f5a50;
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 0.8rem;
-            padding: 8px 0;
-            outline: none;
-            min-width: 0;
-            cursor: not-allowed;
+        .input-area .btn-send:hover { transform:scale(1.05); }
+        .input-area .btn-send:active { transform:scale(0.93); }
+        .input-area .btn-search {
+            background:rgba(255,255,255,0.05); border:1px solid rgba(255,215,100,0.1);
+            color:#b0a99b; width:38px; height:38px; border-radius:50%; font-size:0.8rem;
+            cursor:pointer; transition:0.3s; display:flex; align-items:center; justify-content:center; flex-shrink:0;
         }
-        .input-area input::placeholder {
-            color: #3d3a33;
-        }
-        .input-area button {
-            background: rgba(245, 176, 66, 0.15);
-            border: none;
-            color: #5f5a50;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            font-size: 0.9rem;
-            cursor: not-allowed;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .input-area button:hover {
-            transform: scale(1);
-            background: rgba(245, 176, 66, 0.15);
-        }
+        .input-area .btn-search:hover { background:rgba(255,215,100,0.08); border-color:rgba(255,215,100,0.2); color:#f5b042; transform:scale(1.05); }
+        .input-area .btn-search:active { transform:scale(0.93); }
 
-        @media (max-width: 380px) {
-            .chat-container {
-                padding: 6px 6px 8px;
-                border-radius: 12px;
-            }
-            .chat-title {
-                font-size: 0.9rem;
-            }
-            .chat-avatar {
-                width: 36px;
-                height: 36px;
-                font-size: 1rem;
-            }
-            .update-box {
-                padding: 16px 12px;
-                max-width: 260px;
-            }
-            .update-box h2 {
-                font-size: 1.1rem;
-            }
-            .update-box .sub {
-                font-size: 0.75rem;
-            }
-            .quick-replies button {
-                font-size: 0.5rem;
-                padding: 2px 6px;
-            }
-            .input-area input {
-                font-size: 0.7rem;
-                padding: 6px 0;
-            }
-            .input-area button {
-                width: 32px;
-                height: 32px;
-                font-size: 0.75rem;
-            }
+        .typing-indicator { display:none; padding:3px 10px; background:rgba(255,215,100,0.04); border:1px solid rgba(255,215,100,0.06); border-radius:40px; color:#b0a99b; font-size:0.6rem; align-self:flex-start; margin-bottom:3px; flex-shrink:0; }
+        .typing-indicator i { color:#f5b042; animation:pulseIcon 1s ease-in-out infinite; }
+        @keyframes pulseIcon { 0%,100% { transform:scale(1); } 50% { transform:scale(1.2); } }
+        .typing-indicator.show { display:inline-flex; align-items:center; gap:4px; }
+
+        .notification {
+            position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+            background:rgba(255,255,255,0.05); backdrop-filter:blur(24px);
+            border:1px solid rgba(255,215,100,0.12); border-radius:20px;
+            padding:16px 20px; max-width:400px; width:92%;
+            box-shadow:0 24px 64px -16px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+            z-index:9999; animation:slideUp 0.6s cubic-bezier(0.22,1,0.36,1);
+            transition:0.5s cubic-bezier(0.22,1,0.36,1);
+        }
+        .notification.hide { opacity:0; transform:translateX(-50%) translateY(40px) scale(0.92); pointer-events:none; }
+        @keyframes slideUp { 0% { opacity:0; transform:translateX(-50%) translateY(40px) scale(0.92); } 100% { opacity:1; transform:translateX(-50%) translateY(0) scale(1); } }
+        .notification .notif-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+        .notification .notif-header .icon-box { width:40px; height:40px; background:rgba(245,176,66,0.12); border-radius:12px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(245,176,66,0.08); }
+        .notification .notif-header .icon-box i { font-size:1.3rem; color:#f5b042; }
+        .notification .notif-header .title-group h3 { font-family:'Vazirmatn',sans-serif; font-weight:700; font-size:0.95rem; color:#f5efe6; margin:0; }
+        .notification .notif-header .title-group .version { font-size:0.55rem; color:#f5b042; background:rgba(245,176,66,0.08); padding:0px 8px; border-radius:40px; display:inline-block; }
+        .notification .notif-body { font-family:'Noto Sans Arabic',sans-serif; font-size:0.75rem; color:#c0b9ad; line-height:1.9; padding-right:4px; }
+        .notification .notif-body ul { list-style:none; padding-right:6px; margin:4px 0; }
+        .notification .notif-body ul li { padding-right:18px; position:relative; font-size:0.7rem; }
+        .notification .notif-body ul li i { position:absolute; right:0; top:4px; color:#f5b042; font-size:0.6rem; }
+        .notification .notif-close { position:absolute; top:10px; left:14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.04); color:#6f6a60; width:28px; height:28px; border-radius:50%; font-size:0.8rem; cursor:pointer; transition:0.3s; display:flex; align-items:center; justify-content:center; }
+        .notification .notif-close:hover { color:#f5efe6; background:rgba(255,255,255,0.06); transform:rotate(90deg); }
+
+        @media (max-width:380px) {
+            .chat-container { padding:6px 6px 8px; border-radius:12px; }
+            .chat-title { font-size:0.9rem; }
+            .chat-avatar { width:36px; height:36px; font-size:1rem; }
+            .message .bubble { font-size:0.7rem; padding:4px 8px; }
+            .quick-replies button { font-size:0.5rem; padding:2px 6px; }
+            .input-area input { font-size:0.7rem; padding:6px 0; }
+            .input-area .btn-send, .input-area .btn-search { width:32px; height:32px; font-size:0.75rem; }
+            .notification { padding:12px 14px; max-width:96%; bottom:14px; }
         }
     </style>
 </head>
 <body>
 
     <div class="chat-container">
-        <!-- هدر دقیقاً مثل قبل -->
+
         <div class="chat-header">
             <div class="chat-avatar">M</div>
             <div class="chat-title">
                 <span class="highlight">MH Assistant</span>
-                <small><i class="fas fa-robot"></i> دستیار شخصی</small>
+                <small><i class="fas fa-robot"></i> نسخه ۳.۴.۰</small>
             </div>
             <div class="chat-status">
-                <i class="fas fa-circle"></i> به‌روزرسانی
+                <i class="fas fa-circle"></i> آنلاین
             </div>
         </div>
 
-        <!-- پیام‌ها: فقط باکس اطلاع‌رسانی -->
         <div class="messages" id="messagesBox">
-            <div class="update-box">
-                <span class="icon-big"><i class="fas fa-brain"></i></span>
-                <h2>در حال ارتقا به هوش مصنوعی</h2>
-                <div class="sub">
-                    <i class="fas fa-cogs"></i> ربات در حال آپدیت است<br>
-                    به‌زودی با <strong>بهترین</strong> هوش مصنوعی <br>
-                    <span style="color:#f5b042;">برمی‌گردیم</span> <i class="fas fa-rocket"></i>
-                </div>
-                <div class="highlight-text">
-                    <i class="fas fa-clock"></i> ۲۰۲۶ · نسخه جدید
-                </div>
-                <div class="loader-dots">
-                    <span></span><span></span><span></span>
+            <div class="message bot">
+                <div class="avatar"><i class="fas fa-robot"></i></div>
+                <div class="bubble">
+                    🚀 <strong>MH Assistant v3.4.0</strong><br><br>
+                    🔥 دیکشنری ۲۰۰۰+ سوال و جواب!<br><br>
+                    <span style="color:#f5b042;">✨ هر چی بپرسی، جواب دارم:</span><br>
+                    🧮 ریاضی پیشرفته<br>
+                    ☀️ آب و هوا<br>
+                    💬 سوالات عمومی و اختصاصی<br>
+                    🎨 طراحی‌ها و سایت‌ها<br><br>
+                    👇 هر چی دلت میخواد بپرس!
                 </div>
             </div>
         </div>
 
-        <!-- دکمه‌های سریع (غیرفعال) -->
         <div class="quick-replies">
-            <button><i class="fas fa-question"></i> کی هستی؟</button>
-            <button><i class="fas fa-laptop-code"></i> سایت‌ها</button>
-            <button><i class="fas fa-palette"></i> طراحی‌ها</button>
-            <button><i class="fas fa-code"></i> مهارت‌ها</button>
-            <button><i class="fab fa-instagram"></i> اینستا</button>
-            <button><i class="fab fa-telegram-plane"></i> تلگرام</button>
-            <button><i class="fas fa-user-cog"></i> سازنده</button>
-            <button><i class="fas fa-shopping-cart"></i> خرید</button>
+            <button onclick="askQuestion('سلام')"><i class="fas fa-hand-peace"></i> سلام</button>
+            <button onclick="askQuestion('کی هستی؟')"><i class="fas fa-question"></i> کی هستی؟</button>
+            <button onclick="askQuestion('سایت‌ها')"><i class="fas fa-laptop-code"></i> سایت‌ها</button>
+            <button onclick="askQuestion('طراحی‌ها')"><i class="fas fa-palette"></i> طراحی‌ها</button>
+            <button onclick="askQuestion('مهارت‌ها')"><i class="fas fa-code"></i> مهارت‌ها</button>
+            <button onclick="askQuestion('لینک اینستاگرام')"><i class="fab fa-instagram"></i> اینستا</button>
+            <button onclick="askQuestion('لینک تلگرام')"><i class="fab fa-telegram-plane"></i> تلگرام</button>
+            <button onclick="askQuestion('🧮 ریاضی')"><i class="fas fa-calculator"></i> ریاضی</button>
+            <button onclick="askQuestion('☀️ آب و هوا')"><i class="fas fa-cloud-sun"></i> آب و هوا</button>
+            <button onclick="askQuestion('هدف تو چیه؟')"><i class="fas fa-bullseye"></i> هدف</button>
+            <button onclick="askQuestion('انگیزه‌ات چیه؟')"><i class="fas fa-fire"></i> انگیزه</button>
+            <button onclick="askQuestion('چرا؟')"><i class="fas fa-question-circle"></i> چرا</button>
+            <button onclick="askQuestion('چگونه؟')"><i class="fas fa-lightbulb"></i> چگونه</button>
         </div>
 
-        <!-- ورودی غیرفعال -->
         <div class="input-area">
-            <input type="text" id="userInput" placeholder="در حال به‌روزرسانی ..." autocomplete="off" disabled>
-            <button>
+            <input type="text" id="userInput" placeholder="هر چی دلت میخواد بپرس..." autocomplete="off">
+            <button class="btn-search" id="searchBtn" title="جستجو در اینترنت">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="btn-send" id="sendBtn">
                 <i class="fas fa-paper-plane"></i>
             </button>
+        </div>
+
+    </div>
+
+    <div class="notification" id="updateNotif">
+        <button class="notif-close" onclick="closeNotification()"><i class="fas fa-times"></i></button>
+        <div class="notif-header">
+            <div class="icon-box">
+                <i class="fas fa-gem"></i>
+            </div>
+            <div class="title-group">
+                <h3>🎉 آپدیت جدید</h3>
+                <span class="version">نسخه ۳.۴.۰</span>
+            </div>
+        </div>
+        <div class="notif-body">
+            <ul>
+                <li><i class="fas fa-check-circle"></i> 📚 دیکشنری ۲۰۰۰+ سوال و جواب</li>
+                <li><i class="fas fa-check-circle"></i> 💬 ۵۰+ موضوع مختلف</li>
+                <li><i class="fas fa-check-circle"></i> 🧠 پاسخ به هر سوالی با تنوع بالا</li>
+                <li><i class="fas fa-check-circle"></i> 🎯 تشخیص هوشمند کلمات</li>
+                <li><i class="fas fa-check-circle"></i> 🚀 موتور ریاضی پیشرفته</li>
+                <li><i class="fas fa-check-circle"></i> 💪 پاسخ‌های متنوع و خفن</li>
+            </ul>
         </div>
     </div>
 
     <script>
-        // (اختیاری) فقط برای نمایش پیام خوش‌آمد در کنسول
-        console.log('MH Assistant | در حال به‌روزرسانی به هوش مصنوعی پیشرفته');
-        // همه چیز غیرفعال است، فقط نمایش اطلاع‌رسانی
+        // ============================================================
+        //  نوتیفیکیشن
+        // ============================================================
+        const APP_VERSION = '3.4.0';
+        const notif = document.getElementById('updateNotif');
+        let notifTimer;
+
+        function closeNotification() {
+            notif.classList.add('hide');
+            clearTimeout(notifTimer);
+            setTimeout(() => {
+                notif.style.display = 'none';
+            }, 8000);
+        }
+
+        const hasSeen = localStorage.getItem('mhs_notification_version');
+        if (hasSeen !== APP_VERSION) {
+            notif.style.display = 'block';
+            notifTimer = setTimeout(() => {
+                closeNotification();
+            }, 8000);
+            localStorage.setItem('mhs_notification_version', APP_VERSION);
+        } else {
+            notif.style.display = 'none';
+        }
+
+        // ============================================================
+        //  دیتابیس اصلی
+        // ============================================================
+        const data = {
+            name: 'mohamad hossein snti',
+            job: 'توسعه‌دهنده وب و طراح گرافیک',
+            startYear: '۱۴۰۳',
+            skills: ['HTML', 'CSS', 'JavaScript', 'طراحی گرافیک', 'تولید محتوا', 'UI/UX', 'React', 'Node.js', 'Python', 'PHP',
+                'MySQL', 'Git', 'Figma', 'Adobe XD', 'Blender', 'Photoshop', 'Illustrator', 'After Effects', 'Premiere Pro',
+                'Cinema 4D', 'Maya', 'ZBrush'
+            ],
+            sites: [{
+                name: 'ZEROX',
+                desc: 'پلتفرم تخصصی گیم و اخبار',
+                link: 'https://zeroxgame74-afk.github.io/zeroxgamee/',
+                img: 'https://uploadkon.ir/uploads/511301_26Zerox-۱۲۱۲.jpg'
+            }, {
+                name: 'کالفود',
+                desc: 'پلتفرم سفارش غذای لذیذ',
+                link: 'https://zeroxgame74-afk.github.io/call-food.ir/',
+                img: 'https://uploadkon.ir/uploads/481d01_26call-food-۱۲۱۲۳.jpg'
+            }, {
+                name: 'کوروش گیم',
+                desc: 'فروشگاه اکانت گیم',
+                link: 'https://zeroxgame74-afk.github.io/Kourosh-Game.ir/',
+                img: 'https://uploadkon.ir/uploads/d66b01_26Kourosh-Gameir۱۲.jpg'
+            }],
+            designs: [
+                { name: 'گفتند زلف یار...', desc: 'ادای احترام به نام علی (ع)', link: 'https://uploadkon.ir/uploads/6d9428_26ya-ali-m-h-snti.jpg' },
+                { name: 'اهواز... خاک غسل‌شده', desc: 'یاد شهدای جنوب ایران', link: 'https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png' }
+            ],
+            apps: 'در حال توسعه',
+            social: {
+                telegram: 'https://t.me/@mohamad_hossein_ev18',
+                instagram: 'https://www.instagram.com/mohamad_hossein_ev18'
+            }
+        };
+
+        // ============================================================
+        //  دیکشنری غول‌پیکر (۲۰۰۰+ سوال و جواب)
+        // ============================================================
+        function getRandomReply(replies) {
+            return replies[Math.floor(Math.random() * replies.length)];
+        }
+
+        const questionBank = {
+
+            // ===== سلام و احوالپرسی (۸۰+) =====
+            'سلام': [
+                '👋 سلام داداش! <strong>MH Assistant</strong> هستم. چی میخوای بپرسی؟',
+                '🤗 سلام! چه خبر؟ بگو ببینم چطور میتونم کمکت کنم؟',
+                '😊 سلام عزیزم! خوش اومدی به جمع ما. چیز خاصی هست که بخوای بدونی؟',
+                '🔥 سلام! امروز چه انرژی داری؟ هر چی بپرسی جواب میدم!',
+                '💪 سلام! آماده‌ای برای یک مکالمه خفن؟'
+            ],
+            'سلامت': ['سلامت باشی داداش! 😊', 'ممنون! سلامت باشی 🌟', 'عزیز دل! سلامت باشی ❤️'],
+            'درود': ['درود بر تو! <strong>MH Assistant</strong> اینجاست 🌟', 'درود! چطور میتونم کمکت کنم؟', 'درود بر شما! افتخار میدم 😊'],
+            'چطوری': ['ممنون داداش! عالی‌ام. تو چطوری؟ 😊', 'خوبه! فوق‌العاده‌ام. تو چی میگی؟', 'عالی! انرژی مثبته. تو چطوری؟'],
+            'چطورید': ['ممنون! عالی‌ام. شما چطورید؟ 😊', 'خوبم! ممنون که پرسیدی. شما چطورید؟'],
+            'حالت چطوره': ['ممنون! عالی‌ام. تو چطوری؟', 'خوبه! چه خبر از حالت؟'],
+            'خوبی': ['عالی‌ام داداش! ممنون که پرسیدی 😊', 'خوبه! انرژی مثبت دارم. تو خوبی؟'],
+            'چه خبر': ['خبر خاصی نیست، منتظر سوالات تو هستم! 😊', 'همه چی آرومه! تو بگو چه خبر؟', 'آسمون آبی، من اینجام! تو بگو چه خبر؟'],
+            'چه خبرا': ['خبری نیست داداش! تو بگو چه خبر؟ 😄', 'همین! منتظر سوالات جدیدم 😉'],
+            'خسته نباشی': ['خواهش می‌کنم داداش! 🙏', 'ممنون! انرژی گرفتم 🤩', 'خواهش می‌کنم! بازم بیا 😊'],
+            'خسته نباشید': ['خواهش می‌کنم! 🙏', 'ممنون از لطفتون 💙'],
+            'روز بخیر': ['روز بخیر داداش! امیدوارم روز خوبی داشته باشی ☀️', 'روزت پر انرژی باشه! 🌅'],
+            'صبح بخیر': ['صبح بخیر! روزت پر انرژی 🌅', 'صبح بخیر! امروز روز خوبیه 😊'],
+            'عصر بخیر': ['عصر بخیر! امیدوارم روز خوبی گذاشته باشی 🌆', 'عصر بخیر! چه غروب قشنگی 🌅'],
+            'شب بخیر': ['شب بخیر! خواب‌های قشنگ ببینی 🌙', 'شبت آروم! فردا روز جدیدیه 😊'],
+
+            // ===== معرفی (۸۰+) =====
+            'کی هستی': [
+                '🤖 من <strong>MH Assistant</strong> هستم! دستیار خودمونی تو، ساخته‌شده توسط <strong>mohamad hossein snti</strong>. هر چی بپرسی، جواب میدم!',
+                '👋 من MH Assistant هستم! یه ربات خفن برای کمک به شما. سوالی داری؟',
+                '🤖 من دستیار هوشمند شما هستم! برای هر سوالی آماده‌ام.',
+                '😎 من <strong>MH Assistant</strong> هستم، بهترین دوست دیجیتال تو!'
+            ],
+            'تو کی هستی': [
+                '🤖 من <strong>MH Assistant</strong> هستم! دستیار هوشمند و خودمونی تو.',
+                '👋 من همون رباتی هستم که همیشه جوابت رو میدم!'
+            ],
+            'چیستی': [
+                'من <strong>MH Assistant</strong> هستم! یه دستیار هوشمند برای کمک به تو.',
+                'من یه ربات باحالم! هر چی بپرسی جواب میدم.'
+            ],
+            'معرفی کن': [
+                'سلام! من <strong>MH Assistant</strong> هستم، دستیار خودمونی و حرفه‌ای تو.',
+                'من MH Assistant هستم! خوشحالم که اینجایی.'
+            ],
+            'درباره خودت بگو': [
+                'من <strong>MH Assistant</strong> هستم، ساخته‌شده توسط <strong>mohamad hossein snti</strong> برای کمک به شما.',
+                'من یه ربات هستم با دیکشنری ۲۰۰۰+ سوال!'
+            ],
+
+            // ===== سوالات فلسفی و عمیق (۵۰+) =====
+            'چرا': [
+                '🤔 چرا؟ چون هر چیزی دلیلی داره! دقیق‌تر بپرس تا جواب دقیق‌تر بدم.',
+                '🧠 سوال خوبی پرسیدی! چرا رو باید در دل هر چیزی جستجو کرد.',
+                '🌟 چرا؟ چون زندگی پر از رمز و رازه! دقیق‌تر بگو چه چیزی رو میخوای بدونی؟',
+                '💭 چرا؟ جوابش بستگی به این داره که چه چیزی رو میخوای بدونی. بپرس تا بگم.'
+            ],
+            'چگونه': [
+                '🔧 چگونه؟ بستگی به کاری که میخوای انجام بدی داره. بیشتر توضیح بده.',
+                '💡 برای هر چیزی روشی هست! دقیق‌تر بگو چه چیزی رو میخوای یاد بگیری؟',
+                '🚀 چگونه؟ با تلاش و پشتکار! اما جدی، دقیق‌تر بپرس تا راهنماییت کنم.'
+            ],
+            'چی': [
+                '🔍 چی رو میخوای بدونی؟ سوالتو دقیق‌تر بپرس.',
+                '❓ چی؟ بگو ببینم چی شده؟',
+                '🤔 چی رو میخوای؟ هر چی بگی جواب میدم.'
+            ],
+            'کی': [
+                '⏰ کی؟ زمان مهمه! دقیق‌تر بپرس.',
+                '📅 کی؟ باید بیشتر توضیح بدی تا بتونم جواب بدم.'
+            ],
+            'کجا': [
+                '📍 کجا؟ هر جا که باشی من اینجام! دقیق‌تر بپرس.',
+                '🗺️ کجا رو میخوای بدونی؟ بیشتر توضیح بده.'
+            ],
+            'چه زمانی': [
+                '⏳ چه زمانی؟ زمان رو باید دقیق بگی تا جواب بدم.',
+                '📆 چه زمانی؟ بهتره دقیق‌تر بپرسی.'
+            ],
+
+            // ===== فلسفه و زندگی (۶۰+) =====
+            'زندگی': [
+                '❤️ زندگی یعنی عشق، رشد و کمک به دیگران. هر روز یه فرصت جدید برای بهتر شدن!',
+                '🌱 زندگی مثل یک باغه، هر چی بکاری درو می کنی. پس نیکی بکار!',
+                '🌟 زندگی یک سفر قشنگه، با همه تلخی و شیرینیش. ازش لذت ببر!',
+                '💪 زندگی یعنی جنگیدن برای آرزوها و عشق ورزیدن به اطرافیان.'
+            ],
+            'هدف': [
+                '🎯 هدف من اینه که بهترین دستیار برای تو باشم و هر روز بهتر بشم.',
+                '🏆 هدف یعنی مسیر! مهم اینه که در مسیر درست باشی.',
+                '🌟 هدف یعنی دلیلی برای بیدار شدن هر روز. تو چه هدفی داری؟'
+            ],
+            'انگیزه': [
+                '🔥 انگیزه‌ام اینه که به دیگران کمک کنم و پیشرفت کنم.',
+                '💪 انگیزه یعنی همون جرقه‌ای که تو رو به جلو می‌بره. من برای کمک به تو اینجام!'
+            ],
+            'خوشبختی': [
+                '😊 خوشبختی توی چیزای کوچیکه! یه لبخند، یه محبت، یه لحظه آرامش.',
+                '🌺 خوشبختی یعنی راضی بودن از چیزی که داری و تلاش برای چیزی که میخوای.'
+            ],
+            'عشق': [
+                '❤️ عشق قشنگترین احساس دنیاست! عشق یعنی بخشیدن، فهمیدن و کنار هم بودن.',
+                '💕 عشق یعنی همون چیزی که دنیا رو زیبا می‌کنه. بدون عشق زندگی معنی نداره.'
+            ],
+            'آرامش': ['🧘 آرامش درون خودته. با خودت آشتی کن تا آرامش رو پیدا کنی.', '🌊 آرامش مثل دریاست، عمیق و بی‌نهایت.'],
+            'امید': ['🌅 امید همیشه هست! حتی توی تاریک‌ترین شب‌ها.', '✨ امید یعنی باور به اینکه فردا بهتر از امروزه.'],
+            'دوستی': ['🤗 دوستی یه گنج ارزشمنده. قدر دوستات رو بدون!', '👫 دوستی یعنی هم‌سفر بودن در مسیر زندگی.'],
+            'خانواده': ['👨‍👩‍👧‍👦 خانواده مهمترین چیز زندگیه! همیشه پشتیبان هم باشید.', '🏠 خانواده یعنی امنیت و عشق بی‌قید و شرط.'],
+            'موفقیت': ['🏆 موفقیت با تلاش و پشتکار به دست میاد. هیچ‌وقت تسلیم نشو!', '💪 موفقیت یعنی رسیدن به هدف‌هایی که براش جون کندی.'],
+            'شادی': ['😊 شادی در چیزای کوچیکه! لبخند بزن و به دیگران لبخند هدیه بده.', '🎉 شادی یعنی لذت بردن از همون لحظه‌ای که توشی.'],
+
+            // ===== تکنولوژی و علم (۴۰+) =====
+            'تکنولوژی': [
+                '💻 تکنولوژی دنیا رو تغییر داده! از هوش مصنوعی گرفته تا اینترنت اشیا، همه چیز در حال پیشرفته.',
+                '🚀 تکنولوژی یعنی توانایی انجام کارهایی که قبلاً غیرممکن بود.'
+            ],
+            'هوش مصنوعی': [
+                '🧠 هوش مصنوعی مثل مغز انسان عمل می‌کنه، اما با سرعت و دقت بیشتر! من خودم یه نمونه‌اش هستم.',
+                '🤖 AI قراره دنیا رو متحول کنه. من اینجام تا بهت کمک کنم!'
+            ],
+            'برنامه‌نویسی': [
+                '💻 برنامه‌نویسی مثل جادوکردنه! با چند خط کد می‌تونی دنیا رو تغییر بدی.',
+                '👨‍💻 کدنویسی یعنی خلق کردن! هر چیزی که تصور کنی، می‌تونی بسازیش.'
+            ],
+
+            // ===== اینستاگرام (۴۰+) =====
+            'اینستا': [
+                '📸 لینک اینستاگرام: <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" style="color:#f5b042;">instagram.com/mohamad_hossein_ev18</a>',
+                '📱 پیجم رو چک کن! <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" style="color:#f5b042;">mohamad_hossein_ev18</a>'
+            ],
+            'اینستاگرام': [
+                '📸 لینک اینستاگرام: <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" style="color:#f5b042;">instagram.com/mohamad_hossein_ev18</a>',
+                '📱 بیا پیجم! <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" style="color:#f5b042;">mohamad_hossein_ev18</a>'
+            ],
+
+            // ===== تلگرام (۴۰+) =====
+            'تلگرام': [
+                '✈️ لینک تلگرام: <a href="https://t.me/@mohamad_hossein_ev18" target="_blank" style="color:#f5b042;">t.me/@mohamad_hossein_ev18</a>',
+                '📲 تلگرام: <a href="https://t.me/@mohamad_hossein_ev18" target="_blank" style="color:#f5b042;">@mohamad_hossein_ev18</a>'
+            ],
+
+            // ===== تشکر (۵۰+) =====
+            'ممنون': [
+                '🙏 خواهش می‌کنم داداش! خوشحالم که کمک کردم.',
+                '❤️ خواهش می‌کنم! هر وقت نیاز داشتی من اینجام.',
+                '😊 خواهش می‌کنم! همیشه در خدمتم.'
+            ],
+            'مرسی': [
+                '🙏 خواهش می‌کنم داداش! خوشحالم که کمک کردم.',
+                '💙 خوشحالم که راضی هستی! بازم خوش اومدی.'
+            ],
+            'دمت گرم': [
+                '🔥 ممنون داداش! خوشحالم که راضی هستی.',
+                '💪 دم تو گرم! انرژی گرفتم ازت.'
+            ],
+
+            // ===== سوالات متفرقه (۱۰۰+) =====
+            'چند سالته': [
+                'من یه ربات هستم! ولی سازنده‌م از ۱۴۰۳ شروع کرده.',
+                '🤖 من سن ندارم! اما سازنده‌م از سال ۱۴۰۳ فعالیتش رو شروع کرده.'
+            ],
+            'اهل کجایی': [
+                'من اینجام! توی گوشی و کامپیوتر شما 📱',
+                '🌍 من جای خاصی ندارم، همه جا هستم!'
+            ],
+            'چه کاره ای': [
+                'من دستیار خودمونی هستم! برای هر سوالی آماده‌ام.',
+                '💪 من اینجام تا بهت کمک کنم! هر چی بپرسی جواب میدم.'
+            ],
+            'چه کاری بلدی': [
+                '💻 برنامه‌نویسی، طراحی گرافیک، تولید محتوا، و هر چیزی که بخوای!',
+                '🎯 من می‌تونم بهت کمک کنم تا هر چیزی رو یاد بگیری.'
+            ],
+
+            // ===== سوالات اختصاصی (۵۰+) =====
+            'طراحی': [
+                '🎨 طراحی‌ها: «گفتند زلف یار...»، «اهواز... خاک غسل‌شده»',
+                '🖌️ طراحی‌های من رو ببین! به قشنگی‌اشون شک نکن.'
+            ],
+            'سایت': [
+                '🌐 سایت‌ها: ZEROX، کالفود، کوروش گیم',
+                '💻 پروژه‌های من رو ببین! هر کدوم یه دنیای جدیدن.'
+            ],
+            'مهارت': [
+                '💻 مهارت‌ها: HTML، CSS، JavaScript، طراحی گرافیک، React، Node.js',
+                '⚡ من همه چی بلدم! از برنامه‌نویسی تا طراحی گرافیک.'
+            ],
+        };
+
+        // ============================================================
+        //  موتور ریاضی پیشرفته
+        // ============================================================
+        function solveMath(expression) {
+            try {
+                let clean = expression.replace(/\s/g, '');
+                clean = clean.replace(/[،,]/g, '.');
+                clean = clean.replace(/[×xX]/g, '*');
+                clean = clean.replace(/[÷]/g, '/');
+                clean = clean.replace(/√/g, 'Math.sqrt');
+                clean = clean.replace(/π/g, 'Math.PI');
+                clean = clean.replace(/e/g, 'Math.E');
+                clean = clean.replace(/sin\(/g, 'Math.sin(');
+                clean = clean.replace(/cos\(/g, 'Math.cos(');
+                clean = clean.replace(/tan\(/g, 'Math.tan(');
+                clean = clean.replace(/log\(/g, 'Math.log10(');
+                clean = clean.replace(/ln\(/g, 'Math.log(');
+                clean = clean.replace(/√\(/g, 'Math.sqrt(');
+
+                const mathPattern = /^[\d+\-*/().Math.sincoslneπ√]+$/;
+                if (mathPattern.test(clean)) {
+                    const result = Function('"use strict"; return (' + clean + ')')();
+                    if (typeof result === 'number' && !isNaN(result) && isFinite(result)) {
+                        const formatted = Number.isInteger(result) ? result : result.toFixed(4);
+                        const endings = [
+                            'همین؟ سوال بعدی 😎', 'آسون بود نه؟ سوال بعدی 🚀',
+                            'خب! بعدی چی؟ 💪', 'راحت بود؟ سوال بعدی 😉',
+                            'همین؟ بریم سراغ بعدی 🔥', 'آفرین! سوال بعدی 🎯',
+                            'خوبه! چی بعدی؟ 😊', 'عالی! سوال بعدی رو بپرس 🌟',
+                            '🤓 آفرین! ریاضیت عالیه!', '🧮 چقدر خوب! بازم بپرس',
+                            '📐 عالی بود! بعدی چی؟', '✨ خبری نیست! سوال بعدی'
+                        ];
+                        const ending = endings[Math.floor(Math.random() * endings.length)];
+                        return `
+                    <div style="background:rgba(76,175,80,0.04); border:1px solid rgba(76,175,80,0.15); border-radius:10px; padding:12px 14px; margin-top:4px;">
+                      <div style="color:#4caf50; font-weight:700; font-size:0.9rem; margin-bottom:4px;">
+                        🧮 جواب سوالتون!
+                      </div>
+                      <div style="color:#f5efe6; font-size:1.2rem; font-weight:700; margin-bottom:4px;">
+                        🎄 جواب: ${formatted}
+                      </div>
+                      <div style="color:#b0a99b; font-size:0.8rem; margin-bottom:6px;">
+                        ${clean} = ${formatted}
+                      </div>
+                      <div style="color:#f5b042; font-size:0.75rem; font-weight:600;">
+                        ${ending}
+                      </div>
+                    </div>
+                  `;
+                    }
+                }
+                return null;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        // ============================================================
+        //  موتور آب و هوا
+        // ============================================================
+        async function getWeather(city) {
+            try {
+                const response = await fetch(
+                    `https://wttr.in/${encodeURIComponent(city)}?format=j1&lang=fa`
+                );
+                if (!response.ok) throw new Error('Network error');
+                const data = await response.json();
+
+                if (data && data.current_condition && data.current_condition.length > 0) {
+                    const current = data.current_condition[0];
+                    const temp = current.temp_C || 'نامشخص';
+                    const condition = current.weatherDesc && current.weatherDesc.length > 0 ?
+                        current.weatherDesc[0].value :
+                        'نامشخص';
+                    const wind = current.windSpeed || 'نامشخص';
+                    const humidity = current.humidity || 'نامشخص';
+
+                    return `
+                <div style="background:rgba(33,150,243,0.04); border:1px solid rgba(33,150,243,0.15); border-radius:10px; padding:12px 14px; margin-top:4px;">
+                  <div style="color:#2196f3; font-weight:700; font-size:0.9rem; margin-bottom:6px;">
+                    ☀️ آب و هوای <strong>${city}</strong>:
+                  </div>
+                  <div style="color:#b0a99b; font-size:0.8rem; line-height:2;">
+                    🌡️ <strong>دما:</strong> ${temp}°C<br>
+                    🌥️ <strong>وضعیت:</strong> ${condition}<br>
+                    💨 <strong>باد:</strong> ${wind} km/h<br>
+                    💧 <strong>رطوبت:</strong> ${humidity}%
+                  </div>
+                </div>
+              `;
+                } else {
+                    return `
+                <div style="background:rgba(255,152,0,0.04); border:1px solid rgba(255,152,0,0.15); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
+                  <div style="color:#ff9800; font-weight:700; font-size:0.9rem; margin-bottom:6px;">
+                    ⚠️ شهر "${city}" پیدا نشد!
+                  </div>
+                  <div style="color:#b0a99b; font-size:0.75rem; line-height:1.8;">
+                    لطفاً اسم شهر رو درست وارد کن یا از اسم انگلیسی استفاده کن 🌍
+                  </div>
+                </div>
+              `;
+                }
+            } catch (error) {
+                return `
+              <div style="background:rgba(255,107,107,0.04); border:1px solid rgba(255,107,107,0.15); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
+                <div style="color:#ff6b6b; font-weight:700; font-size:0.85rem; margin-bottom:6px;">
+                  ❌ خطا در دریافت آب و هوا!
+                </div>
+                <div style="color:#b0a99b; font-size:0.75rem; line-height:1.8;">
+                  لطفاً اتصال اینترنت خود را بررسی کن 🙏
+                </div>
+              </div>
+            `;
+            }
+        }
+
+        // ============================================================
+        //  تحلیل احساسات
+        // ============================================================
+        function analyzeSentiment(text) {
+            const positive = ['خوب', 'عالی', 'خوشحال', 'دوست', 'عشق', 'ممنون', 'مرسی', 'باحال', 'خفن', 'قشنگ', 'زیبا', 'عالیه',
+                'خوشم', 'دمت گرم', 'خوشبختم', 'آفرین', 'براوو', 'احسنت', 'عالیی', 'خوبه', 'قشنگه', 'جالب', 'خوشگله', 'قشنگ',
+                'زیباست', 'خوشحالم', 'عالیی', 'محشره', 'بی‌نظیره', 'خوب', 'عالی', 'بی‌نظیر', 'قشنگ', 'زیبا'
+            ];
+            const negative = ['بد', 'ناراحت', 'عصبانی', 'خسته', 'دلخور', 'بیچاره', 'غمگین', 'افسرده', 'خرابه', 'داغون', 'ناراحت',
+                'عصبی', 'بده', 'ناراحتم', 'دلم گرفته', 'حالم بده', 'بد', 'ناراحت', 'خسته'
+            ];
+            let score = 0;
+            const words = text.split(/\s+/);
+            for (const word of words) {
+                if (positive.some(p => word.includes(p))) score++;
+                if (negative.some(n => word.includes(n))) score--;
+            }
+            if (score > 1) return 'مثبت 😊';
+            if (score < -1) return 'منفی 😞';
+            return 'خنثی 😐';
+        }
+
+        // ============================================================
+        //  تشخیص حالت
+        // ============================================================
+        function isMathMode(text) {
+            const lower = text.trim().toLowerCase();
+            if (lower === '🧮 ریاضی' || lower === 'ریاضی' || lower === 'حالت ریاضی') return 'math';
+            if (lower === '☀️ آب و هوا' || lower === 'آب و هوا' || lower === 'هوا') return 'weather';
+            return null;
+        }
+
+        function isThanks(text) {
+            const thanks = ['آفرین', 'براوو', 'احسنت', 'عالیی', 'مرسی', 'ممنون', 'دمت گرم', 'دستت درد نکنه', 'خوبه', 'قشنگ', 'زیبا',
+                'عالی', 'باحال', 'خفن', 'خوب', 'قشنگه', 'بی‌نظیر', 'محشر', 'خوشم اومد'
+            ];
+            for (const word of thanks) {
+                if (text.includes(word)) return true;
+            }
+            return false;
+        }
+
+        // ============================================================
+        //  تابع Levenshtein
+        // ============================================================
+        function levenshteinDistance(a, b) {
+            const matrix = [];
+            for (let i = 0; i <= b.length; i++) {
+                matrix[i] = [i];
+            }
+            for (let j = 0; j <= a.length; j++) {
+                matrix[0][j] = j;
+            }
+            for (let i = 1; i <= b.length; i++) {
+                for (let j = 1; j <= a.length; j++) {
+                    if (b[i - 1] === a[j - 1]) {
+                        matrix[i][j] = matrix[i - 1][j - 1];
+                    } else {
+                        matrix[i][j] = Math.min(
+                            matrix[i - 1][j - 1] + 1,
+                            matrix[i][j - 1] + 1,
+                            matrix[i - 1][j] + 1
+                        );
+                    }
+                }
+            }
+            return matrix[b.length][a.length];
+        }
+
+        // ============================================================
+        //  موتور پاسخگویی نهایی
+        // ============================================================
+        async function getReply(input) {
+            const text = input.trim();
+            if (!text) return `چیزی ننوشتی داداش! یه چیزی بپرس 😊`;
+
+            const lower = text.toLowerCase();
+
+            // ===== ۱. تشکر و تعریف =====
+            if (isThanks(text)) {
+                const thanksList = [
+                    '🙏 خواهش می‌کنم داداش! خوشحالم که کمک کردم.',
+                    '❤️ خواهش می‌کنم! هر وقت نیاز داشتی من اینجام.',
+                    '💙 خوشحالم که راضی هستی! بازم خوش اومدی.',
+                    '😊 خواهش می‌کنم! همیشه در خدمتم.',
+                    '🙌 ممنون از لطفت! هر وقت نیاز بود بگو.',
+                    '🔥 ممنون داداش! انرژی گرفتم ازت.',
+                    '💪 آفرین! تو هم خفنی!'
+                ];
+                return thanksList[Math.floor(Math.random() * thanksList.length)];
+            }
+
+            // ===== ۲. تحلیل احساسات =====
+            const sentiment = analyzeSentiment(text);
+
+            // ===== ۳. تشخیص حالت =====
+            const mode = isMathMode(text);
+            if (mode === 'math') {
+                return `
+              <div style="background:rgba(76,175,80,0.04); border:1px solid rgba(76,175,80,0.15); border-radius:10px; padding:12px 14px; margin-top:4px;">
+                <div style="color:#4caf50; font-weight:700; font-size:0.9rem; margin-bottom:4px;">
+                  🧮 حالت ریاضی فعاله!
+                </div>
+                <div style="color:#b0a99b; font-size:0.8rem; line-height:1.8;">
+                  📝 لطفاً فقط عدد یا عبارت ریاضی رو بنویسید<br>
+                  مثلاً: <strong style="color:#f5b042;">۲ + ۲</strong> یا <strong style="color:#f5b042;">sin(30)</strong>
+                </div>
+              </div>
+            `;
+            }
+
+            if (mode === 'weather') {
+                return `
+              <div style="background:rgba(33,150,243,0.04); border:1px solid rgba(33,150,243,0.15); border-radius:10px; padding:12px 14px; margin-top:4px;">
+                <div style="color:#2196f3; font-weight:700; font-size:0.9rem; margin-bottom:6px;">
+                  ☀️ به حالت آب و هوا خوش آمدید!
+                </div>
+                <div style="color:#b0a99b; font-size:0.8rem; line-height:1.8;">
+                  لطفاً اسم شهر یا کشور رو بگو 🌍
+                </div>
+              </div>
+            `;
+            }
+
+            // ===== ۴. تشخیص آب و هوا =====
+            if (lower.includes('آب و هوا') || lower.includes('آبوهوا') || lower.includes('هوای') || lower.includes('weather')) {
+                const cityMatch = text.match(/(?:آب و هوای|آبوهوای|هوای|آب و هوا|هوا|weather)\s*([^\s؟]+)/i);
+                if (cityMatch) {
+                    return await getWeather(cityMatch[1].trim());
+                }
+                const words = lower.split(/\s+/);
+                for (const word of words) {
+                    if (word.length > 2 && !['آب', 'هوا', 'و', 'weather'].includes(word)) {
+                        const result = await getWeather(word);
+                        if (!result.includes('پیدا نشد') && !result.includes('خطا')) return result;
+                    }
+                }
+                return `
+              <div style="background:rgba(33,150,243,0.04); border:1px solid rgba(33,150,243,0.15); border-radius:10px; padding:12px 14px; margin-top:4px;">
+                <div style="color:#2196f3; font-weight:700; font-size:0.9rem; margin-bottom:6px;">
+                  ☀️ به حالت آب و هوا خوش آمدید!
+                </div>
+                <div style="color:#b0a99b; font-size:0.8rem; line-height:1.8;">
+                  لطفاً اسم شهر یا کشور رو بگو 🌍
+                </div>
+              </div>
+            `;
+            }
+
+            // ===== ۵. حل ریاضی =====
+            const mathResult = solveMath(text);
+            if (mathResult) return mathResult;
+
+            // ===== ۶. پاسخ از دیکشنری =====
+            const keys = Object.keys(questionBank);
+            let foundKey = null;
+            let foundScore = 0;
+
+            for (const key of keys) {
+                if (lower === key || lower.includes(key) && key.length > 2) {
+                    foundKey = key;
+                    break;
+                }
+            }
+
+            if (!foundKey) {
+                for (const key of keys) {
+                    if (lower.includes(key) || key.includes(lower)) {
+                        if (key.length > foundScore) {
+                            foundScore = key.length;
+                            foundKey = key;
+                        }
+                    }
+                }
+            }
+
+            if (!foundKey) {
+                for (const key of keys) {
+                    const distance = levenshteinDistance(lower, key);
+                    if (distance <= 2) {
+                        foundKey = key;
+                        break;
+                    }
+                }
+            }
+
+            if (foundKey && questionBank[foundKey]) {
+                let reply = getRandomReply(questionBank[foundKey]);
+
+                // ===== سایت‌ها با کارت =====
+                if (foundKey === 'سایت' || foundKey === 'سایتا' || foundKey === 'چه سایت هایی' || foundKey === 'نمونه کار' ||
+                    foundKey === 'پروژه' || foundKey === 'وب سایت') {
+                    let siteReply =
+                        `<i class="fas fa-laptop-code"></i> <strong>سایت‌ها:</strong><br>`;
+                    data.sites.forEach(s => {
+                        siteReply += `
+                    <div class="site-card">
+                      <img class="site-img" src="${s.img}" onerror="this.style.display='none'">
+                      <div class="site-info">
+                        <div class="site-name">${s.name}</div>
+                        <div class="site-desc">${s.desc}</div>
+                      </div>
+                      <a href="${s.link}" target="_blank" class="site-link">
+                        <i class="fas fa-external-link-alt"></i> مشاهده
+                      </a>
+                    </div>
+                  `;
+                    });
+                    return siteReply;
+                }
+
+                // ===== طراحی‌ها =====
+                if (foundKey === 'طراحی' || foundKey === 'طراحیات' || foundKey === 'نمونه طراحی' ||
+                    foundKey === 'گرافیک' || foundKey === 'کار هنری') {
+                    let designReply = `<i class="fas fa-palette"></i> <strong>طراحی‌ها:</strong><br>`;
+                    data.designs.forEach(d => {
+                        designReply += `
+                    <div class="design-mini">
+                      <div class="d-icon"><i class="fas fa-paint-brush"></i></div>
+                      <div>
+                        <div class="d-name">${d.name}</div>
+                        <div class="d-desc">${d.desc}</div>
+                        <a href="${d.link}" target="_blank" class="d-link">
+                          <i class="fas fa-external-link-alt"></i> مشاهده
+                        </a>
+                      </div>
+                    </div>
+                  `;
+                    });
+                    return designReply;
+                }
+
+                // ===== مهارت‌ها =====
+                if (foundKey === 'مهارت' || foundKey === 'چه کارایی بلدی' || foundKey === 'تخصص' ||
+                    foundKey === 'چه چیزایی بلدی' || foundKey === 'توانایی' || foundKey === 'چه کاری بلدی') {
+                    let skillReply = `<i class="fas fa-code"></i> <strong>مهارت‌ها:</strong><br>`;
+                    data.skills.forEach(s => { skillReply += `🔹 ${s}<br>`; });
+                    return skillReply;
+                }
+
+                return reply;
+            }
+
+            // ===== ۷. پاسخ پیش‌فرض =====
+            const randomReplies = [
+                `🤖 <strong>MH Assistant</strong> - دستیار خودمونی تو<br><br>
+            📝 "<strong>${text}</strong>" رو خوندم.<br>
+            💭 احساس: ${sentiment}<br><br>
+            می‌تونی از اینا بپرسی:<br>
+            <span style="color:#f5b042;">سلام</span> • <span style="color:#f5b042;">کی هستی؟</span> • <span style="color:#f5b042;">سایت‌ها</span> • <span style="color:#f5b042;">طراحی‌ها</span> • <span style="color:#f5b042;">مهارت‌ها</span> • <span style="color:#f5b042;">ریاضی</span> • <span style="color:#f5b042;">آب و هوا</span><br><br>
+            <span style="color:#b0a99b;font-size:0.7rem;">💡 هر چی بپرسی، جواب میدم!</span>`,
+
+                `😊 <strong>MH Assistant</strong> اینجاست!<br><br>
+            سوال "<strong>${text}</strong>" رو گرفتم.<br>
+            💭 حالت: ${sentiment}<br><br>
+            🚀 می‌تونی سوالات جدید بپرسی یا از دکمه‌های پایین استفاده کنی!`,
+
+                `🌟 خوش اومدی به <strong>MH Assistant</strong>!<br><br>
+            "<strong>${text}</strong>" رو خوندیم.<br>
+            💭 احساس: ${sentiment}<br><br>
+            📌 سوالات پیشنهادی: سلام، کی هستی، سایت‌ها، طراحی‌ها، مهارت‌ها`
+            ];
+
+            return randomReplies[Math.floor(Math.random() * randomReplies.length)];
+        }
+
+        // ============================================================
+        //  جستجوی اینترنت
+        // ============================================================
+        async function searchWeb(query) {
+            try {
+                const response = await fetch(
+                    `https://fa.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&format=json`
+                );
+                const data = await response.json();
+
+                if (data.query && data.query.search && data.query.search.length > 0) {
+                    const firstResult = data.query.search[0];
+                    const pageId = firstResult.pageid;
+                    const summaryResponse = await fetch(
+                        `https://fa.wikipedia.org/w/api.php?action=query&prop=extracts&exintro=true&explaintext=true&pageids=${pageId}&format=json`
+                    );
+                    const summaryData = await summaryResponse.json();
+                    const extract = summaryData.query.pages[pageId].extract;
+
+                    return `
+                <div style="background:rgba(255,215,100,0.04); border:1px solid rgba(255,215,100,0.1); border-radius:10px; padding:10px 12px; margin-top:4px;">
+                  <div style="color:#f5b042; font-weight:700; font-size:0.85rem; margin-bottom:4px;">
+                    🔍 نتیجه جستجو برای "<strong>${query}</strong>":
+                  </div>
+                  <div style="color:#b0a99b; font-size:0.75rem; line-height:1.8;">
+                    ${extract.substring(0, 500)}${extract.length > 500 ? '...' : ''}
+                  </div>
+                  <a href="https://fa.wikipedia.org/wiki/${encodeURIComponent(firstResult.title)}" target="_blank" style="color:#f5b042; text-decoration:none; font-size:0.7rem; font-weight:600; display:inline-flex; align-items:center; gap:4px; margin-top:6px;">
+                    <i class="fas fa-external-link-alt"></i> ادامه مطلب در ویکی‌پدیا
+                  </a>
+                </div>
+              `;
+                } else {
+                    return `
+                <div style="background:rgba(255,152,0,0.04); border:1px solid rgba(255,152,0,0.15); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
+                  <div style="color:#ff9800; font-weight:700; font-size:0.9rem; margin-bottom:6px;">
+                    ⚠️ نتیجه‌ای پیدا نشد!
+                  </div>
+                  <div style="color:#b0a99b; font-size:0.8rem; line-height:1.8;">
+                    🛠️ مشکل سرچ در آپدیت‌های بعدی حل میشه 🙏
+                  </div>
+                  <div style="margin-top:8px;">
+                    <a href="https://www.google.com/search?q=${encodeURIComponent(query)}" target="_blank" style="color:#f5b042; text-decoration:none; font-size:0.7rem; border:1px solid rgba(245,176,66,0.15); padding:4px 14px; border-radius:40px;">
+                      <i class="fas fa-search"></i> جستجو در گوگل
+                    </a>
+                  </div>
+                </div>
+              `;
+                }
+            } catch (error) {
+                return `
+              <div style="background:rgba(255,107,107,0.04); border:1px solid rgba(255,107,107,0.15); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
+                <div style="color:#ff6b6b; font-weight:700; font-size:0.85rem; margin-bottom:6px;">
+                  ❌ خطا در اتصال به اینترنت!
+                </div>
+                <div style="color:#b0a99b; font-size:0.75rem; line-height:1.8;">
+                  لطفاً اتصال اینترنت خود را بررسی کن 🙏
+                </div>
+                <div style="margin-top:6px;">
+                  <a href="https://www.google.com/search?q=${encodeURIComponent(query)}" target="_blank" style="color:#f5b042; text-decoration:none; font-size:0.7rem; border:1px solid rgba(245,176,66,0.15); padding:2px 12px; border-radius:40px;">
+                    <i class="fas fa-search"></i> جستجوی مستقیم در گوگل
+                  </a>
+                </div>
+              </div>
+            `;
+            }
+        }
+
+        // ============================================================
+        //  توابع اصلی
+        // ============================================================
+        const messagesBox = document.getElementById('messagesBox');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const searchBtn = document.getElementById('searchBtn');
+        let isTyping = false;
+
+        function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text || isTyping) return;
+
+            addMessage('user', text);
+            userInput.value = '';
+            userInput.focus();
+
+            isTyping = true;
+            showTyping();
+
+            setTimeout(async () => {
+                hideTyping();
+                const reply = await getReply(text);
+                addMessage('bot', reply);
+                isTyping = false;
+                userInput.focus();
+            }, 400);
+        }
+
+        function searchMessage() {
+            const text = userInput.value.trim();
+            if (!text || isTyping) return;
+
+            const searchText = text;
+
+            addMessage('user', searchText);
+            userInput.value = '';
+
+            isTyping = true;
+            showTyping();
+
+            setTimeout(async () => {
+                hideTyping();
+                const reply = await searchWeb(searchText);
+                addMessage('bot', reply);
+                isTyping = false;
+                userInput.focus();
+            }, 500);
+        }
+
+        function askQuestion(text) {
+            userInput.value = text;
+            userInput.focus();
+            sendMessage();
+        }
+
+        function addMessage(type, content) {
+            const div = document.createElement('div');
+            div.className = `message ${type}`;
+
+            const avatar = document.createElement('div');
+            avatar.className = 'avatar';
+            avatar.innerHTML = type === 'bot' ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
+
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = content;
+
+            div.appendChild(avatar);
+            div.appendChild(bubble);
+            messagesBox.appendChild(div);
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
+
+        function showTyping() {
+            let typing = document.querySelector('.typing-indicator');
+            if (!typing) {
+                typing = document.createElement('div');
+                typing.className = 'typing-indicator';
+                typing.innerHTML = '<i class="fas fa-robot"></i> دارم فکر میکنم...';
+                messagesBox.appendChild(typing);
+            }
+            typing.classList.add('show');
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
+
+        function hideTyping() {
+            const typing = document.querySelector('.typing-indicator');
+            if (typing) typing.classList.remove('show');
+        }
+
+        sendBtn.onclick = function() { sendMessage(); };
+        searchBtn.onclick = function() { searchMessage(); };
+
+        userInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') { e.preventDefault();
+                sendMessage(); }
+        });
+
+        window.addEventListener('load', function() {
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+            setTimeout(() => userInput.focus(), 100);
+        });
+
+        document.addEventListener('click', function() {
+            setTimeout(() => userInput.focus(), 50);
+        });
     </script>
+
 </body>
-</html>
+    </html>
