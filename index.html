@@ -169,6 +169,54 @@
             letter-spacing: 1px;
         }
 
+        /* ===== دکمه‌های هدر ===== */
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .header-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            color: #d6d0c4;
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(4px);
+            cursor: pointer;
+        }
+
+        .header-btn i {
+            color: #f5b042;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .header-btn:hover {
+            background: rgba(255, 215, 100, 0.08);
+            border-color: rgba(255, 215, 100, 0.2);
+            transform: translateY(-2px) scale(1.04);
+            color: #f5efe6;
+        }
+
+        .header-btn:hover i {
+            transform: scale(1.1) rotate(-4deg);
+        }
+
+        .header-btn.active-btn {
+            background: rgba(255, 215, 100, 0.1);
+            border-color: rgba(255, 215, 100, 0.25);
+            color: #f5efe6;
+        }
+
         /* ========== دکمه همبرگر ========== */
         .hamburger {
             display: flex;
@@ -1963,6 +2011,18 @@
             .modal-content .modal-controls {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            /* دکمه‌های هدر ریسپانسیو */
+            .header-buttons {
+                gap: 0.4rem;
+            }
+            .header-btn {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.7rem;
+            }
+            .header-btn i {
+                font-size: 0.7rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -2081,6 +2141,19 @@
                 font-size: 0.8rem;
                 padding: 0.5rem 0.8rem;
             }
+
+            /* دکمه‌های هدر ریسپانسیو موبایل */
+            .header-btn span {
+                display: none;
+            }
+            .header-btn {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.7rem;
+            }
+            .header-btn i {
+                font-size: 0.9rem;
+                margin: 0;
+            }
         }
     </style>
 </head>
@@ -2097,10 +2170,20 @@
                     <span class="brand-sub">Portfolio</span>
                 </div>
             </div>
-            <div class="hamburger" id="hamburgerBtn">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <!-- ===== دکمه‌های هدر (اضافه شد) ===== -->
+            <div class="header-buttons">
+                <a href="#" data-tab="about" class="header-btn" onclick="switchTab('about')">
+                    <i class="fas fa-user-astronaut"></i> <span>درباره من</span>
+                </a>
+                <a href="#" data-tab="design" class="header-btn" onclick="switchTab('design')">
+                    <i class="fas fa-palette"></i> <span>طراحی</span>
+                </a>
+                <div class="hamburger" id="hamburgerBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </header>
 
@@ -2545,6 +2628,16 @@
                 });
             });
 
+            // ===== هایلایت دکمه‌های هدر =====
+            function updateHeaderButtons(tabId) {
+                document.querySelectorAll('.header-btn').forEach(btn => {
+                    btn.classList.remove('active-btn');
+                    if (btn.dataset.tab === tabId) {
+                        btn.classList.add('active-btn');
+                    }
+                });
+            }
+
             window.activateTab = function(tabId) {
                 tabContents.forEach(content => content.classList.remove('active'));
                 const target = document.getElementById(tabId);
@@ -2552,6 +2645,9 @@
                 navLinks.forEach(link => link.classList.remove('active'));
                 const activeLink = document.querySelector(`#navMenu a[data-tab="${tabId}"]`);
                 if (activeLink) activeLink.classList.add('active');
+
+                // هایلایت دکمه‌های هدر
+                updateHeaderButtons(tabId);
             };
 
             const hash = window.location.hash.replace('#', '');
@@ -2798,7 +2894,7 @@
         // ===== نوتیفیکیشن (۸ ثانیه) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '2.7.0';
+            const APP_VERSION = '2.7.1';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
