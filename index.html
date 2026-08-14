@@ -607,7 +607,7 @@
             justify-content: space-between;
             gap: 1rem;
             flex-wrap: wrap;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .nava-title {
@@ -625,38 +625,77 @@
         .nava-title i {
             color: #f5b042;
             margin-left: 0.5rem;
-            animation: heartBeat 2s ease-in-out infinite;
-        }
-
-        @keyframes heartBeat {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            15% {
-                transform: scale(1.25);
-            }
-            30% {
-                transform: scale(1);
-            }
-            45% {
-                transform: scale(1.15);
-            }
-            60% {
-                transform: scale(1);
-            }
         }
 
         .nava-artist {
             font-family: 'Vazirmatn', sans-serif;
             font-size: 0.95rem;
             color: #b0a99b;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.3rem;
         }
 
         .nava-artist i {
             color: #f5b042;
             margin-left: 0.3rem;
+        }
+
+        /* ===== دکمه توضیحات کشویی ===== */
+        .nava-toggle-details {
+            background: none;
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            color: #f5b042;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nava-toggle-details:hover {
+            background: rgba(255, 215, 100, 0.08);
+            border-color: #f5b042;
+            transform: scale(1.04);
+        }
+
+        .nava-toggle-details i {
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nava-toggle-details.open i {
+            transform: rotate(180deg);
+        }
+
+        .nava-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, margin 0.3s ease;
+            opacity: 0;
+            margin: 0;
+        }
+
+        .nava-details.open {
+            max-height: 200px;
+            opacity: 1;
+            margin: 0.5rem 0 0.8rem 0;
+        }
+
+        .nava-details p {
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 0.95rem;
+            color: #b0a99b;
+            margin: 0.2rem 0;
+            line-height: 1.8;
+        }
+
+        .nava-details p i {
+            color: #f5b042;
+            margin-left: 0.3rem;
+            width: 1.5rem;
         }
 
         /* ===== پخش‌کننده موسیقی ===== */
@@ -706,7 +745,7 @@
 
         .nava-progress-fill {
             height: 100%;
-            width: 45%;
+            width: 0%;
             background: linear-gradient(90deg, #f5b042, #d48f2b);
             border-radius: 10px;
             transition: width 0.1s ease;
@@ -788,7 +827,7 @@
             box-shadow: 0 0 30px rgba(245, 176, 66, 0.1);
         }
 
-        /* ===== دکمه‌های پایین کارت ===== */
+        /* ===== دکمه دانلود ===== */
         .nava-actions {
             display: flex;
             align-items: center;
@@ -799,26 +838,27 @@
             border-top: 1px solid rgba(255, 215, 100, 0.06);
         }
 
-        .nava-actions .action-btn {
+        .nava-actions .download-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.4rem 1.2rem;
+            padding: 0.4rem 1.5rem;
             border-radius: 40px;
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 600;
             font-size: 0.9rem;
             text-decoration: none;
             transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid rgba(255, 215, 100, 0.12);
+            border: 1px solid rgba(52, 152, 219, 0.15);
             background: rgba(255, 255, 255, 0.03);
             color: #d6d0c4;
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            margin-right: auto;
         }
 
-        .nava-actions .action-btn::before {
+        .nava-actions .download-btn::before {
             content: '';
             position: absolute;
             top: 0;
@@ -830,92 +870,24 @@
             border-radius: 40px;
         }
 
-        .nava-actions .action-btn:hover::before {
+        .nava-actions .download-btn:hover::before {
             width: 100%;
-        }
-
-        .nava-actions .action-btn:hover {
-            border-color: rgba(255, 215, 100, 0.25);
-            transform: translateY(-2px) scale(1.03);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .nava-actions .action-btn i {
-            font-size: 1rem;
-            color: #f5b042;
-            transition: 0.3s;
-        }
-
-        .nava-actions .action-btn:hover i {
-            transform: scale(1.1);
-        }
-
-        /* دکمه لایک و دیسلایک با حالت فعال */
-        .nava-actions .like-btn {
-            border-color: rgba(46, 204, 113, 0.15);
-        }
-
-        .nava-actions .like-btn i {
-            color: #2ecc71;
-        }
-
-        .nava-actions .like-btn.liked {
-            background: rgba(46, 204, 113, 0.08);
-            border-color: rgba(46, 204, 113, 0.3);
-        }
-
-        .nava-actions .like-btn.liked i {
-            animation: likePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes likePop {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.4);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .nava-actions .dislike-btn {
-            border-color: rgba(231, 76, 60, 0.15);
-        }
-
-        .nava-actions .dislike-btn i {
-            color: #e74c3c;
-        }
-
-        .nava-actions .dislike-btn.disliked {
-            background: rgba(231, 76, 60, 0.08);
-            border-color: rgba(231, 76, 60, 0.3);
-        }
-
-        .nava-actions .dislike-btn.disliked i {
-            animation: likePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .nava-actions .download-btn {
-            border-color: rgba(52, 152, 219, 0.15);
-            margin-right: auto;
-        }
-
-        .nava-actions .download-btn i {
-            color: #3498db;
         }
 
         .nava-actions .download-btn:hover {
             border-color: rgba(52, 152, 219, 0.3);
+            transform: translateY(-2px) scale(1.03);
             background: rgba(52, 152, 219, 0.05);
         }
 
-        .nava-actions .action-count {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.8rem;
-            color: #b0a99b;
-            font-weight: 400;
+        .nava-actions .download-btn i {
+            font-size: 1rem;
+            color: #3498db;
+            transition: 0.3s;
+        }
+
+        .nava-actions .download-btn:hover i {
+            transform: scale(1.1);
         }
 
         /* ===== کارت‌های خانه ===== */
@@ -1568,7 +1540,6 @@
         .design-card-new .design-title i {
             color: #f5b042;
             margin-left: 0.5rem;
-            animation: heartBeat 2s ease-in-out infinite;
         }
 
         .design-card-new .toggle-details {
@@ -1604,7 +1575,7 @@
         .design-card-new .design-details {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, margin 0.3s ease;
+            transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, margin 0.3s ease;
             opacity: 0;
             margin: 0;
         }
@@ -2366,11 +2337,11 @@
                 height: 40px;
                 font-size: 1.2rem;
             }
-            .nava-actions .action-btn {
+            .nava-actions .download-btn {
                 padding: 0.3rem 0.8rem;
                 font-size: 0.8rem;
             }
-            .nava-actions .action-btn i {
+            .nava-actions .download-btn i {
                 font-size: 0.8rem;
             }
         }
@@ -2514,21 +2485,12 @@
                 font-size: 0.6rem;
                 min-width: 28px;
             }
-            .nava-actions {
-                gap: 0.6rem;
-            }
-            .nava-actions .action-btn {
+            .nava-actions .download-btn {
                 padding: 0.2rem 0.6rem;
                 font-size: 0.7rem;
             }
-            .nava-actions .action-btn i {
+            .nava-actions .download-btn i {
                 font-size: 0.7rem;
-            }
-            .nava-actions .download-btn {
-                margin-right: 0;
-            }
-            .nava-actions .action-count {
-                font-size: 0.65rem;
             }
         }
     </style>
@@ -2874,32 +2836,38 @@
                 <h2><i class="fas fa-headphones" style="color:#f5b042; margin-left:0.8rem;"></i> نوا</h2>
                 <p style="margin-bottom:1.5rem;">آهنگ‌ها و موسیقی‌های مورد علاقه:</p>
 
-                <!-- کارت نوا ۱ -->
+                <!-- کارت نوا -->
                 <div class="nava-card">
                     <div class="nava-image">
-                        <img src="https://uploadkon.ir/uploads/511301_26Zerox-۱۲۱۲.jpg" alt="کاور آلبوم" />
+                        <img src="https://up.20script.ir/file/eebc-SAVE-۲۰۲۶۰۸۱۴-۱۷۴۹۵۲.jpg" alt="کاور نماهنگ رقیه جان" />
                     </div>
                     <div class="nava-header">
-                        <h3 class="nava-title"><i class="fas fa-music"></i> نام آهنگ</h3>
+                        <h3 class="nava-title"><i class="fas fa-music"></i> نماهنگ | رقیــه جان</h3>
+                        <button class="nava-toggle-details" onclick="toggleNavaDetails(this)">
+                            <span>توضیحات</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
-                    <div class="nava-artist">
-                        <i class="fas fa-user-astronaut"></i> نام خواننده
+                    <div class="nava-details" id="navaDetails">
+                        <p><i class="fas fa-microphone"></i> مداح: کربلایی سید علی صفاتی</p>
+                        <p><i class="fas fa-sliders-h"></i> تنظیم میکس: محمد حسین صنعتی</p>
                     </div>
 
                     <!-- پخش‌کننده -->
                     <div class="nava-player">
+                        <audio id="navaAudio" src="https://up.20script.ir/do.php?filename=e322-لباست.mp3"></audio>
                         <div class="nava-progress-wrap">
-                            <span class="nava-time" id="currentTime1">1:24</span>
-                            <div class="nava-progress-bar" id="progressBar1">
-                                <div class="nava-progress-fill" id="progressFill1" style="width:45%;"></div>
+                            <span class="nava-time" id="currentTime">0:00</span>
+                            <div class="nava-progress-bar" id="progressBar">
+                                <div class="nava-progress-fill" id="progressFill"></div>
                             </div>
-                            <span class="nava-time" id="duration1">3:42</span>
+                            <span class="nava-time" id="duration">0:00</span>
                         </div>
                         <div class="nava-controls">
                             <button onclick="prevTrack()" aria-label="قبلی">
                                 <i class="fas fa-step-backward"></i>
                             </button>
-                            <button class="nava-play-btn" id="playBtn1" onclick="togglePlay(1)" aria-label="پخش/توقف">
+                            <button class="nava-play-btn" id="playBtn" onclick="togglePlay()" aria-label="پخش/توقف">
                                 <i class="fas fa-play"></i>
                             </button>
                             <button onclick="nextTrack()" aria-label="بعدی">
@@ -2908,118 +2876,12 @@
                         </div>
                     </div>
 
-                    <!-- دکمه‌های پایین -->
+                    <!-- دکمه دانلود -->
                     <div class="nava-actions">
-                        <button class="action-btn like-btn" onclick="toggleLike(this)">
-                            <i class="fas fa-thumbs-up"></i>
-                            <span class="action-count">۱۲</span>
-                        </button>
-                        <button class="action-btn dislike-btn" onclick="toggleDislike(this)">
-                            <i class="fas fa-thumbs-down"></i>
-                            <span class="action-count">۳</span>
-                        </button>
-                        <button class="action-btn download-btn" onclick="downloadTrack(this)">
+                        <a class="download-btn" href="https://up.20script.ir/do.php?filename=e322-لباست.mp3" download target="_blank">
                             <i class="fas fa-download"></i>
-                            <span>دانلود</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- کارت نوا ۲ -->
-                <div class="nava-card">
-                    <div class="nava-image">
-                        <img src="https://uploadkon.ir/uploads/481d01_26call-food-۱۲۱۲۳.jpg" alt="کاور آلبوم" />
-                    </div>
-                    <div class="nava-header">
-                        <h3 class="nava-title"><i class="fas fa-music"></i> آهنگ دوم</h3>
-                    </div>
-                    <div class="nava-artist">
-                        <i class="fas fa-user-astronaut"></i> خواننده دوم
-                    </div>
-
-                    <div class="nava-player">
-                        <div class="nava-progress-wrap">
-                            <span class="nava-time" id="currentTime2">0:32</span>
-                            <div class="nava-progress-bar" id="progressBar2">
-                                <div class="nava-progress-fill" id="progressFill2" style="width:12%;"></div>
-                            </div>
-                            <span class="nava-time" id="duration2">4:15</span>
-                        </div>
-                        <div class="nava-controls">
-                            <button onclick="prevTrack()" aria-label="قبلی">
-                                <i class="fas fa-step-backward"></i>
-                            </button>
-                            <button class="nava-play-btn" id="playBtn2" onclick="togglePlay(2)" aria-label="پخش/توقف">
-                                <i class="fas fa-play"></i>
-                            </button>
-                            <button onclick="nextTrack()" aria-label="بعدی">
-                                <i class="fas fa-step-forward"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="nava-actions">
-                        <button class="action-btn like-btn" onclick="toggleLike(this)">
-                            <i class="fas fa-thumbs-up"></i>
-                            <span class="action-count">۸</span>
-                        </button>
-                        <button class="action-btn dislike-btn" onclick="toggleDislike(this)">
-                            <i class="fas fa-thumbs-down"></i>
-                            <span class="action-count">۱</span>
-                        </button>
-                        <button class="action-btn download-btn" onclick="downloadTrack(this)">
-                            <i class="fas fa-download"></i>
-                            <span>دانلود</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- کارت نوا ۳ -->
-                <div class="nava-card">
-                    <div class="nava-image">
-                        <img src="https://uploadkon.ir/uploads/d66b01_26Kourosh-Gameir۱۲.jpg" alt="کاور آلبوم" />
-                    </div>
-                    <div class="nava-header">
-                        <h3 class="nava-title"><i class="fas fa-music"></i> آهنگ سوم</h3>
-                    </div>
-                    <div class="nava-artist">
-                        <i class="fas fa-user-astronaut"></i> خواننده سوم
-                    </div>
-
-                    <div class="nava-player">
-                        <div class="nava-progress-wrap">
-                            <span class="nava-time" id="currentTime3">2:01</span>
-                            <div class="nava-progress-bar" id="progressBar3">
-                                <div class="nava-progress-fill" id="progressFill3" style="width:68%;"></div>
-                            </div>
-                            <span class="nava-time" id="duration3">2:58</span>
-                        </div>
-                        <div class="nava-controls">
-                            <button onclick="prevTrack()" aria-label="قبلی">
-                                <i class="fas fa-step-backward"></i>
-                            </button>
-                            <button class="nava-play-btn" id="playBtn3" onclick="togglePlay(3)" aria-label="پخش/توقف">
-                                <i class="fas fa-play"></i>
-                            </button>
-                            <button onclick="nextTrack()" aria-label="بعدی">
-                                <i class="fas fa-step-forward"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="nava-actions">
-                        <button class="action-btn like-btn" onclick="toggleLike(this)">
-                            <i class="fas fa-thumbs-up"></i>
-                            <span class="action-count">۲۵</span>
-                        </button>
-                        <button class="action-btn dislike-btn" onclick="toggleDislike(this)">
-                            <i class="fas fa-thumbs-down"></i>
-                            <span class="action-count">۵</span>
-                        </button>
-                        <button class="action-btn download-btn" onclick="downloadTrack(this)">
-                            <i class="fas fa-download"></i>
-                            <span>دانلود</span>
-                        </button>
+                            <span>دانلود آهنگ</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -3062,9 +2924,8 @@
             <ul>
                 <li><i class="fas fa-image"></i> اضافه شدن اثر "در حسرت کربلا..."</li>
                 <li><i class="fas fa-robot"></i> دستیار هوش مصنوعی</li>
-                <li><i class="fas fa-paint-brush"></i> بازطراحی بخش VOD</li>
-                <li><i class="fas fa-gamepad"></i> سایت کوروش گیم</li>
                 <li><i class="fas fa-headphones"></i> بخش جدید "نوا" با پخش‌کننده موسیقی</li>
+                <li><i class="fas fa-music"></i> نماهنگ "رقیــه جان" با صدای کربلایی سید علی صفاتی</li>
             </ul>
         </div>
     </div>
@@ -3251,7 +3112,7 @@
             }, 5000);
         });
 
-        // ===== توضیحات بیشتر (کشویی) =====
+        // ===== توضیحات بیشتر طراحی (کشویی) =====
         function toggleDetails(btn) {
             const card = btn.closest('.design-card-new');
             const details = card.querySelector('.design-details');
@@ -3266,101 +3127,96 @@
             }
         }
 
-        // ============================================
-        // توابع پخش‌کننده موسیقی
-        // ============================================
+        // ===== توضیحات نوا (کشویی) =====
+        function toggleNavaDetails(btn) {
+            const card = btn.closest('.nava-card');
+            const details = card.querySelector('.nava-details');
 
-        let isPlaying = {};
+            details.classList.toggle('open');
+            btn.classList.toggle('open');
 
-        function togglePlay(id) {
-            const btn = document.getElementById(`playBtn${id}`);
-            const icon = btn.querySelector('i');
-
-            if (isPlaying[id]) {
-                icon.className = 'fas fa-play';
-                btn.classList.remove('playing');
-                isPlaying[id] = false;
+            if (details.classList.contains('open')) {
+                btn.innerHTML = 'بستن توضیحات <i class="fas fa-chevron-up"></i>';
             } else {
-                // stop all others
-                for (let key in isPlaying) {
-                    if (isPlaying[key]) {
-                        const otherBtn = document.getElementById(`playBtn${key}`);
-                        otherBtn.querySelector('i').className = 'fas fa-play';
-                        otherBtn.classList.remove('playing');
-                        isPlaying[key] = false;
-                    }
-                }
-                icon.className = 'fas fa-pause';
-                btn.classList.add('playing');
-                isPlaying[id] = true;
+                btn.innerHTML = 'توضیحات <i class="fas fa-chevron-down"></i>';
             }
         }
 
+        // ============================================
+        // پخش‌کننده موسیقی (درست شده)
+        // ============================================
+
+        const audio = document.getElementById('navaAudio');
+        const playBtn = document.getElementById('playBtn');
+        const progressFill = document.getElementById('progressFill');
+        const progressBar = document.getElementById('progressBar');
+        const currentTimeSpan = document.getElementById('currentTime');
+        const durationSpan = document.getElementById('duration');
+        let isPlaying = false;
+
+        // بارگذاری metadata
+        audio.addEventListener('loadedmetadata', function() {
+            durationSpan.textContent = formatTime(audio.duration);
+        });
+
+        // به‌روزرسانی نوار پیشرفت
+        audio.addEventListener('timeupdate', function() {
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progressFill.style.width = percent + '%';
+            currentTimeSpan.textContent = formatTime(audio.currentTime);
+        });
+
+        // پایان آهنگ
+        audio.addEventListener('ended', function() {
+            isPlaying = false;
+            playBtn.querySelector('i').className = 'fas fa-play';
+            playBtn.classList.remove('playing');
+            progressFill.style.width = '0%';
+            currentTimeSpan.textContent = '0:00';
+        });
+
+        // فرمت زمان
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        // پخش/توقف
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playBtn.querySelector('i').className = 'fas fa-play';
+                playBtn.classList.remove('playing');
+                isPlaying = false;
+            } else {
+                audio.play();
+                playBtn.querySelector('i').className = 'fas fa-pause';
+                playBtn.classList.add('playing');
+                isPlaying = true;
+            }
+        }
+
+        // کلیک روی نوار پیشرفت
+        progressBar.addEventListener('click', function(e) {
+            const rect = this.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = percent * audio.duration;
+            progressFill.style.width = (percent * 100) + '%';
+        });
+
+        // دکمه قبلی/بعدی (شبیه‌سازی)
         function prevTrack() {
-            // شبیه‌سازی رفتن به ترک قبلی
-            alert('🎵 رفتن به ترک قبلی');
+            audio.currentTime = 0;
+            progressFill.style.width = '0%';
+            currentTimeSpan.textContent = '0:00';
         }
 
         function nextTrack() {
-            alert('🎵 رفتن به ترک بعدی');
-        }
-
-        // ===== لایک و دیسلایک =====
-        function toggleLike(btn) {
-            btn.classList.toggle('liked');
-            const countSpan = btn.querySelector('.action-count');
-            let count = parseInt(countSpan.textContent);
-            if (btn.classList.contains('liked')) {
-                count++;
-                countSpan.textContent = count;
-                // انیمیشن
-                btn.querySelector('i').style.animation = 'none';
-                setTimeout(() => {
-                    btn.querySelector('i').style.animation = 'likePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                }, 10);
-            } else {
-                count--;
-                countSpan.textContent = count;
-            }
-        }
-
-        function toggleDislike(btn) {
-            btn.classList.toggle('disliked');
-            const countSpan = btn.querySelector('.action-count');
-            let count = parseInt(countSpan.textContent);
-            if (btn.classList.contains('disliked')) {
-                count++;
-                countSpan.textContent = count;
-                btn.querySelector('i').style.animation = 'none';
-                setTimeout(() => {
-                    btn.querySelector('i').style.animation = 'likePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                }, 10);
-            } else {
-                count--;
-                countSpan.textContent = count;
-            }
-        }
-
-        // ===== دانلود =====
-        function downloadTrack(btn) {
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> در حال دانلود...';
-            btn.style.opacity = '0.7';
-            btn.style.pointerEvents = 'none';
-
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> دانلود شد!';
-                btn.style.borderColor = '#2ecc71';
-                btn.style.background = 'rgba(46,204,113,0.08)';
-
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.opacity = '1';
-                    btn.style.pointerEvents = 'auto';
-                    btn.style.borderColor = '';
-                    btn.style.background = '';
-                }, 2000);
-            }, 1500);
+            audio.currentTime = 0;
+            progressFill.style.width = '0%';
+            currentTimeSpan.textContent = '0:00';
         }
 
         // ===== مودال =====
@@ -3497,7 +3353,7 @@
         // ===== نوتیفیکیشن (۸ ثانیه) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '2.9.0';
+            const APP_VERSION = '3.0.0';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
@@ -3515,24 +3371,6 @@
             } else {
                 notif.style.display = 'none';
             }
-        });
-
-        // ===== کلیک روی نوار پیشرفت (شبیه‌سازی) =====
-        document.querySelectorAll('.nava-progress-bar').forEach(bar => {
-            bar.addEventListener('click', function(e) {
-                const rect = this.getBoundingClientRect();
-                const percent = (e.clientX - rect.left) / rect.width * 100;
-                const fill = this.querySelector('.nava-progress-fill');
-                fill.style.width = Math.min(100, Math.max(0, percent)) + '%';
-
-                // به‌روزرسانی زمان (شبیه‌سازی)
-                const timeSpan = this.parentElement.querySelector('.nava-time:first-child');
-                const totalSec = 222; // 3:42
-                const newSec = Math.floor((percent / 100) * totalSec);
-                const min = Math.floor(newSec / 60);
-                const sec = newSec % 60;
-                timeSpan.textContent = `${min}:${sec.toString().padStart(2, '0')}`;
-            });
         });
     </script>
 
