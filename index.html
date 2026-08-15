@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zerox | صفحه اصلی</title>
-    <!-- فونت وزیرمتن -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <!-- فونت آوسام ۶ -->
+    <title>Zerox | پلتفرم ویدیو</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -14,85 +12,78 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background: #0f0f0f;
-            color: #fff;
-            overflow-x: hidden;
-        }
-        /* ===== اسکرول بار سفارشی ===== */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #ff0033, #ff6600);
-            border-radius: 10px;
+            background: #f9f9f9;
+            color: #0f0f0f;
+            direction: rtl;
         }
 
-        /* ===== هدر با گرادیانت ===== */
+        /* ===== هدر ===== */
         .header {
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a0a0a 50%, #0f0f0f 100%);
-            padding: 14px 30px;
+            background: #fff;
+            padding: 10px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 2px solid;
-            border-image: linear-gradient(90deg, #ff0033, #ff6600, #ffcc00) 1;
+            border-bottom: 1px solid #ddd;
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            flex-wrap: wrap;
+            gap: 10px;
         }
+
         .header-left {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
         }
-        .menu-icon {
-            font-size: 24px;
+
+        .menu-toggle {
+            font-size: 22px;
+            color: #606060;
             cursor: pointer;
-            color: #fff;
             transition: 0.3s;
         }
-        .menu-icon:hover {
-            color: #ff6600;
-            transform: rotate(90deg);
+
+        .menu-toggle:hover {
+            color: #ff0000;
         }
+
         .logo {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
-            background: linear-gradient(135deg, #ff0033, #ff6600, #ffcc00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
+            color: #ff0000;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
         }
+
         .logo i {
-            background: linear-gradient(135deg, #ff0033, #ff6600);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             font-size: 30px;
         }
+
         .search-box {
             display: flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 6px 18px;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
             border-radius: 40px;
-            width: 45%;
+            padding: 2px 16px;
+            flex: 1;
             max-width: 600px;
+            min-width: 180px;
             transition: 0.3s;
-            backdrop-filter: blur(5px);
         }
+
         .search-box:focus-within {
-            border-color: #ff6600;
-            box-shadow: 0 0 20px rgba(255, 102, 0, 0.2);
+            border-color: #ff0000;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
         }
+
         .search-box input {
             flex: 1;
             border: none;
@@ -100,112 +91,139 @@
             padding: 10px 0;
             font-family: 'Vazirmatn', sans-serif;
             font-size: 15px;
-            color: #fff;
             outline: none;
+            color: #0f0f0f;
         }
+
         .search-box input::placeholder {
             color: #888;
         }
+
         .search-box i {
-            color: #aaa;
+            color: #606060;
             font-size: 18px;
-            margin: 0 6px;
             cursor: pointer;
+            padding: 8px 4px;
             transition: 0.3s;
         }
+
         .search-box i:hover {
-            color: #ff6600;
+            color: #ff0000;
         }
+
         .header-icons {
             display: flex;
-            gap: 22px;
+            align-items: center;
+            gap: 18px;
             font-size: 22px;
-            color: #ddd;
+            color: #606060;
         }
+
         .header-icons i {
             cursor: pointer;
             transition: 0.3s;
             position: relative;
         }
+
         .header-icons i:hover {
-            color: #ff6600;
-            transform: scale(1.1);
+            color: #ff0000;
         }
+
         .badge {
             position: absolute;
             top: -8px;
             right: -8px;
-            background: #ff0033;
+            background: #ff0000;
             color: #fff;
             font-size: 10px;
             padding: 2px 6px;
             border-radius: 50%;
             font-weight: 700;
         }
+
         .avatar {
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ff0033, #ff6600);
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
+            font-size: 14px;
             cursor: pointer;
-            border: 2px solid #ff6600;
+            transition: 0.3s;
+        }
+
+        .avatar:hover {
+            transform: scale(1.1);
         }
 
         /* ===== بدنه ===== */
-        .body-container {
+        .container {
             display: flex;
             max-width: 100%;
-            min-height: 100vh;
+            min-height: calc(100vh - 70px);
         }
 
-        /* ===== سایدبار با گرادیانت ===== */
+        /* ===== سایدبار ===== */
         .sidebar {
             width: 240px;
-            background: linear-gradient(180deg, #0f0f0f 0%, #1a0a0a 100%);
-            padding: 20px 12px;
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            background: #fff;
+            padding: 12px 8px;
+            height: calc(100vh - 70px);
             position: sticky;
-            top: 74px;
-            height: calc(100vh - 74px);
+            top: 70px;
             overflow-y: auto;
+            border-left: 1px solid #e5e5e5;
             flex-shrink: 0;
+            transition: 0.3s;
         }
+
+        .sidebar.closed {
+            width: 0;
+            padding: 0;
+            overflow: hidden;
+            border: none;
+        }
+
         .sidebar-item {
             display: flex;
             align-items: center;
             gap: 16px;
-            padding: 12px 16px;
-            border-radius: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: 0.3s;
-            color: #aaa;
-            font-size: 15px;
+            color: #606060;
+            font-size: 14px;
+            transition: 0.2s;
             margin-bottom: 2px;
         }
+
         .sidebar-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
+            background: #f0f0f0;
         }
+
         .sidebar-item.active {
-            background: linear-gradient(135deg, rgba(255, 0, 51, 0.2), rgba(255, 102, 0, 0.2));
-            color: #ff6600;
-            border-right: 3px solid #ff6600;
+            background: #f0f0f0;
+            color: #ff0000;
+            font-weight: 700;
         }
+
         .sidebar-item i {
-            width: 24px;
-            font-size: 20px;
+            width: 22px;
+            font-size: 18px;
         }
+
         .sidebar-divider {
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 102, 0, 0.3), transparent);
+            background: #e5e5e5;
             margin: 12px 16px;
         }
+
         .sidebar-label {
-            color: #666;
+            color: #888;
             font-size: 13px;
             padding: 8px 16px;
             font-weight: 700;
@@ -215,11 +233,10 @@
         .main-content {
             flex: 1;
             padding: 24px 30px;
-            background: radial-gradient(ellipse at top, #1a0a0a, #0f0f0f);
-            min-height: 100vh;
+            background: #f9f9f9;
         }
 
-        /* ===== بخش دسته‌بندی (چیپس‌ها) ===== */
+        /* ===== چیپس‌ها ===== */
         .chips {
             display: flex;
             gap: 12px;
@@ -228,78 +245,84 @@
             margin-bottom: 24px;
             scrollbar-width: none;
         }
+
         .chips::-webkit-scrollbar {
             display: none;
         }
+
         .chip {
             padding: 8px 20px;
             border-radius: 30px;
-            background: rgba(255, 255, 255, 0.08);
-            color: #ddd;
+            background: #f0f0f0;
+            color: #0f0f0f;
             font-size: 14px;
             white-space: nowrap;
             cursor: pointer;
             transition: 0.3s;
-            border: 1px solid transparent;
+            border: 1px solid #ddd;
+            font-family: 'Vazirmatn', sans-serif;
         }
+
         .chip:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: #e0e0e0;
         }
+
         .chip.active {
-            background: linear-gradient(135deg, #ff0033, #ff6600);
+            background: #0f0f0f;
             color: #fff;
-            font-weight: 700;
+            border-color: #0f0f0f;
         }
 
         /* ===== گرید ویدیوها ===== */
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
         }
+
         .video-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
+            background: #fff;
+            border-radius: 12px;
             overflow: hidden;
-            transition: 0.4s;
             cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
+
         .video-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(255, 102, 0, 0.3);
-            box-shadow: 0 20px 60px rgba(255, 0, 51, 0.2);
-            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
+
         .video-thumb {
             position: relative;
             aspect-ratio: 16/9;
             overflow: hidden;
-            background: #1a1a1a;
+            background: #000;
         }
-        .video-thumb img {
+
+        .video-thumb video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.5s;
         }
-        .video-card:hover .video-thumb img {
-            transform: scale(1.05);
-        }
+
         .video-duration {
             position: absolute;
             bottom: 10px;
             right: 10px;
             background: rgba(0,0,0,0.8);
             padding: 3px 10px;
-            border-radius: 6px;
+            border-radius: 4px;
             font-size: 13px;
             font-weight: 700;
-            backdrop-filter: blur(5px);
+            color: #fff;
         }
+
         .video-info {
             padding: 14px 16px;
         }
+
         .video-title {
             font-size: 16px;
             font-weight: 700;
@@ -309,83 +332,195 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
+
         .video-channel {
             display: flex;
             align-items: center;
             gap: 10px;
             margin-top: 10px;
-            color: #aaa;
+            color: #606060;
             font-size: 14px;
         }
+
         .video-channel .ch-avatar {
             width: 28px;
             height: 28px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ff0033, #ff6600);
+            background: linear-gradient(135deg, #ff0000, #cc0000);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 12px;
             font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
         }
+
         .video-meta {
-            color: #777;
+            color: #888;
             font-size: 13px;
             margin-top: 4px;
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-        .video-meta i {
-            font-size: 4px;
-            color: #555;
+            gap: 6px;
         }
 
-        /* ===== بنر تبلیغاتی با گرادیانت ===== */
-        .promo-banner {
-            background: linear-gradient(135deg, #ff0033, #ff6600, #ffcc00);
-            border-radius: 20px;
-            padding: 30px 40px;
-            margin-bottom: 30px;
+        .video-meta i {
+            font-size: 3px;
+            color: #aaa;
+        }
+
+        /* ===== مودال پخش ویدیو ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            padding: 40px 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #fff;
+            border-radius: 16px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-            box-shadow: 0 10px 40px rgba(255, 0, 51, 0.3);
+            justify-content: center;
+            transition: 0.3s;
+            z-index: 10;
+            border: none;
         }
-        .promo-banner h2 {
-            font-size: 28px;
-            font-weight: 900;
+
+        .modal-close:hover {
+            background: #ff0000;
+            transform: rotate(90deg);
         }
-        .promo-banner p {
-            opacity: 0.9;
-            font-size: 16px;
+
+        .modal-video {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
         }
-        .promo-btn {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.3);
-            padding: 12px 30px;
-            border-radius: 40px;
-            color: #fff;
+
+        .modal-video video {
+            width: 100%;
+            height: 100%;
+        }
+
+        .modal-info {
+            padding: 24px;
+        }
+
+        .modal-title {
+            font-size: 22px;
             font-weight: 700;
-            font-size: 16px;
+        }
+
+        .modal-channel {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .modal-channel .ch-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: none;
+            background: #f0f0f0;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
             cursor: pointer;
             transition: 0.3s;
-            font-family: 'Vazirmatn', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .promo-btn:hover {
-            background: #fff;
-            color: #ff0033;
-            transform: scale(1.05);
+
+        .modal-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .modal-btn.like {
+            background: #ff0000;
+            color: #fff;
+        }
+
+        .modal-btn.like:hover {
+            background: #cc0000;
+        }
+
+        .modal-btn i {
+            font-size: 18px;
+        }
+
+        /* ===== فوتر ===== */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #e5e5e5;
+            margin-top: 30px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        .footer i {
+            color: #ff0000;
         }
 
         /* ===== ریسپانسیو ===== */
         @media (max-width: 1024px) {
             .sidebar {
                 width: 80px;
-                padding: 16px 8px;
+                padding: 12px 4px;
             }
             .sidebar-item span {
                 display: none;
@@ -401,18 +536,18 @@
                 margin: 8px 0;
             }
             .video-grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             }
         }
+
         @media (max-width: 768px) {
             .header {
-                padding: 10px 16px;
-                flex-wrap: wrap;
-                gap: 10px;
+                padding: 10px 12px;
             }
             .search-box {
-                width: 100%;
+                min-width: 120px;
                 order: 3;
+                flex: 1 1 100%;
             }
             .sidebar {
                 display: none;
@@ -424,35 +559,37 @@
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
                 gap: 16px;
             }
-            .promo-banner {
-                padding: 20px;
-                flex-direction: column;
-                text-align: center;
+            .video-title {
+                font-size: 14px;
             }
-            .promo-banner h2 {
-                font-size: 22px;
+            .modal {
+                padding: 20px 10px;
             }
-            .header-icons {
-                gap: 14px;
+            .modal-content {
+                max-height: 95vh;
+            }
+            .modal-title {
                 font-size: 18px;
             }
-            .logo {
-                font-size: 22px;
-            }
         }
+
         @media (max-width: 480px) {
             .video-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-            .video-title {
-                font-size: 13px;
+                gap: 10px;
             }
             .video-info {
                 padding: 10px 12px;
             }
-            .chips {
-                gap: 8px;
+            .video-title {
+                font-size: 12px;
+                -webkit-line-clamp: 2;
+            }
+            .video-channel {
+                font-size: 11px;
+            }
+            .video-meta {
+                font-size: 11px;
             }
             .chip {
                 font-size: 12px;
@@ -463,233 +600,440 @@
 </head>
 <body>
 
-<!-- ===== هدر ===== -->
-<header class="header">
-    <div class="header-left">
-        <i class="fas fa-bars menu-icon"></i>
-        <div class="logo">
-            <i class="fab fa-youtube"></i> Zerox
+    <!-- ===== هدر ===== -->
+    <header class="header">
+        <div class="header-left">
+            <i class="fas fa-bars menu-toggle" onclick="toggleSidebar()"></i>
+            <div class="logo" onclick="location.reload()">
+                <i class="fab fa-youtube"></i> Zerox
+            </div>
+        </div>
+
+        <div class="search-box">
+            <i class="fas fa-search" onclick="searchVideos()"></i>
+            <input type="text" id="searchInput" placeholder="جستجو در Zerox..." onkeyup="if(event.key==='Enter') searchVideos()">
+            <i class="fas fa-microphone" onclick="alert('🎤 حالت صوتی فعال شد!')"></i>
+        </div>
+
+        <div class="header-icons">
+            <i class="fas fa-video" onclick="alert('📹 آپلود ویدیو جدید')"></i>
+            <i class="fas fa-bell"><span class="badge">۳</span></i>
+            <div class="avatar" onclick="alert('👤 پروفایل کاربر')">Z</div>
+        </div>
+    </header>
+
+    <!-- ===== بدنه ===== -->
+    <div class="container">
+
+        <!-- ===== سایدبار ===== -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-item active" onclick="filterVideos('همه')">
+                <i class="fas fa-home"></i> <span>خانه</span>
+            </div>
+            <div class="sidebar-item" onclick="filterVideos('اکسپلور')">
+                <i class="fas fa-compass"></i> <span>اکسپلور</span>
+            </div>
+            <div class="sidebar-item" onclick="filterVideos('داغ')">
+                <i class="fas fa-fire"></i> <span>داغ‌ترین</span>
+            </div>
+            <div class="sidebar-item" onclick="filterVideos('تاریخچه')">
+                <i class="fas fa-history"></i> <span>تاریخچه</span>
+            </div>
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-label">اشتراک‌ها</div>
+            <div class="sidebar-item"><i class="fas fa-circle" style="color:#ff0000;"></i> <span>Zerox Academy</span></div>
+            <div class="sidebar-item"><i class="fas fa-circle" style="color:#3ea6ff;"></i> <span>Game Zone</span></div>
+            <div class="sidebar-item"><i class="fas fa-circle" style="color:#ffcc00;"></i> <span>Music Plus</span></div>
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-label">کتابخانه</div>
+            <div class="sidebar-item"><i class="fas fa-clock"></i> <span>بعداً تماشا</span></div>
+            <div class="sidebar-item"><i class="fas fa-thumbs-up"></i> <span>لایک‌ها</span></div>
+        </nav>
+
+        <!-- ===== محتوای اصلی ===== -->
+        <main class="main-content">
+
+            <!-- ===== چیپس‌ها ===== -->
+            <div class="chips" id="chipsContainer">
+                <span class="chip active" onclick="filterVideos('همه')">همه</span>
+                <span class="chip" onclick="filterVideos('آموزشی')">آموزشی</span>
+                <span class="chip" onclick="filterVideos('گیمینگ')">گیمینگ</span>
+                <span class="chip" onclick="filterVideos('موسیقی')">موسیقی</span>
+                <span class="chip" onclick="filterVideos('ورزشی')">ورزشی</span>
+                <span class="chip" onclick="filterVideos('برنامه‌نویسی')">برنامه‌نویسی</span>
+                <span class="chip" onclick="filterVideos('تکنولوژی')">تکنولوژی</span>
+                <span class="chip" onclick="filterVideos('فیلم')">فیلم</span>
+            </div>
+
+            <!-- ===== گرید ویدیوها ===== -->
+            <div class="video-grid" id="videoGrid">
+                <!-- ویدیوها با جاوااسکریپت بارگذاری میشن -->
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== مودال پخش ===== -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-video">
+                <video id="modalVideo" controls autoplay></video>
+            </div>
+            <div class="modal-info">
+                <div class="modal-title" id="modalTitle">عنوان ویدیو</div>
+                <div class="modal-channel">
+                    <div class="ch-avatar" id="modalChannelAvatar">Z</div>
+                    <div>
+                        <div style="font-weight:700;" id="modalChannelName">Zerox Academy</div>
+                        <div style="color:#888;font-size:13px;" id="modalSubs">۱.۲ میلیون دنبال‌کننده</div>
+                    </div>
+                    <button class="modal-btn" style="background:#ff0000;color:#fff;margin-right:10px;" onclick="alert('✅ دنبال کردید!')">
+                        <i class="fas fa-bell"></i> دنبال‌کن
+                    </button>
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-btn like" onclick="likeVideo()">
+                        <i class="fas fa-thumbs-up"></i> <span id="likeCount">۱۲۳۴</span>
+                    </button>
+                    <button class="modal-btn" onclick="alert('👎 دیسلایک کردید')">
+                        <i class="fas fa-thumbs-down"></i> دیسلایک
+                    </button>
+                    <button class="modal-btn" onclick="alert('🔗 لینک کپی شد!')">
+                        <i class="fas fa-share"></i> اشتراک
+                    </button>
+                    <button class="modal-btn" onclick="alert('💾 ذخیره شد')">
+                        <i class="fas fa-save"></i> ذخیره
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="search-box">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="جستجو در Zerox...">
-        <i class="fas fa-microphone"></i>
-    </div>
+    <!-- ===== فوتر ===== -->
+    <footer class="footer">
+        <i class="fab fa-youtube"></i> Zerox &bull; ۲۰۲۶ &bull;
+        <i class="fas fa-heart" style="color:#ff0000;"></i> ساخته شده با عشق
+    </footer>
 
-    <div class="header-icons">
-        <i class="fas fa-video"></i>
-        <i class="fas fa-bell"><span class="badge">۳</span></i>
-        <div class="avatar">Z</div>
-    </div>
-</header>
+    <script>
+        // ===== دیتابیس ویدیوها =====
+        const videos = [
+            {
+                id: 1,
+                title: 'آموزش کامل React.js از صفر تا صد',
+                channel: 'Zerox Academy',
+                channelAvatar: 'Z',
+                category: 'برنامه‌نویسی',
+                views: '۲.۱ میلیون',
+                date: '۳ روز پیش',
+                duration: '۱۲:۳۴',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                likes: 1234
+            },
+            {
+                id: 2,
+                title: 'بهترین بازی‌های ۲۰۲۶ - بررسی کامل',
+                channel: 'Game Zone',
+                channelAvatar: 'G',
+                category: 'گیمینگ',
+                views: '۸۹۰ هزار',
+                date: '۵ روز پیش',
+                duration: '۰۸:۲۱',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                likes: 567
+            },
+            {
+                id: 3,
+                title: 'آهنگ جدید با کیفیت ۴K - آرامش‌بخش',
+                channel: 'Music Plus',
+                channelAvatar: 'M',
+                category: 'موسیقی',
+                views: '۵۶۰ هزار',
+                date: '۱ هفته پیش',
+                duration: '۰۴:۵۶',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                likes: 890
+            },
+            {
+                id: 4,
+                title: 'بررسی آیفون ۱۷ پرو - هر آنچه باید بدانید',
+                channel: 'Tech World',
+                channelAvatar: 'T',
+                category: 'تکنولوژی',
+                views: '۳.۴ میلیون',
+                date: '۲ روز پیش',
+                duration: '۱۵:۴۰',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                likes: 2100
+            },
+            {
+                id: 5,
+                title: 'طراحی سایت با CSS مدرن - پروژه عملی',
+                channel: 'Zerox Academy',
+                channelAvatar: 'Z',
+                category: 'آموزشی',
+                views: '۱.۷ میلیون',
+                date: '۴ روز پیش',
+                duration: '۲۲:۱۰',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                likes: 1567
+            },
+            {
+                id: 6,
+                title: 'مسابقات جهانی فوتبال - خلاصه بازی‌ها',
+                channel: 'Sport World',
+                channelAvatar: 'S',
+                category: 'ورزشی',
+                views: '۴.۲ میلیون',
+                date: '۱ روز پیش',
+                duration: '۰۹:۱۵',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                likes: 3400
+            },
+            {
+                id: 7,
+                title: 'آموزش هوش مصنوعی با پایتون - مقدماتی',
+                channel: 'AI Lab',
+                channelAvatar: 'A',
+                category: 'برنامه‌نویسی',
+                views: '۹۷۰ هزار',
+                date: '۶ روز پیش',
+                duration: '۱۸:۴۵',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                likes: 743
+            },
+            {
+                id: 8,
+                title: 'کد نویسی زنده - ساخت اپلیکیشن موبایل',
+                channel: 'Zerox Live',
+                channelAvatar: 'Z',
+                category: 'برنامه‌نویسی',
+                views: '۶۵۰ هزار',
+                date: '۸ ساعت پیش',
+                duration: '۰۶:۳۰',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                likes: 432
+            },
+            {
+                id: 9,
+                title: 'آموزش گیت و گیت‌هاب - پروژه محور',
+                channel: 'Zerox Academy',
+                channelAvatar: 'Z',
+                category: 'آموزشی',
+                views: '۱.۱ میلیون',
+                date: '۲ هفته پیش',
+                duration: '۱۴:۲۰',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                likes: 987
+            },
+            {
+                id: 10,
+                title: 'بهترین فیلم‌های ۲۰۲۶ - نقد و بررسی',
+                channel: 'Cine World',
+                channelAvatar: 'C',
+                category: 'فیلم',
+                views: '۲.۸ میلیون',
+                date: '۳ روز پیش',
+                duration: '۱۱:۵۰',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                likes: 2300
+            },
+            {
+                id: 11,
+                title: 'آموزش طراحی UI/UX با Figma',
+                channel: 'Design Hub',
+                channelAvatar: 'D',
+                category: 'آموزشی',
+                views: '۴۵۰ هزار',
+                date: '۴ روز پیش',
+                duration: '۱۹:۳۰',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                likes: 345
+            },
+            {
+                id: 12,
+                title: 'گیم‌پلی جدید Call of Duty - جنگ‌های مدرن',
+                channel: 'Game Zone',
+                channelAvatar: 'G',
+                category: 'گیمینگ',
+                views: '۱.۹ میلیون',
+                date: '۶ ساعت پیش',
+                duration: '۲۵:۱۰',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                likes: 1654
+            }
+        ];
 
-<!-- ===== بدنه ===== -->
-<div class="body-container">
+        let currentFilter = 'همه';
+        let currentVideos = [...videos];
 
-    <!-- ===== سایدبار ===== -->
-    <nav class="sidebar">
-        <div class="sidebar-item active">
-            <i class="fas fa-home"></i> <span>خانه</span>
-        </div>
-        <div class="sidebar-item">
-            <i class="fas fa-compass"></i> <span>اکسپلور</span>
-        </div>
-        <div class="sidebar-item">
-            <i class="fas fa-fire"></i> <span>داغ‌ترین</span>
-        </div>
-        <div class="sidebar-item">
-            <i class="fas fa-history"></i> <span>تاریخچه</span>
-        </div>
-        <div class="sidebar-divider"></div>
-        <div class="sidebar-label">اشتراک‌ها</div>
-        <div class="sidebar-item"><i class="fas fa-circle" style="color:#ff0033;"></i> <span>Zerox Academy</span></div>
-        <div class="sidebar-item"><i class="fas fa-circle" style="color:#3ea6ff;"></i> <span>Game Zone</span></div>
-        <div class="sidebar-item"><i class="fas fa-circle" style="color:#ffcc00;"></i> <span>Music Plus</span></div>
-        <div class="sidebar-item"><i class="fas fa-circle" style="color:#00ff88;"></i> <span>Tech World</span></div>
-        <div class="sidebar-divider"></div>
-        <div class="sidebar-label">کتابخانه</div>
-        <div class="sidebar-item"><i class="fas fa-clock"></i> <span>بعداً تماشا</span></div>
-        <div class="sidebar-item"><i class="fas fa-thumbs-up"></i> <span>لایک‌ها</span></div>
-        <div class="sidebar-item"><i class="fas fa-play-circle"></i> <span>پلی‌لیست‌ها</span></div>
-    </nav>
+        // ===== رندر ویدیوها =====
+        function renderVideos(videoList) {
+            const grid = document.getElementById('videoGrid');
+            grid.innerHTML = '';
+            
+            videoList.forEach(video => {
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                card.innerHTML = `
+                    <div class="video-thumb">
+                        <video src="${video.src}" muted preload="metadata"></video>
+                        <span class="video-duration">${video.duration}</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">${video.title}</div>
+                        <div class="video-channel">
+                            <div class="ch-avatar" style="background:${getRandomColor(video.channel)}">${video.channelAvatar}</div>
+                            ${video.channel}
+                        </div>
+                        <div class="video-meta">
+                            ${video.views} بازدید <i class="fas fa-circle"></i> ${video.date}
+                        </div>
+                    </div>
+                `;
+                card.onclick = () => openModal(video);
+                grid.appendChild(card);
+            });
+        }
 
-    <!-- ===== محتوای اصلی ===== -->
-    <main class="main-content">
+        // ===== رنگ تصادفی برای کانال‌ها =====
+        function getRandomColor(name) {
+            const colors = ['#ff0000', '#3ea6ff', '#ffcc00', '#00ff88', '#ff6600', '#cc00ff', '#00ccff', '#ff00aa'];
+            let hash = 0;
+            for (let i = 0; i < name.length; i++) {
+                hash = name.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            return colors[Math.abs(hash) % colors.length];
+        }
 
-        <!-- ===== بنر گرادیانتی ===== -->
-        <div class="promo-banner">
-            <div>
-                <h2><i class="fas fa-crown"></i> Zerox Premium</h2>
-                <p>تماشای بدون تبلیغات + دانلود ویدیوها</p>
-            </div>
-            <button class="promo-btn">اشتراک Premium <i class="fas fa-arrow-left"></i></button>
-        </div>
+        // ===== فیلتر کردن =====
+        function filterVideos(category) {
+            currentFilter = category;
+            
+            // به‌روزرسانی چیپس‌ها
+            document.querySelectorAll('.chip').forEach(chip => {
+                chip.classList.remove('active');
+                if (chip.textContent.trim() === category) {
+                    chip.classList.add('active');
+                }
+            });
+            
+            // به‌روزرسانی سایدبار
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.textContent.trim().includes(category)) {
+                    item.classList.add('active');
+                }
+            });
+            
+            if (category === 'همه') {
+                currentVideos = [...videos];
+            } else {
+                currentVideos = videos.filter(v => v.category === category);
+            }
+            
+            renderVideos(currentVideos);
+        }
 
-        <!-- ===== چیپس‌ها (دسته‌بندی) ===== -->
-        <div class="chips">
-            <span class="chip active">همه</span>
-            <span class="chip">آموزشی</span>
-            <span class="chip">گیمینگ</span>
-            <span class="chip">موسیقی</span>
-            <span class="chip">ورزشی</span>
-            <span class="chip">فیلم</span>
-            <span class="chip">برنامه‌نویسی</span>
-            <span class="chip">طراحی</span>
-            <span class="chip">تکنولوژی</span>
-            <span class="chip">علمی</span>
-        </div>
+        // ===== جستجو =====
+        function searchVideos() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            if (query === '') {
+                renderVideos(currentVideos);
+                return;
+            }
+            
+            const results = currentVideos.filter(v => 
+                v.title.toLowerCase().includes(query) || 
+                v.channel.toLowerCase().includes(query) ||
+                v.category.toLowerCase().includes(query)
+            );
+            
+            renderVideos(results);
+            
+            if (results.length === 0) {
+                document.getElementById('videoGrid').innerHTML = `
+                    <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#888;">
+                        <i class="fas fa-search" style="font-size:48px;display:block;margin-bottom:16px;"></i>
+                        <h3>نتیجه‌ای پیدا نشد</h3>
+                        <p>برای "${query}" ویدیویی پیدا نشد</p>
+                    </div>
+                `;
+            }
+        }
 
-        <!-- ===== گرید ویدیوها ===== -->
-        <div class="video-grid">
+        // ===== باز کردن مودال =====
+        function openModal(video) {
+            const modal = document.getElementById('videoModal');
+            const videoEl = document.getElementById('modalVideo');
+            const title = document.getElementById('modalTitle');
+            const channelName = document.getElementById('modalChannelName');
+            const channelAvatar = document.getElementById('modalChannelAvatar');
+            const likeCount = document.getElementById('likeCount');
+            
+            videoEl.src = video.src;
+            title.textContent = video.title;
+            channelName.textContent = video.channel;
+            channelAvatar.textContent = video.channelAvatar;
+            channelAvatar.style.background = getRandomColor(video.channel);
+            likeCount.textContent = video.likes;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // ذخیره ویدیو فعلی برای لایک
+            modal.dataset.videoId = video.id;
+        }
 
-            <!-- ویدیو ۱ -->
-            <div class="video-card">
-                <div class="video-thumb">
-                    <img src="https://picsum.photos/seed/1/400/225" alt="ویدیو">
-                    <span class="video-duration">۱۲:۳۴</span>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">آموزش کامل React.js از صفر تا صد</div>
-                    <div class="video-channel">
-                        <div class="ch-avatar">Z</div>
-                        Zerox Academy
-                    </div>
-                    <div class="video-meta">
-                        ۲.۱ میلیون بازدید <i class="fas fa-circle"></i> ۳ روز پیش
-                    </div>
-                </div>
-            </div>
+        // ===== بستن مودال =====
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const videoEl = document.getElementById('modalVideo');
+            modal.classList.remove('active');
+            videoEl.pause();
+            videoEl.src = '';
+            document.body.style.overflow = 'auto';
+        }
 
-            <!-- ویدیو ۲ -->
-            <div class="video-card">
-                <div class="video-thumb">
-                    <img src="https://picsum.photos/seed/2/400/225" alt="ویدیو">
-                    <span class="video-duration">۰۸:۲۱</span>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">بهترین بازی‌های ۲۰۲۶ - بررسی کامل</div>
-                    <div class="video-channel">
-                        <div class="ch-avatar" style="background:linear-gradient(135deg,#00ff88,#00ccff);">G</div>
-                        Game Zone
-                    </div>
-                    <div class="video-meta">
-                        ۸۹۰ هزار بازدید <i class="fas fa-circle"></i> ۵ روز پیش
-                    </div>
-                </div>
-            </div>
+        // ===== لایک کردن =====
+        function likeVideo() {
+            const likeSpan = document.getElementById('likeCount');
+            let current = parseInt(likeSpan.textContent.replace(/,/g, ''));
+            current++;
+            likeSpan.textContent = current.toLocaleString();
+            
+            // تغییر رنگ دکمه
+            const btn = document.querySelector('.modal-btn.like');
+            btn.style.background = '#0066cc';
+            btn.style.color = '#fff';
+            
+            setTimeout(() => {
+                btn.style.background = '#ff0000';
+            }, 1000);
+        }
 
-            <!-- ویدیو ۳ -->
-            <div class="video-card">
-                <div class="video-thumb">
-                    <img src="https://picsum.photos/seed/3/400/225" alt="ویدیو">
-                    <span class="video-duration">۰۴:۵۶</span>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">آهنگ جدید با کیفیت ۴K - آرامش‌بخش</div>
-                    <div class="video-channel">
-                        <div class="ch-avatar" style="background:linear-gradient(135deg,#ffcc00,#ff6600);">M</div>
-                        Music Plus
-                    </div>
-                    <div class="video-meta">
-                        ۵۶۰ هزار بازدید <i class="fas fa-circle"></i> ۱ هفته پیش
-                    </div>
-                </div>
-            </div>
+        // ===== تاگل سایدبار =====
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('closed');
+        }
 
-            <!-- ویدیو ۴ -->
-            <div class="video-card">
-                <div class="video-thumb">
-                    <img src="https://picsum.photos/seed/4/400/225" alt="ویدیو">
-                    <span class="video-duration">۱۵:۴۰</span>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">بررسی آیفون ۱۷ پرو - هر آنچه باید بدانید</div>
-                    <div class="video-channel">
-                        <div class="ch-avatar" style="background:linear-gradient(135deg,#3ea6ff,#0066ff);">T</div>
-                        Tech World
-                    </div>
-                    <div class="video-meta">
-                        ۳.۴ میلیون بازدید <i class="fas fa-circle"></i> ۲ روز پیش
-                    </div>
-                </div>
-            </div>
+        // ===== کلیک خارج از مودال =====
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
 
-            <!-- ویدیو ۵ -->
-            <div class="video-card">
-                <div class="video-thumb">
-                    <img src="https://picsum.photos/seed/5/400/225" alt="ویدیو">
-                    <span class="video-duration">۲۲:۱۰</span>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">طراحی سایت با CSS گرادیانت - پروژه عملی</div>
-                    <div class="video-channel">
-                        <div class="ch-avatar">Z</div>
-                        Zerox Academy
-                    </div>
-                    <div class="video-meta">
-                        ۱.۷ میلیون بازدید <i class="fas fa-circle"></i> ۴ روز پیش
-                    </div>
-                </div>
-            </div>
+        // ===== کلیک Esc برای بستن =====
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
 
-            <!-- ویدیو ۶ -->
-            <div class="video-card">
-                <div class="video-thumb">
-                    <img src="https://picsum.photos/seed/6/400/225" alt="ویدیو">
-                    <span class="video-duration">۰۹:۱۵</span>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">مسابقات جهانی فوتبال - خلاصه بازی‌ها</div>
-                    <div class="video-channel">
-                        <div class="ch-avatar" style="background:linear-gradient(135deg,#00ff88,#ff6600);">S</div>
-                        Sport World
-                    </div>
-                    <div class="video-meta">
-                        ۴.۲ میلیون بازدید <i class="fas fa-circle"></i> ۱ روز پیش
-                    </div>
-                </div>
-            </div>
-
-            <!-- ویدیو ۷ -->
-            <div class="video-card">
-                <div class="video-thumb">
-                    <img src="https://picsum.photos/seed/7/400/225" alt="ویدیو">
-                    <span class="video-duration">۱۸:۴۵</span>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">آموزش هوش مصنوعی با پایتون - مقدماتی</div>
-                    <div class="video-channel">
-                        <div class="ch-avatar" style="background:linear-gradient(135deg,#ff0033,#cc00ff);">A</div>
-                        AI Lab
-                    </div>
-                    <div class="video-meta">
-						۹۷۰ هزار بازدید <i class="fas fa-circle"></i> ۶ روز پیش
-                    </div>
-                </div>
-            </div>
-
-            <!-- ویدیو ۸ -->
-            <div class="video-card">
-                <div class="video-thumb">
-                    <img src="https://picsum.photos/seed/8/400/225" alt="ویدیو">
-                    <span class="video-duration">۰۶:۳۰</span>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">کد نویسی زنده - ساخت یک اپلیکیشن</div>
-                    <div class="video-channel">
-                        <div class="ch-avatar">Z</div>
-                        Zerox Live
-                    </div>
-                    <div class="video-meta">
-                        ۶۵۰ هزار بازدید <i class="fas fa-circle"></i> ۸ ساعت پیش
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
+        // ===== بارگذاری اولیه =====
+        renderVideos(videos);
+    </script>
 
 </body>
-    </html>
+</html>
