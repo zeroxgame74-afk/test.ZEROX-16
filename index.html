@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zerox | تماشای ویدیو</title>
+    <title>Zerox | صفحه اصلی</title>
     <!-- فونت وزیرمتن -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <!-- فونت آوسام ۶ -->
@@ -16,487 +16,680 @@
         }
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background: #f9f9f9;
-            color: #0f0f0f;
+            background: #0f0f0f;
+            color: #fff;
+            overflow-x: hidden;
         }
-        /* هدر */
+        /* ===== اسکرول بار سفارشی ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff0033, #ff6600);
+            border-radius: 10px;
+        }
+
+        /* ===== هدر با گرادیانت ===== */
         .header {
-            background: #fff;
-            padding: 12px 30px;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a0a0a 50%, #0f0f0f 100%);
+            padding: 14px 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid #e5e5e5;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, #ff0033, #ff6600, #ffcc00) 1;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            transition: 0.3s;
+        }
+        .menu-icon:hover {
+            color: #ff6600;
+            transform: rotate(90deg);
         }
         .logo {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 900;
-            color: #ff0000;
+            background: linear-gradient(135deg, #ff0033, #ff6600, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: -1px;
         }
         .logo i {
-            margin-left: 8px;
-            color: #ff0000;
+            background: linear-gradient(135deg, #ff0033, #ff6600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 30px;
         }
         .search-box {
             display: flex;
             align-items: center;
-            background: #f0f0f0;
-            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 6px 18px;
             border-radius: 40px;
-            width: 50%;
+            width: 45%;
             max-width: 600px;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .search-box:focus-within {
+            border-color: #ff6600;
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.2);
         }
         .search-box input {
             flex: 1;
             border: none;
             background: transparent;
-            padding: 8px 0;
+            padding: 10px 0;
             font-family: 'Vazirmatn', sans-serif;
             font-size: 15px;
+            color: #fff;
             outline: none;
         }
+        .search-box input::placeholder {
+            color: #888;
+        }
         .search-box i {
-            color: #606060;
+            color: #aaa;
             font-size: 18px;
             margin: 0 6px;
             cursor: pointer;
+            transition: 0.3s;
+        }
+        .search-box i:hover {
+            color: #ff6600;
         }
         .header-icons {
             display: flex;
             gap: 22px;
             font-size: 22px;
-            color: #333;
+            color: #ddd;
         }
         .header-icons i {
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.3s;
+            position: relative;
         }
         .header-icons i:hover {
-            color: #ff0000;
+            color: #ff6600;
+            transform: scale(1.1);
+        }
+        .badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff0033;
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-weight: 700;
+        }
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff0033, #ff6600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            cursor: pointer;
+            border: 2px solid #ff6600;
         }
 
-        /* محتوای اصلی */
-        .container {
+        /* ===== بدنه ===== */
+        .body-container {
             display: flex;
-            max-width: 1400px;
-            margin: 24px auto;
-            padding: 0 24px;
-            gap: 30px;
+            max-width: 100%;
+            min-height: 100vh;
         }
-        /* بخش اصلی ویدیو */
-        .main-video {
-            flex: 2.2;
+
+        /* ===== سایدبار با گرادیانت ===== */
+        .sidebar {
+            width: 240px;
+            background: linear-gradient(180deg, #0f0f0f 0%, #1a0a0a 100%);
+            padding: 20px 12px;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 74px;
+            height: calc(100vh - 74px);
+            overflow-y: auto;
+            flex-shrink: 0;
         }
-        .video-wrapper {
-            background: #000;
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            aspect-ratio: 16/9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .video-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .video-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-top: 18px;
-            line-height: 1.5;
-        }
-        .video-meta {
+        .sidebar-item {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-top: 12px;
-            flex-wrap: wrap;
-            gap: 10px;
+            gap: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #aaa;
+            font-size: 15px;
+            margin-bottom: 2px;
         }
-        .channel-info {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .channel-avatar {
-            width: 44px;
-            height: 44px;
-            background: #c4302b;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .sidebar-item:hover {
+            background: rgba(255, 255, 255, 0.08);
             color: #fff;
-            font-weight: 700;
+        }
+        .sidebar-item.active {
+            background: linear-gradient(135deg, rgba(255, 0, 51, 0.2), rgba(255, 102, 0, 0.2));
+            color: #ff6600;
+            border-right: 3px solid #ff6600;
+        }
+        .sidebar-item i {
+            width: 24px;
             font-size: 20px;
         }
-        .channel-name {
-            font-weight: 700;
-            font-size: 16px;
+        .sidebar-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 102, 0, 0.3), transparent);
+            margin: 12px 16px;
         }
-        .subs {
+        .sidebar-label {
+            color: #666;
             font-size: 13px;
-            color: #606060;
-        }
-        .actions {
-            display: flex;
-            gap: 18px;
-            font-size: 18px;
-            align-items: center;
-            color: #333;
-        }
-        .actions i {
-            cursor: pointer;
-            transition: 0.2s;
-            margin-left: 6px;
-        }
-        .actions i:hover {
-            color: #ff0000;
-        }
-        .action-btn {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: #f0f0f0;
             padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 15px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: 0.2s;
-            border: none;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        .action-btn:hover {
-            background: #e5e5e5;
-        }
-        .action-btn i {
-            font-size: 18px;
-        }
-
-        /* توضیحات */
-        .description {
-            background: #f0f0f0;
-            border-radius: 14px;
-            padding: 16px 20px;
-            margin-top: 18px;
-            font-size: 15px;
-            line-height: 1.7;
-            color: #1a1a1a;
-        }
-        .description span {
             font-weight: 700;
         }
 
-        /* بخش کامنت‌ها */
-        .comments-section {
-            margin-top: 30px;
-        }
-        .comments-section h3 {
-            font-size: 18px;
-            margin-bottom: 16px;
-        }
-        .comment {
-            display: flex;
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-        .comment-avatar {
-            width: 40px;
-            height: 40px;
-            background: #3ea6ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-        .comment-body {
-            background: #f0f0f0;
-            padding: 12px 16px;
-            border-radius: 14px;
+        /* ===== محتوای اصلی ===== */
+        .main-content {
             flex: 1;
-        }
-        .comment-name {
-            font-weight: 700;
-            font-size: 14px;
-        }
-        .comment-text {
-            font-size: 15px;
-            margin-top: 4px;
+            padding: 24px 30px;
+            background: radial-gradient(ellipse at top, #1a0a0a, #0f0f0f);
+            min-height: 100vh;
         }
 
-        /* نوار کناری (پلی‌لیست) */
-        .sidebar {
-            flex: 1;
-            min-width: 280px;
-        }
-        .sidebar-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .video-card {
+        /* ===== بخش دسته‌بندی (چیپس‌ها) ===== */
+        .chips {
             display: flex;
             gap: 12px;
-            margin-bottom: 18px;
+            overflow-x: auto;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            scrollbar-width: none;
+        }
+        .chips::-webkit-scrollbar {
+            display: none;
+        }
+        .chip {
+            padding: 8px 20px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #ddd;
+            font-size: 14px;
+            white-space: nowrap;
             cursor: pointer;
-            transition: 0.2s;
-            padding: 6px;
-            border-radius: 10px;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .chip:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .chip.active {
+            background: linear-gradient(135deg, #ff0033, #ff6600);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* ===== گرید ویدیوها ===== */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+        }
+        .video-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.4s;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .video-card:hover {
-            background: #f0f0f0;
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(255, 102, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(255, 0, 51, 0.2);
+            background: rgba(255, 255, 255, 0.06);
         }
         .video-thumb {
-            width: 160px;
-            height: 90px;
-            background: #ccc;
-            border-radius: 10px;
-            flex-shrink: 0;
+            position: relative;
+            aspect-ratio: 16/9;
             overflow: hidden;
+            background: #1a1a1a;
         }
         .video-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: 0.5s;
         }
-        .video-info h4 {
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 1.4;
+        .video-card:hover .video-thumb img {
+            transform: scale(1.05);
         }
-        .video-info p {
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            padding: 3px 10px;
+            border-radius: 6px;
             font-size: 13px;
-            color: #606060;
-            margin-top: 4px;
+            font-weight: 700;
+            backdrop-filter: blur(5px);
         }
-
-        /* فوتر */
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            border-top: 1px solid #e5e5e5;
-            margin-top: 40px;
-            color: #606060;
+        .video-info {
+            padding: 14px 16px;
+        }
+        .video-title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .video-channel {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            color: #aaa;
             font-size: 14px;
         }
-        .footer i {
-            color: #ff0000;
-            margin: 0 4px;
+        .video-channel .ch-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff0033, #ff6600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .video-meta {
+            color: #777;
+            font-size: 13px;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .video-meta i {
+            font-size: 4px;
+            color: #555;
         }
 
-        /* ریسپانسیو */
-        @media (max-width: 900px) {
-            .container {
-                flex-direction: column;
-                padding: 0 16px;
+        /* ===== بنر تبلیغاتی با گرادیانت ===== */
+        .promo-banner {
+            background: linear-gradient(135deg, #ff0033, #ff6600, #ffcc00);
+            border-radius: 20px;
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-shadow: 0 10px 40px rgba(255, 0, 51, 0.3);
+        }
+        .promo-banner h2 {
+            font-size: 28px;
+            font-weight: 900;
+        }
+        .promo-banner p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        .promo-btn {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 12px 30px;
+            border-radius: 40px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        .promo-btn:hover {
+            background: #fff;
+            color: #ff0033;
+            transform: scale(1.05);
+        }
+
+        /* ===== ریسپانسیو ===== */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 80px;
+                padding: 16px 8px;
             }
-            .search-box {
-                width: 40%;
+            .sidebar-item span {
+                display: none;
             }
+            .sidebar-item {
+                justify-content: center;
+                padding: 14px;
+            }
+            .sidebar-label {
+                display: none;
+            }
+            .sidebar-divider {
+                margin: 8px 0;
+            }
+            .video-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+        }
+        @media (max-width: 768px) {
             .header {
                 padding: 10px 16px;
                 flex-wrap: wrap;
                 gap: 10px;
             }
-            .logo {
-                font-size: 22px;
-            }
-            .video-title {
-                font-size: 18px;
-            }
-            .video-card {
-                flex-direction: row;
-            }
-            .video-thumb {
-                width: 140px;
-                height: 80px;
-            }
-        }
-        @media (max-width: 550px) {
-            .header-icons {
-                gap: 14px;
-                font-size: 18px;
-            }
             .search-box {
                 width: 100%;
                 order: 3;
             }
-            .actions {
-                flex-wrap: wrap;
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                padding: 16px;
+            }
+            .video-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 16px;
+            }
+            .promo-banner {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+            .promo-banner h2 {
+                font-size: 22px;
+            }
+            .header-icons {
+                gap: 14px;
+                font-size: 18px;
+            }
+            .logo {
+                font-size: 22px;
+            }
+        }
+        @media (max-width: 480px) {
+            .video-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .video-title {
+                font-size: 13px;
+            }
+            .video-info {
+                padding: 10px 12px;
+            }
+            .chips {
+                gap: 8px;
+            }
+            .chip {
+                font-size: 12px;
+                padding: 6px 14px;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- هدر -->
+<!-- ===== هدر ===== -->
 <header class="header">
-    <div class="logo">
-        <i class="fab fa-youtube"></i> Zerox
+    <div class="header-left">
+        <i class="fas fa-bars menu-icon"></i>
+        <div class="logo">
+            <i class="fab fa-youtube"></i> Zerox
+        </div>
     </div>
+
     <div class="search-box">
         <i class="fas fa-search"></i>
         <input type="text" placeholder="جستجو در Zerox...">
         <i class="fas fa-microphone"></i>
     </div>
+
     <div class="header-icons">
         <i class="fas fa-video"></i>
-        <i class="fas fa-bell"></i>
-        <i class="fas fa-user-circle"></i>
+        <i class="fas fa-bell"><span class="badge">۳</span></i>
+        <div class="avatar">Z</div>
     </div>
 </header>
 
-<!-- محتوای اصلی -->
-<div class="container">
+<!-- ===== بدنه ===== -->
+<div class="body-container">
 
-    <!-- بخش اصلی -->
-    <div class="main-video">
+    <!-- ===== سایدبار ===== -->
+    <nav class="sidebar">
+        <div class="sidebar-item active">
+            <i class="fas fa-home"></i> <span>خانه</span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-compass"></i> <span>اکسپلور</span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-fire"></i> <span>داغ‌ترین</span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-history"></i> <span>تاریخچه</span>
+        </div>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-label">اشتراک‌ها</div>
+        <div class="sidebar-item"><i class="fas fa-circle" style="color:#ff0033;"></i> <span>Zerox Academy</span></div>
+        <div class="sidebar-item"><i class="fas fa-circle" style="color:#3ea6ff;"></i> <span>Game Zone</span></div>
+        <div class="sidebar-item"><i class="fas fa-circle" style="color:#ffcc00;"></i> <span>Music Plus</span></div>
+        <div class="sidebar-item"><i class="fas fa-circle" style="color:#00ff88;"></i> <span>Tech World</span></div>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-label">کتابخانه</div>
+        <div class="sidebar-item"><i class="fas fa-clock"></i> <span>بعداً تماشا</span></div>
+        <div class="sidebar-item"><i class="fas fa-thumbs-up"></i> <span>لایک‌ها</span></div>
+        <div class="sidebar-item"><i class="fas fa-play-circle"></i> <span>پلی‌لیست‌ها</span></div>
+    </nav>
 
-        <!-- پلیر (تصویر شاخص) -->
-        <div class="video-wrapper">
-            <img src="https://picsum.photos/800/450?random=10" alt="ویدیو شاخص">
+    <!-- ===== محتوای اصلی ===== -->
+    <main class="main-content">
+
+        <!-- ===== بنر گرادیانتی ===== -->
+        <div class="promo-banner">
+            <div>
+                <h2><i class="fas fa-crown"></i> Zerox Premium</h2>
+                <p>تماشای بدون تبلیغات + دانلود ویدیوها</p>
+            </div>
+            <button class="promo-btn">اشتراک Premium <i class="fas fa-arrow-left"></i></button>
         </div>
 
-        <!-- عنوان و اطلاعات -->
-        <h1 class="video-title">
-            <i class="fas fa-check-circle" style="color: #3ea6ff; font-size: 20px;"></i>
-            آموزش ساخت سایت شبیه یوتیوب با HTML و CSS
-        </h1>
+        <!-- ===== چیپس‌ها (دسته‌بندی) ===== -->
+        <div class="chips">
+            <span class="chip active">همه</span>
+            <span class="chip">آموزشی</span>
+            <span class="chip">گیمینگ</span>
+            <span class="chip">موسیقی</span>
+            <span class="chip">ورزشی</span>
+            <span class="chip">فیلم</span>
+            <span class="chip">برنامه‌نویسی</span>
+            <span class="chip">طراحی</span>
+            <span class="chip">تکنولوژی</span>
+            <span class="chip">علمی</span>
+        </div>
 
-        <div class="video-meta">
-            <div class="channel-info">
-                <div class="channel-avatar">Z</div>
-                <div>
-                    <div class="channel-name">Zerox Academy</div>
-                    <div class="subs">۱.۲ میلیون دنبال‌کننده</div>
+        <!-- ===== گرید ویدیوها ===== -->
+        <div class="video-grid">
+
+            <!-- ویدیو ۱ -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="https://picsum.photos/seed/1/400/225" alt="ویدیو">
+                    <span class="video-duration">۱۲:۳۴</span>
                 </div>
-                <button class="action-btn" style="background:#ff0000; color:#fff; margin-right:10px;">
-                    <i class="fas fa-bell"></i> دنبال‌کن
-                </button>
-            </div>
-            <div class="actions">
-                <span class="action-btn"><i class="fas fa-thumbs-up"></i> ۱۲۳۴</span>
-                <span class="action-btn"><i class="fas fa-thumbs-down"></i> ۵۶</span>
-                <span class="action-btn"><i class="fas fa-share"></i> اشتراک</span>
-                <span class="action-btn"><i class="fas fa-ellipsis-h"></i></span>
-            </div>
-        </div>
-
-        <!-- توضیحات -->
-        <div class="description">
-            <span>توضیحات:</span> در این ویدیو قدم‌به‌قدم با HTML و CSS یک سایت ویدیویی مشابه یوتوب می‌سازیم. 
-            از فونت وزیرمتن و آیکون‌های فونت‌آوسام استفاده شده است. 
-            <br><br>
-            <i class="fas fa-tag"></i> #آموزش_HTML #CSS #Zerox
-        </div>
-
-        <!-- بخش کامنت‌ها -->
-        <div class="comments-section">
-            <h3><i class="fas fa-comment"></i> ۳۴۵ کامنت</h3>
-
-            <div class="comment">
-                <div class="comment-avatar">A</div>
-                <div class="comment-body">
-                    <div class="comment-name">علی رضایی</div>
-                    <div class="comment-text">عالی بود! دقیقاً چیزی که می‌خواستم. ممنون از Zerox ❤️</div>
+                <div class="video-info">
+                    <div class="video-title">آموزش کامل React.js از صفر تا صد</div>
+                    <div class="video-channel">
+                        <div class="ch-avatar">Z</div>
+                        Zerox Academy
+                    </div>
+                    <div class="video-meta">
+                        ۲.۱ میلیون بازدید <i class="fas fa-circle"></i> ۳ روز پیش
+                    </div>
                 </div>
             </div>
-            <div class="comment">
-                <div class="comment-avatar">S</div>
-                <div class="comment-body">
-                    <div class="comment-name">سارا محمدی</div>
-                    <div class="comment-text">طراحی خیلی تمیز و مدرنی داره. کاش ویدیوهای بیشتری بذارید.</div>
+
+            <!-- ویدیو ۲ -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="https://picsum.photos/seed/2/400/225" alt="ویدیو">
+                    <span class="video-duration">۰۸:۲۱</span>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">بهترین بازی‌های ۲۰۲۶ - بررسی کامل</div>
+                    <div class="video-channel">
+                        <div class="ch-avatar" style="background:linear-gradient(135deg,#00ff88,#00ccff);">G</div>
+                        Game Zone
+                    </div>
+                    <div class="video-meta">
+                        ۸۹۰ هزار بازدید <i class="fas fa-circle"></i> ۵ روز پیش
+                    </div>
                 </div>
             </div>
-            <div class="comment">
-                <div class="comment-avatar">M</div>
-                <div class="comment-body">
-                    <div class="comment-name">مهدی کریمی</div>
-                    <div class="comment-text">واقعاً ایده‌ی جالبیه. مخصوصاً بخش جستجو و آیکون‌ها.</div>
+
+            <!-- ویدیو ۳ -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="https://picsum.photos/seed/3/400/225" alt="ویدیو">
+                    <span class="video-duration">۰۴:۵۶</span>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">آهنگ جدید با کیفیت ۴K - آرامش‌بخش</div>
+                    <div class="video-channel">
+                        <div class="ch-avatar" style="background:linear-gradient(135deg,#ffcc00,#ff6600);">M</div>
+                        Music Plus
+                    </div>
+                    <div class="video-meta">
+                        ۵۶۰ هزار بازدید <i class="fas fa-circle"></i> ۱ هفته پیش
+                    </div>
+                </div>
+            </div>
+
+            <!-- ویدیو ۴ -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="https://picsum.photos/seed/4/400/225" alt="ویدیو">
+                    <span class="video-duration">۱۵:۴۰</span>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">بررسی آیفون ۱۷ پرو - هر آنچه باید بدانید</div>
+                    <div class="video-channel">
+                        <div class="ch-avatar" style="background:linear-gradient(135deg,#3ea6ff,#0066ff);">T</div>
+                        Tech World
+                    </div>
+                    <div class="video-meta">
+                        ۳.۴ میلیون بازدید <i class="fas fa-circle"></i> ۲ روز پیش
+                    </div>
+                </div>
+            </div>
+
+            <!-- ویدیو ۵ -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="https://picsum.photos/seed/5/400/225" alt="ویدیو">
+                    <span class="video-duration">۲۲:۱۰</span>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">طراحی سایت با CSS گرادیانت - پروژه عملی</div>
+                    <div class="video-channel">
+                        <div class="ch-avatar">Z</div>
+                        Zerox Academy
+                    </div>
+                    <div class="video-meta">
+                        ۱.۷ میلیون بازدید <i class="fas fa-circle"></i> ۴ روز پیش
+                    </div>
+                </div>
+            </div>
+
+            <!-- ویدیو ۶ -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="https://picsum.photos/seed/6/400/225" alt="ویدیو">
+                    <span class="video-duration">۰۹:۱۵</span>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">مسابقات جهانی فوتبال - خلاصه بازی‌ها</div>
+                    <div class="video-channel">
+                        <div class="ch-avatar" style="background:linear-gradient(135deg,#00ff88,#ff6600);">S</div>
+                        Sport World
+                    </div>
+                    <div class="video-meta">
+                        ۴.۲ میلیون بازدید <i class="fas fa-circle"></i> ۱ روز پیش
+                    </div>
+                </div>
+            </div>
+
+            <!-- ویدیو ۷ -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="https://picsum.photos/seed/7/400/225" alt="ویدیو">
+                    <span class="video-duration">۱۸:۴۵</span>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">آموزش هوش مصنوعی با پایتون - مقدماتی</div>
+                    <div class="video-channel">
+                        <div class="ch-avatar" style="background:linear-gradient(135deg,#ff0033,#cc00ff);">A</div>
+                        AI Lab
+                    </div>
+                    <div class="video-meta">
+						۹۷۰ هزار بازدید <i class="fas fa-circle"></i> ۶ روز پیش
+                    </div>
+                </div>
+            </div>
+
+            <!-- ویدیو ۸ -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="https://picsum.photos/seed/8/400/225" alt="ویدیو">
+                    <span class="video-duration">۰۶:۳۰</span>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">کد نویسی زنده - ساخت یک اپلیکیشن</div>
+                    <div class="video-channel">
+                        <div class="ch-avatar">Z</div>
+                        Zerox Live
+                    </div>
+                    <div class="video-meta">
+                        ۶۵۰ هزار بازدید <i class="fas fa-circle"></i> ۸ ساعت پیش
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- نوار کناری (پلی‌لیست) -->
-    <aside class="sidebar">
-        <div class="sidebar-title">
-            <i class="fas fa-list-ul"></i> ویدیوهای پیشنهادی
-        </div>
-
-        <!-- کارت ویدیو ۱ -->
-        <div class="video-card">
-            <div class="video-thumb">
-                <img src="https://picsum.photos/320/180?random=1" alt="ویدیو ۱">
-            </div>
-            <div class="video-info">
-                <h4>آموزش جاوااسکریپت از صفر</h4>
-                <p>Zerox Dev <br> ۱.۲ میلیون بازدید</p>
-            </div>
-        </div>
-        <!-- کارت ویدیو ۲ -->
-        <div class="video-card">
-            <div class="video-thumb">
-                <img src="https://picsum.photos/320/180?random=2" alt="ویدیو ۲">
-            </div>
-            <div class="video-info">
-                <h4>طراحی ریسپانسیو با Flexbox</h4>
-                <p>Zerox Academy <br> ۸۹۰ هزار بازدید</p>
-            </div>
-        </div>
-        <!-- کارت ویدیو ۳ -->
-        <div class="video-card">
-            <div class="video-thumb">
-                <img src="https://picsum.photos/320/180?random=3" alt="ویدیو ۳">
-            </div>
-            <div class="video-info">
-                <h4>ساخت پنل مدیریت با HTML</h4>
-                <p>Zerox Plus <br> ۶۵۰ هزار بازدید</p>
-            </div>
-        </div>
-        <!-- کارت ویدیو ۴ -->
-        <div class="video-card">
-            <div class="video-thumb">
-                <img src="https://picsum.photos/320/180?random=4" alt="ویدیو ۴">
-            </div>
-            <div class="video-info">
-                <h4>بهترین افزونه‌های VS Code</h4>
-                <p>Zerox Tips <br> ۴۲۰ هزار بازدید</p>
-            </div>
-        </div>
-        <!-- کارت ویدیو ۵ -->
-        <div class="video-card">
-            <div class="video-thumb">
-                <img src="https://picsum.photos/320/180?random=5" alt="ویدیو ۵">
-            </div>
-            <div class="video-info">
-                <h4>ساخت بازی با جاوااسکریپت</h4>
-                <p>Zerox Game <br> ۹۵۰ هزار بازدید</p>
-            </div>
-        </div>
-    </aside>
+    </main>
 </div>
 
-<!-- فوتر -->
-<footer class="footer">
-    <i class="fab fa-youtube"></i> Zerox &bull; ۲۰۲۶ &bull; 
-    <i class="fas fa-heart" style="color:#ff0000;"></i> با عشق ساخته شده
-</footer>
-
 </body>
-</html>
+    </html>
