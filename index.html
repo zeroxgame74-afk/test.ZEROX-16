@@ -1368,95 +1368,14 @@
             animation: floatIcon 3s ease-in-out infinite;
         }
 
-        /* ============================================================
-                   بخش نوا - طراحی خوشگل و مدرن
-                   ============================================================ */
-
-        /* ===== هدر تب نوا ===== */
-        .nava-header-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255, 215, 100, 0.06);
-            position: relative;
-        }
-
-        .nava-header-section::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            right: 0;
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, #f5b042, transparent);
-            border-radius: 10px;
-        }
-
-        .nava-header-section h2 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 2.2rem;
-            color: #f5efe6;
-            margin: 0;
-            border: none;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .nava-header-section h2 i {
-            color: #f5b042;
-            font-size: 2rem;
-            animation: headphonePulse 3s ease-in-out infinite;
-        }
-
-        @keyframes headphonePulse {
-            0%,
-            100% {
-                transform: scale(1) rotate(0deg);
-            }
-            50% {
-                transform: scale(1.08) rotate(-8deg);
-            }
-        }
-
-        .nava-header-section .nava-badge {
-            background: rgba(255, 215, 100, 0.08);
-            border: 1px solid rgba(255, 215, 100, 0.12);
-            border-radius: 40px;
-            padding: 0.3rem 1.2rem;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.8rem;
-            color: #b0a99b;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nava-header-section .nava-badge i {
-            color: #f5b042;
-            font-size: 0.7rem;
-        }
-
-        .nava-header-section .nava-subtitle {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 1rem;
-            color: #b0a99b;
-            margin: 0;
-            width: 100%;
-        }
-
-        /* ===== لیست کارت‌های نوا (افقی عریض) ===== */
+        /* ============================================
+                   کارت‌های نوا (لیست افقی عریض)
+                   ============================================ */
         .nava-list {
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
-            margin-top: 0.5rem;
+            margin-top: 1.5rem;
         }
 
         .nava-card {
@@ -1588,136 +1507,59 @@
             transform: translateX(-6px);
         }
 
-        /* ============================================================
-                   صفحه‌ی اختصاصی آهنگ (خیلی خوشگل)
-                   ============================================================ */
-
+        /* ===== صفحه‌ی جزئیات آهنگ ===== */
         .nava-detail-page {
             display: none;
-            animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .nava-detail-page.active {
             display: block;
         }
 
-        /* دکمه بازگشت */
         .back-to-nava {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            border-radius: 40px;
-            padding: 0.5rem 1.5rem;
+            background: none;
+            border: none;
             color: #f5b042;
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             cursor: pointer;
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            padding: 0.5rem 0;
+            margin-bottom: 1.5rem;
+            transition: 0.3s;
             display: inline-flex;
             align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 1.8rem;
+            gap: 0.5rem;
         }
 
         .back-to-nava:hover {
-            background: rgba(255, 215, 100, 0.08);
-            border-color: rgba(255, 215, 100, 0.2);
             transform: translateX(-4px);
-            box-shadow: 0 4px 20px -6px rgba(245, 176, 66, 0.05);
+            opacity: 0.8;
         }
 
-        .back-to-nava i {
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-
-        .back-to-nava:hover i {
-            transform: translateX(-4px);
-        }
-
-        /* کارت جزئیات آهنگ */
         .nava-detail-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 215, 100, 0.06);
-            border-radius: 28px;
-            padding: 2rem;
-            max-width: 720px;
+            border-radius: 24px;
+            padding: 1.8rem;
+            max-width: 700px;
             margin: 0 auto;
             transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nava-detail-card::before {
-            content: '';
-            position: absolute;
-            top: -30%;
-            right: -20%;
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(circle at 30% 40%, rgba(245, 176, 66, 0.04), transparent 70%);
-            pointer-events: none;
-            animation: detailGlow 8s ease-in-out infinite alternate;
-        }
-
-        @keyframes detailGlow {
-            0% {
-                transform: translate(-10%, -10%) scale(1);
-            }
-            100% {
-                transform: translate(10%, 10%) scale(1.2);
-            }
         }
 
         .nava-detail-card:hover {
             border-color: rgba(255, 215, 100, 0.12);
-            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.4);
-        }
-
-        .nava-detail-card>* {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* کاور بزرگ با افکت هاله */
-        .nava-detail-image-wrap {
-            position: relative;
-            margin-bottom: 1.5rem;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .nava-detail-image-wrap::after {
-            content: '';
-            position: absolute;
-            top: -20%;
-            right: -20%;
-            width: 140%;
-            height: 140%;
-            background: radial-gradient(circle at 30% 40%, rgba(245, 176, 66, 0.08), transparent 60%);
-            pointer-events: none;
-            animation: coverGlow 6s ease-in-out infinite alternate;
-        }
-
-        @keyframes coverGlow {
-            0% {
-                transform: scale(1) rotate(0deg);
-                opacity: 0.6;
-            }
-            100% {
-                transform: scale(1.1) rotate(5deg);
-                opacity: 1;
-            }
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
         }
 
         .nava-detail-image {
             width: 100%;
             aspect-ratio: 1/1;
-            border-radius: 20px;
+            border-radius: 18px;
             overflow: hidden;
+            margin-bottom: 1.5rem;
             border: 1px solid rgba(255, 215, 100, 0.08);
-            position: relative;
-            z-index: 1;
         }
 
         .nava-detail-image img {
@@ -1731,29 +1573,10 @@
             transform: scale(1.02);
         }
 
-        /* اطلاعات آهنگ */
-        .nava-detail-info {
-            text-align: center;
-        }
-
-        .nava-detail-info .detail-badge {
-            display: inline-block;
-            background: rgba(255, 215, 100, 0.08);
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            border-radius: 40px;
-            padding: 0.2rem 1.2rem;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.7rem;
-            color: #f5b042;
-            margin-bottom: 0.5rem;
-            letter-spacing: 1px;
-        }
-
         .nava-detail-info h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #f5efe6;
-            margin-bottom: 0.3rem;
-            font-weight: 800;
+            margin-bottom: 0.5rem;
         }
 
         .nava-detail-info h2 i {
@@ -1763,8 +1586,8 @@
 
         .nava-detail-info .detail-artist {
             color: #b0a99b;
-            font-size: 1rem;
             margin-bottom: 0.2rem;
+            font-size: 1rem;
         }
 
         .nava-detail-info .detail-artist i {
@@ -1775,8 +1598,8 @@
 
         .nava-detail-info .detail-mixer {
             color: #8f887c;
-            font-size: 0.9rem;
             margin-bottom: 1.2rem;
+            font-size: 0.95rem;
         }
 
         .nava-detail-info .detail-mixer i {
@@ -1785,7 +1608,7 @@
             margin-left: 0.3rem;
         }
 
-        /* ===== لیریکس کشویی خفن ===== */
+        /* ===== لیریکس کشویی خیلی خفن ===== */
         .nava-lyrics {
             margin: 1.2rem 0;
             background: rgba(255, 255, 255, 0.02);
@@ -1793,39 +1616,57 @@
             border: 1px solid rgba(255, 215, 100, 0.06);
             overflow: hidden;
             transition: 0.4s;
+            position: relative;
+        }
+
+        .nava-lyrics::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 215, 100, 0.03), transparent 70%);
+            animation: shimmerBg 8s ease-in-out infinite alternate;
+            pointer-events: none;
+            opacity: 0.5;
         }
 
         .nava-lyrics:hover {
-            border-color: rgba(255, 215, 100, 0.12);
+            border-color: rgba(255, 215, 100, 0.15);
+            box-shadow: 0 8px 32px -8px rgba(245, 176, 66, 0.05);
         }
 
         .lyrics-toggle-btn {
             width: 100%;
             background: none;
             border: none;
-            padding: 0.8rem 1.2rem;
+            padding: 0.9rem 1.2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
             font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 700;
+            font-size: 1rem;
             color: #f5b042;
             transition: 0.3s;
             border-radius: 16px;
+            position: relative;
+            z-index: 1;
         }
 
         .lyrics-toggle-btn:hover {
-            background: rgba(255, 215, 100, 0.04);
+            background: rgba(255, 215, 100, 0.06);
+            color: #f5d06a;
         }
 
         .lyrics-toggle-btn i:first-child {
-            margin-left: 0.5rem;
+            margin-left: 0.6rem;
         }
 
         .lyrics-toggle-btn i:last-child {
-            transition: 0.4s;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             font-size: 0.9rem;
             color: #b0a99b;
         }
@@ -1905,7 +1746,7 @@
             box-shadow: inset 0 0 30px rgba(245, 176, 66, 0.03);
         }
 
-        /* ===== پخش‌کننده (نئونی) ===== */
+        /* ===== پخش‌کننده ===== */
         .nava-player {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 16px;
@@ -2032,10 +1873,7 @@
             box-shadow: 0 0 30px rgba(245, 176, 66, 0.1);
         }
 
-        /* ============================================================
-                   دکمه AI و فوتر
-                   ============================================================ */
-
+        /* ========== دکمه AI چت ========== */
         .ai-chat-button {
             position: fixed;
             bottom: 30px;
@@ -2101,6 +1939,7 @@
             }
         }
 
+        /* ===== فوتر ===== */
         .footer {
             margin-top: 2rem;
             padding-top: 1.5rem;
@@ -2135,7 +1974,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* ===== مودال ===== */
+        /* ===== مودال شیشه‌ای ===== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -2470,9 +2309,6 @@
             .nava-detail-info h2 {
                 font-size: 1.5rem;
             }
-            .nava-header-section h2 {
-                font-size: 1.8rem;
-            }
         }
 
         @media (max-width: 768px) {
@@ -2626,17 +2462,6 @@
                 height: 44px;
                 font-size: 1.3rem;
             }
-            .nava-header-section h2 {
-                font-size: 1.5rem;
-            }
-            .nava-header-section .nava-badge {
-                font-size: 0.7rem;
-                padding: 0.2rem 0.8rem;
-            }
-            .back-to-nava {
-                font-size: 0.8rem;
-                padding: 0.4rem 1rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -2780,17 +2605,6 @@
                 min-width: 28px;
             }
             .back-to-nava {
-                font-size: 0.75rem;
-                padding: 0.3rem 0.8rem;
-            }
-            .nava-header-section h2 {
-                font-size: 1.3rem;
-            }
-            .nava-header-section .nava-badge {
-                font-size: 0.6rem;
-                padding: 0.1rem 0.6rem;
-            }
-            .nava-header-section .nava-subtitle {
                 font-size: 0.85rem;
             }
         }
@@ -2831,7 +2645,7 @@
         <!-- ========== محتوای اصلی ========== -->
         <main class="main-content">
 
-            <!-- ===== تب خانه ===== -->
+            <!-- ===== تب خانه (دیگه اینجا خبری از نوا نیست!) ===== -->
             <div class="tab-content active" id="home">
                 <div class="hero-card" id="heroCard">
                     <img class="hero-bg" src="https://cdn.imgurl.ir/uploads/q589216_ya_ali12155.jpg" alt="mohamad hossein" />
@@ -3132,23 +2946,13 @@
                 </div>
             </div>
 
-            <!-- ============================================================ -->
-            <!-- ===== بخش نوا (خوشگل و مدرن) ===== -->
-            <!-- ============================================================ -->
+            <!-- ====================================================== -->
+            <!-- ===== بخش نوا (درست شد و فقط اینجاست) ===== -->
+            <!-- ====================================================== -->
             <div class="tab-content" id="nava">
-                <!-- هدر خوشگل -->
-                <div class="nava-header-section">
-                    <div>
-                        <h2><i class="fas fa-headphones"></i> نوا</h2>
-                        <p class="nava-subtitle">نماهنگ‌ها و نواهای ساخته شده توسط بنده</p>
-                    </div>
-                    <div class="nava-badge">
-                        <i class="fas fa-circle" style="color: #2ecc71; font-size: 0.5rem;"></i>
-                        <span>۳ آهنگ</span>
-                    </div>
-                </div>
+                <h2><i class="fas fa-headphones" style="color:#f5b042; margin-left:0.8rem;"></i> نوا</h2>
+                <p style="margin-bottom:1.5rem;">نماهنگ ها و نواهای ساخته شده توسط بنده:</p>
 
-                <!-- لیست کارت‌ها -->
                 <div class="nava-list">
                     <!-- کارت آهنگ: رقیه جان -->
                     <div class="nava-card" onclick="window.location.hash = 'nava_roghee_jaan';">
@@ -3169,30 +2973,25 @@
                 </div>
             </div>
 
-            <!-- ============================================================ -->
-            <!-- ===== صفحه‌ی اختصاصی آهنگ: رقیه جان (خیلی خوشگل) ===== -->
-            <!-- ============================================================ -->
+            <!-- ====================================================== -->
+            <!-- ===== صفحه‌ی اختصاصی آهنگ: رقیه جان ===== -->
+            <!-- ====================================================== -->
             <div class="tab-content nava-detail-page" id="nava_roghee_jaan">
-                <button class="back-to-nava" onclick="window.location.hash = 'nava';">
-                    <i class="fas fa-arrow-right"></i> بازگشت به لیست
-                </button>
+                <button class="back-to-nava" onclick="window.location.hash = 'nava';">← بازگشت به لیست</button>
 
                 <div class="nava-detail-card">
-                    <!-- کاور بزرگ با هاله -->
-                    <div class="nava-detail-image-wrap">
-                        <div class="nava-detail-image">
-                            <img src="https://up.20script.ir/file/eebc-SAVE-۲۰۲۶۰۸۱۴-۱۷۴۹۵۲.jpg" alt="کاور نماهنگ رقیه جان">
-                        </div>
+                    <!-- کاور بزرگ -->
+                    <div class="nava-detail-image">
+                        <img src="https://up.20script.ir/file/eebc-SAVE-۲۰۲۶۰۸۱۴-۱۷۴۹۵۲.jpg" alt="کاور نماهنگ رقیه جان">
                     </div>
 
                     <!-- اطلاعات -->
                     <div class="nava-detail-info">
-                        <span class="detail-badge"><i class="fas fa-music"></i> نماهنگ</span>
-                        <h2><i class="fas fa-heart" style="color:#f5b042;"></i> رقیــه جان</h2>
-                        <p class="detail-artist"><i class="fas fa-microphone"></i> کربلایی سید علی صفاتی</p>
+                        <h2><i class="fas fa-music"></i> نماهنگ | رقیــه جان</h2>
+                        <p class="detail-artist"><i class="fas fa-microphone"></i> مداح: کربلایی سید علی صفاتی</p>
                         <p class="detail-mixer"><i class="fas fa-sliders-h"></i> تنظیم میکس: محمد حسین صنعتی</p>
 
-                        <!-- ===== لیریکس کشویی ===== -->
+                        <!-- ===== لیریکس کشویی خیلی خفن ===== -->
                         <div class="nava-lyrics">
                             <button class="lyrics-toggle-btn" onclick="toggleLyrics(this)">
                                 <span><i class="fas fa-scroll"></i> متن نماهنگ</span>
@@ -3273,9 +3072,9 @@
             <ul>
                 <li><i class="fas fa-image"></i> اضافه شدن اثر "در حسرت کربلا..."</li>
                 <li><i class="fas fa-robot"></i> دستیار هوش مصنوعی</li>
-                <li><i class="fas fa-headphones"></i> بخش جدید "نوا" با طراحی خوشگل</li>
+                <li><i class="fas fa-headphones"></i> بخش جدید "نوا" با پخش‌کننده موسیقی</li>
                 <li><i class="fas fa-music"></i> نماهنگ "رقیــه جان" با صدای کربلایی سید علی صفاتی</li>
-                <li><i class="fas fa-scroll"></i> لیریکس کشویی خفن</li>
+                <li><i class="fas fa-scroll"></i> لیریکس کشویی خیلی خفن</li>
                 <li><i class="fas fa-check-circle"></i> رفع اشکال نمایش نوا در صفحه خانه</li>
             </ul>
         </div>
@@ -3478,7 +3277,7 @@
             }
         }
 
-        // ===== لیریکس کشویی =====
+        // ===== لیریکس کشویی خفن =====
         function toggleLyrics(btn) {
             const container = btn.closest('.nava-lyrics');
             const body = container.querySelector('.lyrics-body');
@@ -3751,7 +3550,7 @@
         // ===== نوتیفیکیشن (۸ ثانیه) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '3.6.0';
+            const APP_VERSION = '3.5.0';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
@@ -3773,4 +3572,4 @@
     </script>
 
 </body>
-    </html>
+                                        </html>
