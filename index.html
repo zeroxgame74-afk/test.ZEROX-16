@@ -1493,115 +1493,125 @@
             background: rgba(255, 215, 100, 0.08);
         }
 
-        /* ===== صفحه‌ی جزئیات آهنگ ===== */
-        .nava-detail-page {
+        /* ============================================
+                   مودال نوا (برای نمایش جزئیات آهنگ)
+                   ============================================ */
+        .nava-modal-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
             display: none;
-            animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .nava-detail-page.active {
-            display: block;
-        }
-
-        .back-to-nava {
-            background: none;
-            border: none;
-            color: #f5b042;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            padding: 0.5rem 0;
-            margin-bottom: 1.5rem;
-            transition: 0.3s;
-            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
+            z-index: 99999;
+            padding: 1rem;
+            animation: fadeInModal 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .back-to-nava:hover {
-            transform: translateX(-4px);
-            opacity: 0.8;
+        .nava-modal-overlay.active {
+            display: flex;
         }
 
-        .nava-detail-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            border-radius: 24px;
-            padding: 1.8rem;
+        .nava-modal-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            border-radius: 32px;
+            padding: 2rem;
             max-width: 700px;
-            margin: 0 auto;
-            transition: 0.4s;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 24px 80px -16px rgba(0, 0, 0, 0.6);
+            animation: slideUpModal 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .nava-detail-card:hover {
-            border-color: rgba(255, 215, 100, 0.12);
-            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
+        .nava-modal-content .modal-close {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            color: #f5efe6;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
         }
 
-        .nava-detail-image {
+        .nava-modal-content .modal-close:hover {
+            background: rgba(255, 215, 100, 0.15);
+            transform: rotate(90deg) scale(1.1);
+            border-color: #f5b042;
+        }
+
+        .nava-modal-content .modal-image {
             width: 100%;
             aspect-ratio: 1/1;
-            border-radius: 18px;
+            border-radius: 20px;
             overflow: hidden;
             margin-bottom: 1.5rem;
             border: 1px solid rgba(255, 215, 100, 0.08);
         }
 
-        .nava-detail-image img {
+        .nava-modal-content .modal-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.6s;
         }
 
-        .nava-detail-card:hover .nava-detail-image img {
-            transform: scale(1.02);
-        }
-
-        .nava-detail-info h2 {
+        .nava-modal-content .modal-title {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
             font-size: 1.8rem;
             color: #f5efe6;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
-        .nava-detail-info h2 i {
+        .nava-modal-content .modal-title i {
             color: #f5b042;
+            margin-left: 0.5rem;
         }
 
-        .nava-detail-info .detail-artist {
+        .nava-modal-content .modal-artist {
             color: #b0a99b;
-            margin-bottom: 0.2rem;
             font-size: 1rem;
             display: flex;
             align-items: center;
             gap: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
-        .nava-detail-info .detail-artist i {
+        .nava-modal-content .modal-artist i {
             color: #f5b042;
-            width: 1.8rem;
         }
 
-        .nava-detail-info .detail-mixer {
+        .nava-modal-content .modal-mixer {
             color: #8f887c;
-            margin-bottom: 1.2rem;
             font-size: 0.95rem;
             display: flex;
             align-items: center;
             gap: 0.3rem;
+            margin-bottom: 1.2rem;
         }
 
-        .nava-detail-info .detail-mixer i {
+        .nava-modal-content .modal-mixer i {
             color: #f5b042;
-            width: 1.8rem;
         }
 
-        /* ===== لیریکس کشویی خفن ===== */
-        .nava-lyrics {
+        /* ===== لیریکس کشویی در مودال ===== */
+        .nava-modal-lyrics {
             margin: 1.2rem 0;
             background: rgba(255, 255, 255, 0.02);
             border-radius: 16px;
@@ -1610,11 +1620,11 @@
             overflow: hidden;
         }
 
-        .nava-lyrics:hover {
+        .nava-modal-lyrics:hover {
             border-color: rgba(255, 215, 100, 0.12);
         }
 
-        .nava-lyrics-header {
+        .nava-modal-lyrics-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1624,11 +1634,11 @@
             gap: 1rem;
         }
 
-        .nava-lyrics-header:hover {
+        .nava-modal-lyrics-header:hover {
             background: rgba(255, 215, 100, 0.04);
         }
 
-        .nava-lyrics-header h4 {
+        .nava-modal-lyrics-header h4 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 700;
             color: #f5b042;
@@ -1639,21 +1649,17 @@
             margin: 0;
         }
 
-        .nava-lyrics-header h4 i {
-            font-size: 1.1rem;
-        }
-
-        .nava-lyrics-header .lyrics-toggle-icon {
+        .nava-modal-lyrics-header .lyrics-toggle-icon {
             color: #f5b042;
             transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             font-size: 1.1rem;
         }
 
-        .nava-lyrics-header .lyrics-toggle-icon.open {
+        .nava-modal-lyrics-header .lyrics-toggle-icon.open {
             transform: rotate(180deg);
         }
 
-        .nava-lyrics-body {
+        .nava-modal-lyrics-body {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, padding 0.3s ease;
@@ -1661,7 +1667,7 @@
             padding: 0 1.2rem;
         }
 
-        .nava-lyrics-body.open {
+        .nava-modal-lyrics-body.open {
             max-height: 400px;
             opacity: 1;
             padding: 0 1.2rem 1.2rem 1.2rem;
@@ -1716,8 +1722,8 @@
             padding-right: 0.8rem;
         }
 
-        /* ===== پخش‌کننده ===== */
-        .nava-player {
+        /* ===== پخش‌کننده در مودال ===== */
+        .nava-modal-player {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 16px;
             padding: 1rem 1.5rem;
@@ -1726,19 +1732,19 @@
             transition: 0.3s;
         }
 
-        .nava-player:hover {
+        .nava-modal-player:hover {
             background: rgba(255, 215, 100, 0.04);
             border-color: rgba(255, 215, 100, 0.1);
         }
 
-        .nava-progress-wrap {
+        .nava-modal-player .nava-progress-wrap {
             display: flex;
             align-items: center;
             gap: 0.8rem;
             margin-bottom: 0.6rem;
         }
 
-        .nava-time {
+        .nava-modal-player .nava-time {
             font-family: 'Vazirmatn', sans-serif;
             font-size: 0.7rem;
             color: #b0a99b;
@@ -1746,7 +1752,7 @@
             font-weight: 500;
         }
 
-        .nava-progress-bar {
+        .nava-modal-player .nava-progress-bar {
             flex: 1;
             height: 4px;
             background: rgba(255, 255, 255, 0.08);
@@ -1756,11 +1762,11 @@
             transition: 0.3s;
         }
 
-        .nava-progress-bar:hover {
+        .nava-modal-player .nava-progress-bar:hover {
             height: 6px;
         }
 
-        .nava-progress-fill {
+        .nava-modal-player .nava-progress-fill {
             height: 100%;
             width: 0%;
             background: linear-gradient(90deg, #f5b042, #d48f2b);
@@ -1769,7 +1775,7 @@
             position: relative;
         }
 
-        .nava-progress-fill::after {
+        .nava-modal-player .nava-progress-fill::after {
             content: '';
             position: absolute;
             left: -4px;
@@ -1784,18 +1790,18 @@
             transition: 0.3s;
         }
 
-        .nava-progress-bar:hover .nava-progress-fill::after {
+        .nava-modal-player .nava-progress-bar:hover .nava-progress-fill::after {
             opacity: 1;
         }
 
-        .nava-controls {
+        .nava-modal-player .nava-controls {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 1.2rem;
         }
 
-        .nava-controls button {
+        .nava-modal-player .nava-controls button {
             background: none;
             border: none;
             color: #d6d0c4;
@@ -1811,17 +1817,13 @@
             justify-content: center;
         }
 
-        .nava-controls button:hover {
+        .nava-modal-player .nava-controls button:hover {
             color: #f5b042;
             transform: scale(1.12);
             background: rgba(255, 215, 100, 0.06);
         }
 
-        .nava-controls button:active {
-            transform: scale(0.92);
-        }
-
-        .nava-controls .nava-play-btn {
+        .nava-modal-player .nava-controls .nava-play-btn {
             width: 52px;
             height: 52px;
             font-size: 1.6rem;
@@ -1830,14 +1832,14 @@
             color: #f5b042;
         }
 
-        .nava-controls .nava-play-btn:hover {
+        .nava-modal-player .nava-controls .nava-play-btn:hover {
             background: linear-gradient(145deg, rgba(245, 176, 66, 0.25), rgba(212, 143, 43, 0.1));
             border-color: rgba(255, 215, 100, 0.3);
             transform: scale(1.08);
             box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.2);
         }
 
-        .nava-controls .nava-play-btn.playing {
+        .nava-modal-player .nava-controls .nava-play-btn.playing {
             background: linear-gradient(145deg, rgba(245, 176, 66, 0.2), rgba(212, 143, 43, 0.08));
             border-color: #f5b042;
             box-shadow: 0 0 30px rgba(245, 176, 66, 0.1);
@@ -1944,7 +1946,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* ===== مودال شیشه‌ای ===== */
+        /* ===== مودال شیشه‌ای (برای طراحی) ===== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -1956,7 +1958,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 99999;
+            z-index: 99998;
             animation: fadeInModal 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             padding: 1rem;
         }
@@ -1976,6 +1978,17 @@
             }
         }
 
+        @keyframes slideUpModal {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
         .modal-content {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(24px);
@@ -1989,17 +2002,6 @@
             position: relative;
             box-shadow: 0 24px 80px -16px rgba(0, 0, 0, 0.6);
             animation: slideUpModal 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        @keyframes slideUpModal {
-            0% {
-                opacity: 0;
-                transform: translateY(40px) scale(0.96);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
         }
 
         .modal-content .modal-close {
@@ -2273,10 +2275,7 @@
             .nava-title {
                 font-size: 1.3rem;
             }
-            .nava-detail-card {
-                padding: 1.2rem;
-            }
-            .nava-detail-info h2 {
+            .nava-modal-content .modal-title {
                 font-size: 1.5rem;
             }
             .design-card-new .design-title {
@@ -2412,25 +2411,26 @@
             .nava-info .nava-title {
                 font-size: 1rem;
             }
-            .nava-detail-card {
-                padding: 1rem;
+            .nava-modal-content {
+                padding: 1.5rem;
+                margin: 0.5rem;
             }
-            .nava-detail-info h2 {
+            .nava-modal-content .modal-title {
                 font-size: 1.3rem;
             }
             .lyrics-box {
                 font-size: 0.85rem;
                 max-height: 150px;
             }
-            .nava-player {
+            .nava-modal-player {
                 padding: 0.8rem 1rem;
             }
-            .nava-controls button {
+            .nava-modal-player .nava-controls button {
                 font-size: 1rem;
                 width: 34px;
                 height: 34px;
             }
-            .nava-controls .nava-play-btn {
+            .nava-modal-player .nava-controls .nava-play-btn {
                 width: 44px;
                 height: 44px;
                 font-size: 1.3rem;
@@ -2559,39 +2559,37 @@
                 width: 28px;
                 height: 28px;
             }
-            .nava-detail-card {
-                padding: 0.8rem;
+            .nava-modal-content {
+                padding: 1rem;
+                margin: 0.3rem;
             }
-            .nava-detail-info h2 {
+            .nava-modal-content .modal-title {
                 font-size: 1.1rem;
             }
-            .nava-detail-info .detail-artist,
-            .nava-detail-info .detail-mixer {
+            .nava-modal-content .modal-artist,
+            .nava-modal-content .modal-mixer {
                 font-size: 0.85rem;
             }
             .lyrics-box {
                 font-size: 0.8rem;
                 max-height: 120px;
             }
-            .nava-player {
+            .nava-modal-player {
                 padding: 0.6rem 0.8rem;
             }
-            .nava-controls button {
+            .nava-modal-player .nava-controls button {
                 font-size: 0.8rem;
                 width: 30px;
                 height: 30px;
             }
-            .nava-controls .nava-play-btn {
+            .nava-modal-player .nava-controls .nava-play-btn {
                 width: 38px;
                 height: 38px;
                 font-size: 1.1rem;
             }
-            .nava-time {
+            .nava-modal-player .nava-time {
                 font-size: 0.6rem;
                 min-width: 28px;
-            }
-            .back-to-nava {
-                font-size: 0.85rem;
             }
             .design-card-new .design-title {
                 font-size: 1rem;
@@ -2932,14 +2930,14 @@
             </div>
 
             <!-- ====================================================== -->
-            <!-- ===== بخش نوا: لیست کارت‌ها (خوشگل‌تر) ===== -->
+            <!-- ===== بخش نوا: لیست کارت‌ها (بدون هش) ===== -->
             <!-- ====================================================== -->
             <div class="tab-content" id="nava">
                 <h2><i class="fas fa-headphones" style="color:#f5b042; margin-left:0.8rem;"></i> نوا</h2>
                 <p style="margin-bottom:1.5rem;">نماهنگ ها و نواهای ساخته شده توسط بنده:</p>
 
                 <div class="nava-list">
-                    <div class="nava-card" onclick="window.location.hash = 'nava_roghee_jaan';">
+                    <div class="nava-card" onclick="openNavaModal()">
                         <div class="nava-card-content">
                             <div class="nava-thumb">
                                 <img src="https://up.20script.ir/file/eebc-SAVE-۲۰۲۶۰۸۱۴-۱۷۴۹۵۲.jpg" alt="کاور رقیه جان">
@@ -2951,62 +2949,6 @@
                             </div>
                             <div class="nava-arrow">
                                 <i class="fas fa-chevron-left"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====================================================== -->
-            <!-- ===== صفحه‌ی اختصاصی آهنگ: رقیه جان ===== -->
-            <!-- ====================================================== -->
-            <div class="tab-content nava-detail-page" id="nava_roghee_jaan">
-                <button class="back-to-nava" onclick="window.location.hash = 'nava';">← بازگشت به لیست</button>
-
-                <div class="nava-detail-card">
-                    <div class="nava-detail-image">
-                        <img src="https://up.20script.ir/file/eebc-SAVE-۲۰۲۶۰۸۱۴-۱۷۴۹۵۲.jpg" alt="کاور نماهنگ رقیه جان">
-                    </div>
-
-                    <div class="nava-detail-info">
-                        <h2><i class="fas fa-music"></i> نماهنگ | رقیــه جان</h2>
-                        <p class="detail-artist"><i class="fas fa-microphone"></i> مداح: کربلایی سید علی صفاتی</p>
-                        <p class="detail-mixer"><i class="fas fa-sliders-h"></i> تنظیم میکس: محمد حسین صنعتی</p>
-
-                        <!-- ===== لیریکس کشویی خفن ===== -->
-                        <div class="nava-lyrics">
-                            <div class="nava-lyrics-header" onclick="toggleLyrics(this)">
-                                <h4><i class="fas fa-scroll"></i> متن نماهنگ</h4>
-                                <span class="lyrics-toggle-icon"><i class="fas fa-chevron-down"></i></span>
-                            </div>
-                            <div class="nava-lyrics-body">
-                                <div class="lyrics-box">
-                                    <p class="lyric-line">🎵 رقیــه جان، رقیــه جان...</p>
-                                    <p class="lyric-line">دل خون شده باز از فراقت</p>
-                                    <p class="lyric-line highlight">ای نور دو چشم من، رقیــه جان</p>
-                                    <p class="lyric-line">تو روضه‌ات پر از شور و شعور است</p>
-                                    <p class="lyric-line">هر جا که نامت آید، دلها غرق در نور است</p>
-                                    <p class="lyric-line">تو آن ماهی که در شب‌های غم</p>
-                                    <p class="lyric-line highlight">چراغ راه عاشقان شدی، رقیــه جان</p>
-                                    <p class="lyric-line">...</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ===== پخش‌کننده ===== -->
-                        <div class="nava-player">
-                            <audio id="navaAudio1" src="https://uploadkon.ir/uploads/581514_26لباست.mp3"></audio>
-                            <div class="nava-progress-wrap">
-                                <span class="nava-time" id="currentTime1">0:00</span>
-                                <div class="nava-progress-bar" id="progressBar1">
-                                    <div class="nava-progress-fill" id="progressFill1"></div>
-                                </div>
-                                <span class="nava-time" id="duration1">0:00</span>
-                            </div>
-                            <div class="nava-controls">
-                                <button onclick="prevTrack(1)"><i class="fas fa-step-backward"></i></button>
-                                <button class="nava-play-btn" id="playBtn1" onclick="togglePlay(1)"><i class="fas fa-play"></i></button>
-                                <button onclick="nextTrack(1)"><i class="fas fa-step-forward"></i></button>
                             </div>
                         </div>
                     </div>
@@ -3040,6 +2982,60 @@
         <span class="tooltip">دستیار هوش مصنوعی</span>
     </a>
 
+    <!-- ========== مودال نوا (برای نمایش جزئیات آهنگ) ========== -->
+    <div class="nava-modal-overlay" id="navaModal">
+        <div class="nava-modal-content">
+            <button class="modal-close" onclick="closeNavaModal()">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="modal-image">
+                <img src="https://up.20script.ir/file/eebc-SAVE-۲۰۲۶۰۸۱۴-۱۷۴۹۵۲.jpg" alt="کاور نماهنگ رقیه جان">
+            </div>
+
+            <h3 class="modal-title"><i class="fas fa-music"></i> نماهنگ | رقیــه جان</h3>
+            <p class="modal-artist"><i class="fas fa-microphone"></i> مداح: کربلایی سید علی صفاتی</p>
+            <p class="modal-mixer"><i class="fas fa-sliders-h"></i> تنظیم میکس: محمد حسین صنعتی</p>
+
+            <!-- ===== لیریکس کشویی ===== -->
+            <div class="nava-modal-lyrics">
+                <div class="nava-modal-lyrics-header" onclick="toggleModalLyrics(this)">
+                    <h4><i class="fas fa-scroll"></i> متن نماهنگ</h4>
+                    <span class="lyrics-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="nava-modal-lyrics-body">
+                    <div class="lyrics-box">
+                        <p class="lyric-line">🎵 رقیــه جان، رقیــه جان...</p>
+                        <p class="lyric-line">دل خون شده باز از فراقت</p>
+                        <p class="lyric-line highlight">ای نور دو چشم من، رقیــه جان</p>
+                        <p class="lyric-line">تو روضه‌ات پر از شور و شعور است</p>
+                        <p class="lyric-line">هر جا که نامت آید، دلها غرق در نور است</p>
+                        <p class="lyric-line">تو آن ماهی که در شب‌های غم</p>
+                        <p class="lyric-line highlight">چراغ راه عاشقان شدی، رقیــه جان</p>
+                        <p class="lyric-line">...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== پخش‌کننده ===== -->
+            <div class="nava-modal-player">
+                <audio id="navaModalAudio" src="https://uploadkon.ir/uploads/581514_26لباست.mp3"></audio>
+                <div class="nava-progress-wrap">
+                    <span class="nava-time" id="modalCurrentTime">0:00</span>
+                    <div class="nava-progress-bar" id="modalProgressBar">
+                        <div class="nava-progress-fill" id="modalProgressFill"></div>
+                    </div>
+                    <span class="nava-time" id="modalDuration">0:00</span>
+                </div>
+                <div class="nava-controls">
+                    <button onclick="modalPrevTrack()"><i class="fas fa-step-backward"></i></button>
+                    <button class="nava-play-btn" id="modalPlayBtn" onclick="modalTogglePlay()"><i class="fas fa-play"></i></button>
+                    <button onclick="modalNextTrack()"><i class="fas fa-step-forward"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ========== نوتیفیکیشن (درست) ========== -->
     <div class="welcome-notification" id="welcomeNotif">
         <div class="notif-header">
@@ -3058,7 +3054,7 @@
         </div>
     </div>
 
-    <!-- ========== مودال شیشه‌ای ========== -->
+    <!-- ========== مودال شیشه‌ای (برای طراحی) ========== -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">
@@ -3255,113 +3251,105 @@
             }
         }
 
-        // ===== لیریکس کشویی =====
-        function toggleLyrics(header) {
+        // ===== مودال نوا =====
+        function openNavaModal() {
+            document.getElementById('navaModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeNavaModal() {
+            document.getElementById('navaModal').classList.remove('active');
+            document.body.style.overflow = '';
+            // توقف پخش
+            const audio = document.getElementById('navaModalAudio');
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+                const btn = document.getElementById('modalPlayBtn');
+                btn.querySelector('i').className = 'fas fa-play';
+                btn.classList.remove('playing');
+                if (modalPlayer) modalPlayer.playing = false;
+                document.getElementById('modalProgressFill').style.width = '0%';
+                document.getElementById('modalCurrentTime').textContent = '0:00';
+            }
+        }
+
+        // بستن مودال با کلیک روی پس‌زمینه
+        document.getElementById('navaModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeNavaModal();
+            }
+        });
+
+        // ===== لیریکس کشویی در مودال =====
+        function toggleModalLyrics(header) {
             const body = header.nextElementSibling;
             const icon = header.querySelector('.lyrics-toggle-icon');
-
             body.classList.toggle('open');
             icon.classList.toggle('open');
         }
 
         // ============================================
-        // مدیریت هش برای نوا
+        // پخش‌کننده مودال نوا
         // ============================================
-        function handleNavaHash() {
-            const hash = window.location.hash.replace('#', '');
-            const navaTab = document.getElementById('nava');
-            const detailPages = document.querySelectorAll('.nava-detail-page');
+        const modalAudio = document.getElementById('navaModalAudio');
+        const modalPlayBtn = document.getElementById('modalPlayBtn');
+        const modalProgressFill = document.getElementById('modalProgressFill');
+        const modalProgressBar = document.getElementById('modalProgressBar');
+        const modalCurrentTime = document.getElementById('modalCurrentTime');
+        const modalDuration = document.getElementById('modalDuration');
+        let modalPlayer = { playing: false };
 
-            detailPages.forEach(page => page.classList.remove('active'));
-
-            if (hash.startsWith('nava_')) {
-                const targetPage = document.getElementById(hash);
-                if (targetPage) {
-                    navaTab.style.display = 'none';
-                    targetPage.classList.add('active');
-                }
-            } else if (hash === 'nava' || hash === '') {
-                navaTab.style.display = 'block';
-                detailPages.forEach(page => page.classList.remove('active'));
-            }
-        }
-
-        window.addEventListener('hashchange', handleNavaHash);
-        document.addEventListener('DOMContentLoaded', handleNavaHash);
-
-        // ============================================
-        // پخش‌کننده
-        // ============================================
-        const players = {};
-
-        function togglePlay(id) {
-            const audio = document.getElementById(`navaAudio${id}`);
-            const btn = document.getElementById(`playBtn${id}`);
-            const icon = btn.querySelector('i');
-
-            if (!players[id]) players[id] = { playing: false };
-
-            if (players[id].playing) {
-                audio.pause();
-                icon.className = 'fas fa-play';
-                btn.classList.remove('playing');
-                players[id].playing = false;
-            } else {
-                for (let key in players) {
-                    if (players[key].playing) {
-                        const otherAudio = document.getElementById(`navaAudio${key}`);
-                        const otherBtn = document.getElementById(`playBtn${key}`);
-                        otherAudio.pause();
-                        otherBtn.querySelector('i').className = 'fas fa-play';
-                        otherBtn.classList.remove('playing');
-                        players[key].playing = false;
-                    }
-                }
-                audio.play();
-                icon.className = 'fas fa-pause';
-                btn.classList.add('playing');
-                players[id].playing = true;
-            }
-        }
-
-        document.querySelectorAll('.nava-player').forEach((player, index) => {
-            const id = index + 1;
-            const audio = document.getElementById(`navaAudio${id}`);
-            const progressFill = document.getElementById(`progressFill${id}`);
-            const currentTimeSpan = document.getElementById(`currentTime${id}`);
-            const durationSpan = document.getElementById(`duration${id}`);
-            const progressBar = document.getElementById(`progressBar${id}`);
-
-            if (!audio) return;
-
-            audio.addEventListener('loadedmetadata', () => {
-                durationSpan.textContent = formatTime(audio.duration);
-            });
-
-            audio.addEventListener('timeupdate', () => {
-                const percent = (audio.currentTime / audio.duration) * 100;
-                progressFill.style.width = percent + '%';
-                currentTimeSpan.textContent = formatTime(audio.currentTime);
-            });
-
-            audio.addEventListener('ended', () => {
-                const btn = document.getElementById(`playBtn${id}`);
-                btn.querySelector('i').className = 'fas fa-play';
-                btn.classList.remove('playing');
-                if (players[id]) players[id].playing = false;
-                progressFill.style.width = '0%';
-                currentTimeSpan.textContent = '0:00';
-            });
-
-            if (progressBar) {
-                progressBar.addEventListener('click', (e) => {
-                    const rect = progressBar.getBoundingClientRect();
-                    const percent = (e.clientX - rect.left) / rect.width;
-                    audio.currentTime = percent * audio.duration;
-                    progressFill.style.width = (percent * 100) + '%';
-                });
-            }
+        modalAudio.addEventListener('loadedmetadata', () => {
+            modalDuration.textContent = formatTime(modalAudio.duration);
         });
+
+        modalAudio.addEventListener('timeupdate', () => {
+            const percent = (modalAudio.currentTime / modalAudio.duration) * 100;
+            modalProgressFill.style.width = percent + '%';
+            modalCurrentTime.textContent = formatTime(modalAudio.currentTime);
+        });
+
+        modalAudio.addEventListener('ended', () => {
+            modalPlayBtn.querySelector('i').className = 'fas fa-play';
+            modalPlayBtn.classList.remove('playing');
+            modalPlayer.playing = false;
+            modalProgressFill.style.width = '0%';
+            modalCurrentTime.textContent = '0:00';
+        });
+
+        modalProgressBar.addEventListener('click', (e) => {
+            const rect = modalProgressBar.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            modalAudio.currentTime = percent * modalAudio.duration;
+            modalProgressFill.style.width = (percent * 100) + '%';
+        });
+
+        function modalTogglePlay() {
+            if (modalPlayer.playing) {
+                modalAudio.pause();
+                modalPlayBtn.querySelector('i').className = 'fas fa-play';
+                modalPlayBtn.classList.remove('playing');
+                modalPlayer.playing = false;
+            } else {
+                modalAudio.play();
+                modalPlayBtn.querySelector('i').className = 'fas fa-pause';
+                modalPlayBtn.classList.add('playing');
+                modalPlayer.playing = true;
+            }
+        }
+
+        function modalPrevTrack() {
+            modalAudio.currentTime = 0;
+            modalProgressFill.style.width = '0%';
+            modalCurrentTime.textContent = '0:00';
+        }
+
+        function modalNextTrack() {
+            modalAudio.currentTime = 0;
+            modalProgressFill.style.width = '0%';
+            modalCurrentTime.textContent = '0:00';
+        }
 
         function formatTime(seconds) {
             if (isNaN(seconds)) return '0:00';
@@ -3370,21 +3358,7 @@
             return mins + ':' + (secs < 10 ? '0' : '') + secs;
         }
 
-        function prevTrack(id) {
-            const audio = document.getElementById(`navaAudio${id}`);
-            audio.currentTime = 0;
-            document.getElementById(`progressFill${id}`).style.width = '0%';
-            document.getElementById(`currentTime${id}`).textContent = '0:00';
-        }
-
-        function nextTrack(id) {
-            const audio = document.getElementById(`navaAudio${id}`);
-            audio.currentTime = 0;
-            document.getElementById(`progressFill${id}`).style.width = '0%';
-            document.getElementById(`currentTime${id}`).textContent = '0:00';
-        }
-
-        // ===== مودال =====
+        // ===== مودال طراحی =====
         let is3D = false;
         let currentRotationX = 0;
         let currentRotationY = 0;
@@ -3505,11 +3479,15 @@
             }
         });
 
-        // ===== کیبورد برای بستن مودال =====
+        // ===== کیبورد برای بستن مودال‌ها =====
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                const overlay = document.getElementById('modalOverlay');
-                if (overlay.classList.contains('active')) {
+                const navaModal = document.getElementById('navaModal');
+                if (navaModal.classList.contains('active')) {
+                    closeNavaModal();
+                }
+                const designModal = document.getElementById('modalOverlay');
+                if (designModal.classList.contains('active')) {
                     closeModal();
                 }
             }
@@ -3518,7 +3496,7 @@
         // ===== نوتیفیکیشن (درست) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '3.5.0';
+            const APP_VERSION = '4.0.0';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
@@ -3540,4 +3518,4 @@
     </script>
 
 </body>
-    </html>
+                                </html>
