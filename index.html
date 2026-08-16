@@ -2972,7 +2972,7 @@
             </div>
 
             <!-- ===== صفحه‌ی اختصاصی آهنگ: رقیه جان ===== -->
-            <div class="tab-content nava-detail-page" id="nava_roghee_jaan">
+            <div class="nava-detail-page" id="nava_roghee_jaan">
                 <button class="back-to-nava" onclick="window.location.hash = 'nava';">← بازگشت به لیست</button>
 
                 <div class="nava-detail-card">
@@ -3132,6 +3132,8 @@
             const overlay = document.getElementById('navOverlay');
             const navLinks = document.querySelectorAll('#navMenu a');
             const tabContents = document.querySelectorAll('.tab-content');
+            const navaTab = document.getElementById('nava');
+            const detailPages = document.querySelectorAll('.nava-detail-page');
 
             function toggleMenu() {
                 hamburger.classList.toggle('active');
@@ -3141,41 +3143,82 @@
 
             hamburger.addEventListener('click', toggleMenu);
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const tabId = this.dataset.tab;
-                    if (tabId) {
-                        activateTab(tabId);
-                        if (overlay.classList.contains('open')) toggleMenu();
-                        history.pushState(null, null, `#${tabId}`);
+            window.activateTab = function(tabId) {
+                // مخفی کردن همه تب‌ها
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id !== 'nava') {
+                        content.style.display = 'none';
                     }
                 });
-            });
 
-            window.activateTab = function(tabId) {
-                tabContents.forEach(content => content.classList.remove('active'));
-                const target = document.getElementById(tabId);
-                if (target) target.classList.add('active');
+                // مخفی کردن صفحات جزئیات نوا
+                detailPages.forEach(page => page.classList.remove('active'));
+
+                // مدیریت تب نوا
+                if (tabId === 'nava') {
+                    navaTab.style.display = 'block';
+                    navaTab.classList.add('active');
+                } else if (tabId.startsWith('nava_')) {
+                    // برای صفحات جزئیات
+                    const target = document.getElementById(tabId);
+                    if (target) {
+                        target.classList.add('active');
+                        navaTab.style.display = 'none';
+                        navaTab.classList.remove('active');
+                    }
+                } else {
+                    // تب‌های عادی
+                    const target = document.getElementById(tabId);
+                    if (target) {
+                        target.style.display = 'block';
+                        target.classList.add('active');
+                        navaTab.style.display = 'none';
+                        navaTab.classList.remove('active');
+                    }
+                }
+
+                // آپدیت منو
                 navLinks.forEach(link => link.classList.remove('active'));
                 const activeLink = document.querySelector(`#navMenu a[data-tab="${tabId}"]`);
                 if (activeLink) activeLink.classList.add('active');
             };
 
-            const hash = window.location.hash.replace('#', '');
-            if (hash && document.getElementById(hash)) {
-                activateTab(hash);
-            } else {
-                activateTab('home');
+            // ===== مدیریت هش (hash) =====
+            function handleHash() {
+                const hash = window.location.hash.replace('#', '');
+                
+                if (hash === 'nava_roghee_jaan') {
+                    activateTab('nava_roghee_jaan');
+                } else if (hash === 'nava') {
+                    activateTab('nava');
+                } else if (hash && document.getElementById(hash)) {
+                    activateTab(hash);
+                } else {
+                    activateTab('home');
+                }
             }
 
-            window.addEventListener('hashchange', function() {
-                const newHash = window.location.hash.replace('#', '');
-                if (newHash && document.getElementById(newHash)) {
-                    activateTab(newHash);
-                }
+            // ===== رویدادهای منو =====
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.dataset.tab;
+                    if (tabId) {
+                        window.location.hash = tabId;
+                        handleHash();
+                        if (overlay.classList.contains('open')) toggleMenu();
+                    }
+                });
             });
 
+            // ===== رویداد تغییر هش =====
+            window.addEventListener('hashchange', handleHash);
+
+            // ===== اجرا در ابتدا =====
+            handleHash();
+
+            // ===== بستن منو با کلیک بیرون =====
             overlay.addEventListener('click', function(e) {
                 if (e.target === overlay && overlay.classList.contains('open')) toggleMenu();
             });
@@ -3188,8 +3231,8 @@
         // ===== تابع switchTab برای دکمه‌های هدر =====
         function switchTab(tabId) {
             event.preventDefault();
-            activateTab(tabId);
-            document.querySelector(`#navMenu a[data-tab="${tabId}"]`)?.click();
+            window.location.hash = tabId;
+            // تابع activateTab داخل IIFE اجرا میشه
             document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
@@ -3286,31 +3329,6 @@
                 icon.style.transform = 'rotate(0deg)';
             }
         }
-
-        // ============================================
-        // مدیریت هش برای نوا
-        // ============================================
-        function handleNavaHash() {
-            const hash = window.location.hash.replace('#', '');
-            const navaTab = document.getElementById('nava');
-            const detailPages = document.querySelectorAll('.nava-detail-page');
-
-            detailPages.forEach(page => page.classList.remove('active'));
-
-            if (hash.startsWith('nava_')) {
-                const targetPage = document.getElementById(hash);
-                if (targetPage) {
-                    navaTab.style.display = 'none';
-                    targetPage.classList.add('active');
-                }
-            } else if (hash === 'nava' || hash === '') {
-                navaTab.style.display = 'block';
-                detailPages.forEach(page => page.classList.remove('active'));
-            }
-        }
-
-        window.addEventListener('hashchange', handleNavaHash);
-        document.addEventListener('DOMContentLoaded', handleNavaHash);
 
         // ============================================
         // پخش‌کننده (چندگانه)
@@ -3563,4 +3581,4 @@
     </script>
 
 </body>
-                            </html>
+    </html>
