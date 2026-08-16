@@ -3147,9 +3147,7 @@
                 // مخفی کردن همه تب‌ها
                 tabContents.forEach(content => {
                     content.classList.remove('active');
-                    if (content.id !== 'nava') {
-                        content.style.display = 'none';
-                    }
+                    content.style.display = 'none';
                 });
 
                 // مخفی کردن صفحات جزئیات نوا
@@ -3160,7 +3158,6 @@
                     navaTab.style.display = 'block';
                     navaTab.classList.add('active');
                 } else if (tabId.startsWith('nava_')) {
-                    // برای صفحات جزئیات
                     const target = document.getElementById(tabId);
                     if (target) {
                         target.classList.add('active');
@@ -3168,14 +3165,13 @@
                         navaTab.classList.remove('active');
                     }
                 } else {
-                    // تب‌های عادی
                     const target = document.getElementById(tabId);
                     if (target) {
                         target.style.display = 'block';
                         target.classList.add('active');
-                        navaTab.style.display = 'none';
-                        navaTab.classList.remove('active');
                     }
+                    navaTab.style.display = 'none';
+                    navaTab.classList.remove('active');
                 }
 
                 // آپدیت منو
@@ -3184,7 +3180,7 @@
                 if (activeLink) activeLink.classList.add('active');
             };
 
-            // ===== مدیریت هش (hash) =====
+            // ===== مدیریت هش =====
             function handleHash() {
                 const hash = window.location.hash.replace('#', '');
                 
@@ -3232,7 +3228,6 @@
         function switchTab(tabId) {
             event.preventDefault();
             window.location.hash = tabId;
-            // تابع activateTab داخل IIFE اجرا میشه
             document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
