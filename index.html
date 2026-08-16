@@ -1371,7 +1371,6 @@
         /* ============================================
                    کارت‌های نوا (لیست افقی عریض)
                    ============================================ */
-
         .nava-list {
             display: flex;
             flex-direction: column;
@@ -1609,7 +1608,7 @@
             margin-left: 0.3rem;
         }
 
-        /* ===== لیریکس خفن با دکمه باز و بسته شدن ===== */
+        /* ===== لیریکس کشویی خیلی خفن ===== */
         .nava-lyrics {
             margin: 1.2rem 0;
             background: rgba(255, 255, 255, 0.02);
@@ -1617,51 +1616,75 @@
             border: 1px solid rgba(255, 215, 100, 0.06);
             overflow: hidden;
             transition: 0.4s;
+            position: relative;
+        }
+
+        .nava-lyrics::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 215, 100, 0.03), transparent 70%);
+            animation: shimmerBg 8s ease-in-out infinite alternate;
+            pointer-events: none;
+            opacity: 0.5;
         }
 
         .nava-lyrics:hover {
-            border-color: rgba(255, 215, 100, 0.12);
+            border-color: rgba(255, 215, 100, 0.15);
+            box-shadow: 0 8px 32px -8px rgba(245, 176, 66, 0.05);
         }
 
         .lyrics-toggle-btn {
             width: 100%;
             background: none;
             border: none;
-            padding: 0.8rem 1.2rem;
+            padding: 0.9rem 1.2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
             font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 700;
+            font-size: 1rem;
             color: #f5b042;
             transition: 0.3s;
             border-radius: 16px;
+            position: relative;
+            z-index: 1;
         }
 
         .lyrics-toggle-btn:hover {
-            background: rgba(255, 215, 100, 0.04);
+            background: rgba(255, 215, 100, 0.06);
+            color: #f5d06a;
         }
 
-        .lyrics-toggle-btn i {
-            transition: 0.4s;
-            font-size: 1rem;
+        .lyrics-toggle-btn i:first-child {
+            margin-left: 0.6rem;
         }
 
-        .lyrics-toggle-btn.open i {
+        .lyrics-toggle-btn i:last-child {
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 0.9rem;
+            color: #b0a99b;
+        }
+
+        .lyrics-toggle-btn.open i:last-child {
             transform: rotate(180deg);
+            color: #f5b042;
         }
 
         .lyrics-body {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1), padding 0.3s ease;
+            transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1), padding 0.4s ease;
             padding: 0 1.2rem;
         }
 
         .lyrics-body.open {
-            max-height: 400px;
+            max-height: 450px;
             padding: 0 1.2rem 1.2rem 1.2rem;
         }
 
@@ -1669,12 +1692,14 @@
             font-family: 'Vazirmatn', sans-serif;
             font-size: 0.95rem;
             color: #d6d0c4;
-            line-height: 2.2;
-            max-height: 300px;
+            line-height: 2.4;
+            max-height: 320px;
             overflow-y: auto;
             padding-left: 0.3rem;
             scrollbar-width: thin;
             scrollbar-color: rgba(255, 215, 100, 0.2) transparent;
+            direction: rtl;
+            text-align: right;
         }
 
         .lyrics-body .lyrics-box::-webkit-scrollbar {
@@ -1692,24 +1717,33 @@
 
         .lyric-line {
             margin: 0;
-            padding: 0.1rem 0.5rem;
-            border-radius: 6px;
-            transition: 0.3s;
+            padding: 0.2rem 0.8rem;
+            border-radius: 8px;
+            transition: 0.3s ease;
             opacity: 0.85;
+            border-right: 2px solid transparent;
         }
 
         .lyric-line:hover {
             opacity: 1;
             background: rgba(255, 215, 100, 0.04);
             transform: translateX(-3px);
+            border-right-color: rgba(255, 215, 100, 0.15);
         }
 
         .lyric-line.highlight {
             color: #f5b042;
-            font-weight: 600;
-            background: rgba(255, 215, 100, 0.06);
+            font-weight: 700;
+            background: rgba(255, 215, 100, 0.08);
             border-right: 3px solid #f5b042;
-            padding-right: 1rem;
+            padding-right: 1.2rem;
+            opacity: 1;
+            text-shadow: 0 0 20px rgba(245, 176, 66, 0.1);
+        }
+
+        .lyric-line.highlight:hover {
+            background: rgba(255, 215, 100, 0.12);
+            box-shadow: inset 0 0 30px rgba(245, 176, 66, 0.03);
         }
 
         /* ===== پخش‌کننده ===== */
@@ -2611,7 +2645,7 @@
         <!-- ========== محتوای اصلی ========== -->
         <main class="main-content">
 
-            <!-- ===== تب خانه ===== -->
+            <!-- ===== تب خانه (دیگه اینجا خبری از نوا نیست!) ===== -->
             <div class="tab-content active" id="home">
                 <div class="hero-card" id="heroCard">
                     <img class="hero-bg" src="https://cdn.imgurl.ir/uploads/q589216_ya_ali12155.jpg" alt="mohamad hossein" />
@@ -2913,7 +2947,7 @@
             </div>
 
             <!-- ====================================================== -->
-            <!-- ===== بخش نوا: لیست کارت‌ها ===== -->
+            <!-- ===== بخش نوا (درست شد و فقط اینجاست) ===== -->
             <!-- ====================================================== -->
             <div class="tab-content" id="nava">
                 <h2><i class="fas fa-headphones" style="color:#f5b042; margin-left:0.8rem;"></i> نوا</h2>
@@ -2957,7 +2991,7 @@
                         <p class="detail-artist"><i class="fas fa-microphone"></i> مداح: کربلایی سید علی صفاتی</p>
                         <p class="detail-mixer"><i class="fas fa-sliders-h"></i> تنظیم میکس: محمد حسین صنعتی</p>
 
-                        <!-- ===== لیریکس کشویی خفن ===== -->
+                        <!-- ===== لیریکس کشویی خیلی خفن ===== -->
                         <div class="nava-lyrics">
                             <button class="lyrics-toggle-btn" onclick="toggleLyrics(this)">
                                 <span><i class="fas fa-scroll"></i> متن نماهنگ</span>
@@ -2967,15 +3001,15 @@
                                 <div class="lyrics-box">
                                     <p class="lyric-line">🎵 رقیــه جان، رقیــه جان...</p>
                                     <p class="lyric-line">دل خون شده باز از فراقت</p>
-                                    <p class="lyric-line highlight">ای نور دو چشم من، رقیــه جان</p>
+                                    <p class="lyric-line highlight">✨ ای نور دو چشم من، رقیــه جان ✨</p>
                                     <p class="lyric-line">تو روضه‌ات پر از شور و شعور است</p>
                                     <p class="lyric-line">هر جا که نامت آید، دلها غرق در نور است</p>
                                     <p class="lyric-line">تو آن ماهی که در شب‌های غم</p>
-                                    <p class="lyric-line highlight">چراغ راه عاشقان شدی، رقیــه جان</p>
+                                    <p class="lyric-line highlight">🔥 چراغ راه عاشقان شدی، رقیــه جان 🔥</p>
                                     <p class="lyric-line">ای مونس دلهای شکسته، رقیــه جان</p>
                                     <p class="lyric-line">تو را صدا می‌زنم از ته دل</p>
                                     <p class="lyric-line">که ای آرامش عالم، رقیــه جان...</p>
-                                    <p class="lyric-line" style="color: #8f887c; margin-top: 0.3rem;">— ادامه دارد —</p>
+                                    <p class="lyric-line" style="color: #8f887c; margin-top: 0.5rem;">— ادامه دارد —</p>
                                 </div>
                             </div>
                         </div>
@@ -3040,7 +3074,8 @@
                 <li><i class="fas fa-robot"></i> دستیار هوش مصنوعی</li>
                 <li><i class="fas fa-headphones"></i> بخش جدید "نوا" با پخش‌کننده موسیقی</li>
                 <li><i class="fas fa-music"></i> نماهنگ "رقیــه جان" با صدای کربلایی سید علی صفاتی</li>
-                <li><i class="fas fa-scroll"></i> لیریکس کشویی خفن</li>
+                <li><i class="fas fa-scroll"></i> لیریکس کشویی خیلی خفن</li>
+                <li><i class="fas fa-check-circle"></i> رفع اشکال نمایش نوا در صفحه خانه</li>
             </ul>
         </div>
     </div>
@@ -3242,7 +3277,7 @@
             }
         }
 
-        // ===== لیریکس کشویی =====
+        // ===== لیریکس کشویی خفن =====
         function toggleLyrics(btn) {
             const container = btn.closest('.nava-lyrics');
             const body = container.querySelector('.lyrics-body');
@@ -3515,7 +3550,7 @@
         // ===== نوتیفیکیشن (۸ ثانیه) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '3.4.0';
+            const APP_VERSION = '3.5.0';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
