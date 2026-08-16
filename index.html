@@ -2645,9 +2645,7 @@
         <!-- ========== محتوای اصلی ========== -->
         <main class="main-content">
 
-            <!-- ============================================== -->
             <!-- ===== تب خانه (فقط محتوای خانه) ===== -->
-            <!-- ============================================== -->
             <div class="tab-content active" id="home">
                 <div class="hero-card" id="heroCard">
                     <img class="hero-bg" src="https://cdn.imgurl.ir/uploads/q589216_ya_ali12155.jpg" alt="mohamad hossein" />
@@ -2948,9 +2946,7 @@
                 </div>
             </div>
 
-            <!-- ========================================================== -->
             <!-- ===== بخش نوا (فقط اینجا) ===== -->
-            <!-- ========================================================== -->
             <div class="tab-content" id="nava">
                 <h2><i class="fas fa-headphones" style="color:#f5b042; margin-left:0.8rem;"></i> نوا</h2>
                 <p style="margin-bottom:1.5rem;">نماهنگ ها و نواهای ساخته شده توسط بنده:</p>
@@ -2975,9 +2971,7 @@
                 </div>
             </div>
 
-            <!-- ========================================================== -->
             <!-- ===== صفحه‌ی اختصاصی آهنگ: رقیه جان ===== -->
-            <!-- ========================================================== -->
             <div class="tab-content nava-detail-page" id="nava_roghee_jaan">
                 <button class="back-to-nava" onclick="window.location.hash = 'nava';">← بازگشت به لیست</button>
 
@@ -3301,7 +3295,6 @@
             const navaTab = document.getElementById('nava');
             const detailPages = document.querySelectorAll('.nava-detail-page');
 
-            // مخفی کردن همه صفحات جزئیات
             detailPages.forEach(page => page.classList.remove('active'));
 
             if (hash.startsWith('nava_')) {
@@ -3337,7 +3330,6 @@
                 btn.classList.remove('playing');
                 players[id].playing = false;
             } else {
-                // توقف همه
                 for (let key in players) {
                     if (players[key].playing) {
                         const otherAudio = document.getElementById(`navaAudio${key}`);
@@ -3355,7 +3347,6 @@
             }
         }
 
-        // تنظیم progress bar برای هر پلیر
         document.querySelectorAll('.nava-player').forEach((player, index) => {
             const id = index + 1;
             const audio = document.getElementById(`navaAudio${id}`);
@@ -3572,4 +3563,4 @@
     </script>
 
 </body>
-    </html>
+                            </html>
