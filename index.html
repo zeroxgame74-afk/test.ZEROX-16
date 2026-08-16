@@ -1369,8 +1369,9 @@
         }
 
         /* ============================================
-                   کارت‌های نوا (لیست افقی عریض) - فقط در تب نوا
+                   کارت‌های نوا (لیست افقی عریض)
                    ============================================ */
+
         .nava-list {
             display: flex;
             flex-direction: column;
@@ -1608,142 +1609,56 @@
             margin-left: 0.3rem;
         }
 
-        /* ===== لیریکس کشویی خیلی خفن ===== */
+        /* ===== لیریکس ===== */
         .nava-lyrics {
             margin: 1.2rem 0;
             background: rgba(255, 255, 255, 0.02);
             border-radius: 16px;
+            padding: 1rem 1.2rem;
             border: 1px solid rgba(255, 215, 100, 0.06);
-            overflow: hidden;
-            transition: 0.4s;
-            position: relative;
         }
 
-        .nava-lyrics::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(255, 215, 100, 0.03), transparent 70%);
-            animation: shimmerBg 8s ease-in-out infinite alternate;
-            pointer-events: none;
-            opacity: 0.5;
-        }
-
-        .nava-lyrics:hover {
-            border-color: rgba(255, 215, 100, 0.15);
-            box-shadow: 0 8px 32px -8px rgba(245, 176, 66, 0.05);
-        }
-
-        .lyrics-toggle-btn {
-            width: 100%;
-            background: none;
-            border: none;
-            padding: 0.9rem 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
+        .nava-lyrics h4 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 700;
+            color: #f5b042;
+            margin-bottom: 0.5rem;
             font-size: 1rem;
-            color: #f5b042;
-            transition: 0.3s;
-            border-radius: 16px;
-            position: relative;
-            z-index: 1;
         }
 
-        .lyrics-toggle-btn:hover {
-            background: rgba(255, 215, 100, 0.06);
-            color: #f5d06a;
+        .nava-lyrics h4 i {
+            margin-left: 0.4rem;
         }
 
-        .lyrics-toggle-btn i:first-child {
-            margin-left: 0.6rem;
-        }
-
-        .lyrics-toggle-btn i:last-child {
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-size: 0.9rem;
-            color: #b0a99b;
-        }
-
-        .lyrics-toggle-btn.open i:last-child {
-            transform: rotate(180deg);
-            color: #f5b042;
-        }
-
-        .lyrics-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1), padding 0.4s ease;
-            padding: 0 1.2rem;
-        }
-
-        .lyrics-body.open {
-            max-height: 450px;
-            padding: 0 1.2rem 1.2rem 1.2rem;
-        }
-
-        .lyrics-body .lyrics-box {
+        .lyrics-box {
             font-family: 'Vazirmatn', sans-serif;
             font-size: 0.95rem;
             color: #d6d0c4;
-            line-height: 2.4;
-            max-height: 320px;
+            line-height: 2.2;
+            max-height: 200px;
             overflow-y: auto;
-            padding-left: 0.3rem;
+            padding-left: 0.5rem;
             scrollbar-width: thin;
             scrollbar-color: rgba(255, 215, 100, 0.2) transparent;
-            direction: rtl;
-            text-align: right;
         }
 
-        .lyrics-body .lyrics-box::-webkit-scrollbar {
+        .lyrics-box::-webkit-scrollbar {
             width: 4px;
         }
 
-        .lyrics-body .lyrics-box::-webkit-scrollbar-track {
+        .lyrics-box::-webkit-scrollbar-track {
             background: transparent;
         }
 
-        .lyrics-body .lyrics-box::-webkit-scrollbar-thumb {
+        .lyrics-box::-webkit-scrollbar-thumb {
             background: rgba(255, 215, 100, 0.2);
             border-radius: 10px;
         }
 
-        .lyric-line {
+        .lyrics-box p {
             margin: 0;
-            padding: 0.2rem 0.8rem;
-            border-radius: 8px;
-            transition: 0.3s ease;
-            opacity: 0.85;
-            border-right: 2px solid transparent;
-        }
-
-        .lyric-line:hover {
-            opacity: 1;
-            background: rgba(255, 215, 100, 0.04);
-            transform: translateX(-3px);
-            border-right-color: rgba(255, 215, 100, 0.15);
-        }
-
-        .lyric-line.highlight {
-            color: #f5b042;
-            font-weight: 700;
-            background: rgba(255, 215, 100, 0.08);
-            border-right: 3px solid #f5b042;
-            padding-right: 1.2rem;
-            opacity: 1;
-            text-shadow: 0 0 20px rgba(245, 176, 66, 0.1);
-        }
-
-        .lyric-line.highlight:hover {
-            background: rgba(255, 215, 100, 0.12);
-            box-shadow: inset 0 0 30px rgba(245, 176, 66, 0.03);
+            padding: 0.1rem 0;
+            color: #d6d0c4;
         }
 
         /* ===== پخش‌کننده ===== */
@@ -2445,9 +2360,9 @@
             .nava-detail-info h2 {
                 font-size: 1.3rem;
             }
-            .lyrics-body .lyrics-box {
+            .lyrics-box {
                 font-size: 0.85rem;
-                max-height: 200px;
+                max-height: 150px;
             }
             .nava-player {
                 padding: 0.8rem 1rem;
@@ -2583,9 +2498,9 @@
             .nava-detail-info .detail-mixer {
                 font-size: 0.85rem;
             }
-            .lyrics-body .lyrics-box {
+            .lyrics-box {
                 font-size: 0.8rem;
-                max-height: 150px;
+                max-height: 120px;
             }
             .nava-player {
                 padding: 0.6rem 0.8rem;
@@ -2645,7 +2560,7 @@
         <!-- ========== محتوای اصلی ========== -->
         <main class="main-content">
 
-            <!-- ===== تب خانه (فقط محتوای خانه) ===== -->
+            <!-- ===== تب خانه ===== -->
             <div class="tab-content active" id="home">
                 <div class="hero-card" id="heroCard">
                     <img class="hero-bg" src="https://cdn.imgurl.ir/uploads/q589216_ya_ali12155.jpg" alt="mohamad hossein" />
@@ -2946,7 +2861,9 @@
                 </div>
             </div>
 
-            <!-- ===== بخش نوا (فقط اینجا) ===== -->
+            <!-- ====================================================== -->
+            <!-- ===== بخش نوا: لیست کارت‌ها ===== -->
+            <!-- ====================================================== -->
             <div class="tab-content" id="nava">
                 <h2><i class="fas fa-headphones" style="color:#f5b042; margin-left:0.8rem;"></i> نوا</h2>
                 <p style="margin-bottom:1.5rem;">نماهنگ ها و نواهای ساخته شده توسط بنده:</p>
@@ -2971,44 +2888,38 @@
                 </div>
             </div>
 
+            <!-- ====================================================== -->
             <!-- ===== صفحه‌ی اختصاصی آهنگ: رقیه جان ===== -->
-            <div class="nava-detail-page" id="nava_roghee_jaan">
+            <!-- ====================================================== -->
+            <div class="tab-content nava-detail-page" id="nava_roghee_jaan">
                 <button class="back-to-nava" onclick="window.location.hash = 'nava';">← بازگشت به لیست</button>
 
                 <div class="nava-detail-card">
+                    <!-- کاور بزرگ -->
                     <div class="nava-detail-image">
                         <img src="https://up.20script.ir/file/eebc-SAVE-۲۰۲۶۰۸۱۴-۱۷۴۹۵۲.jpg" alt="کاور نماهنگ رقیه جان">
                     </div>
 
+                    <!-- اطلاعات -->
                     <div class="nava-detail-info">
                         <h2><i class="fas fa-music"></i> نماهنگ | رقیــه جان</h2>
                         <p class="detail-artist"><i class="fas fa-microphone"></i> مداح: کربلایی سید علی صفاتی</p>
                         <p class="detail-mixer"><i class="fas fa-sliders-h"></i> تنظیم میکس: محمد حسین صنعتی</p>
 
-                        <!-- لیریکس کشویی -->
+                        <!-- ===== لیریکس ===== -->
                         <div class="nava-lyrics">
-                            <button class="lyrics-toggle-btn" onclick="toggleLyrics(this)">
-                                <span><i class="fas fa-scroll"></i> متن نماهنگ</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
-                            <div class="lyrics-body">
-                                <div class="lyrics-box">
-                                    <p class="lyric-line">🎵 رقیــه جان، رقیــه جان...</p>
-                                    <p class="lyric-line">دل خون شده باز از فراقت</p>
-                                    <p class="lyric-line highlight">✨ ای نور دو چشم من، رقیــه جان ✨</p>
-                                    <p class="lyric-line">تو روضه‌ات پر از شور و شعور است</p>
-                                    <p class="lyric-line">هر جا که نامت آید، دلها غرق در نور است</p>
-                                    <p class="lyric-line">تو آن ماهی که در شب‌های غم</p>
-                                    <p class="lyric-line highlight">🔥 چراغ راه عاشقان شدی، رقیــه جان 🔥</p>
-                                    <p class="lyric-line">ای مونس دلهای شکسته، رقیــه جان</p>
-                                    <p class="lyric-line">تو را صدا می‌زنم از ته دل</p>
-                                    <p class="lyric-line">که ای آرامش عالم، رقیــه جان...</p>
-                                    <p class="lyric-line" style="color: #8f887c; margin-top: 0.5rem;">— ادامه دارد —</p>
-                                </div>
+                            <h4><i class="fas fa-scroll"></i> متن نماهنگ</h4>
+                            <div class="lyrics-box">
+                                <p>🎵 رقیــه جان، رقیــه جان...</p>
+                                <p>دل خون شده باز از فراقت</p>
+                                <p>ای نور دو چشم من، رقیــه جان</p>
+                                <p>تو روضه‌ات پر از شور و شعور است</p>
+                                <p>هر جا که نامت آید، دلها غرق در نور است</p>
+                                <p style="color: #f5b042; margin-top: 0.5rem;">— ادامه متن —</p>
                             </div>
                         </div>
 
-                        <!-- پخش‌کننده -->
+                        <!-- ===== پخش‌کننده ===== -->
                         <div class="nava-player">
                             <audio id="navaAudio1" src="https://uploadkon.ir/uploads/581514_26لباست.mp3"></audio>
                             <div class="nava-progress-wrap">
@@ -3068,8 +2979,6 @@
                 <li><i class="fas fa-robot"></i> دستیار هوش مصنوعی</li>
                 <li><i class="fas fa-headphones"></i> بخش جدید "نوا" با پخش‌کننده موسیقی</li>
                 <li><i class="fas fa-music"></i> نماهنگ "رقیــه جان" با صدای کربلایی سید علی صفاتی</li>
-                <li><i class="fas fa-scroll"></i> لیریکس کشویی خیلی خفن</li>
-                <li><i class="fas fa-check-circle"></i> رفع اشکال نمایش نوا در صفحه خانه</li>
             </ul>
         </div>
     </div>
@@ -3132,8 +3041,6 @@
             const overlay = document.getElementById('navOverlay');
             const navLinks = document.querySelectorAll('#navMenu a');
             const tabContents = document.querySelectorAll('.tab-content');
-            const navaTab = document.getElementById('nava');
-            const detailPages = document.querySelectorAll('.nava-detail-page');
 
             function toggleMenu() {
                 hamburger.classList.toggle('active');
@@ -3143,78 +3050,41 @@
 
             hamburger.addEventListener('click', toggleMenu);
 
-            window.activateTab = function(tabId) {
-                // مخفی کردن همه تب‌ها
-                tabContents.forEach(content => {
-                    content.classList.remove('active');
-                    content.style.display = 'none';
-                });
-
-                // مخفی کردن صفحات جزئیات نوا
-                detailPages.forEach(page => page.classList.remove('active'));
-
-                // مدیریت تب نوا
-                if (tabId === 'nava') {
-                    navaTab.style.display = 'block';
-                    navaTab.classList.add('active');
-                } else if (tabId.startsWith('nava_')) {
-                    const target = document.getElementById(tabId);
-                    if (target) {
-                        target.classList.add('active');
-                        navaTab.style.display = 'none';
-                        navaTab.classList.remove('active');
-                    }
-                } else {
-                    const target = document.getElementById(tabId);
-                    if (target) {
-                        target.style.display = 'block';
-                        target.classList.add('active');
-                    }
-                    navaTab.style.display = 'none';
-                    navaTab.classList.remove('active');
-                }
-
-                // آپدیت منو
-                navLinks.forEach(link => link.classList.remove('active'));
-                const activeLink = document.querySelector(`#navMenu a[data-tab="${tabId}"]`);
-                if (activeLink) activeLink.classList.add('active');
-            };
-
-            // ===== مدیریت هش =====
-            function handleHash() {
-                const hash = window.location.hash.replace('#', '');
-                
-                if (hash === 'nava_roghee_jaan') {
-                    activateTab('nava_roghee_jaan');
-                } else if (hash === 'nava') {
-                    activateTab('nava');
-                } else if (hash && document.getElementById(hash)) {
-                    activateTab(hash);
-                } else {
-                    activateTab('home');
-                }
-            }
-
-            // ===== رویدادهای منو =====
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const tabId = this.dataset.tab;
                     if (tabId) {
-                        window.location.hash = tabId;
-                        handleHash();
+                        activateTab(tabId);
                         if (overlay.classList.contains('open')) toggleMenu();
+                        history.pushState(null, null, `#${tabId}`);
                     }
                 });
             });
 
-            // ===== رویداد تغییر هش =====
-            window.addEventListener('hashchange', handleHash);
+            window.activateTab = function(tabId) {
+                tabContents.forEach(content => content.classList.remove('active'));
+                const target = document.getElementById(tabId);
+                if (target) target.classList.add('active');
+                navLinks.forEach(link => link.classList.remove('active'));
+                const activeLink = document.querySelector(`#navMenu a[data-tab="${tabId}"]`);
+                if (activeLink) activeLink.classList.add('active');
+            };
 
-            // ===== اجرا در ابتدا =====
-            handleHash();
+            const hash = window.location.hash.replace('#', '');
+            if (hash && document.getElementById(hash)) {
+                activateTab(hash);
+            } else {
+                activateTab('home');
+            }
 
-            // ===== بستن منو با کلیک بیرون =====
+            window.addEventListener('hashchange', function() {
+                const newHash = window.location.hash.replace('#', '');
+                if (newHash && document.getElementById(newHash)) {
+                    activateTab(newHash);
+                }
+            });
+
             overlay.addEventListener('click', function(e) {
                 if (e.target === overlay && overlay.classList.contains('open')) toggleMenu();
             });
@@ -3227,7 +3097,8 @@
         // ===== تابع switchTab برای دکمه‌های هدر =====
         function switchTab(tabId) {
             event.preventDefault();
-            window.location.hash = tabId;
+            activateTab(tabId);
+            document.querySelector(`#navMenu a[data-tab="${tabId}"]`)?.click();
             document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
@@ -3309,21 +3180,31 @@
             }
         }
 
-        // ===== لیریکس کشویی خفن =====
-        function toggleLyrics(btn) {
-            const container = btn.closest('.nava-lyrics');
-            const body = container.querySelector('.lyrics-body');
-            const icon = btn.querySelector('i:last-child');
+        // ============================================
+        // مدیریت هش برای نوا
+        // ============================================
+        function handleNavaHash() {
+            const hash = window.location.hash.replace('#', '');
+            const navaTab = document.getElementById('nava');
+            const detailPages = document.querySelectorAll('.nava-detail-page');
 
-            body.classList.toggle('open');
-            btn.classList.toggle('open');
+            // مخفی کردن همه صفحات جزئیات
+            detailPages.forEach(page => page.classList.remove('active'));
 
-            if (body.classList.contains('open')) {
-                icon.style.transform = 'rotate(180deg)';
-            } else {
-                icon.style.transform = 'rotate(0deg)';
+            if (hash.startsWith('nava_')) {
+                const targetPage = document.getElementById(hash);
+                if (targetPage) {
+                    navaTab.style.display = 'none';
+                    targetPage.classList.add('active');
+                }
+            } else if (hash === 'nava' || hash === '') {
+                navaTab.style.display = 'block';
+                detailPages.forEach(page => page.classList.remove('active'));
             }
         }
+
+        window.addEventListener('hashchange', handleNavaHash);
+        document.addEventListener('DOMContentLoaded', handleNavaHash);
 
         // ============================================
         // پخش‌کننده (چندگانه)
@@ -3343,6 +3224,7 @@
                 btn.classList.remove('playing');
                 players[id].playing = false;
             } else {
+                // توقف همه
                 for (let key in players) {
                     if (players[key].playing) {
                         const otherAudio = document.getElementById(`navaAudio${key}`);
@@ -3360,6 +3242,7 @@
             }
         }
 
+        // تنظیم progress bar برای هر پلیر
         document.querySelectorAll('.nava-player').forEach((player, index) => {
             const id = index + 1;
             const audio = document.getElementById(`navaAudio${id}`);
@@ -3554,7 +3437,7 @@
         // ===== نوتیفیکیشن (۸ ثانیه) =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '3.5.0';
+            const APP_VERSION = '3.3.0';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
