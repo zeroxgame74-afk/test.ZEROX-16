@@ -473,6 +473,14 @@
             display: block;
         }
 
+        .tab-content.app-detail-page {
+            display: none;
+        }
+
+        .tab-content.app-detail-page.active {
+            display: block;
+        }
+
         @keyframes fadeUp {
             0% {
                 opacity: 0;
@@ -511,6 +519,521 @@
             color: #d6d0c4;
             margin-bottom: 0.8rem;
             line-height: 2;
+        }
+
+        /* ============================================
+                   بخش برنامه‌ها (سبک اپ استور)
+                   ============================================ */
+
+        .apps-header {
+            margin-bottom: 2rem;
+        }
+
+        .apps-header h2 {
+            border-right: 6px solid #f5b042;
+            padding-right: 1.5rem;
+            font-size: 2.6rem;
+        }
+
+        .apps-store-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        /* ===== کارت برنامه در لیست ===== */
+        .app-store-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            border-radius: 20px;
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-store-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 100, 0.04), transparent);
+            transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            border-radius: 20px;
+            z-index: 0;
+        }
+
+        .app-store-card:hover::before {
+            width: 100%;
+        }
+
+        .app-store-card:hover {
+            background: rgba(255, 215, 100, 0.05);
+            border-color: rgba(255, 215, 100, 0.15);
+            transform: translateX(-6px) scale(1.005);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .app-store-card:active {
+            transform: scale(0.98);
+        }
+
+        .app-store-card-inner {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-store-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: linear-gradient(145deg, rgba(245, 176, 66, 0.15), rgba(212, 143, 43, 0.05));
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #f5b042;
+            flex-shrink: 0;
+            transition: 0.4s;
+        }
+
+        .app-store-card:hover .app-store-icon {
+            transform: scale(1.05) rotate(-4deg);
+            border-color: rgba(255, 215, 100, 0.2);
+            box-shadow: 0 4px 20px rgba(245, 176, 66, 0.1);
+        }
+
+        .app-store-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .app-store-info .app-store-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #f5efe6;
+            margin: 0;
+            transition: 0.3s;
+        }
+
+        .app-store-card:hover .app-store-name {
+            color: #f5b042;
+        }
+
+        .app-store-info .app-store-desc {
+            font-size: 0.85rem;
+            color: #b0a99b;
+            margin: 0;
+        }
+
+        .app-store-info .app-store-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 0.2rem;
+        }
+
+        .app-store-status {
+            font-size: 0.7rem;
+            padding: 0.1rem 0.6rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .app-store-status.developing {
+            background: rgba(245, 176, 66, 0.1);
+            color: #f5b042;
+            border: 1px solid rgba(245, 176, 66, 0.1);
+        }
+
+        .app-store-status.coming-soon {
+            background: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .app-store-version {
+            font-size: 0.7rem;
+            color: #8f887c;
+        }
+
+        .app-store-action .app-store-get-btn {
+            background: rgba(255, 215, 100, 0.05);
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            color: #f5b042;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .app-store-action .app-store-get-btn:hover {
+            background: rgba(255, 215, 100, 0.1);
+            border-color: rgba(255, 215, 100, 0.2);
+            transform: scale(1.05);
+        }
+
+        .app-store-action .app-store-get-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ===== صفحه‌ی اختصاصی برنامه ===== */
+        .back-to-apps {
+            background: none;
+            border: none;
+            color: #f5b042;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            margin-bottom: 1.5rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-to-apps:hover {
+            transform: translateX(-4px);
+            opacity: 0.8;
+        }
+
+        /* ===== هدر صفحه برنامه ===== */
+        .app-detail-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            border-radius: 24px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .app-detail-icon-wrapper {
+            flex-shrink: 0;
+        }
+
+        .app-detail-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(145deg, rgba(245, 176, 66, 0.2), rgba(212, 143, 43, 0.05));
+            border: 1px solid rgba(255, 215, 100, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #f5b042;
+            box-shadow: 0 4px 24px rgba(245, 176, 66, 0.05);
+        }
+
+        .app-detail-title-section {
+            flex: 1;
+        }
+
+        .app-detail-title-section .app-detail-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #f5efe6;
+            margin: 0;
+        }
+
+        .app-detail-title-section .app-detail-developer {
+            font-size: 0.9rem;
+            color: #b0a99b;
+            margin: 0;
+        }
+
+        .app-detail-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        .app-detail-rating .stars {
+            color: #f5b042;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .app-detail-rating .rating-text {
+            font-size: 0.85rem;
+            color: #d6d0c4;
+        }
+
+        .app-detail-rating .reviews-count {
+            font-size: 0.75rem;
+            color: #8f887c;
+        }
+
+        .app-detail-install {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .app-detail-install-btn {
+            background: linear-gradient(145deg, #f5b042, #d48f2b);
+            border: none;
+            color: #0b0b0e;
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            box-shadow: 0 4px 20px rgba(245, 176, 66, 0.2);
+        }
+
+        .app-detail-install-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 32px rgba(245, 176, 66, 0.3);
+        }
+
+        .app-detail-size {
+            font-size: 0.7rem;
+            color: #8f887c;
+        }
+
+        /* ===== اسکرین‌شات‌ها ===== */
+        .app-detail-screenshots {
+            margin-bottom: 1.5rem;
+        }
+
+        .app-detail-screenshots h4 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            color: #f5efe6;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .app-detail-screenshots h4 i {
+            color: #f5b042;
+        }
+
+        .screenshots-scroll {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 0.5rem 0 1rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 215, 100, 0.2) transparent;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255, 215, 100, 0.2);
+            border-radius: 10px;
+        }
+
+        .screenshot-item {
+            flex-shrink: 0;
+            width: 160px;
+            aspect-ratio: 9/16;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            background: rgba(255, 255, 255, 0.02);
+            transition: 0.3s;
+        }
+
+        .screenshot-item:hover {
+            border-color: rgba(255, 215, 100, 0.15);
+            transform: scale(1.02);
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #8f887c;
+            font-size: 0.75rem;
+        }
+
+        .screenshot-placeholder i {
+            font-size: 2rem;
+            color: #f5b042;
+            opacity: 0.3;
+        }
+
+        /* ===== درباره برنامه ===== */
+        .app-detail-about {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-detail-about h4 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            color: #f5efe6;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .app-detail-about h4 i {
+            color: #f5b042;
+        }
+
+        .app-detail-about p {
+            font-size: 0.95rem;
+            color: #b0a99b;
+            line-height: 2;
+        }
+
+        .app-features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #d6d0c4;
+        }
+
+        .feature-item i {
+            color: #2ecc71;
+            font-size: 0.9rem;
+        }
+
+        /* ===== اطلاعات بیشتر ===== */
+        .app-detail-more {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.8rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .more-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .more-item .more-label {
+            font-size: 0.7rem;
+            color: #8f887c;
+        }
+
+        .more-item .more-value {
+            font-size: 0.9rem;
+            color: #d6d0c4;
+            font-weight: 600;
+        }
+
+        .more-item .more-value.developing {
+            color: #f5b042;
+        }
+
+        /* ===== دکمه نصب پایین صفحه ===== */
+        .app-detail-bottom-install {
+            text-align: center;
+            padding: 0.5rem 0 1.5rem 0;
+        }
+
+        .app-detail-bottom-install-btn {
+            background: linear-gradient(145deg, #f5b042, #d48f2b);
+            border: none;
+            color: #0b0b0e;
+            padding: 0.8rem 3rem;
+            border-radius: 40px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 4px 24px rgba(245, 176, 66, 0.2);
+        }
+
+        .app-detail-bottom-install-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 40px rgba(245, 176, 66, 0.3);
+        }
+
+        /* ===== صفحه "در دست توسعه" ===== */
+        .app-coming-soon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .app-coming-soon .coming-icon {
+            font-size: 5rem;
+            color: #f5b042;
+            animation: glowIcon 4s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+
+        .app-coming-soon h2 {
+            font-size: 2rem;
+            color: #f5efe6;
+            border: none;
+            padding: 0;
+        }
+
+        .app-coming-soon p {
+            color: #b0a99b;
+            font-size: 1.1rem;
         }
 
         /* ===== کارت‌های خانه ===== */
@@ -1016,7 +1539,7 @@
         }
 
         /* ============================================
-                   کارت‌های طراحی
+                   کارت‌های طراحی (به حالت قبل)
                    ============================================ */
         .design-card-new {
             max-width: 100%;
@@ -1274,598 +1797,10 @@
         }
 
         /* ============================================
-                   بخش برنامه‌ها (شبیه اپ استور)
+                   بخش نوا با کادر شیشه‌ای
                    ============================================ */
 
-        /* ===== هدر برنامه‌ها ===== */
-        .apps-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            position: relative;
-        }
-
-        .apps-header h2 {
-            font-size: 2.6rem;
-            font-weight: 800;
-            color: #f5efe6;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            border-right: 6px solid #f5b042;
-            padding-right: 1.5rem;
-        }
-
-        .apps-header h2 i {
-            color: #f5b042;
-        }
-
-        .apps-header p {
-            color: #b0a99b;
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
-        }
-
-        /* ===== گرید کارت‌های برنامه ===== */
-        .apps-store-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        /* ===== کارت برنامه ===== */
-        .app-store-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            border-radius: 20px;
-            padding: 1.2rem 1.5rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .app-store-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 215, 100, 0.02), transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .app-store-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(255, 215, 100, 0.2);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 215, 100, 0.05);
-        }
-
-        .app-store-card:active {
-            transform: scale(0.97);
-        }
-
-        .app-store-card-inner {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .app-store-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.15), rgba(212, 143, 43, 0.05));
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: #f5b042;
-            flex-shrink: 0;
-            transition: 0.4s;
-        }
-
-        .app-store-card:hover .app-store-icon {
-            transform: scale(1.05) rotate(-4deg);
-            border-color: rgba(255, 215, 100, 0.25);
-            box-shadow: 0 4px 20px rgba(245, 176, 66, 0.1);
-        }
-
-        .app-store-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .app-store-name {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #f5efe6;
-            margin: 0;
-            transition: 0.3s;
-        }
-
-        .app-store-card:hover .app-store-name {
-            color: #f5b042;
-        }
-
-        .app-store-desc {
-            font-size: 0.85rem;
-            color: #b0a99b;
-            margin: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .app-store-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-top: 0.2rem;
-            flex-wrap: wrap;
-        }
-
-        .app-store-status {
-            font-size: 0.7rem;
-            padding: 0.15rem 0.8rem;
-            border-radius: 40px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .app-store-status.developing {
-            background: rgba(245, 176, 66, 0.12);
-            color: #f5b042;
-            border: 1px solid rgba(245, 176, 66, 0.1);
-        }
-
-        .app-store-status.coming-soon {
-            background: rgba(52, 152, 219, 0.12);
-            color: #3498db;
-            border: 1px solid rgba(52, 152, 219, 0.1);
-        }
-
-        .app-store-version {
-            font-size: 0.7rem;
-            color: #8f887c;
-        }
-
-        .app-store-action {
-            flex-shrink: 0;
-        }
-
-        .app-store-get-btn {
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.12), rgba(212, 143, 43, 0.05));
-            border: 1px solid rgba(255, 215, 100, 0.12);
-            color: #f5b042;
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            white-space: nowrap;
-        }
-
-        .app-store-get-btn:hover {
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.2), rgba(212, 143, 43, 0.1));
-            border-color: rgba(255, 215, 100, 0.25);
-            transform: scale(1.05);
-            box-shadow: 0 4px 16px rgba(245, 176, 66, 0.1);
-        }
-
-        .app-store-get-btn i {
-            font-size: 0.8rem;
-        }
-
-        .app-store-get-btn.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .app-store-get-btn.disabled:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* ====================================================== */
-        /* ===== صفحه‌ی جزئیات برنامه (شبیه مایکت) ===== */
-        /* ====================================================== */
-
-        .app-detail-page {
-            display: none;
-            animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .app-detail-page.active {
-            display: block;
-        }
-
-        .back-to-apps {
-            background: none;
-            border: none;
-            color: #f5b042;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            padding: 0.5rem 0;
-            margin-bottom: 1.5rem;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .back-to-apps:hover {
-            transform: translateX(-4px);
-            opacity: 0.8;
-        }
-
-        .app-detail-header {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            border-radius: 24px;
-            padding: 2rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-
-        .app-detail-icon-wrapper {
-            flex-shrink: 0;
-        }
-
-        .app-detail-icon {
-            width: 96px;
-            height: 96px;
-            border-radius: 24px;
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.15), rgba(212, 143, 43, 0.05));
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #f5b042;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        }
-
-        .app-detail-title-section {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .app-detail-name {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #f5efe6;
-            margin: 0;
-        }
-
-        .app-detail-developer {
-            color: #b0a99b;
-            font-size: 0.9rem;
-            margin: 0.2rem 0 0.5rem 0;
-        }
-
-        .app-detail-rating {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        .app-detail-rating .stars {
-            color: #f5b042;
-            font-size: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .app-detail-rating .stars i {
-            margin: 0 1px;
-        }
-
-        .rating-text {
-            color: #b0a99b;
-            font-size: 0.9rem;
-        }
-
-        .reviews-count {
-            color: #8f887c;
-            font-size: 0.8rem;
-        }
-
-        .app-detail-install {
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .app-detail-install-btn {
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            border: none;
-            color: #0b0b0e;
-            padding: 0.6rem 2rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            box-shadow: 0 4px 20px rgba(245, 176, 66, 0.2);
-        }
-
-        .app-detail-install-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 32px rgba(245, 176, 66, 0.3);
-        }
-
-        .app-detail-install-btn i {
-            font-size: 1.1rem;
-        }
-
-        .app-detail-size {
-            display: block;
-            color: #8f887c;
-            font-size: 0.75rem;
-            margin-top: 0.3rem;
-        }
-
-        /* ===== اسکرین‌شات‌ها ===== */
-        .app-detail-screenshots {
-            margin-bottom: 1.5rem;
-        }
-
-        .app-detail-screenshots h4 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            color: #f5efe6;
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .app-detail-screenshots h4 i {
-            color: #f5b042;
-        }
-
-        .screenshots-scroll {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            padding: 0.5rem 0.2rem 1rem 0.2rem;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255, 215, 100, 0.2) transparent;
-        }
-
-        .screenshots-scroll::-webkit-scrollbar {
-            height: 4px;
-        }
-        .screenshots-scroll::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .screenshots-scroll::-webkit-scrollbar-thumb {
-            background: rgba(255, 215, 100, 0.2);
-            border-radius: 10px;
-        }
-
-        .screenshot-item {
-            flex-shrink: 0;
-            width: 160px;
-            aspect-ratio: 9/16;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            transition: 0.3s;
-        }
-
-        .screenshot-item:hover {
-            border-color: rgba(255, 215, 100, 0.15);
-            transform: translateY(-4px) scale(1.02);
-        }
-
-        .screenshot-placeholder {
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.02);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            color: #8f887c;
-            font-size: 0.75rem;
-        }
-
-        .screenshot-placeholder i {
-            font-size: 2.5rem;
-            color: #f5b042;
-            opacity: 0.4;
-        }
-
-        /* ===== درباره برنامه ===== */
-        .app-detail-about {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .app-detail-about h4 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            color: #f5efe6;
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .app-detail-about h4 i {
-            color: #f5b042;
-        }
-
-        .app-detail-about p {
-            color: #b0a99b;
-            font-size: 0.95rem;
-            line-height: 2;
-            margin-bottom: 1rem;
-        }
-
-        .app-features-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 0.5rem;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #d6d0c4;
-            font-size: 0.85rem;
-            padding: 0.3rem 0.5rem;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
-
-        .feature-item i {
-            color: #f5b042;
-            font-size: 0.8rem;
-        }
-
-        .feature-item:hover {
-            background: rgba(255, 215, 100, 0.04);
-        }
-
-        /* ===== اطلاعات بیشتر ===== */
-        .app-detail-more {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 0.8rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .more-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.3rem 0;
-            border-bottom: 1px solid rgba(255, 215, 100, 0.03);
-        }
-
-        .more-item:last-child {
-            border-bottom: none;
-        }
-
-        .more-label {
-            color: #8f887c;
-            font-size: 0.85rem;
-        }
-
-        .more-value {
-            color: #d6d0c4;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .more-value.developing {
-            color: #f5b042;
-        }
-
-        /* ===== دکمه نصب پایین صفحه ===== */
-        .app-detail-bottom-install {
-            text-align: center;
-            padding: 0.5rem 0 1rem 0;
-        }
-
-        .app-detail-bottom-install-btn {
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            border: none;
-            color: #0b0b0e;
-            padding: 0.8rem 2.5rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            box-shadow: 0 4px 24px rgba(245, 176, 66, 0.15);
-        }
-
-        .app-detail-bottom-install-btn:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 40px rgba(245, 176, 66, 0.25);
-        }
-
-        .app-detail-bottom-install-btn i {
-            font-size: 1.2rem;
-        }
-
-        /* ===== صفحه در حال توسعه ===== */
-        .app-coming-soon {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-            text-align: center;
-            padding: 3rem 1rem;
-        }
-
-        .app-coming-soon-icon {
-            font-size: 5rem;
-            color: #f5b042;
-            margin-bottom: 1rem;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-
-        .app-coming-soon h2 {
-            font-size: 2.2rem;
-            color: #f5efe6;
-            margin-bottom: 0.5rem;
-        }
-
-        .app-coming-soon p {
-            color: #b0a99b;
-            font-size: 1.1rem;
-            max-width: 400px;
-        }
-
-        /* ===== بخش نوا ===== */
+        /* ===== کادر شیشه‌ای نوا ===== */
         .nava-glass-container {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(24px);
@@ -1888,6 +1823,18 @@
             height: 200%;
             background: radial-gradient(circle at 30% 40%, rgba(255, 215, 100, 0.03), transparent 70%);
             animation: shimmerBg 8s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .nava-glass-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 215, 100, 0.02), transparent 50%, rgba(255, 215, 100, 0.01));
             pointer-events: none;
             z-index: 0;
         }
@@ -2092,6 +2039,373 @@
             box-shadow: 0 0 20px rgba(245, 176, 66, 0.05);
         }
 
+        /* ===== مودال نوا ===== */
+        .nava-modal-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            padding: 1rem;
+            animation: fadeInModal 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nava-modal-overlay.active {
+            display: flex;
+        }
+
+        .nava-modal-content {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border: 1px solid rgba(255, 215, 100, 0.12);
+            border-radius: 32px;
+            padding: 2rem 2.2rem;
+            max-width: 750px;
+            width: 100%;
+            max-height: 92vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            animation: slideUpModal 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nava-modal-content .modal-close {
+            position: absolute;
+            top: 0.8rem;
+            left: 0.8rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            color: #f5efe6;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .nava-modal-content .modal-close:hover {
+            background: rgba(255, 215, 100, 0.12);
+            transform: rotate(90deg) scale(1.08);
+            border-color: #f5b042;
+            color: #f5b042;
+        }
+
+        .nava-modal-content .modal-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(255, 215, 100, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .nava-modal-content .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s;
+        }
+
+        .nava-modal-content:hover .modal-image img {
+            transform: scale(1.02);
+        }
+
+        .nava-modal-content .modal-title {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #f5efe6;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nava-modal-content .modal-title i {
+            color: #f5b042;
+        }
+
+        .nava-modal-content .modal-artist {
+            color: #b0a99b;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .nava-modal-content .modal-artist i {
+            color: #f5b042;
+        }
+
+        .nava-modal-content .modal-mixer {
+            color: #8f887c;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .nava-modal-content .modal-mixer i {
+            color: #f5b042;
+        }
+
+        .nava-modal-lyrics {
+            margin: 0.8rem 0 1rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            transition: 0.4s;
+            overflow: hidden;
+        }
+
+        .nava-modal-lyrics:hover {
+            border-color: rgba(255, 215, 100, 0.1);
+        }
+
+        .nava-modal-lyrics-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            gap: 1rem;
+        }
+
+        .nava-modal-lyrics-header:hover {
+            background: rgba(255, 215, 100, 0.04);
+        }
+
+        .nava-modal-lyrics-header h4 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            color: #f5b042;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0;
+        }
+
+        .nava-modal-lyrics-header .lyrics-toggle-icon {
+            color: #f5b042;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 1rem;
+        }
+
+        .nava-modal-lyrics-header .lyrics-toggle-icon.open {
+            transform: rotate(180deg);
+        }
+
+        .nava-modal-lyrics-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, padding 0.3s ease;
+            opacity: 0;
+            padding: 0 1.2rem;
+        }
+
+        .nava-modal-lyrics-body.open {
+            max-height: 450px;
+            opacity: 1;
+            padding: 0.5rem 1.2rem 1.2rem 1.2rem;
+        }
+
+        .lyrics-box {
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 0.95rem;
+            color: #d6d0c4;
+            line-height: 2.2;
+            max-height: 350px;
+            overflow-y: auto;
+            padding-left: 0.3rem;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 215, 100, 0.2) transparent;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .lyrics-box::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .lyrics-box::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .lyrics-box::-webkit-scrollbar-thumb {
+            background: rgba(255, 215, 100, 0.2);
+            border-radius: 10px;
+        }
+
+        .lyric-line {
+            margin: 0;
+            padding: 0.2rem 0.6rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+            color: #b0a99b;
+            border-right: 2px solid transparent;
+            font-size: 0.95rem;
+        }
+
+        .lyric-line.active {
+            opacity: 1;
+            color: #f5efe6;
+            background: rgba(255, 215, 100, 0.06);
+            border-right: 3px solid #f5b042;
+            padding-right: 1rem;
+            transform: translateX(-4px);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .lyric-line.highlight {
+            color: #f5b042;
+            font-weight: 600;
+            background: rgba(255, 215, 100, 0.06);
+            border-right: 3px solid #f5b042;
+            padding-right: 0.8rem;
+        }
+
+        .nava-modal-player {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(255, 215, 100, 0.06);
+            transition: 0.3s;
+        }
+
+        .nava-modal-player:hover {
+            background: rgba(255, 215, 100, 0.04);
+            border-color: rgba(255, 215, 100, 0.1);
+        }
+
+        .nava-modal-player .nava-progress-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .nava-modal-player .nava-time {
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 0.7rem;
+            color: #b0a99b;
+            min-width: 36px;
+            font-weight: 500;
+        }
+
+        .nava-modal-player .nava-progress-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nava-modal-player .nava-progress-bar:hover {
+            height: 6px;
+        }
+
+        .nava-modal-player .nava-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #f5b042, #d48f2b);
+            border-radius: 10px;
+            transition: width 0.1s ease;
+            position: relative;
+        }
+
+        .nava-modal-player .nava-progress-fill::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #f5b042;
+            box-shadow: 0 0 16px rgba(245, 176, 66, 0.4);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .nava-modal-player .nava-progress-bar:hover .nava-progress-fill::after {
+            opacity: 1;
+        }
+
+        .nava-modal-player .nava-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+
+        .nava-modal-player .nava-controls button {
+            background: none;
+            border: none;
+            color: #d6d0c4;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            padding: 0.3rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nava-modal-player .nava-controls button:hover {
+            color: #f5b042;
+            transform: scale(1.12);
+            background: rgba(255, 215, 100, 0.06);
+        }
+
+        .nava-modal-player .nava-controls .nava-play-btn {
+            width: 52px;
+            height: 52px;
+            font-size: 1.6rem;
+            background: linear-gradient(145deg, rgba(245, 176, 66, 0.15), rgba(212, 143, 43, 0.05));
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            color: #f5b042;
+        }
+
+        .nava-modal-player .nava-controls .nava-play-btn:hover {
+            background: linear-gradient(145deg, rgba(245, 176, 66, 0.25), rgba(212, 143, 43, 0.1));
+            border-color: rgba(255, 215, 100, 0.3);
+            transform: scale(1.08);
+            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.2);
+        }
+
+        .nava-modal-player .nava-controls .nava-play-btn.playing {
+            background: linear-gradient(145deg, rgba(245, 176, 66, 0.2), rgba(212, 143, 43, 0.08));
+            border-color: #f5b042;
+            box-shadow: 0 0 30px rgba(245, 176, 66, 0.1);
+        }
+
         /* ========== دکمه AI چت ========== */
         .ai-chat-button {
             position: fixed;
@@ -2193,7 +2507,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* ===== مودال شیشه‌ای ===== */
+        /* ===== مودال شیشه‌ای (برای طراحی) ===== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -2212,6 +2526,28 @@
 
         .modal-overlay.active {
             display: flex;
+        }
+
+        @keyframes fadeInModal {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideUpModal {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .modal-content {
@@ -2491,16 +2827,10 @@
             .apps-header h2 {
                 font-size: 2.2rem;
             }
-            .apps-store-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
             .app-detail-header {
                 flex-direction: column;
-                align-items: center;
                 text-align: center;
-            }
-            .app-detail-title-section {
-                text-align: center;
+                padding: 1.5rem;
             }
             .app-detail-rating {
                 justify-content: center;
@@ -2508,8 +2838,24 @@
             .app-detail-install {
                 width: 100%;
             }
-            .app-features-list {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            .app-detail-install-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .vod-hero-slider .hero-slide .hero-overlay h3 {
+                font-size: 1.4rem;
+            }
+            .nava-glass-container {
+                padding: 1.2rem 1.5rem;
+            }
+            .nava-modal-content {
+                padding: 1.5rem;
+            }
+            .nava-modal-content .modal-title {
+                font-size: 1.5rem;
+            }
+            .design-card-new .design-title {
+                font-size: 1.3rem;
             }
         }
 
@@ -2573,43 +2919,37 @@
                 padding: 0.5rem 1.2rem;
                 font-size: 0.85rem;
             }
-            .apps-header h2 {
-                font-size: 1.8rem;
-                padding-right: 1rem;
-            }
-            .apps-header p {
-                font-size: 0.95rem;
-            }
-            .apps-store-grid {
-                grid-template-columns: 1fr;
-            }
-            .app-store-card-inner {
-                gap: 0.8rem;
-            }
-            .app-store-icon {
-                width: 52px;
-                height: 52px;
-                font-size: 1.5rem;
-            }
-            .app-detail-header {
+            .vod-hero-slider .hero-slide .hero-overlay {
                 padding: 1.2rem;
             }
-            .app-detail-icon {
-                width: 72px;
-                height: 72px;
-                font-size: 2.2rem;
+            .vod-hero-slider .hero-slide .hero-overlay h3 {
+                font-size: 1.2rem;
             }
-            .app-detail-name {
-                font-size: 1.5rem;
+            .vod-hero-slider .hero-slide .hero-overlay p {
+                font-size: 0.8rem;
+                max-width: 100%;
             }
-            .app-features-list {
-                grid-template-columns: 1fr 1fr;
+            .vod-hero-slider .hero-slide .hero-overlay .hero-btn {
+                font-size: 0.8rem;
+                padding: 0.4rem 1.2rem;
             }
-            .app-detail-more {
-                grid-template-columns: 1fr;
+            .vod-slider .slider-item {
+                width: 130px;
             }
-            .screenshot-item {
-                width: 120px;
+            .vod-slider .slider-header h4 {
+                font-size: 1rem;
+            }
+            .hero-slider-nav {
+                width: 32px;
+                height: 32px;
+                font-size: 0.8rem;
+            }
+            .hero-slider-dots .dot {
+                width: 8px;
+                height: 8px;
+            }
+            .hero-slider-dots .dot.active {
+                width: 18px;
             }
             .ai-chat-button {
                 width: 50px;
@@ -2638,10 +2978,63 @@
             .nava-glass-container .nava-info .nava-title {
                 font-size: 1rem;
             }
+            .nava-modal-content {
+                padding: 1.2rem;
+                margin: 0.5rem;
+            }
+            .nava-modal-content .modal-title {
+                font-size: 1.3rem;
+            }
+            .lyrics-box {
+                font-size: 0.85rem;
+                max-height: 150px;
+            }
+            .nava-modal-player {
+                padding: 0.8rem 1rem;
+            }
+            .nava-modal-player .nava-controls button {
+                font-size: 1rem;
+                width: 34px;
+                height: 34px;
+            }
+            .nava-modal-player .nava-controls .nava-play-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 1.3rem;
+            }
+            .design-card-new .design-title {
+                font-size: 1.2rem;
+            }
+            .design-card-new {
+                padding: 1rem;
+            }
             .nava-glass-container .nava-arrow {
                 width: 32px;
                 height: 32px;
                 font-size: 1rem;
+            }
+            .apps-header h2 {
+                font-size: 1.8rem;
+            }
+            .app-detail-header {
+                padding: 1rem;
+            }
+            .app-detail-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            .app-detail-title-section .app-detail-name {
+                font-size: 1.4rem;
+            }
+            .app-features-list {
+                grid-template-columns: 1fr;
+            }
+            .app-detail-more {
+                grid-template-columns: 1fr 1fr;
+            }
+            .screenshot-item {
+                width: 120px;
             }
         }
 
@@ -2677,54 +3070,41 @@
             .hero-card .hero-buttons a i {
                 font-size: 0.9rem;
             }
-            .apps-header h2 {
-                font-size: 1.5rem;
+            .vod-hero-slider .hero-slide .hero-overlay h3 {
+                font-size: 1rem;
             }
-            .app-store-icon {
-                width: 44px;
-                height: 44px;
-                font-size: 1.2rem;
+            .vod-hero-slider .hero-slide .hero-overlay p {
+                font-size: 0.7rem;
             }
-            .app-store-name {
-                font-size: 0.95rem;
+            .vod-slider .slider-item {
+                width: 110px;
             }
-            .app-store-desc {
+            .vod-slider .slider-item .item-info h5 {
                 font-size: 0.75rem;
             }
-            .app-store-get-btn {
+            .vod-slider .slider-item .item-info p {
+                font-size: 0.6rem;
+            }
+            .vod-section .vod-title {
+                font-size: 1.4rem;
+            }
+            .hero-slider-nav {
+                width: 28px;
+                height: 28px;
                 font-size: 0.7rem;
-                padding: 0.3rem 0.8rem;
             }
-            .app-detail-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.8rem;
+            .hero-slider-nav.prev {
+                right: 6px;
             }
-            .app-detail-name {
-                font-size: 1.2rem;
+            .hero-slider-nav.next {
+                left: 6px;
             }
-            .app-detail-install-btn {
-                font-size: 0.85rem;
-                padding: 0.4rem 1.2rem;
+            .hero-slider-dots .dot {
+                width: 6px;
+                height: 6px;
             }
-            .app-features-list {
-                grid-template-columns: 1fr;
-            }
-            .feature-item {
-                font-size: 0.8rem;
-            }
-            .app-detail-bottom-install-btn {
-                font-size: 0.9rem;
-                padding: 0.6rem 1.5rem;
-            }
-            .screenshot-item {
-                width: 100px;
-            }
-            .app-coming-soon h2 {
-                font-size: 1.6rem;
-            }
-            .app-coming-soon p {
-                font-size: 0.95rem;
+            .hero-slider-dots .dot.active {
+                width: 14px;
             }
             .ai-chat-button {
                 width: 44px;
@@ -2762,6 +3142,105 @@
                 font-size: 1rem;
                 width: 28px;
                 height: 28px;
+            }
+            .nava-modal-content {
+                padding: 1rem;
+                margin: 0.3rem;
+            }
+            .nava-modal-content .modal-title {
+                font-size: 1.1rem;
+            }
+            .nava-modal-content .modal-artist,
+            .nava-modal-content .modal-mixer {
+                font-size: 0.85rem;
+            }
+            .lyrics-box {
+                font-size: 0.8rem;
+                max-height: 120px;
+            }
+            .nava-modal-player {
+                padding: 0.6rem 0.8rem;
+            }
+            .nava-modal-player .nava-controls button {
+                font-size: 0.8rem;
+                width: 30px;
+                height: 30px;
+            }
+            .nava-modal-player .nava-controls .nava-play-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+            .nava-modal-player .nava-time {
+                font-size: 0.6rem;
+                min-width: 28px;
+            }
+            .design-card-new .design-title {
+                font-size: 1rem;
+            }
+            .design-card-new {
+                padding: 0.8rem;
+            }
+            .design-card-new .download-buttons a {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.8rem;
+            }
+            .design-3d-hint {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.8rem;
+            }
+            .apps-header h2 {
+                font-size: 1.4rem;
+                padding-right: 0.8rem;
+            }
+            .app-store-card-inner {
+                flex-wrap: wrap;
+                gap: 0.8rem;
+            }
+            .app-store-action {
+                width: 100%;
+            }
+            .app-store-action .app-store-get-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .app-detail-header {
+                padding: 0.8rem;
+                gap: 0.8rem;
+            }
+            .app-detail-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            .app-detail-title-section .app-detail-name {
+                font-size: 1.2rem;
+            }
+            .app-detail-about {
+                padding: 1rem;
+            }
+            .app-detail-more {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            .app-detail-bottom-install-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            .screenshot-item {
+                width: 100px;
+            }
+            .app-detail-rating .stars {
+                font-size: 0.85rem;
+            }
+            .app-detail-rating .rating-text {
+                font-size: 0.75rem;
+            }
+            .app-coming-soon h2 {
+                font-size: 1.5rem;
+            }
+            .app-coming-soon .coming-icon {
+                font-size: 3.5rem;
             }
         }
     </style>
@@ -2974,17 +3453,18 @@
             </div>
 
             <!-- ====================================================== -->
-            <!-- ===== بخش برنامه‌ها ===== -->
+            <!-- ===== بخش برنامه‌ها (نسخه ۵.۰.۰ - شبیه اپ استور) ===== -->
             <!-- ====================================================== -->
             <div class="tab-content" id="apps">
                 <!-- صفحه اصلی برنامه‌ها -->
                 <div id="appsHome">
                     <div class="apps-header">
-                        <h2><i class="fas fa-puzzle-piece"></i> برنامه‌ها</h2>
-                        <p>برنامه‌های اختصاصی ساخته شده توسط بنده</p>
+                        <h2><i class="fas fa-puzzle-piece" style="color:#f5b042; margin-left:0.8rem;"></i> برنامه‌ها</h2>
+                        <p style="color:#b0a99b; margin-bottom:2rem;">برنامه‌های اختصاصی ساخته شده توسط بنده</p>
                     </div>
 
                     <div class="apps-store-grid">
+                        <!-- کارت برنامه ۱: رفیق -->
                         <div class="app-store-card" onclick="openAppPage('rafigh')">
                             <div class="app-store-card-inner">
                                 <div class="app-store-icon">
@@ -3009,6 +3489,7 @@
                             </div>
                         </div>
 
+                        <!-- کارت برنامه ۲: پروژه بعدی -->
                         <div class="app-store-card" onclick="openAppPage('future')">
                             <div class="app-store-card-inner">
                                 <div class="app-store-icon">
@@ -3034,12 +3515,15 @@
                     </div>
                 </div>
 
+                <!-- ====================================================== -->
                 <!-- ===== صفحه‌ی اختصاصی برنامه "رفیق" ===== -->
-                <div class="app-detail-page" id="app_rafigh">
+                <!-- ====================================================== -->
+                <div class="tab-content app-detail-page" id="app_rafigh">
                     <button class="back-to-apps" onclick="closeAppPage()">
                         <i class="fas fa-arrow-right"></i> بازگشت
                     </button>
 
+                    <!-- هدر برنامه -->
                     <div class="app-detail-header">
                         <div class="app-detail-icon-wrapper">
                             <div class="app-detail-icon">
@@ -3069,6 +3553,7 @@
                         </div>
                     </div>
 
+                    <!-- اسکرین‌شات‌ها -->
                     <div class="app-detail-screenshots">
                         <h4><i class="fas fa-images"></i> تصاویر برنامه</h4>
                         <div class="screenshots-scroll">
@@ -3099,6 +3584,7 @@
                         </div>
                     </div>
 
+                    <!-- درباره برنامه -->
                     <div class="app-detail-about">
                         <h4><i class="fas fa-info-circle"></i> درباره این برنامه</h4>
                         <p>برنامه رفیق یک پلتفرم ارتباطی مدرن است که به کاربران امکان می‌دهد با دوستان خود در ارتباط باشند، پیام‌ها را به اشتراک بگذارند و تجربه‌ای لذت‌بخش از ارتباطات دیجیتال داشته باشند.</p>
@@ -3126,6 +3612,7 @@
                         </div>
                     </div>
 
+                    <!-- اطلاعات بیشتر -->
                     <div class="app-detail-more">
                         <div class="more-item">
                             <span class="more-label">وضعیت</span>
@@ -3145,6 +3632,7 @@
                         </div>
                     </div>
 
+                    <!-- دکمه نصب پایین صفحه -->
                     <div class="app-detail-bottom-install">
                         <button class="app-detail-bottom-install-btn">
                             <i class="fas fa-download"></i>
@@ -3153,18 +3641,21 @@
                     </div>
                 </div>
 
-                <!-- ===== صفحه‌ی "در دست توسعه" ===== -->
-                <div class="app-detail-page" id="app_future">
+                <!-- ====================================================== -->
+                <!-- ===== صفحه‌ی "در دست توسعه" برای برنامه‌های آینده ===== -->
+                <!-- ====================================================== -->
+                <div class="tab-content app-detail-page" id="app_future">
                     <button class="back-to-apps" onclick="closeAppPage()">
                         <i class="fas fa-arrow-right"></i> بازگشت
                     </button>
 
                     <div class="app-coming-soon">
-                        <div class="app-coming-soon-icon">
-                            <i class="fas fa-tools"></i>
+                        <div class="coming-icon">
+                            <i class="fas fa-code"></i>
                         </div>
-                        <h2>در دست ساخت</h2>
-                        <p>این برنامه به زودی در دسترس قرار می‌گیرد. منتظر آپدیت‌های جدید باشید!</p>
+                        <h2>در دست توسعه</h2>
+                        <p>این برنامه به زودی منتشر خواهد شد...</p>
+                        <p style="font-size:0.9rem; color:#8f887c; margin-top:0.5rem;">صفحات این برنامه در حال طراحی است</p>
                     </div>
                 </div>
             </div>
@@ -3274,14 +3765,16 @@
                 </div>
             </div>
 
+            <!-- ====================================================== -->
             <!-- ===== بخش نوا ===== -->
+            <!-- ====================================================== -->
             <div class="tab-content" id="nava">
                 <h2><i class="fas fa-headphones" style="color:#f5b042; margin-left:0.8rem;"></i> نوا</h2>
                 <p style="margin-bottom:1.5rem;">نماهنگ ها و نواهای ساخته شده توسط بنده:</p>
 
                 <div class="nava-glass-container">
                     <div class="nava-list">
-                        <div class="nava-card" onclick="window.location.hash = 'nava_roghee_jaan';">
+                        <div class="nava-card" onclick="openNavaModal()">
                             <div class="nava-card-content">
                                 <div class="nava-thumb">
                                     <img src="https://up.20script.ir/file/eebc-SAVE-۲۰۲۶۰۸۱۴-۱۷۴۹۵۲.jpg" alt="کاور رقیه جان">
@@ -3327,6 +3820,60 @@
         <span class="tooltip">دستیار هوش مصنوعی</span>
     </a>
 
+    <!-- ========== مودال نوا ========== -->
+    <div class="nava-modal-overlay" id="navaModal">
+        <div class="nava-modal-content">
+            <button class="modal-close" onclick="closeNavaModal()">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="modal-image">
+                <img src="https://up.20script.ir/file/eebc-SAVE-۲۰۲۶۰۸۱۴-۱۷۴۹۵۲.jpg" alt="کاور نماهنگ رقیه جان">
+            </div>
+
+            <h3 class="modal-title"><i class="fas fa-music"></i> نماهنگ | رقیــه جان</h3>
+            <p class="modal-artist"><i class="fas fa-microphone"></i> مداح: کربلایی سید علی صفاتی</p>
+            <p class="modal-mixer"><i class="fas fa-sliders-h"></i> تنظیم میکس: محمد حسین صنعتی</p>
+
+            <div class="nava-modal-lyrics">
+                <div class="nava-modal-lyrics-header" onclick="toggleModalLyrics(this)">
+                    <h4><i class="fas fa-scroll"></i> متن نماهنگ</h4>
+                    <span class="lyrics-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="nava-modal-lyrics-body">
+                    <div class="lyrics-box" id="lyricsBox">
+                        <p class="lyric-line" data-time="5">دست تو کجاست منو ناز کنی...</p>
+                        <p class="lyric-line" data-time="10">لباست پاره لباسم پاره</p>
+                        <p class="lyric-line" data-time="15">الان گوشوارم کدوم بازاره؟</p>
+                        <p class="lyric-line" data-time="23">لبات پرخونه لبام پرخونه روی مشت زجر جای دندونه</p>
+                        <p class="lyric-line" data-time="32">اونقدر از زجر میترسید هرموقع یاد زجر میوفتاد یاد این میوفتاد که توی کاروان گم شد</p>
+                        <p class="lyric-line" data-time="50">منو بیشتر میزد زجر بی‌حیا منو با پشت خنجر میزد</p>
+                        <p class="lyric-line" data-time="63">تا میگفتم یواش تر منو بدتر میزد بابا</p>
+                        <p class="lyric-line" data-time="77">دست تو کجاست منو ناز کنی؟</p>
+                        <p class="lyric-line" data-time="84">موی سوخته منو باز کنی با محبتت رو به من ابراز کنی دخترت شده عزادار تو</p>
+                        <p class="lyric-line" data-time="98">رقیه جان رقیه جان</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nava-modal-player">
+                <audio id="navaModalAudio" src="https://uploadkon.ir/uploads/581514_26لباست.mp3"></audio>
+                <div class="nava-progress-wrap">
+                    <span class="nava-time" id="modalCurrentTime">0:00</span>
+                    <div class="nava-progress-bar" id="modalProgressBar">
+                        <div class="nava-progress-fill" id="modalProgressFill"></div>
+                    </div>
+                    <span class="nava-time" id="modalDuration">0:00</span>
+                </div>
+                <div class="nava-controls">
+                    <button onclick="modalPrevTrack()"><i class="fas fa-step-backward"></i></button>
+                    <button class="nava-play-btn" id="modalPlayBtn" onclick="modalTogglePlay()"><i class="fas fa-play"></i></button>
+                    <button onclick="modalNextTrack()"><i class="fas fa-step-forward"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ========== نوتیفیکیشن ========== -->
     <div class="welcome-notification" id="welcomeNotif">
         <div class="notif-header">
@@ -3336,16 +3883,17 @@
         <div class="notif-body">
             <span class="notif-update-title"><i class="fas fa-list"></i> لیست آپدیت‌ها:</span>
             <ul>
-                <li><i class="fas fa-puzzle-piece"></i> بخش برنامه‌ها با طراحی اپ استور</li>
-                <li><i class="fas fa-mobile-alt"></i> برنامه "رفیق" در دست توسعه</li>
+                <li><i class="fas fa-palette"></i> اضافه شدن طراحی‌های جدید</li>
                 <li><i class="fas fa-headphones"></i> بخش نوا با پخش‌کننده موسیقی</li>
-                <li><i class="fas fa-palette"></i> طراحی‌های جدید</li>
+                <li><i class="fas fa-music"></i> نماهنگ "رقیــه جان" با صدای کربلایی سید علی صفاتی</li>
+                <li><i class="fas fa-scroll"></i> لیریکس هم‌زمان با پخش (هایلایت خودکار)</li>
+                <li><i class="fas fa-mobile-alt"></i> بخش برنامه‌ها شبیه اپ استور</li>
                 <li><i class="fas fa-robot"></i> دستیار هوش مصنوعی</li>
             </ul>
         </div>
     </div>
 
-    <!-- ========== مودال شیشه‌ای ========== -->
+    <!-- ========== مودال شیشه‌ای (برای طراحی) ========== -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">
@@ -3542,28 +4090,193 @@
             }
         }
 
-        // ===== مدیریت صفحات برنامه‌ها =====
+        // ============================================
+        // بخش برنامه‌ها - مدیریت صفحات
+        // ============================================
         function openAppPage(appId) {
-            document.getElementById('appsHome').style.display = 'none';
-            document.querySelectorAll('.app-detail-page').forEach(page => {
-                page.classList.remove('active');
+            const appsTab = document.getElementById('apps');
+            const appsHome = document.getElementById('appsHome');
+            const detailPages = document.querySelectorAll('.app-detail-page');
+
+            // مخفی کردن صفحه اصلی
+            appsHome.style.display = 'none';
+
+            // نمایش صفحه مورد نظر
+            detailPages.forEach(page => {
+                if (page.id === 'app_' + appId) {
+                    page.classList.add('active');
+                    page.style.display = 'block';
+                } else {
+                    page.classList.remove('active');
+                    page.style.display = 'none';
+                }
             });
-            const target = document.getElementById(`app_${appId}`);
-            if (target) {
-                target.classList.add('active');
-                document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
         }
 
         function closeAppPage() {
-            document.getElementById('appsHome').style.display = 'block';
-            document.querySelectorAll('.app-detail-page').forEach(page => {
+            const appsHome = document.getElementById('appsHome');
+            const detailPages = document.querySelectorAll('.app-detail-page');
+
+            // نمایش صفحه اصلی
+            appsHome.style.display = 'block';
+
+            // مخفی کردن صفحات جزئیات
+            detailPages.forEach(page => {
                 page.classList.remove('active');
+                page.style.display = 'none';
             });
-            document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // ===== مودال =====
+        // ============================================
+        // مودال نوا
+        // ============================================
+
+        const modalAudio = document.getElementById('navaModalAudio');
+        const modalPlayBtn = document.getElementById('modalPlayBtn');
+        const modalProgressFill = document.getElementById('modalProgressFill');
+        const modalProgressBar = document.getElementById('modalProgressBar');
+        const modalCurrentTime = document.getElementById('modalCurrentTime');
+        const modalDuration = document.getElementById('modalDuration');
+        const lyricsLines = document.querySelectorAll('.lyric-line');
+        let modalPlayer = { playing: false };
+        let lyricsInterval = null;
+
+        function openNavaModal() {
+            document.getElementById('navaModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                if (!modalPlayer.playing) {
+                    modalTogglePlay();
+                }
+            }, 300);
+        }
+
+        function closeNavaModal() {
+            document.getElementById('navaModal').classList.remove('active');
+            document.body.style.overflow = '';
+            modalAudio.pause();
+            modalAudio.currentTime = 0;
+            modalPlayBtn.querySelector('i').className = 'fas fa-play';
+            modalPlayBtn.classList.remove('playing');
+            modalPlayer.playing = false;
+            modalProgressFill.style.width = '0%';
+            modalCurrentTime.textContent = '0:00';
+            lyricsLines.forEach(line => line.classList.remove('active'));
+            if (lyricsInterval) {
+                clearInterval(lyricsInterval);
+                lyricsInterval = null;
+            }
+        }
+
+        document.getElementById('navaModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeNavaModal();
+            }
+        });
+
+        function toggleModalLyrics(header) {
+            const body = header.nextElementSibling;
+            const icon = header.querySelector('.lyrics-toggle-icon');
+            body.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
+
+        function updateLyrics(currentTime) {
+            let activeIndex = -1;
+            const seconds = Math.floor(currentTime);
+
+            lyricsLines.forEach((line, index) => {
+                const time = parseInt(line.dataset.time);
+                if (seconds >= time) {
+                    activeIndex = index;
+                }
+            });
+
+            lyricsLines.forEach((line, index) => {
+                if (index === activeIndex) {
+                    line.classList.add('active');
+                    line.scrollIntoView({ block: 'center', behavior: 'smooth' });
+                } else {
+                    line.classList.remove('active');
+                }
+            });
+        }
+
+        modalAudio.addEventListener('loadedmetadata', () => {
+            modalDuration.textContent = formatTime(modalAudio.duration);
+        });
+
+        modalAudio.addEventListener('timeupdate', () => {
+            const percent = (modalAudio.currentTime / modalAudio.duration) * 100;
+            modalProgressFill.style.width = percent + '%';
+            modalCurrentTime.textContent = formatTime(modalAudio.currentTime);
+            updateLyrics(modalAudio.currentTime);
+        });
+
+        modalAudio.addEventListener('ended', () => {
+            modalPlayBtn.querySelector('i').className = 'fas fa-play';
+            modalPlayBtn.classList.remove('playing');
+            modalPlayer.playing = false;
+            modalProgressFill.style.width = '0%';
+            modalCurrentTime.textContent = '0:00';
+            lyricsLines.forEach(line => line.classList.remove('active'));
+            if (lyricsInterval) {
+                clearInterval(lyricsInterval);
+                lyricsInterval = null;
+            }
+        });
+
+        modalProgressBar.addEventListener('click', (e) => {
+            const rect = modalProgressBar.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            modalAudio.currentTime = percent * modalAudio.duration;
+            modalProgressFill.style.width = (percent * 100) + '%';
+        });
+
+        function modalTogglePlay() {
+            if (modalPlayer.playing) {
+                modalAudio.pause();
+                modalPlayBtn.querySelector('i').className = 'fas fa-play';
+                modalPlayBtn.classList.remove('playing');
+                modalPlayer.playing = false;
+                if (lyricsInterval) {
+                    clearInterval(lyricsInterval);
+                    lyricsInterval = null;
+                }
+            } else {
+                modalAudio.play();
+                modalPlayBtn.querySelector('i').className = 'fas fa-pause';
+                modalPlayBtn.classList.add('playing');
+                modalPlayer.playing = true;
+                updateLyrics(modalAudio.currentTime);
+                lyricsInterval = setInterval(() => {
+                    updateLyrics(modalAudio.currentTime);
+                }, 200);
+            }
+        }
+
+        function modalPrevTrack() {
+            modalAudio.currentTime = 0;
+            modalProgressFill.style.width = '0%';
+            modalCurrentTime.textContent = '0:00';
+            lyricsLines.forEach(line => line.classList.remove('active'));
+        }
+
+        function modalNextTrack() {
+            modalAudio.currentTime = 0;
+            modalProgressFill.style.width = '0%';
+            modalCurrentTime.textContent = '0:00';
+            lyricsLines.forEach(line => line.classList.remove('active'));
+        }
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        // ===== مودال طراحی =====
         let is3D = false;
         let currentRotationX = 0;
         let currentRotationY = 0;
@@ -3640,7 +4353,7 @@
 
         // ===== انیمیشن اسکرول =====
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.home-design-card, .design-card-new, .app-store-card');
+            const cards = document.querySelectorAll('.home-design-card, .design-card-new, .nava-card, .app-store-card');
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
@@ -3684,11 +4397,15 @@
             }
         });
 
-        // ===== کیبورد برای بستن مودال =====
+        // ===== کیبورد برای بستن مودال‌ها =====
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                const overlay = document.getElementById('modalOverlay');
-                if (overlay.classList.contains('active')) {
+                const navaModal = document.getElementById('navaModal');
+                if (navaModal.classList.contains('active')) {
+                    closeNavaModal();
+                }
+                const designModal = document.getElementById('modalOverlay');
+                if (designModal.classList.contains('active')) {
                     closeModal();
                 }
             }
