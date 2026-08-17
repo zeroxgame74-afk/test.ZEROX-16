@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
+        /* ========== RESET ========== */
         * {
             margin: 0;
             padding: 0;
@@ -77,7 +78,7 @@
             justify-content: center;
         }
 
-        /* ===== HEADER ===== */
+        /* ========== هدر ========== */
         .header {
             display: flex;
             align-items: center;
@@ -142,6 +143,7 @@
             position: relative;
             display: inline-block;
         }
+
         .brand-name::after {
             content: '';
             position: absolute;
@@ -152,9 +154,11 @@
             background: linear-gradient(90deg, #f5b042, transparent);
             transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .brand-name:hover::after {
             width: 100%;
         }
+
         .brand-sub {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 300;
@@ -163,7 +167,7 @@
             letter-spacing: 1px;
         }
 
-        /* ===== HAMBURGER ===== */
+        /* ========== دکمه همبرگر ========== */
         .hamburger {
             display: flex;
             flex-direction: column;
@@ -177,11 +181,13 @@
             z-index: 1001;
             position: relative;
         }
+
         .hamburger:hover {
             background: rgba(255, 215, 100, 0.08);
             border-color: rgba(255, 215, 100, 0.15);
             transform: scale(1.05);
         }
+
         .hamburger span {
             display: block;
             width: 28px;
@@ -190,6 +196,7 @@
             border-radius: 4px;
             transition: 0.3s ease;
         }
+
         .hamburger.active span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 6px);
             background: #f5b042;
@@ -203,7 +210,7 @@
             background: #f5b042;
         }
 
-        /* ===== NAV OVERLAY ===== */
+        /* ========== منوی همبرگری ========== */
         .nav-overlay {
             position: fixed;
             top: 0;
@@ -218,9 +225,11 @@
             transition: right 0.6s cubic-bezier(0.22, 1, 0.36, 1);
             z-index: 1000;
         }
+
         .nav-overlay.open {
             right: 0;
         }
+
         .nav-menu {
             display: flex;
             flex-direction: column;
@@ -230,6 +239,7 @@
             max-width: 500px;
             width: 100%;
         }
+
         .nav-menu a {
             color: #d6d0c4;
             text-decoration: none;
@@ -248,6 +258,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .nav-menu a::before {
             content: '';
             position: absolute;
@@ -260,34 +271,41 @@
             z-index: -1;
             border-radius: 20px;
         }
+
         .nav-menu a:hover::before {
             width: 100%;
         }
+
         .nav-menu a i {
             font-size: 1.8rem;
             color: #f5b042;
             width: 2.5rem;
             transition: 0.3s;
         }
+
         .nav-menu a:hover {
             color: #f5efe6;
             background: rgba(255, 215, 100, 0.06);
             border-color: rgba(255, 215, 100, 0.1);
             transform: scale(1.04) translateX(-4px);
         }
+
         .nav-menu a:hover i {
             transform: scale(1.2) rotate(-8deg) translateX(-4px);
         }
+
         .nav-menu a.active {
             color: #f5efe6;
             background: rgba(255, 215, 100, 0.08);
             border-color: rgba(255, 215, 100, 0.15);
         }
+
         .nav-menu a.active i {
             color: #f5b042;
             transform: scale(1.1);
             animation: pulseIcon 2s ease-in-out infinite;
         }
+
         @keyframes pulseIcon {
             0%,
             100% {
@@ -298,7 +316,7 @@
             }
         }
 
-        /* ===== MAIN CONTENT ===== */
+        /* ========== محتوای اصلی ========== */
         .main-content {
             flex: 1;
             display: flex;
@@ -307,14 +325,154 @@
             padding: 2rem 0 1.5rem 0;
         }
 
-        /* ===== TABS ===== */
+        /* ===== کارت خوش‌آمدگویی ===== */
+        .hero-card {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.4);
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-card .hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hero-card:hover .hero-bg {
+            transform: scale(1.04);
+        }
+
+        .hero-card .hero-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(11, 11, 14, 0.85) 0%, rgba(11, 11, 14, 0.4) 50%, rgba(11, 11, 14, 0.7) 100%);
+            z-index: 1;
+            backdrop-filter: blur(2px);
+        }
+
+        .hero-card .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2.5rem 3rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .hero-card .hero-content h1 {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 800;
+            font-size: 2.2rem;
+            color: #f5efe6;
+            line-height: 1.3;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-card .hero-content h1 span {
+            color: #f5b042;
+        }
+
+        .hero-card .hero-content .hero-sub {
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1.05rem;
+            color: #d6d0c4;
+            max-width: 600px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-card .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.3rem;
+        }
+
+        .hero-card .hero-buttons a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 215, 100, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            color: #f5efe6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card .hero-buttons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 215, 100, 0.08);
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .hero-card .hero-buttons a:hover::before {
+            width: 100%;
+        }
+
+        .hero-card .hero-buttons a i {
+            font-size: 1.1rem;
+            color: #f5b042;
+            transition: 0.3s;
+        }
+
+        .hero-card .hero-buttons a:hover {
+            border-color: rgba(255, 215, 100, 0.3);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 32px -8px rgba(245, 176, 66, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-card .hero-buttons a:hover i {
+            transform: scale(1.1) rotate(-4deg);
+        }
+
+        .hero-card .hero-buttons a.btn-primary {
+            background: linear-gradient(145deg, rgba(245, 176, 66, 0.15), rgba(212, 143, 43, 0.05));
+            border-color: rgba(245, 176, 66, 0.25);
+        }
+
+        .hero-card .hero-buttons a.btn-primary:hover {
+            background: linear-gradient(145deg, rgba(245, 176, 66, 0.25), rgba(212, 143, 43, 0.1));
+            border-color: rgba(245, 176, 66, 0.4);
+        }
+
+        /* ===== بخش‌های دیگر ===== */
         .tab-content {
             display: none;
             animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .tab-content.active {
             display: block;
         }
+
         @keyframes fadeUp {
             0% {
                 opacity: 0;
@@ -337,12 +495,15 @@
             padding-right: 1.5rem;
             position: relative;
         }
+
         .tab-content h2 i {
             transition: 0.3s;
         }
+
         .tab-content h2:hover i {
             transform: rotate(10deg) scale(1.1);
         }
+
         .tab-content p {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 400;
@@ -352,129 +513,7 @@
             line-height: 2;
         }
 
-        /* ===== HERO CARD ===== */
-        .hero-card {
-            position: relative;
-            border-radius: 32px;
-            overflow: hidden;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.4);
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            min-height: 260px;
-            display: flex;
-            align-items: center;
-        }
-        .hero-card .hero-bg {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .hero-card:hover .hero-bg {
-            transform: scale(1.04);
-        }
-        .hero-card .hero-overlay {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(11, 11, 14, 0.85) 0%, rgba(11, 11, 14, 0.4) 50%, rgba(11, 11, 14, 0.7) 100%);
-            z-index: 1;
-            backdrop-filter: blur(2px);
-        }
-        .hero-card .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 2.5rem 3rem;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-        .hero-card .hero-content h1 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 2.2rem;
-            color: #f5efe6;
-            line-height: 1.3;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-        }
-        .hero-card .hero-content h1 span {
-            color: #f5b042;
-        }
-        .hero-card .hero-content .hero-sub {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 1.05rem;
-            color: #d6d0c4;
-            max-width: 600px;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-        }
-        .hero-card .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 0.3rem;
-        }
-        .hero-card .hero-buttons a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.6rem 1.8rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            color: #f5efe6;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-card .hero-buttons a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: rgba(255, 215, 100, 0.08);
-            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .hero-card .hero-buttons a:hover::before {
-            width: 100%;
-        }
-        .hero-card .hero-buttons a i {
-            font-size: 1.1rem;
-            color: #f5b042;
-            transition: 0.3s;
-        }
-        .hero-card .hero-buttons a:hover {
-            border-color: rgba(255, 215, 100, 0.3);
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 8px 32px -8px rgba(245, 176, 66, 0.15);
-            background: rgba(255, 255, 255, 0.08);
-        }
-        .hero-card .hero-buttons a:hover i {
-            transform: scale(1.1) rotate(-4deg);
-        }
-        .hero-card .hero-buttons a.btn-primary {
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.15), rgba(212, 143, 43, 0.05));
-            border-color: rgba(245, 176, 66, 0.25);
-        }
-        .hero-card .hero-buttons a.btn-primary:hover {
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.25), rgba(212, 143, 43, 0.1));
-            border-color: rgba(245, 176, 66, 0.4);
-        }
-
-        /* ===== BIO INTRO ===== */
+        /* ===== کارت‌های خانه ===== */
         .bio-intro {
             max-width: 800px;
             margin: 0 auto 2.5rem auto;
@@ -486,6 +525,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .bio-intro::before {
             content: '';
             position: absolute;
@@ -497,6 +537,7 @@
             animation: shimmerBg 8s ease-in-out infinite alternate;
             pointer-events: none;
         }
+
         @keyframes shimmerBg {
             0% {
                 transform: translate(-10%, -10%);
@@ -505,11 +546,13 @@
                 transform: translate(10%, 10%);
             }
         }
+
         .bio-intro:hover {
             border-color: rgba(255, 215, 100, 0.15);
             transform: translateY(-3px);
             box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.4);
         }
+
         .bio-intro p {
             font-size: 1.15rem;
             line-height: 2.2;
@@ -517,17 +560,18 @@
             position: relative;
             z-index: 1;
         }
+
         .bio-intro p:last-child {
             margin-bottom: 0;
         }
 
-        /* ===== HOME CARDS ===== */
         .home-design-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.8rem;
             margin-top: 2rem;
         }
+
         .home-design-card {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 24px;
@@ -538,6 +582,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .home-design-card::after {
             content: '';
             position: absolute;
@@ -550,15 +595,18 @@
             transform-origin: right;
             transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .home-design-card:hover::after {
             transform: scaleX(1);
         }
+
         .home-design-card:hover {
             background: rgba(255, 215, 100, 0.04);
             border-color: rgba(255, 215, 100, 0.12);
             transform: translateY(-8px) scale(1.01);
             box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
         }
+
         .home-design-card .icon {
             font-size: 2.8rem;
             color: #f5b042;
@@ -566,12 +614,14 @@
             display: inline-block;
             animation: floatIcon 3s ease-in-out infinite;
         }
+
         .home-design-card:nth-child(2) .icon {
             animation-delay: 0.5s;
         }
         .home-design-card:nth-child(3) .icon {
             animation-delay: 1s;
         }
+
         @keyframes floatIcon {
             0%,
             100% {
@@ -581,17 +631,20 @@
                 transform: translateY(-6px);
             }
         }
+
         .home-design-card .icon i {
             background: rgba(255, 215, 100, 0.08);
             padding: 0.8rem;
             border-radius: 20px;
             transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+
         .home-design-card:hover .icon i {
             background: rgba(255, 215, 100, 0.15);
             transform: scale(1.1) rotate(-6deg);
             box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.2);
         }
+
         .home-design-card h3 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 700;
@@ -599,6 +652,7 @@
             color: #f5efe6;
             margin-bottom: 0.5rem;
         }
+
         .home-design-card p {
             font-family: 'Vazirmatn', sans-serif;
             font-size: 0.95rem;
@@ -606,13 +660,12 @@
             margin: 0;
         }
 
-        /* ============================================== */
-        /* ===== VOD SECTION ===== */
-        /* ============================================== */
+        /* ===== بخش VOD ===== */
         .vod-section {
             margin: 1.5rem 0;
             text-align: center;
         }
+
         .vod-section .vod-title {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
@@ -625,7 +678,6 @@
             text-align: right;
         }
 
-        /* ===== HERO SLIDER ===== */
         .vod-hero-slider {
             position: relative;
             border-radius: 24px;
@@ -637,6 +689,7 @@
             box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.5);
             background: #0b0b0e;
         }
+
         .vod-hero-slider .hero-slide {
             position: absolute;
             top: 0;
@@ -647,19 +700,23 @@
             transition: opacity 0.8s ease-in-out;
             z-index: 0;
         }
+
         .vod-hero-slider .hero-slide.active {
             opacity: 1;
             z-index: 1;
         }
+
         .vod-hero-slider .hero-slide .hero-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+
         .vod-hero-slider .hero-slide.active .hero-img {
             animation: zoomIn 8s ease-in-out infinite alternate;
         }
+
         @keyframes zoomIn {
             0% {
                 transform: scale(1);
@@ -668,6 +725,7 @@
                 transform: scale(1.08);
             }
         }
+
         .vod-hero-slider .hero-slide .hero-overlay {
             position: absolute;
             bottom: 0;
@@ -680,6 +738,7 @@
             justify-content: flex-end;
             padding: 2.5rem 2rem;
         }
+
         .vod-hero-slider .hero-slide .hero-overlay .hero-badge {
             display: inline-block;
             background: rgba(245, 176, 66, 0.15);
@@ -694,6 +753,7 @@
             align-self: flex-start;
             backdrop-filter: blur(4px);
         }
+
         .vod-hero-slider .hero-slide .hero-overlay h3 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
@@ -702,6 +762,7 @@
             margin-bottom: 0.3rem;
             text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
         }
+
         .vod-hero-slider .hero-slide .hero-overlay p {
             font-family: 'Vazirmatn', sans-serif;
             font-size: 0.95rem;
@@ -710,6 +771,7 @@
             margin-bottom: 1rem;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
         }
+
         .vod-hero-slider .hero-slide .hero-overlay .hero-btn {
             display: inline-flex;
             align-items: center;
@@ -727,15 +789,16 @@
             align-self: flex-start;
             box-shadow: 0 4px 20px -6px rgba(245, 176, 66, 0.3);
         }
+
         .vod-hero-slider .hero-slide .hero-overlay .hero-btn:hover {
             transform: scale(1.04);
             box-shadow: 0 8px 32px -6px rgba(245, 176, 66, 0.5);
         }
+
         .vod-hero-slider .hero-slide .hero-overlay .hero-btn i {
             font-size: 0.9rem;
         }
 
-        /* Slider Navigation */
         .hero-slider-nav {
             position: absolute;
             top: 50%;
@@ -756,15 +819,18 @@
             font-size: 1rem;
             border: none;
         }
+
         .hero-slider-nav:hover {
             background: rgba(0, 0, 0, 0.7);
             border-color: rgba(255, 215, 100, 0.3);
             transform: translateY(-50%) scale(1.05);
             color: #f5b042;
         }
+
         .hero-slider-nav.prev {
             right: 12px;
         }
+
         .hero-slider-nav.next {
             left: 12px;
         }
@@ -780,6 +846,7 @@
             justify-content: center;
             width: auto;
         }
+
         .hero-slider-dots .dot {
             width: 10px;
             height: 10px;
@@ -791,25 +858,28 @@
             padding: 0;
             backdrop-filter: blur(4px);
         }
+
         .hero-slider-dots .dot.active {
             background: #f5b042;
             width: 24px;
             border-radius: 10px;
         }
+
         .hero-slider-dots .dot:hover {
             background: rgba(255, 215, 100, 0.5);
         }
 
-        /* ===== VOD SLIDER ===== */
         .vod-slider {
             margin-top: 1rem;
         }
+
         .vod-slider .slider-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0.8rem;
         }
+
         .vod-slider .slider-header h4 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 700;
@@ -818,10 +888,12 @@
             padding-right: 1rem;
             border-right: 3px solid #f5b042;
         }
+
         .vod-slider .slider-header .slider-nav {
             display: flex;
             gap: 0.5rem;
         }
+
         .vod-slider .slider-header .slider-nav button {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 215, 100, 0.08);
@@ -836,12 +908,14 @@
             justify-content: center;
             font-size: 0.8rem;
         }
+
         .vod-slider .slider-header .slider-nav button:hover {
             background: rgba(255, 215, 100, 0.1);
             border-color: rgba(255, 215, 100, 0.2);
             color: #f5efe6;
             transform: scale(1.05);
         }
+
         .vod-slider .slider-track-wrapper {
             overflow-x: auto;
             padding: 0.5rem 0.2rem 1rem 0.2rem;
@@ -850,21 +924,26 @@
             scrollbar-width: thin;
             scrollbar-color: rgba(255, 215, 100, 0.2) transparent;
         }
+
         .vod-slider .slider-track-wrapper::-webkit-scrollbar {
             height: 4px;
         }
+
         .vod-slider .slider-track-wrapper::-webkit-scrollbar-track {
             background: transparent;
         }
+
         .vod-slider .slider-track-wrapper::-webkit-scrollbar-thumb {
             background: rgba(255, 215, 100, 0.2);
             border-radius: 10px;
         }
+
         .vod-slider .slider-track {
             display: flex;
             gap: 1rem;
             width: max-content;
         }
+
         .vod-slider .slider-item {
             flex-shrink: 0;
             width: 160px;
@@ -877,12 +956,14 @@
             position: relative;
             backdrop-filter: blur(4px);
         }
+
         .vod-slider .slider-item:hover {
             transform: translateY(-6px) scale(1.03);
             border-color: rgba(255, 215, 100, 0.2);
             box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
             background: rgba(255, 255, 255, 0.05);
         }
+
         .vod-slider .slider-item .item-img {
             width: 100%;
             aspect-ratio: 1/1;
@@ -891,15 +972,18 @@
             background: #0b0b0e;
             transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+
         .vod-slider .slider-item:hover .item-img {
             transform: scale(1.04);
         }
+
         .vod-slider .slider-item .item-info {
             padding: 0.6rem 0.8rem;
             text-align: center;
             background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(4px);
         }
+
         .vod-slider .slider-item .item-info h5 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 700;
@@ -910,6 +994,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
         .vod-slider .slider-item .item-info p {
             font-family: 'Vazirmatn', sans-serif;
             font-size: 0.7rem;
@@ -919,6 +1004,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
         .vod-slider .slider-item .item-overlay-link {
             position: absolute;
             top: 0;
@@ -929,9 +1015,9 @@
             text-indent: -9999px;
         }
 
-        /* ============================================== */
-        /* ===== DESIGN CARDS ===== */
-        /* ============================================== */
+        /* ============================================
+                   کارت‌های طراحی
+                   ============================================ */
         .design-card-new {
             max-width: 100%;
             background: rgba(255, 255, 255, 0.02);
@@ -943,6 +1029,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .design-card-new::before {
             content: '';
             position: absolute;
@@ -950,11 +1037,15 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.08) 50%, transparent 70%);
+            background: linear-gradient(45deg,
+                    transparent 30%,
+                    rgba(255, 215, 0, 0.08) 50%,
+                    transparent 70%);
             animation: shineDesign 4s ease-in-out infinite;
             pointer-events: none;
             z-index: 0;
         }
+
         @keyframes shineDesign {
             0% {
                 transform: translateX(-100%) rotate(25deg);
@@ -963,16 +1054,19 @@
                 transform: translateX(100%) rotate(25deg);
             }
         }
+
         .design-card-new:hover {
             background: rgba(255, 215, 100, 0.04);
             border-color: rgba(255, 215, 100, 0.15);
             transform: translateY(-6px) scale(1.005);
             box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.5);
         }
+
         .design-card-new>* {
             position: relative;
             z-index: 1;
         }
+
         .design-image {
             width: 100%;
             aspect-ratio: 1/1;
@@ -985,6 +1079,7 @@
             position: relative;
             cursor: pointer;
         }
+
         .design-image img {
             width: 100%;
             height: 100%;
@@ -992,9 +1087,11 @@
             display: block;
             transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+
         .design-card-new:hover .design-image img {
             transform: scale(1.03);
         }
+
         .design-image .image-overlay {
             position: absolute;
             top: 0;
@@ -1012,14 +1109,17 @@
             gap: 0.5rem;
             border-radius: 16px;
         }
+
         .design-image:hover .image-overlay {
             opacity: 1;
         }
+
         .design-image .image-overlay i {
             font-size: 2.5rem;
             color: #f5b042;
             animation: floatIcon 2s ease-in-out infinite;
         }
+
         .design-image .image-overlay span {
             color: #f5efe6;
             font-family: 'Vazirmatn', sans-serif;
@@ -1030,10 +1130,12 @@
             border-radius: 40px;
             backdrop-filter: blur(4px);
         }
+
         .design-card-new:hover .design-image {
             border-color: rgba(255, 215, 100, 0.15);
             box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
         }
+
         .design-card-new .design-header {
             display: flex;
             align-items: center;
@@ -1042,6 +1144,7 @@
             flex-wrap: wrap;
             margin-bottom: 0.5rem;
         }
+
         .design-card-new .design-title {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
@@ -1049,13 +1152,16 @@
             color: #f5efe6;
             transition: 0.3s;
         }
+
         .design-card-new:hover .design-title {
             color: #f5b042;
         }
+
         .design-card-new .design-title i {
             color: #f5b042;
             margin-left: 0.5rem;
         }
+
         .design-card-new .toggle-details {
             background: none;
             border: 1px solid rgba(255, 215, 100, 0.15);
@@ -1071,17 +1177,21 @@
             align-items: center;
             gap: 0.5rem;
         }
+
         .design-card-new .toggle-details:hover {
             background: rgba(255, 215, 100, 0.08);
             border-color: #f5b042;
             transform: scale(1.04);
         }
+
         .design-card-new .toggle-details i {
             transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+
         .design-card-new .toggle-details.open i {
             transform: rotate(180deg);
         }
+
         .design-card-new .design-details {
             max-height: 0;
             overflow: hidden;
@@ -1089,11 +1199,13 @@
             opacity: 0;
             margin: 0;
         }
+
         .design-card-new .design-details.open {
             max-height: 300px;
             opacity: 1;
             margin: 1rem 0;
         }
+
         .design-card-new .design-desc {
             font-family: 'Vazirmatn', sans-serif;
             font-size: 0.95rem;
@@ -1101,17 +1213,20 @@
             margin-bottom: 0.3rem;
             line-height: 1.8;
         }
+
         .design-card-new .design-author {
             font-family: 'Vazirmatn', sans-serif;
             font-size: 0.9rem;
             color: #f5b042;
             margin-bottom: 0.8rem;
         }
+
         .design-card-new .download-buttons {
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
         }
+
         .design-card-new .download-buttons a {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 600;
@@ -1127,15 +1242,18 @@
             gap: 0.4rem;
             background: rgba(255, 215, 100, 0.05);
         }
+
         .design-card-new .download-buttons a:hover {
             background: rgba(255, 215, 100, 0.12);
             border-color: #f5b042;
             transform: scale(1.04) translateY(-2px);
         }
+
         .design-card-new .download-buttons a i {
             color: #f5b042;
             font-size: 0.9rem;
         }
+
         .design-3d-hint {
             background: rgba(255, 215, 100, 0.04);
             border: 1px solid rgba(255, 215, 100, 0.08);
@@ -1149,19 +1267,23 @@
             font-size: 0.8rem;
             color: #b0a99b;
         }
+
         .design-3d-hint i {
             color: #f5b042;
             font-size: 0.9rem;
         }
 
-        /* ============================================== */
-        /* ===== APPS SECTION (APP STORE STYLE) ===== */
-        /* ============================================== */
+        /* ============================================
+                   بخش برنامه‌ها (شبیه اپ استور)
+                   ============================================ */
+
+        /* ===== هدر برنامه‌ها ===== */
         .apps-header {
             text-align: center;
             margin-bottom: 2.5rem;
             position: relative;
         }
+
         .apps-header h2 {
             font-size: 2.6rem;
             font-weight: 800;
@@ -1172,15 +1294,18 @@
             border-right: 6px solid #f5b042;
             padding-right: 1.5rem;
         }
+
         .apps-header h2 i {
             color: #f5b042;
         }
+
         .apps-header p {
             color: #b0a99b;
             font-size: 1.1rem;
             margin-top: 0.5rem;
         }
 
+        /* ===== گرید کارت‌های برنامه ===== */
         .apps-store-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -1188,6 +1313,7 @@
             margin-top: 1rem;
         }
 
+        /* ===== کارت برنامه ===== */
         .app-store-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
@@ -1200,15 +1326,30 @@
             position: relative;
             overflow: hidden;
         }
+
+        .app-store-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 215, 100, 0.02), transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .app-store-card:hover {
             transform: translateY(-6px);
             border-color: rgba(255, 215, 100, 0.2);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
             background: rgba(255, 215, 100, 0.05);
         }
+
         .app-store-card:active {
             transform: scale(0.97);
         }
+
         .app-store-card-inner {
             display: flex;
             align-items: center;
@@ -1216,6 +1357,7 @@
             position: relative;
             z-index: 1;
         }
+
         .app-store-icon {
             width: 64px;
             height: 64px;
@@ -1230,15 +1372,18 @@
             flex-shrink: 0;
             transition: 0.4s;
         }
+
         .app-store-card:hover .app-store-icon {
             transform: scale(1.05) rotate(-4deg);
             border-color: rgba(255, 215, 100, 0.25);
             box-shadow: 0 4px 20px rgba(245, 176, 66, 0.1);
         }
+
         .app-store-info {
             flex: 1;
             min-width: 0;
         }
+
         .app-store-name {
             font-size: 1.15rem;
             font-weight: 700;
@@ -1246,9 +1391,11 @@
             margin: 0;
             transition: 0.3s;
         }
+
         .app-store-card:hover .app-store-name {
             color: #f5b042;
         }
+
         .app-store-desc {
             font-size: 0.85rem;
             color: #b0a99b;
@@ -1257,6 +1404,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
         .app-store-meta {
             display: flex;
             align-items: center;
@@ -1264,6 +1412,7 @@
             margin-top: 0.2rem;
             flex-wrap: wrap;
         }
+
         .app-store-status {
             font-size: 0.7rem;
             padding: 0.15rem 0.8rem;
@@ -1273,23 +1422,28 @@
             align-items: center;
             gap: 0.3rem;
         }
+
         .app-store-status.developing {
             background: rgba(245, 176, 66, 0.12);
             color: #f5b042;
             border: 1px solid rgba(245, 176, 66, 0.1);
         }
+
         .app-store-status.coming-soon {
             background: rgba(52, 152, 219, 0.12);
             color: #3498db;
             border: 1px solid rgba(52, 152, 219, 0.1);
         }
+
         .app-store-version {
             font-size: 0.7rem;
             color: #8f887c;
         }
+
         .app-store-action {
             flex-shrink: 0;
         }
+
         .app-store-get-btn {
             background: linear-gradient(145deg, rgba(245, 176, 66, 0.12), rgba(212, 143, 43, 0.05));
             border: 1px solid rgba(255, 215, 100, 0.12);
@@ -1306,32 +1460,41 @@
             gap: 0.5rem;
             white-space: nowrap;
         }
+
         .app-store-get-btn:hover {
             background: linear-gradient(145deg, rgba(245, 176, 66, 0.2), rgba(212, 143, 43, 0.1));
             border-color: rgba(255, 215, 100, 0.25);
             transform: scale(1.05);
             box-shadow: 0 4px 16px rgba(245, 176, 66, 0.1);
         }
+
         .app-store-get-btn i {
             font-size: 0.8rem;
         }
+
         .app-store-get-btn.disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
+
         .app-store-get-btn.disabled:hover {
             transform: none;
             box-shadow: none;
         }
 
-        /* ===== APP DETAIL PAGE ===== */
+        /* ====================================================== */
+        /* ===== صفحه‌ی جزئیات برنامه (شبیه مایکت) ===== */
+        /* ====================================================== */
+
         .app-detail-page {
             display: none;
             animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .app-detail-page.active {
             display: block;
         }
+
         .back-to-apps {
             background: none;
             border: none;
@@ -1347,10 +1510,12 @@
             align-items: center;
             gap: 0.5rem;
         }
+
         .back-to-apps:hover {
             transform: translateX(-4px);
             opacity: 0.8;
         }
+
         .app-detail-header {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(12px);
@@ -1364,9 +1529,11 @@
             flex-wrap: wrap;
             margin-bottom: 1.5rem;
         }
+
         .app-detail-icon-wrapper {
             flex-shrink: 0;
         }
+
         .app-detail-icon {
             width: 96px;
             height: 96px;
@@ -1380,47 +1547,57 @@
             color: #f5b042;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
+
         .app-detail-title-section {
             flex: 1;
             min-width: 200px;
         }
+
         .app-detail-name {
             font-size: 2rem;
             font-weight: 800;
             color: #f5efe6;
             margin: 0;
         }
+
         .app-detail-developer {
             color: #b0a99b;
             font-size: 0.9rem;
             margin: 0.2rem 0 0.5rem 0;
         }
+
         .app-detail-rating {
             display: flex;
             align-items: center;
             gap: 0.8rem;
             flex-wrap: wrap;
         }
+
         .app-detail-rating .stars {
             color: #f5b042;
             font-size: 1rem;
             letter-spacing: 2px;
         }
+
         .app-detail-rating .stars i {
             margin: 0 1px;
         }
+
         .rating-text {
             color: #b0a99b;
             font-size: 0.9rem;
         }
+
         .reviews-count {
             color: #8f887c;
             font-size: 0.8rem;
         }
+
         .app-detail-install {
             text-align: center;
             flex-shrink: 0;
         }
+
         .app-detail-install-btn {
             background: linear-gradient(145deg, #f5b042, #d48f2b);
             border: none;
@@ -1437,13 +1614,16 @@
             gap: 0.6rem;
             box-shadow: 0 4px 20px rgba(245, 176, 66, 0.2);
         }
+
         .app-detail-install-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 32px rgba(245, 176, 66, 0.3);
         }
+
         .app-detail-install-btn i {
             font-size: 1.1rem;
         }
+
         .app-detail-size {
             display: block;
             color: #8f887c;
@@ -1451,9 +1631,11 @@
             margin-top: 0.3rem;
         }
 
+        /* ===== اسکرین‌شات‌ها ===== */
         .app-detail-screenshots {
             margin-bottom: 1.5rem;
         }
+
         .app-detail-screenshots h4 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 700;
@@ -1464,9 +1646,11 @@
             align-items: center;
             gap: 0.5rem;
         }
+
         .app-detail-screenshots h4 i {
             color: #f5b042;
         }
+
         .screenshots-scroll {
             display: flex;
             gap: 1rem;
@@ -1477,6 +1661,7 @@
             scrollbar-width: thin;
             scrollbar-color: rgba(255, 215, 100, 0.2) transparent;
         }
+
         .screenshots-scroll::-webkit-scrollbar {
             height: 4px;
         }
@@ -1487,6 +1672,7 @@
             background: rgba(255, 215, 100, 0.2);
             border-radius: 10px;
         }
+
         .screenshot-item {
             flex-shrink: 0;
             width: 160px;
@@ -1496,10 +1682,12 @@
             border: 1px solid rgba(255, 215, 100, 0.06);
             transition: 0.3s;
         }
+
         .screenshot-item:hover {
             border-color: rgba(255, 215, 100, 0.15);
             transform: translateY(-4px) scale(1.02);
         }
+
         .screenshot-placeholder {
             width: 100%;
             height: 100%;
@@ -1512,12 +1700,14 @@
             color: #8f887c;
             font-size: 0.75rem;
         }
+
         .screenshot-placeholder i {
             font-size: 2.5rem;
             color: #f5b042;
             opacity: 0.4;
         }
 
+        /* ===== درباره برنامه ===== */
         .app-detail-about {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 215, 100, 0.06);
@@ -1525,6 +1715,7 @@
             padding: 1.5rem;
             margin-bottom: 1.5rem;
         }
+
         .app-detail-about h4 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 700;
@@ -1535,20 +1726,24 @@
             align-items: center;
             gap: 0.5rem;
         }
+
         .app-detail-about h4 i {
             color: #f5b042;
         }
+
         .app-detail-about p {
             color: #b0a99b;
             font-size: 0.95rem;
             line-height: 2;
             margin-bottom: 1rem;
         }
+
         .app-features-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 0.5rem;
         }
+
         .feature-item {
             display: flex;
             align-items: center;
@@ -1559,14 +1754,17 @@
             border-radius: 8px;
             transition: 0.3s;
         }
+
         .feature-item i {
             color: #f5b042;
             font-size: 0.8rem;
         }
+
         .feature-item:hover {
             background: rgba(255, 215, 100, 0.04);
         }
 
+        /* ===== اطلاعات بیشتر ===== */
         .app-detail-more {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -1577,6 +1775,7 @@
             padding: 1.5rem;
             margin-bottom: 1.5rem;
         }
+
         .more-item {
             display: flex;
             justify-content: space-between;
@@ -1584,26 +1783,32 @@
             padding: 0.3rem 0;
             border-bottom: 1px solid rgba(255, 215, 100, 0.03);
         }
+
         .more-item:last-child {
             border-bottom: none;
         }
+
         .more-label {
             color: #8f887c;
             font-size: 0.85rem;
         }
+
         .more-value {
             color: #d6d0c4;
             font-size: 0.85rem;
             font-weight: 500;
         }
+
         .more-value.developing {
             color: #f5b042;
         }
 
+        /* ===== دکمه نصب پایین صفحه ===== */
         .app-detail-bottom-install {
             text-align: center;
             padding: 0.5rem 0 1rem 0;
         }
+
         .app-detail-bottom-install-btn {
             background: linear-gradient(145deg, #f5b042, #d48f2b);
             border: none;
@@ -1620,14 +1825,17 @@
             gap: 0.8rem;
             box-shadow: 0 4px 24px rgba(245, 176, 66, 0.15);
         }
+
         .app-detail-bottom-install-btn:hover {
             transform: scale(1.04);
             box-shadow: 0 8px 40px rgba(245, 176, 66, 0.25);
         }
+
         .app-detail-bottom-install-btn i {
             font-size: 1.2rem;
         }
 
+        /* ===== صفحه در حال توسعه ===== */
         .app-coming-soon {
             display: flex;
             flex-direction: column;
@@ -1637,26 +1845,27 @@
             text-align: center;
             padding: 3rem 1rem;
         }
+
         .app-coming-soon-icon {
             font-size: 5rem;
             color: #f5b042;
             margin-bottom: 1rem;
             animation: floatIcon 3s ease-in-out infinite;
         }
+
         .app-coming-soon h2 {
             font-size: 2.2rem;
             color: #f5efe6;
             margin-bottom: 0.5rem;
         }
+
         .app-coming-soon p {
             color: #b0a99b;
             font-size: 1.1rem;
             max-width: 400px;
         }
 
-        /* ============================================== */
-        /* ===== NAVA SECTION ===== */
-        /* ============================================== */
+        /* ===== بخش نوا ===== */
         .nava-glass-container {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(24px);
@@ -1669,11 +1878,26 @@
             position: relative;
             overflow: hidden;
         }
+
+        .nava-glass-container::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 215, 100, 0.03), transparent 70%);
+            animation: shimmerBg 8s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .nava-glass-container:hover {
             border-color: rgba(255, 215, 100, 0.15);
             box-shadow: 0 12px 56px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
             transform: translateY(-2px);
         }
+
         .nava-glass-container .nava-list {
             display: flex;
             flex-direction: column;
@@ -1681,6 +1905,7 @@
             position: relative;
             z-index: 1;
         }
+
         .nava-glass-container .nava-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 215, 100, 0.06);
@@ -1693,15 +1918,35 @@
             position: relative;
             overflow: hidden;
         }
+
+        .nava-glass-container .nava-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 100, 0.05), transparent);
+            transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            border-radius: 18px;
+            z-index: 0;
+        }
+
+        .nava-glass-container .nava-card:hover::before {
+            width: 100%;
+        }
+
         .nava-glass-container .nava-card:hover {
             background: rgba(255, 215, 100, 0.06);
             border-color: rgba(255, 215, 100, 0.2);
             transform: translateX(-6px) scale(1.01);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(245, 176, 66, 0.03);
         }
+
         .nava-glass-container .nava-card:active {
             transform: scale(0.98);
         }
+
         .nava-glass-container .nava-card-content {
             display: flex;
             align-items: center;
@@ -1709,6 +1954,7 @@
             position: relative;
             z-index: 1;
         }
+
         .nava-glass-container .nava-thumb {
             width: 68px;
             height: 68px;
@@ -1720,24 +1966,40 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
             position: relative;
         }
+
+        .nava-glass-container .nava-thumb::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 215, 100, 0.05), transparent 50%);
+            pointer-events: none;
+        }
+
         .nava-glass-container .nava-card:hover .nava-thumb {
             border-color: rgba(255, 215, 100, 0.35);
             box-shadow: 0 4px 24px rgba(245, 176, 66, 0.15);
             transform: scale(1.03) rotate(-2deg);
         }
+
         .nava-glass-container .nava-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+
         .nava-glass-container .nava-card:hover .nava-thumb img {
             transform: scale(1.08);
         }
+
         .nava-glass-container .nava-info {
             flex: 1;
             min-width: 0;
         }
+
         .nava-glass-container .nava-info .nava-title {
             font-size: 1.1rem;
             font-weight: 700;
@@ -1748,20 +2010,24 @@
             align-items: center;
             gap: 0.4rem;
         }
+
         .nava-glass-container .nava-card:hover .nava-title {
             color: #f5b042;
             transform: translateX(-4px);
         }
+
         .nava-glass-container .nava-info .nava-title i {
             font-size: 0.85rem;
             color: #f5b042;
             opacity: 0.6;
             transition: 0.3s;
         }
+
         .nava-glass-container .nava-card:hover .nava-title i {
             opacity: 1;
             transform: scale(1.1) rotate(-4deg);
         }
+
         .nava-glass-container .nava-info .nava-artist {
             font-size: 0.85rem;
             color: #b0a99b;
@@ -1771,14 +2037,17 @@
             gap: 0.3rem;
             transition: 0.3s;
         }
+
         .nava-glass-container .nava-card:hover .nava-artist {
             color: #d6d0c4;
         }
+
         .nava-glass-container .nava-info .nava-artist i {
             color: #f5b042;
             font-size: 0.75rem;
             opacity: 0.7;
         }
+
         .nava-glass-container .nava-info .nava-mixer {
             font-size: 0.8rem;
             color: #8f887c;
@@ -1788,14 +2057,17 @@
             gap: 0.3rem;
             transition: 0.3s;
         }
+
         .nava-glass-container .nava-card:hover .nava-mixer {
             color: #b0a99b;
         }
+
         .nava-glass-container .nava-info .nava-mixer i {
             color: #f5b042;
             font-size: 0.7rem;
             opacity: 0.6;
         }
+
         .nava-glass-container .nava-arrow {
             color: #f5b042;
             font-size: 1.2rem;
@@ -1811,6 +2083,7 @@
             justify-content: center;
             border: 1px solid rgba(255, 215, 100, 0.04);
         }
+
         .nava-glass-container .nava-card:hover .nava-arrow {
             opacity: 1;
             transform: translateX(-6px) scale(1.08);
@@ -1819,7 +2092,7 @@
             box-shadow: 0 0 20px rgba(245, 176, 66, 0.05);
         }
 
-        /* ===== AI CHAT BUTTON ===== */
+        /* ========== دکمه AI چت ========== */
         .ai-chat-button {
             position: fixed;
             bottom: 30px;
@@ -1842,12 +2115,14 @@
             animation: pulseGlow 3s ease-in-out infinite;
             text-decoration: none;
         }
+
         .ai-chat-button:hover {
             transform: scale(1.1);
             background: rgba(255, 215, 100, 0.08);
             border-color: rgba(255, 215, 100, 0.3);
             box-shadow: 0 8px 40px -6px rgba(245, 176, 66, 0.2);
         }
+
         .ai-chat-button .tooltip {
             position: absolute;
             bottom: 70px;
@@ -1867,10 +2142,12 @@
             transition: 0.3s;
             pointer-events: none;
         }
+
         .ai-chat-button:hover .tooltip {
             opacity: 1;
             transform: translateX(-50%) translateY(-4px);
         }
+
         @keyframes pulseGlow {
             0%,
             100% {
@@ -1881,7 +2158,7 @@
             }
         }
 
-        /* ===== FOOTER ===== */
+        /* ===== فوتر ===== */
         .footer {
             margin-top: 2rem;
             padding-top: 1.5rem;
@@ -1894,6 +2171,7 @@
             color: #8f887c;
             font-size: 0.9rem;
         }
+
         .footer-social a {
             color: #b8b2a6;
             font-size: 1.3rem;
@@ -1903,17 +2181,19 @@
             align-items: center;
             position: relative;
         }
+
         .footer-social a:hover {
             color: #f5b042;
             transform: translateY(-4px) scale(1.1);
         }
+
         .footer-copy {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 300;
             letter-spacing: 0.5px;
         }
 
-        /* ===== MODAL ===== */
+        /* ===== مودال شیشه‌ای ===== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -1929,9 +2209,11 @@
             animation: fadeInModal 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             padding: 1rem;
         }
+
         .modal-overlay.active {
             display: flex;
         }
+
         .modal-content {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(24px);
@@ -1946,6 +2228,7 @@
             box-shadow: 0 24px 80px -16px rgba(0, 0, 0, 0.6);
             animation: slideUpModal 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .modal-content .modal-close {
             position: absolute;
             top: 1rem;
@@ -1964,11 +2247,13 @@
             transition: 0.3s;
             z-index: 10;
         }
+
         .modal-content .modal-close:hover {
             background: rgba(255, 215, 100, 0.15);
             transform: rotate(90deg) scale(1.1);
             border-color: #f5b042;
         }
+
         .modal-content .modal-image {
             width: 100%;
             aspect-ratio: 1/1;
@@ -1980,20 +2265,24 @@
             transform-style: preserve-3d;
             perspective: 1000px;
         }
+
         .modal-content .modal-image .modal-img-wrapper {
             width: 100%;
             height: 100%;
             transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             transform-style: preserve-3d;
         }
+
         .modal-content .modal-image .modal-img-wrapper.rotated-3d {
             transform: rotateY(180deg) rotateX(10deg) scale(1.05);
         }
+
         .modal-content .modal-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         .modal-content .modal-title {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
@@ -2002,15 +2291,18 @@
             margin-bottom: 0.5rem;
             text-align: center;
         }
+
         .modal-content .modal-title i {
             color: #f5b042;
         }
+
         .modal-content .modal-controls {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0.8rem;
             margin: 1.5rem 0;
         }
+
         .modal-content .modal-controls button {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 215, 100, 0.1);
@@ -2027,27 +2319,33 @@
             justify-content: center;
             gap: 0.5rem;
         }
+
         .modal-content .modal-controls button i {
             color: #f5b042;
             font-size: 1.1rem;
         }
+
         .modal-content .modal-controls button:hover {
             background: rgba(255, 215, 100, 0.08);
             border-color: rgba(255, 215, 100, 0.25);
             transform: scale(1.04);
             color: #f5efe6;
         }
+
         .modal-content .modal-controls button:active {
             transform: scale(0.96);
         }
+
         .modal-content .modal-controls button.active-3d {
             background: rgba(245, 176, 66, 0.15);
             border-color: #f5b042;
             color: #f5b042;
         }
+
         .modal-content .modal-controls button.active-3d i {
             color: #f5b042;
         }
+
         .modal-content .modal-copyright {
             background: rgba(255, 215, 100, 0.05);
             border: 1px solid rgba(255, 215, 100, 0.08);
@@ -2057,9 +2355,11 @@
             display: none;
             animation: fadeUp 0.4s ease;
         }
+
         .modal-content .modal-copyright.active {
             display: block;
         }
+
         .modal-content .modal-copyright p {
             font-family: 'Vazirmatn', sans-serif;
             font-size: 0.9rem;
@@ -2067,9 +2367,11 @@
             line-height: 2;
             margin: 0;
         }
+
         .modal-content .modal-copyright p strong {
             color: #f5b042;
         }
+
         .modal-content .modal-footer-text {
             text-align: center;
             margin-top: 1rem;
@@ -2078,28 +2380,7 @@
             color: #8f887c;
         }
 
-        @keyframes fadeInModal {
-            0% {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        @keyframes slideUpModal {
-            0% {
-                opacity: 0;
-                transform: translateY(40px) scale(0.96);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* ===== NOTIFICATION ===== */
+        /* ===== نوتیفیکیشن ===== */
         .welcome-notification {
             position: fixed;
             bottom: 30px;
@@ -2117,11 +2398,13 @@
             animation: slideUpNotif 0.6s cubic-bezier(0.22, 1, 0.36, 1);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
+
         .welcome-notification.hide {
             opacity: 0;
             transform: translateX(-50%) translateY(30px) scale(0.95);
             pointer-events: none;
         }
+
         @keyframes slideUpNotif {
             0% {
                 opacity: 0;
@@ -2132,17 +2415,20 @@
                 transform: translateX(-50%) translateY(0) scale(1);
             }
         }
+
         .welcome-notification .notif-header {
             display: flex;
             align-items: center;
             gap: 0.8rem;
             margin-bottom: 0.5rem;
         }
+
         .welcome-notification .notif-header i {
             font-size: 1.8rem;
             color: #f5b042;
             animation: floatIcon 3s ease-in-out infinite;
         }
+
         .welcome-notification .notif-header h3 {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 800;
@@ -2150,6 +2436,7 @@
             color: #f5efe6;
             margin: 0;
         }
+
         .welcome-notification .notif-body {
             font-family: 'Vazirmatn', sans-serif;
             font-size: 0.9rem;
@@ -2157,17 +2444,20 @@
             line-height: 1.8;
             padding-right: 0.5rem;
         }
+
         .welcome-notification .notif-body ul {
             list-style: none;
             padding-right: 0.5rem;
             margin: 0.3rem 0;
         }
+
         .welcome-notification .notif-body ul li {
             position: relative;
             padding-right: 1.5rem;
             margin-bottom: 0.2rem;
             font-size: 0.85rem;
         }
+
         .welcome-notification .notif-body ul li i {
             position: absolute;
             right: 0;
@@ -2177,6 +2467,7 @@
             width: 1.2rem;
             text-align: center;
         }
+
         .welcome-notification .notif-body .notif-update-title {
             color: #f5b042;
             font-weight: 600;
@@ -2184,13 +2475,12 @@
             display: block;
             margin-top: 0.3rem;
         }
+
         .welcome-notification .notif-body .notif-update-title i {
             margin-left: 0.3rem;
         }
 
-        /* ============================================== */
-        /* ===== RESPONSIVE ===== */
-        /* ============================================== */
+        /* ========== ریسپانسیو ========== */
         @media (max-width: 992px) {
             .hero-card .hero-content {
                 padding: 2rem 1.8rem;
@@ -2479,7 +2769,8 @@
 <body>
 
     <div class="container">
-        <!-- ===== HEADER ===== -->
+
+        <!-- ========== هدر ========== -->
         <header class="header">
             <div class="logo-area">
                 <div class="logo">M</div>
@@ -2495,7 +2786,7 @@
             </div>
         </header>
 
-        <!-- ===== NAV OVERLAY ===== -->
+        <!-- ========== منوی همبرگری ========== -->
         <div class="nav-overlay" id="navOverlay">
             <nav class="nav-menu" id="navMenu">
                 <a href="#" data-tab="home" class="active"><i class="fas fa-home"></i> خانه</a>
@@ -2507,10 +2798,10 @@
             </nav>
         </div>
 
-        <!-- ===== MAIN CONTENT ===== -->
+        <!-- ========== محتوای اصلی ========== -->
         <main class="main-content">
 
-            <!-- ===== HOME TAB ===== -->
+            <!-- ===== تب خانه ===== -->
             <div class="tab-content active" id="home">
                 <div class="hero-card" id="heroCard">
                     <img class="hero-bg" src="https://cdn.imgurl.ir/uploads/q589216_ya_ali12155.jpg" alt="mohamad hossein" />
@@ -2528,6 +2819,7 @@
                         </div>
                     </div>
                 </div>
+
                 <h2><i class="fas fa-home" style="color:#f5b042; margin-left:0.8rem;"></i> خانه</h2>
                 <div class="bio-intro">
                     <p>سلام! من mohamad hossein snti هستم.</p>
@@ -2554,7 +2846,7 @@
                 </div>
             </div>
 
-            <!-- ===== ABOUT TAB ===== -->
+            <!-- ===== درباره من ===== -->
             <div class="tab-content" id="about">
                 <h2>درباره من</h2>
                 <p>سلام! من <strong>mohamad hossein snti</strong> هستم، توسعه‌دهنده‌ی وب با عشق به کد تمیز، طراحی مینیمال و تجربه‌ی کاربری روان. از سال ۱۴۰۳ وارد دنیای برنامه‌نویسی شدم و از اون موقع تا حالا پروژه‌های مختلفی رو از صفر تا صد اجرا کردم.</p>
@@ -2565,7 +2857,7 @@
                 <p>الان به عنوان فریلنسر و هم‌بنیان‌گذار یه استارتاپ کوچیک، روزانه دارم روی پروژه‌های فرانت‌اند و بک‌اند کار می‌کنم. عاشق یادگیری تکنولوژی‌های جدید و به‌اشتراک‌گذاری دانشم.</p>
             </div>
 
-            <!-- ===== SITES TAB (VOD) ===== -->
+            <!-- ===== سایت‌های طراحی شده ===== -->
             <div class="tab-content" id="sites">
                 <div class="vod-section">
                     <h2 class="vod-title"><i class="fas fa-laptop-code" style="color:#f5b042; margin-left:0.8rem;"></i> سایت‌های طراحی شده</h2>
@@ -2604,12 +2896,14 @@
                                 </a>
                             </div>
                         </div>
+
                         <button class="hero-slider-nav prev" onclick="changeHeroSlide(-1)" aria-label="اسلاید قبلی">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                         <button class="hero-slider-nav next" onclick="changeHeroSlide(1)" aria-label="اسلاید بعدی">
                             <i class="fas fa-chevron-left"></i>
                         </button>
+
                         <div class="hero-slider-dots" id="heroDots">
                             <button class="dot active" data-index="0" onclick="goToHeroSlide(0)"></button>
                             <button class="dot" data-index="1" onclick="goToHeroSlide(1)"></button>
@@ -2679,184 +2973,327 @@
                 </div>
             </div>
 
-            <!-- ===== APPS TAB ===== -->
+            <!-- ====================================================== -->
+            <!-- ===== بخش برنامه‌ها ===== -->
+            <!-- ====================================================== -->
             <div class="tab-content" id="apps">
+                <!-- صفحه اصلی برنامه‌ها -->
                 <div id="appsHome">
                     <div class="apps-header">
                         <h2><i class="fas fa-puzzle-piece"></i> برنامه‌ها</h2>
                         <p>برنامه‌های اختصاصی ساخته شده توسط بنده</p>
                     </div>
+
                     <div class="apps-store-grid">
                         <div class="app-store-card" onclick="openAppPage('rafigh')">
                             <div class="app-store-card-inner">
-                                <div class="app-store-icon"><i class="fas fa-user-friends"></i></div>
+                                <div class="app-store-icon">
+                                    <i class="fas fa-user-friends"></i>
+                                </div>
                                 <div class="app-store-info">
                                     <h3 class="app-store-name">رفیق</h3>
                                     <p class="app-store-desc">برنامه‌ای برای ارتباط بهتر با دوستان</p>
                                     <div class="app-store-meta">
-                                        <span class="app-store-status developing"><i class="fas fa-code"></i> در دست توسعه</span>
+                                        <span class="app-store-status developing">
+                                            <i class="fas fa-code"></i> در دست توسعه
+                                        </span>
                                         <span class="app-store-version">v1.0.0</span>
                                     </div>
                                 </div>
                                 <div class="app-store-action">
-                                    <button class="app-store-get-btn"><span>دریافت</span> <i class="fas fa-arrow-left"></i></button>
+                                    <button class="app-store-get-btn">
+                                        <span>دریافت</span>
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
+
                         <div class="app-store-card" onclick="openAppPage('future')">
                             <div class="app-store-card-inner">
-                                <div class="app-store-icon"><i class="fas fa-rocket"></i></div>
+                                <div class="app-store-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
                                 <div class="app-store-info">
                                     <h3 class="app-store-name">پروژه بعدی</h3>
                                     <p class="app-store-desc">به زودی...</p>
                                     <div class="app-store-meta">
-                                        <span class="app-store-status coming-soon"><i class="fas fa-clock"></i> به زودی</span>
+                                        <span class="app-store-status coming-soon">
+                                            <i class="fas fa-clock"></i> به زودی
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="app-store-action">
-                                    <button class="app-store-get-btn disabled"><span>به زودی</span> <i class="fas fa-clock"></i></button>
+                                    <button class="app-store-get-btn disabled">
+                                        <span>به زودی</span>
+                                        <i class="fas fa-clock"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- ===== صفحه‌ی اختصاصی برنامه "رفیق" ===== -->
                 <div class="app-detail-page" id="app_rafigh">
-                    <button class="back-to-apps" onclick="closeAppPage()"><i class="fas fa-arrow-right"></i> بازگشت</button>
+                    <button class="back-to-apps" onclick="closeAppPage()">
+                        <i class="fas fa-arrow-right"></i> بازگشت
+                    </button>
+
                     <div class="app-detail-header">
-                        <div class="app-detail-icon-wrapper"><div class="app-detail-icon"><i class="fas fa-user-friends"></i></div></div>
+                        <div class="app-detail-icon-wrapper">
+                            <div class="app-detail-icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                        </div>
                         <div class="app-detail-title-section">
                             <h1 class="app-detail-name">رفیق</h1>
                             <p class="app-detail-developer">توسعه‌دهنده: mohamad hossein snti</p>
                             <div class="app-detail-rating">
-                                <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </span>
                                 <span class="rating-text">۴.۵ <span class="reviews-count">(۱۲ مرور)</span></span>
                             </div>
                         </div>
                         <div class="app-detail-install">
-                            <button class="app-detail-install-btn"><i class="fas fa-download"></i> <span>نصب</span></button>
+                            <button class="app-detail-install-btn">
+                                <i class="fas fa-download"></i>
+                                <span>نصب</span>
+                            </button>
                             <span class="app-detail-size">حجم: ۲۵ مگابایت</span>
                         </div>
                     </div>
+
                     <div class="app-detail-screenshots">
                         <h4><i class="fas fa-images"></i> تصاویر برنامه</h4>
                         <div class="screenshots-scroll">
-                            <div class="screenshot-item"><div class="screenshot-placeholder"><i class="fas fa-image"></i><span>صفحه اصلی</span></div></div>
-                            <div class="screenshot-item"><div class="screenshot-placeholder"><i class="fas fa-image"></i><span>پروفایل</span></div></div>
-                            <div class="screenshot-item"><div class="screenshot-placeholder"><i class="fas fa-image"></i><span>چت</span></div></div>
-                            <div class="screenshot-item"><div class="screenshot-placeholder"><i class="fas fa-image"></i><span>تنظیمات</span></div></div>
+                            <div class="screenshot-item">
+                                <div class="screenshot-placeholder">
+                                    <i class="fas fa-image"></i>
+                                    <span>صفحه اصلی</span>
+                                </div>
+                            </div>
+                            <div class="screenshot-item">
+                                <div class="screenshot-placeholder">
+                                    <i class="fas fa-image"></i>
+                                    <span>پروفایل</span>
+                                </div>
+                            </div>
+                            <div class="screenshot-item">
+                                <div class="screenshot-placeholder">
+                                    <i class="fas fa-image"></i>
+                                    <span>چت</span>
+                                </div>
+                            </div>
+                            <div class="screenshot-item">
+                                <div class="screenshot-placeholder">
+                                    <i class="fas fa-image"></i>
+                                    <span>تنظیمات</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <div class="app-detail-about">
                         <h4><i class="fas fa-info-circle"></i> درباره این برنامه</h4>
                         <p>برنامه رفیق یک پلتفرم ارتباطی مدرن است که به کاربران امکان می‌دهد با دوستان خود در ارتباط باشند، پیام‌ها را به اشتراک بگذارند و تجربه‌ای لذت‌بخش از ارتباطات دیجیتال داشته باشند.</p>
                         <div class="app-features-list">
-                            <div class="feature-item"><i class="fas fa-check-circle"></i><span>ارسال پیام فوری</span></div>
-                            <div class="feature-item"><i class="fas fa-check-circle"></i><span>اشتراک‌گذاری فایل</span></div>
-                            <div class="feature-item"><i class="fas fa-check-circle"></i><span>گروه‌های دوستانه</span></div>
-                            <div class="feature-item"><i class="fas fa-check-circle"></i><span>حالت شب</span></div>
-                            <div class="feature-item"><i class="fas fa-check-circle"></i><span>امنیت بالا</span></div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>ارسال پیام فوری</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>اشتراک‌گذاری فایل</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>گروه‌های دوستانه</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>حالت شب</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>امنیت بالا</span>
+                            </div>
                         </div>
                     </div>
+
                     <div class="app-detail-more">
-                        <div class="more-item"><span class="more-label">وضعیت</span><span class="more-value developing">در دست توسعه</span></div>
-                        <div class="more-item"><span class="more-label">نسخه</span><span class="more-value">1.0.0</span></div>
-                        <div class="more-item"><span class="more-label">تاریخ انتشار</span><span class="more-value">۱۴۰۴</span></div>
-                        <div class="more-item"><span class="more-label">سیستم‌عامل</span><span class="more-value">اندروید ۸ به بالا</span></div>
+                        <div class="more-item">
+                            <span class="more-label">وضعیت</span>
+                            <span class="more-value developing">در دست توسعه</span>
+                        </div>
+                        <div class="more-item">
+                            <span class="more-label">نسخه</span>
+                            <span class="more-value">1.0.0</span>
+                        </div>
+                        <div class="more-item">
+                            <span class="more-label">تاریخ انتشار</span>
+                            <span class="more-value">۱۴۰۴</span>
+                        </div>
+                        <div class="more-item">
+                            <span class="more-label">سیستم‌عامل</span>
+                            <span class="more-value">اندروید ۸ به بالا</span>
+                        </div>
                     </div>
+
                     <div class="app-detail-bottom-install">
-                        <button class="app-detail-bottom-install-btn"><i class="fas fa-download"></i> <span>نصب برنامه رفیق</span></button>
+                        <button class="app-detail-bottom-install-btn">
+                            <i class="fas fa-download"></i>
+                            <span>نصب برنامه رفیق</span>
+                        </button>
                     </div>
                 </div>
 
+                <!-- ===== صفحه‌ی "در دست توسعه" ===== -->
                 <div class="app-detail-page" id="app_future">
-                    <button class="back-to-apps" onclick="closeAppPage()"><i class="fas fa-arrow-right"></i> بازگشت</button>
+                    <button class="back-to-apps" onclick="closeAppPage()">
+                        <i class="fas fa-arrow-right"></i> بازگشت
+                    </button>
+
                     <div class="app-coming-soon">
-                        <div class="app-coming-soon-icon"><i class="fas fa-tools"></i></div>
+                        <div class="app-coming-soon-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
                         <h2>در دست ساخت</h2>
                         <p>این برنامه به زودی در دسترس قرار می‌گیرد. منتظر آپدیت‌های جدید باشید!</p>
                     </div>
                 </div>
             </div>
 
-            <!-- ===== DESIGN TAB ===== -->
+            <!-- ===== طراحی‌هام ===== -->
             <div class="tab-content" id="design">
                 <h2><i class="fas fa-palette" style="color:#f5b042; margin-left:0.8rem;"></i> طراحی‌هام</h2>
                 <p style="margin-bottom:1.5rem;">نمونه‌ای از طراحی‌های هنری و گرافیکی:</p>
+
                 <div class="design-card-new">
                     <div class="design-image" onclick="openModal('https://cdn.imgurl.ir/uploads/z820650_ya_imam_hossein_pishnamaesh___mhsnti.png', 'در حسرت کربلا...')">
                         <img src="https://cdn.imgurl.ir/uploads/z820650_ya_imam_hossein_pishnamaesh___mhsnti.png" alt="در حسرت کربلا" />
-                        <div class="image-overlay"><i class="fas fa-expand"></i><span>برای مشاهده کلیک کن</span></div>
+                        <div class="image-overlay">
+                            <i class="fas fa-expand"></i>
+                            <span>برای مشاهده کلیک کن</span>
+                        </div>
                     </div>
                     <div class="design-header">
                         <h3 class="design-title"><i class="fas fa-heart"></i> در حسرت کربلا...</h3>
-                        <button class="toggle-details" onclick="toggleDetails(this)"><span>توضیحات بیشتر</span><i class="fas fa-chevron-down"></i></button>
+                        <button class="toggle-details" onclick="toggleDetails(this)">
+                            <span>توضیحات بیشتر</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
                     <div class="design-details">
                         <p class="design-desc">یک اثر که دلتنگی کربلا رو نشان میده و هرسال خیلی ها آرزوشونه که برن کربلا...</p>
                         <p class="design-author"><i class="fas fa-user-astronaut"></i> طراح: Mohamad Hossein SNTI</p>
                     </div>
                     <div class="download-buttons">
-                        <a href="https://cdn.imgurl.ir/uploads/p792290_ya_imam_hossein___4k.png" download target="_blank"><i class="fas fa-download"></i> دانلود 4K</a>
-                        <a href="https://cdn.imgurl.ir/uploads/n28554_ya_imam_hossein___2k.png" download target="_blank"><i class="fas fa-download"></i> دانلود 2K</a>
+                        <a href="https://cdn.imgurl.ir/uploads/p792290_ya_imam_hossein___4k.png" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 4K
+                        </a>
+                        <a href="https://cdn.imgurl.ir/uploads/n28554_ya_imam_hossein___2k.png" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 2K
+                        </a>
                     </div>
-                    <div class="design-3d-hint"><i class="fas fa-cube"></i><span>حالت ۳ بعدی با کلیک روی تصویر فعال می‌شود</span></div>
+                    <div class="design-3d-hint">
+                        <i class="fas fa-cube"></i>
+                        <span>حالت ۳ بعدی با کلیک روی تصویر فعال می‌شود</span>
+                    </div>
                 </div>
+
                 <div class="design-card-new">
                     <div class="design-image" onclick="openModal('https://cdn.imgurl.ir/uploads/q589216_ya_ali12155.jpg', 'گفتند زلف یار، شنیدم ذوالفقار...')">
                         <img src="https://cdn.imgurl.ir/uploads/q589216_ya_ali12155.jpg" alt="طراحی یا علی" />
-                        <div class="image-overlay"><i class="fas fa-expand"></i><span>برای مشاهده کلیک کن</span></div>
+                        <div class="image-overlay">
+                            <i class="fas fa-expand"></i>
+                            <span>برای مشاهده کلیک کن</span>
+                        </div>
                     </div>
                     <div class="design-header">
                         <h3 class="design-title"><i class="fas fa-shield-alt"></i> گفتند زلف یار، شنیدم ذوالفقار...</h3>
-                        <button class="toggle-details" onclick="toggleDetails(this)"><span>توضیحات بیشتر</span><i class="fas fa-chevron-down"></i></button>
+                        <button class="toggle-details" onclick="toggleDetails(this)">
+                            <span>توضیحات بیشتر</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
                     <div class="design-details">
                         <p class="design-desc">بعضی عکس‌ها فقط برای دیدن نیستن، باید حسشون کنی... این کار فقط یه طراحی نیست؛ یه ادای احترامه به اونایی که با نام علی (ع) جنگیدن، ایستادن و جاودانه شدن.</p>
                         <p class="design-author"><i class="fas fa-user-astronaut"></i> طراح: Mohamad Hossein SNTI</p>
                     </div>
                     <div class="download-buttons">
-                        <a href="https://cdn.imgurl.ir/uploads/y851249_4k_ya_ali125846.png" download target="_blank"><i class="fas fa-download"></i> دانلود 4K</a>
-                        <a href="https://cdn.imgurl.ir/uploads/a529737_2k_ya_ali121233.png" download target="_blank"><i class="fas fa-download"></i> دانلود 2K</a>
+                        <a href="https://cdn.imgurl.ir/uploads/y851249_4k_ya_ali125846.png" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 4K
+                        </a>
+                        <a href="https://cdn.imgurl.ir/uploads/a529737_2k_ya_ali121233.png" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 2K
+                        </a>
                     </div>
-                    <div class="design-3d-hint"><i class="fas fa-cube"></i><span>حالت ۳ بعدی با کلیک روی تصویر فعال می‌شود</span></div>
+                    <div class="design-3d-hint">
+                        <i class="fas fa-cube"></i>
+                        <span>حالت ۳ بعدی با کلیک روی تصویر فعال می‌شود</span>
+                    </div>
                 </div>
+
                 <div class="design-card-new">
                     <div class="design-image" onclick="openModal('https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png', 'اهواز... خاک غسل‌شده با شهیدانت')">
                         <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
-                        <div class="image-overlay"><i class="fas fa-expand"></i><span>برای مشاهده کلیک کن</span></div>
+                        <div class="image-overlay">
+                            <i class="fas fa-expand"></i>
+                            <span>برای مشاهده کلیک کن</span>
+                        </div>
                     </div>
                     <div class="design-header">
                         <h3 class="design-title"><i class="fas fa-heart"></i> اهواز... خاک غسل‌شده با شهیدانت</h3>
-                        <button class="toggle-details" onclick="toggleDetails(this)"><span>توضیحات بیشتر</span><i class="fas fa-chevron-down"></i></button>
+                        <button class="toggle-details" onclick="toggleDetails(this)">
+                            <span>توضیحات بیشتر</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
                     <div class="design-details">
                         <p class="design-desc">این اثر با الهام از ایثار، مقاومت و یاد شهدای سرافراز خلق شده است؛ روایتی تصویری از شهری که خاکش با خون پاک فرزندانش آمیخته و نامش برای همیشه در تاریخ ماندگار شده است.</p>
                         <p class="design-author"><i class="fas fa-user-astronaut"></i> طراح: mohamad hossein snti</p>
                     </div>
                     <div class="download-buttons">
-                        <a href="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" download target="_blank"><i class="fas fa-download"></i> دانلود 2K</a>
-                        <a href="https://uploadkon.ir/uploads/828624_26jonnob-mohamad-hossein-sanati-.png" download target="_blank"><i class="fas fa-download"></i> دانلود 1080p</a>
+                        <a href="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 2K
+                        </a>
+                        <a href="https://uploadkon.ir/uploads/828624_26jonnob-mohamad-hossein-sanati-.png" download target="_blank">
+                            <i class="fas fa-download"></i> دانلود 1080p
+                        </a>
                     </div>
-                    <div class="design-3d-hint"><i class="fas fa-cube"></i><span>حالت ۳ بعدی با کلیک روی تصویر فعال می‌شود</span></div>
+                    <div class="design-3d-hint">
+                        <i class="fas fa-cube"></i>
+                        <span>حالت ۳ بعدی با کلیک روی تصویر فعال می‌شود</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- ===== NAVA TAB ===== -->
+            <!-- ===== بخش نوا ===== -->
             <div class="tab-content" id="nava">
                 <h2><i class="fas fa-headphones" style="color:#f5b042; margin-left:0.8rem;"></i> نوا</h2>
                 <p style="margin-bottom:1.5rem;">نماهنگ ها و نواهای ساخته شده توسط بنده:</p>
+
                 <div class="nava-glass-container">
                     <div class="nava-list">
                         <div class="nava-card" onclick="window.location.hash = 'nava_roghee_jaan';">
                             <div class="nava-card-content">
-                                <div class="nava-thumb"><img src="https://up.20script.ir/file/eebc-SAVE-۲۰۲۶۰۸۱۴-۱۷۴۹۵۲.jpg" alt="کاور رقیه جان"></div>
+                                <div class="nava-thumb">
+                                    <img src="https://up.20script.ir/file/eebc-SAVE-۲۰۲۶۰۸۱۴-۱۷۴۹۵۲.jpg" alt="کاور رقیه جان">
+                                </div>
                                 <div class="nava-info">
                                     <h3 class="nava-title"><i class="fas fa-music"></i> نماهنگ | رقیــه جان</h3>
                                     <p class="nava-artist"><i class="fas fa-microphone"></i> کربلایی سید علی صفاتی</p>
                                     <p class="nava-mixer"><i class="fas fa-sliders-h"></i> محمد حسین صنعتی</p>
                                 </div>
-                                <div class="nava-arrow"><i class="fas fa-chevron-left"></i></div>
+                                <div class="nava-arrow">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2865,28 +3302,37 @@
 
         </main>
 
-        <!-- ===== FOOTER ===== -->
+        <!-- ========== فوتر ========== -->
         <footer class="footer">
-            <div class="footer-copy">&copy; 2026 mohamad hossein snti — تمامی حقوق محفوظ است.</div>
+            <div class="footer-copy">
+                &copy; 2026 mohamad hossein snti — تمامی حقوق محفوظ است.
+            </div>
             <div class="footer-social">
                 <a href="#" aria-label="ایمیل"><i class="fas fa-envelope"></i></a>
                 <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://t.me/@mohamad_hossein_ev18" target="_blank" aria-label="تلگرام"><i class="fab fa-telegram-plane"></i></a>
-                <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me/@mohamad_hossein_ev18" target="_blank" aria-label="تلگرام">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+                <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" aria-label="اینستاگرام">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
         </footer>
 
     </div>
 
-    <!-- ===== AI CHAT BUTTON ===== -->
+    <!-- ========== دکمه AI چت ========== -->
     <a class="ai-chat-button" href="https://zeroxgame74-afk.github.io/MH-Assistant/" target="_blank" aria-label="دستیار هوش مصنوعی">
         <i class="fas fa-robot"></i>
         <span class="tooltip">دستیار هوش مصنوعی</span>
     </a>
 
-    <!-- ===== NOTIFICATION ===== -->
+    <!-- ========== نوتیفیکیشن ========== -->
     <div class="welcome-notification" id="welcomeNotif">
-        <div class="notif-header"><i class="fas fa-hand-peace"></i><h3>سلام! به سایت خوش آمدید</h3></div>
+        <div class="notif-header">
+            <i class="fas fa-hand-peace"></i>
+            <h3>سلام! به سایت خوش آمدید</h3>
+        </div>
         <div class="notif-body">
             <span class="notif-update-title"><i class="fas fa-list"></i> لیست آپدیت‌ها:</span>
             <ul>
@@ -2899,35 +3345,59 @@
         </div>
     </div>
 
-    <!-- ===== DESIGN MODAL ===== -->
+    <!-- ========== مودال شیشه‌ای ========== -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+
             <div class="modal-image" id="modalImage">
                 <div class="modal-img-wrapper" id="modalImgWrapper">
                     <img id="modalImg" src="" alt="طراحی" />
                 </div>
             </div>
+
             <h3 class="modal-title" id="modalTitle"><i class="fas fa-heart"></i></h3>
+
             <div class="modal-controls">
-                <button onclick="rotate3D('left')"><i class="fas fa-arrow-left"></i> چپ</button>
-                <button onclick="rotate3D('right')"><i class="fas fa-arrow-right"></i> راست</button>
-                <button onclick="rotate3D('up')"><i class="fas fa-arrow-up"></i> بالا</button>
-                <button onclick="rotate3D('down')"><i class="fas fa-arrow-down"></i> پایین</button>
-                <button onclick="toggle3D()" id="btn3d"><i class="fas fa-cube"></i> ۳D</button>
-                <button onclick="showCopyright()"><i class="fas fa-copyright"></i> کپی رایت</button>
+                <button onclick="rotate3D('left')">
+                    <i class="fas fa-arrow-left"></i> چپ
+                </button>
+                <button onclick="rotate3D('right')">
+                    <i class="fas fa-arrow-right"></i> راست
+                </button>
+                <button onclick="rotate3D('up')">
+                    <i class="fas fa-arrow-up"></i> بالا
+                </button>
+                <button onclick="rotate3D('down')">
+                    <i class="fas fa-arrow-down"></i> پایین
+                </button>
+                <button onclick="toggle3D()" id="btn3d">
+                    <i class="fas fa-cube"></i> ۳D
+                </button>
+                <button onclick="showCopyright()">
+                    <i class="fas fa-copyright"></i> کپی رایت
+                </button>
             </div>
+
             <div class="modal-copyright" id="copyrightBox">
-                <p><strong>© 2026 mohamad hossein snti.</strong> تمامی حقوق محفوظ است.
-                <br><br>تمامی محتوای این وب‌سایت، از جمله متن‌ها، تصاویر، طرح‌ها، لوگو، پروژه‌ها، کدها و سایر آثار، متعلق به <strong>mohamad hossein snti</strong> است. هرگونه کپی، بازنشر، انتشار، ویرایش یا استفاده از این محتوا بدون کسب اجازه کتبی ممنوع بوده و مطابق قوانین مربوط به حقوق مالکیت فکری قابل پیگیری است.</p>
+                <p>
+                    <strong>© 2026 mohamad hossein snti.</strong> تمامی حقوق محفوظ است.
+                    <br><br>
+                    تمامی محتوای این وب‌سایت، از جمله متن‌ها، تصاویر، طرح‌ها، لوگو، پروژه‌ها، کدها و سایر آثار، متعلق به <strong>mohamad hossein snti</strong> است. هرگونه کپی، بازنشر، انتشار، ویرایش یا استفاده از این محتوا بدون کسب اجازه کتبی ممنوع بوده و مطابق قوانین مربوط به حقوق مالکیت فکری قابل پیگیری است.
+                </p>
             </div>
-            <div class="modal-footer-text"><i class="fas fa-arrows-alt" style="color:#f5b042;"></i> برای چرخش ۳D از دکمه‌ها استفاده کنید</div>
+
+            <div class="modal-footer-text">
+                <i class="fas fa-arrows-alt" style="color:#f5b042;"></i> برای چرخش ۳D از دکمه‌ها استفاده کنید
+            </div>
         </div>
     </div>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- ========== اسکریپت ========== -->
     <script>
-        // ===== TABS =====
+        // ===== منو و تب =====
         (function() {
             const hamburger = document.getElementById('hamburgerBtn');
             const overlay = document.getElementById('navOverlay');
@@ -2939,6 +3409,7 @@
                 overlay.classList.toggle('open');
                 document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
             }
+
             hamburger.addEventListener('click', toggleMenu);
 
             navLinks.forEach(link => {
@@ -2985,6 +3456,7 @@
             });
         })();
 
+        // ===== تابع switchTab برای دکمه‌های هدر =====
         function switchTab(tabId) {
             event.preventDefault();
             activateTab(tabId);
@@ -2992,22 +3464,29 @@
             document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // ===== HERO SLIDER =====
+        // ===== اسلایدر خودکار بنر =====
         let currentSlide = 0;
         let slideInterval;
 
         function showSlide(index) {
             const slides = document.querySelectorAll('.hero-slide');
             const dots = document.querySelectorAll('.hero-slider-dots .dot');
-            slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
             currentSlide = index;
         }
 
         function changeHeroSlide(direction) {
             const slides = document.querySelectorAll('.hero-slide');
-            const total = slides.length;
-            const newIndex = (currentSlide + direction + total) % total;
+            const totalSlides = slides.length;
+            let newIndex = (currentSlide + direction + totalSlides) % totalSlides;
             showSlide(newIndex);
             resetSlideTimer();
         }
@@ -3026,13 +3505,19 @@
             }, 5000);
         }
 
+        // ===== اسکرول اسلایدر افقی =====
         function scrollSlider(containerId, direction) {
             const container = document.getElementById(containerId);
             if (!container) return;
-            const amount = container.clientWidth * 0.8;
-            container.scrollTo({ left: container.scrollLeft + (amount * direction), behavior: 'smooth' });
+            const scrollAmount = container.clientWidth * 0.8;
+            const targetScroll = container.scrollLeft + (scrollAmount * direction);
+            container.scrollTo({
+                left: targetScroll,
+                behavior: 'smooth'
+            });
         }
 
+        // ===== شروع اسلایدر =====
         document.addEventListener('DOMContentLoaded', function() {
             showSlide(0);
             slideInterval = setInterval(() => {
@@ -3042,21 +3527,27 @@
             }, 5000);
         });
 
-        // ===== DESIGN TOGGLE DETAILS =====
+        // ===== توضیحات بیشتر طراحی (کشویی) =====
         function toggleDetails(btn) {
             const card = btn.closest('.design-card-new');
             const details = card.querySelector('.design-details');
+
             details.classList.toggle('open');
             btn.classList.toggle('open');
-            btn.innerHTML = details.classList.contains('open') ?
-                'بستن توضیحات <i class="fas fa-chevron-up"></i>' :
-                'توضیحات بیشتر <i class="fas fa-chevron-down"></i>';
+
+            if (details.classList.contains('open')) {
+                btn.innerHTML = 'بستن توضیحات <i class="fas fa-chevron-up"></i>';
+            } else {
+                btn.innerHTML = 'توضیحات بیشتر <i class="fas fa-chevron-down"></i>';
+            }
         }
 
-        // ===== APPS PAGES =====
+        // ===== مدیریت صفحات برنامه‌ها =====
         function openAppPage(appId) {
             document.getElementById('appsHome').style.display = 'none';
-            document.querySelectorAll('.app-detail-page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.app-detail-page').forEach(page => {
+                page.classList.remove('active');
+            });
             const target = document.getElementById(`app_${appId}`);
             if (target) {
                 target.classList.add('active');
@@ -3066,14 +3557,16 @@
 
         function closeAppPage() {
             document.getElementById('appsHome').style.display = 'block';
-            document.querySelectorAll('.app-detail-page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.app-detail-page').forEach(page => {
+                page.classList.remove('active');
+            });
             document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // ===== MODAL =====
-        let is3D = false,
-            rotX = 0,
-            rotY = 0;
+        // ===== مودال =====
+        let is3D = false;
+        let currentRotationX = 0;
+        let currentRotationY = 0;
 
         function openModal(imgSrc, title) {
             const overlay = document.getElementById('modalOverlay');
@@ -3081,8 +3574,8 @@
             document.getElementById('modalTitle').innerHTML = '<i class="fas fa-heart"></i> ' + title;
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-            rotX = 0;
-            rotY = 0;
+            currentRotationX = 0;
+            currentRotationY = 0;
             const wrapper = document.getElementById('modalImgWrapper');
             wrapper.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
             is3D = false;
@@ -3091,62 +3584,134 @@
         }
 
         function closeModal() {
-            document.getElementById('modalOverlay').classList.remove('active');
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.remove('active');
             document.body.style.overflow = '';
         }
 
         function closeModalOutside(e) {
-            if (e.target === e.currentTarget) closeModal();
+            if (e.target === e.currentTarget) {
+                closeModal();
+            }
         }
 
         function rotate3D(direction) {
             const wrapper = document.getElementById('modalImgWrapper');
             const step = 20;
-            if (direction === 'left') rotY -= step;
-            else if (direction === 'right') rotY += step;
-            else if (direction === 'up') rotX += step;
-            else if (direction === 'down') rotX -= step;
-            wrapper.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${is3D ? 1.05 : 1})`;
+
+            switch (direction) {
+                case 'left':
+                    currentRotationY -= step;
+                    break;
+                case 'right':
+                    currentRotationY += step;
+                    break;
+                case 'up':
+                    currentRotationX += step;
+                    break;
+                case 'down':
+                    currentRotationX -= step;
+                    break;
+            }
+
+            wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(${is3D ? 1.05 : 1})`;
         }
 
         function toggle3D() {
             const wrapper = document.getElementById('modalImgWrapper');
             const btn = document.getElementById('btn3d');
             is3D = !is3D;
+
             if (is3D) {
-                wrapper.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.05)`;
+                wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(1.05)`;
                 btn.classList.add('active-3d');
                 btn.innerHTML = '<i class="fas fa-cube"></i> ۳D (فعال)';
             } else {
-                wrapper.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1)`;
+                wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(1)`;
                 btn.classList.remove('active-3d');
                 btn.innerHTML = '<i class="fas fa-cube"></i> ۳D';
             }
         }
 
         function showCopyright() {
-            document.getElementById('copyrightBox').classList.toggle('active');
+            const box = document.getElementById('copyrightBox');
+            box.classList.toggle('active');
         }
 
-        // ===== KEYBOARD =====
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                const overlay = document.getElementById('modalOverlay');
-                if (overlay.classList.contains('active')) closeModal();
+        // ===== انیمیشن اسکرول =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.home-design-card, .design-card-new, .app-store-card');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0) scale(1)';
+                        }, index * 100);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px) scale(0.97)';
+                card.style.transition =
+                    `opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)`;
+                observer.observe(card);
+            });
+
+            setTimeout(() => {
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    }
+                });
+            }, 100);
+
+            const heroCard = document.getElementById('heroCard');
+            if (heroCard) {
+                heroCard.style.opacity = '0';
+                heroCard.style.transform = 'translateY(30px) scale(0.97)';
+                setTimeout(() => {
+                    heroCard.style.transition =
+                        'opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
+                    heroCard.style.opacity = '1';
+                    heroCard.style.transform = 'translateY(0) scale(1)';
+                }, 100);
             }
         });
 
-        // ===== NOTIFICATION =====
+        // ===== کیبورد برای بستن مودال =====
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('modalOverlay');
+                if (overlay.classList.contains('active')) {
+                    closeModal();
+                }
+            }
+        });
+
+        // ===== نوتیفیکیشن =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const VERSION = '5.1.0';
-            if (localStorage.getItem('mhs_notification_version') !== VERSION) {
+            const APP_VERSION = '5.0.0';
+
+            const hasSeen = localStorage.getItem('mhs_notification_version');
+
+            if (hasSeen !== APP_VERSION) {
                 notif.style.display = 'block';
+
                 setTimeout(() => {
                     notif.classList.add('hide');
-                    setTimeout(() => { notif.style.display = 'none'; }, 500);
+                    setTimeout(() => {
+                        notif.style.display = 'none';
+                    }, 500);
                 }, 8000);
-                localStorage.setItem('mhs_notification_version', VERSION);
+
+                localStorage.setItem('mhs_notification_version', APP_VERSION);
             } else {
                 notif.style.display = 'none';
             }
