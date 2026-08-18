@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -660,6 +661,12 @@
             border: 1px solid rgba(52, 152, 219, 0.1);
         }
 
+        .app-store-status.ready {
+            background: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.1);
+        }
+
         .app-store-version {
             font-size: 0.7rem;
             color: #8f887c;
@@ -807,6 +814,7 @@
             display: flex;
             align-items: center;
             gap: 0.6rem;
+            text-decoration: none;
             box-shadow: 0 4px 20px rgba(245, 176, 66, 0.2);
         }
 
@@ -876,6 +884,12 @@
         .screenshot-item:hover {
             border-color: rgba(255, 215, 100, 0.15);
             transform: scale(1.02);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .screenshot-placeholder {
@@ -978,6 +992,10 @@
             color: #f5b042;
         }
 
+        .more-item .more-value.ready {
+            color: #2ecc71;
+        }
+
         /* ===== دکمه نصب پایین صفحه ===== */
         .app-detail-bottom-install {
             text-align: center;
@@ -998,6 +1016,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.8rem;
+            text-decoration: none;
             box-shadow: 0 4px 24px rgba(245, 176, 66, 0.2);
         }
 
@@ -3464,7 +3483,32 @@
                     </div>
 
                     <div class="apps-store-grid">
-                        <!-- کارت برنامه ۱: رفیق -->
+                        <!-- کارت برنامه ۱: پَرگار -->
+                        <div class="app-store-card" onclick="openAppPage('pargar')">
+                            <div class="app-store-card-inner">
+                                <div class="app-store-icon">
+                                    <i class="fas fa-compass"></i>
+                                </div>
+                                <div class="app-store-info">
+                                    <h3 class="app-store-name">پَرگار</h3>
+                                    <p class="app-store-desc">برنامه‌ریزی روزانه و هدف‌گذاری هوشمند</p>
+                                    <div class="app-store-meta">
+                                        <span class="app-store-status ready">
+                                            <i class="fas fa-check-circle"></i> آماده دانلود
+                                        </span>
+                                        <span class="app-store-version">v4.6</span>
+                                    </div>
+                                </div>
+                                <div class="app-store-action">
+                                    <button class="app-store-get-btn">
+                                        <span>دریافت</span>
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- کارت برنامه ۲: رفیق -->
                         <div class="app-store-card" onclick="openAppPage('rafigh')">
                             <div class="app-store-card-inner">
                                 <div class="app-store-icon">
@@ -3481,15 +3525,15 @@
                                     </div>
                                 </div>
                                 <div class="app-store-action">
-                                    <button class="app-store-get-btn">
-                                        <span>دریافت</span>
-                                        <i class="fas fa-arrow-left"></i>
+                                    <button class="app-store-get-btn disabled">
+                                        <span>به زودی</span>
+                                        <i class="fas fa-clock"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- کارت برنامه ۲: پروژه بعدی -->
+                        <!-- کارت برنامه ۳: پروژه بعدی -->
                         <div class="app-store-card" onclick="openAppPage('future')">
                             <div class="app-store-card-inner">
                                 <div class="app-store-icon">
@@ -3516,9 +3560,9 @@
                 </div>
 
                 <!-- ====================================================== -->
-                <!-- ===== صفحه‌ی اختصاصی برنامه "رفیق" ===== -->
+                <!-- ===== صفحه‌ی اختصاصی برنامه "پَرگار" ===== -->
                 <!-- ====================================================== -->
-                <div class="tab-content app-detail-page" id="app_rafigh">
+                <div class="tab-content app-detail-page" id="app_pargar">
                     <button class="back-to-apps" onclick="closeAppPage()">
                         <i class="fas fa-arrow-right"></i> بازگشت
                     </button>
@@ -3527,11 +3571,11 @@
                     <div class="app-detail-header">
                         <div class="app-detail-icon-wrapper">
                             <div class="app-detail-icon">
-                                <i class="fas fa-user-friends"></i>
+                                <i class="fas fa-compass"></i>
                             </div>
                         </div>
                         <div class="app-detail-title-section">
-                            <h1 class="app-detail-name">رفیق</h1>
+                            <h1 class="app-detail-name">پَرگار (Pargâr)</h1>
                             <p class="app-detail-developer">توسعه‌دهنده: mohamad hossein snti</p>
                             <div class="app-detail-rating">
                                 <span class="stars">
@@ -3541,15 +3585,15 @@
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star-half-alt"></i>
                                 </span>
-                                <span class="rating-text">۴.۵ <span class="reviews-count">(۱۲ مرور)</span></span>
+                                <span class="rating-text">۴.۶ <span class="reviews-count">(۲۰ مرور)</span></span>
                             </div>
                         </div>
                         <div class="app-detail-install">
-                            <button class="app-detail-install-btn">
+                            <a href="https://uploadkon.ir/uploads/0b3618_26pargar.zip" download class="app-detail-install-btn">
                                 <i class="fas fa-download"></i>
-                                <span>نصب</span>
-                            </button>
-                            <span class="app-detail-size">حجم: ۲۵ مگابایت</span>
+                                <span>دانلود APK</span>
+                            </a>
+                            <span class="app-detail-size">حجم: ۴.۶ مگابایت</span>
                         </div>
                     </div>
 
@@ -3558,28 +3602,16 @@
                         <h4><i class="fas fa-images"></i> تصاویر برنامه</h4>
                         <div class="screenshots-scroll">
                             <div class="screenshot-item">
-                                <div class="screenshot-placeholder">
-                                    <i class="fas fa-image"></i>
-                                    <span>صفحه اصلی</span>
-                                </div>
+                                <img src="https://up.20script.ir/file/1353-pargar-125-apk-ivi-1.jpg" alt="صفحه اصلی پرگار" loading="lazy">
                             </div>
                             <div class="screenshot-item">
-                                <div class="screenshot-placeholder">
-                                    <i class="fas fa-image"></i>
-                                    <span>پروفایل</span>
-                                </div>
+                                <img src="https://up.20script.ir/file/ce1c-pargar-home-apk-.webp" alt="داشبورد پرگار" loading="lazy">
                             </div>
                             <div class="screenshot-item">
-                                <div class="screenshot-placeholder">
-                                    <i class="fas fa-image"></i>
-                                    <span>چت</span>
-                                </div>
+                                <img src="https://up.20script.ir/file/caf4-pargar-apk-11255.jpg" alt="تسک‌های پرگار" loading="lazy">
                             </div>
                             <div class="screenshot-item">
-                                <div class="screenshot-placeholder">
-                                    <i class="fas fa-image"></i>
-                                    <span>تنظیمات</span>
-                                </div>
+                                <img src="https://up.20script.ir/file/dac5-pargar-apk-15584658.jpg" alt="تنظیمات پرگار" loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -3587,27 +3619,69 @@
                     <!-- درباره برنامه -->
                     <div class="app-detail-about">
                         <h4><i class="fas fa-info-circle"></i> درباره این برنامه</h4>
-                        <p>برنامه رفیق یک پلتفرم ارتباطی مدرن است که به کاربران امکان می‌دهد با دوستان خود در ارتباط باشند، پیام‌ها را به اشتراک بگذارند و تجربه‌ای لذت‌بخش از ارتباطات دیجیتال داشته باشند.</p>
+                        <p><strong>پَرگار (Pargâr)</strong> یک اپلیکیشن برنامه‌ریزی روزانه و هدف‌گذاری هوشمند است. اسمش از پرگار (ابزار رسم دایره) اومده، چون کارش دقیق و حساب‌شده‌ست.</p>
+                        
+                        <h4 style="margin-top:1rem;"><i class="fas fa-lightbulb"></i> چرا پرگار؟</h4>
+                        <p>این اپلیکیشن با الهام از پرگار ساخته شده؛ چون زندگی مثل یک دایره‌ست که باید دقیق و حساب‌شده رسمش کنی.</p>
+
+                        <h4 style="margin-top:1rem;"><i class="fas fa-bullseye"></i> هدف پرگار</h4>
+                        <p>کمک به آدم‌هایی که می‌خوان:</p>
                         <div class="app-features-list">
                             <div class="feature-item">
                                 <i class="fas fa-check-circle"></i>
-                                <span>ارسال پیام فوری</span>
+                                <span>زندگی‌شون رو منظم‌تر کنن</span>
                             </div>
                             <div class="feature-item">
                                 <i class="fas fa-check-circle"></i>
-                                <span>اشتراک‌گذاری فایل</span>
+                                <span>اهداف‌شون رو واضح ببینن</span>
                             </div>
                             <div class="feature-item">
                                 <i class="fas fa-check-circle"></i>
-                                <span>گروه‌های دوستانه</span>
+                                <span>برنامه‌ریزی روزانه داشته باشن</span>
                             </div>
                             <div class="feature-item">
                                 <i class="fas fa-check-circle"></i>
-                                <span>حالت شب</span>
+                                <span>انگیزه‌شون رو بالا نگه دارن</span>
+                            </div>
+                        </div>
+
+                        <h4 style="margin-top:1rem;"><i class="fas fa-star"></i> ویژگی‌های خاص</h4>
+                        <div class="app-features-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>🎯 هدف‌گذاری کوتاه و بلندمدت با نمایش دایره‌ای پیشرفت</span>
                             </div>
                             <div class="feature-item">
                                 <i class="fas fa-check-circle"></i>
-                                <span>امنیت بالا</span>
+                                <span>📅 اولویت‌بندی کارها با ماتریس آیزنهاور (فوری/مهم)</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>🧠 نقشه‌ذهنی برای شکستن اهداف بزرگ</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>📊 گزارش هفتگی و ماهانه از عملکردت</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>🛒 سبد خرید برای وسایل خونه</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>⏰ یادآور موقعیت‌محور (مثلاً وقتی رسیدی خونه)</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>💾 ذخیره‌سازی خودکار (داده‌هات نمی‌ره)</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>🌙 حالت شب</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>📱 طراحی اختصاصی برای گوشی</span>
                             </div>
                         </div>
                     </div>
@@ -3616,28 +3690,48 @@
                     <div class="app-detail-more">
                         <div class="more-item">
                             <span class="more-label">وضعیت</span>
-                            <span class="more-value developing">در دست توسعه</span>
+                            <span class="more-value ready">✅ آماده انتشار</span>
                         </div>
                         <div class="more-item">
                             <span class="more-label">نسخه</span>
-                            <span class="more-value">1.0.0</span>
-                        </div>
-                        <div class="more-item">
-                            <span class="more-label">تاریخ انتشار</span>
-                            <span class="more-value">۱۴۰۴</span>
+                            <span class="more-value">۴.۶</span>
                         </div>
                         <div class="more-item">
                             <span class="more-label">سیستم‌عامل</span>
-                            <span class="more-value">اندروید ۸ به بالا</span>
+                            <span class="more-value">اندروید (APK)</span>
+                        </div>
+                        <div class="more-item">
+                            <span class="more-label">سازنده</span>
+                            <span class="more-value">Mohamad Hossein Snti</span>
                         </div>
                     </div>
 
-                    <!-- دکمه نصب پایین صفحه -->
+                    <!-- دکمه دانلود پایین صفحه -->
                     <div class="app-detail-bottom-install">
-                        <button class="app-detail-bottom-install-btn">
+                        <a href="https://uploadkon.ir/uploads/0b3618_26pargar.zip" download class="app-detail-bottom-install-btn">
                             <i class="fas fa-download"></i>
-                            <span>نصب برنامه رفیق</span>
-                        </button>
+                            <span>دانلود برنامه پَرگار (APK)</span>
+                        </a>
+                        <p style="color:#8f887c; font-size:0.8rem; margin-top:0.5rem;">«با پَرگار، زندگی‌ات را دقیق‌تر نقشه‌کشی کن.» 🧭</p>
+                    </div>
+                </div>
+
+                <!-- ====================================================== -->
+                <!-- ===== صفحه‌ی اختصاصی برنامه "رفیق" ===== -->
+                <!-- ====================================================== -->
+                <div class="tab-content app-detail-page" id="app_rafigh">
+                    <button class="back-to-apps" onclick="closeAppPage()">
+                        <i class="fas fa-arrow-right"></i> بازگشت
+                    </button>
+
+                    <div class="app-coming-soon">
+                        <div class="coming-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h2>رفیق</h2>
+                        <p>برنامه‌ای برای ارتباط بهتر با دوستان</p>
+                        <p style="font-size:0.9rem; color:#f5b042; margin-top:0.5rem;">در دست توسعه</p>
+                        <p style="font-size:0.8rem; color:#8f887c;">به زودی...</p>
                     </div>
                 </div>
 
@@ -3651,7 +3745,7 @@
 
                     <div class="app-coming-soon">
                         <div class="coming-icon">
-                            <i class="fas fa-code"></i>
+                            <i class="fas fa-rocket"></i>
                         </div>
                         <h2>در دست توسعه</h2>
                         <p>این برنامه به زودی منتشر خواهد شد...</p>
@@ -3888,6 +3982,7 @@
                 <li><i class="fas fa-music"></i> نماهنگ "رقیــه جان" با صدای کربلایی سید علی صفاتی</li>
                 <li><i class="fas fa-scroll"></i> لیریکس هم‌زمان با پخش (هایلایت خودکار)</li>
                 <li><i class="fas fa-mobile-alt"></i> بخش برنامه‌ها شبیه اپ استور</li>
+                <li><i class="fas fa-compass"></i> برنامه "پَرگار" با امکان دانلود</li>
                 <li><i class="fas fa-robot"></i> دستیار هوش مصنوعی</li>
             </ul>
         </div>
@@ -4414,7 +4509,7 @@
         // ===== نوتیفیکیشن =====
         document.addEventListener('DOMContentLoaded', function() {
             const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '5.0.0';
+            const APP_VERSION = '5.1.0';
 
             const hasSeen = localStorage.getItem('mhs_notification_version');
 
@@ -4436,4 +4531,4 @@
     </script>
 
 </body>
-  </html>
+    </html>
