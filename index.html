@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>Zerox · سینمای آنلاین</title>
-  <!-- Font Awesome 6 (رایگان) -->
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- فونت‌های استعداد و اردیبهشت -->
-  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Ardibehest:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ardibehest:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -17,10 +17,11 @@
     }
 
     body {
-      background: #f9f5f0;  /* کرم پس‌زمینه */
+      background: #f9f5f0;
       font-family: 'Estedad', 'Ardibehest', sans-serif;
       color: #2d2a24;
       direction: rtl;
+      overflow-x: hidden;
     }
 
     ::-webkit-scrollbar {
@@ -40,55 +41,127 @@
       padding: 0 20px;
     }
 
-    /* ===== هدر نتفلیکسی ===== */
+    /* ===== افکت‌های گلاس ===== */
+    .glass {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.02);
+    }
+
+    /* ===== انیمیشن‌ها ===== */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .movie-card {
+      animation: fadeSlideUp 0.6s ease forwards;
+      opacity: 0;
+    }
+    .movie-card:nth-child(1) { animation-delay: 0.05s; }
+    .movie-card:nth-child(2) { animation-delay: 0.1s; }
+    .movie-card:nth-child(3) { animation-delay: 0.15s; }
+    .movie-card:nth-child(4) { animation-delay: 0.2s; }
+    .movie-card:nth-child(5) { animation-delay: 0.25s; }
+    .movie-card:nth-child(6) { animation-delay: 0.3s; }
+
+    /* ===== هدر ===== */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      padding: 18px 0 12px;
-      border-bottom: 2px solid rgba(182, 28, 28, 0.15);
+      padding: 16px 24px;
+      border-radius: 20px;
+      margin: 12px 0 8px;
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 12px;
+      z-index: 1000;
+      transition: 0.4s;
     }
 
     .logo h1 {
       font-family: 'Ardibehest', 'Estedad', sans-serif;
       font-size: 2.5rem;
-      font-weight: 700;
+      font-weight: 800;
       background: linear-gradient(145deg, #B61C1C, #d43a3a);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       letter-spacing: -1px;
+      position: relative;
+    }
+    .logo h1::after {
+      content: '●';
+      font-size: 0.6rem;
+      position: absolute;
+      top: -4px;
+      right: -18px;
+      color: #B61C1C;
+      -webkit-text-fill-color: #B61C1C;
+      animation: pulse 2s infinite;
     }
     .logo span {
-      font-size: 0.9rem;
-      background: #fff6ef;
+      font-size: 0.85rem;
+      background: linear-gradient(135deg, #B61C1C, #d43a3a);
       padding: 2px 14px;
       border-radius: 40px;
       margin-right: 8px;
-      color: #B61C1C;
-      font-weight: 600;
-      border: 1px solid #B61C1C30;
+      color: white;
+      font-weight: 700;
+      -webkit-text-fill-color: white;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 28px;
       flex-wrap: wrap;
     }
     .nav-links a {
       text-decoration: none;
       color: #3a322a;
       font-weight: 600;
-      font-size: 1rem;
-      transition: 0.2s;
-      padding-bottom: 4px;
-      border-bottom: 2px solid transparent;
+      font-size: 0.95rem;
+      transition: 0.3s;
+      position: relative;
+      padding: 4px 0;
+    }
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      right: 0;
+      width: 0;
+      height: 2.5px;
+      background: linear-gradient(135deg, #B61C1C, #d43a3a);
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    .nav-links a:hover::before {
+      width: 100%;
     }
     .nav-links a:hover {
       color: #B61C1C;
-      border-bottom-color: #B61C1C;
     }
     .nav-links i {
       margin-left: 6px;
@@ -99,36 +172,45 @@
 
     .user-actions {
       display: flex;
-      gap: 18px;
+      gap: 20px;
       align-items: center;
     }
     .user-actions i {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: #3a322a;
-      transition: 0.2s;
+      transition: 0.3s;
       cursor: pointer;
+      padding: 6px;
+      border-radius: 50%;
     }
     .user-actions i:hover {
-      color: #B61C1C;
-      transform: scale(1.05);
+      background: rgba(182, 28, 28, 0.08);
+      transform: scale(1.1);
     }
     .user-actions .fa-user-circle {
       background: linear-gradient(135deg, #B61C1C, #d43a3a);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      font-size: 1.8rem;
     }
 
-    /* جستجو */
+    /* ===== جستجو ===== */
     .search-section {
-      background: white;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
       border-radius: 60px;
-      padding: 6px 6px 6px 24px;
+      padding: 4px 4px 4px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.02);
-      border: 1px solid #e4dbd2;
-      margin: 22px 0 16px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      margin: 18px 0 14px;
+      transition: 0.3s;
+    }
+    .search-section:focus-within {
+      box-shadow: 0 4px 30px rgba(182, 28, 28, 0.08);
+      border-color: #B61C1C40;
     }
     .search-section input {
       border: none;
@@ -138,12 +220,16 @@
       font-size: 1rem;
       width: 100%;
       font-family: 'Estedad', sans-serif;
+      color: #2d2a24;
+    }
+    .search-section input::placeholder {
+      color: #a09588;
     }
     .search-section button {
       background: linear-gradient(135deg, #B61C1C, #d43a3a);
       border: none;
       border-radius: 40px;
-      padding: 12px 28px;
+      padding: 12px 32px;
       color: white;
       font-weight: 700;
       font-size: 1rem;
@@ -151,35 +237,35 @@
       align-items: center;
       gap: 8px;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.3s;
       font-family: 'Estedad', sans-serif;
       white-space: nowrap;
-    }
-    .search-section button i {
-      color: white;
+      box-shadow: 0 4px 15px rgba(182, 28, 28, 0.2);
     }
     .search-section button:hover {
-      transform: scale(0.97);
-      box-shadow: 0 6px 16px rgba(182, 28, 28, 0.3);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(182, 28, 28, 0.3);
     }
 
-    /* ژانرها */
+    /* ===== ژانرها ===== */
     .genre-tabs {
       display: flex;
       flex-wrap: wrap;
       gap: 10px 14px;
-      margin: 20px 0 30px;
+      margin: 18px 0 28px;
     }
     .genre-tabs .genre-item {
-      background: white;
-      padding: 6px 18px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(4px);
+      padding: 8px 22px;
       border-radius: 40px;
       font-weight: 600;
       font-size: 0.85rem;
-      border: 1px solid #e8dfd6;
+      border: 1px solid rgba(255, 255, 255, 0.3);
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.3s;
       color: #3a322a;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
     }
     .genre-tabs .genre-item i {
       margin-left: 6px;
@@ -188,30 +274,44 @@
       -webkit-text-fill-color: transparent;
     }
     .genre-tabs .genre-item:hover {
-      border-color: #B61C1C;
-      background: #fffaf5;
+      transform: translateY(-2px);
+      border-color: #B61C1C60;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 8px 20px rgba(182, 28, 28, 0.06);
     }
     .genre-tabs .genre-item.active {
       background: linear-gradient(135deg, #B61C1C, #d43a3a);
       color: white;
       border-color: #B61C1C;
+      box-shadow: 0 8px 25px rgba(182, 28, 28, 0.2);
     }
     .genre-tabs .genre-item.active i {
       -webkit-text-fill-color: white;
     }
 
-    /* عنوان بخش */
+    /* ===== عنوان بخش ===== */
     .section-title {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin: 32px 0 16px;
+      margin: 36px 0 20px;
     }
     .section-title h2 {
       font-family: 'Ardibehest', 'Estedad', sans-serif;
-      font-weight: 700;
-      font-size: 1.8rem;
+      font-weight: 800;
+      font-size: 1.9rem;
       color: #2d2a24;
+      position: relative;
+    }
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+      width: 40px;
+      height: 4px;
+      background: linear-gradient(135deg, #B61C1C, #d43a3a);
+      border-radius: 4px;
     }
     .section-title h2 i {
       margin-left: 10px;
@@ -224,104 +324,134 @@
       font-weight: 600;
       text-decoration: none;
       font-size: 0.9rem;
-      border-bottom: 2px solid transparent;
+      transition: 0.3s;
+      padding: 6px 16px;
+      border-radius: 30px;
+      background: rgba(182, 28, 28, 0.05);
     }
     .section-title a:hover {
-      border-bottom-color: #B61C1C;
+      background: rgba(182, 28, 28, 0.1);
+      transform: translateX(-4px);
     }
 
-    /* ===== گرید کارت‌ها ===== */
+    /* ===== کارت‌های فیلم ===== */
     .movie-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 28px 20px;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 28px 22px;
       margin-bottom: 50px;
     }
 
-    /* کارت مثل یوتیوب / نتفلیکس */
     .movie-card {
-      background: white;
-      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 28px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-      transition: 0.3s ease;
-      border: 1px solid #ece3db;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       cursor: pointer;
       text-decoration: none;
       color: inherit;
       display: block;
+      position: relative;
     }
     .movie-card:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 18px 40px rgba(182, 28, 28, 0.08);
-      border-color: #d4c2b4;
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 60px rgba(182, 28, 28, 0.08);
+      border-color: #B61C1C40;
     }
 
     .movie-poster {
-      height: 260px;
-      background: linear-gradient(145deg, #f2ebe4, #e2d7cc);
+      height: 280px;
       position: relative;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       background-size: cover;
       background-position: center;
+      background-color: #e8ddd2;
+      transition: 0.4s;
     }
-    /* عکس‌های شاخص برای هر کارت (همین‌جا) */
-    .movie-poster.poster-1 { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNlZGRhZDAiLz48dGV4dCB4PSIxMCIgeT0iNDUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM4Yzc2NjUiPkV2ZXJlc3Q8L3RleHQ+PC9zdmc+'); }
-    .movie-poster.poster-2 { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNlZGRhZDAiLz48dGV4dCB4PSIxMCIgeT0iNDUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM4Yzc2NjUiPkJhY2t0b24gQ2l0eTwvdGV4dD48L3N2Zz4='); }
-    .movie-poster.poster-3 { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNlZGRhZDAiLz48dGV4dCB4PSIxMCIgeT0iNDUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM4Yzc2NjUiPkJyYXZlIEhlYXJ0PC90ZXh0Pjwvc3ZnPg=='); }
-    .movie-poster.poster-4 { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNlZGRhZDAiLz48dGV4dCB4PSIxMCIgeT0iNDUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM4Yzc2NjUiPkR1bmU8L3RleHQ+PC9zdmc+'); }
-    .movie-poster.poster-5 { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNlZGRhZDAiLz48dGV4dCB4PSIxMCIgeT0iNDUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM4Yzc2NjUiPk9wcGVuaGVpbWVyPC90ZXh0Pjwvc3ZnPg=='); }
-    .movie-poster.poster-6 { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNlZGRhZDAiLz48dGV4dCB4PSIxMCIgeT0iNDUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM4Yzc2NjUiPkpva2VyPC90ZXh0Pjwvc3ZnPg=='); }
+    .movie-poster::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%);
+      opacity: 0;
+      transition: 0.4s;
+    }
+    .movie-card:hover .movie-poster::after {
+      opacity: 1;
+    }
+
+    /* عکس‌های کاور با تصاویر واقعی (از Unsplash) */
+    .movie-poster.poster-1 { background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=550&fit=crop&crop=center'); }
+    .movie-poster.poster-2 { background-image: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=550&fit=crop&crop=center'); }
+    .movie-poster.poster-3 { background-image: url('https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=400&h=550&fit=crop&crop=center'); }
+    .movie-poster.poster-4 { background-image: url('https://images.unsplash.com/photo-1535016120720-40c646be5580?w=400&h=550&fit=crop&crop=center'); }
+    .movie-poster.poster-5 { background-image: url('https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=550&fit=crop&crop=center'); }
+    .movie-poster.poster-6 { background-image: url('https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=400&h=550&fit=crop&crop=center'); }
 
     .movie-poster .badge {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      background: #B61C1C;
+      top: 14px;
+      right: 14px;
+      background: linear-gradient(135deg, #B61C1C, #d43a3a);
       color: white;
-      padding: 4px 14px;
+      padding: 4px 16px;
       border-radius: 40px;
       font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.3px;
-      box-shadow: 0 2px 8px rgba(182,28,28,0.3);
+      box-shadow: 0 4px 15px rgba(182,28,28,0.3);
+      z-index: 2;
     }
     .movie-poster .play-icon {
       position: absolute;
-      background: rgba(255,255,255,0.88);
-      width: 54px;
-      height: 54px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      transition: 0.2s;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      transition: 0.4s;
+      z-index: 2;
     }
     .movie-poster .play-icon i {
-      font-size: 2rem;
+      font-size: 2.2rem;
       background: linear-gradient(135deg, #B61C1C, #d43a3a);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-right: 4px;
     }
     .movie-card:hover .play-icon {
-      transform: scale(1.08);
+      transform: translate(-50%, -50%) scale(1.15);
       background: white;
+      box-shadow: 0 12px 40px rgba(182, 28, 28, 0.2);
     }
 
     .movie-info {
-      padding: 16px 16px 20px;
+      padding: 16px 18px 20px;
+      position: relative;
+      z-index: 1;
     }
     .movie-info h4 {
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       margin-bottom: 4px;
       font-family: 'Ardibehest', 'Estedad', sans-serif;
+      transition: 0.3s;
+    }
+    .movie-card:hover .movie-info h4 {
+      color: #B61C1C;
     }
     .movie-info .meta {
       display: flex;
@@ -339,11 +469,15 @@
       -webkit-text-fill-color: transparent;
     }
     .movie-info .rating {
-      background: #f0e8e0;
-      padding: 2px 12px;
+      background: rgba(182, 28, 28, 0.06);
+      padding: 2px 14px;
       border-radius: 30px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.7rem;
+      transition: 0.3s;
+    }
+    .movie-card:hover .rating {
+      background: rgba(182, 28, 28, 0.12);
     }
     .movie-info .rating i {
       color: #f5b342;
@@ -351,28 +485,37 @@
       -webkit-text-fill-color: #f5b342;
     }
 
-    /* بخش VOD */
+    /* ===== VOD با فیلم کوتاه (یوتیوب ویدئو) ===== */
     .vod-player {
-      background: white;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
       border-radius: 40px;
-      padding: 18px 28px;
-      margin: 24px 0 30px;
+      padding: 20px 28px;
+      margin: 24px 0 32px;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
       gap: 16px 30px;
-      border: 1px solid #e4dbd2;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.01);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.02);
+      transition: 0.3s;
+    }
+    .vod-player:hover {
+      box-shadow: 0 12px 48px rgba(182, 28, 28, 0.04);
+      border-color: #B61C1C20;
     }
     .vod-player .vod-icon {
       background: linear-gradient(135deg, #B61C1C, #d43a3a);
-      padding: 12px 24px;
+      padding: 12px 28px;
       border-radius: 60px;
       color: white;
       display: flex;
       align-items: center;
       gap: 12px;
       font-weight: 700;
+      box-shadow: 0 8px 25px rgba(182, 28, 28, 0.2);
+      animation: float 3s ease-in-out infinite;
+      cursor: pointer;
     }
     .vod-player .vod-icon i {
       font-size: 1.8rem;
@@ -381,25 +524,255 @@
     .vod-player .vod-desc {
       font-weight: 500;
       color: #3d352e;
+      flex: 1;
     }
     .vod-player .vod-desc i {
       margin: 0 6px;
       color: #B61C1C;
     }
+    .vod-player .vod-thumb {
+      width: 120px;
+      height: 70px;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      flex-shrink: 0;
+      background: #e8ddd2;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .vod-player .vod-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .vod-player .vod-thumb .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.9);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #B61C1C;
+    }
     .vod-player .vod-badge {
-      margin-right: auto;
-      background: #f3ece4;
-      padding: 6px 18px;
+      background: rgba(182, 28, 28, 0.06);
+      padding: 6px 20px;
       border-radius: 40px;
       font-weight: 600;
       font-size: 0.85rem;
+      border: 1px solid rgba(182, 28, 28, 0.08);
     }
 
-    /* فوتر */
+    /* ===== مودال پخش فیلم کوتاه ===== */
+    .video-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 3000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .video-modal.active {
+      display: flex;
+    }
+    .video-modal .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      background: #000;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    }
+    .video-modal .video-wrapper iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+      display: block;
+    }
+    .video-modal .close-video {
+      position: absolute;
+      top: -50px;
+      left: 0;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.3s;
+      font-family: 'Estedad', sans-serif;
+    }
+    .video-modal .close-video:hover {
+      background: #B61C1C;
+    }
+
+    /* ===== صفحه فیلم (پاپ‌آپ) ===== */
+    .movie-page-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(20px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      animation: fadeSlideUp 0.3s ease;
+    }
+    .movie-page-overlay.active {
+      display: flex;
+    }
+    .movie-page {
+      background: #f9f5f0;
+      border-radius: 40px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+      animation: fadeSlideUp 0.4s ease;
+    }
+    .movie-page-cover {
+      height: 380px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      border-radius: 40px 40px 0 0;
+      overflow: hidden;
+    }
+    .movie-page-cover .close-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      color: white;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .movie-page-cover .close-btn:hover {
+      background: #B61C1C;
+      transform: rotate(90deg);
+    }
+    .movie-page-cover .play-big {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    }
+    .movie-page-cover .play-big i {
+      font-size: 3rem;
+      color: #B61C1C;
+      margin-right: 6px;
+    }
+    .movie-page-cover .play-big:hover {
+      transform: translate(-50%, -50%) scale(1.08);
+      background: white;
+    }
+    .movie-page-content {
+      padding: 30px 35px 35px;
+    }
+    .movie-page-content h2 {
+      font-family: 'Ardibehest', 'Estedad', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .movie-page-content .page-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+      color: #6b5f53;
+      font-size: 0.9rem;
+      margin: 12px 0 18px;
+    }
+    .movie-page-content .page-meta i {
+      margin-left: 6px;
+      color: #B61C1C;
+    }
+    .movie-page-content .page-desc {
+      line-height: 1.9;
+      color: #3d352e;
+      font-size: 1rem;
+      margin: 16px 0 20px;
+    }
+    .movie-page-content .page-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .movie-page-content .page-actions button {
+      padding: 12px 32px;
+      border-radius: 40px;
+      border: none;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: 'Estedad', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .movie-page-content .page-actions .btn-primary {
+      background: linear-gradient(135deg, #B61C1C, #d43a3a);
+      color: white;
+      box-shadow: 0 8px 25px rgba(182, 28, 28, 0.2);
+    }
+    .movie-page-content .page-actions .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(182, 28, 28, 0.3);
+    }
+    .movie-page-content .page-actions .btn-secondary {
+      background: rgba(182, 28, 28, 0.06);
+      color: #2d2a24;
+    }
+    .movie-page-content .page-actions .btn-secondary:hover {
+      background: rgba(182, 28, 28, 0.12);
+    }
+
+    /* ===== فوتر ===== */
     footer {
       margin-top: 60px;
       padding: 30px 0 24px;
-      border-top: 2px solid #e4dbd2;
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -408,15 +781,18 @@
     }
     footer .social i {
       font-size: 1.8rem;
-      margin: 0 6px;
+      margin: 0 8px;
       background: linear-gradient(135deg, #B61C1C, #d43a3a);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.3s;
+      padding: 6px;
+      border-radius: 50%;
     }
     footer .social i:hover {
-      transform: scale(1.1);
+      transform: translateY(-4px) scale(1.1);
+      background: rgba(182, 28, 28, 0.06);
     }
     footer p {
       font-weight: 400;
@@ -427,23 +803,24 @@
       margin: 0 4px;
     }
 
-    /* ===== ریسپانسیو موبایل ===== */
+    /* ===== ریسپانسیو ===== */
     @media (max-width: 720px) {
       .navbar {
         flex-direction: column;
         align-items: stretch;
         gap: 12px;
+        padding: 14px 18px;
       }
       .nav-links {
         justify-content: center;
         gap: 16px;
       }
       .nav-links a {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
       .user-actions {
         justify-content: center;
-        gap: 16px;
+        gap: 14px;
       }
       .search-section {
         flex-wrap: wrap;
@@ -464,8 +841,6 @@
         justify-content: center;
         padding: 14px;
       }
-
-      /* ===== موبایل: یک کارت در ردیف ===== */
       .movie-grid {
         grid-template-columns: 1fr !important;
         gap: 20px;
@@ -478,6 +853,10 @@
         align-items: stretch;
         text-align: center;
       }
+      .vod-player .vod-thumb {
+        width: 100%;
+        height: 180px;
+      }
       .vod-player .vod-badge {
         margin-right: 0;
         text-align: center;
@@ -486,9 +865,16 @@
         flex-direction: column;
         text-align: center;
       }
+      .movie-page-cover {
+        height: 250px;
+      }
+      .movie-page-content {
+        padding: 20px;
+      }
+      .video-modal .video-wrapper iframe {
+        height: 250px;
+      }
     }
-
-    /* برای تبلت‌های کوچک ۲ کارته */
     @media (min-width: 500px) and (max-width: 820px) {
       .movie-grid {
         grid-template-columns: repeat(2, 1fr) !important;
@@ -499,8 +885,8 @@
 <body>
 <div class="container">
 
-  <!-- هدر -->
-  <header class="navbar">
+  <!-- ===== هدر ===== -->
+  <header class="navbar" id="navbar">
     <div class="logo">
       <h1>Zerox <span>VOD</span></h1>
     </div>
@@ -517,13 +903,13 @@
     </div>
   </header>
 
-  <!-- جستجو -->
+  <!-- ===== جستجو ===== -->
   <div class="search-section">
     <input type="text" placeholder="جستجوی فیلم، سریال، بازیگر ...">
     <button><i class="fas fa-arrow-left"></i> جستجو</button>
   </div>
 
-  <!-- ژانرها -->
+  <!-- ===== ژانرها ===== -->
   <div class="genre-tabs">
     <span class="genre-item active"><i class="fas fa-star"></i> همه</span>
     <span class="genre-item"><i class="fas fa-flag"></i> اکشن</span>
@@ -533,147 +919,145 @@
     <span class="genre-item"><i class="fas fa-microchip"></i> علمی-تخیلی</span>
   </div>
 
-  <!-- VOD پلیر -->
+  <!-- ===== VOD با فیلم کوتاه ===== -->
   <div class="vod-player">
-    <div class="vod-icon">
+    <div class="vod-icon" onclick="openVideo()">
       <i class="fas fa-play-circle"></i> پخش ZEROX
     </div>
     <div class="vod-desc">
-      <i class="fas fa-circle"></i> اکنون: <strong>Dune: Part Two</strong> 
+      <i class="fas fa-circle"></i> اکنون: <strong>فیلم کوتاه «سکوت»</strong>
       <i class="fas fa-circle" style="margin-right: 10px;"></i> 4K
+    </div>
+    <div class="vod-thumb" onclick="openVideo()">
+      <img src="https://img.youtube.com/vi/VIDEO_ID/mqdefault.jpg" alt="ویدئو کوتاه" onerror="this.style.display='none'">
+      <div class="play-btn"><i class="fas fa-play"></i></div>
     </div>
     <div class="vod-badge">
       <i class="fas fa-headphones"></i> دوبله فارسی
     </div>
   </div>
 
-  <!-- جدیدترین فیلم‌ها -->
+  <!-- ===== جدیدترین فیلم‌ها ===== -->
   <div class="section-title">
     <h2><i class="fas fa-clapperboard"></i> جدیدترین فیلم‌ها</h2>
     <a href="#">مشاهده همه <i class="fas fa-chevron-left"></i></a>
   </div>
 
   <div class="movie-grid">
-    <!-- کارت 1 (لینک به صفحه فیلم) -->
-    <a href="#" class="movie-card">
+    <div class="movie-card" onclick="openMoviePage('اورست', 'ماجراجویی، درام', '2025', '۱۴۰ دقیقه', '8.2', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&h=400&fit=crop')">
       <div class="movie-poster poster-1">
         <span class="badge">جدید</span>
         <div class="play-icon"><i class="fas fa-play"></i></div>
       </div>
       <div class="movie-info">
         <h4>اورست</h4>
-        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2025</span><span><i class="fas fa-clock"></i> 140 دقیقه</span></div>
+        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2025</span><span><i class="fas fa-clock"></i> ۱۴۰ دقیقه</span></div>
         <div class="meta"><span><i class="fas fa-tag"></i> ماجراجویی</span><span class="rating"><i class="fas fa-star"></i> 8.2</span></div>
       </div>
-    </a>
+    </div>
 
-    <!-- کارت 2 -->
-    <a href="#" class="movie-card">
+    <div class="movie-card" onclick="openMoviePage('بکتون سیتی', 'جنایی، درام', '2024', '۱۱۸ دقیقه', '7.9', 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&h=400&fit=crop')">
       <div class="movie-poster poster-2">
         <span class="badge">اکران</span>
         <div class="play-icon"><i class="fas fa-play"></i></div>
       </div>
       <div class="movie-info">
         <h4>بکتون سیتی</h4>
-        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2024</span><span><i class="fas fa-clock"></i> 118 دقیقه</span></div>
-        <div class="meta"><span><i class="fas fa-tag"></i> جنایی، درام</span><span class="rating"><i class="fas fa-star"></i> 7.9</span></div>
+        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2024</span><span><i class="fas fa-clock"></i> ۱۱۸ دقیقه</span></div>
+        <div class="meta"><span><i class="fas fa-tag"></i> جنایی</span><span class="rating"><i class="fas fa-star"></i> 7.9</span></div>
       </div>
-    </a>
+    </div>
 
-    <!-- کارت 3 -->
-    <a href="#" class="movie-card">
+    <div class="movie-card" onclick="openMoviePage('شجاع دل', 'اکشن، تاریخی', '2023', '۱۵۲ دقیقه', '8.6', 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=800&h=400&fit=crop')">
       <div class="movie-poster poster-3">
         <span class="badge">برتر</span>
         <div class="play-icon"><i class="fas fa-play"></i></div>
       </div>
       <div class="movie-info">
         <h4>شجاع دل</h4>
-        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2023</span><span><i class="fas fa-clock"></i> 152 دقیقه</span></div>
-        <div class="meta"><span><i class="fas fa-tag"></i> اکشن، تاریخی</span><span class="rating"><i class="fas fa-star"></i> 8.6</span></div>
+        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2023</span><span><i class="fas fa-clock"></i> ۱۵۲ دقیقه</span></div>
+        <div class="meta"><span><i class="fas fa-tag"></i> اکشن</span><span class="rating"><i class="fas fa-star"></i> 8.6</span></div>
       </div>
-    </a>
+    </div>
 
-    <!-- کارت 4 -->
-    <a href="#" class="movie-card">
+    <div class="movie-card" onclick="openMoviePage('Dune: Messiah', 'علمی-تخیلی', '2026', '۱۶۶ دقیقه', '9.0', 'https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&h=400&fit=crop')">
       <div class="movie-poster poster-4">
         <span class="badge">محبوب</span>
         <div class="play-icon"><i class="fas fa-play"></i></div>
       </div>
       <div class="movie-info">
         <h4>Dune: Messiah</h4>
-        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2026</span><span><i class="fas fa-clock"></i> 166 دقیقه</span></div>
+        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2026</span><span><i class="fas fa-clock"></i> ۱۶۶ دقیقه</span></div>
         <div class="meta"><span><i class="fas fa-tag"></i> علمی-تخیلی</span><span class="rating"><i class="fas fa-star"></i> 9.0</span></div>
       </div>
-    </a>
+    </div>
 
-    <!-- کارت 5 -->
-    <a href="#" class="movie-card">
+    <div class="movie-card" onclick="openMoviePage('اوپنهایمر', 'درام، تاریخی', '2023', '۱۸۰ دقیقه', '8.9', 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&h=400&fit=crop')">
       <div class="movie-poster poster-5">
         <span class="badge">جدید</span>
         <div class="play-icon"><i class="fas fa-play"></i></div>
       </div>
       <div class="movie-info">
         <h4>اوپنهایمر</h4>
-        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2023</span><span><i class="fas fa-clock"></i> 180 دقیقه</span></div>
-        <div class="meta"><span><i class="fas fa-tag"></i> درام، تاریخی</span><span class="rating"><i class="fas fa-star"></i> 8.9</span></div>
+        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2023</span><span><i class="fas fa-clock"></i> ۱۸۰ دقیقه</span></div>
+        <div class="meta"><span><i class="fas fa-tag"></i> درام</span><span class="rating"><i class="fas fa-star"></i> 8.9</span></div>
       </div>
-    </a>
+    </div>
 
-    <!-- کارت 6 -->
-    <a href="#" class="movie-card">
+    <div class="movie-card" onclick="openMoviePage('جوکر: جنون', 'جنایی، درام', '2024', '۱۲۲ دقیقه', '8.7', 'https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=800&h=400&fit=crop')">
       <div class="movie-poster poster-6">
         <span class="badge">برتر</span>
         <div class="play-icon"><i class="fas fa-play"></i></div>
       </div>
       <div class="movie-info">
         <h4>جوکر: جنون</h4>
-        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2024</span><span><i class="fas fa-clock"></i> 122 دقیقه</span></div>
-        <div class="meta"><span><i class="fas fa-tag"></i> جنایی، درام</span><span class="rating"><i class="fas fa-star"></i> 8.7</span></div>
+        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2024</span><span><i class="fas fa-clock"></i> ۱۲۲ دقیقه</span></div>
+        <div class="meta"><span><i class="fas fa-tag"></i> جنایی</span><span class="rating"><i class="fas fa-star"></i> 8.7</span></div>
       </div>
-    </a>
+    </div>
   </div>
 
-  <!-- پربیننده‌ها -->
+  <!-- ===== پربیننده‌ها ===== -->
   <div class="section-title">
     <h2><i class="fas fa-fire"></i> پربیننده‌ترین</h2>
     <a href="#">مشاهده همه <i class="fas fa-chevron-left"></i></a>
   </div>
   <div class="movie-grid">
-    <a href="#" class="movie-card">
+    <div class="movie-card" onclick="openMoviePage('Dune', 'علمی-تخیلی', '2021', '۱۵۵ دقیقه', '8.5', 'https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&h=400&fit=crop')">
       <div class="movie-poster poster-4"><div class="play-icon"><i class="fas fa-play"></i></div></div>
       <div class="movie-info">
         <h4>Dune</h4>
-        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2021</span><span><i class="fas fa-clock"></i> 155 دقیقه</span></div>
+        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2021</span><span><i class="fas fa-clock"></i> ۱۵۵ دقیقه</span></div>
         <div class="meta"><span><i class="fas fa-tag"></i> علمی-تخیلی</span><span class="rating"><i class="fas fa-star"></i> 8.5</span></div>
       </div>
-    </a>
-    <a href="#" class="movie-card">
+    </div>
+    <div class="movie-card" onclick="openMoviePage('تایتانیک', 'عاشقانه، درام', '1997', '۱۹۵ دقیقه', '9.0', 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&h=400&fit=crop')">
       <div class="movie-poster poster-5"><div class="play-icon"><i class="fas fa-play"></i></div></div>
       <div class="movie-info">
         <h4>تایتانیک</h4>
-        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 1997</span><span><i class="fas fa-clock"></i> 195 دقیقه</span></div>
+        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 1997</span><span><i class="fas fa-clock"></i> ۱۹۵ دقیقه</span></div>
         <div class="meta"><span><i class="fas fa-tag"></i> عاشقانه</span><span class="rating"><i class="fas fa-star"></i> 9.0</span></div>
       </div>
-    </a>
-    <a href="#" class="movie-card">
-      <div class="movie-poster poster-2"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+    </div>
+    <div class="movie-card" onclick="openMoviePage('انتقام‌جویان', 'اکشن، ماجراجویی', '2018', '۱۴۹ دقیقه', '8.4', 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=800&h=400&fit=crop')">
+      <div class="movie-poster poster-3"><div class="play-icon"><i class="fas fa-play"></i></div></div>
       <div class="movie-info">
         <h4>انتقام‌جویان</h4>
-        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2018</span><span><i class="fas fa-clock"></i> 149 دقیقه</span></div>
+        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2018</span><span><i class="fas fa-clock"></i> ۱۴۹ دقیقه</span></div>
         <div class="meta"><span><i class="fas fa-tag"></i> اکشن</span><span class="rating"><i class="fas fa-star"></i> 8.4</span></div>
       </div>
-    </a>
-    <a href="#" class="movie-card">
-      <div class="movie-poster poster-6"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+    </div>
+    <div class="movie-card" onclick="openMoviePage('شوالیه شب', 'معمایی، هیجانی', '2022', '۱۱۶ دقیقه', '7.9', 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&h=400&fit=crop')">
+      <div class="movie-poster poster-2"><div class="play-icon"><i class="fas fa-play"></i></div></div>
       <div class="movie-info">
         <h4>شوالیه شب</h4>
-        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2022</span><span><i class="fas fa-clock"></i> 116 دقیقه</span></div>
+        <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2022</span><span><i class="fas fa-clock"></i> ۱۱۶ دقیقه</span></div>
         <div class="meta"><span><i class="fas fa-tag"></i> معمایی</span><span class="rating"><i class="fas fa-star"></i> 7.9</span></div>
       </div>
-    </a>
+    </div>
   </div>
 
-  <!-- فوتر -->
+  <!-- ===== فوتر ===== -->
   <footer>
     <div><p><i class="fas fa-copyright"></i> 2026 Zerox · تمامی حقوق محفوظ است.</p></div>
     <div class="social">
@@ -686,5 +1070,106 @@
   </footer>
 
 </div>
+
+<!-- ===== صفحه فیلم (پاپ‌آپ) ===== -->
+<div class="movie-page-overlay" id="moviePage">
+  <div class="movie-page">
+    <div class="movie-page-cover" id="pageCover">
+      <button class="close-btn" onclick="closeMoviePage()"><i class="fas fa-times"></i></button>
+      <div class="play-big"><i class="fas fa-play"></i></div>
+    </div>
+    <div class="movie-page-content">
+      <h2 id="pageTitle">عنوان فیلم</h2>
+      <div class="page-meta" id="pageMeta">
+        <span><i class="fas fa-calendar-alt"></i> 2025</span>
+        <span><i class="fas fa-clock"></i> ۱۲۰ دقیقه</span>
+        <span><i class="fas fa-tag"></i> ژانر</span>
+        <span><i class="fas fa-star" style="color:#f5b342;"></i> 8.5</span>
+      </div>
+      <p class="page-desc" id="pageDesc">
+        خلاصه داستان فیلم... لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+      </p>
+      <div class="page-actions">
+        <button class="btn-primary"><i class="fas fa-play"></i> پخش فیلم</button>
+        <button class="btn-secondary"><i class="fas fa-plus"></i> افزودن به لیست</button>
+        <button class="btn-secondary"><i class="fas fa-download"></i> دانلود</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== مودال ویدئو (فیلم کوتاه) ===== -->
+<div class="video-modal" id="videoModal">
+  <div class="video-wrapper">
+    <button class="close-video" onclick="closeVideo()"><i class="fas fa-times"></i> بستن</button>
+    <iframe id="videoIframe" src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+  // ===== باز کردن صفحه فیلم =====
+  function openMoviePage(title, genre, year, duration, rating, image) {
+    document.getElementById('pageTitle').textContent = title;
+    document.getElementById('pageMeta').innerHTML = `
+      <span><i class="fas fa-calendar-alt"></i> ${year}</span>
+      <span><i class="fas fa-clock"></i> ${duration}</span>
+      <span><i class="fas fa-tag"></i> ${genre}</span>
+      <span><i class="fas fa-star" style="color:#f5b342;"></i> ${rating}</span>
+    `;
+    document.getElementById('pageDesc').textContent = 
+      `خلاصه داستان فیلم «${title}» ... لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.`;
+    document.getElementById('pageCover').style.backgroundImage = `url('${image}')`;
+    document.getElementById('pageCover').style.backgroundSize = 'cover';
+    document.getElementById('pageCover').style.backgroundPosition = 'center';
+    document.getElementById('moviePage').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMoviePage() {
+    document.getElementById('moviePage').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // ===== باز کردن ویدئو (فیلم کوتاه) =====
+  function openVideo() {
+    document.getElementById('videoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    // استفاده از یک ویدئوی کوتاه نمونه (آهنگ سینمایی)
+    document.getElementById('videoIframe').src = 'https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0';
+  }
+
+  function closeVideo() {
+    document.getElementById('videoModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+    document.getElementById('videoIframe').src = '';
+  }
+
+  // ===== بستن با کلیک خارج =====
+  document.getElementById('moviePage').addEventListener('click', function(e) {
+    if (e.target === this) closeMoviePage();
+  });
+  document.getElementById('videoModal').addEventListener('click', function(e) {
+    if (e.target === this) closeVideo();
+  });
+
+  // ===== اسکرول هدر =====
+  window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // ===== کلیک روی ژانرها =====
+  document.querySelectorAll('.genre-item').forEach(item => {
+    item.addEventListener('click', function() {
+      document.querySelectorAll('.genre-item').forEach(g => g.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+
 </body>
 </html>
