@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>Zerox Studio | داستان بازی</title>
+    <title>Zerox Studio | صفحه اختصاصی</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Ardibehest:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -670,57 +670,32 @@
         }
 
         /* ======================================== */
-        /* ===== PAGE VIDEO ===== */
+        /* ===== VIDEO PAGE (جایگزین مودال) ===== */
         /* ======================================== */
-        .video-page {
+        .video-page-container {
             display: none;
             padding: 30px 0 50px;
             animation: fadeInUp 0.6s ease;
         }
 
-        .video-page.active {
+        .video-page-container.active {
             display: block;
         }
 
-        .video-page .video-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(8px);
-            padding: 10px 24px;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #2d2a24;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 25px;
-            font-family: 'Estedad', sans-serif;
-        }
-
-        .video-page .video-back:hover {
-            background: #B61C1C;
-            color: white;
-            transform: translateX(-4px);
-        }
-
-        .video-page .video-wrapper-page {
-            background: #000;
-            border-radius: 30px;
+        .video-page-wrapper {
+            background: #0a0a0a;
+            border-radius: 32px;
             overflow: hidden;
+            border: 2px solid rgba(182, 28, 28, 0.2);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            border: 2px solid rgba(182, 28, 28, 0.15);
             position: relative;
         }
 
-        .video-page .video-wrapper-page::before {
+        .video-page-wrapper::before {
             content: '';
             position: absolute;
             inset: -3px;
-            border-radius: 32px;
+            border-radius: 34px;
             padding: 3px;
             background: linear-gradient(135deg, #B61C1C, #d43a3a, #B61C1C, #d43a3a);
             background-size: 400% 400%;
@@ -732,9 +707,61 @@
             z-index: 1;
         }
 
-        .video-page .video-wrapper-page iframe {
+        .video-page-header {
+            padding: 20px 28px 18px;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 2;
+        }
+
+        .video-page-header .title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .video-page-header .title-group .movie-title {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 800;
+            font-family: 'Ardibehest', 'Estedad', sans-serif;
+        }
+
+        .video-page-header .title-group .movie-sub {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+        }
+
+        .video-page-header .close-video-page {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            font-family: 'Estedad', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .video-page-header .close-video-page:hover {
+            background: #B61C1C;
+            transform: scale(1.03);
+        }
+
+        .video-page-wrapper iframe {
             width: 100%;
-            height: 560px;
+            height: 600px;
             border: none;
             display: block;
             position: relative;
@@ -742,28 +769,300 @@
             background: #000;
         }
 
-        .video-page .video-info-page {
-            padding: 30px 0 10px;
+        .video-page-controls {
+            padding: 16px 28px 24px;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .video-page .video-info-page h2 {
+        .video-page-controls .play-pause {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: white;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .video-page-controls .play-pause:hover {
+            background: #B61C1C;
+            transform: scale(1.08);
+            border-color: #B61C1C;
+        }
+
+        .video-page-controls .progress-bar {
+            flex: 1;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            min-width: 80px;
+            transition: height 0.2s ease;
+        }
+
+        .video-page-controls .progress-bar:hover {
+            height: 7px;
+        }
+
+        .video-page-controls .progress-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #B61C1C, #d43a3a);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+            position: relative;
+            box-shadow: 0 0 20px rgba(182, 28, 28, 0.2);
+        }
+
+        .video-page-controls .progress-bar .fill::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: -4px;
+            width: 13px;
+            height: 13px;
+            background: #B61C1C;
+            border-radius: 50%;
+            box-shadow: 0 0 25px rgba(182, 28, 28, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-page-controls .progress-bar:hover .fill::after {
+            opacity: 1;
+        }
+
+        .video-page-controls .time {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            font-weight: 500;
+            font-family: 'Estedad', sans-serif;
+            min-width: 85px;
+        }
+
+        .video-page-controls .volume-btn {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 6px;
+            background: transparent;
+            border: none;
+        }
+
+        .video-page-controls .volume-btn:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .video-page-controls .fullscreen-btn {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 6px;
+            background: transparent;
+            border: none;
+        }
+
+        .video-page-controls .fullscreen-btn:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .video-page-controls .quality-badge {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 4px 12px;
+            border-radius: 30px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.65rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        /* ===== MOVIE PAGE ===== */
+        .movie-page-container {
+            display: none;
+            padding: 30px 0 50px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .movie-page-container.active {
+            display: block;
+        }
+
+        .movie-page-cover-full {
+            height: 480px;
+            border-radius: 40px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.04);
+        }
+
+        .movie-page-cover-full::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+        }
+
+        .movie-page-cover-full .back-btn {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Estedad', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 5;
+        }
+
+        .movie-page-cover-full .back-btn:hover {
+            background: #B61C1C;
+            transform: translateX(-4px);
+        }
+
+        .movie-page-cover-full .play-big-full {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+            z-index: 5;
+        }
+
+        .movie-page-cover-full .play-big-full i {
+            font-size: 3.4rem;
+            color: #B61C1C;
+            margin-right: 6px;
+        }
+
+        .movie-page-cover-full .play-big-full:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: white;
+            box-shadow: 0 16px 60px rgba(182, 28, 28, 0.2);
+        }
+
+        .movie-page-content-full {
+            padding: 40px 0 20px;
+        }
+
+        .movie-page-content-full h2 {
             font-family: 'Ardibehest', 'Estedad', sans-serif;
-            font-size: 2rem;
+            font-size: 2.8rem;
             font-weight: 900;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
-        .video-page .video-info-page .video-meta-page {
+        .movie-page-content-full .page-meta-full {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px 30px;
+            gap: 18px 30px;
             color: #6b5f53;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            margin: 16px 0 24px;
         }
 
-        .video-page .video-info-page .video-meta-page i {
-            margin-left: 6px;
+        .movie-page-content-full .page-meta-full i {
+            margin-left: 8px;
             color: #B61C1C;
+        }
+
+        .movie-page-content-full .page-desc-full {
+            line-height: 2;
+            color: #3d352e;
+            font-size: 1.05rem;
+            margin: 20px 0 28px;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px 24px;
+            border-radius: 20px;
+            border-right: 4px solid #B61C1C;
+        }
+
+        .movie-page-content-full .page-desc-full .highlight-text {
+            color: #B61C1C;
+            font-weight: 700;
+        }
+
+        .movie-page-content-full .page-actions-full {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .movie-page-content-full .page-actions-full button {
+            padding: 14px 36px;
+            border-radius: 40px;
+            border: none;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Estedad', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .movie-page-content-full .page-actions-full .btn-primary {
+            background: linear-gradient(135deg, #B61C1C, #d43a3a);
+            color: white;
+            box-shadow: 0 8px 35px rgba(182, 28, 28, 0.2);
+        }
+
+        .movie-page-content-full .page-actions-full .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 50px rgba(182, 28, 28, 0.3);
+        }
+
+        .movie-page-content-full .page-actions-full .btn-secondary {
+            background: rgba(182, 28, 28, 0.06);
+            color: #2d2a24;
+        }
+
+        .movie-page-content-full .page-actions-full .btn-secondary:hover {
+            background: rgba(182, 28, 28, 0.12);
+            transform: translateY(-2px);
         }
 
         /* ===== NOT FOUND ===== */
@@ -1069,8 +1368,18 @@
                 margin-right: 0;
                 text-align: center;
             }
-            .video-page .video-wrapper-page iframe {
-                height: 260px;
+            .movie-page-cover-full {
+                height: 280px;
+            }
+            .movie-page-content-full h2 {
+                font-size: 2rem;
+            }
+            .movie-page-content-full .page-actions-full button {
+                width: 100%;
+                justify-content: center;
+            }
+            .video-page-wrapper iframe {
+                height: 280px;
             }
             .section-title h2 {
                 font-size: 1.5rem;
@@ -1105,6 +1414,38 @@
             .footer-bottom .footer-links {
                 justify-content: center;
                 gap: 15px;
+            }
+            .video-page-controls {
+                padding: 12px 16px 18px;
+                gap: 10px;
+            }
+            .video-page-controls .play-pause {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+            .video-page-controls .time {
+                font-size: 0.65rem;
+                min-width: 65px;
+            }
+            .video-page-header {
+                padding: 14px 16px 12px;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .video-page-header .title-group .movie-title {
+                font-size: 1rem;
+            }
+            .video-page-header .close-video-page {
+                padding: 6px 14px;
+                font-size: 0.75rem;
+            }
+            .video-page-controls .quality-badge {
+                display: none;
+            }
+            .movie-page-content-full .page-desc-full {
+                padding: 16px;
+                font-size: 0.95rem;
             }
             .not-found h3 {
                 font-size: 1.5rem;
@@ -1267,30 +1608,47 @@
         </div>
 
         <!-- ======================================== -->
-        <!-- ===== VIDEO PAGE (صفحه جداگانه) ===== -->
+        <!-- ===== VIDEO PAGE (صفحه جداگانه پخش) ===== -->
         <!-- ======================================== -->
-        <div class="video-page" id="videoPage">
-            <button class="video-back" onclick="closeVideoPage()">
-                <i class="fas fa-arrow-right"></i> بازگشت به فیلم
-            </button>
-            <div class="video-wrapper-page">
-                <iframe id="videoIframePage" src="https://www.aparat.com/v/itl9b8h?play" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
-            </div>
-            <div class="video-info-page">
-                <h2>🎬 داستان بازی (No, I'm Not a Human)</h2>
-                <div class="video-meta-page">
-                    <span><i class="fas fa-calendar-alt"></i> 2026</span>
-                    <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
-                    <span><i class="fas fa-tag"></i> ترسناک، روانشناختی</span>
-                    <span><i class="fas fa-star" style="color:#f5b342;"></i> 8.7</span>
-                    <span><i class="fas fa-headphones"></i> دوبله فارسی</span>
+        <div class="video-page-container" id="videoPage">
+            <div class="video-page-wrapper">
+                <div class="video-page-header">
+                    <div class="title-group">
+                        <span class="movie-title">🎬 داستان بازی</span>
+                        <span class="movie-sub">No, I'm Not a Human 😨</span>
+                    </div>
+                    <button class="close-video-page" onclick="closeVideoPage()">
+                        <i class="fas fa-times"></i> بستن و بازگشت
+                    </button>
+                </div>
+
+                <iframe id="videoIframe" src="https://www.aparat.com/v/itl9b8h?play" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+
+                <div class="video-page-controls">
+                    <button class="play-pause" id="playPauseBtn" onclick="togglePlay()">
+                        <i class="fas fa-play"></i>
+                    </button>
+
+                    <div class="progress-bar" id="progressBar" onclick="seekVideo(event)">
+                        <div class="fill" id="progressFill"></div>
+                    </div>
+
+                    <span class="time" id="timeDisplay">۰:۰۰ / ۹:۰۰</span>
+
+                    <button class="volume-btn" onclick="toggleMute()">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+
+                    <button class="fullscreen-btn" onclick="toggleFullscreen()">
+                        <i class="fas fa-expand"></i>
+                    </button>
+
+                    <span class="quality-badge">4K · HDR</span>
                 </div>
             </div>
         </div>
 
-        <!-- ======================================== -->
         <!-- ===== FOOTER ===== -->
-        <!-- ======================================== -->
         <footer>
             <div class="footer-content">
                 <div class="footer-brand">
@@ -1341,6 +1699,13 @@
     </button>
 
     <script>
+        // ===== متغیرهای پلیر =====
+        let isPlaying = false;
+        let isMuted = false;
+        let progressInterval = null;
+        let progress = 0;
+        const totalDuration = 9;
+
         // ===== فیلتر ژانر =====
         function filterGenre(genre, element) {
             document.querySelectorAll('.genre-item').forEach(g => g.classList.remove('active'));
@@ -1371,7 +1736,6 @@
         function openMoviePage(title, genre, year, duration, rating, image) {
             document.getElementById('homePage').style.display = 'none';
             document.getElementById('moviePage').classList.add('active');
-            document.getElementById('videoPage').classList.remove('active');
             document.getElementById('pageTitleFull').textContent = title;
             document.getElementById('pageMetaFull').innerHTML = `
                 <span><i class="fas fa-calendar-alt"></i> ${year}</span>
@@ -1401,10 +1765,20 @@
             document.getElementById('moviePage').classList.remove('active');
             document.getElementById('videoPage').classList.remove('active');
             document.getElementById('homePage').style.display = 'block';
-            // توقف ویدیو
-            const iframe = document.getElementById('videoIframePage');
-            iframe.src = '';
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // توقف پلیر
+            if (progressInterval) {
+                clearInterval(progressInterval);
+                progressInterval = null;
+            }
+            isPlaying = false;
+            document.getElementById('playPauseBtn').innerHTML = '<i class="fas fa-play"></i>';
+            document.getElementById('progressFill').style.width = '0%';
+            document.getElementById('timeDisplay').textContent = '۰:۰۰ / ۹:۰۰';
+            progress = 0;
+            const iframe = document.getElementById('videoIframe');
+            iframe.src = '';
         }
 
         // ===== باز کردن صفحه ویدیو (جایگزین مودال) =====
@@ -1413,18 +1787,121 @@
             document.getElementById('moviePage').classList.remove('active');
             document.getElementById('videoPage').classList.add('active');
             
-            const iframe = document.getElementById('videoIframePage');
+            const iframe = document.getElementById('videoIframe');
             iframe.src = 'https://www.aparat.com/v/itl9b8h?play';
+            
+            setTimeout(() => {
+                setupPlayer();
+            }, 500);
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function closeVideoPage() {
             document.getElementById('videoPage').classList.remove('active');
-            document.getElementById('moviePage').classList.add('active');
-            const iframe = document.getElementById('videoIframePage');
+            document.getElementById('homePage').style.display = 'block';
+            
+            if (progressInterval) {
+                clearInterval(progressInterval);
+                progressInterval = null;
+            }
+            isPlaying = false;
+            document.getElementById('playPauseBtn').innerHTML = '<i class="fas fa-play"></i>';
+            document.getElementById('progressFill').style.width = '0%';
+            document.getElementById('timeDisplay').textContent = '۰:۰۰ / ۹:۰۰';
+            progress = 0;
+            const iframe = document.getElementById('videoIframe');
             iframe.src = '';
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== تنظیم پلیر =====
+        function setupPlayer() {
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const progressFill = document.getElementById('progressFill');
+            const timeDisplay = document.getElementById('timeDisplay');
+            
+            progress = 0;
+            if (progressInterval) clearInterval(progressInterval);
+            
+            progressInterval = setInterval(() => {
+                if (isPlaying) {
+                    progress += 0.18;
+                    if (progress > 100) {
+                        progress = 0;
+                        isPlaying = false;
+                        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    }
+                    progressFill.style.width = progress + '%';
+                    
+                    const currentSeconds = Math.floor((progress / 100) * (totalDuration * 60));
+                    const minutes = Math.floor(currentSeconds / 60);
+                    const seconds = currentSeconds % 60;
+                    timeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')} / ۹:۰۰`;
+                }
+            }, 500);
+        }
+
+        // ===== کنترل‌های پلیر =====
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            const btn = document.getElementById('playPauseBtn');
+            if (isPlaying) {
+                btn.innerHTML = '<i class="fas fa-pause"></i>';
+                try {
+                    const iframe = document.getElementById('videoIframe');
+                    iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                } catch(e) {}
+            } else {
+                btn.innerHTML = '<i class="fas fa-play"></i>';
+                try {
+                    const iframe = document.getElementById('videoIframe');
+                    iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                } catch(e) {}
+            }
+        }
+
+        function seekVideo(e) {
+            const bar = document.getElementById('progressBar');
+            const rect = bar.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const width = rect.width;
+            const percent = (x / width) * 100;
+            progress = Math.min(100, Math.max(0, percent));
+            document.getElementById('progressFill').style.width = progress + '%';
+            
+            const currentSeconds = Math.floor((progress / 100) * (totalDuration * 60));
+            const minutes = Math.floor(currentSeconds / 60);
+            const seconds = currentSeconds % 60;
+            document.getElementById('timeDisplay').textContent = `${minutes}:${seconds.toString().padStart(2, '0')} / ۹:۰۰`;
+        }
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            const btn = document.querySelector('.volume-btn i');
+            if (isMuted) {
+                btn.className = 'fas fa-volume-mute';
+            } else {
+                btn.className = 'fas fa-volume-up';
+            }
+            try {
+                const iframe = document.getElementById('videoIframe');
+                if (isMuted) {
+                    iframe.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+                } else {
+                    iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+                }
+            } catch(e) {}
+        }
+
+        function toggleFullscreen() {
+            const wrapper = document.querySelector('.video-page-wrapper');
+            if (!document.fullscreenElement) {
+                wrapper.requestFullscreen().catch(() => {});
+            } else {
+                document.exitFullscreen();
+            }
         }
 
         // ===== ESC =====
@@ -1456,4 +1933,4 @@
         });
     </script>
 </body>
-    </html>
+                                                      </html>
