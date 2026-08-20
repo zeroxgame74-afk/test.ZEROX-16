@@ -71,11 +71,6 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        @keyframes borderGlow {
-            0%, 100% { border-color: rgba(182, 28, 28, 0.1); }
-            50% { border-color: rgba(182, 28, 28, 0.3); }
-        }
-
         /* ===== GLASS EFFECT ===== */
         .glass {
             background: rgba(255, 255, 255, 0.5);
@@ -524,10 +519,11 @@
 
         .movie-info h4 {
             font-weight: 800;
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             margin-bottom: 4px;
             font-family: 'Ardibehest', 'Estedad', sans-serif;
             transition: all 0.3s ease;
+            line-height: 1.4;
         }
 
         .movie-card:hover .movie-info h4 {
@@ -685,7 +681,7 @@
         }
 
         /* ======================================== */
-        /* ===== VIDEO MODAL اختصاصی و خفن ===== */
+        /* ===== VIDEO MODAL ===== */
         /* ======================================== */
         .video-modal {
             display: none;
@@ -694,38 +690,40 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.94);
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
-            z-index: 3000;
+            z-index: 9999;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.4s ease;
         }
 
         .video-modal.active {
-            display: flex;
+            display: flex !important;
         }
 
         .video-modal .video-wrapper {
             position: relative;
             width: 100%;
             max-width: 1000px;
-            background: #0a0a0a;
-            border-radius: 32px;
+            background: #000;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 80px 160px rgba(0, 0, 0, 0.7);
-            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid rgba(182, 28, 28, 0.15);
+            box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8);
+            animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(182, 28, 28, 0.2);
         }
 
-        /* حاشیه نورانی دور پلیر */
+        /* حاشیه نورانی */
         .video-modal .video-wrapper::before {
             content: '';
             position: absolute;
             inset: -3px;
-            border-radius: 34px;
+            border-radius: 26px;
             padding: 3px;
             background: linear-gradient(135deg, #B61C1C, #d43a3a, #B61C1C, #d43a3a);
             background-size: 400% 400%;
@@ -737,31 +735,23 @@
             z-index: 1;
         }
 
-        /* هدر پلیر با عنوان فیلم */
+        /* هدر */
         .video-modal .video-header {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            padding: 24px 30px 20px;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            padding: 20px 28px 18px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
             z-index: 20;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            opacity: 1;
-            transition: opacity 0.4s ease;
-        }
-
-        .video-modal .video-header .title-group {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
         }
 
         .video-modal .video-header .title-group .movie-title {
             color: white;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 800;
             font-family: 'Ardibehest', 'Estedad', sans-serif;
         }
@@ -769,15 +759,14 @@
         .video-modal .video-header .title-group .movie-sub {
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.8rem;
-            font-weight: 400;
         }
 
         .video-modal .video-header .close-video {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
-            padding: 10px 20px;
+            padding: 8px 18px;
             border-radius: 40px;
             cursor: pointer;
             font-size: 0.85rem;
@@ -796,47 +785,41 @@
         /* iframe */
         .video-modal .video-wrapper iframe {
             width: 100%;
-            height: 550px;
+            height: 560px;
             border: none;
             display: block;
             position: relative;
             z-index: 2;
+            background: #000;
         }
 
-        /* ===== کنترل‌های سفارشی پلیر ===== */
+        /* کنترل‌های سفارشی */
         .video-modal .custom-controls {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 18px 28px 24px;
+            padding: 16px 24px 22px;
             background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
             z-index: 10;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             flex-wrap: wrap;
-            opacity: 1;
-            transition: opacity 0.4s ease;
         }
 
-        .video-modal .video-wrapper:hover .custom-controls {
-            opacity: 1;
-        }
-
-        /* دکمه play/pause */
         .video-modal .custom-controls .play-pause {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             color: white;
-            width: 46px;
-            height: 46px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             cursor: pointer;
             transition: all 0.3s ease;
             flex-shrink: 0;
@@ -846,10 +829,8 @@
             background: #B61C1C;
             transform: scale(1.08);
             border-color: #B61C1C;
-            box-shadow: 0 0 30px rgba(182, 28, 28, 0.2);
         }
 
-        /* نوار پیشرفت */
         .video-modal .custom-controls .progress-bar {
             flex: 1;
             height: 5px;
@@ -893,20 +874,17 @@
             opacity: 1;
         }
 
-        /* زمان */
         .video-modal .custom-controls .time {
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.8rem;
             font-weight: 500;
             font-family: 'Estedad', sans-serif;
-            min-width: 90px;
-            letter-spacing: 0.5px;
+            min-width: 85px;
         }
 
-        /* دکمه صدا */
         .video-modal .custom-controls .volume-btn {
             color: rgba(255, 255, 255, 0.5);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             padding: 6px;
@@ -919,10 +897,9 @@
             transform: scale(1.1);
         }
 
-        /* دکمه تمام صفحه */
         .video-modal .custom-controls .fullscreen-btn {
             color: rgba(255, 255, 255, 0.5);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             padding: 6px;
@@ -935,15 +912,13 @@
             transform: scale(1.1);
         }
 
-        /* برچسب کیفیت */
         .video-modal .custom-controls .quality-badge {
             background: rgba(255, 255, 255, 0.06);
-            padding: 4px 14px;
+            padding: 4px 12px;
             border-radius: 30px;
             color: rgba(255, 255, 255, 0.4);
             font-size: 0.65rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
 
@@ -1381,7 +1356,7 @@
                 justify-content: center;
             }
             .video-modal .video-wrapper iframe {
-                height: 250px;
+                height: 260px;
             }
             .section-title h2 {
                 font-size: 1.5rem;
@@ -1418,29 +1393,29 @@
                 gap: 15px;
             }
             .video-modal .custom-controls {
-                padding: 12px 16px 18px;
-                gap: 10px;
+                padding: 10px 14px 16px;
+                gap: 8px;
             }
             .video-modal .custom-controls .play-pause {
-                width: 38px;
-                height: 38px;
+                width: 36px;
+                height: 36px;
                 font-size: 1rem;
             }
             .video-modal .custom-controls .time {
                 font-size: 0.65rem;
-                min-width: 70px;
+                min-width: 65px;
             }
             .video-modal .video-header {
-                padding: 16px 18px 14px;
+                padding: 14px 16px 12px;
                 flex-direction: column;
-                gap: 10px;
+                gap: 8px;
             }
             .video-modal .video-header .title-group .movie-title {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
             .video-modal .video-header .close-video {
-                padding: 6px 14px;
-                font-size: 0.75rem;
+                padding: 6px 12px;
+                font-size: 0.7rem;
             }
             .video-modal .custom-controls .quality-badge {
                 display: none;
@@ -1558,14 +1533,14 @@
             </div>
 
             <div class="movie-grid">
-                <!-- فیلم اول: داستان بازی -->
-                <div class="movie-card" onclick="openMoviePage('داستان بازی', 'ترسناک، روانشناختی', '2026', '۹ دقیقه', '8.7', 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg')">
+                <!-- فیلم اول: داستان بازی با عنوان کامل -->
+                <div class="movie-card" onclick="openMoviePage('داستان بازی (No, I\'m Not a Human)', 'ترسناک، روانشناختی', '2026', '۹ دقیقه', '8.7', 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg')">
                     <div class="movie-poster poster-main">
                         <span class="badge">جدید</span>
                         <div class="play-icon"><i class="fas fa-play"></i></div>
                     </div>
                     <div class="movie-info">
-                        <h4>داستان بازی</h4>
+                        <h4>داستان بازی (No, I'm Not a Human)</h4>
                         <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2026</span><span><i class="fas fa-clock"></i> ۹ دقیقه</span></div>
                         <div class="meta"><span><i class="fas fa-tag"></i> ترسناک، روانشناختی</span><span class="rating"><i class="fas fa-star"></i> 8.7</span></div>
                     </div>
@@ -1616,12 +1591,12 @@
             </div>
 
             <div class="movie-grid">
-                <div class="movie-card" onclick="openMoviePage('داستان بازی', 'ترسناک، روانشناختی', '2026', '۹ دقیقه', '8.7', 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg')">
+                <div class="movie-card" onclick="openMoviePage('داستان بازی (No, I\'m Not a Human)', 'ترسناک، روانشناختی', '2026', '۹ دقیقه', '8.7', 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg')">
                     <div class="movie-poster poster-main">
                         <div class="play-icon"><i class="fas fa-play"></i></div>
                     </div>
                     <div class="movie-info">
-                        <h4>داستان بازی</h4>
+                        <h4>داستان بازی (No, I'm Not a Human)</h4>
                         <div class="meta"><span><i class="fas fa-calendar-alt"></i> 2026</span><span><i class="fas fa-clock"></i> ۹ دقیقه</span></div>
                         <div class="meta"><span><i class="fas fa-tag"></i> ترسناک</span><span class="rating"><i class="fas fa-star"></i> 8.7</span></div>
                     </div>
@@ -1671,7 +1646,7 @@
                 <div class="play-big-full" onclick="openVideo()"><i class="fas fa-play"></i></div>
             </div>
             <div class="movie-page-content-full">
-                <h2 id="pageTitleFull">داستان بازی</h2>
+                <h2 id="pageTitleFull">داستان بازی (No, I'm Not a Human)</h2>
                 <div class="page-meta-full" id="pageMetaFull">
                     <span><i class="fas fa-calendar-alt"></i> 2026</span>
                     <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
@@ -1743,7 +1718,7 @@
     </div>
 
     <!-- ======================================== -->
-    <!-- ===== VIDEO MODAL اختصاصی و خفن ===== -->
+    <!-- ===== VIDEO MODAL اختصاصی ===== -->
     <!-- ======================================== -->
     <div class="video-modal" id="videoModal">
         <div class="video-wrapper">
@@ -1834,7 +1809,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ===== باز کردن ویدئو در مودال اختصاصی =====
+        // ===== باز کردن ویدئو در مودال =====
         function openVideo() {
             const modal = document.getElementById('videoModal');
             modal.classList.add('active');
@@ -1863,7 +1838,7 @@
             progress = 0;
         }
 
-        // ===== تنظیم پلیر شخصی‌سازی شده =====
+        // ===== تنظیم پلیر =====
         function setupPlayer() {
             const playPauseBtn = document.getElementById('playPauseBtn');
             const progressFill = document.getElementById('progressFill');
@@ -1874,7 +1849,7 @@
             
             progressInterval = setInterval(() => {
                 if (isPlaying) {
-                    progress += 0.18; // ~9 دقیقه
+                    progress += 0.18;
                     if (progress > 100) {
                         progress = 0;
                         isPlaying = false;
