@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>مفضال | پخش آنلاین سرود و آهنگ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- فونت‌های جدید: استعداد و اردیبهشت -->
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,10 +16,9 @@
         }
 
         body {
-            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Estedad', 'Ardekan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #f1f5e9;
-            padding-bottom: 6rem;
-            /* فضای خالی برای پلیر ثابت */
+            padding-bottom: 2rem;
             background: linear-gradient(145deg, #1a3a2a 0%, #0e2a1c 100%);
             background-attachment: fixed;
             animation: gradientMove 15s ease infinite;
@@ -58,7 +59,6 @@
             border-radius: 10px;
         }
 
-        /* ناوبری چسبنده با تغییر رنگ */
         .navbar {
             background: rgba(31, 58, 44, 0.85);
             backdrop-filter: blur(12px);
@@ -88,6 +88,7 @@
         .site-name {
             font-size: 1.8rem;
             font-weight: 800;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
             background: linear-gradient(135deg, #d9f0db, var(--pistachio), var(--gold));
             background-clip: text;
             -webkit-background-clip: text;
@@ -134,6 +135,7 @@
             align-items: center;
             gap: 6px;
             position: relative;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
         }
         .menu a::after {
             content: '';
@@ -191,6 +193,7 @@
             font-size: 1.8rem;
             color: #f4fded;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            font-family: 'Estedad', 'Ardekan', sans-serif;
         }
         .hero h2 i {
             color: var(--gold);
@@ -199,6 +202,7 @@
             color: #cbdfcf;
             font-size: 1.05rem;
             margin-top: 0.5rem;
+            font-family: 'Ardekan', 'Estedad', sans-serif;
         }
 
         .cards-grid {
@@ -304,6 +308,7 @@
             color: #fbf5cf;
             font-size: 1.2rem;
             font-weight: 800;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
         }
 
         .popular-badge {
@@ -324,6 +329,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(245, 200, 66, 0.3);
+            font-family: 'Estedad', 'Ardekan', sans-serif;
         }
         .popular-badge:hover {
             transform: scale(1.03) translateY(-2px);
@@ -361,6 +367,7 @@
             align-items: center;
             gap: 6px;
             font-weight: 500;
+            font-family: 'Ardekan', 'Estedad', sans-serif;
         }
         .meta-label i {
             color: var(--gold);
@@ -371,6 +378,7 @@
             text-align: left;
             flex: 1;
             direction: ltr;
+            font-family: 'Ardekan', 'Estedad', sans-serif;
         }
 
         .category-tag {
@@ -392,6 +400,7 @@
             text-align: center;
             backdrop-filter: blur(4px);
             border: 1px solid rgba(163, 201, 168, 0.2);
+            font-family: 'Ardekan', 'Estedad', sans-serif;
         }
 
         .more-details-btn {
@@ -402,7 +411,7 @@
             border-radius: 40px;
             font-size: 0.8rem;
             font-weight: bold;
-            font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -429,150 +438,100 @@
             line-height: 1.8;
             text-align: justify;
             border: 1px solid rgba(163, 201, 168, 0.2);
+            font-family: 'Ardekan', 'Estedad', sans-serif;
         }
 
-        /* پلیر ثابت پایین صفحه */
-        .fixed-player {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(20, 40, 30, 0.95);
-            backdrop-filter: blur(15px);
-            border-top: 2px solid var(--gold);
-            padding: 10px 20px;
-            z-index: 999;
+        /* ====== پلیر اختصاصی هر کارت ====== */
+        .player-simple {
+            background: rgba(30, 53, 39, 0.9);
+            backdrop-filter: blur(6px);
+            border-top: 1px solid rgba(163, 201, 168, 0.2);
+            padding: 10px;
+            border-radius: 0 0 28px 28px;
+        }
+
+        .player-controls-card {
             display: flex;
             align-items: center;
+            gap: 10px;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 12px;
-            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
-            animation: slideUp 0.5s ease;
         }
 
-        @keyframes slideUp {
-            from {
-                transform: translateY(100%);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        .fixed-player .player-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            min-width: 150px;
-        }
-
-        .fixed-player .player-info img {
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
-            object-fit: cover;
-            border: 2px solid var(--gold);
-        }
-
-        .fixed-player .player-info .track-name {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #f4fded;
-        }
-
-        .fixed-player .player-controls-center {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex: 2;
-            justify-content: center;
-            min-width: 200px;
-        }
-
-        .fixed-player .player-controls-center button {
-            background: none;
-            border: none;
-            color: #e0f2e5;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            padding: 5px 8px;
-            border-radius: 50%;
-        }
-
-        .fixed-player .player-controls-center button:hover {
-            color: var(--gold);
-            transform: scale(1.15);
-        }
-
-        .fixed-player .player-controls-center .play-btn-fixed {
-            width: 44px;
-            height: 44px;
+        .play-btn-card {
             background: var(--gold);
-            color: #1a3a2a;
+            border: none;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #1a3a2a;
             font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: all 0.2s;
             box-shadow: 0 4px 15px rgba(245, 200, 66, 0.3);
         }
 
-        .fixed-player .player-controls-center .play-btn-fixed:hover {
+        .play-btn-card:hover {
             transform: scale(1.1);
             box-shadow: 0 8px 30px rgba(245, 200, 66, 0.5);
         }
 
-        .fixed-player .progress-fixed {
+        .progress-wrapper-card {
             flex: 3;
-            min-width: 120px;
             display: flex;
-            align-items: center;
-            gap: 10px;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 120px;
         }
 
-        .fixed-player .progress-fixed .time {
-            font-size: 0.7rem;
-            color: #a0b8a8;
-            font-family: monospace;
-            min-width: 50px;
-        }
-
-        .fixed-player .progress-fixed .progress-bar-fixed {
-            flex: 1;
-            height: 4px;
+        .progress-bar-card {
+            width: 100%;
+            height: 5px;
             background: #4f6b58;
             border-radius: 10px;
             cursor: pointer;
-            position: relative;
         }
 
-        .fixed-player .progress-fixed .progress-bar-fixed .progress-fill-fixed {
-            height: 100%;
+        .progress-fill-card {
             width: 0%;
+            height: 100%;
             background: var(--gold);
             border-radius: 10px;
-            transition: width 0.1s linear;
         }
 
-        .fixed-player .download-btn-fixed {
+        .time-info-card {
+            font-size: 0.6rem;
+            font-family: monospace;
+            background: rgba(15, 38, 27, 0.7);
+            padding: 2px 6px;
+            border-radius: 30px;
+            color: #cfe6d4;
+            display: inline-block;
+            direction: ltr;
+        }
+
+        .download-btn-card {
             background: var(--gold);
             border: none;
             padding: 6px 14px;
             border-radius: 50px;
             color: #1a3a2a;
             font-weight: bold;
-            font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
-            font-size: 0.75rem;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+            font-size: 0.7rem;
             display: inline-flex;
             align-items: center;
             gap: 6px;
             cursor: pointer;
+            flex-shrink: 0;
             transition: 0.2s;
         }
 
-        .fixed-player .download-btn-fixed:hover {
+        .download-btn-card:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(245, 200, 66, 0.4);
         }
@@ -595,6 +554,7 @@
             border-bottom: 2px solid var(--gold);
             display: inline-block;
             padding-bottom: 0.5rem;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
         }
         .group-info {
             display: flex;
@@ -612,6 +572,7 @@
             border-radius: 50px;
             flex-wrap: wrap;
             transition: 0.3s;
+            font-family: 'Ardekan', 'Estedad', sans-serif;
         }
         .group-item:hover {
             background: rgba(31, 63, 44, 0.9);
@@ -647,6 +608,7 @@
             border-radius: 50px;
             color: #1a3a2a;
             text-align: center;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
         }
         .popular-title i {
             font-size: 1.3rem;
@@ -677,7 +639,7 @@
             padding: 0.5rem 1rem;
             border-radius: 50px;
             color: #e0f2e5;
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
@@ -711,9 +673,10 @@
             text-align: center;
             border-top: 1px solid rgba(163, 201, 168, 0.2);
             font-size: 0.85rem;
+            font-family: 'Ardekan', 'Estedad', sans-serif;
         }
 
-        /* لایت‌باکس ساده */
+        /* لایت‌باکس */
         .lightbox-overlay {
             display: none;
             position: fixed;
@@ -769,22 +732,6 @@
             .menu {
                 justify-content: center;
             }
-            .fixed-player {
-                flex-direction: column;
-                padding: 10px;
-                gap: 8px;
-            }
-            .fixed-player .player-controls-center {
-                width: 100%;
-                flex-wrap: wrap;
-            }
-            .fixed-player .progress-fixed {
-                width: 100%;
-            }
-            .fixed-player .player-info {
-                width: 100%;
-                justify-content: center;
-            }
             .group-box h2 {
                 font-size: 1.5rem;
             }
@@ -817,6 +764,30 @@
         .active-section {
             display: block;
         }
+
+        /* استایل پیام خالی بودن گالری */
+        .gallery-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: rgba(31, 63, 44, 0.4);
+            border-radius: 2rem;
+            border: 2px dashed var(--gold);
+            grid-column: 1 / -1;
+        }
+        .gallery-empty i {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .gallery-empty h3 {
+            font-size: 1.5rem;
+            color: #f4fded;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+        }
+        .gallery-empty p {
+            color: #cbdfcf;
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -846,8 +817,6 @@
 
     <!-- ====== محتوا ====== -->
     <main class="container" id="mainContent">
-
-        <!-- صفحه خانه -->
         <div id="homePage" class="page-section">
             <div class="hero">
                 <h2><i class="fas fa-music"></i> به پخش‌کننده رسمی mefzal.ir خوش آمدید</h2>
@@ -860,7 +829,6 @@
             <div class="cards-grid" id="homeCardsGrid"></div>
         </div>
 
-        <!-- صفحه سرودها -->
         <div id="sorudhaPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-headphones"></i> سرودهای اختصاصی مفضال</h2>
@@ -877,7 +845,6 @@
             <div class="cards-grid" id="sorudhaGrid"></div>
         </div>
 
-        <!-- صفحه پرطرفدار -->
         <div id="popularPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-fire"></i> پرطرفدارترین سرودها</h2>
@@ -886,16 +853,21 @@
             <div class="cards-grid" id="popularGrid"></div>
         </div>
 
-        <!-- صفحه گزارش تصویری -->
+        <!-- ====== صفحه گالری خالی ====== -->
         <div id="galleryPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-images"></i> گزارش تصویری</h2>
-                <p>گلچینی از تصاویر گروه سرود مفضال در مراسم و رویدادهای مختلف</p>
+                <p>به زودی تصاویر گروه سرود مفضال در این بخش قرار می‌گیرد</p>
             </div>
-            <div class="cards-grid" id="galleryGrid"></div>
+            <div class="cards-grid" id="galleryGrid">
+                <div class="gallery-empty">
+                    <i class="fas fa-camera"></i>
+                    <h3>هنوز تصویری وجود ندارد</h3>
+                    <p>به زودی گزارش تصویری از فعالیت‌های گروه مفضال اضافه خواهد شد</p>
+                </div>
+            </div>
         </div>
 
-        <!-- صفحه هماهنگی -->
         <div id="hamahangiPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-handshake"></i> هماهنگی و ارتباط با ما</h2>
@@ -903,16 +875,15 @@
             </div>
             <div style="background:rgba(44,74,53,0.8); backdrop-filter:blur(8px); border-radius:2rem; padding:2rem; text-align:center; border:1px solid rgba(163,201,168,0.2);">
                 <i class="fas fa-phone-alt" style="font-size:3rem; color:var(--gold);"></i>
-                <h3 style="margin:1rem 0; color:#f4fded;">شماره تماس هماهنگی:</h3>
+                <h3 style="margin:1rem 0; color:#f4fded; font-family: 'Estedad', 'Ardekan', sans-serif;">شماره تماس هماهنگی:</h3>
                 <p style="font-size:1.7rem; direction:ltr; font-weight:bold; color:var(--gold);">۰۹۹۶۵۹۵۵۸۵۶</p>
-                <p style="color:#cbdfcf;">ایمیل: hamahangi@mefzal.ir</p>
-                <div style="display:flex; justify-content:center; gap:1rem; margin-top:1rem; color:#cbdfcf;">
+                <p style="color:#cbdfcf; font-family: 'Ardekan', 'Estedad', sans-serif;">ایمیل: hamahangi@mefzal.ir</p>
+                <div style="display:flex; justify-content:center; gap:1rem; margin-top:1rem; color:#cbdfcf; font-family: 'Ardekan', 'Estedad', sans-serif;">
                     <i class="fab fa-instagram"></i> <span>mefzal_group_official</span>
                 </div>
             </div>
         </div>
 
-        <!-- صفحه گروه مفضال -->
         <div id="groupPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-users"></i> درباره گروه حرفه‌ای مفضال</h2>
@@ -930,28 +901,6 @@
         </div>
     </main>
 
-    <!-- ====== پلیر ثابت پایین صفحه ====== -->
-    <div class="fixed-player" id="fixedPlayer">
-        <div class="player-info">
-            <img id="fixedPlayerImg" src="" alt="کاور">
-            <span class="track-name" id="fixedPlayerTitle">هیچ آهنگی انتخاب نشده</span>
-        </div>
-        <div class="player-controls-center">
-            <button id="prevBtn"><i class="fas fa-step-backward"></i></button>
-            <button class="play-btn-fixed" id="fixedPlayBtn"><i class="fas fa-play"></i></button>
-            <button id="nextBtn"><i class="fas fa-step-forward"></i></button>
-        </div>
-        <div class="progress-fixed">
-            <span class="time" id="currentTimeFixed">00:00</span>
-            <div class="progress-bar-fixed" id="progressBarFixed">
-                <div class="progress-fill-fixed" id="progressFillFixed"></div>
-            </div>
-            <span class="time" id="durationFixed">00:00</span>
-        </div>
-        <button class="download-btn-fixed" id="downloadFixedBtn"><i class="fas fa-download"></i> دانلود</button>
-    </div>
-
-    <!-- ====== فوتر ====== -->
     <footer>
         <div>© ۱۴۰۳ - تمامی حقوق برای mefzal.ir محفوظ است</div>
         <div style="margin-top: 6px; font-size: 0.7rem; color:var(--pistachio-light);">هماهنگی و پشتیبانی: 09965955856</div>
@@ -994,48 +943,112 @@
             </div>`
         }];
 
-        // ====== داده گالری (گزارش تصویری) ======
-        const galleryData = [{
-            id: 1,
-            title: "مراسم سالگرد شهدا",
-            imageLink: "https://picsum.photos/id/101/400/400",
-            description: "اجرای گروه سرود مفضال در مراسم سالگرد شهدای گمنام"
-        }, {
-            id: 2,
-            title: "همایش بزرگ دانشجویی",
-            imageLink: "https://picsum.photos/id/102/400/400",
-            description: "اجرای سرود 'رهبر شهید' در همایش دانشجویی استان"
-        }, {
-            id: 3,
-            title: "ضبط حرفه‌ای در استودیو",
-            imageLink: "https://picsum.photos/id/103/400/400",
-            description: "مراحل ضبط و میکس سرود جدید در استودیو مصباح"
-        }, {
-            id: 4,
-            title: "دیدار با خانواده شهدا",
-            imageLink: "https://picsum.photos/id/104/400/400",
-            description: "گروه مفضال در دیدار با خانواده معظم شهدا"
-        }, {
-            id: 5,
-            title: "اجرای زنده تلویزیونی",
-            imageLink: "https://picsum.photos/id/105/400/400",
-            description: "اجرای زنده سرود 'قــصــه ایــران!' در برنامه تلویزیونی"
-        }, {
-            id: 6,
-            title: "کارگاه آموزشی سرود",
-            imageLink: "https://picsum.photos/id/106/400/400",
-            description: "کارگاه آموزشی و هماهنگی گروه مفضال با اساتید"
-        }];
-
         // ====== توابع ======
         function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[
                 m
             ]); }
 
-        function createSimplePlayer(audioSrc, trackTitle) {
+        // ====== ساخت پلیر اختصاصی هر کارت ======
+        function createCardPlayer(audioSrc, trackTitle) {
             const container = document.createElement('div');
             container.className = 'player-simple';
-            // ... (بدون تغییر)
+
+            const controlsDiv = document.createElement('div');
+            controlsDiv.className = 'player-controls-card';
+
+            const playBtn = document.createElement('button');
+            playBtn.className = 'play-btn-card';
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+
+            const progressWrapper = document.createElement('div');
+            progressWrapper.className = 'progress-wrapper-card';
+            const progressBar = document.createElement('div');
+            progressBar.className = 'progress-bar-card';
+            const progressFill = document.createElement('div');
+            progressFill.className = 'progress-fill-card';
+            progressBar.appendChild(progressFill);
+            const timeSpan = document.createElement('div');
+            timeSpan.className = 'time-info-card';
+            timeSpan.innerText = '00:00 / 00:00';
+            progressWrapper.appendChild(progressBar);
+            progressWrapper.appendChild(timeSpan);
+
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'download-btn-card';
+            downloadBtn.innerHTML = '<i class="fas fa-download"></i> دانلود';
+
+            controlsDiv.appendChild(playBtn);
+            controlsDiv.appendChild(progressWrapper);
+            controlsDiv.appendChild(downloadBtn);
+            container.appendChild(controlsDiv);
+
+            const audio = new Audio(audioSrc);
+            audio.preload = 'metadata';
+            let isPlaying = false;
+
+            function formatTime(sec) {
+                if (isNaN(sec)) return '00:00';
+                const mins = Math.floor(sec / 60);
+                const s = Math.floor(sec % 60);
+                return `${mins.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            }
+
+            function updateUI() {
+                if (audio.duration && !isNaN(audio.duration)) {
+                    const percent = (audio.currentTime / audio.duration) * 100;
+                    progressFill.style.width = percent + '%';
+                    timeSpan.innerText = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+                } else {
+                    timeSpan.innerText = `00:00 / 00:00`;
+                }
+            }
+
+            audio.addEventListener('timeupdate', updateUI);
+            audio.addEventListener('loadedmetadata', () => {
+                timeSpan.innerText = `${formatTime(0)} / ${formatTime(audio.duration)}`;
+            });
+            audio.addEventListener('ended', () => {
+                isPlaying = false;
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                progressFill.style.width = '0%';
+            });
+
+            playBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (isPlaying) {
+                    audio.pause();
+                } else {
+                    audio.play().catch(() => {});
+                }
+                isPlaying = !isPlaying;
+                playBtn.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
+            });
+
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                if (audio.duration) {
+                    audio.currentTime = percent * audio.duration;
+                }
+            });
+
+            downloadBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                fetch(audioSrc)
+                    .then(res => res.blob())
+                    .then(blob => {
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `${trackTitle}.mp3`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    })
+                    .catch(() => window.open(audioSrc, '_blank'));
+            });
+
             return container;
         }
 
@@ -1046,7 +1059,8 @@
 
             let tagHtml = '';
             if (showTag && song.tag) {
-                tagHtml = `<div class="popular-badge" data-tag="${escapeHtml(song.tag)}"><i class="fas fa-fire"></i> ${escapeHtml(song.tag)}</div>`;
+                tagHtml =
+                    `<div class="popular-badge" data-tag="${escapeHtml(song.tag)}"><i class="fas fa-fire"></i> ${escapeHtml(song.tag)}</div>`;
             }
 
             let categoryIcon = 'fa-tag';
@@ -1102,55 +1116,12 @@
                 </div>
             `;
 
-            // دکمه توضیحات بیشتر
+            const player = createCardPlayer(song.audioLink, song.title);
+            card.appendChild(player);
+
             setTimeout(() => {
                 const btn = card.querySelector('.more-details-btn');
                 const content = card.querySelector(`#more-details-${song.id}`);
-                if (btn && content) {
-                    btn.addEventListener('click', () => {
-                        if (content.style.display === 'none' || !content.style.display) {
-                            content.style.display = 'block';
-                            btn.innerHTML = '<i class="fas fa-chevron-up"></i> بستن';
-                        } else {
-                            content.style.display = 'none';
-                            btn.innerHTML = '<i class="fas fa-ellipsis-h"></i> توضیحات بیشتر';
-                        }
-                    });
-                    content.style.display = 'none';
-                }
-            }, 0);
-
-            return card;
-        }
-
-        // ====== ساخت کارت گالری ======
-        function buildGalleryCard(item) {
-            const card = document.createElement('div');
-            card.className = 'song-card';
-
-            let moreDetailsHtml = `
-                <div style="text-align: center;">
-                    <button class="more-details-btn" data-id="gallery-${item.id}"><i class="fas fa-ellipsis-h"></i> توضیحات بیشتر</button>
-                    <div id="gallery-more-${item.id}" class="more-details-content">
-                        ${escapeHtml(item.description)}
-                    </div>
-                </div>
-            `;
-
-            card.innerHTML = `
-                <div class="img-square" onclick="openLightbox('${item.imageLink}')">
-                    <img src="${item.imageLink}" alt="${item.title}" loading="lazy" onerror="this.src='https://picsum.photos/id/101/400/400'">
-                    <div class="overlay-icon"><i class="fas fa-expand"></i></div>
-                </div>
-                <div class="song-details">
-                    <div class="song-title-box"><div class="song-title">${escapeHtml(item.title)}</div></div>
-                    ${moreDetailsHtml}
-                </div>
-            `;
-
-            setTimeout(() => {
-                const btn = card.querySelector('.more-details-btn');
-                const content = card.querySelector(`#gallery-more-${item.id}`);
                 if (btn && content) {
                     btn.addEventListener('click', () => {
                         if (content.style.display === 'none' || !content.style.display) {
@@ -1206,16 +1177,6 @@
             container.innerHTML = '';
             popularSongs.forEach(song => {
                 const card = buildSongCard(song, true);
-                container.appendChild(card);
-            });
-        }
-
-        function renderGallery() {
-            const container = document.getElementById('galleryGrid');
-            if (!container) return;
-            container.innerHTML = '';
-            galleryData.forEach(item => {
-                const card = buildGalleryCard(item);
                 container.appendChild(card);
             });
         }
@@ -1297,118 +1258,11 @@
             }
         });
 
-        // ====== پلیر ثابت ======
-        let currentSongIndex = 0;
-        let fixedAudio = new Audio();
-        let isFixedPlaying = false;
-
-        const fixedPlayBtn = document.getElementById('fixedPlayBtn');
-        const fixedPlayerImg = document.getElementById('fixedPlayerImg');
-        const fixedPlayerTitle = document.getElementById('fixedPlayerTitle');
-        const progressFillFixed = document.getElementById('progressFillFixed');
-        const currentTimeFixed = document.getElementById('currentTimeFixed');
-        const durationFixed = document.getElementById('durationFixed');
-        const progressBarFixed = document.getElementById('progressBarFixed');
-        const downloadFixedBtn = document.getElementById('downloadFixedBtn');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        function loadSong(index) {
-            const song = songsData[index];
-            if (!song) return;
-            fixedAudio.src = song.audioLink;
-            fixedPlayerImg.src = song.imageLink;
-            fixedPlayerTitle.textContent = song.title;
-            fixedAudio.load();
-            fixedAudio.play().catch(() => {});
-            isFixedPlaying = true;
-            fixedPlayBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            updateFixedUI();
-        }
-
-        function updateFixedUI() {
-            fixedAudio.addEventListener('timeupdate', function() {
-                if (fixedAudio.duration) {
-                    const percent = (fixedAudio.currentTime / fixedAudio.duration) * 100;
-                    progressFillFixed.style.width = percent + '%';
-                    currentTimeFixed.textContent = formatTime(fixedAudio.currentTime);
-                    durationFixed.textContent = formatTime(fixedAudio.duration);
-                }
-            });
-        }
-
-        function formatTime(sec) {
-            if (isNaN(sec)) return '00:00';
-            const mins = Math.floor(sec / 60);
-            const s = Math.floor(sec % 60);
-            return `${mins.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-        }
-
-        fixedPlayBtn.addEventListener('click', function() {
-            if (isFixedPlaying) {
-                fixedAudio.pause();
-                fixedPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
-            } else {
-                if (!fixedAudio.src) {
-                    loadSong(currentSongIndex);
-                } else {
-                    fixedAudio.play().catch(() => {});
-                    fixedPlayBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                }
-            }
-            isFixedPlaying = !isFixedPlaying;
-        });
-
-        prevBtn.addEventListener('click', function() {
-            if (songsData.length === 0) return;
-            currentSongIndex = (currentSongIndex - 1 + songsData.length) % songsData.length;
-            loadSong(currentSongIndex);
-        });
-
-        nextBtn.addEventListener('click', function() {
-            if (songsData.length === 0) return;
-            currentSongIndex = (currentSongIndex + 1) % songsData.length;
-            loadSong(currentSongIndex);
-        });
-
-        fixedAudio.addEventListener('ended', function() {
-            nextBtn.click();
-        });
-
-        progressBarFixed.addEventListener('click', function(e) {
-            const rect = progressBarFixed.getBoundingClientRect();
-            const percent = (e.clientX - rect.left) / rect.width;
-            if (fixedAudio.duration) {
-                fixedAudio.currentTime = percent * fixedAudio.duration;
-            }
-        });
-
-        downloadFixedBtn.addEventListener('click', function() {
-            const song = songsData[currentSongIndex];
-            if (!song) return;
-            fetch(song.audioLink)
-                .then(res => res.blob())
-                .then(blob => {
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `${song.title}.mp3`;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                })
-                .catch(() => {
-                    window.open(song.audioLink, '_blank');
-                });
-        });
-
         // ====== راه‌اندازی ======
         function initCards() {
             renderCards('homeCardsGrid', songsData);
             renderPopularHome();
             renderPopularCards();
-            renderGallery();
             renderFilteredCards('sorudhaGrid', 'all');
         }
 
@@ -1431,12 +1285,7 @@
             bindMenuEvents();
             setupFilters();
             switchPage('homePage');
-            // بارگذاری اولین آهنگ برای پلیر ثابت
-            if (songsData.length > 0) {
-                currentSongIndex = 0;
-                loadSong(currentSongIndex);
-            }
         });
     </script>
 </body>
-        </html>
+    </html>
