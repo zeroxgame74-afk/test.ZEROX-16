@@ -5,323 +5,891 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MH Assistant | v8.1.0</title>
 
-    <!-- فونت‌های جدید: اردیبهشت و استعداد -->
-    <link href="https://fonts.googleapis.com/css2?family=Ardibehesht:wght@400;700&family=Estedad:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- فونت‌های جدید: استعداد و اردکان -->
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ardakan:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
+        /* ===== ریست کلی ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { height: 100%; width: 100%; overflow: hidden; background: #F1F1EF; }
-        body { display: flex; align-items: center; justify-content: center; font-family: 'Estedad', sans-serif; padding: 8px; }
+        html, body { height: 100%; width: 100%; overflow: hidden; background: #F1F1EF; color: #010101; }
 
-        /* ===== صفحه اول (لندینگ) ===== */
+        /* ===== فونت‌ها ===== */
+        .font-estedad { font-family: 'Estedad', sans-serif; }
+        .font-ardakan { font-family: 'Ardakan', sans-serif; }
+
+        /* ===== صفحه لندینگ ===== */
         .landing-page {
-            width: 100%; max-width: 420px; height: 100%; max-height: 750px;
-            background: #F1F1EF; border-radius: 24px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 30px 20px; text-align: center;
-            box-shadow: 0 20px 60px -12px rgba(1,1,1,0.15);
-            transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
-            position: relative;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #F1F1EF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            padding: 20px;
         }
-        .landing-page.hidden {
-            opacity: 0; transform: scale(0.92); pointer-events: none;
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+        .landing-page.hide {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
         }
-        .landing-page .app-icon {
-            width: 120px; height: 120px; border-radius: 28px;
-            background: #010101; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 20px; box-shadow: 0 12px 40px rgba(1,1,1,0.15);
+
+        /* ===== آواتار ===== */
+        .landing-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #f5b042, #d48f2b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 900;
+            color: #010101;
+            margin-bottom: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            animation: floatAvatar 4s ease-in-out infinite;
+            border: 4px solid rgba(1,1,1,0.06);
             overflow: hidden;
         }
-        .landing-page .app-icon img {
-            width: 100%; height: 100%; object-fit: cover; border-radius: 28px;
+        .landing-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
         }
-        .landing-page .app-name {
-            font-family: 'Ardibehesht', sans-serif;
-            font-size: 1.8rem; font-weight: 700; color: #010101;
-            margin-bottom: 6px; letter-spacing: 1px;
+        @keyframes floatAvatar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
-        .landing-page .app-name span {
-            color: #ABABAB;
-        }
-        .landing-page .app-desc {
+
+        /* ===== توضیحات AI (با فونت استعداد) ===== */
+        .landing-desc {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.9rem; font-weight: 400; color: #ABABAB;
-            margin-bottom: 4px; line-height: 2;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #010101;
+            opacity: 0.7;
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 2.2;
+            max-width: 320px;
         }
-        .landing-page .app-desc strong {
-            color: #010101; font-weight: 700;
+        .landing-desc span {
+            font-weight: 700;
+            color: #010101;
+            opacity: 1;
         }
-        .landing-page .welcome-btn {
+
+        /* ===== عنوان خوش‌آمدید (با فونت اردکان) ===== */
+        .landing-title {
+            font-family: 'Ardakan', sans-serif;
+            font-weight: 900;
+            font-size: 2.4rem;
+            color: #010101;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+        .landing-title .highlight {
+            background: linear-gradient(145deg, #f5b042, #d48f2b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== دکمه ورود به چت ===== */
+        .landing-btn {
+            background: #010101;
+            color: #F1F1EF;
+            border: none;
+            padding: 14px 48px;
+            border-radius: 60px;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(1,1,1,0.12);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .landing-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(1,1,1,0.18);
+        }
+        .landing-btn:active {
+            transform: scale(0.95);
+        }
+        .landing-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* ===== نسخه پایین ===== */
+        .landing-version {
+            font-family: 'Estedad', sans-serif;
+            font-weight: 400;
+            font-size: 0.6rem;
+            color: #010101;
+            opacity: 0.3;
             margin-top: 30px;
-            background: #010101; color: #F1F1EF;
-            border: none; padding: 14px 44px; border-radius: 60px;
-            font-family: 'Estedad', sans-serif; font-size: 1rem; font-weight: 700;
-            cursor: pointer; transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(1,1,1,0.12);
-            display: inline-flex; align-items: center; gap: 10px;
-        }
-        .landing-page .welcome-btn:hover {
-            transform: scale(1.04); box-shadow: 0 12px 32px rgba(1,1,1,0.18);
-        }
-        .landing-page .welcome-btn:active {
-            transform: scale(0.94);
-        }
-        .landing-page .welcome-btn i {
-            font-size: 1.1rem; color: #ABABAB;
-        }
-        .landing-page .footer-text {
-            margin-top: 20px;
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.55rem; color: #ABABAB;
             letter-spacing: 0.5px;
         }
 
-        /* ===== چت‌بات (مخفی در ابتدا) ===== */
+        /* ============================================================
+           چت کانتینر (مخفی در ابتدا)
+           ============================================================ */
         .chat-container {
-            width: 100%; max-width: 420px; height: 100%; max-height: 750px;
-            background: #F1F1EF; border-radius: 24px;
-            display: none; flex-direction: column; padding: 12px 14px 12px;
-            box-shadow: 0 20px 60px -12px rgba(1,1,1,0.12);
+            width: 100%;
+            max-width: 420px;
+            height: 100%;
+            max-height: 750px;
+            background: #F1F1EF;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            padding: 12px 14px 12px;
+            box-shadow: 0 20px 60px -12px rgba(0,0,0,0.06);
             overflow: hidden;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            pointer-events: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
+            margin: 0;
         }
         .chat-container.show {
-            display: flex;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: all;
         }
-        @media (max-width:480px){ .landing-page, .chat-container { max-height:100vh; border-radius:16px; padding:20px 14px; } }
+        @media (max-width:480px) {
+            .chat-container {
+                max-height: 100vh;
+                border-radius: 16px;
+                padding: 10px 10px 10px;
+                width: 100%;
+            }
+        }
 
+        /* ===== هدر چت ===== */
         .chat-header {
-            display: flex; align-items: center; gap: 10px; padding-bottom: 10px;
-            border-bottom: 1px solid rgba(1,1,1,0.06); margin-bottom: 8px; flex-shrink:0;
-        }
-        .chat-avatar {
-            width:44px; height:44px; background: #010101; border-radius:14px;
-            display:flex; align-items:center; justify-content:center;
-            font-family:'Ardibehesht',sans-serif; font-weight:900; font-size:1.3rem;
-            color:#F1F1EF; flex-shrink:0; overflow:hidden;
-        }
-        .chat-avatar img { width:100%; height:100%; object-fit:cover; }
-        .chat-title {
-            font-family:'Estedad',sans-serif; font-weight:800; font-size:1.1rem;
-            color:#010101; flex:1;
-        }
-        .chat-title .highlight { color:#ABABAB; }
-        .chat-title small {
-            display:block; font-weight:400; font-size:0.55rem; color:#ABABAB;
-        }
-        .chat-status {
-            background:rgba(1,1,1,0.04); border:1px solid rgba(1,1,1,0.06);
-            border-radius:40px; padding:2px 10px; font-size:0.5rem; color:#010101;
-            font-family:'Estedad',sans-serif; font-weight:700; display:flex; align-items:center; gap:4px; flex-shrink:0;
-        }
-        .chat-status i { font-size:0.4rem; color:#4caf50; animation:pulseDot 1.5s ease-in-out infinite; }
-        @keyframes pulseDot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.2; transform:scale(0.6); } }
-
-        .messages {
-            flex:1; overflow-y:auto; margin-bottom:8px; display:flex; flex-direction:column;
-            gap:6px; padding:4px 2px; min-height:0; scroll-behavior:smooth;
-        }
-        .messages::-webkit-scrollbar { width:3px; }
-        .messages::-webkit-scrollbar-track { background:transparent; }
-        .messages::-webkit-scrollbar-thumb { background:rgba(1,1,1,0.1); border-radius:10px; }
-
-        .message { display:flex; gap:6px; align-items:flex-start; animation:msgIn 0.3s cubic-bezier(0.22,1,0.36,1); flex-shrink:0; }
-        .message.bot { flex-direction:row; }
-        .message.user { flex-direction:row-reverse; }
-        @keyframes msgIn { 0% { opacity:0; transform:translateY(8px); } 100% { opacity:1; transform:translateY(0); } }
-        .message .avatar {
-            width:28px; height:28px; border-radius:10px; display:flex; align-items:center; justify-content:center;
-            font-size:0.7rem; flex-shrink:0; background:rgba(1,1,1,0.04);
-            border:1px solid rgba(1,1,1,0.06); color:#ABABAB;
-            font-family:'Estedad',sans-serif; font-weight:400;
-        }
-        .message.bot .avatar { background:rgba(1,1,1,0.06); color:#010101; border-color:rgba(1,1,1,0.08); }
-        .message.user .avatar { background:rgba(1,1,1,0.06); color:#010101; }
-        .message .bubble {
-            max-width:85%; padding:6px 12px; border-radius:14px; font-size:0.8rem; line-height:1.9;
-            word-break:break-word; background:rgba(1,1,1,0.02); border:1px solid rgba(1,1,1,0.04);
-            color:#010101; font-family:'Estedad',sans-serif; font-weight:400;
-        }
-        .message.bot .bubble { background:rgba(1,1,1,0.03); border-color:rgba(1,1,1,0.06); border-top-right-radius:4px; }
-        .message.user .bubble { background:rgba(1,1,1,0.05); border-color:rgba(1,1,1,0.08); border-top-left-radius:4px; color:#010101; }
-        .message .bubble strong { color:#010101; font-weight:700; }
-        .message .bubble i { color:#ABABAB; margin-left:2px; }
-
-        /* سایت‌ها و طراحی‌ها با رنگ‌های جدید */
-        .site-card {
-            background:rgba(1,1,1,0.02); border:1px solid rgba(1,1,1,0.06);
-            border-radius:10px; padding:6px 8px; margin:4px 0;
-            display:flex; align-items:center; gap:8px; flex-wrap:wrap;
-        }
-        .site-card .site-img { width:34px; height:34px; border-radius:6px; object-fit:cover; background:#F1F1EF; flex-shrink:0; }
-        .site-card .site-info { flex:1; min-width:50px; }
-        .site-card .site-info .site-name { font-family:'Estedad',sans-serif; font-weight:700; color:#010101; font-size:0.75rem; }
-        .site-card .site-info .site-desc { font-size:0.6rem; color:#ABABAB; font-weight:400; font-family:'Estedad',sans-serif; }
-        .site-card .site-link { color:#010101; text-decoration:none; font-size:0.55rem; font-weight:600; padding:2px 10px; border:1px solid rgba(1,1,1,0.1); border-radius:40px; transition:0.3s; display:inline-flex; align-items:center; gap:3px; flex-shrink:0; font-family:'Estedad',sans-serif; }
-        .site-card .site-link:hover { background:rgba(1,1,1,0.04); border-color:#010101; }
-
-        .design-mini {
-            background:rgba(1,1,1,0.02); border:1px solid rgba(1,1,1,0.04);
-            border-radius:8px; padding:4px 8px; margin:3px 0;
-            display:flex; align-items:center; gap:6px; flex-wrap:wrap;
-        }
-        .design-mini .d-icon { font-size:0.9rem; color:#010101; }
-        .design-mini .d-name { font-family:'Estedad',sans-serif; font-weight:700; color:#010101; font-size:0.7rem; }
-        .design-mini .d-desc { font-size:0.55rem; color:#ABABAB; font-weight:400; font-family:'Estedad',sans-serif; }
-        .design-mini .d-link { color:#010101; text-decoration:none; font-size:0.55rem; font-weight:600; padding:2px 8px; border:1px solid rgba(1,1,1,0.1); border-radius:40px; transition:0.3s; display:inline-flex; align-items:center; gap:3px; font-family:'Estedad',sans-serif; }
-        .design-mini .d-link:hover { background:rgba(1,1,1,0.04); border-color:#010101; }
-
-        .quick-replies {
-            display:flex; flex-wrap:wrap; gap:4px; margin-bottom:6px; flex-shrink:0;
-        }
-        .quick-replies button {
-            background:rgba(1,1,1,0.03); border:1px solid rgba(1,1,1,0.06);
-            color:#ABABAB; padding:3px 10px; border-radius:40px;
-            font-family:'Estedad',sans-serif; font-size:0.6rem; font-weight:600;
-            cursor:pointer; transition:0.3s; display:inline-flex; align-items:center; gap:4px; white-space:nowrap;
-        }
-        .quick-replies button i { color:#010101; font-size:0.55rem; }
-        .quick-replies button:hover { background:rgba(1,1,1,0.06); border-color:rgba(1,1,1,0.15); color:#010101; transform:translateY(-2px); }
-
-        .input-area {
-            display: flex; align-items: center; gap: 6px;
-            background: rgba(1,1,1,0.03); backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(1,1,1,0.06); border-radius: 60px;
-            padding: 4px 4px 4px 18px; transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(1,1,1,0.04), inset 0 1px 0 rgba(255,255,255,0.6);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(1,1,1,0.06);
+            margin-bottom: 8px;
             flex-shrink: 0;
         }
-        .input-area:focus-within { border-color: rgba(1,1,1,0.15); background: rgba(1,1,1,0.05); }
-        .input-area input { flex:1; background:transparent; border:none; color:#010101; font-family:'Estedad',sans-serif; font-weight:400; font-size:0.85rem; padding:10px 0; outline:none; min-width:0; }
-        .input-area input::placeholder { color:rgba(1,1,1,0.3); font-weight:300; }
-        .input-area .btn-send {
-            background: #010101; border: none; color: #F1F1EF;
-            width: 42px; height: 42px; border-radius: 50%; font-size: 0.95rem;
-            cursor: pointer; transition: all 0.25s ease;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0; box-shadow: 0 4px 12px rgba(1,1,1,0.08);
+        .chat-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: linear-gradient(145deg, #f5b042, #d48f2b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Ardakan', sans-serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: #010101;
+            flex-shrink: 0;
+            animation: floatLogo 3s ease-in-out infinite;
+            overflow: hidden;
+        }
+        .chat-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .chat-title {
+            font-family: 'Ardakan', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #010101;
+            flex: 1;
+        }
+        .chat-title .highlight {
+            background: linear-gradient(145deg, #f5b042, #d48f2b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .chat-title small {
+            display: block;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 400;
+            font-size: 0.55rem;
+            color: rgba(1,1,1,0.4);
+            -webkit-text-fill-color: rgba(1,1,1,0.4);
+        }
+        .chat-status {
+            background: rgba(1,1,1,0.04);
+            border: 1px solid rgba(1,1,1,0.06);
+            border-radius: 40px;
+            padding: 2px 10px;
+            font-size: 0.5rem;
+            color: #010101;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-shrink: 0;
+            opacity: 0.6;
+        }
+        .chat-status i {
+            font-size: 0.4rem;
+            color: #4caf50;
+            animation: pulseDot 1.5s ease-in-out infinite;
+        }
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.2; transform: scale(0.6); }
+        }
+
+        /* ===== پیام‌ها ===== */
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 4px 2px;
+            min-height: 0;
+            scroll-behavior: smooth;
+        }
+        .messages::-webkit-scrollbar { width: 3px; }
+        .messages::-webkit-scrollbar-track { background: transparent; }
+        .messages::-webkit-scrollbar-thumb { background: rgba(1,1,1,0.1); border-radius: 10px; }
+
+        .message {
+            display: flex;
+            gap: 6px;
+            align-items: flex-start;
+            animation: msgIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            flex-shrink: 0;
+        }
+        .message.bot { flex-direction: row; }
+        .message.user { flex-direction: row-reverse; }
+        @keyframes msgIn {
+            0% { opacity: 0; transform: translateY(8px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .message .avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            background: rgba(1,1,1,0.03);
+            border: 1px solid rgba(1,1,1,0.04);
+            color: rgba(1,1,1,0.4);
             font-family: 'Estedad', sans-serif;
         }
-        .input-area .btn-send:hover { transform: scale(1.06) translateY(-2px); box-shadow: 0 8px 24px rgba(1,1,1,0.12); }
+        .message.bot .avatar {
+            background: rgba(245,176,66,0.12);
+            color: #f5b042;
+            border-color: rgba(245,176,66,0.1);
+        }
+        .message.user .avatar {
+            background: rgba(1,1,1,0.04);
+            color: #010101;
+        }
+        .message .bubble {
+            max-width: 85%;
+            padding: 6px 12px;
+            border-radius: 14px;
+            font-size: 0.8rem;
+            line-height: 1.9;
+            word-break: break-word;
+            background: rgba(1,1,1,0.02);
+            border: 1px solid rgba(1,1,1,0.04);
+            color: #010101;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 400;
+        }
+        .message.bot .bubble {
+            background: rgba(255,215,100,0.04);
+            border-color: rgba(245,176,66,0.08);
+            border-top-right-radius: 4px;
+        }
+        .message.user .bubble {
+            background: rgba(245,176,66,0.06);
+            border-color: rgba(245,176,66,0.1);
+            border-top-left-radius: 4px;
+            color: #010101;
+        }
+        .message .bubble strong {
+            color: #f5b042;
+            font-weight: 700;
+        }
+        .message .bubble i {
+            color: #f5b042;
+            margin-left: 2px;
+        }
+
+        /* ===== کارت‌های سایت ===== */
+        .site-card {
+            background: rgba(1,1,1,0.02);
+            border: 1px solid rgba(1,1,1,0.04);
+            border-radius: 10px;
+            padding: 6px 8px;
+            margin: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .site-card .site-img {
+            width: 34px;
+            height: 34px;
+            border-radius: 6px;
+            object-fit: cover;
+            background: #F1F1EF;
+            flex-shrink: 0;
+        }
+        .site-card .site-info { flex: 1; min-width: 50px; }
+        .site-card .site-info .site-name {
+            font-family: 'Ardakan', sans-serif;
+            font-weight: 700;
+            color: #010101;
+            font-size: 0.75rem;
+        }
+        .site-card .site-info .site-desc {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.6rem;
+            color: rgba(1,1,1,0.5);
+            font-weight: 400;
+        }
+        .site-card .site-link {
+            color: #f5b042;
+            text-decoration: none;
+            font-size: 0.55rem;
+            font-weight: 600;
+            padding: 2px 10px;
+            border: 1px solid rgba(245,176,66,0.15);
+            border-radius: 40px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            flex-shrink: 0;
+            font-family: 'Estedad', sans-serif;
+        }
+        .site-card .site-link:hover {
+            background: rgba(245,176,66,0.08);
+            border-color: #f5b042;
+        }
+
+        /* ===== کارت‌های طراحی ===== */
+        .design-mini {
+            background: rgba(1,1,1,0.02);
+            border: 1px solid rgba(1,1,1,0.04);
+            border-radius: 8px;
+            padding: 4px 8px;
+            margin: 3px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .design-mini .d-icon { font-size: 0.9rem; color: #f5b042; }
+        .design-mini .d-name {
+            font-family: 'Ardakan', sans-serif;
+            font-weight: 700;
+            color: #010101;
+            font-size: 0.7rem;
+        }
+        .design-mini .d-desc {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.55rem;
+            color: rgba(1,1,1,0.5);
+            font-weight: 400;
+        }
+        .design-mini .d-link {
+            color: #f5b042;
+            text-decoration: none;
+            font-size: 0.55rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border: 1px solid rgba(245,176,66,0.15);
+            border-radius: 40px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-family: 'Estedad', sans-serif;
+        }
+        .design-mini .d-link:hover {
+            background: rgba(245,176,66,0.08);
+            border-color: #f5b042;
+        }
+
+        /* ===== دکمه‌های سریع ===== */
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 6px;
+            flex-shrink: 0;
+        }
+        .quick-replies button {
+            background: rgba(1,1,1,0.02);
+            border: 1px solid rgba(1,1,1,0.04);
+            color: rgba(1,1,1,0.6);
+            padding: 3px 10px;
+            border-radius: 40px;
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+        .quick-replies button i { color: #f5b042; font-size: 0.55rem; }
+        .quick-replies button:hover {
+            background: rgba(245,176,66,0.08);
+            border-color: rgba(245,176,66,0.2);
+            color: #010101;
+            transform: translateY(-2px);
+        }
+
+        /* ===== نوار ورودی ===== */
+        .input-area {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(1,1,1,0.02);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(1,1,1,0.06);
+            border-radius: 60px;
+            padding: 4px 4px 4px 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02), inset 0 1px 0 rgba(255,255,255,0.04);
+            flex-shrink: 0;
+        }
+        .input-area:focus-within {
+            border-color: rgba(245,176,66,0.3);
+            background: rgba(1,1,1,0.03);
+            box-shadow: 0 4px 30px rgba(245,176,66,0.04), inset 0 1px 0 rgba(255,255,255,0.04);
+        }
+        .input-area input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #010101;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            padding: 10px 0;
+            outline: none;
+            min-width: 0;
+        }
+        .input-area input::placeholder {
+            color: rgba(1,1,1,0.25);
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+        .input-area .btn-send {
+            background: linear-gradient(145deg, #f5b042, #d48f2b);
+            border: none;
+            color: #010101;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(245,176,66,0.15);
+            font-family: 'Estedad', sans-serif;
+        }
+        .input-area .btn-send:hover {
+            transform: scale(1.06) translateY(-2px);
+            box-shadow: 0 8px 24px rgba(245,176,66,0.25);
+        }
         .input-area .btn-send:active { transform: scale(0.92); }
         .input-area .btn-search {
-            background: rgba(1,1,1,0.03); border: 1px solid rgba(1,1,1,0.06);
-            color: rgba(1,1,1,0.3); width: 38px; height: 38px; border-radius: 50%; font-size: 0.8rem;
-            cursor: pointer; transition: all 0.3s ease;
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            background: rgba(1,1,1,0.02);
+            border: 1px solid rgba(1,1,1,0.04);
+            color: rgba(1,1,1,0.3);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
-        .input-area .btn-search:hover { background:rgba(1,1,1,0.06); border-color:rgba(1,1,1,0.12); color:#010101; transform:scale(1.05); }
-        .input-area .btn-search:active { transform:scale(0.93); }
+        .input-area .btn-search:hover {
+            background: rgba(245,176,66,0.08);
+            border-color: rgba(245,176,66,0.2);
+            color: #f5b042;
+            transform: scale(1.05);
+        }
+        .input-area .btn-search:active { transform: scale(0.93); }
 
-        .typing-indicator { display:none; padding:3px 10px; background:rgba(1,1,1,0.03); border:1px solid rgba(1,1,1,0.04); border-radius:40px; color:#ABABAB; font-size:0.6rem; align-self:flex-start; margin-bottom:3px; flex-shrink:0; font-family:'Estedad',sans-serif; font-weight:400; }
-        .typing-indicator i { color:#010101; animation:pulseIcon 1s ease-in-out infinite; }
-        @keyframes pulseIcon { 0%,100% { transform:scale(1); } 50% { transform:scale(1.2); } }
-        .typing-indicator.show { display:inline-flex; align-items:center; gap:4px; }
+        /* ===== تایپینگ ===== */
+        .typing-indicator {
+            display: none;
+            padding: 3px 10px;
+            background: rgba(1,1,1,0.02);
+            border: 1px solid rgba(1,1,1,0.04);
+            border-radius: 40px;
+            color: rgba(1,1,1,0.5);
+            font-size: 0.6rem;
+            align-self: flex-start;
+            margin-bottom: 3px;
+            flex-shrink: 0;
+            font-family: 'Estedad', sans-serif;
+        }
+        .typing-indicator i {
+            color: #f5b042;
+            animation: pulseIcon 1s ease-in-out infinite;
+        }
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .typing-indicator.show {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
 
+        /* ===== باکس ترجمه ===== */
         .translation-box {
-            background:rgba(1,1,1,0.03); border:1px solid rgba(1,1,1,0.06);
-            border-radius:10px; padding:10px 12px; margin:6px 0;
-            color:#010101; font-size:0.8rem; font-weight:400; word-break:break-word; font-family:'Estedad',sans-serif;
+            background: rgba(245,176,66,0.04);
+            border: 1px solid rgba(245,176,66,0.1);
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin: 6px 0;
+            color: #010101;
+            font-size: 0.8rem;
+            font-weight: 400;
+            word-break: break-word;
+            font-family: 'Estedad', sans-serif;
         }
-        .translation-box .trans-text { direction:rtl; text-align:right; line-height:2; }
+        .translation-box .trans-text {
+            direction: rtl;
+            text-align: right;
+            line-height: 2;
+        }
         .copy-trans-btn {
-            background:rgba(1,1,1,0.04); border:1px solid rgba(1,1,1,0.08);
-            color:#010101; padding:2px 12px; border-radius:40px; font-size:0.55rem; font-weight:600;
-            cursor:pointer; transition:0.3s; font-family:'Estedad',sans-serif; margin-top:6px;
+            background: rgba(245,176,66,0.1);
+            border: 1px solid rgba(245,176,66,0.15);
+            color: #f5b042;
+            padding: 2px 12px;
+            border-radius: 40px;
+            font-size: 0.55rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Estedad', sans-serif;
+            margin-top: 6px;
         }
-        .copy-trans-btn:hover { background:rgba(1,1,1,0.06); }
+        .copy-trans-btn:hover { background: rgba(245,176,66,0.2); }
 
+        /* ===== کارت تصویر ===== */
         .image-card {
-            background:rgba(1,1,1,0.02); border:1px solid rgba(1,1,1,0.04);
-            border-radius:12px; padding:10px; margin:6px 0; text-align:center;
+            background: rgba(1,1,1,0.02);
+            border: 1px solid rgba(1,1,1,0.04);
+            border-radius: 12px;
+            padding: 10px;
+            margin: 6px 0;
+            text-align: center;
         }
-        .image-card img { width:100%; max-width:350px; border-radius:8px; border:1px solid rgba(1,1,1,0.04); background:#F1F1EF; min-height:100px; image-rendering:auto; }
-        .image-card .img-label { font-size:0.6rem; color:#ABABAB; margin-top:4px; font-family:'Estedad',sans-serif; }
-        .image-card .img-brand { font-size:0.55rem; color:#010101; margin-top:2px; font-weight:600; font-family:'Estedad',sans-serif; }
+        .image-card img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 8px;
+            border: 1px solid rgba(1,1,1,0.04);
+            background: #F1F1EF;
+            min-height: 100px;
+            image-rendering: auto;
+        }
+        .image-card .img-label {
+            font-size: 0.6rem;
+            color: rgba(1,1,1,0.5);
+            margin-top: 4px;
+            font-family: 'Estedad', sans-serif;
+        }
+        .image-card .img-brand {
+            font-size: 0.55rem;
+            color: #f5b042;
+            margin-top: 2px;
+            font-weight: 600;
+            font-family: 'Estedad', sans-serif;
+        }
 
-        .lang-options { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0; }
-        .lang-options button { flex:1; min-width:70px; padding:6px 10px; background:rgba(1,1,1,0.02); border:1px solid rgba(1,1,1,0.06); border-radius:8px; color:#ABABAB; font-family:'Estedad',sans-serif; font-size:0.7rem; font-weight:600; cursor:pointer; transition:0.3s; }
-        .lang-options button:hover { background:rgba(1,1,1,0.04); border-color:rgba(1,1,1,0.1); color:#010101; }
-        .lang-options button.active { background:rgba(1,1,1,0.06); border-color:#010101; color:#010101; }
-
-        .math-card { background:rgba(1,1,1,0.03); border:1px solid rgba(1,1,1,0.06); border-radius:10px; padding:12px 14px; margin-top:4px; }
-        .math-card .math-title { color:#010101; font-weight:700; font-size:0.9rem; margin-bottom:4px; }
-        .math-card .math-result { color:#010101; font-size:1.2rem; font-weight:700; margin-bottom:4px; }
-        .math-card .math-expression { color:#ABABAB; font-size:0.8rem; margin-bottom:6px; }
-        .math-card .math-ending { color:#010101; font-size:0.75rem; font-weight:600; }
-
+        /* ===== نوتیفیکیشن ===== */
         .notification {
-            position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
-            background:rgba(241,241,239,0.92); backdrop-filter:blur(24px);
-            border:1px solid rgba(1,1,1,0.06); border-radius:20px;
-            padding:16px 20px; max-width:400px; width:92%;
-            box-shadow:0 24px 64px -16px rgba(1,1,1,0.08);
-            z-index:9999; animation:slideUp 0.6s cubic-bezier(0.22,1,0.36,1);
-            transition:0.5s cubic-bezier(0.22,1,0.36,1);
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #F1F1EF;
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(1,1,1,0.06);
+            border-radius: 20px;
+            padding: 16px 20px;
+            max-width: 400px;
+            width: 92%;
+            box-shadow: 0 24px 64px -16px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+            z-index: 9999;
+            animation: slideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .notification.hide { opacity:0; transform:translateX(-50%) translateY(40px) scale(0.92); pointer-events:none; }
-        @keyframes slideUp { 0% { opacity:0; transform:translateX(-50%) translateY(40px) scale(0.92); } 100% { opacity:1; transform:translateX(-50%) translateY(0) scale(1); } }
-        .notification .notif-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
-        .notification .notif-header .icon-box { width:40px; height:40px; background:rgba(1,1,1,0.04); border-radius:12px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(1,1,1,0.04); }
-        .notification .notif-header .icon-box i { font-size:1.3rem; color:#010101; }
-        .notification .notif-header .title-group h3 { font-family:'Estedad',sans-serif; font-weight:700; font-size:0.95rem; color:#010101; margin:0; }
-        .notification .notif-header .title-group .version { font-size:0.55rem; color:#ABABAB; background:rgba(1,1,1,0.04); padding:0px 8px; border-radius:40px; display:inline-block; font-family:'Estedad',sans-serif; font-weight:400; }
-        .notification .notif-body { font-family:'Estedad',sans-serif; font-weight:400; font-size:0.75rem; color:#ABABAB; line-height:1.9; padding-right:4px; }
-        .notification .notif-body ul { list-style:none; padding-right:6px; margin:4px 0; }
-        .notification .notif-body ul li { padding-right:18px; position:relative; font-size:0.7rem; font-weight:400; }
-        .notification .notif-body ul li i { position:absolute; right:0; top:4px; color:#010101; font-size:0.6rem; }
-        .notification .notif-close { position:absolute; top:10px; left:14px; background:rgba(1,1,1,0.03); border:1px solid rgba(1,1,1,0.03); color:#ABABAB; width:28px; height:28px; border-radius:50%; font-size:0.8rem; cursor:pointer; transition:0.3s; display:flex; align-items:center; justify-content:center; font-family:'Estedad',sans-serif; font-weight:400; }
-        .notification .notif-close:hover { color:#010101; background:rgba(1,1,1,0.04); transform:rotate(90deg); }
+        .notification.hide {
+            opacity: 0;
+            transform: translateX(-50%) translateY(40px) scale(0.92);
+            pointer-events: none;
+        }
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateX(-50%) translateY(40px) scale(0.92); }
+            100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+        }
+        .notification .notif-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .notification .notif-header .icon-box {
+            width: 40px;
+            height: 40px;
+            background: rgba(245,176,66,0.12);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(245,176,66,0.08);
+        }
+        .notification .notif-header .icon-box i {
+            font-size: 1.3rem;
+            color: #f5b042;
+        }
+        .notification .notif-header .title-group h3 {
+            font-family: 'Ardakan', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #010101;
+            margin: 0;
+        }
+        .notification .notif-header .title-group .version {
+            font-size: 0.55rem;
+            color: #f5b042;
+            background: rgba(245,176,66,0.08);
+            padding: 0px 8px;
+            border-radius: 40px;
+            display: inline-block;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 400;
+        }
+        .notification .notif-body {
+            font-family: 'Estedad', sans-serif;
+            font-weight: 400;
+            font-size: 0.75rem;
+            color: rgba(1,1,1,0.6);
+            line-height: 1.9;
+            padding-right: 4px;
+        }
+        .notification .notif-body ul {
+            list-style: none;
+            padding-right: 6px;
+            margin: 4px 0;
+        }
+        .notification .notif-body ul li {
+            padding-right: 18px;
+            position: relative;
+            font-size: 0.7rem;
+            font-weight: 400;
+        }
+        .notification .notif-body ul li i {
+            position: absolute;
+            right: 0;
+            top: 4px;
+            color: #f5b042;
+            font-size: 0.6rem;
+        }
+        .notification .notif-close {
+            position: absolute;
+            top: 10px;
+            left: 14px;
+            background: rgba(1,1,1,0.02);
+            border: 1px solid rgba(1,1,1,0.04);
+            color: rgba(1,1,1,0.3);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .notification .notif-close:hover {
+            color: #010101;
+            background: rgba(1,1,1,0.04);
+            transform: rotate(90deg);
+        }
 
-        @media (max-width:380px) {
-            .landing-page, .chat-container { padding:16px 10px; border-radius:12px; }
-            .landing-page .app-icon { width:90px; height:90px; }
-            .landing-page .app-name { font-size:1.4rem; }
-            .landing-page .app-desc { font-size:0.75rem; }
-            .landing-page .welcome-btn { padding:10px 28px; font-size:0.85rem; }
-            .chat-title { font-size:0.9rem; }
-            .chat-avatar { width:36px; height:36px; font-size:1rem; }
-            .message .bubble { font-size:0.7rem; padding:4px 8px; }
-            .quick-replies button { font-size:0.5rem; padding:2px 6px; }
-            .input-area input { font-size:0.7rem; padding:8px 0; }
-            .input-area .btn-send { width:36px; height:36px; font-size:0.8rem; }
-            .input-area .btn-search { width:34px; height:34px; font-size:0.7rem; }
-            .notification { padding:12px 14px; max-width:96%; bottom:14px; }
+        .lang-options { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+        .lang-options button {
+            flex: 1;
+            min-width: 70px;
+            padding: 6px 10px;
+            background: rgba(1,1,1,0.02);
+            border: 1px solid rgba(1,1,1,0.04);
+            border-radius: 8px;
+            color: rgba(1,1,1,0.5);
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .lang-options button:hover {
+            background: rgba(245,176,66,0.08);
+            border-color: rgba(245,176,66,0.2);
+            color: #010101;
+        }
+        .lang-options button.active {
+            background: rgba(245,176,66,0.12);
+            border-color: #f5b042;
+            color: #f5b042;
+        }
+
+        .math-card {
+            background: rgba(76,175,80,0.04);
+            border: 1px solid rgba(76,175,80,0.15);
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-top: 4px;
+        }
+        .math-card .math-title {
+            color: #4caf50;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            font-family: 'Ardakan', sans-serif;
+        }
+        .math-card .math-result {
+            color: #010101;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            font-family: 'Ardakan', sans-serif;
+        }
+        .math-card .math-expression {
+            color: rgba(1,1,1,0.5);
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+            font-family: 'Estedad', sans-serif;
+        }
+        .math-card .math-ending {
+            color: #f5b042;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        @media (max-width:480px) {
+            .chat-container { padding: 6px 6px 8px; border-radius: 12px; }
+            .chat-title { font-size: 0.9rem; }
+            .chat-avatar { width: 36px; height: 36px; font-size: 1rem; }
+            .message .bubble { font-size: 0.7rem; padding: 4px 8px; }
+            .quick-replies button { font-size: 0.5rem; padding: 2px 6px; }
+            .input-area input { font-size: 0.7rem; padding: 8px 0; }
+            .input-area .btn-send { width: 36px; height: 36px; font-size: 0.8rem; }
+            .input-area .btn-search { width: 34px; height: 34px; font-size: 0.7rem; }
+            .notification { padding: 12px 14px; max-width: 96%; bottom: 14px; }
+            .translation-box { font-size: 0.7rem; padding: 8px 10px; }
+            .image-card img { max-width: 100%; }
+            .landing-title { font-size: 1.8rem; }
+            .landing-avatar { width: 100px; height: 100px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== صفحه اول (لندینگ) ===== -->
+    <!-- ============================================================
+    صفحه لندینگ
+    ============================================================ -->
     <div class="landing-page" id="landingPage">
-        <div class="app-icon">
+        <!-- آواتار با عکس -->
+        <div class="landing-avatar">
             <img src="https://cdn.imgurl.ir/uploads/l034999_1787431782272.png" alt="MH Assistant">
         </div>
-        <div class="app-name">MH <span>Assistant</span></div>
-        <div class="app-desc">
-            ✨ <strong>هوش مصنوعی</strong> خودمونی‌ات<br>
-            🤖 ساخته‌شده توسط <strong>mohamad hossein snti</strong>
+
+        <!-- توضیحات AI -->
+        <div class="landing-desc font-estedad">
+            <span>هوش مصنوعی MH Assistant</span><br>
+            همراه همیشگی تو برای پاسخ به سوالات، ایده‌پردازی و کمک در کارهای روزمره
         </div>
-        <button class="welcome-btn" id="enterChatBtn">
-            <i class="fas fa-arrow-left"></i> خوش آمدید
+
+        <!-- عنوان خوش‌آمدید -->
+        <div class="landing-title font-ardakan">
+            خوش‌<span class="highlight">آمدید</span>
+        </div>
+
+        <!-- دکمه ورود -->
+        <button class="landing-btn font-estedad" onclick="enterChat()">
+            <i class="fas fa-robot"></i>
+            ورود به چت
         </button>
-        <div class="footer-text">نسخه ۸.۱.۰</div>
+
+        <!-- نسخه -->
+        <div class="landing-version font-estedad">
+            نسخه ۸.۱.۰
+        </div>
     </div>
 
-    <!-- ===== چت‌بات ===== -->
+    <!-- ============================================================
+    چت کانتینر
+    ============================================================ -->
     <div class="chat-container" id="chatContainer">
 
         <div class="chat-header">
             <div class="chat-avatar">
                 <img src="https://cdn.imgurl.ir/uploads/l034999_1787431782272.png" alt="MH Assistant">
             </div>
-            <div class="chat-title">
+            <div class="chat-title font-ardakan">
                 <span class="highlight">MH Assistant</span>
                 <small><i class="fas fa-robot"></i> نسخه ۸.۱.۰</small>
             </div>
-            <div class="chat-status">
+            <div class="chat-status font-estedad">
                 <i class="fas fa-circle"></i> آنلاین
             </div>
         </div>
@@ -329,17 +897,18 @@
         <div class="messages" id="messagesBox">
             <div class="message bot">
                 <div class="avatar"><i class="fas fa-robot"></i></div>
-                <div class="bubble">
+                <div class="bubble font-estedad">
                     ✨ سلام!<br><br>
                     من <strong>MH Assistant</strong> هستم، دستیار خودمونی‌ات. 🤖<br>
                     ساخته‌شده توسط <strong>mohamad hossein snti</strong><br><br>
                     📚 <strong>۵۰۰۰۰+</strong> سوال و جواب<br>
                     🧮 ریاضی پیشرفته (درجه‌ای + معادلات + توابع)<br>
                     ☀️ آب و هوا (فارسی - بدون تحریم)<br>
-                    🌍 ترجمه (پیشرفته)<br>
+                    🌍 ترجمه (پیشرفته با تشخیص خودکار زبان)<br>
                     🎨 <strong>mh picture</strong><br>
-                    🧠 موتور درک مطلب هوشمند (۱۰۰+ موضوع)<br>
-                    💡 ایده‌ساز و کمک‌رسان<br><br>
+                    🧠 موتور درک مطلب هوشمند (۶۰+ موضوع، ۳۰ مترادف)<br>
+                    💡 ایده‌ساز و کمک‌رسان<br>
+                    ❤️ تشخیص ۷ حالت روحی<br><br>
                     👇 هر چی دلت میخواد بپرس! 😊
                 </div>
             </div>
@@ -357,12 +926,12 @@
             <button onclick="askQuestion('ممنون')"><i class="fas fa-heart"></i> تشکر</button>
             <button onclick="askQuestion('🧮 ریاضی')"><i class="fas fa-calculator"></i> ریاضی</button>
             <button onclick="askQuestion('☀️ آب و هوا')"><i class="fas fa-cloud-sun"></i> آب و هوا</button>
-            <button onclick="setImageMode()" style="border-color:rgba(1,1,1,0.1);"><i class="fas fa-image"></i> 🎨 تصویر</button>
-            <button onclick="setTranslateMode()" style="border-color:rgba(1,1,1,0.08);"><i class="fas fa-language"></i> ترجمه</button>
+            <button onclick="setImageMode()" style="border-color:rgba(245,176,66,0.3);"><i class="fas fa-image"></i> 🎨 تصویر</button>
+            <button onclick="setTranslateMode()" style="border-color:rgba(245,176,66,0.2);"><i class="fas fa-language"></i> ترجمه</button>
         </div>
 
         <div class="input-area">
-            <input type="text" id="userInput" placeholder="هر چی دلت میخواد بپرس...">
+            <input type="text" id="userInput" placeholder="هر چی دلت میخواد بپرس..." class="font-estedad">
             <button class="btn-search" id="searchBtn" title="جستجو در اینترنت">
                 <i class="fas fa-search"></i>
             </button>
@@ -373,6 +942,9 @@
 
     </div>
 
+    <!-- ============================================================
+    نوتیفیکیشن
+    ============================================================ -->
     <div class="notification" id="updateNotif">
         <button class="notif-close" onclick="closeNotification()"><i class="fas fa-times"></i></button>
         <div class="notif-header">
@@ -380,42 +952,57 @@
                 <i class="fas fa-gem"></i>
             </div>
             <div class="title-group">
-                <h3>🎉 آپدیت جدید</h3>
-                <span class="version">نسخه ۸.۱.۰</span>
+                <h3 class="font-ardakan">🎉 آپدیت نسخه ۸</h3>
+                <span class="version font-estedad">v8.1.0</span>
             </div>
         </div>
-        <div class="notif-body">
+        <div class="notif-body font-estedad">
             <ul>
-                <li><i class="fas fa-check-circle"></i> 🎨 <strong>صفحه اول جدید</strong> با طراحی مینیمال</li>
-                <li><i class="fas fa-check-circle"></i> 🖌️ <strong>رنگ‌های جدید</strong> (F1F1EF, ABABAB, 010101)</li>
-                <li><i class="fas fa-check-circle"></i> 🔤 <strong>فونت‌های جدید</strong> (اردیبهشت و استعداد)</li>
-                <li><i class="fas fa-check-circle"></i> 🧠 <strong>۱۰۰+ موضوع</strong> در موتور درک مطلب</li>
+                <li><i class="fas fa-check-circle"></i> 🎨 <strong>صفحه خوش‌آمدید</strong> با طراحی جدید</li>
+                <li><i class="fas fa-check-circle"></i> 🖌️ <strong>رنگ‌های جدید</strong> (F1F1EF و 010101)</li>
+                <li><i class="fas fa-check-circle"></i> 📝 <strong>فونت‌های استعداد و اردکان</strong></li>
+                <li><i class="fas fa-check-circle"></i> 🧠 <strong>۶۰+ موضوع</strong> در موتور درک مطلب</li>
                 <li><i class="fas fa-check-circle"></i> 📚 <strong>۵۰۰۰۰+</strong> سوال و جواب</li>
-                <li><i class="fas fa-check-circle"></i> 🧮 <strong>ریاضی حرفه‌ای</strong> (توابع پیشرفته)</li>
-                <li><i class="fas fa-check-circle"></i> 🌤️ <strong>آب و هوا بدون تحریم</strong></li>
-                <li><i class="fas fa-check-circle"></i> ❤️ <strong>۷ حالت روحی</strong> (شادی، غم، عصبانیت، اضطراب، استرس، عشق، تنهایی)</li>
+                <li><i class="fas fa-check-circle"></i> 🔄 <strong>۳۰ مترادف</strong> برای هر کلمه</li>
+                <li><i class="fas fa-check-circle"></i> ❤️ <strong>۷ حالت روحی</strong></li>
             </ul>
         </div>
     </div>
 
     <script>
         // ============================================================
-        //  صفحه اول (لندینگ)
+        //  ورود به چت
         // ============================================================
-        const landingPage = document.getElementById('landingPage');
-        const chatContainer = document.getElementById('chatContainer');
-        const enterBtn = document.getElementById('enterChatBtn');
-
-        enterBtn.addEventListener('click', function() {
-            landingPage.classList.add('hidden');
-            chatContainer.classList.add('show');
+        function enterChat() {
+            document.getElementById('landingPage').classList.add('hide');
+            document.getElementById('chatContainer').classList.add('show');
             setTimeout(() => {
                 document.getElementById('userInput').focus();
-            }, 300);
-        });
+            }, 400);
+        }
 
         // ============================================================
-        //  📚 دیکشنری هوشمند نسخه ۸ (۱۰۰+ موضوع، ۳۰ مترادف)
+        //  نوتیفیکیشن
+        // ============================================================
+        const APP_VERSION = '8.1.0';
+        const notif = document.getElementById('updateNotif');
+        let notifTimer;
+
+        function closeNotification() {
+            notif.classList.add('hide');
+            clearTimeout(notifTimer);
+            setTimeout(() => { notif.style.display = 'none'; }, 8000);
+        }
+
+        const hasSeen = localStorage.getItem('mhs_notification_version');
+        if (hasSeen !== APP_VERSION) {
+            notif.style.display = 'block';
+            notifTimer = setTimeout(() => { closeNotification(); }, 8000);
+            localStorage.setItem('mhs_notification_version', APP_VERSION);
+        } else { notif.style.display = 'none'; }
+
+        // ============================================================
+        //  📚 دیکشنری هوشمند (۶۰+ موضوع، ۳۰ مترادف)
         // ============================================================
         const smartDictionary = {
 
@@ -801,7 +1388,7 @@
         };
 
         // ============================================================
-        //  🧠 موتور درک مطلب هوشمند نسخه ۸ (۱۰۰+ موضوع)
+        //  🧠 موتور درک مطلب هوشمند
         // ============================================================
         function smartUnderstand(text) {
             const lower = text.toLowerCase();
@@ -833,7 +1420,7 @@
         }
 
         // ============================================================
-        //  📚 دیکشنری قبلی (۵۰۰۰۰+) - حفظ شده
+        //  📚 دیکشنری قبلی (۵۰۰۰۰+)
         // ============================================================
         function getRandomReply(replies) {
             return replies[Math.floor(Math.random() * replies.length)];
@@ -849,14 +1436,14 @@
             'سایت‌ها': '🌐 سایت‌ها: ZEROX، کالفود، کوروش گیم',
             'طراحی‌ها': '🎨 طراحی‌ها: «گفتند زلف یار...»، «اهواز... خاک غسل‌شده»',
             'مهارت‌ها': '💻 مهارت‌ها: HTML، CSS، JavaScript، طراحی گرافیک، React، Node.js، Python، PHP',
-            'لینک اینستاگرام': '📸 اینستاگرام: <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" style="color:#010101;">mohamad_hossein_ev18</a>',
-            'لینک تلگرام': '✈️ تلگرام: <a href="https://t.me/@mohamad_hossein_ev18" target="_blank" style="color:#010101;">@mohamad_hossein_ev18</a>',
-            '🧮 ریاضی': '🧮 حالت ریاضی فعاله! لطفاً فقط عدد یا عبارت ریاضی رو بنویسید.<br>مثلاً: <strong style="color:#010101;">۲ + ۲</strong> یا <strong style="color:#010101;">sin(30)</strong>',
-            '☀️ آب و هوا': '☀️ به حالت آب و هوا خوش آمدید! لطفاً اسم شهر یا کشور رو بگو 🌍<br>مثلاً: <strong style="color:#010101;">(آب و هوای تهران)</strong>'
+            'لینک اینستاگرام': '📸 اینستاگرام: <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" style="color:#f5b042;">mohamad_hossein_ev18</a>',
+            'لینک تلگرام': '✈️ تلگرام: <a href="https://t.me/@mohamad_hossein_ev18" target="_blank" style="color:#f5b042;">@mohamad_hossein_ev18</a>',
+            '🧮 ریاضی': '🧮 حالت ریاضی فعاله! لطفاً فقط عدد یا عبارت ریاضی رو بنویسید.<br>مثلاً: <strong style="color:#f5b042;">۲ + ۲</strong> یا <strong style="color:#f5b042;">sin(30)</strong>',
+            '☀️ آب و هوا': '☀️ به حالت آب و هوا خوش آمدید! لطفاً اسم شهر یا کشور رو بگو 🌍<br>مثلاً: <strong style="color:#f5b042;">(آب و هوای تهران)</strong>'
         };
 
         // ============================================================
-        //  🧮 موتور ریاضی نسخه ۸ (پیشرفته)
+        //  🧮 موتور ریاضی
         // ============================================================
         function solveMath(expression) {
             try {
@@ -949,18 +1536,18 @@
                 );
                 if (!geoResponse.ok) {
                     return `
-                        <div style="background:rgba(1,1,1,0.04); border:1px solid rgba(1,1,1,0.08); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
-                            <div style="color:#010101; font-weight:700; font-size:0.85rem; margin-bottom:6px;">❌ خطا در یافتن شهر!</div>
-                            <div style="color:#ABABAB; font-size:0.75rem; line-height:1.8;">لطفاً نام شهر را به فارسی یا انگلیسی صحیح وارد کنید 🙏</div>
+                        <div style="background:rgba(255,107,107,0.04); border:1px solid rgba(255,107,107,0.15); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
+                            <div style="color:#ff6b6b; font-weight:700; font-size:0.85rem; margin-bottom:6px;">❌ خطا در یافتن شهر!</div>
+                            <div style="color:rgba(1,1,1,0.5); font-size:0.75rem; line-height:1.8;">لطفاً نام شهر را به فارسی یا انگلیسی صحیح وارد کنید 🙏</div>
                         </div>
                     `;
                 }
                 const geoData = await geoResponse.json();
                 if (!geoData.results || geoData.results.length === 0) {
                     return `
-                        <div style="background:rgba(1,1,1,0.04); border:1px solid rgba(1,1,1,0.08); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
-                            <div style="color:#010101; font-weight:700; font-size:0.9rem; margin-bottom:6px;">⚠️ شهر "${city}" پیدا نشد!</div>
-                            <div style="color:#ABABAB; font-size:0.75rem; line-height:1.8;">لطفاً نام شهر را به انگلیسی یا فارسی صحیح وارد کنید 🌍</div>
+                        <div style="background:rgba(255,152,0,0.04); border:1px solid rgba(255,152,0,0.15); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
+                            <div style="color:#ff9800; font-weight:700; font-size:0.9rem; margin-bottom:6px;">⚠️ شهر "${city}" پیدا نشد!</div>
+                            <div style="color:rgba(1,1,1,0.5); font-size:0.75rem; line-height:1.8;">لطفاً نام شهر را به انگلیسی یا فارسی صحیح وارد کنید 🌍</div>
                         </div>
                     `;
                 }
@@ -974,9 +1561,9 @@
                 );
                 if (!weatherResponse.ok) {
                     return `
-                        <div style="background:rgba(1,1,1,0.04); border:1px solid rgba(1,1,1,0.08); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
-                            <div style="color:#010101; font-weight:700; font-size:0.85rem; margin-bottom:6px;">❌ خطا در دریافت آب و هوا!</div>
-                            <div style="color:#ABABAB; font-size:0.75rem; line-height:1.8;">لطفاً دوباره تلاش کن 🙏</div>
+                        <div style="background:rgba(255,107,107,0.04); border:1px solid rgba(255,107,107,0.15); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
+                            <div style="color:#ff6b6b; font-weight:700; font-size:0.85rem; margin-bottom:6px;">❌ خطا در دریافت آب و هوا!</div>
+                            <div style="color:rgba(1,1,1,0.5); font-size:0.75rem; line-height:1.8;">لطفاً دوباره تلاش کن 🙏</div>
                         </div>
                     `;
                 }
@@ -1000,40 +1587,40 @@
                     };
                     const condition = weatherConditions[weatherCode] || '🌤️ متغیر';
                     return `
-                        <div style="background:rgba(1,1,1,0.03); border:1px solid rgba(1,1,1,0.06); border-radius:10px; padding:12px 14px; margin-top:4px;">
-                            <div style="color:#010101; font-weight:700; font-size:0.9rem; margin-bottom:6px;">
+                        <div style="background:rgba(33,150,243,0.04); border:1px solid rgba(33,150,243,0.15); border-radius:10px; padding:12px 14px; margin-top:4px;">
+                            <div style="color:#2196f3; font-weight:700; font-size:0.9rem; margin-bottom:6px;">
                                 ☀️ آب و هوای <strong>${cityName}</strong> ${country ? '، ' + country : ''}:
                             </div>
-                            <div style="color:#ABABAB; font-size:0.8rem; line-height:2;">
+                            <div style="color:rgba(1,1,1,0.6); font-size:0.8rem; line-height:2;">
                                 🌡️ <strong>دما:</strong> ${temp}°C<br>
                                 🌥️ <strong>وضعیت:</strong> ${condition}<br>
                                 💨 <strong>باد:</strong> ${wind} km/h<br>
                                 📍 <strong>موقعیت:</strong> ${lat.toFixed(2)}°N, ${lon.toFixed(2)}°E
                             </div>
-                            <div style="margin-top:8px; font-size:0.65rem; color:#ABABAB;">
+                            <div style="margin-top:8px; font-size:0.65rem; color:rgba(1,1,1,0.3);">
                                 🔄 بروزرسانی شده با Open-Meteo (بدون تحریم)
                             </div>
                         </div>
                     `;
                 }
                 return `
-                    <div style="background:rgba(1,1,1,0.04); border:1px solid rgba(1,1,1,0.08); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
-                        <div style="color:#010101; font-weight:700; font-size:0.9rem; margin-bottom:6px;">⚠️ اطلاعاتی برای "${city}" یافت نشد!</div>
-                        <div style="color:#ABABAB; font-size:0.75rem; line-height:1.8;">لطفاً دوباره تلاش کن 🌍</div>
+                    <div style="background:rgba(255,152,0,0.04); border:1px solid rgba(255,152,0,0.15); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
+                        <div style="color:#ff9800; font-weight:700; font-size:0.9rem; margin-bottom:6px;">⚠️ اطلاعاتی برای "${city}" یافت نشد!</div>
+                        <div style="color:rgba(1,1,1,0.5); font-size:0.75rem; line-height:1.8;">لطفاً دوباره تلاش کن 🌍</div>
                     </div>
                 `;
             } catch (error) {
                 return `
-                    <div style="background:rgba(1,1,1,0.04); border:1px solid rgba(1,1,1,0.08); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
-                        <div style="color:#010101; font-weight:700; font-size:0.85rem; margin-bottom:6px;">❌ خطا در دریافت آب و هوا!</div>
-                        <div style="color:#ABABAB; font-size:0.75rem; line-height:1.8;">لطفاً اتصال اینترنت خود را بررسی کن 🙏</div>
+                    <div style="background:rgba(255,107,107,0.04); border:1px solid rgba(255,107,107,0.15); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
+                        <div style="color:#ff6b6b; font-weight:700; font-size:0.85rem; margin-bottom:6px;">❌ خطا در دریافت آب و هوا!</div>
+                        <div style="color:rgba(1,1,1,0.5); font-size:0.75rem; line-height:1.8;">لطفاً اتصال اینترنت خود را بررسی کن 🙏</div>
                     </div>
                 `;
             }
         }
 
         // ============================================================
-        //  🌍 ترجمه (پیشرفته)
+        //  🌍 ترجمه
         // ============================================================
         async function translateText(text, targetLang) {
             try {
@@ -1118,7 +1705,7 @@
             const msg = `
                 🎨 <strong>mh picture</strong><br><br>
                 📌 برای ساخت تصویر با mh picture، توضیحاتش رو بنویس:<br>
-                مثلاً: <strong style="color:#010101;">"یک گربه نارنجی با کلاه لبه‌دار"</strong><br><br>
+                مثلاً: <strong style="color:#f5b042;">"یک گربه نارنجی با کلاه لبه‌دار"</strong><br><br>
                 ⚡ این قابلیت با مدل <strong>FLUX</strong> تصویر میسازه (کیفیت عالی).<br>
                 🆓 <strong>رایگان</strong> - روزانه <strong>۶ بار</strong> محدودیت.<br>
                 ⚠️ ممکنه ۱۰-۲۰ ثانیه طول بکشه.<br>
@@ -1148,7 +1735,7 @@
                 </div>
                 <br>
                 پس از انتخاب زبان، متن مورد نظر را بنویسید تا ترجمه شود.<br>
-                <span style="color:#ABABAB;font-size:0.7rem;">💡 مثال: "سلام"</span>
+                <span style="color:rgba(1,1,1,0.4);font-size:0.7rem;">💡 مثال: "سلام"</span>
             `;
             addMessage('bot', msg);
             document.getElementById('userInput').focus();
@@ -1160,7 +1747,7 @@
             const msg = `
                 ✅ زبان <strong>${langNames[lang]}</strong> انتخاب شد!<br><br>
                 حالا متن مورد نظر را بنویسید تا به ${langNames[lang]} ترجمه شود.<br>
-                <span style="color:#ABABAB;font-size:0.7rem;">💡 مثال: "سلام"</span>
+                <span style="color:rgba(1,1,1,0.4);font-size:0.7rem;">💡 مثال: "سلام"</span>
             `;
             addMessage('bot', msg);
             document.getElementById('userInput').focus();
@@ -1171,8 +1758,8 @@
                 const toast = document.createElement('div');
                 toast.style.cssText = `
                     position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
-                    background:rgba(1,1,1,0.04);border:1px solid rgba(1,1,1,0.06);
-                    color:#010101;padding:8px 20px;border-radius:40px;
+                    background:rgba(76,175,80,0.08);border:1px solid rgba(76,175,80,0.12);
+                    color:#4caf50;padding:8px 20px;border-radius:40px;
                     font-family:'Estedad',sans-serif;font-size:0.7rem;
                     z-index:9999;animation:slideUp 0.3s ease;
                     backdrop-filter:blur(12px);
@@ -1422,19 +2009,19 @@
                 return `
                     <div class="math-card">
                         <div class="math-title">🧮 حالت ریاضی فعاله!</div>
-                        <div style="color:#ABABAB; font-size:0.8rem; line-height:1.8;">
+                        <div style="color:rgba(1,1,1,0.5); font-size:0.8rem; line-height:1.8;">
                             📝 لطفاً فقط عدد یا عبارت ریاضی رو بنویسید<br>
-                            مثلاً: <strong style="color:#010101;">۲ + ۲</strong> یا <strong style="color:#010101;">sin(30)</strong>
+                            مثلاً: <strong style="color:#f5b042;">۲ + ۲</strong> یا <strong style="color:#f5b042;">sin(30)</strong>
                         </div>
                     </div>
                 `;
             }
             if (mode === 'weather') {
                 return `
-                    <div style="background:rgba(1,1,1,0.03); border:1px solid rgba(1,1,1,0.06); border-radius:10px; padding:12px 14px; margin-top:4px;">
-                        <div style="color:#010101; font-weight:700; font-size:0.9rem; margin-bottom:6px;">☀️ به حالت آب و هوا خوش آمدید!</div>
-                        <div style="color:#ABABAB; font-size:0.8rem; line-height:1.8;">لطفاً اسم شهر یا کشور رو بگو 🌍</div>
-                        <div style="color:#010101; font-size:0.75rem; margin-top:4px;">📌 مثال: <strong style="color:#010101;">(آب و هوای تهران)</strong></div>
+                    <div style="background:rgba(33,150,243,0.04); border:1px solid rgba(33,150,243,0.15); border-radius:10px; padding:12px 14px; margin-top:4px;">
+                        <div style="color:#2196f3; font-weight:700; font-size:0.9rem; margin-bottom:6px;">☀️ به حالت آب و هوا خوش آمدید!</div>
+                        <div style="color:rgba(1,1,1,0.5); font-size:0.8rem; line-height:1.8;">لطفاً اسم شهر یا کشور رو بگو 🌍</div>
+                        <div style="color:#f5b042; font-size:0.75rem; margin-top:4px;">📌 مثال: <strong style="color:#f5b042;">(آب و هوای تهران)</strong></div>
                     </div>
                 `;
             }
@@ -1514,10 +2101,10 @@
                     }
                 }
                 return `
-                    <div style="background:rgba(1,1,1,0.03); border:1px solid rgba(1,1,1,0.06); border-radius:10px; padding:12px 14px; margin-top:4px;">
-                        <div style="color:#010101; font-weight:700; font-size:0.9rem; margin-bottom:6px;">☀️ به حالت آب و هوا خوش آمدید!</div>
-                        <div style="color:#ABABAB; font-size:0.8rem; line-height:1.8;">لطفاً اسم شهر رو بگو 🌍</div>
-                        <div style="color:#010101; font-size:0.75rem; margin-top:4px;">📌 مثال: <strong style="color:#010101;">(آب و هوای تهران)</strong></div>
+                    <div style="background:rgba(33,150,243,0.04); border:1px solid rgba(33,150,243,0.15); border-radius:10px; padding:12px 14px; margin-top:4px;">
+                        <div style="color:#2196f3; font-weight:700; font-size:0.9rem; margin-bottom:6px;">☀️ به حالت آب و هوا خوش آمدید!</div>
+                        <div style="color:rgba(1,1,1,0.5); font-size:0.8rem; line-height:1.8;">لطفاً اسم شهر رو بگو 🌍</div>
+                        <div style="color:#f5b042; font-size:0.75rem; margin-top:4px;">📌 مثال: <strong style="color:#f5b042;">(آب و هوای تهران)</strong></div>
                     </div>
                 `;
             }
@@ -1648,8 +2235,8 @@
                     💭 احساس: ${sentiment}<br>
                     🧠 موضوع تشخیص‌داده‌شده: <strong>${topic}</strong><br><br>
                     می‌تونی از اینا بپرسی:<br>
-                    <span style="color:#010101;">سلام</span> • <span style="color:#010101;">کی هستی؟</span> • <span style="color:#010101;">سایت‌ها</span> • <span style="color:#010101;">طراحی‌ها</span> • <span style="color:#010101;">مهارت‌ها</span> • <span style="color:#010101;">ریاضی</span> • <span style="color:#010101;">آب و هوا</span> • <span style="color:#010101;">ترجمه</span> • <span style="color:#010101;">mh picture</span><br><br>
-                    <span style="color:#ABABAB;font-size:0.7rem;">💡 هر چی بپرسی، جواب میدم!</span>`
+                    <span style="color:#f5b042;">سلام</span> • <span style="color:#f5b042;">کی هستی؟</span> • <span style="color:#f5b042;">سایت‌ها</span> • <span style="color:#f5b042;">طراحی‌ها</span> • <span style="color:#f5b042;">مهارت‌ها</span> • <span style="color:#f5b042;">ریاضی</span> • <span style="color:#f5b042;">آب و هوا</span> • <span style="color:#f5b042;">ترجمه</span> • <span style="color:#f5b042;">mh picture</span><br><br>
+                    <span style="color:rgba(1,1,1,0.4);font-size:0.7rem;">💡 هر چی بپرسی، جواب میدم!</span>`
             ];
             let reply = randomReplies[Math.floor(Math.random() * randomReplies.length)];
             if (lower.includes('ایده') || lower.includes('نظر') || lower.includes('پیشنهاد')) {
@@ -1676,24 +2263,24 @@
                     const summaryData = await summaryResponse.json();
                     const extract = summaryData.query.pages[pageId].extract;
                     return `
-                        <div style="background:rgba(1,1,1,0.03); border:1px solid rgba(1,1,1,0.06); border-radius:10px; padding:10px 12px; margin-top:4px;">
-                            <div style="color:#010101; font-weight:700; font-size:0.85rem; margin-bottom:4px;">
+                        <div style="background:rgba(245,176,66,0.04); border:1px solid rgba(245,176,66,0.08); border-radius:10px; padding:10px 12px; margin-top:4px;">
+                            <div style="color:#f5b042; font-weight:700; font-size:0.85rem; margin-bottom:4px;">
                                 🔍 نتیجه جستجو برای "<strong>${query}</strong>":
                             </div>
-                            <div style="color:#ABABAB; font-size:0.75rem; line-height:1.8;">
+                            <div style="color:rgba(1,1,1,0.5); font-size:0.75rem; line-height:1.8;">
                                 ${extract.substring(0, 500)}${extract.length > 500 ? '...' : ''}
                             </div>
-                            <a href="https://fa.wikipedia.org/wiki/${encodeURIComponent(firstResult.title)}" target="_blank" style="color:#010101; text-decoration:none; font-size:0.7rem; font-weight:600; display:inline-flex; align-items:center; gap:4px; margin-top:6px;">
+                            <a href="https://fa.wikipedia.org/wiki/${encodeURIComponent(firstResult.title)}" target="_blank" style="color:#f5b042; text-decoration:none; font-size:0.7rem; font-weight:600; display:inline-flex; align-items:center; gap:4px; margin-top:6px;">
                                 <i class="fas fa-external-link-alt"></i> ادامه مطلب در ویکی‌پدیا
                             </a>
                         </div>
                     `;
                 } else {
                     return `
-                        <div style="background:rgba(1,1,1,0.04); border:1px solid rgba(1,1,1,0.08); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
-                            <div style="color:#010101; font-weight:700; font-size:0.9rem; margin-bottom:6px;">⚠️ نتیجه‌ای پیدا نشد!</div>
+                        <div style="background:rgba(255,152,0,0.04); border:1px solid rgba(255,152,0,0.15); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
+                            <div style="color:#ff9800; font-weight:700; font-size:0.9rem; margin-bottom:6px;">⚠️ نتیجه‌ای پیدا نشد!</div>
                             <div style="margin-top:8px;">
-                                <a href="https://www.google.com/search?q=${encodeURIComponent(query)}" target="_blank" style="color:#010101; text-decoration:none; font-size:0.7rem; border:1px solid rgba(1,1,1,0.08); padding:4px 14px; border-radius:40px;">
+                                <a href="https://www.google.com/search?q=${encodeURIComponent(query)}" target="_blank" style="color:#f5b042; text-decoration:none; font-size:0.7rem; border:1px solid rgba(245,176,66,0.15); padding:4px 14px; border-radius:40px;">
                                     <i class="fas fa-search"></i> جستجو در گوگل
                                 </a>
                             </div>
@@ -1702,10 +2289,10 @@
                 }
             } catch (error) {
                 return `
-                    <div style="background:rgba(1,1,1,0.04); border:1px solid rgba(1,1,1,0.08); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
-                        <div style="color:#010101; font-weight:700; font-size:0.85rem; margin-bottom:6px;">❌ خطا در اتصال به اینترنت!</div>
+                    <div style="background:rgba(255,107,107,0.04); border:1px solid rgba(255,107,107,0.15); border-radius:10px; padding:12px 14px; margin-top:4px; text-align:center;">
+                        <div style="color:#ff6b6b; font-weight:700; font-size:0.85rem; margin-bottom:6px;">❌ خطا در اتصال به اینترنت!</div>
                         <div style="margin-top:6px;">
-                            <a href="https://www.google.com/search?q=${encodeURIComponent(query)}" target="_blank" style="color:#010101; text-decoration:none; font-size:0.7rem; border:1px solid rgba(1,1,1,0.08); padding:2px 12px; border-radius:40px;">
+                            <a href="https://www.google.com/search?q=${encodeURIComponent(query)}" target="_blank" style="color:#f5b042; text-decoration:none; font-size:0.7rem; border:1px solid rgba(245,176,66,0.15); padding:2px 12px; border-radius:40px;">
                                 <i class="fas fa-search"></i> جستجوی مستقیم در گوگل
                             </a>
                         </div>
@@ -1722,23 +2309,6 @@
         const sendBtn = document.getElementById('sendBtn');
         const searchBtn = document.getElementById('searchBtn');
         let isTyping = false;
-
-        // ===== نوتیفیکیشن =====
-        const APP_VERSION = '8.1.0';
-        const notif = document.getElementById('updateNotif');
-        let notifTimer;
-
-        function closeNotification() {
-            notif.classList.add('hide');
-            clearTimeout(notifTimer);
-            setTimeout(() => { notif.style.display = 'none'; }, 8000);
-        }
-        const hasSeen = localStorage.getItem('mhs_notification_version');
-        if (hasSeen !== APP_VERSION) {
-            notif.style.display = 'block';
-            notifTimer = setTimeout(() => { closeNotification(); }, 8000);
-            localStorage.setItem('mhs_notification_version', APP_VERSION);
-        } else { notif.style.display = 'none'; }
 
         function sendMessage() {
             const text = userInput.value.trim();
@@ -1825,5 +2395,6 @@
             setTimeout(() => userInput.focus(), 50);
         });
     </script>
+
 </body>
     </html>
