@@ -727,53 +727,92 @@
             font-family: 'Ardekan', 'Estedad', sans-serif;
         }
 
-        /* ====== صفحه نماهنگ (جدا و فقط ویدیو) ====== */
-        .video-section {
-            background: rgba(44, 74, 53, 0.85);
+        /* ====== کارت نماهنگ جدید و شیک ====== */
+        .video-card {
+            background: var(--bg-card);
             backdrop-filter: blur(6px);
             border-radius: 28px;
             overflow: hidden;
             box-shadow: var(--shadow);
             border: 1px solid rgba(163, 201, 168, 0.3);
-            padding: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            animation: cardFadeIn 0.8s ease forwards;
         }
 
-        .video-wrapper {
+        .video-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.6);
+        }
+
+        .video-card .video-wrapper {
             position: relative;
             width: 100%;
             padding-top: 56.25%;
             background: #000;
-            border-radius: 20px;
             overflow: hidden;
         }
 
-        .video-wrapper video {
+        .video-card .video-wrapper video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 20px;
             background: #000;
         }
 
+        .video-card .video-info {
+            padding: 1.2rem 1.5rem 1rem;
+        }
+
+        .video-card .video-info .video-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fbf5cf;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+            text-align: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .video-card .video-info .video-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem 1.5rem;
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+        }
+
+        .video-card .video-info .video-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #cbdfcf;
+            font-size: 0.9rem;
+        }
+
+        .video-card .video-info .video-meta span i {
+            color: var(--gold);
+        }
+
+        /* کنترل‌های ویدیو */
         .video-controls {
-            background: rgba(20, 40, 30, 0.95);
-            backdrop-filter: blur(12px);
-            padding: 12px 16px;
-            border-radius: 0 0 20px 20px;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 10px;
-            margin-top: -4px;
+            padding: 10px 16px;
+            background: rgba(20, 40, 30, 0.9);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(163, 201, 168, 0.2);
         }
 
         .video-controls button {
             background: none;
             border: none;
             color: #e0f2e5;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: 0.2s;
             padding: 5px 8px;
@@ -791,10 +830,10 @@
         .video-controls .play-btn-video {
             background: var(--gold);
             color: #1a3a2a;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
-            font-size: 1.1rem;
+            font-size: 1rem;
             box-shadow: 0 4px 15px rgba(245, 200, 66, 0.3);
         }
 
@@ -808,14 +847,14 @@
             min-width: 120px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .video-controls .progress-video .time {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #a0b8a8;
             font-family: monospace;
-            min-width: 45px;
+            min-width: 40px;
         }
 
         .video-controls .progress-video .progress-bar-video {
@@ -838,11 +877,11 @@
         .video-controls .volume-control {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .video-controls .volume-control input[type="range"] {
-            width: 60px;
+            width: 50px;
             height: 3px;
             background: #4f6b58;
             border-radius: 10px;
@@ -852,63 +891,21 @@
 
         .video-controls .volume-control input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: var(--gold);
             cursor: pointer;
         }
 
-        .video-controls .download-btn-video {
-            background: var(--gold);
-            border: none;
-            padding: 6px 14px;
-            border-radius: 50px;
-            color: #1a3a2a;
-            font-weight: bold;
-            font-family: 'Estedad', 'Ardekan', sans-serif;
-            font-size: 0.75rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-            transition: 0.2s;
+        .video-controls .more-details-btn {
+            margin: 0;
+            padding: 4px 12px;
+            font-size: 0.7rem;
         }
 
-        .video-controls .download-btn-video:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(245, 200, 66, 0.4);
-        }
-
-        .video-info {
-            padding: 1.2rem 0 0.5rem;
-        }
-
-        .video-info .video-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fbf5cf;
-            font-family: 'Estedad', 'Ardekan', sans-serif;
-        }
-
-        .video-info .video-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 0.8rem 0;
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-        }
-
-        .video-info .video-meta span {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #cbdfcf;
-            font-size: 0.9rem;
-        }
-
-        .video-info .video-meta span i {
-            color: var(--gold);
+        .video-card .more-details-content {
+            margin: 0.5rem 1.5rem 1rem;
         }
 
         /* ====== فوتر ====== */
@@ -1013,10 +1010,13 @@
                 padding: 8px 10px;
             }
             .video-controls .volume-control input[type="range"] {
-                width: 40px;
+                width: 35px;
             }
-            .video-info .video-meta span {
+            .video-card .video-info .video-meta span {
                 font-size: 0.8rem;
+            }
+            .video-card .video-info .video-title {
+                font-size: 1.1rem;
             }
         }
 
@@ -1096,54 +1096,53 @@
             <div class="cards-grid" id="popularGrid"></div>
         </div>
 
-        <!-- ====== صفحه نماهنگ (جدا و فقط ویدیو) ====== -->
+        <!-- ====== صفحه نماهنگ (کارت جدید و شیک) ====== -->
         <div id="videoPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-video"></i> نماهنگ رسمی مفضال</h2>
                 <p>ویدیوهای خفن و اختصاصی گروه سرود مفضال</p>
             </div>
 
-            <div class="video-section">
-                <div class="video-wrapper">
-                    <video id="mainVideo" poster="https://cdn.imgurl.ir/uploads/k79772_IMG__.jpg">
-                        <source src="https://cdn.imgurl.ir/uploads/a632_VID_20260822_011900_726.mp4" type="video/mp4">
-                        مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-                    </video>
-                </div>
+            <div class="cards-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto;">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video id="mainVideo" poster="https://cdn.imgurl.ir/uploads/k79772_IMG__.jpg">
+                            <source src="https://cdn.imgurl.ir/uploads/a632_VID_20260822_011900_726.mp4" type="video/mp4">
+                            مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+                        </video>
+                    </div>
 
-                <div class="video-controls">
-                    <button class="play-btn-video" id="videoPlayBtn"><i class="fas fa-play"></i></button>
-                    <div class="progress-video">
-                        <span class="time" id="videoCurrentTime">00:00</span>
-                        <div class="progress-bar-video" id="videoProgressBar">
-                            <div class="progress-fill-video" id="videoProgressFill"></div>
+                    <div class="video-info">
+                        <div class="video-title">نماهنگ قصه ایران</div>
+                        <div class="video-meta">
+                            <span><i class="fas fa-microphone-alt"></i> اجرا: گروه سرود مفضال بیرجند</span>
+                            <span><i class="fas fa-user-edit"></i> مدیر انتشار: محمد حسین صنعتی</span>
                         </div>
-                        <span class="time" id="videoDuration">00:00</span>
-                    </div>
-                    <div class="volume-control">
-                        <button id="videoMuteBtn"><i class="fas fa-volume-up"></i></button>
-                        <input type="range" id="videoVolume" min="0" max="1" step="0.01" value="1">
-                    </div>
-                    <button id="videoFullscreenBtn"><i class="fas fa-expand"></i></button>
-                    <button class="download-btn-video" id="videoDownloadBtn"><i class="fas fa-download"></i> دانلود</button>
-                </div>
-
-                <div class="video-info">
-                    <div class="video-title">نماهنگ قصه ایران</div>
-                    <div class="video-meta">
-                        <span><i class="fas fa-microphone-alt"></i> اجرا: گروه سرود مفضال بیرجند</span>
-                        <span><i class="fas fa-laptop-code"></i> تهیه برای سایت: محمد حسین صنعتی</span>
                     </div>
 
-                    <div style="margin-top: 1rem;">
-                        <button class="more-details-btn" id="videoMoreBtn"><i class="fas fa-ellipsis-h"></i> توضیحات بیشتر</button>
-                        <div id="videoMoreContent" class="more-details-content" style="display:none; text-align:right;">
-                            <strong>شاعر:</strong> مهدی استخر<br>
-                            <strong>ملودی سرا:</strong> احمد غدیریان<br>
-                            <strong>تنظیم و آهنگسازی:</strong> احمد غدیریان<br>
-                            <strong>ضبط:</strong> مهدی اکبری<br>
-                            <strong>تصویر و تدوین:</strong> موسسه سینمایی مهربان‌فیلم
+                    <div class="video-controls">
+                        <button class="play-btn-video" id="videoPlayBtn"><i class="fas fa-play"></i></button>
+                        <div class="progress-video">
+                            <span class="time" id="videoCurrentTime">00:00</span>
+                            <div class="progress-bar-video" id="videoProgressBar">
+                                <div class="progress-fill-video" id="videoProgressFill"></div>
+                            </div>
+                            <span class="time" id="videoDuration">00:00</span>
                         </div>
+                        <div class="volume-control">
+                            <button id="videoMuteBtn"><i class="fas fa-volume-up"></i></button>
+                            <input type="range" id="videoVolume" min="0" max="1" step="0.01" value="1">
+                        </div>
+                        <button id="videoFullscreenBtn"><i class="fas fa-expand"></i></button>
+                        <button class="more-details-btn" id="videoMoreBtn"><i class="fas fa-ellipsis-h"></i></button>
+                    </div>
+
+                    <div id="videoMoreContent" class="more-details-content" style="display:none; text-align:right;">
+                        <strong>شاعر:</strong> مهدی استخر<br>
+                        <strong>ملودی سرا:</strong> احمد غدیریان<br>
+                        <strong>تنظیم و آهنگسازی:</strong> احمد غدیریان<br>
+                        <strong>ضبط:</strong> مهدی اکبری<br>
+                        <strong>تصویر و تدوین:</strong> موسسه سینمایی مهربان‌فیلم
                     </div>
                 </div>
             </div>
@@ -1569,7 +1568,6 @@
         const videoVolume = document.getElementById('videoVolume');
         const videoMuteBtn = document.getElementById('videoMuteBtn');
         const videoFullscreenBtn = document.getElementById('videoFullscreenBtn');
-        const videoDownloadBtn = document.getElementById('videoDownloadBtn');
         const videoMoreBtn = document.getElementById('videoMoreBtn');
         const videoMoreContent = document.getElementById('videoMoreContent');
 
@@ -1645,23 +1643,6 @@
             }
         });
 
-        videoDownloadBtn.addEventListener('click', () => {
-            const videoSrc = video.querySelector('source').src;
-            fetch(videoSrc)
-                .then(res => res.blob())
-                .then(blob => {
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = 'namahang_gheseh_iran.mp4';
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                })
-                .catch(() => window.open(videoSrc, '_blank'));
-        });
-
         videoMoreBtn.addEventListener('click', () => {
             if (videoMoreContent.style.display === 'none' || !videoMoreContent.style.display) {
                 videoMoreContent.style.display = 'block';
@@ -1703,4 +1684,4 @@
         });
     </script>
 </body>
-                            </html>
+</html>
