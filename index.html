@@ -1473,6 +1473,7 @@
 
             const lower = text.toLowerCase();
 
+            // ===== اولویت ۱: تشکر =====
             if (isThanks(text)) {
                 const thanksList = [
                     '🙏 خواهش می‌کنم داداش! خوشحالم که کمک کردم.',
@@ -1483,6 +1484,105 @@
                 return thanksList[Math.floor(Math.random() * thanksList.length)];
             }
 
+            // ===== اولویت ۲: دکمه‌های سریع =====
+            const quickKeys = ['ساعت', 'چطوری', 'سلام', 'کی هستی', 'ممنون', 'هدف تو چیه', 'انگیزه‌ات چیه', 'سایت‌ها', 'طراحی‌ها', 'مهارت‌ها', 'اینستاگرام', 'تلگرام', '🧮 ریاضی', '☀️ آب و هوا'];
+            
+            for (const key of quickKeys) {
+                if (lower === key || lower === key.replace(/[^آ-یa-zA-Z]/g, '').trim()) {
+                    
+                    // سایت‌ها
+                    if (key === 'سایت‌ها') {
+                        let siteReply = `<i class="fas fa-laptop-code"></i> <strong>سایت‌ها:</strong><br><div class="site-grid">`;
+                        data.sites.forEach(s => {
+                            siteReply += `
+                                <div class="site-item">
+                                    <img class="site-img" src="${s.img}" onerror="this.style.display='none'" alt="${s.name}">
+                                    <div class="site-info">
+                                        <div class="site-name">${s.name}</div>
+                                        <div class="site-desc">${s.desc}</div>
+                                    </div>
+                                    <a href="${s.link}" target="_blank" class="site-link">
+                                        <i class="fas fa-external-link-alt"></i> مشاهده
+                                    </a>
+                                </div>
+                            `;
+                        });
+                        siteReply += `</div>`;
+                        return siteReply;
+                    }
+                    
+                    // طراحی‌ها
+                    if (key === 'طراحی‌ها') {
+                        let designReply = `<i class="fas fa-palette"></i> <strong>طراحی‌ها:</strong><br><div class="design-grid">`;
+                        data.designs.forEach(d => {
+                            designReply += `
+                                <div class="design-item">
+                                    <div class="design-icon"><i class="fas fa-paint-brush"></i></div>
+                                    <div class="design-info">
+                                        <div class="design-name">${d.name}</div>
+                                        <div class="design-desc">${d.desc}</div>
+                                    </div>
+                                    <a href="${d.link}" target="_blank" class="design-link">
+                                        <i class="fas fa-external-link-alt"></i> مشاهده
+                                    </a>
+                                </div>
+                            `;
+                        });
+                        designReply += `</div>`;
+                        return designReply;
+                    }
+                    
+                    // مهارت‌ها
+                    if (key === 'مهارت‌ها') {
+                        let skillReply = `<i class="fas fa-code"></i> <strong>مهارت‌ها:</strong><br>`;
+                        data.skills.forEach(s => { skillReply += `🔹 ${s}<br>`; });
+                        return skillReply;
+                    }
+                    
+                    // اینستاگرام
+                    if (key === 'اینستاگرام') {
+                        return '📸 پیج اینستاگرام من: <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" style="color:#010101; opacity:0.6; text-decoration:none;">mohamad_hossein_ev18</a>';
+                    }
+                    
+                    // تلگرام
+                    if (key === 'تلگرام') {
+                        return '✈️ تلگرام من: <a href="https://t.me/@mohamad_hossein_ev18" target="_blank" style="color:#010101; opacity:0.6; text-decoration:none;">@mohamad_hossein_ev18</a>';
+                    }
+                    
+                    // ریاضی
+                    if (key === '🧮 ریاضی') {
+                        return `
+                            <div class="math-card">
+                                <div class="math-title">🧮 حالت ریاضی فعاله!</div>
+                                <div style="color:#010101; opacity:0.4; font-size:0.8rem; line-height:1.8;">
+                                    📝 لطفاً فقط عدد یا عبارت ریاضی رو بنویسید<br>
+                                    مثلاً: <strong style="color:#010101; opacity:0.6;">۲ + ۲</strong> یا <strong style="color:#010101; opacity:0.6;">sin(30)</strong>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    // آب و هوا
+                    if (key === '☀️ آب و هوا') {
+                        return `
+                            <div style="background:rgba(33,150,243,0.02); border:1px solid rgba(33,150,243,0.04); border-radius:10px; padding:12px 14px; margin-top:4px;">
+                                <div style="color:#2196f3; font-weight:700; font-size:0.9rem; margin-bottom:6px;">☀️ به حالت آب و هوا خوش آمدید!</div>
+                                <div style="color:#010101; opacity:0.4; font-size:0.8rem; line-height:1.8;">لطفاً اسم شهر یا کشور رو بگو 🌍</div>
+                                <div style="color:#010101; opacity:0.5; font-size:0.75rem; margin-top:4px;">📌 مثال: <strong style="color:#010101; opacity:0.6;">(آب و هوای تهران)</strong></div>
+                            </div>
+                        `;
+                    }
+                    
+                    // بقیه دکمه‌ها
+                    if (questionBank[key]) {
+                        let reply = typeof questionBank[key] === 'function' ? questionBank[key]() : getRandomReply(questionBank[key]);
+                        return reply;
+                    }
+                }
+            }
+
+            // ===== ادامه کد قبلی =====
+            // حالت mh picture
             if (imageMode) {
                 const count = getImageCount();
                 if (count >= 6) {
@@ -1502,6 +1602,7 @@
                 `;
             }
 
+            // تشخیص حالت روحی
             const mood = detectMood(text);
             if (mood !== 'neutral') {
                 const moodReply = getMoodResponse(mood);
@@ -1514,6 +1615,7 @@
                 }
             }
 
+            // تشخیص حالت‌ها
             const mode = isMathMode(text);
             if (mode === 'math') {
                 return `
@@ -1538,6 +1640,7 @@
             if (mode === 'translate') { setTranslateMode(); return; }
             if (mode === 'image') { setImageMode(); return; }
 
+            // ترجمه فعال
             if (translateMode && selectedLang) {
                 const result = await translateText(text, selectedLang);
                 if (result.success) {
@@ -1562,6 +1665,7 @@
                 }
             }
 
+            // تشخیص خودکار ترجمه
             if (lower.includes('ترجمه') || lower.includes('translate') ||
                 lower.includes('به انگلیسی') || lower.includes('به فارسی') ||
                 lower.includes('به عربی') || lower.includes('به ترکی')) {
@@ -1595,6 +1699,7 @@
                 }
             }
 
+            // آب و هوا
             if (lower.includes('آب و هوا') || lower.includes('آبوهوا') || lower.includes('هوای') || lower.includes('weather')) {
                 const cityMatch = text.match(/(?:آب و هوای|آبوهوای|هوای|آب و هوا|هوا|weather)\s*([^\s؟]+)/i);
                 if (cityMatch) {
@@ -1616,6 +1721,7 @@
                 `;
             }
 
+            // ریاضی
             const mathResult = solveMath(text);
             if (mathResult && mathResult.success) {
                 const endings = [
@@ -1649,11 +1755,13 @@
                 }
             }
 
+            // موتور درک مطلب هوشمند
             const smartReply = smartUnderstand(text);
             if (smartReply) {
                 return smartReply;
             }
 
+            // دیکشنری قبلی
             const keys = Object.keys(questionBank);
             let foundKey = null;
             let foundScore = 0;
@@ -1678,59 +1786,10 @@
                 let reply = typeof questionBank[foundKey] === 'function' ?
                     questionBank[foundKey]() :
                     getRandomReply(questionBank[foundKey]);
-
-                // ===== جدول سایت‌ها =====
-                if (foundKey === 'سایت' || foundKey === 'سایتا' || foundKey === 'سایت‌ها') {
-                    let siteReply = `<i class="fas fa-laptop-code"></i> <strong>سایت‌ها:</strong><br><div class="site-grid">`;
-                    data.sites.forEach(s => {
-                        siteReply += `
-                            <div class="site-item">
-                                <img class="site-img" src="${s.img}" onerror="this.style.display='none'" alt="${s.name}">
-                                <div class="site-info">
-                                    <div class="site-name">${s.name}</div>
-                                    <div class="site-desc">${s.desc}</div>
-                                </div>
-                                <a href="${s.link}" target="_blank" class="site-link">
-                                    <i class="fas fa-external-link-alt"></i> مشاهده
-                                </a>
-                            </div>
-                        `;
-                    });
-                    siteReply += `</div>`;
-                    return siteReply;
-                }
-
-                // ===== جدول طراحی‌ها =====
-                if (foundKey === 'طراحی' || foundKey === 'طراحیات' || foundKey === 'طراحی‌ها') {
-                    let designReply = `<i class="fas fa-palette"></i> <strong>طراحی‌ها:</strong><br><div class="design-grid">`;
-                    data.designs.forEach(d => {
-                        designReply += `
-                            <div class="design-item">
-                                <div class="design-icon"><i class="fas fa-paint-brush"></i></div>
-                                <div class="design-info">
-                                    <div class="design-name">${d.name}</div>
-                                    <div class="design-desc">${d.desc}</div>
-                                </div>
-                                <a href="${d.link}" target="_blank" class="design-link">
-                                    <i class="fas fa-external-link-alt"></i> مشاهده
-                                </a>
-                            </div>
-                        `;
-                    });
-                    designReply += `</div>`;
-                    return designReply;
-                }
-
-                // ===== مهارت‌ها =====
-                if (foundKey === 'مهارت' || foundKey === 'چه کارایی بلدی' || foundKey === 'مهارت‌ها') {
-                    let skillReply = `<i class="fas fa-code"></i> <strong>مهارت‌ها:</strong><br>`;
-                    data.skills.forEach(s => { skillReply += `🔹 ${s}<br>`; });
-                    return skillReply;
-                }
-
                 return reply;
             }
 
+            // پاسخ پیش‌فرض
             const sentiment = analyzeSentiment(text);
             const topic = 'مکالمه آزاد';
             const randomReplies = [
@@ -1910,4 +1969,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
