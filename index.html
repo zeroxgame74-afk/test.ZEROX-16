@@ -37,7 +37,8 @@
             position: absolute; top: 0; left: 0; right: 0;
         }
         .welcome-page .logo {
-            width: 160px; height: 160px;
+            width: 200px;
+            height: 200px;
             margin-bottom: 16px;
         }
         .welcome-page .logo img {
@@ -45,7 +46,8 @@
         }
         .welcome-page h1 {
             font-family: 'Estedad', 'Ardakan', 'Vazirmatn', sans-serif;
-            font-size: 2rem; font-weight: 900;
+            font-size: 2.2rem;
+            font-weight: 900;
             color: #010101;
             margin-bottom: 4px;
             letter-spacing: -0.5px;
@@ -58,18 +60,20 @@
         }
         .welcome-page .subtitle {
             font-family: 'Estedad', 'Ardakan', 'Vazirmatn', sans-serif;
-            font-size: 0.9rem; font-weight: 400;
+            font-size: 0.85rem;
+            font-weight: 400;
             color: #010101;
-            opacity: 0.7;
+            opacity: 0.6;
             margin-bottom: 12px;
         }
         .welcome-page .desc {
             font-family: 'Estedad', 'Ardakan', 'Vazirmatn', sans-serif;
-            font-size: 0.8rem; font-weight: 400;
+            font-size: 0.85rem;
+            font-weight: 400;
             color: #010101;
-            opacity: 0.6;
+            opacity: 0.7;
             text-align: center;
-            line-height: 2.2;
+            line-height: 2.4;
             max-width: 340px;
             margin-bottom: 24px;
         }
@@ -78,12 +82,20 @@
             font-weight: 700;
             opacity: 0.9;
         }
+        .welcome-page .desc .highlight {
+            background: linear-gradient(145deg, #010101, #2a2a2a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
         .welcome-page .enter-btn {
             background: linear-gradient(145deg, #010101, #2a2a2a);
             border: none;
             color: #F1F1EF;
             font-family: 'Estedad', 'Ardakan', 'Vazirmatn', sans-serif;
-            font-size: 1rem; font-weight: 800;
+            font-size: 1rem;
+            font-weight: 800;
             padding: 14px 48px;
             border-radius: 60px;
             cursor: pointer;
@@ -207,7 +219,6 @@
             margin-left:2px; 
         }
 
-        /* ===== جدول سایت‌ها ===== */
         .site-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -278,7 +289,6 @@
             border-color: rgba(1,1,1,0.08);
         }
 
-        /* ===== جدول طراحی‌ها ===== */
         .design-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -540,8 +550,8 @@
             .translation-box { font-size:0.7rem; padding:8px 10px; }
             .image-card img { max-width:100%; }
             .welcome-page { padding:20px 16px; }
-            .welcome-page .logo { width:120px; height:120px; }
-            .welcome-page h1 { font-size:1.6rem; }
+            .welcome-page .logo { width:160px; height:160px; }
+            .welcome-page h1 { font-size:1.8rem; }
             .welcome-page .enter-btn { padding:12px 32px; font-size:0.9rem; }
             .site-item .site-img { width:38px; height:38px; }
             .design-item .design-icon { width:38px; height:38px; font-size:1.2rem; }
@@ -558,8 +568,8 @@
         <h1><span>MH Assistant</span></h1>
         <div class="subtitle">دستیار خودمونی تو</div>
         <div class="desc">
-            <strong>MH Assistant AI</strong>؛ یک دستیار هوش مصنوعی سریع و هوشمند،<br>
-            ساخته‌شده توسط <strong>Mohamad Hossein SNTI</strong>.
+            <strong>MH Assistant</strong> یه دستیار هوشمند و همه‌فن‌حریفه که واسه هر کاری می‌تونی روش حساب کنی.<br>
+            این ربات با چند تا موتور تخصصی که توش هست، از پسِ هر سوالی برمیاد، هر چیزی بپرسی جا نمی‌مونه!
         </div>
         <button class="enter-btn" onclick="enterChat()">
             <i class="fas fa-comment-dots"></i> ورود به چت
@@ -1473,7 +1483,6 @@
 
             const lower = text.toLowerCase();
 
-            // ===== اولویت ۱: تشکر =====
             if (isThanks(text)) {
                 const thanksList = [
                     '🙏 خواهش می‌کنم داداش! خوشحالم که کمک کردم.',
@@ -1484,13 +1493,11 @@
                 return thanksList[Math.floor(Math.random() * thanksList.length)];
             }
 
-            // ===== اولویت ۲: دکمه‌های سریع =====
             const quickKeys = ['ساعت', 'چطوری', 'سلام', 'کی هستی', 'ممنون', 'هدف تو چیه', 'انگیزه‌ات چیه', 'سایت‌ها', 'طراحی‌ها', 'مهارت‌ها', 'اینستاگرام', 'تلگرام', '🧮 ریاضی', '☀️ آب و هوا'];
             
             for (const key of quickKeys) {
                 if (lower === key || lower === key.replace(/[^آ-یa-zA-Z]/g, '').trim()) {
                     
-                    // سایت‌ها
                     if (key === 'سایت‌ها') {
                         let siteReply = `<i class="fas fa-laptop-code"></i> <strong>سایت‌ها:</strong><br><div class="site-grid">`;
                         data.sites.forEach(s => {
@@ -1511,7 +1518,6 @@
                         return siteReply;
                     }
                     
-                    // طراحی‌ها
                     if (key === 'طراحی‌ها') {
                         let designReply = `<i class="fas fa-palette"></i> <strong>طراحی‌ها:</strong><br><div class="design-grid">`;
                         data.designs.forEach(d => {
@@ -1532,24 +1538,20 @@
                         return designReply;
                     }
                     
-                    // مهارت‌ها
                     if (key === 'مهارت‌ها') {
                         let skillReply = `<i class="fas fa-code"></i> <strong>مهارت‌ها:</strong><br>`;
                         data.skills.forEach(s => { skillReply += `🔹 ${s}<br>`; });
                         return skillReply;
                     }
                     
-                    // اینستاگرام
                     if (key === 'اینستاگرام') {
                         return '📸 پیج اینستاگرام من: <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" style="color:#010101; opacity:0.6; text-decoration:none;">mohamad_hossein_ev18</a>';
                     }
                     
-                    // تلگرام
                     if (key === 'تلگرام') {
                         return '✈️ تلگرام من: <a href="https://t.me/@mohamad_hossein_ev18" target="_blank" style="color:#010101; opacity:0.6; text-decoration:none;">@mohamad_hossein_ev18</a>';
                     }
                     
-                    // ریاضی
                     if (key === '🧮 ریاضی') {
                         return `
                             <div class="math-card">
@@ -1562,7 +1564,6 @@
                         `;
                     }
                     
-                    // آب و هوا
                     if (key === '☀️ آب و هوا') {
                         return `
                             <div style="background:rgba(33,150,243,0.02); border:1px solid rgba(33,150,243,0.04); border-radius:10px; padding:12px 14px; margin-top:4px;">
@@ -1573,7 +1574,6 @@
                         `;
                     }
                     
-                    // بقیه دکمه‌ها
                     if (questionBank[key]) {
                         let reply = typeof questionBank[key] === 'function' ? questionBank[key]() : getRandomReply(questionBank[key]);
                         return reply;
@@ -1581,8 +1581,6 @@
                 }
             }
 
-            // ===== ادامه کد قبلی =====
-            // حالت mh picture
             if (imageMode) {
                 const count = getImageCount();
                 if (count >= 6) {
@@ -1602,7 +1600,6 @@
                 `;
             }
 
-            // تشخیص حالت روحی
             const mood = detectMood(text);
             if (mood !== 'neutral') {
                 const moodReply = getMoodResponse(mood);
@@ -1615,7 +1612,6 @@
                 }
             }
 
-            // تشخیص حالت‌ها
             const mode = isMathMode(text);
             if (mode === 'math') {
                 return `
@@ -1640,7 +1636,6 @@
             if (mode === 'translate') { setTranslateMode(); return; }
             if (mode === 'image') { setImageMode(); return; }
 
-            // ترجمه فعال
             if (translateMode && selectedLang) {
                 const result = await translateText(text, selectedLang);
                 if (result.success) {
@@ -1665,7 +1660,6 @@
                 }
             }
 
-            // تشخیص خودکار ترجمه
             if (lower.includes('ترجمه') || lower.includes('translate') ||
                 lower.includes('به انگلیسی') || lower.includes('به فارسی') ||
                 lower.includes('به عربی') || lower.includes('به ترکی')) {
@@ -1699,7 +1693,6 @@
                 }
             }
 
-            // آب و هوا
             if (lower.includes('آب و هوا') || lower.includes('آبوهوا') || lower.includes('هوای') || lower.includes('weather')) {
                 const cityMatch = text.match(/(?:آب و هوای|آبوهوای|هوای|آب و هوا|هوا|weather)\s*([^\s؟]+)/i);
                 if (cityMatch) {
@@ -1721,7 +1714,6 @@
                 `;
             }
 
-            // ریاضی
             const mathResult = solveMath(text);
             if (mathResult && mathResult.success) {
                 const endings = [
@@ -1755,13 +1747,11 @@
                 }
             }
 
-            // موتور درک مطلب هوشمند
             const smartReply = smartUnderstand(text);
             if (smartReply) {
                 return smartReply;
             }
 
-            // دیکشنری قبلی
             const keys = Object.keys(questionBank);
             let foundKey = null;
             let foundScore = 0;
@@ -1789,7 +1779,6 @@
                 return reply;
             }
 
-            // پاسخ پیش‌فرض
             const sentiment = analyzeSentiment(text);
             const topic = 'مکالمه آزاد';
             const randomReplies = [
@@ -1969,4 +1958,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
