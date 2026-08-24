@@ -3,86 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>کلش اف کلنز با عکس‌های شما</title>
+    <title>کلش اف کلنز - نسخه دقیق</title>
     <style>
-        body { margin: 0; overflow: hidden; font-family: 'Tahoma', sans-serif; }
-        
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@700;900&display=swap');
+
+        body { 
+            margin: 0; 
+            overflow: hidden; 
+            font-family: 'Rubik', sans-serif; 
+            background-color: #000;
+        }
+
+        /* رابط کاربری بالای صفحه (شبیه کلش) */
         #top-bar {
             position: absolute;
             top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.7);
+            right: 10px;
+            background: linear-gradient(180deg, #4a3b2c, #2b2015);
+            border: 3px solid #6b4c33;
+            border-radius: 15px;
             color: white;
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-size: 20px;
+            padding: 8px 20px;
+            font-weight: 900;
+            font-size: 22px;
             z-index: 100;
             display: flex;
-            gap: 20px;
-            border-bottom: 2px solid gold;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 5px 0 #1a130c, 0 10px 20px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 0 #000;
         }
 
+        .resource {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .resource span {
+            color: #ffd700;
+        }
+
+        /* منوی پایین (شبیه دکمه‌های کلش) */
         #controls {
             position: absolute;
             bottom: 20px;
-            left: 0;
-            right: 0;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            justify-content: center;
-            gap: 15px;
+            gap: 10px;
             z-index: 200;
-            pointer-events: none;
+            background: rgba(30, 20, 10, 0.9);
+            padding: 15px;
+            border-radius: 25px;
+            border: 3px solid #6b4c33;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
         .btn {
-            pointer-events: auto;
-            padding: 12px 24px;
-            background: linear-gradient(145deg, #3a2a00, #2a1a00);
-            color: #ffd700;
-            border: 2px solid #ffd700;
-            border-radius: 10px;
+            border: none;
+            border-radius: 12px;
+            padding: 15px 25px;
+            font-family: 'Rubik', sans-serif;
+            font-weight: 900;
             font-size: 18px;
-            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
             cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: all 0.1s ease;
+            box-shadow: 0 6px 0 rgba(0,0,0,0.5);
+            outline: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
         }
 
-        .btn:hover { background: #5a3a00; transform: translateY(-2px); }
-        .btn:active { transform: scale(0.9); }
-        .btn.war { background: linear-gradient(145deg, #8b0000, #5c0000); border-color: #ff3333; color: white; }
-        
+        .btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 0px 0 rgba(0,0,0,0.5);
+        }
+
+        .btn-build {
+            background: linear-gradient(180deg, #4CAF50, #2E7D32);
+            border-bottom: 4px solid #1B5E20;
+        }
+
+        .btn-troop {
+            background: linear-gradient(180deg, #2196F3, #1565C0);
+            border-bottom: 4px solid #0D47A1;
+        }
+
+        .btn-war {
+            background: linear-gradient(180deg, #F44336, #C62828);
+            border-bottom: 4px solid #B71C1C;
+        }
+
+        .btn-reset {
+            background: linear-gradient(180deg, #607D8B, #455A64);
+            border-bottom: 4px solid #263238;
+        }
+
         #hint {
             position: absolute;
-            top: 70px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(255,255,255,0.9);
-            background: rgba(0,0,0,0.5);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            z-index: 90;
-            transition: opacity 0.3s;
+            background: rgba(0, 0, 0, 0.8);
+            color: #ffd700;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #ffd700;
+            z-index: 300;
             pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s;
         }
     </style>
 </head>
 <body>
     <div id="top-bar">
-        <div class="resource">💎 سکه: <span id="gold" style="color: gold;">1000</span></div>
-        <div class="resource">⚡ سرباز: <span id="troopCount" style="color: lightskyblue;">5</span></div>
+        <div class="resource">💰 طلا: <span id="gold">1000</span></div>
+        <div class="resource">⚔️ سرباز: <span id="troopCount">5</span></div>
     </div>
 
-    <div id="hint"> برای ساخت، روی دکمه‌ها کلیک کنید و سپس روی زمین کلیک کنید</div>
+    <div id="hint">برای ساخت، دکمه را بزن و روی زمین کلیک کن</div>
 
     <div id="controls">
-        <button class="btn" id="buildBtn">🏗️ قرار دادن تالار شهر</button>
-        <button class="btn" id="troopBtn">⚔️ استخدام سرباز</button>
-        <button class="btn war" id="attackBtn">🔥 حمله!</button>
-        <button class="btn" id="resetBtn">🔄 ریست نقشه</button>
+        <button class="btn btn-build" id="buildBtn">🏗️ <span>ساختن</span></button>
+        <button class="btn btn-troop" id="troopBtn">⚔️ <span>سرباز</span></button>
+        <button class="btn btn-war" id="attackBtn">🔥 <span>حمله</span></button>
+        <button class="btn btn-reset" id="resetBtn">🔄 <span>ریست</span></button>
     </div>
 
     <script type="importmap">
@@ -96,113 +150,99 @@
 
     <script type="module">
         import * as THREE from 'three';
-        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
         let gold = 1000;
         let troopsAvailable = 5;
-        let gameObjects = [];
+        let gameObjects = []; // برای ریست کردن
         let mode = 'free';
 
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x87CEEB); // آسمان آبی
+        scene.background = new THREE.Color(0x87CEEB); // آسمون آبی
 
-        // دوربین
+        // --- دوربین ثابت ایزومتریک (مثل کلش) ---
         const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 18, 15); // زاویه دید بهتر برای دیدن زمین
+        camera.position.set(10, 14, 12);
         camera.lookAt(0, 0, 0);
 
-        // رندر
         const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.shadowMap.enabled = true;
         document.body.appendChild(renderer.domElement);
 
-        // کنترل دوربین
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.1;
-        controls.maxPolarAngle = Math.PI / 2.3;
+        // --- حذف کنترل چرخش؛ دوربین یک جا ثابته ---
+        // (کد دوربین چرخشی رو کامل حذف کردم)
 
-        // --- نورپردازی ---
-        scene.add(new THREE.AmbientLight(0xffffff, 0.7));
-        const sunLight = new THREE.DirectionalLight(0xffffff, 1);
+        // نور
+        scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+        const sunLight = new THREE.DirectionalLight(0xffffff, 1.0);
         sunLight.position.set(10, 20, 5);
         sunLight.castShadow = true;
         scene.add(sunLight);
 
-        // --- ساخت زمین با عکس شما (map.jpg) ---
+        // --- ساخت زمین با عکس map.jpg ---
         const textureLoader = new THREE.TextureLoader();
         
-        // بارگذاری عکس زمین
         textureLoader.load('map.jpg', (texture) => {
-            // ساخت زمین به صورت صفحه صاف (Plane) با ابعاد مناسب
-            const groundGeo = new THREE.PlaneGeometry(20, 20);
+            const groundGeo = new THREE.PlaneGeometry(16, 16);
             const groundMat = new THREE.MeshStandardMaterial({ 
                 map: texture,
-                roughness: 1,
-                metalness: 0
+                roughness: 1
             });
             const ground = new THREE.Mesh(groundGeo, groundMat);
-            ground.rotation.x = -Math.PI / 2; // خواباندن زمین
+            ground.rotation.x = -Math.PI / 2;
             ground.receiveShadow = true;
+            ground.userData.isGround = true; // برای شناسایی کلیک
             scene.add(ground);
             gameObjects.push(ground);
-        }, undefined, (err) => {
-            console.error("خطا در بارگذاری عکس زمین! مطمئن شوید map.jpg در کنار فایل است.", err);
         });
 
-        // --- ساخت تالار شهر اصلی دشمن (با تصویر شما) ---
-        function createTownHallSprite() {
-            const spriteMaterial = new THREE.SpriteMaterial({ 
-                map: textureLoader.load('townhall.png') // عکس تالار شهر
-            });
-            const sprite = new THREE.Sprite(spriteMaterial);
-            sprite.scale.set(3, 3, 1); // اندازه تالار شهر روی زمین
-            sprite.position.set(0, 1.5, 0); // کمی بالاتر از زمین
-            sprite.castShadow = true;
-            return sprite;
+        // --- تالار شهر اصلی (دشمن) ---
+        function createTownHall() {
+            // از Sprite استفاده می‌کنیم تا عکس PNG همیشه رو به دوربین باشه (مثل کلش)
+            const spriteMat = new THREE.SpriteMaterial({ map: textureLoader.load('townhall.png') });
+            const townHall = new THREE.Sprite(spriteMat);
+            townHall.scale.set(3, 3, 1);
+            townHall.position.set(0, 1.5, 0);
+            townHall.userData.isTownHall = true;
+            return townHall;
         }
 
-        // اضافه کردن تالار شهر مرکزی
-        const enemyTownHall = createTownHallSprite();
+        const enemyTownHall = createTownHall();
         scene.add(enemyTownHall);
         gameObjects.push(enemyTownHall);
 
-        // --- توابع ساخت و ساز ---
-
-        // ساخت سرباز (سه بعدی با کد برای بقیه اشیاء)
+        // --- ساخت سربازها ---
         function createTroop() {
             const group = new THREE.Group();
             
-            // بدنه
-            const body = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.5, 0.7, 6), new THREE.MeshStandardMaterial({ color: 0x2e8b57 }));
+            // بدن
+            const body = new THREE.Mesh(
+                new THREE.CylinderGeometry(0.4, 0.5, 0.7, 6), 
+                new THREE.MeshStandardMaterial({ color: 0x2e8b57 })
+            );
             body.position.y = 0.35;
             body.castShadow = true;
             group.add(body);
 
             // سر
-            const head = new THREE.Mesh(new THREE.SphereGeometry(0.25, 6), new THREE.MeshStandardMaterial({ color: 0xffccaa }));
+            const head = new THREE.Mesh(
+                new THREE.SphereGeometry(0.25, 6), 
+                new THREE.MeshStandardMaterial({ color: 0xffccaa })
+            );
             head.position.y = 0.75;
             group.add(head);
 
             // شمشیر
-            const sword = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.6, 0.05), new THREE.MeshStandardMaterial({ color: 0xcccccc }));
+            const sword = new THREE.Mesh(
+                new THREE.BoxGeometry(0.1, 0.6, 0.05), 
+                new THREE.MeshStandardMaterial({ color: 0xcccccc })
+            );
             sword.position.set(0.4, 0.5, 0);
             sword.rotation.z = -0.3;
             group.add(sword);
 
+            group.userData.isTroop = true;
             return group;
-        }
-
-        // ساخت تالار شهر قابل جابجایی توسط کاربر (با عکس شما)
-        function createPlayerTownHall() {
-            // برای اینکه بتوانیم روی زمین کلیک کنیم و عکس را بگذاریم، از Sprite استفاده می‌کنیم
-            const spriteMaterial = new THREE.SpriteMaterial({ 
-                map: textureLoader.load('townhall.png')
-            });
-            const sprite = new THREE.Sprite(spriteMaterial);
-            sprite.scale.set(3, 3, 1);
-            return sprite;
         }
 
         // --- رهگیری کلیک روی زمین ---
@@ -217,30 +257,30 @@
 
             raycaster.setFromCamera(mouse, camera);
             
-            // پیدا کردن زمین برای کلیک
-            const groundMesh = gameObjects.find(obj => obj.geometry && obj.geometry.type === 'PlaneGeometry');
-            if (!groundMesh) return;
+            // پیدا کردن زمین
+            const ground = gameObjects.find(obj => obj.userData.isGround);
+            if (!ground) return;
 
-            const intersects = raycaster.intersectObject(groundMesh);
+            const intersects = raycaster.intersectObject(ground);
 
             if (intersects.length > 0) {
                 const point = intersects[0].point;
 
+                // ساخت تالار شهر
                 if (mode === 'buildTownHall' && gold >= 300) {
-                    // قرار دادن تالار شهر شما
-                    const th = createPlayerTownHall();
-                    th.position.set(point.x, 1.5, point.z); // بالای زمین
-                    scene.add(th);
-                    gameObjects.push(th);
+                    const newTownHall = createTownHall();
+                    newTownHall.position.set(point.x, 1.5, point.z);
+                    scene.add(newTownHall);
+                    gameObjects.push(newTownHall);
                     gold -= 300;
                     updateUI();
                     mode = 'free';
-                    showHint('تالار شهر شما ساخته شد!');
+                    showHint('تالار شهر ساخته شد!');
                 }
+                // استخدام سرباز
                 else if (mode === 'recruit' && troopsAvailable > 0) {
                     const troop = createTroop();
                     troop.position.set(point.x, 0, point.z);
-                    troop.userData.isTroop = true;
                     scene.add(troop);
                     gameObjects.push(troop);
                     troopsAvailable--;
@@ -249,9 +289,28 @@
             }
         });
 
+        function updateUI() {
+            document.getElementById('gold').innerText = gold;
+            document.getElementById('troopCount').innerText = troopsAvailable;
+        }
+
+        function showHint(text) {
+            const hint = document.getElementById('hint');
+            hint.style.opacity = 1;
+            hint.innerText = text;
+            setTimeout(() => { hint.style.opacity = 0; }, 3000);
+        }
+
         // --- دکمه‌ها ---
-        document.getElementById('buildBtn').addEventListener('click', () => { mode = 'buildTownHall'; showHint('برای ساخت تالار شهر، روی زمین کلیک کنید!'); });
-        document.getElementById('troopBtn').addEventListener('click', () => { mode = 'recruit'; showHint('برای استخدام سرباز، روی زمین کلیک کنید!'); });
+        document.getElementById('buildBtn').addEventListener('click', () => { 
+            mode = 'buildTownHall'; 
+            showHint('برای ساخت تالار شهر، روی عکس زمین کلیک کنید!'); 
+        });
+
+        document.getElementById('troopBtn').addEventListener('click', () => { 
+            mode = 'recruit'; 
+            showHint('برای استخدام سرباز، روی زمین کلیک کنید!'); 
+        });
         
         document.getElementById('attackBtn').addEventListener('click', startBattle);
         
@@ -262,69 +321,54 @@
             troopsAvailable = 5;
             mode = 'free';
             updateUI();
-            // دوباره اضافه کردن زمین و تالار مرکزی
-            const groundGeo = new THREE.PlaneGeometry(20, 20);
+            
+            // دوباره اضافه کردن
+            const groundGeo = new THREE.PlaneGeometry(16, 16);
             const groundMat = new THREE.MeshStandardMaterial({ map: textureLoader.load('map.jpg') });
             const ground = new THREE.Mesh(groundGeo, groundMat);
             ground.rotation.x = -Math.PI / 2;
+            ground.userData.isGround = true;
             scene.add(ground);
             gameObjects.push(ground);
-            
-            const townHall = createTownHallSprite();
+
+            const townHall = createTownHall();
             scene.add(townHall);
             gameObjects.push(townHall);
             
             showHint('نقشه ریست شد!');
         });
 
-        function showHint(text) {
-            const hint = document.getElementById('hint');
-            hint.style.opacity = 1;
-            hint.innerText = text;
-            setTimeout(() => { hint.style.opacity = 0; }, 3000);
-        }
-
-        function updateUI() {
-            document.getElementById('gold').innerText = gold;
-            document.getElementById('troopCount').innerText = troopsAvailable;
-        }
-
         // --- سیستم حمله ---
         let troopList = [];
 
         function startBattle() {
             mode = 'war';
-            showHint('حمله آغاز شد! سربازها به سمت تالار شهر مرکزی می‌روند...');
+            showHint('🚨 حمله! سربازها به سمت تالار مرکزی می‌روند!');
 
-            // جمع آوری سربازها
-            troopList = gameObjects.filter(obj => obj.userData && obj.userData.isTroop);
+            troopList = gameObjects.filter(obj => obj.userData.isTroop);
             
             if (troopList.length === 0) {
-                // اگر سرباز نداریم، چند سرباز رایگان در اطراف می‌سازیم
                 for(let i=0; i<5; i++) {
                     const troop = createTroop();
                     troop.position.set(Math.random()*4-2, 0, Math.random()*4-2);
-                    troop.userData.isTroop = true;
                     scene.add(troop);
                     gameObjects.push(troop);
                 }
-                troopList = gameObjects.filter(obj => obj.userData && obj.userData.isTroop);
+                troopList = gameObjects.filter(obj => obj.userData.isTroop);
             }
         }
 
-        // --- انیمیشن ---
+        // --- انیمیشن و حلقه بازی ---
         const clock = new THREE.Clock();
 
         function animate() {
             requestAnimationFrame(animate);
             const delta = clock.getDelta();
 
-            // حرکت سربازها در حالت جنگ
             if (mode === 'war') {
                 troopList.forEach((troop) => {
                     if (!troop.parent) return;
 
-                    // هدف: تالار مرکزی (مختصات 0,0)
                     const target = new THREE.Vector3(0, 0, 0);
                     const dir = target.clone().sub(troop.position);
                     dir.y = 0;
@@ -336,24 +380,6 @@
                         troop.position.z += dir.z * 2 * delta;
                         troop.rotation.y = Math.atan2(dir.x, dir.z);
                     } else {
-                        // حمله (بالا و پایین پریدن)
+                        // حمله به تالار
                         troop.position.y = Math.abs(Math.sin(clock.elapsedTime * 5)) * 0.3;
                     }
-                });
-            }
-
-            controls.update();
-            renderer.render(scene, camera);
-        }
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        updateUI();
-        animate();
-    </script>
-</body>
-</html>
