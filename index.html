@@ -1,362 +1,235 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>کلش اف کلنز - با لینک‌های شما</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@700;900&display=swap');
+/* =====================================================
+   three-scene.js
+   صحنه سه‌بعدی Hero: "شبکه دیجیتال" - مجموعه‌ای از گره‌های
+   شناور که با خطوط نورانی به هم متصل می‌شوند و با حرکت
+   ماوس واکنش نرم نشان می‌دهند.
+===================================================== */
 
-        body { 
-            margin: 0; 
-            overflow: hidden; 
-            font-family: 'Rubik', sans-serif; 
-            background-color: #000;
-        }
+(function () {
+  "use strict";
 
-        /* منوی بالا */
-        #top-bar {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(180deg, #4a3b2c, #2b2015);
-            border: 3px solid #6b4c33;
-            border-radius: 15px;
-            color: white;
-            padding: 8px 20px;
-            font-weight: 900;
-            font-size: 22px;
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            box-shadow: 0 5px 0 #1a130c, 0 10px 20px rgba(0,0,0,0.8);
-            text-shadow: 2px 2px 0 #000;
-        }
+  function supportsWebGL() {
+    try {
+      const canvas = document.createElement("canvas");
+      return !!(window.WebGLRenderingContext &&
+        (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")));
+    } catch (e) {
+      return false;
+    }
+  }
 
-        .resource span { color: #ffd700; }
+  const canvas = document.getElementById("hero-canvas");
+  if (!canvas) return;
 
-        /* منوی پایین */
-        #controls {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 200;
-            background: rgba(30, 20, 10, 0.9);
-            padding: 15px;
-            border-radius: 25px;
-            border: 3px solid #6b4c33;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
+  if (typeof THREE === "undefined" || !supportsWebGL()) {
+    document.body.classList.add("no-webgl");
+    return;
+  }
 
-        .btn {
-            border: none;
-            border-radius: 12px;
-            padding: 12px 20px;
-            font-family: 'Rubik', sans-serif;
-            font-weight: 900;
-            font-size: 16px;
-            color: white;
-            text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
-            cursor: pointer;
-            transition: all 0.1s ease;
-            box-shadow: 0 6px 0 rgba(0,0,0,0.5);
-            outline: none;
-        }
+  const heroSection = canvas.closest(".hero");
+  const isMobile = window.matchMedia("(max-width: 720px)").matches;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-        .btn:active { transform: translateY(6px); box-shadow: 0 0px 0 rgba(0,0,0,0.5); }
+  /* ---------- Scene basics ---------- */
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    50,
+    heroSection.clientWidth / heroSection.clientHeight,
+    0.1,
+    100
+  );
+  camera.position.set(0, 0, 13);
 
-        .btn-build { background: linear-gradient(180deg, #4CAF50, #2E7D32); border-bottom: 4px solid #1B5E20; }
-        .btn-troop { background: linear-gradient(180deg, #2196F3, #1565C0); border-bottom: 4px solid #0D47A1; }
-        .btn-war { background: linear-gradient(180deg, #F44336, #C62828); border-bottom: 4px solid #B71C1C; }
-        .btn-reset { background: linear-gradient(180deg, #607D8B, #455A64); border-bottom: 4px solid #263238; }
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: true,
+    powerPreference: "high-performance",
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+  renderer.setSize(heroSection.clientWidth, heroSection.clientHeight);
 
-        #hint {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: #ffd700;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 18px;
-            font-weight: bold;
-            border: 2px solid #ffd700;
-            z-index: 300;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-    </style>
-</head>
-<body>
-    <div id="top-bar">
-        <div class="resource">💰 طلا: <span id="gold">1000</span></div>
-        <div class="resource">⚔️ سرباز: <span id="troopCount">5</span></div>
-    </div>
+  /* ---------- Lights ---------- */
+  const ambient = new THREE.AmbientLight(0x8b7dff, 0.7);
+  scene.add(ambient);
 
-    <div id="hint">برای ساخت، دکمه را بزن و روی زمین کلیک کن</div>
+  const pointLight1 = new THREE.PointLight(0x7c5cff, 3.2, 30);
+  pointLight1.position.set(6, 4, 6);
+  scene.add(pointLight1);
 
-    <div id="controls">
-        <button class="btn btn-build" id="buildBtn">🏗️ ساختن</button>
-        <button class="btn btn-troop" id="troopBtn">⚔️ سرباز</button>
-        <button class="btn btn-war" id="attackBtn">🔥 حمله</button>
-        <button class="btn btn-reset" id="resetBtn">🔄 ریست</button>
-    </div>
+  const pointLight2 = new THREE.PointLight(0x22d3ee, 2.6, 30);
+  pointLight2.position.set(-6, -3, 4);
+  scene.add(pointLight2);
 
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
-            }
-        }
-    </script>
+  /* ---------- Node group (floating geometric shapes) ---------- */
+  const group = new THREE.Group();
+  scene.add(group);
 
-    <script type="module">
-        import * as THREE from 'three';
+  const nodeCount = isMobile ? 16 : 34;
+  const nodes = [];
+  const spread = 9;
 
-        let gold = 1000;
-        let troopsAvailable = 5;
-        let gameObjects = [];
-        let mode = 'free';
+  const geometries = [
+    new THREE.IcosahedronGeometry(0.34, 0),
+    new THREE.OctahedronGeometry(0.32, 0),
+    new THREE.TetrahedronGeometry(0.36, 0),
+  ];
 
-        const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x6bb7e8); // آسمان کلش
+  const materialA = new THREE.MeshStandardMaterial({
+    color: 0x7c5cff,
+    emissive: 0x7c5cff,
+    emissiveIntensity: 0.35,
+    metalness: 0.4,
+    roughness: 0.25,
+    flatShading: true,
+  });
 
-        // --- دوربین ثابت ایزومتریک (مثل کلش) ---
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(12, 15, 12);
-        camera.lookAt(0, 0, 0);
+  const materialB = new THREE.MeshStandardMaterial({
+    color: 0x22d3ee,
+    emissive: 0x22d3ee,
+    emissiveIntensity: 0.35,
+    metalness: 0.4,
+    roughness: 0.25,
+    flatShading: true,
+  });
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.shadowMap.enabled = true;
-        document.body.appendChild(renderer.domElement);
+  for (let i = 0; i < nodeCount; i++) {
+    const geo = geometries[i % geometries.length];
+    const mat = i % 2 === 0 ? materialA : materialB;
+    const mesh = new THREE.Mesh(geo, mat);
 
-        // نور
-        scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-        const sunLight = new THREE.DirectionalLight(0xffffff, 1.0);
-        sunLight.position.set(10, 20, 5);
-        sunLight.castShadow = true;
-        scene.add(sunLight);
+    mesh.position.set(
+      (Math.random() - 0.5) * spread * 1.6,
+      (Math.random() - 0.5) * spread,
+      (Math.random() - 0.5) * 6 - 1
+    );
 
-        // --- لود عکس زمین از لینک شما ---
-        const textureLoader = new THREE.TextureLoader();
-        
-        textureLoader.load('https://cdn.imgurl.ir/uploads/w51234_1787609126995.jpg', (texture) => {
-            const groundGeo = new THREE.PlaneGeometry(16, 16);
-            const groundMat = new THREE.MeshStandardMaterial({ 
-                map: texture,
-                roughness: 1
-            });
-            const ground = new THREE.Mesh(groundGeo, groundMat);
-            ground.rotation.x = -Math.PI / 2;
-            ground.receiveShadow = true;
-            ground.userData.isGround = true;
-            scene.add(ground);
-            gameObjects.push(ground);
-        });
+    mesh.userData.basePos = mesh.position.clone();
+    mesh.userData.floatSpeed = 0.4 + Math.random() * 0.6;
+    mesh.userData.floatOffset = Math.random() * Math.PI * 2;
+    mesh.userData.rotSpeed = (Math.random() - 0.5) * 0.6;
 
-        // --- لود تالار شهر از لینک شما ---
-        function createTownHall() {
-            const spriteMat = new THREE.SpriteMaterial({ 
-                map: textureLoader.load('https://cdn.imgurl.ir/uploads/l012919_1787609414517.png') 
-            });
-            const townHall = new THREE.Sprite(spriteMat);
-            townHall.scale.set(3, 3, 1);
-            townHall.position.set(0, 1.5, 0);
-            townHall.userData.isTownHall = true;
-            return townHall;
-        }
+    group.add(mesh);
+    nodes.push(mesh);
+  }
 
-        const enemyTownHall = createTownHall();
-        scene.add(enemyTownHall);
-        gameObjects.push(enemyTownHall);
+  /* ---------- Connecting lines between nearby nodes ---------- */
+  const lineMaterial = new THREE.LineBasicMaterial({
+    color: 0x9d8bff,
+    transparent: true,
+    opacity: 0.12,
+  });
 
-        // --- ساخت سربازها ---
-        function createTroop() {
-            const group = new THREE.Group();
-            
-            const body = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.4, 0.5, 0.7, 6), 
-                new THREE.MeshStandardMaterial({ color: 0x2e8b57 })
-            );
-            body.position.y = 0.35;
-            body.castShadow = true;
-            group.add(body);
+  const linePositions = [];
+  const maxDist = 4.2;
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      if (nodes[i].position.distanceTo(nodes[j].position) < maxDist) {
+        linePositions.push(
+          nodes[i].position.x, nodes[i].position.y, nodes[i].position.z,
+          nodes[j].position.x, nodes[j].position.y, nodes[j].position.z
+        );
+      }
+    }
+  }
+  const lineGeometry = new THREE.BufferGeometry();
+  lineGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(linePositions, 3)
+  );
+  const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+  group.add(lines);
 
-            const head = new THREE.Mesh(
-                new THREE.SphereGeometry(0.25, 6), 
-                new THREE.MeshStandardMaterial({ color: 0xffccaa })
-            );
-            head.position.y = 0.75;
-            group.add(head);
+  /* ---------- Ambient particle dust ---------- */
+  const particleCount = isMobile ? 120 : 360;
+  const particleGeo = new THREE.BufferGeometry();
+  const particlePos = new Float32Array(particleCount * 3);
+  for (let i = 0; i < particleCount; i++) {
+    particlePos[i * 3] = (Math.random() - 0.5) * 22;
+    particlePos[i * 3 + 1] = (Math.random() - 0.5) * 14;
+    particlePos[i * 3 + 2] = (Math.random() - 0.5) * 10 - 2;
+  }
+  particleGeo.setAttribute("position", new THREE.BufferAttribute(particlePos, 3));
+  const particleMat = new THREE.PointsMaterial({
+    color: 0xffffff,
+    size: 0.028,
+    transparent: true,
+    opacity: 0.35,
+    sizeAttenuation: true,
+  });
+  const particles = new THREE.Points(particleGeo, particleMat);
+  scene.add(particles);
 
-            const sword = new THREE.Mesh(
-                new THREE.BoxGeometry(0.1, 0.6, 0.05), 
-                new THREE.MeshStandardMaterial({ color: 0xcccccc })
-            );
-            sword.position.set(0.4, 0.5, 0);
-            sword.rotation.z = -0.3;
-            group.add(sword);
+  /* ---------- Mouse interaction ---------- */
+  const mouse = { x: 0, y: 0 };
+  const targetRotation = { x: 0, y: 0 };
 
-            group.userData.isTroop = true;
-            return group;
-        }
+  function onPointerMove(e) {
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    const y = e.touches ? e.touches[0].clientY : e.clientY;
+    mouse.x = (x / window.innerWidth) * 2 - 1;
+    mouse.y = (y / window.innerHeight) * 2 - 1;
+  }
+  window.addEventListener("mousemove", onPointerMove, { passive: true });
+  window.addEventListener("touchmove", onPointerMove, { passive: true });
 
-        // --- کلیک روی زمین ---
-        const raycaster = new THREE.Raycaster();
-        const mouse = new THREE.Vector2();
+  /* ---------- Resize ---------- */
+  function onResize() {
+    const w = heroSection.clientWidth;
+    const h = heroSection.clientHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  }
+  window.addEventListener("resize", onResize);
 
-        renderer.domElement.addEventListener('click', (event) => {
-            if (mode === 'free') return;
+  /* ---------- Animation loop ---------- */
+  const clock = new THREE.Clock();
+  let rafId;
+  let isVisible = true;
 
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  const observer = new IntersectionObserver(
+    (entries) => { isVisible = entries[0].isIntersecting; },
+    { threshold: 0 }
+  );
+  observer.observe(heroSection);
 
-            raycaster.setFromCamera(mouse, camera);
-            
-            const ground = gameObjects.find(obj => obj.userData.isGround);
-            if (!ground) return;
+  function animate() {
+    rafId = requestAnimationFrame(animate);
+    if (!isVisible) return;
 
-            const intersects = raycaster.intersectObject(ground);
+    const t = clock.getElapsedTime();
 
-            if (intersects.length > 0) {
-                const point = intersects[0].point;
+    if (!prefersReducedMotion) {
+      nodes.forEach((mesh) => {
+        const { basePos, floatSpeed, floatOffset, rotSpeed } = mesh.userData;
+        mesh.position.y = basePos.y + Math.sin(t * floatSpeed + floatOffset) * 0.35;
+        mesh.position.x = basePos.x + Math.cos(t * floatSpeed * 0.6 + floatOffset) * 0.2;
+        mesh.rotation.x += rotSpeed * 0.01;
+        mesh.rotation.y += rotSpeed * 0.014;
+      });
 
-                if (mode === 'buildTownHall' && gold >= 300) {
-                    const newTownHall = createTownHall();
-                    newTownHall.position.set(point.x, 1.5, point.z);
-                    scene.add(newTownHall);
-                    gameObjects.push(newTownHall);
-                    gold -= 300;
-                    updateUI();
-                    mode = 'free';
-                    showHint('تالار شهر ساخته شد!');
-                }
-                else if (mode === 'recruit' && troopsAvailable > 0) {
-                    const troop = createTroop();
-                    troop.position.set(point.x, 0, point.z);
-                    scene.add(troop);
-                    gameObjects.push(troop);
-                    troopsAvailable--;
-                    updateUI();
-                }
-            }
-        });
+      targetRotation.y += (mouse.x * 0.28 - targetRotation.y) * 0.04;
+      targetRotation.x += (mouse.y * -0.16 - targetRotation.x) * 0.04;
+      group.rotation.y = targetRotation.y;
+      group.rotation.x = targetRotation.x;
 
-        function updateUI() {
-            document.getElementById('gold').innerText = gold;
-            document.getElementById('troopCount').innerText = troopsAvailable;
-        }
+      particles.rotation.y = t * 0.015;
 
-        function showHint(text) {
-            const hint = document.getElementById('hint');
-            hint.style.opacity = 1;
-            hint.innerText = text;
-            setTimeout(() => { hint.style.opacity = 0; }, 3000);
-        }
+      camera.position.x += (mouse.x * 0.6 - camera.position.x) * 0.03;
+      camera.position.y += (-mouse.y * 0.4 - camera.position.y) * 0.03;
+      camera.lookAt(0, 0, 0);
+    }
 
-        // --- دکمه ها ---
-        document.getElementById('buildBtn').addEventListener('click', () => { 
-            mode = 'buildTownHall'; 
-            showHint('برای ساخت تالار شهر، روی زمین کلیک کنید!'); 
-        });
+    renderer.render(scene, camera);
+  }
+  animate();
 
-        document.getElementById('troopBtn').addEventListener('click', () => { 
-            mode = 'recruit'; 
-            showHint('برای استخدام سرباز، روی زمین کلیک کنید!'); 
-        });
-        
-        document.getElementById('attackBtn').addEventListener('click', startBattle);
-        
-        document.getElementById('resetBtn').addEventListener('click', () => {
-            gameObjects.forEach(obj => scene.remove(obj));
-            gameObjects = [];
-            gold = 1000;
-            troopsAvailable = 5;
-            mode = 'free';
-            updateUI();
-            
-            // لود مجدد زمین و تالار
-            const groundGeo = new THREE.PlaneGeometry(16, 16);
-            const groundMat = new THREE.MeshStandardMaterial({ map: textureLoader.load('https://cdn.imgurl.ir/uploads/w51234_1787609126995.jpg') });
-            const ground = new THREE.Mesh(groundGeo, groundMat);
-            ground.rotation.x = -Math.PI / 2;
-            ground.userData.isGround = true;
-            scene.add(ground);
-            gameObjects.push(ground);
-
-            const townHall = createTownHall();
-            scene.add(townHall);
-            gameObjects.push(townHall);
-            
-            showHint('نقشه ریست شد!');
-        });
-
-        // --- حمله ---
-        let troopList = [];
-
-        function startBattle() {
-            mode = 'war';
-            showHint('🚨 حمله! سربازها به سمت تالار می‌روند!');
-
-            troopList = gameObjects.filter(obj => obj.userData.isTroop);
-            
-            if (troopList.length === 0) {
-                for(let i=0; i<5; i++) {
-                    const troop = createTroop();
-                    troop.position.set(Math.random()*4-2, 0, Math.random()*4-2);
-                    scene.add(troop);
-                    gameObjects.push(troop);
-                }
-                troopList = gameObjects.filter(obj => obj.userData.isTroop);
-            }
-        }
-
-        // --- انیمیشن ---
-        const clock = new THREE.Clock();
-
-        function animate() {
-            requestAnimationFrame(animate);
-            const delta = clock.getDelta();
-
-            if (mode === 'war') {
-                troopList.forEach((troop) => {
-                    if (!troop.parent) return;
-
-                    const target = new THREE.Vector3(0, 0, 0);
-                    const dir = target.clone().sub(troop.position);
-                    dir.y = 0;
-                    const distance = dir.length();
-
-                    if (distance > 2) {
-                        dir.normalize();
-                        troop.position.x += dir.x * 2 * delta;
-                        troop.position.z += dir.z * 2 * delta;
-                        troop.rotation.y = Math.atan2(dir.x, dir.z);
-                    } else {
-                        troop.position.y = Math.abs(Math.sin(clock.elapsedTime * 5)) * 0.3;
-                    }
-                });
-            }
-
-            renderer.render(scene, camera);
-        }
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        updateUI();
-        animate();
-    </script>
-</body>
-</html>
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      cancelAnimationFrame(rafId);
+    } else {
+      animate();
+    }
+  });
+})();
