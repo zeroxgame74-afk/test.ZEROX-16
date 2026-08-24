@@ -8,12 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* ====== استایل‌های کامل (همون قبلی) ====== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Estedad', 'Ardekan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #f1f5e9;
@@ -23,19 +19,11 @@
             animation: gradientMove 15s ease infinite;
             background-size: 400% 400%;
         }
-
         @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-
         :root {
             --pistachio: #a3c9a8;
             --pistachio-dark: #6f9e7c;
@@ -45,19 +33,11 @@
             --bg-card: rgba(44, 74, 53, 0.85);
             --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
         }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1e3828; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: var(--pistachio); border-radius: 10px; }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1e3828;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--pistachio);
-            border-radius: 10px;
-        }
-
+        /* ====== نوار ناوبری ====== */
         .navbar {
             background: rgba(31, 58, 44, 0.85);
             backdrop-filter: blur(12px);
@@ -77,11 +57,7 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
             border-bottom-color: var(--gold);
         }
-        .logo-area {
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-        }
+        .logo-area { display: flex; align-items: baseline; gap: 10px; }
         .site-name {
             font-size: 1.8rem;
             font-weight: 800;
@@ -94,15 +70,9 @@
             background-size: 200% auto;
         }
         @keyframes shimmer {
-            0% {
-                background-position: 0% center;
-            }
-            50% {
-                background-position: 100% center;
-            }
-            100% {
-                background-position: 0% center;
-            }
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
         }
         .site-name small {
             font-size: 0.9rem;
@@ -112,11 +82,7 @@
             -webkit-background-clip: unset;
             background-clip: unset;
         }
-        .menu {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+        .menu { display: flex; gap: 1rem; flex-wrap: wrap; }
         .menu a {
             color: #e0f2e5;
             text-decoration: none;
@@ -142,22 +108,14 @@
             background: var(--gold);
             transition: width 0.3s ease;
         }
-        .menu a:hover::after,
-        .menu a.active::after {
-            width: 70%;
-        }
-        .menu a:hover,
-        .menu a.active {
+        .menu a:hover::after, .menu a.active::after { width: 70%; }
+        .menu a:hover, .menu a.active {
             background: var(--pistachio);
             color: #1a3a2a;
             transform: translateY(-2px) scale(1.02);
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
+        .container { max-width: 1400px; margin: 2rem auto; padding: 0 1.5rem; }
 
         .hero {
             background: rgba(30, 55, 40, 0.5);
@@ -171,14 +129,8 @@
             animation: fadeInUp 1s ease;
         }
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .hero h2 {
             font-weight: 700;
@@ -187,9 +139,7 @@
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             font-family: 'Estedad', 'Ardekan', sans-serif;
         }
-        .hero h2 i {
-            color: var(--gold);
-        }
+        .hero h2 i { color: var(--gold); }
         .hero p {
             color: #cbdfcf;
             font-size: 1.05rem;
@@ -238,9 +188,7 @@
             transform: scale(1.1);
             transition: filter 0.5s ease;
         }
-        .row-card:hover .blur-bg {
-            filter: blur(10px) brightness(0.4);
-        }
+        .row-card:hover .blur-bg { filter: blur(10px) brightness(0.4); }
         .row-card .row-content {
             position: relative;
             z-index: 1;
@@ -266,9 +214,7 @@
             object-fit: cover;
             transition: transform 0.4s ease;
         }
-        .row-card:hover .row-img img {
-            transform: scale(1.05);
-        }
+        .row-card:hover .row-img img { transform: scale(1.05); }
         .row-card .row-info {
             flex: 1;
             min-width: 120px;
@@ -295,10 +241,7 @@
             align-items: center;
             gap: 4px;
         }
-        .row-card .row-info .row-meta span i {
-            color: var(--gold);
-            font-size: 0.7rem;
-        }
+        .row-card .row-info .row-meta span i { color: var(--gold); font-size: 0.7rem; }
         .row-card .row-badge {
             display: flex;
             flex-direction: column;
@@ -347,7 +290,6 @@
             border-top: 1px solid rgba(163, 201, 168, 0.2);
             padding: 12px 16px;
             border-radius: 0 0 20px 20px;
-            margin-top: 0;
         }
         .player-controls-card {
             display: flex;
@@ -448,11 +390,7 @@
             padding-bottom: 0.5rem;
             font-family: 'Estedad', 'Ardekan', sans-serif;
         }
-        .group-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
+        .group-info { display: flex; flex-direction: column; gap: 1rem; }
         .group-item {
             display: flex;
             align-items: center;
@@ -540,22 +478,15 @@
             align-items: center;
             gap: 6px;
         }
-        .filter-btn i {
-            font-size: 0.9rem;
-            color: var(--pistachio);
-        }
-        .filter-btn.active,
-        .filter-btn:hover {
+        .filter-btn i { font-size: 0.9rem; color: var(--pistachio); }
+        .filter-btn.active, .filter-btn:hover {
             background: var(--gold);
             color: #1a3a2a;
             border-color: var(--gold);
             transform: translateY(-2px);
             box-shadow: 0 4px 20px rgba(245, 200, 66, 0.3);
         }
-        .filter-btn.active i,
-        .filter-btn:hover i {
-            color: #1a3a2a;
-        }
+        .filter-btn.active i, .filter-btn:hover i { color: #1a3a2a; }
 
         /* ====== گالری خالی ====== */
         .gallery-empty {
@@ -619,26 +550,9 @@
             border-top: 1px solid rgba(163, 201, 168, 0.2);
             justify-content: space-between;
         }
-        .video-controls .left-controls {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex: 0 0 auto;
-        }
-        .video-controls .center-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex: 2;
-            min-width: 180px;
-            justify-content: center;
-        }
-        .video-controls .right-controls {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex: 0 0 auto;
-        }
+        .video-controls .left-controls { display: flex; align-items: center; gap: 6px; flex: 0 0 auto; }
+        .video-controls .center-controls { display: flex; align-items: center; gap: 10px; flex: 2; min-width: 180px; justify-content: center; }
+        .video-controls .right-controls { display: flex; align-items: center; gap: 6px; flex: 0 0 auto; }
         .video-controls button {
             background: none;
             border: none;
@@ -659,9 +573,7 @@
             background: rgba(245, 200, 66, 0.15);
             transform: scale(1.05);
         }
-        .video-controls button:active {
-            transform: scale(0.95);
-        }
+        .video-controls button:active { transform: scale(0.95); }
         .video-controls .play-btn-video {
             background: var(--gold);
             color: #1a3a2a;
@@ -677,9 +589,7 @@
             background: #ffd95e;
             color: #1a3a2a;
         }
-        .video-controls .play-btn-video:active {
-            transform: scale(0.95);
-        }
+        .video-controls .play-btn-video:active { transform: scale(0.95); }
         .video-controls .progress-video {
             flex: 3;
             min-width: 100px;
@@ -703,9 +613,7 @@
             position: relative;
             transition: height 0.2s;
         }
-        .video-controls .progress-video .progress-bar-video:hover {
-            height: 7px;
-        }
+        .video-controls .progress-video .progress-bar-video:hover { height: 7px; }
         .video-controls .progress-video .progress-bar-video .progress-fill-video {
             height: 100%;
             width: 0%;
@@ -713,11 +621,7 @@
             border-radius: 10px;
             transition: width 0.1s linear;
         }
-        .video-controls .volume-control {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
+        .video-controls .volume-control { display: flex; align-items: center; gap: 4px; }
         .video-controls .volume-control input[type="range"] {
             width: 55px;
             height: 3px;
@@ -736,12 +640,8 @@
             cursor: pointer;
             transition: 0.2s;
         }
-        .video-controls .volume-control input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.15);
-        }
-        .video-info {
-            padding: 1.5rem 1.8rem 1.8rem;
-        }
+        .video-controls .volume-control input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+        .video-info { padding: 1.5rem 1.8rem 1.8rem; }
         .video-info .video-title {
             font-size: 1.5rem;
             font-weight: 800;
@@ -824,10 +724,7 @@
             font-family: 'Estedad', 'Ardekan', sans-serif;
             margin-bottom: 0.5rem;
         }
-        .song-detail-page .detail-category {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
+        .song-detail-page .detail-category { text-align: center; margin-bottom: 1.5rem; }
         .song-detail-page .detail-table {
             width: 100%;
             border-collapse: collapse;
@@ -840,9 +737,7 @@
         .song-detail-page .detail-table tr {
             border-bottom: 1px solid rgba(163, 201, 168, 0.1);
         }
-        .song-detail-page .detail-table tr:last-child {
-            border-bottom: none;
-        }
+        .song-detail-page .detail-table tr:last-child { border-bottom: none; }
         .song-detail-page .detail-table td {
             padding: 12px 18px;
             font-size: 0.95rem;
@@ -864,16 +759,12 @@
             margin-left: 8px;
             width: 20px;
         }
-        .song-detail-page .detail-player {
-            margin: 1.5rem 0;
-        }
+        .song-detail-page .detail-player { margin: 1.5rem 0; }
         .song-detail-page .detail-player .player-simple {
             border-radius: 20px;
             border: 1px solid rgba(163, 201, 168, 0.2);
         }
-        .song-detail-page .detail-more {
-            margin-top: 1.5rem;
-        }
+        .song-detail-page .detail-more { margin-top: 1.5rem; }
         .song-detail-page .detail-more .more-details-btn {
             margin: 0 auto;
             background: none;
@@ -938,9 +829,7 @@
             padding: 2rem;
             backdrop-filter: blur(10px);
         }
-        .lightbox-overlay.active {
-            display: flex;
-        }
+        .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img {
             max-width: 90%;
             max-height: 90%;
@@ -972,72 +861,24 @@
 
         /* ====== ریسپانسیو ====== */
         @media (max-width: 700px) {
-            .navbar {
-                flex-direction: column;
-                gap: 12px;
-                padding: 1rem;
-            }
-            .menu {
-                justify-content: center;
-            }
-            .group-box h2 {
-                font-size: 1.5rem;
-            }
-            .filter-section {
-                gap: 0.5rem;
-            }
-            .filter-btn {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.75rem;
-            }
-            .popular-title {
-                font-size: 1rem;
-                padding: 0.4rem 1rem;
-            }
-            .video-controls {
-                gap: 4px;
-                padding: 8px 10px;
-            }
-            .video-controls .volume-control input[type="range"] {
-                width: 35px;
-            }
-            .video-info .video-meta span {
-                font-size: 0.8rem;
-            }
-            .video-info .video-title {
-                font-size: 1.2rem;
-            }
-            .video-controls button {
-                width: 30px;
-                height: 30px;
-                font-size: 0.9rem;
-                padding: 4px;
-            }
-            .video-controls .play-btn-video {
-                width: 36px;
-                height: 36px;
-                font-size: 1rem;
-            }
-            .video-controls .progress-video .time {
-                font-size: 0.6rem;
-                min-width: 30px;
-            }
-            .song-detail-page {
-                padding: 1rem;
-            }
-            .song-detail-page .detail-title {
-                font-size: 1.4rem;
-            }
-            .song-detail-page .detail-table td {
-                padding: 8px 12px;
-                font-size: 0.85rem;
-            }
-            .song-detail-page .detail-table .label {
-                width: 40%;
-            }
-            .song-detail-page .detail-img {
-                max-width: 250px;
-            }
+            .navbar { flex-direction: column; gap: 12px; padding: 1rem; }
+            .menu { justify-content: center; }
+            .group-box h2 { font-size: 1.5rem; }
+            .filter-section { gap: 0.5rem; }
+            .filter-btn { padding: 0.4rem 0.8rem; font-size: 0.75rem; }
+            .popular-title { font-size: 1rem; padding: 0.4rem 1rem; }
+            .video-controls { gap: 4px; padding: 8px 10px; }
+            .video-controls .volume-control input[type="range"] { width: 35px; }
+            .video-info .video-meta span { font-size: 0.8rem; }
+            .video-info .video-title { font-size: 1.2rem; }
+            .video-controls button { width: 30px; height: 30px; font-size: 0.9rem; padding: 4px; }
+            .video-controls .play-btn-video { width: 36px; height: 36px; font-size: 1rem; }
+            .video-controls .progress-video .time { font-size: 0.6rem; min-width: 30px; }
+            .song-detail-page { padding: 1rem; }
+            .song-detail-page .detail-title { font-size: 1.4rem; }
+            .song-detail-page .detail-table td { padding: 8px 12px; font-size: 0.85rem; }
+            .song-detail-page .detail-table .label { width: 40%; }
+            .song-detail-page .detail-img { max-width: 250px; }
             .row-card .row-content {
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -1045,36 +886,16 @@
                 gap: 0.5rem;
                 min-height: 80px;
             }
-            .row-card .row-img {
-                width: 60px;
-                height: 60px;
-            }
-            .row-card .row-info .row-title {
-                font-size: 1rem;
-            }
-            .row-card .row-info .row-meta {
-                font-size: 0.6rem;
-            }
-            .row-card .row-badge {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .row-card .row-arrow {
-                display: none;
-            }
-            .player-controls-card {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+            .row-card .row-img { width: 60px; height: 60px; }
+            .row-card .row-info .row-title { font-size: 1rem; }
+            .row-card .row-info .row-meta { font-size: 0.6rem; }
+            .row-card .row-badge { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .row-card .row-arrow { display: none; }
+            .player-controls-card { flex-wrap: wrap; justify-content: center; }
         }
 
-        .hidden-section {
-            display: none;
-        }
-        .active-section {
-            display: block;
-        }
+        .hidden-section { display: none; }
+        .active-section { display: block; }
     </style>
 </head>
 <body>
@@ -1302,8 +1123,8 @@
                 m
             ]); }
 
-        // ====== ساخت پلیر (فقط برای صفحه اختصاصی) ======
-        function createCardPlayer(audioSrc, trackTitle) {
+        // ====== ساخت پلیر برای صفحه اختصاصی (کاملاً کاربردی) ======
+        function createDetailPlayer(audioSrc, trackTitle) {
             const container = document.createElement('div');
             container.className = 'player-simple';
 
@@ -1336,12 +1157,13 @@
             controlsDiv.appendChild(downloadBtn);
             container.appendChild(controlsDiv);
 
+            // ====== عنصر صوتی ======
             const audio = new Audio(audioSrc);
             audio.preload = 'metadata';
             let isPlaying = false;
 
             function formatTime(sec) {
-                if (isNaN(sec)) return '00:00';
+                if (isNaN(sec) || !isFinite(sec)) return '00:00';
                 const mins = Math.floor(sec / 60);
                 const s = Math.floor(sec % 60);
                 return `${mins.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
@@ -1357,50 +1179,62 @@
                 }
             }
 
+            // رویدادهای صوتی
             audio.addEventListener('timeupdate', updateUI);
-            audio.addEventListener('loadedmetadata', () => {
+            audio.addEventListener('loadedmetadata', function() {
                 timeSpan.innerText = `${formatTime(0)} / ${formatTime(audio.duration)}`;
             });
-            audio.addEventListener('ended', () => {
+            audio.addEventListener('ended', function() {
                 isPlaying = false;
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
                 progressFill.style.width = '0%';
             });
+            audio.addEventListener('error', function(e) {
+                console.log('خطا در پخش آهنگ:', e);
+            });
 
-            playBtn.addEventListener('click', (e) => {
+            // دکمه پلی
+            playBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 if (isPlaying) {
                     audio.pause();
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
                 } else {
-                    audio.play().catch(() => {});
+                    audio.play().catch(function(err) {
+                        console.log('خطا در پخش:', err);
+                    });
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
                 }
                 isPlaying = !isPlaying;
-                playBtn.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
             });
 
-            progressBar.addEventListener('click', (e) => {
+            // کلیک روی نوار پیشرفت
+            progressBar.addEventListener('click', function(e) {
                 const rect = progressBar.getBoundingClientRect();
                 const percent = (e.clientX - rect.left) / rect.width;
-                if (audio.duration) {
+                if (audio.duration && !isNaN(audio.duration)) {
                     audio.currentTime = percent * audio.duration;
                 }
             });
 
-            downloadBtn.addEventListener('click', (e) => {
+            // دکمه دانلود
+            downloadBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 fetch(audioSrc)
-                    .then(res => res.blob())
-                    .then(blob => {
+                    .then(function(res) { return res.blob(); })
+                    .then(function(blob) {
                         const url = URL.createObjectURL(blob);
                         const a = document.createElement('a');
                         a.href = url;
-                        a.download = `${trackTitle}.mp3`;
+                        a.download = trackTitle + '.mp3';
                         document.body.appendChild(a);
                         a.click();
                         document.body.removeChild(a);
                         URL.revokeObjectURL(url);
                     })
-                    .catch(() => window.open(audioSrc, '_blank'));
+                    .catch(function() {
+                        window.open(audioSrc, '_blank');
+                    });
             });
 
             return container;
@@ -1452,7 +1286,7 @@
                 </div>
             `;
 
-            card.addEventListener('click', (e) => {
+            card.addEventListener('click', function(e) {
                 e.preventDefault();
                 navigateToSong(song.id);
             });
@@ -1462,52 +1296,53 @@
 
         // ====== تابع ناوبری ======
         function navigateToSong(songId) {
-            const song = songsData.find(s => s.id === songId);
+            const song = songsData.find(function(s) { return s.id === songId; });
             if (!song) return;
             window.location.hash = songId;
             renderSongDetail(songId);
         }
 
         // ====== رندر کارت‌های عریض ======
-        function renderRowCards(containerId, songsArray, showBadge = true) {
-            const container = document.getElementById(containerId);
+        function renderRowCards(containerId, songsArray, showBadge) {
+            var container = document.getElementById(containerId);
             if (!container) return;
             container.innerHTML = '';
-            songsArray.forEach(song => {
-                const card = buildRowCard(song, showBadge);
+            songsArray.forEach(function(song) {
+                var card = buildRowCard(song, showBadge);
                 container.appendChild(card);
             });
         }
 
         // ====== رندر صفحه اختصاصی آهنگ ======
         function renderSongDetail(songId) {
-            const song = songsData.find(s => s.id === songId);
+            var song = songsData.find(function(s) { return s.id === songId; });
             if (!song) {
                 switchPage('homePage');
                 return;
             }
 
-            const container = document.getElementById('songDetailContent');
+            var container = document.getElementById('songDetailContent');
             if (!container) return;
 
-            let categoryIcon = 'fa-tag';
+            var categoryIcon = 'fa-tag';
             if (song.category === 'شهادتی') categoryIcon = 'fa-star-of-life';
             else if (song.category === 'ولادتی') categoryIcon = 'fa-birthday-cake';
             else if (song.category === 'حماسی') categoryIcon = 'fa-shield-alt';
             else if (song.category === 'احساسی') categoryIcon = 'fa-heart';
             else if (song.category === 'مناسبتی') categoryIcon = 'fa-calendar-alt';
 
-            let tagHtml = '';
+            var tagHtml = '';
             if (song.tag) {
                 tagHtml =
-                    `<div style="text-align:center;margin-bottom:1rem;"><span class="popular-badge" style="display:inline-flex;width:auto;padding:8px 24px;background:linear-gradient(135deg,#f5c842,#e6a017);color:#1a3a2a;border-radius:40px;font-weight:700;"><i class="fas fa-fire"></i> ${escapeHtml(song.tag)}</span></div>`;
+                    '<div style="text-align:center;margin-bottom:1rem;"><span class="popular-badge" style="display:inline-flex;width:auto;padding:8px 24px;background:linear-gradient(135deg,#f5c842,#e6a017);color:#1a3a2a;border-radius:40px;font-weight:700;"><i class="fas fa-fire"></i> ' +
+                    escapeHtml(song.tag) + '</span></div>';
             }
 
-            let categoryHtml = (song.category) ?
-                `<div class="detail-category"><span class="category-tag" style="display:inline-flex;padding:6px 20px;font-size:1rem;background:rgba(42,90,62,0.7);border-radius:40px;color:#e0f2e5;"><i class="fas ${categoryIcon}"></i> ${escapeHtml(song.category)}</span></div>` :
-                '';
+            var categoryHtml = (song.category) ?
+                '<div class="detail-category"><span class="category-tag" style="display:inline-flex;padding:6px 20px;font-size:1rem;background:rgba(42,90,62,0.7);border-radius:40px;color:#e0f2e5;"><i class="fas ' +
+                categoryIcon + '"></i> ' + escapeHtml(song.category) + '</span></div>' : '';
 
-            let tableRows = `
+            var tableRows = `
                 <tr><td class="label"><i class="fas fa-microphone-alt"></i> اجرا</td><td class="value">${escapeHtml(song.performance) || '-'}</td></tr>
                 <tr><td class="label"><i class="fas fa-feather-alt"></i> شعر و ملودی</td><td class="value">${escapeHtml(song.poetry) || '-'}</td></tr>
                 <tr><td class="label"><i class="fas fa-music"></i> آهنگ سازی</td><td class="value">${escapeHtml(song.arrangement) || '-'}</td></tr>
@@ -1516,15 +1351,17 @@
 
             if (song.coverDesigner) {
                 tableRows +=
-                    `<tr><td class="label"><i class="fas fa-paint-brush"></i> طراح کاور</td><td class="value">${escapeHtml(song.coverDesigner)}</td></tr>`;
+                    '<tr><td class="label"><i class="fas fa-paint-brush"></i> طراح کاور</td><td class="value">' +
+                    escapeHtml(song.coverDesigner) + '</td></tr>';
             }
 
-            const playerContainer = document.createElement('div');
+            // ساخت پلیر با تابع جدید
+            var playerContainer = document.createElement('div');
             playerContainer.className = 'detail-player';
-            const player = createCardPlayer(song.audioLink, song.title);
+            var player = createDetailPlayer(song.audioLink, song.title);
             playerContainer.appendChild(player);
 
-            let moreHtml = '';
+            var moreHtml = '';
             if (song.moreText) {
                 moreHtml = `
                     <div class="detail-more">
@@ -1548,34 +1385,64 @@
                     <table class="detail-table">
                         ${tableRows}
                     </table>
-                    ${playerContainer.outerHTML}
-                    ${moreHtml}
                 </div>
             `;
 
-            const backBtn = document.getElementById('backFromDetail');
+            // اضافه کردن پلیر به صورت جداگانه (بعد از جدول)
+            var detailPlayer = container.querySelector('.song-detail-page');
+            if (detailPlayer) {
+                // اضافه کردن پلیر بعد از جدول
+                var table = detailPlayer.querySelector('.detail-table');
+                if (table) {
+                    var playerWrapper = document.createElement('div');
+                    playerWrapper.className = 'detail-player';
+                    var newPlayer = createDetailPlayer(song.audioLink, song.title);
+                    playerWrapper.appendChild(newPlayer);
+                    table.parentNode.insertBefore(playerWrapper, table.nextSibling);
+                }
+
+                // اضافه کردن توضیحات بیشتر
+                if (song.moreText) {
+                    var moreWrapper = document.createElement('div');
+                    moreWrapper.className = 'detail-more';
+                    moreWrapper.innerHTML = `
+                        <button class="more-details-btn" id="detailMoreBtn"><i class="fas fa-ellipsis-h"></i> توضیحات بیشتر</button>
+                        <div id="detailMoreContent" class="more-details-content" style="display:none;">
+                            ${song.moreText}
+                        </div>
+                    `;
+                    var playerWrapper2 = detailPlayer.querySelector('.detail-player');
+                    if (playerWrapper2) {
+                        playerWrapper2.parentNode.insertBefore(moreWrapper, playerWrapper2.nextSibling);
+                    }
+
+                    // رویداد توضیحات بیشتر
+                    var detailMoreBtn = document.getElementById('detailMoreBtn');
+                    var detailMoreContent = document.getElementById('detailMoreContent');
+                    if (detailMoreBtn && detailMoreContent) {
+                        detailMoreBtn.addEventListener('click', function() {
+                            if (detailMoreContent.style.display === 'none' || !detailMoreContent.style.display) {
+                                detailMoreContent.style.display = 'block';
+                                detailMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> بستن';
+                            } else {
+                                detailMoreContent.style.display = 'none';
+                                detailMoreBtn.innerHTML = '<i class="fas fa-ellipsis-h"></i> توضیحات بیشتر';
+                            }
+                        });
+                        detailMoreContent.style.display = 'none';
+                    }
+                }
+            }
+
+            // دکمه بازگشت
+            var backBtn = document.getElementById('backFromDetail');
             if (backBtn) {
-                backBtn.addEventListener('click', (e) => {
+                backBtn.addEventListener('click', function(e) {
                     e.preventDefault();
                     window.history.pushState(null, '', window.location.pathname);
                     switchPage('homePage');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
-            }
-
-            const detailMoreBtn = document.getElementById('detailMoreBtn');
-            const detailMoreContent = document.getElementById('detailMoreContent');
-            if (detailMoreBtn && detailMoreContent) {
-                detailMoreBtn.addEventListener('click', () => {
-                    if (detailMoreContent.style.display === 'none' || !detailMoreContent.style.display) {
-                        detailMoreContent.style.display = 'block';
-                        detailMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> بستن';
-                    } else {
-                        detailMoreContent.style.display = 'none';
-                        detailMoreBtn.innerHTML = '<i class="fas fa-ellipsis-h"></i> توضیحات بیشتر';
-                    }
-                });
-                detailMoreContent.style.display = 'none';
             }
 
             switchPage('songDetailPage');
@@ -1584,46 +1451,60 @@
 
         // ====== رندر صفحات ======
         function renderPopularHome() {
-            const popularSongs = songsData.filter(song => song.tag !== null && song.tag !== '');
+            var popularSongs = songsData.filter(function(song) { return song.tag !== null && song.tag !== ''; });
             renderRowCards('popularHomeGrid', popularSongs, true);
         }
 
         function renderPopularCards() {
-            const popularSongs = songsData.filter(song => song.tag !== null && song.tag !== '');
+            var popularSongs = songsData.filter(function(song) { return song.tag !== null && song.tag !== ''; });
             renderRowCards('popularGrid', popularSongs, true);
         }
 
         function renderFilteredCards(filterCategory) {
-            let filteredSongs = songsData;
-            if (filterCategory !== 'all') filteredSongs = songsData.filter(song => song.category === filterCategory);
+            var filteredSongs = songsData;
+            if (filterCategory !== 'all') {
+                filteredSongs = songsData.filter(function(song) { return song.category === filterCategory; });
+            }
             renderRowCards('sorudhaContainer', filteredSongs, true);
         }
 
         // ====== منو و فیلتر ======
-        let currentFilter = 'all';
+        var currentFilter = 'all';
 
         function setupFilters() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            filterBtns.forEach(btn => btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentFilter = btn.getAttribute('data-filter');
-                renderFilteredCards(currentFilter);
-            }));
-            document.querySelector('.filter-btn[data-filter="all"]')?.classList.add('active');
+            var filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    currentFilter = btn.getAttribute('data-filter');
+                    renderFilteredCards(currentFilter);
+                });
+            });
+            var allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+            if (allBtn) allBtn.classList.add('active');
         }
 
         function switchPage(pageId) {
-            const sections = ['homePage', 'sorudhaPage', 'popularPage', 'videoPage', 'galleryPage', 'hamahangiPage',
+            var sections = ['homePage', 'sorudhaPage', 'popularPage', 'videoPage', 'galleryPage', 'hamahangiPage',
                 'groupPage', 'songDetailPage'
             ];
-            sections.forEach(sec => {
-                const el = document.getElementById(sec);
-                if (el) el.classList.toggle('hidden-section', sec !== pageId);
+            sections.forEach(function(sec) {
+                var el = document.getElementById(sec);
+                if (el) {
+                    if (sec === pageId) {
+                        el.classList.remove('hidden-section');
+                        el.classList.add('active-section');
+                    } else {
+                        el.classList.add('hidden-section');
+                        el.classList.remove('active-section');
+                    }
+                }
             });
-            document.querySelectorAll('#mainMenu a').forEach(link => {
+            var menuLinks = document.querySelectorAll('#mainMenu a');
+            menuLinks.forEach(function(link) {
                 link.classList.remove('active');
-                const pageAttr = link.getAttribute('data-page');
+                var pageAttr = link.getAttribute('data-page');
                 if ((pageAttr === 'home' && pageId === 'homePage') ||
                     (pageAttr === 'sorudha' && pageId === 'sorudhaPage') ||
                     (pageAttr === 'popular' && pageId === 'popularPage') ||
@@ -1631,35 +1512,40 @@
                     (pageAttr === 'gallery' && pageId === 'galleryPage') ||
                     (pageAttr === 'hamahangi' && pageId === 'hamahangiPage') ||
                     (pageAttr === 'group' && pageId === 'groupPage')
-                ) link.classList.add('active');
+                ) {
+                    link.classList.add('active');
+                }
             });
             if (pageId === 'sorudhaPage') renderFilteredCards(currentFilter);
         }
 
         // ====== لایت‌باکس ======
         function openLightbox(src) {
-            const overlay = document.getElementById('lightboxOverlay');
-            const img = document.getElementById('lightboxImg');
+            var overlay = document.getElementById('lightboxOverlay');
+            var img = document.getElementById('lightboxImg');
             img.src = src;
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox() {
-            const overlay = document.getElementById('lightboxOverlay');
+            var overlay = document.getElementById('lightboxOverlay');
             overlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-        document.getElementById('lightboxOverlay')?.addEventListener('click', function(e) {
-            if (e.target === this) closeLightbox();
-        });
+        var lightboxOverlay = document.getElementById('lightboxOverlay');
+        if (lightboxOverlay) {
+            lightboxOverlay.addEventListener('click', function(e) {
+                if (e.target === this) closeLightbox();
+            });
+        }
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeLightbox();
         });
 
         // ====== اسکرول نوار منو ======
         window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
+            var navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
@@ -1668,105 +1554,120 @@
         });
 
         // ====== پلیر ویدیویی ======
-        const video = document.getElementById('mainVideo');
-        const videoPlayBtn = document.getElementById('videoPlayBtn');
-        const videoProgressBar = document.getElementById('videoProgressBar');
-        const videoProgressFill = document.getElementById('videoProgressFill');
-        const videoCurrentTime = document.getElementById('videoCurrentTime');
-        const videoDuration = document.getElementById('videoDuration');
-        const videoVolume = document.getElementById('videoVolume');
-        const videoMuteBtn = document.getElementById('videoMuteBtn');
-        const videoFullscreenBtn = document.getElementById('videoFullscreenBtn');
-        const videoMoreBtn = document.getElementById('videoMoreBtn');
-        const videoMoreContent = document.getElementById('videoMoreContent');
+        var video = document.getElementById('mainVideo');
+        var videoPlayBtn = document.getElementById('videoPlayBtn');
+        var videoProgressBar = document.getElementById('videoProgressBar');
+        var videoProgressFill = document.getElementById('videoProgressFill');
+        var videoCurrentTime = document.getElementById('videoCurrentTime');
+        var videoDuration = document.getElementById('videoDuration');
+        var videoVolume = document.getElementById('videoVolume');
+        var videoMuteBtn = document.getElementById('videoMuteBtn');
+        var videoFullscreenBtn = document.getElementById('videoFullscreenBtn');
+        var videoMoreBtn = document.getElementById('videoMoreBtn');
+        var videoMoreContent = document.getElementById('videoMoreContent');
 
-        let isVideoPlaying = false;
+        var isVideoPlaying = false;
 
         function formatVideoTime(sec) {
             if (isNaN(sec)) return '00:00';
-            const mins = Math.floor(sec / 60);
-            const s = Math.floor(sec % 60);
-            return `${mins.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            var mins = Math.floor(sec / 60);
+            var s = Math.floor(sec % 60);
+            return mins.toString().padStart(2, '0') + ':' + s.toString().padStart(2, '0');
         }
 
-        video.addEventListener('loadedmetadata', () => {
-            videoDuration.textContent = formatVideoTime(video.duration);
-        });
+        if (video) {
+            video.addEventListener('loadedmetadata', function() {
+                videoDuration.textContent = formatVideoTime(video.duration);
+            });
 
-        video.addEventListener('timeupdate', () => {
-            const percent = (video.currentTime / video.duration) * 100;
-            videoProgressFill.style.width = percent + '%';
-            videoCurrentTime.textContent = formatVideoTime(video.currentTime);
-            videoDuration.textContent = formatVideoTime(video.duration);
-        });
+            video.addEventListener('timeupdate', function() {
+                var percent = (video.currentTime / video.duration) * 100;
+                videoProgressFill.style.width = percent + '%';
+                videoCurrentTime.textContent = formatVideoTime(video.currentTime);
+                videoDuration.textContent = formatVideoTime(video.duration);
+            });
 
-        video.addEventListener('ended', () => {
-            isVideoPlaying = false;
-            videoPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
-        });
-
-        videoPlayBtn.addEventListener('click', () => {
-            if (isVideoPlaying) {
-                video.pause();
+            video.addEventListener('ended', function() {
+                isVideoPlaying = false;
                 videoPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
-            } else {
-                video.play().catch(() => {});
-                videoPlayBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            });
+
+            if (videoPlayBtn) {
+                videoPlayBtn.addEventListener('click', function() {
+                    if (isVideoPlaying) {
+                        video.pause();
+                        videoPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    } else {
+                        video.play().catch(function() {});
+                        videoPlayBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    }
+                    isVideoPlaying = !isVideoPlaying;
+                });
             }
-            isVideoPlaying = !isVideoPlaying;
-        });
 
-        videoProgressBar.addEventListener('click', (e) => {
-            const rect = videoProgressBar.getBoundingClientRect();
-            const percent = (e.clientX - rect.left) / rect.width;
-            if (video.duration) {
-                video.currentTime = percent * video.duration;
+            if (videoProgressBar) {
+                videoProgressBar.addEventListener('click', function(e) {
+                    var rect = videoProgressBar.getBoundingClientRect();
+                    var percent = (e.clientX - rect.left) / rect.width;
+                    if (video.duration) {
+                        video.currentTime = percent * video.duration;
+                    }
+                });
             }
-        });
 
-        videoVolume.addEventListener('input', () => {
-            video.volume = videoVolume.value;
-            videoMuteBtn.innerHTML = video.volume === 0 ? '<i class="fas fa-volume-mute"></i>' :
-                '<i class="fas fa-volume-up"></i>';
-        });
-
-        videoMuteBtn.addEventListener('click', () => {
-            if (video.volume > 0) {
-                video.volume = 0;
-                videoVolume.value = 0;
-                videoMuteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
-            } else {
-                video.volume = 1;
-                videoVolume.value = 1;
-                videoMuteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+            if (videoVolume) {
+                videoVolume.addEventListener('input', function() {
+                    video.volume = videoVolume.value;
+                    videoMuteBtn.innerHTML = video.volume === 0 ? '<i class="fas fa-volume-mute"></i>' :
+                        '<i class="fas fa-volume-up"></i>';
+                });
             }
-        });
 
-        videoFullscreenBtn.addEventListener('click', () => {
-            if (video.requestFullscreen) {
-                video.requestFullscreen();
-            } else if (video.webkitRequestFullscreen) {
-                video.webkitRequestFullscreen();
-            } else if (video.msRequestFullscreen) {
-                video.msRequestFullscreen();
+            if (videoMuteBtn) {
+                videoMuteBtn.addEventListener('click', function() {
+                    if (video.volume > 0) {
+                        video.volume = 0;
+                        videoVolume.value = 0;
+                        videoMuteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                    } else {
+                        video.volume = 1;
+                        videoVolume.value = 1;
+                        videoMuteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                    }
+                });
             }
-        });
 
-        videoMoreBtn.addEventListener('click', () => {
-            if (videoMoreContent.style.display === 'none' || !videoMoreContent.style.display) {
-                videoMoreContent.style.display = 'block';
-                videoMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> بستن';
-            } else {
+            if (videoFullscreenBtn) {
+                videoFullscreenBtn.addEventListener('click', function() {
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    } else if (video.msRequestFullscreen) {
+                        video.msRequestFullscreen();
+                    }
+                });
+            }
+
+            if (videoMoreBtn && videoMoreContent) {
+                videoMoreBtn.addEventListener('click', function() {
+                    if (videoMoreContent.style.display === 'none' || !videoMoreContent.style.display) {
+                        videoMoreContent.style.display = 'block';
+                        videoMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> بستن';
+                    } else {
+                        videoMoreContent.style.display = 'none';
+                        videoMoreBtn.innerHTML = '<i class="fas fa-ellipsis-h"></i> توضیحات بیشتر';
+                    }
+                });
                 videoMoreContent.style.display = 'none';
-                videoMoreBtn.innerHTML = '<i class="fas fa-ellipsis-h"></i> توضیحات بیشتر';
             }
-        });
+        }
 
         // ====== مدیریت هش ======
         function handleHash() {
-            const hash = window.location.hash.replace('#', '');
+            var hash = window.location.hash.replace('#', '');
             if (hash) {
-                const song = songsData.find(s => s.id === hash);
+                var song = songsData.find(function(s) { return s.id === hash; });
                 if (song) {
                     renderSongDetail(hash);
                     return;
@@ -1784,25 +1685,34 @@
         }
 
         function bindMenuEvents() {
-            document.querySelectorAll('#mainMenu a').forEach(link => link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const page = link.getAttribute('data-page');
-                if (page === 'home') {
-                    window.location.hash = '';
-                    switchPage('homePage');
-                } else if (page === 'sorudha') {
-                    switchPage('sorudhaPage');
-                    renderFilteredCards(currentFilter);
-                } else if (page === 'popular') switchPage('popularPage');
-                else if (page === 'video') switchPage('videoPage');
-                else if (page === 'gallery') switchPage('galleryPage');
-                else if (page === 'hamahangi') switchPage('hamahangiPage');
-                else if (page === 'group') switchPage('groupPage');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }));
+            var menuLinks = document.querySelectorAll('#mainMenu a');
+            menuLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var page = link.getAttribute('data-page');
+                    if (page === 'home') {
+                        window.location.hash = '';
+                        switchPage('homePage');
+                    } else if (page === 'sorudha') {
+                        switchPage('sorudhaPage');
+                        renderFilteredCards(currentFilter);
+                    } else if (page === 'popular') {
+                        switchPage('popularPage');
+                    } else if (page === 'video') {
+                        switchPage('videoPage');
+                    } else if (page === 'gallery') {
+                        switchPage('galleryPage');
+                    } else if (page === 'hamahangi') {
+                        switchPage('hamahangiPage');
+                    } else if (page === 'group') {
+                        switchPage('groupPage');
+                    }
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('DOMContentLoaded', function() {
             initCards();
             bindMenuEvents();
             setupFilters();
@@ -1814,4 +1724,4 @@
         });
     </script>
 </body>
-            </html>
+    </html>
