@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* ====== استایل‌های عمومی ====== */
         * {
             margin: 0;
             padding: 0;
@@ -529,11 +530,11 @@
             box-shadow: 0 4px 15px rgba(245, 200, 66, 0.4);
         }
 
-        /* ====== کارت عریض با بلور (صفحه خانه) - طراحی جدید ====== */
+        /* ====== کارت عریض افقی (صفحه خانه) ====== */
         .home-rows {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1rem;
             margin-top: 1rem;
         }
 
@@ -541,7 +542,7 @@
             position: relative;
             background: var(--bg-card);
             backdrop-filter: blur(6px);
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow);
             border: 1px solid rgba(163, 201, 168, 0.2);
@@ -550,13 +551,14 @@
             text-decoration: none;
             color: inherit;
             display: block;
-            min-height: 140px;
+            width: 100%;
+            min-height: 110px;
         }
 
         .row-card:hover {
-            transform: translateY(-5px) scale(1.01);
+            transform: translateY(-3px) scale(1.01);
             border-color: var(--gold);
-            box-shadow: 0 25px 45px -15px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
         }
 
         .row-card .blur-bg {
@@ -567,14 +569,14 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            filter: blur(12px) brightness(0.35);
+            filter: blur(14px) brightness(0.3);
             z-index: 0;
             transform: scale(1.1);
             transition: filter 0.5s ease;
         }
 
         .row-card:hover .blur-bg {
-            filter: blur(8px) brightness(0.45);
+            filter: blur(10px) brightness(0.4);
         }
 
         .row-card .row-content {
@@ -582,20 +584,20 @@
             z-index: 1;
             display: flex;
             align-items: center;
-            padding: 1.2rem 1.8rem;
-            gap: 1.5rem;
+            padding: 0.8rem 1.2rem;
+            gap: 1rem;
             width: 100%;
-            min-height: 140px;
+            min-height: 110px;
         }
 
         .row-card .row-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 16px;
+            width: 80px;
+            height: 80px;
+            border-radius: 14px;
             overflow: hidden;
             flex-shrink: 0;
             border: 2px solid rgba(163, 201, 168, 0.3);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .row-card .row-img img {
@@ -611,54 +613,55 @@
 
         .row-card .row-info {
             flex: 1;
-            min-width: 160px;
+            min-width: 120px;
+            padding: 0 0.2rem;
         }
 
         .row-card .row-info .row-title {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: #fbf5cf;
             font-family: 'Estedad', 'Ardekan', sans-serif;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .row-card .row-info .row-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.6rem 1rem;
+            gap: 0.4rem 0.8rem;
             font-family: 'Ardekan', 'Estedad', sans-serif;
             color: #cbdfcf;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
         }
 
         .row-card .row-info .row-meta span {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
         }
 
         .row-card .row-info .row-meta span i {
             color: var(--gold);
-            font-size: 0.8rem;
+            font-size: 0.7rem;
         }
 
         .row-card .row-badge {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             flex-shrink: 0;
         }
 
         .row-card .row-badge .badge-sm {
-            padding: 4px 14px;
+            padding: 3px 12px;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             font-family: 'Estedad', 'Ardekan', sans-serif;
             white-space: nowrap;
         }
@@ -676,17 +679,17 @@
         }
 
         .row-card .row-arrow {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: var(--gold);
-            opacity: 0.4;
+            opacity: 0.3;
             transition: 0.3s;
             flex-shrink: 0;
-            padding-right: 0.5rem;
+            padding-right: 0.3rem;
         }
 
         .row-card:hover .row-arrow {
             opacity: 1;
-            transform: translateX(-6px);
+            transform: translateX(-4px);
         }
 
         /* ====== گروه مفضال ====== */
@@ -1353,17 +1356,21 @@
                 max-width: 250px;
             }
             .row-card .row-content {
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem;
-                gap: 0.8rem;
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 0.6rem 0.8rem;
+                gap: 0.5rem;
+                min-height: 80px;
             }
             .row-card .row-img {
-                width: 80px;
-                height: 80px;
+                width: 60px;
+                height: 60px;
             }
             .row-card .row-info .row-title {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+            .row-card .row-info .row-meta {
+                font-size: 0.6rem;
             }
             .row-card .row-badge {
                 flex-direction: row;
@@ -1806,7 +1813,7 @@
             return card;
         }
 
-        // ====== ساخت کارت عریض با بلور (صفحه خانه) ======
+        // ====== ساخت کارت عریض افقی (صفحه خانه) ======
         function buildRowCard(song) {
             const card = document.createElement('a');
             card.className = 'row-card';
@@ -1864,7 +1871,6 @@
         function navigateToSong(songId) {
             const song = songsData.find(s => s.id === songId);
             if (!song) return;
-            // تغییر هش در URL
             window.location.hash = songId;
             renderSongDetail(songId);
         }
@@ -1981,12 +1987,10 @@
                 </div>
             `;
 
-            // دکمه بازگشت
             const backBtn = document.getElementById('backFromDetail');
             if (backBtn) {
                 backBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    // حذف هش از URL
                     window.history.pushState(null, '', window.location.pathname);
                     switchPage('homePage');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2224,11 +2228,10 @@
             setupFilters();
             handleHash();
 
-            // گوش دادن به تغییرات هش
             window.addEventListener('hashchange', function() {
                 handleHash();
             });
         });
     </script>
 </body>
-    </html>
+</html>
