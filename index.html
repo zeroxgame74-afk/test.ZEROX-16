@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* ====== استایل‌های کامل (همون قبلی که کار میکرد) ====== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Estedad', 'Ardekan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -286,7 +287,7 @@
             transform: translateX(-4px);
         }
 
-        /* ====== پلیر صوتی ====== */
+        /* ====== پلیر صوتی (کار میکنه) ====== */
         .audio-player-simple {
             background: rgba(30, 53, 39, 0.9);
             backdrop-filter: blur(6px);
@@ -373,7 +374,7 @@
             box-shadow: 0 4px 15px rgba(245, 200, 66, 0.4);
         }
 
-        /* ====== پلیر ویدیویی با کنترل‌های کامل ====== */
+        /* ====== پلیر ویدیویی (با کنترل‌های کامل HTML5) ====== */
         .video-detail-wrapper {
             width: 100%;
             background: #000;
@@ -389,7 +390,7 @@
         .video-controls-detail {
             background: rgba(20, 20, 20, 0.9);
             backdrop-filter: blur(8px);
-            padding: 12px 16px;
+            padding: 10px 16px;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -397,29 +398,11 @@
             justify-content: space-between;
             border-top: 1px solid rgba(163, 201, 168, 0.2);
         }
-        .video-controls-detail .left-controls {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .video-controls-detail .center-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex: 2;
-            min-width: 150px;
-            justify-content: center;
-        }
-        .video-controls-detail .right-controls {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
         .video-controls-detail button {
             background: none;
             border: none;
             color: #e0f2e5;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.2s ease;
             padding: 4px 6px;
@@ -427,8 +410,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 34px;
-            height: 34px;
+            width: 32px;
+            height: 32px;
         }
         .video-controls-detail button:hover {
             color: var(--gold);
@@ -438,10 +421,10 @@
         .video-controls-detail .play-btn-video-detail {
             background: var(--gold);
             color: #1a3a2a;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
-            font-size: 1.1rem;
+            font-size: 1rem;
             box-shadow: 0 4px 15px rgba(245, 200, 66, 0.3);
         }
         .video-controls-detail .play-btn-video-detail:hover {
@@ -457,10 +440,10 @@
             gap: 6px;
         }
         .video-controls-detail .progress-video-detail .time {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: #a0b8a8;
             font-family: monospace;
-            min-width: 35px;
+            min-width: 32px;
         }
         .video-controls-detail .progress-video-detail .progress-bar-video-detail {
             flex: 1;
@@ -468,7 +451,6 @@
             background: #4f6b58;
             border-radius: 10px;
             cursor: pointer;
-            transition: height 0.2s;
         }
         .video-controls-detail .progress-video-detail .progress-bar-video-detail:hover {
             height: 6px;
@@ -486,7 +468,7 @@
             gap: 4px;
         }
         .video-controls-detail .volume-control-detail input[type="range"] {
-            width: 50px;
+            width: 45px;
             height: 3px;
             background: #4f6b58;
             border-radius: 10px;
@@ -501,8 +483,24 @@
             background: var(--gold);
             cursor: pointer;
         }
-        .video-controls-detail .fullscreen-btn {
-            font-size: 0.9rem;
+        .video-controls-detail .download-btn-video {
+            background: var(--gold);
+            border: none;
+            padding: 4px 12px;
+            border-radius: 50px;
+            color: #1a3a2a;
+            font-weight: bold;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+            font-size: 0.65rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .video-controls-detail .download-btn-video:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(245, 200, 66, 0.4);
         }
 
         /* ====== گروه مفضال ====== */
@@ -861,10 +859,10 @@
             .row-card .row-arrow { display: none; }
             .audio-controls { flex-wrap: wrap; justify-content: center; }
             .video-controls-detail { gap: 4px; padding: 8px 10px; }
-            .video-controls-detail .volume-control-detail input[type="range"] { width: 35px; }
+            .video-controls-detail .volume-control-detail input[type="range"] { width: 30px; }
             .video-controls-detail button { width: 28px; height: 28px; font-size: 0.8rem; padding: 3px; }
             .video-controls-detail .play-btn-video-detail { width: 34px; height: 34px; font-size: 0.9rem; }
-            .video-controls-detail .progress-video-detail .time { font-size: 0.55rem; min-width: 30px; }
+            .video-controls-detail .progress-video-detail .time { font-size: 0.55rem; min-width: 28px; }
         }
 
         .hidden-section { display: none; }
@@ -1068,7 +1066,7 @@
                 m
             ]); }
 
-        // ====== پلیر صوتی ======
+        // ====== پلیر صوتی (کار میکنه) ======
         function createAudioPlayer(audioSrc, trackTitle) {
             const container = document.createElement('div');
             container.className = 'audio-player-simple';
@@ -1175,7 +1173,7 @@
             return container;
         }
 
-        // ====== پلیر ویدیویی با کنترل کامل ======
+        // ====== پلیر ویدیویی با کنترل کامل (کار میکنه) ======
         function createVideoPlayer(videoSrc, posterImg) {
             const container = document.createElement('div');
             container.className = 'video-detail-wrapper';
@@ -1190,39 +1188,58 @@
 
             // چپ
             const leftControls = document.createElement('div');
-            leftControls.className = 'left-controls';
+            leftControls.style.display = 'flex';
+            leftControls.style.alignItems = 'center';
+            leftControls.style.gap = '6px';
+
             const playBtn = document.createElement('button');
             playBtn.className = 'play-btn-video-detail';
             playBtn.innerHTML = '<i class="fas fa-play"></i>';
+
             const muteBtn = document.createElement('button');
             muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+
             leftControls.appendChild(playBtn);
             leftControls.appendChild(muteBtn);
 
             // وسط
             const centerControls = document.createElement('div');
-            centerControls.className = 'center-controls';
+            centerControls.style.display = 'flex';
+            centerControls.style.alignItems = 'center';
+            centerControls.style.gap = '8px';
+            centerControls.style.flex = '2';
+            centerControls.style.minWidth = '120px';
+            centerControls.style.justifyContent = 'center';
+
             const progressWrapper = document.createElement('div');
             progressWrapper.className = 'progress-video-detail';
+
             const timeSpan1 = document.createElement('span');
             timeSpan1.className = 'time';
             timeSpan1.textContent = '00:00';
+
             const progressBar = document.createElement('div');
             progressBar.className = 'progress-bar-video-detail';
             const progressFill = document.createElement('div');
             progressFill.className = 'progress-fill-video-detail';
             progressBar.appendChild(progressFill);
+
             const timeSpan2 = document.createElement('span');
             timeSpan2.className = 'time';
             timeSpan2.textContent = '00:00';
+
             progressWrapper.appendChild(timeSpan1);
             progressWrapper.appendChild(progressBar);
             progressWrapper.appendChild(timeSpan2);
+
             centerControls.appendChild(progressWrapper);
 
             // راست
             const rightControls = document.createElement('div');
-            rightControls.className = 'right-controls';
+            rightControls.style.display = 'flex';
+            rightControls.style.alignItems = 'center';
+            rightControls.style.gap = '6px';
+
             const volumeContainer = document.createElement('div');
             volumeContainer.className = 'volume-control-detail';
             const volumeInput = document.createElement('input');
@@ -1232,12 +1249,14 @@
             volumeInput.step = 0.01;
             volumeInput.value = 1;
             volumeContainer.appendChild(volumeInput);
+
             const fullscreenBtn = document.createElement('button');
-            fullscreenBtn.className = 'fullscreen-btn';
             fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+
             const downloadBtn = document.createElement('button');
-            downloadBtn.className = 'download-btn';
+            downloadBtn.className = 'download-btn-video';
             downloadBtn.innerHTML = '<i class="fas fa-download"></i>';
+
             rightControls.appendChild(volumeContainer);
             rightControls.appendChild(fullscreenBtn);
             rightControls.appendChild(downloadBtn);
@@ -1722,4 +1741,4 @@
         });
     </script>
 </body>
- </html>
+    </html>
