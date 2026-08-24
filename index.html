@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ====== استایل‌های کامل ====== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Estedad', 'Ardekan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -37,7 +36,6 @@
         ::-webkit-scrollbar-track { background: #1e3828; border-radius: 10px; }
         ::-webkit-scrollbar-thumb { background: var(--pistachio); border-radius: 10px; }
 
-        /* ====== نوار ناوبری ====== */
         .navbar {
             background: rgba(31, 58, 44, 0.85);
             backdrop-filter: blur(12px);
@@ -147,7 +145,7 @@
             font-family: 'Ardekan', 'Estedad', sans-serif;
         }
 
-        /* ====== کارت عریض با بلور ====== */
+        /* ====== کارت عریض ====== */
         .cards-container {
             display: flex;
             flex-direction: column;
@@ -375,13 +373,12 @@
             box-shadow: 0 4px 15px rgba(245, 200, 66, 0.4);
         }
 
-        /* ====== پلیر ویدیویی خفن (برای صفحه اختصاصی نماهنگ) ====== */
+        /* ====== پلیر ویدیویی با کنترل‌های کامل ====== */
         .video-detail-wrapper {
             width: 100%;
+            background: #000;
             border-radius: 20px;
             overflow: hidden;
-            background: #000;
-            position: relative;
             margin: 1rem 0;
         }
         .video-detail-wrapper video {
@@ -390,47 +387,48 @@
             background: #000;
         }
         .video-controls-detail {
-            background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.3));
-            padding: 14px 18px;
+            background: rgba(20, 20, 20, 0.9);
+            backdrop-filter: blur(8px);
+            padding: 12px 16px;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             justify-content: space-between;
-            backdrop-filter: blur(6px);
+            border-top: 1px solid rgba(163, 201, 168, 0.2);
         }
         .video-controls-detail .left-controls {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         .video-controls-detail .center-controls {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             flex: 2;
-            min-width: 160px;
+            min-width: 150px;
             justify-content: center;
         }
         .video-controls-detail .right-controls {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         .video-controls-detail button {
             background: none;
             border: none;
             color: #e0f2e5;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.2s ease;
-            padding: 6px 8px;
+            padding: 4px 6px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
         }
         .video-controls-detail button:hover {
             color: var(--gold);
@@ -440,10 +438,10 @@
         .video-controls-detail .play-btn-video-detail {
             background: var(--gold);
             color: #1a3a2a;
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             box-shadow: 0 4px 15px rgba(245, 200, 66, 0.3);
         }
         .video-controls-detail .play-btn-video-detail:hover {
@@ -456,14 +454,13 @@
             min-width: 100px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         .video-controls-detail .progress-video-detail .time {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #a0b8a8;
             font-family: monospace;
-            min-width: 40px;
-            font-weight: 500;
+            min-width: 35px;
         }
         .video-controls-detail .progress-video-detail .progress-bar-video-detail {
             flex: 1;
@@ -474,7 +471,7 @@
             transition: height 0.2s;
         }
         .video-controls-detail .progress-video-detail .progress-bar-video-detail:hover {
-            height: 7px;
+            height: 6px;
         }
         .video-controls-detail .progress-video-detail .progress-bar-video-detail .progress-fill-video-detail {
             height: 100%;
@@ -489,13 +486,12 @@
             gap: 4px;
         }
         .video-controls-detail .volume-control-detail input[type="range"] {
-            width: 55px;
+            width: 50px;
             height: 3px;
             background: #4f6b58;
             border-radius: 10px;
             outline: none;
             -webkit-appearance: none;
-            transition: 0.2s;
         }
         .video-controls-detail .volume-control-detail input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -504,10 +500,9 @@
             border-radius: 50%;
             background: var(--gold);
             cursor: pointer;
-            transition: 0.2s;
         }
-        .video-controls-detail .volume-control-detail input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.15);
+        .video-controls-detail .fullscreen-btn {
+            font-size: 0.9rem;
         }
 
         /* ====== گروه مفضال ====== */
@@ -865,11 +860,11 @@
             .row-card .row-badge { flex-direction: row; flex-wrap: wrap; justify-content: center; }
             .row-card .row-arrow { display: none; }
             .audio-controls { flex-wrap: wrap; justify-content: center; }
-            .video-controls-detail { gap: 6px; padding: 10px 12px; }
+            .video-controls-detail { gap: 4px; padding: 8px 10px; }
             .video-controls-detail .volume-control-detail input[type="range"] { width: 35px; }
-            .video-controls-detail button { width: 30px; height: 30px; font-size: 0.9rem; padding: 4px; }
-            .video-controls-detail .play-btn-video-detail { width: 38px; height: 38px; font-size: 1rem; }
-            .video-controls-detail .progress-video-detail .time { font-size: 0.6rem; min-width: 30px; }
+            .video-controls-detail button { width: 28px; height: 28px; font-size: 0.8rem; padding: 3px; }
+            .video-controls-detail .play-btn-video-detail { width: 34px; height: 34px; font-size: 0.9rem; }
+            .video-controls-detail .progress-video-detail .time { font-size: 0.55rem; min-width: 30px; }
         }
 
         .hidden-section { display: none; }
@@ -905,7 +900,6 @@
     <!-- ====== محتوای اصلی ====== -->
     <main class="container" id="mainContent">
 
-        <!-- ====== صفحه خانه ====== -->
         <div id="homePage" class="page-section">
             <div class="hero">
                 <h2><i class="fas fa-music"></i> به پخش‌کننده رسمی mefzal.ir خوش آمدید</h2>
@@ -918,7 +912,6 @@
             <div class="cards-container" id="homeRowsContainer"></div>
         </div>
 
-        <!-- ====== صفحه سرودها ====== -->
         <div id="sorudhaPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-headphones"></i> سرودهای اختصاصی مفضال</h2>
@@ -935,7 +928,6 @@
             <div class="cards-container" id="sorudhaContainer"></div>
         </div>
 
-        <!-- ====== صفحه پرطرفدار ====== -->
         <div id="popularPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-fire"></i> پرطرفدارترین سرودها</h2>
@@ -944,7 +936,6 @@
             <div class="cards-container" id="popularGrid"></div>
         </div>
 
-        <!-- ====== صفحه نماهنگ ====== -->
         <div id="videoPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-video"></i> نماهنگ رسمی مفضال</h2>
@@ -953,7 +944,6 @@
             <div class="cards-container" id="videoContainer"></div>
         </div>
 
-        <!-- ====== صفحه گزارش تصویری ====== -->
         <div id="galleryPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-images"></i> گزارش تصویری</h2>
@@ -968,7 +958,6 @@
             </div>
         </div>
 
-        <!-- ====== صفحه هماهنگی ====== -->
         <div id="hamahangiPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-handshake"></i> هماهنگی و ارتباط با ما</h2>
@@ -985,7 +974,6 @@
             </div>
         </div>
 
-        <!-- ====== صفحه گروه مفضال ====== -->
         <div id="groupPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-users"></i> درباره گروه حرفه‌ای مفضال</h2>
@@ -1002,7 +990,6 @@
             </div>
         </div>
 
-        <!-- ====== صفحه اختصاصی ====== -->
         <div id="detailPage" class="page-section hidden-section">
             <div id="detailContent"></div>
         </div>
@@ -1076,12 +1063,12 @@
             </div>`
         }];
 
-        // ====== توابع کمکی ======
+        // ====== توابع ======
         function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[
                 m
             ]); }
 
-        // ====== ساخت پلیر صوتی ======
+        // ====== پلیر صوتی ======
         function createAudioPlayer(audioSrc, trackTitle) {
             const container = document.createElement('div');
             container.className = 'audio-player-simple';
@@ -1188,7 +1175,7 @@
             return container;
         }
 
-        // ====== ساخت پلیر ویدیویی خفن ======
+        // ====== پلیر ویدیویی با کنترل کامل ======
         function createVideoPlayer(videoSrc, posterImg) {
             const container = document.createElement('div');
             container.className = 'video-detail-wrapper';
@@ -1204,48 +1191,38 @@
             // چپ
             const leftControls = document.createElement('div');
             leftControls.className = 'left-controls';
-
             const playBtn = document.createElement('button');
             playBtn.className = 'play-btn-video-detail';
             playBtn.innerHTML = '<i class="fas fa-play"></i>';
-
             const muteBtn = document.createElement('button');
             muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-
             leftControls.appendChild(playBtn);
             leftControls.appendChild(muteBtn);
 
             // وسط
             const centerControls = document.createElement('div');
             centerControls.className = 'center-controls';
-
             const progressWrapper = document.createElement('div');
             progressWrapper.className = 'progress-video-detail';
-
             const timeSpan1 = document.createElement('span');
             timeSpan1.className = 'time';
             timeSpan1.textContent = '00:00';
-
             const progressBar = document.createElement('div');
             progressBar.className = 'progress-bar-video-detail';
             const progressFill = document.createElement('div');
             progressFill.className = 'progress-fill-video-detail';
             progressBar.appendChild(progressFill);
-
             const timeSpan2 = document.createElement('span');
             timeSpan2.className = 'time';
             timeSpan2.textContent = '00:00';
-
             progressWrapper.appendChild(timeSpan1);
             progressWrapper.appendChild(progressBar);
             progressWrapper.appendChild(timeSpan2);
-
             centerControls.appendChild(progressWrapper);
 
             // راست
             const rightControls = document.createElement('div');
             rightControls.className = 'right-controls';
-
             const volumeContainer = document.createElement('div');
             volumeContainer.className = 'volume-control-detail';
             const volumeInput = document.createElement('input');
@@ -1255,14 +1232,12 @@
             volumeInput.step = 0.01;
             volumeInput.value = 1;
             volumeContainer.appendChild(volumeInput);
-
             const fullscreenBtn = document.createElement('button');
+            fullscreenBtn.className = 'fullscreen-btn';
             fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
-
             const downloadBtn = document.createElement('button');
             downloadBtn.className = 'download-btn';
             downloadBtn.innerHTML = '<i class="fas fa-download"></i>';
-
             rightControls.appendChild(volumeContainer);
             rightControls.appendChild(fullscreenBtn);
             rightControls.appendChild(downloadBtn);
@@ -1369,7 +1344,7 @@
             return container;
         }
 
-        // ====== ساخت کارت عریض ======
+        // ====== ساخت کارت ======
         function buildRowCard(item, type) {
             const card = document.createElement('a');
             card.className = 'row-card';
@@ -1415,9 +1390,7 @@
                     </div>
                     <div class="row-info">
                         <div class="row-title">${escapeHtml(item.title)}</div>
-                        <div class="row-meta">
-                            ${metaHtml}
-                        </div>
+                        <div class="row-meta">${metaHtml}</div>
                     </div>
                     <div class="row-badge">
                         ${tagHtml}
@@ -1435,7 +1408,6 @@
             return card;
         }
 
-        // ====== رندر کارت‌ها ======
         function renderRowCards(containerId, items, type) {
             var container = document.getElementById(containerId);
             if (!container) return;
@@ -1446,13 +1418,11 @@
             });
         }
 
-        // ====== ناوبری ======
         function navigateToDetail(id, type) {
             window.location.hash = id;
             renderDetail(id, type);
         }
 
-        // ====== رندر صفحه اختصاصی ======
         function renderDetail(id, type) {
             var container = document.getElementById('detailContent');
             if (!container) return;
@@ -1472,7 +1442,6 @@
                 return;
             }
 
-            // جدول اطلاعات
             var tableRows = '';
             if (isVideo) {
                 tableRows = `
@@ -1497,7 +1466,6 @@
                 }
             }
 
-            // پلیر
             var playerHtml = '';
             if (isVideo) {
                 var videoPlayer = createVideoPlayer(item.videoLink, item.imageLink);
@@ -1507,7 +1475,6 @@
                 playerHtml = audioPlayer.outerHTML;
             }
 
-            // تگ‌ها
             var tagHtml = '';
             if (!isVideo && item.tag) {
                 tagHtml =
@@ -1520,7 +1487,6 @@
                 `<div class="detail-category"><span style="display:inline-flex;padding:6px 20px;font-size:1rem;background:rgba(42,90,62,0.7);border-radius:40px;color:#e0f2e5;"><i class="fas ${categoryIcon}"></i> ${categoryText}</span></div>` :
                 '';
 
-            // توضیحات بیشتر
             var moreHtml = '';
             if (item.moreText) {
                 moreHtml = `
@@ -1552,7 +1518,6 @@
                 </div>
             `;
 
-            // رویدادها
             var backBtn = document.getElementById('backFromDetail');
             if (backBtn) {
                 backBtn.addEventListener('click', function(e) {
@@ -1680,7 +1645,7 @@
             if (e.key === 'Escape') closeLightbox();
         });
 
-        // ====== اسکرول منو ======
+        // ====== اسکرول ======
         window.addEventListener('scroll', function() {
             var navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -1690,7 +1655,7 @@
             }
         });
 
-        // ====== مدیریت هش ======
+        // ====== هش ======
         function handleHash() {
             var hash = window.location.hash.replace('#', '');
             if (hash) {
@@ -1757,4 +1722,4 @@
         });
     </script>
 </body>
-</html>
+ </html>
