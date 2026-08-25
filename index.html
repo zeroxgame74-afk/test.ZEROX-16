@@ -577,7 +577,7 @@
             transform: rotate(90deg);
         }
 
-        /* ====== گالری گزارش تصویری ====== */
+        /* ====== گالری Flip (بدون لینک) ====== */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1002,7 +1002,7 @@
             </div>`
         }];
 
-        // ====== داده گالری (بدون هش) ======
+        // ====== داده گالری ======
         const galleryData = [{
             id: 1,
             title: "اجرای گروه سرود مفضال در صد و شصت و ششمین شب اجتماعات بیرجند",
@@ -1114,7 +1114,7 @@
             });
         }
 
-        // ====== ساخت کارت گالری (بدون لینک و بدون هش) ======
+        // ====== ساخت کارت گالری (بدون لینک) ======
         function buildGalleryCard(item) {
             const card = document.createElement('div');
             card.className = 'flip-card';
@@ -1122,7 +1122,7 @@
             const inner = document.createElement('div');
             inner.className = 'flip-card-inner';
 
-            // روی کارت - با توضیحات کامل
+            // روی کارت
             const front = document.createElement('div');
             front.className = 'flip-card-front';
             front.innerHTML = `
@@ -1154,12 +1154,11 @@
             inner.appendChild(back);
             card.appendChild(inner);
 
-            // کلیک برای ورق خوردن (بدون لینک و بدون رفتن به پایین)
+            // کلیک برای ورق خوردن - بدون لینک
             card.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
                 if (e.target.closest('.back-images img')) return;
                 this.classList.toggle('flipped');
+                e.preventDefault();
             });
 
             return card;
@@ -1491,4 +1490,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
