@@ -613,7 +613,7 @@
             color: var(--gold);
         }
 
-        /* پشت کارت - خوشگل‌تر با افکت */
+        /* پشت کارت */
         .flip-card-back {
             background: linear-gradient(145deg, rgba(44, 74, 53, 0.95), rgba(30, 55, 40, 0.98));
             backdrop-filter: blur(12px);
@@ -1076,7 +1076,7 @@
             });
         }
 
-        // ====== کارت گالری ======
+        // ====== کارت گالری (بدون لینک و بدون href) ======
         function buildGalleryCard(item) {
             const card = document.createElement('div');
             card.className = 'flip-card';
@@ -1118,6 +1118,7 @@
             inner.appendChild(back);
             card.appendChild(inner);
 
+            // کلیک برای برگشت - بدون هیچ لینکی
             card.addEventListener('click', function(e) {
                 if (e.target.closest('.back-images img')) return;
                 this.classList.toggle('flipped');
@@ -1440,4 +1441,4 @@
         });
     </script>
 </body>
-                                                                                                   </html>
+                                                                                           </html>
