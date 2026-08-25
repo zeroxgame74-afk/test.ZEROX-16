@@ -28,7 +28,6 @@
         ::-webkit-scrollbar-track { background: #1e3828; border-radius: 10px; }
         ::-webkit-scrollbar-thumb { background: var(--pistachio); border-radius: 10px; }
 
-        /* ====== نوار ناوبری ====== */
         .navbar {
             background: rgba(31, 58, 44, 0.85);
             backdrop-filter: blur(12px);
@@ -124,7 +123,7 @@
             font-family: 'Ardekan', 'Estedad', sans-serif;
         }
 
-        /* ====== کارت عریض با بلور ====== */
+        /* ====== کارت عریض ====== */
         .cards-container {
             display: flex;
             flex-direction: column;
@@ -289,7 +288,7 @@
             background: #000;
         }
 
-        /* ====== کارت گالری ۱:۱ با قابلیت ورق زدن ====== */
+        /* ====== کارت گالری ۱:۱ با فید روی عکس ====== */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -333,6 +332,7 @@
         .flip-card-front {
             background: var(--bg-card);
             backdrop-filter: blur(6px);
+            position: relative;
         }
 
         .flip-card-front img {
@@ -340,6 +340,37 @@
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        /* ====== فید روی عکس (متن شفاف) ====== */
+        .flip-card-front .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 16px 16px 16px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            text-align: center;
+        }
+
+        .flip-card-front .photo-overlay .overlay-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fbf5cf;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .flip-card-front .photo-overlay .overlay-location {
+            font-size: 0.7rem;
+            color: var(--pistachio-light);
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            margin-top: 2px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
 
         .flip-card-front .image-counter {
@@ -351,9 +382,10 @@
             backdrop-filter: blur(4px);
             padding: 4px 14px;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #e0f2e5;
             font-family: 'Ardekan', 'Estedad', sans-serif;
+            z-index: 2;
         }
 
         .flip-card-front .nav-arrows {
@@ -364,6 +396,7 @@
             display: flex;
             justify-content: space-between;
             padding: 0 10px;
+            z-index: 2;
         }
 
         .flip-card-front .nav-arrows button {
@@ -402,6 +435,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            z-index: 2;
         }
 
         .flip-card-back {
@@ -813,6 +847,8 @@
             .flip-card-back .back-desc { font-size: 0.75rem; }
             .flip-card-front .nav-arrows button { width: 30px; height: 30px; font-size: 0.8rem; }
             .flip-card-front .flip-hint { font-size: 0.5rem; padding: 4px 8px; }
+            .flip-card-front .photo-overlay .overlay-title { font-size: 0.7rem; }
+            .flip-card-front .photo-overlay .overlay-location { font-size: 0.6rem; }
         }
 
         .hidden-section { display: none; }
@@ -889,7 +925,7 @@
             <div class="cards-container" id="videoContainer"></div>
         </div>
 
-        <!-- ====== صفحه گزارش تصویری (با کارت‌های ۱:۱) ====== -->
+        <!-- ====== صفحه گزارش تصویری ====== -->
         <div id="galleryPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-images"></i> گزارش تصویری</h2>
@@ -1009,6 +1045,7 @@
             desc: "🔻 اجرای گروه سرود مفضال در صد و شصت و ششمین شب اجتماعات بیرجند",
             location: "📍 میدان اجتماعات شهید رئیسی",
             hashtag: "#گزارش_تصویری",
+            overlayText: "اجرای گروه سرود مفضال - میدان شهید رئیسی",
             images: [
                 "https://uploadkon.ir/uploads/ec4b25_26IMG-20260825-041446-253.jpg",
                 "https://uploadkon.ir/uploads/36f525_26IMG-20260825-041442-705.jpg"
@@ -1119,7 +1156,7 @@
             });
         }
 
-        // ====== کارت گالری ۱:۱ با ورق زدن ======
+        // ====== کارت گالری با فید روی عکس ======
         function buildGalleryCard(item) {
             const card = document.createElement('div');
             card.className = 'flip-card';
@@ -1139,6 +1176,14 @@
             img.alt = item.title;
             img.loading = 'lazy';
             img.onerror = function() { this.src = 'https://picsum.photos/id/101/400/400'; };
+
+            // ====== فید روی عکس ======
+            const overlay = document.createElement('div');
+            overlay.className = 'photo-overlay';
+            overlay.innerHTML = `
+                <div class="overlay-title">${escapeHtml(item.overlayText || item.title)}</div>
+                <div class="overlay-location"><i class="fas fa-map-pin"></i> ${escapeHtml(item.location.replace('📍 ', ''))}</div>
+            `;
 
             // فلش‌ها
             const navArrows = document.createElement('div');
@@ -1174,6 +1219,7 @@
             hint.innerHTML = '<i class="fas fa-sync-alt"></i> کلیک برای توضیحات';
 
             front.appendChild(img);
+            front.appendChild(overlay);
             front.appendChild(navArrows);
             front.appendChild(counter);
             front.appendChild(hint);
@@ -1197,14 +1243,12 @@
 
             // کلیک برای ورق زدن
             card.addEventListener('click', function(e) {
-                // اگر روی فلش‌ها یا دکمه برگشت کلیک شده، ورق نخورد
                 if (e.target.closest('.nav-arrows') || e.target.closest('.back-close')) {
                     return;
                 }
                 this.classList.toggle('flipped');
             });
 
-            // دکمه برگشت در پشت کارت
             const closeBtn = back.querySelector('.back-close');
             closeBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -1523,4 +1567,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
