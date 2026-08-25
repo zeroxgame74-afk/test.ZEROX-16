@@ -1114,7 +1114,7 @@
             });
         }
 
-        // ====== ساخت کارت گالری (بدون لینک) ======
+        // ====== ساخت کارت گالری (بدون لینک - رفع باگ اسکرول) ======
         function buildGalleryCard(item) {
             const card = document.createElement('div');
             card.className = 'flip-card';
@@ -1154,11 +1154,13 @@
             inner.appendChild(back);
             card.appendChild(inner);
 
-            // کلیک برای ورق خوردن - بدون لینک
+            // کلیک برای ورق خوردن - با preventDefault برای جلوگیری از اسکرول
             card.addEventListener('click', function(e) {
+                // اگر روی تصویر کوچک کلیک شده، کاری نکن (اون تابع خودش رو داره)
                 if (e.target.closest('.back-images img')) return;
-                this.classList.toggle('flipped');
+                // جلوگیری از رفتار پیش‌فرض و اسکرول
                 e.preventDefault();
+                this.classList.toggle('flipped');
             });
 
             return card;
