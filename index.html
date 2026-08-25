@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* ====== استایل‌های عمومی (همون قبلی) ====== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Estedad', 'Ardekan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -617,8 +618,10 @@
             box-shadow: var(--shadow);
         }
 
+        /* ====== روی کارت با متن راهنما ====== */
         .flip-card-front {
             background: #1c2f24;
+            position: relative;
         }
         .flip-card-front img {
             width: 100%;
@@ -630,6 +633,37 @@
             transform: scale(1.05);
         }
 
+        .flip-card-front .front-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 1.2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .flip-card-front .front-overlay .front-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+        }
+        .flip-card-front .front-overlay .front-hint {
+            font-size: 0.75rem;
+            color: var(--pistachio-light);
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .flip-card-front .front-overlay .front-hint i {
+            color: var(--gold);
+            font-size: 0.85rem;
+        }
+
+        /* ====== پشت کارت ====== */
         .flip-card-back {
             background: var(--bg-card);
             backdrop-filter: blur(8px);
@@ -779,18 +813,12 @@
             .flip-card-back .back-images img { width: 50px; height: 50px; }
             .flip-overlay { padding: 1rem; }
             .flip-overlay .close-overlay { top: 20px; left: 20px; width: 40px; height: 40px; font-size: 1.6rem; }
+            .flip-card-front .front-overlay .front-title { font-size: 0.85rem; }
+            .flip-card-front .front-overlay .front-hint { font-size: 0.65rem; }
         }
 
         .hidden-section { display: none; }
         .active-section { display: block; }
-
-        /* گالری در صفحه گزارش تصویری */
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 1rem;
-        }
     </style>
 </head>
 <body>
@@ -869,7 +897,7 @@
             <div class="cards-container" id="videoContainer"></div>
         </div>
 
-        <!-- ====== صفحه گزارش تصویری با کارت‌های Flip ====== -->
+        <!-- ====== صفحه گزارش تصویری ====== -->
         <div id="galleryPage" class="page-section hidden-section">
             <div class="hero">
                 <h2><i class="fas fa-images"></i> گزارش تصویری</h2>
@@ -982,7 +1010,7 @@
             </div>`
         }];
 
-        // ====== داده گالری (گزارش تصویری) ======
+        // ====== داده گالری ======
         const galleryData = [{
             id: 1,
             hash: "#گزارش_تصویری",
@@ -1099,7 +1127,7 @@
             });
         }
 
-        // ====== ساخت کارت گالری (Flip) ======
+        // ====== ساخت کارت گالری (Flip) با متن راهنما روی کارت ======
         function buildGalleryCard(item) {
             const card = document.createElement('div');
             card.className = 'flip-card';
@@ -1107,10 +1135,16 @@
             const inner = document.createElement('div');
             inner.className = 'flip-card-inner';
 
-            // روی کارت (عکس اصلی)
+            // روی کارت (عکس اصلی + متن راهنما)
             const front = document.createElement('div');
             front.className = 'flip-card-front';
-            front.innerHTML = `<img src="${item.images[0]}" alt="${item.title}" loading="lazy" onerror="this.src='https://picsum.photos/id/101/400/400'">`;
+            front.innerHTML = `
+                <img src="${item.images[0]}" alt="${item.title}" loading="lazy" onerror="this.src='https://picsum.photos/id/101/400/400'">
+                <div class="front-overlay">
+                    <div class="front-title">📸 گزارش تصویری</div>
+                    <div class="front-hint"><i class="fas fa-hand-pointer"></i> برای دیدن جزئیات و عکس‌ها کلیک کنید</div>
+                </div>
+            `;
 
             // پشت کارت (متن و عکس‌های کوچک)
             const back = document.createElement('div');
@@ -1469,4 +1503,4 @@
         });
     </script>
 </body>
-                                                                   </html>
+</html>
