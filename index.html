@@ -1134,7 +1134,7 @@
                 </div>
             `;
 
-            // پشت کارت - فقط عکس‌های کوچک
+            // پشت کارت
             const back = document.createElement('div');
             back.className = 'flip-card-back';
 
@@ -1154,8 +1154,10 @@
             inner.appendChild(back);
             card.appendChild(inner);
 
-            // کلیک برای ورق خوردن (بدون لینک)
+            // کلیک برای ورق خوردن (بدون لینک و بدون رفتن به پایین)
             card.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
                 if (e.target.closest('.back-images img')) return;
                 this.classList.toggle('flipped');
             });
@@ -1489,4 +1491,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
