@@ -115,6 +115,10 @@
             color: #B61C1C;
         }
 
+        .nav-links a.music-link {
+            color: #B61C1C;
+        }
+
         .user-actions {
             display: flex;
             gap: 14px;
@@ -267,6 +271,231 @@
         .slider-dots span.active {
             background: white;
             transform: scale(1.2);
+        }
+
+        /* ===== MUSIC LIST HORIZONTAL ===== */
+        .music-section {
+            margin: 30px 0 40px;
+        }
+
+        .music-section .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .music-section .section-header h2 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .music-section .section-header h2 i {
+            color: #B61C1C;
+        }
+
+        .music-section .section-header a {
+            font-family: 'Estedad', sans-serif;
+            color: #B61C1C;
+            text-decoration: none;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .music-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 10px 0 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .music-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .music-scroll::-webkit-scrollbar-track {
+            background: #e5ddd5;
+            border-radius: 10px;
+        }
+        .music-scroll::-webkit-scrollbar-thumb {
+            background: #B61C1C;
+            border-radius: 10px;
+        }
+
+        .music-card {
+            flex: 0 0 160px;
+            scroll-snap-align: start;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .music-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(182, 28, 28, 0.15);
+        }
+
+        .music-card .music-cover {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .music-card .music-cover .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .music-card:hover .music-cover .play-overlay {
+            opacity: 1;
+        }
+
+        .music-card .music-cover .play-overlay i {
+            color: white;
+            font-size: 3rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .music-card .music-info {
+            padding: 12px 14px;
+        }
+
+        .music-card .music-info h4 {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .music-card .music-info p {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.7rem;
+            color: #888;
+        }
+
+        /* ===== MUSIC DETAIL PAGE ===== */
+        .music-detail-page {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .music-detail-page .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Estedad', sans-serif;
+            color: #B61C1C;
+            text-decoration: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            background: none;
+            font-size: 0.95rem;
+        }
+
+        .music-detail-page .back-btn:hover {
+            color: #8f1515;
+            transform: translateX(-4px);
+        }
+
+        .music-detail-page .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+        }
+
+        .music-detail-page .detail-cover {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 16px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .music-detail-page .detail-info h2 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
+
+        .music-detail-page .detail-info .game-name {
+            font-family: 'Estedad', sans-serif;
+            font-size: 1rem;
+            color: #B61C1C;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .music-detail-page .detail-info .platform {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 12px;
+        }
+
+        .music-detail-page .detail-info .composers {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        .music-detail-page .detail-info .composers strong {
+            color: #1a1a1a;
+        }
+
+        .music-detail-page .detail-info .desc {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .music-detail-page .detail-info .audio-player {
+            width: 100%;
+            border-radius: 30px;
+            outline: none;
+            background: #f0ebe5;
+        }
+
+        .music-detail-page .detail-info .audio-player::-webkit-media-controls-panel {
+            background: #f0ebe5;
+        }
+
+        .music-detail-page .detail-info .audio-player::-webkit-media-controls-play-button {
+            background: #B61C1C;
+            border-radius: 50%;
+            color: white;
         }
 
         .section-header {
@@ -534,8 +763,8 @@
         }
 
         .notifications-page .notif-hero .notif-icon-big {
-            width: 220px;
-            height: 220px;
+            width: 280px;
+            height: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1054,14 +1283,21 @@
                 padding: 12px;
             }
             .notifications-page .notif-hero .notif-icon-big {
-                width: 170px;
-                height: 170px;
+                width: 200px;
+                height: 200px;
             }
             .profile-page {
                 padding: 12px;
             }
             .notif-item {
                 padding: 14px 16px;
+            }
+            .music-detail-page .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .music-card {
+                flex: 0 0 140px;
             }
         }
 
@@ -1129,8 +1365,8 @@
                 font-size: 0.8rem;
             }
             .notifications-page .notif-hero .notif-icon-big {
-                width: 160px;
-                height: 160px;
+                width: 180px;
+                height: 180px;
             }
             .notifications-page .notif-hero h2 {
                 font-size: 1.3rem;
@@ -1151,6 +1387,12 @@
                 width: 100%;
                 text-align: center;
             }
+            .music-card {
+                flex: 0 0 120px;
+            }
+            .music-detail-page .detail-info h2 {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
@@ -1164,6 +1406,7 @@
             <div class="nav-links">
                 <a class="active" onclick="showPage('home')"><i class="fas fa-home"></i> خانه</a>
                 <a onclick="showPage('movies')"><i class="fas fa-film"></i> ویدیوها</a>
+                <a class="music-link" onclick="showPage('music')"><i class="fas fa-music"></i> موسیقی</a>
             </div>
             <div class="user-actions">
                 <i class="fas fa-search search-icon" onclick="showPage('search')"></i>
@@ -1198,6 +1441,17 @@
                 <div class="slider-dots" id="sliderDots">
                     <span class="active" onclick="goToSlide(0)"></span>
                     <span onclick="goToSlide(1)"></span>
+                </div>
+            </div>
+
+            <!-- ===== بخش موسیقی ===== -->
+            <div class="music-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-music"></i> موسیقی بازی‌ها</h2>
+                    <a href="#" onclick="showPage('music'); return false;">مشاهده همه</a>
+                </div>
+                <div class="music-scroll" id="musicScroll">
+                    <!-- کارت‌های موسیقی توسط جاوااسکریپت ساخته میشن -->
                 </div>
             </div>
 
@@ -1330,6 +1584,26 @@
             </div>
         </div>
 
+        <!-- ===== صفحه موسیقی ===== -->
+        <div class="page" id="page-music">
+            <div class="music-detail-page" id="musicDetailPage">
+                <button class="back-btn" onclick="showPage('home')">
+                    <i class="fas fa-arrow-right"></i> بازگشت
+                </button>
+                <div id="musicListContainer">
+                    <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin-bottom:20px;">
+                        <i class="fas fa-music" style="color:#B61C1C;"></i> همه موسیقی‌ها
+                    </h2>
+                    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:20px;" id="allMusicGrid">
+                        <!-- توسط جاوااسکریپت پر میشه -->
+                    </div>
+                </div>
+                <div id="musicSingleContainer" style="display:none;">
+                    <!-- صفحه جزئیات موسیقی توسط جاوااسکریپت پر میشه -->
+                </div>
+            </div>
+        </div>
+
         <!-- ===== صفحه ویدیوها ===== -->
         <div class="page" id="page-movies">
             <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin:20px 0;"><i class="fas fa-film" style="color:#B61C1C;"></i> ویدیوها</h2>
@@ -1412,6 +1686,41 @@
     </div>
 
     <script>
+        // ===== دیتابیس موسیقی =====
+        const musicData = [
+            { 
+                id: 4, 
+                title: "INSIDE | ZEROX", 
+                game: "INSIDE", 
+                platform: "PC, Xbox One, PlayStation 4, Nintendo Switch, iOS", 
+                cover: "https://cdn.imgurl.ir/uploads/e280977_inside___Zerox_.jpg", 
+                file: "https://cdn.imgurl.ir/uploads/s393413_INSIDE___ZEROX120.mp3", 
+                composers: ["Martin Stig Andersen", "SØS Gunver Ryberg"], 
+                desc: "موسیقی بازی INSIDE رو Martin Stig Andersen ساخت و کارش رو حدود سال‌های ۲۰۱۴ تا ۲۰۱۶، همزمان با ساخت خود بازی انجام داد. جالبه که اینجا مثل بقیه بازی‌ها آهنگ شاد یا ملودی مشخص نداریم؛ بیشتر صداها محیطی و عجیبن. سازنده به جای موسیقی معمولی، از صداهای واقعی مثل نویز، صداهای فلزی، نفس انسان و حتی سکوت استفاده کرده و بعد اون‌ها رو تغییر داده تا حس ترس و تنش بده."
+            },
+            { 
+                id: 3, 
+                title: "GOD OF WAR | ZEROX", 
+                game: "God of War Ragnarök", 
+                platform: "PS", 
+                cover: "https://cdn.imgurl.ir/uploads/c555686_Negar_1780837093023.jpg", 
+                file: "https://uploadkon.ir/uploads/7ea308_26ef9f06-26Zerox-god-of-war.mp3", 
+                composers: ["Bear McCreary"], 
+                desc: "کار روی موسیقی از حدود ۲۰۱۹ شروع شد و هم‌زمان با توسعه بازی جلو رفت، تا اینکه بازی در ۲۰۲۲ منتشر شد. و الان از سایت زروکس گوش میکنید!"
+            },
+            { 
+                id: 2, 
+                title: "HALO INFINITE | ZEROX", 
+                game: "Halo Infinite", 
+                platform: "Xbox", 
+                cover: "https://uploadkon.ir/uploads/b1f108_26InShot-20260607-161240740.jpg", 
+                file: "https://uploadkon.ir/uploads/478e08_26HALO-INFINITE-ZEROX.mp3", 
+                composers: ["Gareth Coker", "Curtis Schweitzer", "Joel Corelitz"], 
+                desc: "این آهنگ سال و تاریخ ۸ دسامبر ۲۰۲۱ ساخته شده و برای بازی هیلو اینفینیت یک شاهکار محسوب میشه!"
+            }
+        ];
+
+        // ===== دیتابیس فیلم‌ها =====
         const moviesDB = [
             {
                 title: 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا',
@@ -1431,6 +1740,7 @@
             }
         ];
 
+        // ===== اسلایدر =====
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.slider-dots span');
@@ -1465,6 +1775,7 @@
 
         startAutoPlay();
 
+        // ===== صفحه‌بندی =====
         function showPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const target = document.getElementById('page-' + page);
@@ -1472,7 +1783,7 @@
             
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             const links = document.querySelectorAll('.nav-links a');
-            const map = { home: 0, movies: 1 };
+            const map = { home: 0, movies: 1, music: 2 };
             if (map[page] !== undefined && links[map[page]]) {
                 links[map[page]].classList.add('active');
             }
@@ -1494,8 +1805,92 @@
                     if (input) input.focus();
                 }, 100);
             }
+
+            if (page === 'music') {
+                document.getElementById('musicListContainer').style.display = 'block';
+                document.getElementById('musicSingleContainer').style.display = 'none';
+                renderAllMusic();
+            }
         }
 
+        // ===== رندر کارت‌های موسیقی در هدر =====
+        function renderMusicCards() {
+            const container = document.getElementById('musicScroll');
+            if (!container) return;
+            
+            container.innerHTML = musicData.map(music => `
+                <div class="music-card" onclick="openMusicDetail(${music.id})">
+                    <div class="music-cover" style="background-image: url('${music.cover}');">
+                        <div class="play-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <h4>${music.title}</h4>
+                        <p>${music.game}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== رندر همه موسیقی‌ها در صفحه موسیقی =====
+        function renderAllMusic() {
+            const grid = document.getElementById('allMusicGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = musicData.map(music => `
+                <div class="music-card" onclick="openMusicDetail(${music.id})">
+                    <div class="music-cover" style="background-image: url('${music.cover}');">
+                        <div class="play-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <h4>${music.title}</h4>
+                        <p>${music.game}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== باز کردن جزئیات موسیقی =====
+        function openMusicDetail(id) {
+            const music = musicData.find(m => m.id === id);
+            if (!music) return;
+
+            document.getElementById('musicListContainer').style.display = 'none';
+            document.getElementById('musicSingleContainer').style.display = 'block';
+
+            const container = document.getElementById('musicSingleContainer');
+            container.innerHTML = `
+                <div class="detail-grid">
+                    <div class="detail-cover" style="background-image: url('${music.cover}');"></div>
+                    <div class="detail-info">
+                        <h2>${music.title}</h2>
+                        <div class="game-name">🎮 ${music.game}</div>
+                        <div class="platform">📱 ${music.platform}</div>
+                        <div class="composers">
+                            <strong>🎵 آهنگسازان:</strong> ${music.composers.join('، ')}
+                        </div>
+                        <div class="desc">${music.desc}</div>
+                        <audio class="audio-player" controls>
+                            <source src="${music.file}" type="audio/mpeg">
+                            مرورگر شما از پخش موسیقی پشتیبانی نمی‌کند.
+                        </audio>
+                    </div>
+                </div>
+                <div style="margin-top:20px; text-align:center;">
+                    <button class="back-btn" onclick="showPage('music')" style="display:inline-flex; align-items:center; gap:8px; font-family:'Estedad',sans-serif; color:#B61C1C; cursor:pointer; border:none; background:none; font-size:0.95rem; font-weight:600;">
+                        <i class="fas fa-arrow-right"></i> بازگشت به لیست
+                    </button>
+                </div>
+            `;
+
+            // اسکرول به بالا
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== جستجو =====
         function liveSearch(query) {
             const resultsContainer = document.getElementById('searchResults');
             const q = query.trim().toLowerCase();
@@ -1541,6 +1936,7 @@
             }).join('');
         }
 
+        // ===== توضیحات کشویی =====
         function toggleDescription() {
             const desc = document.getElementById('videoDescription');
             const toggle = document.getElementById('descToggle');
@@ -1556,6 +1952,7 @@
             }
         }
 
+        // ===== باز کردن ویدیو =====
         function openVideo(url, title, desc, duration, rating) {
             const iframe = document.getElementById('videoIframe');
             if (iframe) iframe.src = url;
@@ -1582,6 +1979,7 @@
             showPage('video');
         }
 
+        // ===== کلید ESC =====
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 const videoPage = document.getElementById('page-video');
@@ -1592,6 +1990,11 @@
                 }
             }
         });
+
+        // ===== اجرا هنگام لود =====
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMusicCards();
+        });
     </script>
 </body>
-</html>
+            </html>
