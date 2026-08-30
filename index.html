@@ -6,7 +6,6 @@
     <title>Zerox Studio | VOD Platform</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/estedad-font@v1.0.0/dist/font-face.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/amir-s/Ardekan-Font@master/fontface.css" />
 
@@ -113,12 +112,14 @@
             color: white;
             font-weight: 700;
             -webkit-text-fill-color: white;
+            display: inline-block;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
             gap: 28px;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -130,6 +131,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            cursor: pointer;
         }
 
         .nav-links a:hover {
@@ -174,6 +176,11 @@
             font-size: 0.95rem;
             width: 100%;
             font-family: 'Estedad', sans-serif;
+            color: #2d2a24;
+        }
+
+        .search-section input::placeholder {
+            color: #999;
         }
 
         .search-section button {
@@ -186,6 +193,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Estedad', sans-serif;
+            white-space: nowrap;
         }
 
         .search-section button:hover {
@@ -252,6 +260,10 @@
             box-shadow: 0 20px 40px rgba(182, 28, 28, 0.1);
         }
 
+        .movie-card.hidden {
+            display: none;
+        }
+
         .movie-poster {
             height: 280px;
             position: relative;
@@ -305,7 +317,7 @@
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             position: relative;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 56.25%;
         }
 
         .video-wrapper iframe {
@@ -322,6 +334,13 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .video-header h3 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.5rem;
         }
 
         .close-btn {
@@ -333,6 +352,12 @@
             cursor: pointer;
             font-family: 'Estedad', sans-serif;
             font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #8f1515;
+            transform: scale(1.02);
         }
 
         /* ===== FOOTER ===== */
@@ -367,6 +392,70 @@
         .footer-social a:hover {
             background: #B61C1C;
             color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 16px;
+            }
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+            .nav-links {
+                gap: 14px;
+                margin-top: 8px;
+            }
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+            .search-section {
+                flex-wrap: wrap;
+                background: transparent;
+                padding: 0;
+                border: none;
+            }
+            .search-section input {
+                background: rgba(255,255,255,0.8);
+                border-radius: 30px;
+                padding: 12px 18px;
+                margin-bottom: 8px;
+            }
+            .search-section button {
+                width: 100%;
+                justify-content: center;
+            }
+            .movie-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 14px;
+            }
+            .movie-poster {
+                height: 200px;
+            }
+            .genre-tabs .genre-item {
+                padding: 6px 14px;
+                font-size: 0.75rem;
+            }
+            .section-title h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .movie-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 10px;
+            }
+            .movie-poster {
+                height: 170px;
+            }
+            .movie-info h4 {
+                font-size: 0.9rem;
+            }
+            .user-actions i {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -378,7 +467,7 @@
                 <h1>Zerox <span>VOD</span></h1>
             </div>
             <div class="nav-links">
-                <a href="#" onclick="showHome()"><i class="fas fa-home"></i> خانه</a>
+                <a onclick="showHome()"><i class="fas fa-home"></i> خانه</a>
                 <a href="#"><i class="fas fa-film"></i> فیلم‌ها</a>
                 <a href="#"><i class="fas fa-tv"></i> سریال‌ها</a>
             </div>
@@ -396,16 +485,16 @@
             </div>
 
             <div class="genre-tabs">
-                <span class="genre-item active" onclick="filterGenre('all', this)">همه</span>
-                <span class="genre-item" onclick="filterGenre('horror', this)">ترسناک</span>
-                <span class="genre-item" onclick="filterGenre('psycho', this)">روانشناختی</span>
+                <span class="genre-item active" data-genre="all" onclick="filterGenre('all', this)">همه</span>
+                <span class="genre-item" data-genre="horror" onclick="filterGenre('horror', this)">ترسناک</span>
+                <span class="genre-item" data-genre="psycho" onclick="filterGenre('psycho', this)">روانشناختی</span>
             </div>
 
             <div class="section-title">
                 <h2><i class="fas fa-fire" style="color:#B61C1C;"></i> جدیدترین عناوین</h2>
             </div>
 
-            <div class="movie-grid">
+            <div class="movie-grid" id="movieGrid">
                 <div class="movie-card" data-genre="horror,psycho" onclick="openVideoPage('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
                         <span class="badge">ویژه</span>
@@ -418,12 +507,51 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="movie-card" data-genre="horror" onclick="openVideoPage('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame')">
+                    <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
+                        <span class="badge">جدید</span>
+                    </div>
+                    <div class="movie-info">
+                        <h4>شب طولانی</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> ۱۲ دقیقه</span>
+                            <span><i class="fas fa-star" style="color:#f5b342;"></i> 7.9</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movie-card" data-genre="psycho" onclick="openVideoPage('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame')">
+                    <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
+                        <span class="badge">پربیننده</span>
+                    </div>
+                    <div class="movie-info">
+                        <h4>ذهن تاریک</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> ۱۵ دقیقه</span>
+                            <span><i class="fas fa-star" style="color:#f5b342;"></i> 8.9</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movie-card" data-genre="horror,psycho" onclick="openVideoPage('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame')">
+                    <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
+                        <span class="badge">داغ</span>
+                    </div>
+                    <div class="movie-info">
+                        <h4>آینه‌های شکسته</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> ۱۱ دقیقه</span>
+                            <span><i class="fas fa-star" style="color:#f5b342;"></i> 8.2</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="video-page-container" id="videoPage">
             <div class="video-header">
-                <h3>پخش آنلاین</h3>
+                <h3><i class="fas fa-play-circle" style="color:#B61C1C;"></i> پخش آنلاین</h3>
                 <button class="close-btn" onclick="closeVideoPage()"><i class="fas fa-times"></i> بستن</button>
             </div>
             <div class="video-wrapper">
@@ -441,24 +569,28 @@
                 <a href="#"><i class="fab fa-telegram"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
+            <p style="font-size:0.7rem; color:#aaa; margin-top:20px;">© 2026 Zerox Studio. تمامی حقوق محفوظ است.</p>
         </footer>
     </div>
 
     <script>
+        // ===== GENRE FILTER =====
         function filterGenre(genre, el) {
             document.querySelectorAll('.genre-item').forEach(item => item.classList.remove('active'));
             el.classList.add('active');
+            
             const cards = document.querySelectorAll('.movie-card');
             cards.forEach(card => {
                 const genres = card.dataset.genre.split(',');
                 if (genre === 'all' || genres.includes(genre)) {
-                    card.style.display = 'block';
+                    card.classList.remove('hidden');
                 } else {
-                    card.style.display = 'none';
+                    card.classList.add('hidden');
                 }
             });
         }
 
+        // ===== VIDEO PLAYER =====
         function openVideoPage(videoUrl) {
             document.getElementById('homePage').style.display = 'none';
             document.getElementById('videoPage').classList.add('active');
@@ -475,6 +607,23 @@
         function showHome() {
             closeVideoPage();
         }
+
+        // ===== NAVBAR SCROLL EFFECT =====
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ===== KEYBOARD SHORTCUT: ESC to close video =====
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideoPage();
+            }
+        });
     </script>
 </body>
 </html>
