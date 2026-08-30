@@ -1,4574 +1,533 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>mohamad hossein snti | Portfolio</title>
-
-    <!-- ===== PWA ===== -->
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#f5b042" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="mhs portfolio" />
-    <meta name="mobile-web-app-capable" content="yes" />
-
-    <!-- ===== Favicon ===== -->
-    <link rel="icon" type="image/png" sizes="16x16" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="https://uploadkon.ir/uploads/ee1b28_26Favicon.png" />
-
-    <!-- ===== فونت‌ها ===== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-    <!-- ===== Font Awesome 6 ===== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🏰 Fantasy Kingdom - RTS</title>
     <style>
-        /* ========== RESET ========== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            height: 100%;
-            width: 100%;
-        }
-
-        body {
-            background: #0b0b0e;
-            color: #eaeef2;
-            font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
-            font-weight: 400;
-            line-height: 1.8;
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 30% 20%, rgba(255, 200, 80, 0.03) 0%, transparent 60%);
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0b0b0e;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #f5b042;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #d48f2b;
-        }
-
-        .container {
-            min-height: 100vh;
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem 2.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* ========== هدر ========== */
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.5rem 0 1.8rem 0;
-            border-bottom: 1px solid rgba(255, 215, 100, 0.06);
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 0.9rem;
-        }
-
-        .logo {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 900;
-            font-size: 2rem;
-            color: #0b0b0e;
-            box-shadow: 0 8px 18px -6px rgba(200, 150, 50, 0.25);
-            flex-shrink: 0;
-            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            animation: floatLogo 4s ease-in-out infinite;
-        }
-
-        @keyframes floatLogo {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-6px);
-            }
-        }
-
-        .logo:hover {
-            transform: scale(1.08) rotate(-4deg);
-            box-shadow: 0 12px 28px -8px rgba(200, 150, 50, 0.4);
-        }
-
-        .brand {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-
-        .brand-name {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            letter-spacing: -0.5px;
-            color: #f5f0e8;
-            position: relative;
-            display: inline-block;
-        }
-
-        .brand-name::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #f5b042, transparent);
-            transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .brand-name:hover::after {
-            width: 100%;
-        }
-
-        .brand-sub {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 300;
-            font-size: 0.8rem;
-            color: #b0a99b;
-            letter-spacing: 1px;
-        }
-
-        /* ========== دکمه همبرگر ========== */
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 0.6rem 0.8rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 14px;
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            transition: 0.3s;
-            z-index: 1001;
-            position: relative;
-        }
-
-        .hamburger:hover {
-            background: rgba(255, 215, 100, 0.08);
-            border-color: rgba(255, 215, 100, 0.15);
-            transform: scale(1.05);
-        }
-
-        .hamburger span {
-            display: block;
-            width: 28px;
-            height: 2.5px;
-            background: #eaeef2;
-            border-radius: 4px;
-            transition: 0.3s ease;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 6px);
-            background: #f5b042;
-        }
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -6px);
-            background: #f5b042;
-        }
-
-        /* ========== منوی همبرگری ========== */
-        .nav-overlay {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            height: 100vh;
-            background: rgba(11, 11, 14, 0.98);
-            backdrop-filter: blur(20px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: right 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            z-index: 1000;
-        }
-
-        .nav-overlay.open {
-            right: 0;
-        }
-
-        .nav-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            text-align: center;
-            padding: 2rem;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .nav-menu a {
-            color: #d6d0c4;
-            text-decoration: none;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.2rem;
-            transition: 0.3s;
-            padding: 0.8rem 1.5rem;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-menu a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: rgba(255, 215, 100, 0.05);
-            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            z-index: -1;
-            border-radius: 20px;
-        }
-
-        .nav-menu a:hover::before {
-            width: 100%;
-        }
-
-        .nav-menu a i {
-            font-size: 1.8rem;
-            color: #f5b042;
-            width: 2.5rem;
-            transition: 0.3s;
-        }
-
-        .nav-menu a:hover {
-            color: #f5efe6;
-            background: rgba(255, 215, 100, 0.06);
-            border-color: rgba(255, 215, 100, 0.1);
-            transform: scale(1.04) translateX(-4px);
-        }
-
-        .nav-menu a:hover i {
-            transform: scale(1.2) rotate(-8deg) translateX(-4px);
-        }
-
-        .nav-menu a.active {
-            color: #f5efe6;
-            background: rgba(255, 215, 100, 0.08);
-            border-color: rgba(255, 215, 100, 0.15);
-        }
-
-        .nav-menu a.active i {
-            color: #f5b042;
-            transform: scale(1.1);
-            animation: pulseIcon 2s ease-in-out infinite;
-        }
-
-        @keyframes pulseIcon {
-            0%,
-            100% {
-                transform: scale(1.1);
-            }
-            50% {
-                transform: scale(1.25);
-            }
-        }
-
-        /* ========== محتوای اصلی ========== */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2rem 0 1.5rem 0;
-        }
-
-        /* ===== کارت خوش‌آمدگویی ===== */
-        .hero-card {
-            position: relative;
-            border-radius: 32px;
-            overflow: hidden;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.4);
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            min-height: 260px;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-card .hero-bg {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .hero-card:hover .hero-bg {
-            transform: scale(1.04);
-        }
-
-        .hero-card .hero-overlay {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(11, 11, 14, 0.85) 0%, rgba(11, 11, 14, 0.4) 50%, rgba(11, 11, 14, 0.7) 100%);
-            z-index: 1;
-            backdrop-filter: blur(2px);
-        }
-
-        .hero-card .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 2.5rem 3rem;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .hero-card .hero-content h1 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 2.2rem;
-            color: #f5efe6;
-            line-height: 1.3;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-card .hero-content h1 span {
-            color: #f5b042;
-        }
-
-        .hero-card .hero-content .hero-sub {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 1.05rem;
-            color: #d6d0c4;
-            max-width: 600px;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-card .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 0.3rem;
-        }
-
-        .hero-card .hero-buttons a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.6rem 1.8rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            color: #f5efe6;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-card .hero-buttons a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: rgba(255, 215, 100, 0.08);
-            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .hero-card .hero-buttons a:hover::before {
-            width: 100%;
-        }
-
-        .hero-card .hero-buttons a i {
-            font-size: 1.1rem;
-            color: #f5b042;
-            transition: 0.3s;
-        }
-
-        .hero-card .hero-buttons a:hover {
-            border-color: rgba(255, 215, 100, 0.3);
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 8px 32px -8px rgba(245, 176, 66, 0.15);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .hero-card .hero-buttons a:hover i {
-            transform: scale(1.1) rotate(-4deg);
-        }
-
-        .hero-card .hero-buttons a.btn-primary {
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.15), rgba(212, 143, 43, 0.05));
-            border-color: rgba(245, 176, 66, 0.25);
-        }
-
-        .hero-card .hero-buttons a.btn-primary:hover {
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.25), rgba(212, 143, 43, 0.1));
-            border-color: rgba(245, 176, 66, 0.4);
-        }
-
-        /* ===== بخش‌های دیگر ===== */
-        .tab-content {
-            display: none;
-            animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .tab-content.app-detail-page {
-            display: none;
-        }
-
-        .tab-content.app-detail-page.active {
-            display: block;
-        }
-
-        @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px) scale(0.98);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .tab-content h2 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 2.6rem;
-            color: #f5efe6;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
-            border-right: 6px solid #f5b042;
-            padding-right: 1.5rem;
-            position: relative;
-        }
-
-        .tab-content h2 i {
-            transition: 0.3s;
-        }
-
-        .tab-content h2:hover i {
-            transform: rotate(10deg) scale(1.1);
-        }
-
-        .tab-content p {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 400;
-            font-size: 1.1rem;
-            color: #d6d0c4;
-            margin-bottom: 0.8rem;
-            line-height: 2;
-        }
-
-        /* ============================================
-                   بخش برنامه‌ها (سبک اپ استور)
-                   ============================================ */
-
-        .apps-header {
-            margin-bottom: 2rem;
-        }
-
-        .apps-header h2 {
-            border-right: 6px solid #f5b042;
-            padding-right: 1.5rem;
-            font-size: 2.6rem;
-        }
-
-        .apps-store-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        /* ===== کارت برنامه در لیست ===== */
-        .app-store-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            border-radius: 20px;
-            padding: 0.8rem 1.2rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            backdrop-filter: blur(8px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .app-store-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 100, 0.04), transparent);
-            transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-            border-radius: 20px;
-            z-index: 0;
-        }
-
-        .app-store-card:hover::before {
-            width: 100%;
-        }
-
-        .app-store-card:hover {
-            background: rgba(255, 215, 100, 0.05);
-            border-color: rgba(255, 215, 100, 0.15);
-            transform: translateX(-6px) scale(1.005);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .app-store-card:active {
-            transform: scale(0.98);
-        }
-
-        .app-store-card-inner {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .app-store-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.15), rgba(212, 143, 43, 0.05));
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: #f5b042;
-            flex-shrink: 0;
-            transition: 0.4s;
-            overflow: hidden;
-        }
-
-        .app-store-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .app-store-card:hover .app-store-icon {
-            transform: scale(1.05) rotate(-4deg);
-            border-color: rgba(255, 215, 100, 0.2);
-            box-shadow: 0 4px 20px rgba(245, 176, 66, 0.1);
-        }
-
-        .app-store-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .app-store-info .app-store-name {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #f5efe6;
-            margin: 0;
-            transition: 0.3s;
-        }
-
-        .app-store-card:hover .app-store-name {
-            color: #f5b042;
-        }
-
-        .app-store-info .app-store-desc {
-            font-size: 0.85rem;
-            color: #b0a99b;
-            margin: 0;
-        }
-
-        .app-store-info .app-store-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-top: 0.2rem;
-        }
-
-        .app-store-status {
-            font-size: 0.7rem;
-            padding: 0.1rem 0.6rem;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-
-        .app-store-status.developing {
-            background: rgba(245, 176, 66, 0.1);
-            color: #f5b042;
-            border: 1px solid rgba(245, 176, 66, 0.1);
-        }
-
-        .app-store-status.coming-soon {
-            background: rgba(52, 152, 219, 0.1);
-            color: #3498db;
-            border: 1px solid rgba(52, 152, 219, 0.1);
-        }
-
-        .app-store-status.ready {
-            background: rgba(46, 204, 113, 0.1);
-            color: #2ecc71;
-            border: 1px solid rgba(46, 204, 113, 0.1);
-        }
-
-        .app-store-version {
-            font-size: 0.7rem;
-            color: #8f887c;
-        }
-
-        .app-store-action .app-store-get-btn {
-            background: rgba(255, 215, 100, 0.05);
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            color: #f5b042;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .app-store-action .app-store-get-btn:hover {
-            background: rgba(255, 215, 100, 0.1);
-            border-color: rgba(255, 215, 100, 0.2);
-            transform: scale(1.05);
-        }
-
-        .app-store-action .app-store-get-btn.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* ===== بنر تبلیغاتی ===== */
-        .promo-banner {
-            width: 100%;
-            margin: 1.5rem auto 2rem auto;
-            border-radius: 20px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            aspect-ratio: 3/1;
-        }
-
-        .promo-banner:hover {
-            transform: translateY(-4px) scale(1.005);
-            border-color: rgba(255, 215, 100, 0.2);
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
-        }
-
-        .promo-banner-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .promo-banner:hover .promo-banner-img {
-            transform: scale(1.04);
-        }
-
-        /* ===== صفحه‌ی اختصاصی برنامه ===== */
-        .back-to-apps {
-            background: none;
-            border: none;
-            color: #f5b042;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            padding: 0.5rem 0;
-            margin-bottom: 1.5rem;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .back-to-apps:hover {
-            transform: translateX(-4px);
-            opacity: 0.8;
-        }
-
-        /* ===== هدر صفحه برنامه ===== */
-        .app-detail-header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 1.5rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            border-radius: 24px;
-            padding: 1.5rem 2rem;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(8px);
-        }
-
-        .app-detail-icon-wrapper {
-            flex-shrink: 0;
-        }
-
-        .app-detail-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.2), rgba(212, 143, 43, 0.05));
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: #f5b042;
-            box-shadow: 0 4px 24px rgba(245, 176, 66, 0.05);
-            overflow: hidden;
-        }
-
-        .app-detail-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .app-detail-title-section {
-            flex: 1;
-        }
-
-        .app-detail-title-section .app-detail-name {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #f5efe6;
-            margin: 0;
-        }
-
-        .app-detail-title-section .app-detail-developer {
-            font-size: 0.9rem;
-            color: #b0a99b;
-            margin: 0;
-        }
-
-        .app-detail-rating {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-top: 0.3rem;
-        }
-
-        .app-detail-rating .stars {
-            color: #f5b042;
-            font-size: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .app-detail-rating .rating-text {
-            font-size: 0.85rem;
-            color: #d6d0c4;
-        }
-
-        .app-detail-rating .reviews-count {
-            font-size: 0.75rem;
-            color: #8f887c;
-        }
-
-        .app-detail-install {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .app-detail-install-btn {
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            border: none;
-            color: #0b0b0e;
-            padding: 0.6rem 1.8rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(245, 176, 66, 0.2);
-        }
-
-        .app-detail-install-btn:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 32px rgba(245, 176, 66, 0.3);
-        }
-
-        .app-detail-size {
-            font-size: 0.7rem;
-            color: #8f887c;
-        }
-
-        /* ===== اسکرین‌شات‌ها ===== */
-        .app-detail-screenshots {
-            margin-bottom: 1.5rem;
-        }
-
-        .app-detail-screenshots h4 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            color: #f5efe6;
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .app-detail-screenshots h4 i {
-            color: #f5b042;
-        }
-
-        .screenshots-scroll {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            padding: 0.5rem 0 1rem 0;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255, 215, 100, 0.2) transparent;
-        }
-
-        .screenshots-scroll::-webkit-scrollbar {
-            height: 4px;
-        }
-
-        .screenshots-scroll::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .screenshots-scroll::-webkit-scrollbar-thumb {
-            background: rgba(255, 215, 100, 0.2);
-            border-radius: 10px;
-        }
-
-        .screenshot-item {
-            flex-shrink: 0;
-            width: 160px;
-            aspect-ratio: 9/16;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            background: rgba(255, 255, 255, 0.02);
-            transition: 0.3s;
-        }
-
-        .screenshot-item:hover {
-            border-color: rgba(255, 215, 100, 0.15);
-            transform: scale(1.02);
-        }
-
-        .screenshot-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* ===== درباره برنامه ===== */
-        .app-detail-about {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            border-radius: 20px;
-            padding: 1.5rem 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .app-detail-about h4 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            color: #f5efe6;
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .app-detail-about h4 i {
-            color: #f5b042;
-        }
-
-        .app-detail-about p {
-            font-size: 0.95rem;
-            color: #b0a99b;
-            line-height: 2;
-        }
-
-        .app-features-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.6rem;
-            margin-top: 1rem;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: #d6d0c4;
-        }
-
-        .feature-item i {
-            color: #2ecc71;
-            font-size: 0.9rem;
-        }
-
-        /* ===== اطلاعات بیشتر ===== */
-        .app-detail-more {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 0.8rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            border-radius: 20px;
-            padding: 1.2rem 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .more-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .more-item .more-label {
-            font-size: 0.7rem;
-            color: #8f887c;
-        }
-
-        .more-item .more-value {
-            font-size: 0.9rem;
-            color: #d6d0c4;
-            font-weight: 600;
-        }
-
-        .more-item .more-value.developing {
-            color: #f5b042;
-        }
-
-        .more-item .more-value.ready {
-            color: #2ecc71;
-        }
-
-        /* ===== دکمه نصب پایین صفحه ===== */
-        .app-detail-bottom-install {
-            text-align: center;
-            padding: 0.5rem 0 1.5rem 0;
-        }
-
-        .app-detail-bottom-install-btn {
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            border: none;
-            color: #0b0b0e;
-            padding: 0.8rem 3rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-            box-shadow: 0 4px 24px rgba(245, 176, 66, 0.2);
-        }
-
-        .app-detail-bottom-install-btn:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 40px rgba(245, 176, 66, 0.3);
-        }
-
-        /* ===== صفحه "در دست توسعه" ===== */
-        .app-coming-soon {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .app-coming-soon .coming-icon {
-            font-size: 5rem;
-            color: #f5b042;
-            animation: glowIcon 4s ease-in-out infinite;
-            margin-bottom: 1rem;
-        }
-
-        .app-coming-soon h2 {
-            font-size: 2rem;
-            color: #f5efe6;
-            border: none;
-            padding: 0;
-        }
-
-        .app-coming-soon p {
-            color: #b0a99b;
-            font-size: 1.1rem;
-        }
-
-        /* ===== کارت‌های خانه ===== */
-        .bio-intro {
-            max-width: 800px;
-            margin: 0 auto 2.5rem auto;
-            padding: 1.5rem 2rem;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bio-intro::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(255, 215, 100, 0.03), transparent 70%);
-            animation: shimmerBg 8s ease-in-out infinite alternate;
-            pointer-events: none;
-        }
-
-        @keyframes shimmerBg {
-            0% {
-                transform: translate(-10%, -10%);
-            }
-            100% {
-                transform: translate(10%, 10%);
-            }
-        }
-
-        .bio-intro:hover {
-            border-color: rgba(255, 215, 100, 0.15);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.4);
-        }
-
-        .bio-intro p {
-            font-size: 1.15rem;
-            line-height: 2.2;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .bio-intro p:last-child {
-            margin-bottom: 0;
-        }
-
-        .home-design-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
-            margin-top: 2rem;
-        }
-
-        .home-design-card {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 24px;
-            padding: 2rem 1.5rem;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .home-design-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #f5b042, transparent);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .home-design-card:hover::after {
-            transform: scaleX(1);
-        }
-
-        .home-design-card:hover {
-            background: rgba(255, 215, 100, 0.04);
-            border-color: rgba(255, 215, 100, 0.12);
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .home-design-card .icon {
-            font-size: 2.8rem;
-            color: #f5b042;
-            margin-bottom: 1rem;
-            display: inline-block;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-
-        .home-design-card:nth-child(2) .icon {
-            animation-delay: 0.5s;
-        }
-        .home-design-card:nth-child(3) .icon {
-            animation-delay: 1s;
-        }
-
-        @keyframes floatIcon {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-6px);
-            }
-        }
-
-        .home-design-card .icon i {
-            background: rgba(255, 215, 100, 0.08);
-            padding: 0.8rem;
-            border-radius: 20px;
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .home-design-card:hover .icon i {
-            background: rgba(255, 215, 100, 0.15);
-            transform: scale(1.1) rotate(-6deg);
-            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.2);
-        }
-
-        .home-design-card h3 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: #f5efe6;
-            margin-bottom: 0.5rem;
-        }
-
-        .home-design-card p {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.95rem;
-            color: #b0a99b;
-            margin: 0;
-        }
-
-        /* ===== بخش VOD ===== */
-        .vod-section {
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-
-        .vod-section .vod-title {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 2rem;
-            color: #f5efe6;
-            margin-bottom: 1.5rem;
-            padding-right: 1rem;
-            border-right: 4px solid #f5b042;
-            display: inline-block;
-            text-align: right;
-        }
-
-        .vod-hero-slider {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            margin: 0 auto 2rem auto;
-            aspect-ratio: 16/9;
-            min-height: 220px;
-            max-width: 100%;
-            box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.5);
-            background: #0b0b0e;
-        }
-
-        .vod-hero-slider .hero-slide {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            z-index: 0;
-        }
-
-        .vod-hero-slider .hero-slide.active {
-            opacity: 1;
-            z-index: 1;
-        }
-
-        .vod-hero-slider .hero-slide .hero-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .vod-hero-slider .hero-slide.active .hero-img {
-            animation: zoomIn 8s ease-in-out infinite alternate;
-        }
-
-        @keyframes zoomIn {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.08);
-            }
-        }
-
-        .vod-hero-slider .hero-slide .hero-overlay {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 2.5rem 2rem;
-        }
-
-        .vod-hero-slider .hero-slide .hero-overlay .hero-badge {
-            display: inline-block;
-            background: rgba(245, 176, 66, 0.15);
-            border: 1px solid rgba(245, 176, 66, 0.2);
-            border-radius: 40px;
-            padding: 0.2rem 1rem;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.7rem;
-            color: #f5b042;
-            margin-bottom: 0.5rem;
-            align-self: flex-start;
-            backdrop-filter: blur(4px);
-        }
-
-        .vod-hero-slider .hero-slide .hero-overlay h3 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: #f5efe6;
-            margin-bottom: 0.3rem;
-            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        .vod-hero-slider .hero-slide .hero-overlay p {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.95rem;
-            color: #d6d0c4;
-            max-width: 80%;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .vod-hero-slider .hero-slide .hero-overlay .hero-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.5rem 1.8rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            background: linear-gradient(145deg, #f5b042, #d48f2b);
-            color: #0b0b0e;
-            border: none;
-            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            align-self: flex-start;
-            box-shadow: 0 4px 20px -6px rgba(245, 176, 66, 0.3);
-        }
-
-        .vod-hero-slider .hero-slide .hero-overlay .hero-btn:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 32px -6px rgba(245, 176, 66, 0.5);
-        }
-
-        .vod-hero-slider .hero-slide .hero-overlay .hero-btn i {
-            font-size: 0.9rem;
-        }
-
-        .hero-slider-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 5;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            color: #f5efe6;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 1rem;
-            border: none;
-        }
-
-        .hero-slider-nav:hover {
-            background: rgba(0, 0, 0, 0.7);
-            border-color: rgba(255, 215, 100, 0.3);
-            transform: translateY(-50%) scale(1.05);
-            color: #f5b042;
-        }
-
-        .hero-slider-nav.prev {
-            right: 12px;
-        }
-
-        .hero-slider-nav.next {
-            left: 12px;
-        }
-
-        .hero-slider-dots {
-            position: absolute;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            width: auto;
-        }
-
-        .hero-slider-dots .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            transition: 0.3s;
-            border: none;
-            padding: 0;
-            backdrop-filter: blur(4px);
-        }
-
-        .hero-slider-dots .dot.active {
-            background: #f5b042;
-            width: 24px;
-            border-radius: 10px;
-        }
-
-        .hero-slider-dots .dot:hover {
-            background: rgba(255, 215, 100, 0.5);
-        }
-
-        .vod-slider {
-            margin-top: 1rem;
-        }
-
-        .vod-slider .slider-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.8rem;
-        }
-
-        .vod-slider .slider-header h4 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #f5efe6;
-            padding-right: 1rem;
-            border-right: 3px solid #f5b042;
-        }
-
-        .vod-slider .slider-header .slider-nav {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .vod-slider .slider-header .slider-nav button {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            color: #b0a99b;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-        }
-
-        .vod-slider .slider-header .slider-nav button:hover {
-            background: rgba(255, 215, 100, 0.1);
-            border-color: rgba(255, 215, 100, 0.2);
-            color: #f5efe6;
-            transform: scale(1.05);
-        }
-
-        .vod-slider .slider-track-wrapper {
-            overflow-x: auto;
-            padding: 0.5rem 0.2rem 1rem 0.2rem;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255, 215, 100, 0.2) transparent;
-        }
-
-        .vod-slider .slider-track-wrapper::-webkit-scrollbar {
-            height: 4px;
-        }
-
-        .vod-slider .slider-track-wrapper::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .vod-slider .slider-track-wrapper::-webkit-scrollbar-thumb {
-            background: rgba(255, 215, 100, 0.2);
-            border-radius: 10px;
-        }
-
-        .vod-slider .slider-track {
-            display: flex;
-            gap: 1rem;
-            width: max-content;
-        }
-
-        .vod-slider .slider-item {
-            flex-shrink: 0;
-            width: 160px;
-            border-radius: 16px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            position: relative;
-            backdrop-filter: blur(4px);
-        }
-
-        .vod-slider .slider-item:hover {
-            transform: translateY(-6px) scale(1.03);
-            border-color: rgba(255, 215, 100, 0.2);
-            box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .vod-slider .slider-item .item-img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            display: block;
-            background: #0b0b0e;
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .vod-slider .slider-item:hover .item-img {
-            transform: scale(1.04);
-        }
-
-        .vod-slider .slider-item .item-info {
-            padding: 0.6rem 0.8rem;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(4px);
-        }
-
-        .vod-slider .slider-item .item-info h5 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: #f5efe6;
-            margin-bottom: 0.2rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .vod-slider .slider-item .item-info p {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.7rem;
-            color: #b0a99b;
-            margin: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .vod-slider .slider-item .item-overlay-link {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            text-indent: -9999px;
-        }
-
-        /* ============================================
-                   کارت‌های طراحی (به حالت قبل)
-                   ============================================ */
-        .design-card-new {
-            max-width: 100%;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 24px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            margin: 1.5rem auto;
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .design-card-new::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg,
-                    transparent 30%,
-                    rgba(255, 215, 0, 0.08) 50%,
-                    transparent 70%);
-            animation: shineDesign 4s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes shineDesign {
-            0% {
-                transform: translateX(-100%) rotate(25deg);
-            }
-            100% {
-                transform: translateX(100%) rotate(25deg);
-            }
-        }
-
-        .design-card-new:hover {
-            background: rgba(255, 215, 100, 0.04);
-            border-color: rgba(255, 215, 100, 0.15);
-            transform: translateY(-6px) scale(1.005);
-            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .design-card-new>* {
-            position: relative;
-            z-index: 1;
-        }
-
-        .design-image {
-            width: 100%;
-            aspect-ratio: 1/1;
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 1.2rem;
-            background: #0b0b0e;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.4s;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .design-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .design-card-new:hover .design-image img {
-            transform: scale(1.03);
-        }
-
-        .design-image .image-overlay {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(2px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            gap: 0.5rem;
-            border-radius: 16px;
-        }
-
-        .design-image:hover .image-overlay {
-            opacity: 1;
-        }
-
-        .design-image .image-overlay i {
-            font-size: 2.5rem;
-            color: #f5b042;
-            animation: floatIcon 2s ease-in-out infinite;
-        }
-
-        .design-image .image-overlay span {
-            color: #f5efe6;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            backdrop-filter: blur(4px);
-        }
-
-        .design-card-new:hover .design-image {
-            border-color: rgba(255, 215, 100, 0.15);
-            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
-        }
-
-        .design-card-new .design-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.5rem;
-        }
-
-        .design-card-new .design-title {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: #f5efe6;
-            transition: 0.3s;
-        }
-
-        .design-card-new:hover .design-title {
-            color: #f5b042;
-        }
-
-        .design-card-new .design-title i {
-            color: #f5b042;
-            margin-left: 0.5rem;
-        }
-
-        .design-card-new .toggle-details {
-            background: none;
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            color: #f5b042;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .design-card-new .toggle-details:hover {
-            background: rgba(255, 215, 100, 0.08);
-            border-color: #f5b042;
-            transform: scale(1.04);
-        }
-
-        .design-card-new .toggle-details i {
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .design-card-new .toggle-details.open i {
-            transform: rotate(180deg);
-        }
-
-        .design-card-new .design-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, margin 0.3s ease;
-            opacity: 0;
-            margin: 0;
-        }
-
-        .design-card-new .design-details.open {
-            max-height: 300px;
-            opacity: 1;
-            margin: 1rem 0;
-        }
-
-        .design-card-new .design-desc {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.95rem;
-            color: #b0a99b;
-            margin-bottom: 0.3rem;
-            line-height: 1.8;
-        }
-
-        .design-card-new .design-author {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.9rem;
-            color: #f5b042;
-            margin-bottom: 0.8rem;
-        }
-
-        .design-card-new .download-buttons {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        .design-card-new .download-buttons a {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            color: #f5efe6;
-            text-decoration: none;
-            padding: 0.3rem 1rem;
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            border-radius: 40px;
-            transition: 0.3s;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: rgba(255, 215, 100, 0.05);
-        }
-
-        .design-card-new .download-buttons a:hover {
-            background: rgba(255, 215, 100, 0.12);
-            border-color: #f5b042;
-            transform: scale(1.04) translateY(-2px);
-        }
-
-        .design-card-new .download-buttons a i {
-            color: #f5b042;
-            font-size: 0.9rem;
-        }
-
-        .design-3d-hint {
-            background: rgba(255, 215, 100, 0.04);
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            border-radius: 16px;
-            padding: 0.5rem 1rem;
-            margin-top: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.8rem;
-            color: #b0a99b;
-        }
-
-        .design-3d-hint i {
-            color: #f5b042;
-            font-size: 0.9rem;
-        }
-
-        /* ============================================
-                   بخش نوا با کادر شیشه‌ای
-                   ============================================ */
-
-        /* ===== کادر شیشه‌ای نوا ===== */
-        .nava-glass-container {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            border-radius: 28px;
-            padding: 1.8rem 2rem;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03);
-            transition: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nava-glass-container::before {
-            content: '';
-            position: absolute;
-            top: -60%;
-            left: -60%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(255, 215, 100, 0.03), transparent 70%);
-            animation: shimmerBg 8s ease-in-out infinite alternate;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .nava-glass-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 215, 100, 0.02), transparent 50%, rgba(255, 215, 100, 0.01));
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .nava-glass-container:hover {
-            border-color: rgba(255, 215, 100, 0.15);
-            box-shadow: 0 12px 56px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-            transform: translateY(-2px);
-        }
-
-        .nava-glass-container .nava-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .nava-glass-container .nava-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            border-radius: 18px;
-            padding: 0.9rem 1.4rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nava-glass-container .nava-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 100, 0.05), transparent);
-            transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            border-radius: 18px;
-            z-index: 0;
-        }
-
-        .nava-glass-container .nava-card:hover::before {
-            width: 100%;
-        }
-
-        .nava-glass-container .nava-card:hover {
-            background: rgba(255, 215, 100, 0.06);
-            border-color: rgba(255, 215, 100, 0.2);
-            transform: translateX(-6px) scale(1.01);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(245, 176, 66, 0.03);
-        }
-
-        .nava-glass-container .nava-card:active {
-            transform: scale(0.98);
-        }
-
-        .nava-glass-container .nava-card-content {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .nava-glass-container .nava-thumb {
-            width: 68px;
-            height: 68px;
-            border-radius: 14px;
-            overflow: hidden;
-            flex-shrink: 0;
-            border: 2px solid rgba(255, 215, 100, 0.08);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-
-        .nava-glass-container .nava-thumb::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 215, 100, 0.05), transparent 50%);
-            pointer-events: none;
-        }
-
-        .nava-glass-container .nava-card:hover .nava-thumb {
-            border-color: rgba(255, 215, 100, 0.35);
-            box-shadow: 0 4px 24px rgba(245, 176, 66, 0.15);
-            transform: scale(1.03) rotate(-2deg);
-        }
-
-        .nava-glass-container .nava-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .nava-glass-container .nava-card:hover .nava-thumb img {
-            transform: scale(1.08);
-        }
-
-        .nava-glass-container .nava-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .nava-glass-container .nava-info .nava-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #f5efe6;
-            margin: 0;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .nava-glass-container .nava-card:hover .nava-title {
-            color: #f5b042;
-            transform: translateX(-4px);
-        }
-
-        .nava-glass-container .nava-info .nava-title i {
-            font-size: 0.85rem;
-            color: #f5b042;
-            opacity: 0.6;
-            transition: 0.3s;
-        }
-
-        .nava-glass-container .nava-card:hover .nava-title i {
-            opacity: 1;
-            transform: scale(1.1) rotate(-4deg);
-        }
-
-        .nava-glass-container .nava-info .nava-artist {
-            font-size: 0.85rem;
-            color: #b0a99b;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            transition: 0.3s;
-        }
-
-        .nava-glass-container .nava-card:hover .nava-artist {
-            color: #d6d0c4;
-        }
-
-        .nava-glass-container .nava-info .nava-artist i {
-            color: #f5b042;
-            font-size: 0.75rem;
-            opacity: 0.7;
-        }
-
-        .nava-glass-container .nava-info .nava-mixer {
-            font-size: 0.8rem;
-            color: #8f887c;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            transition: 0.3s;
-        }
-
-        .nava-glass-container .nava-card:hover .nava-mixer {
-            color: #b0a99b;
-        }
-
-        .nava-glass-container .nava-info .nava-mixer i {
-            color: #f5b042;
-            font-size: 0.7rem;
-            opacity: 0.6;
-        }
-
-        .nava-glass-container .nava-arrow {
-            color: #f5b042;
-            font-size: 1.2rem;
-            opacity: 0.25;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            flex-shrink: 0;
-            background: rgba(255, 215, 100, 0.03);
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 215, 100, 0.04);
-        }
-
-        .nava-glass-container .nava-card:hover .nava-arrow {
-            opacity: 1;
-            transform: translateX(-6px) scale(1.08);
-            background: rgba(255, 215, 100, 0.08);
-            border-color: rgba(255, 215, 100, 0.1);
-            box-shadow: 0 0 20px rgba(245, 176, 66, 0.05);
-        }
-
-        /* ===== مودال نوا ===== */
-        .nava-modal-overlay {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 99999;
-            padding: 1rem;
-            animation: fadeInModal 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .nava-modal-overlay.active {
-            display: flex;
-        }
-
-        .nava-modal-content {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(32px);
-            -webkit-backdrop-filter: blur(32px);
-            border: 1px solid rgba(255, 215, 100, 0.12);
-            border-radius: 32px;
-            padding: 2rem 2.2rem;
-            max-width: 750px;
-            width: 100%;
-            max-height: 92vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
-            animation: slideUpModal 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .nava-modal-content .modal-close {
-            position: absolute;
-            top: 0.8rem;
-            left: 0.8rem;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            color: #f5efe6;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: 0.3s;
-            z-index: 10;
-        }
-
-        .nava-modal-content .modal-close:hover {
-            background: rgba(255, 215, 100, 0.12);
-            transform: rotate(90deg) scale(1.08);
-            border-color: #f5b042;
-            color: #f5b042;
-        }
-
-        .nava-modal-content .modal-image {
-            width: 100%;
-            aspect-ratio: 1/1;
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 1.2rem;
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .nava-modal-content .modal-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.6s;
-        }
-
-        .nava-modal-content:hover .modal-image img {
-            transform: scale(1.02);
-        }
-
-        .nava-modal-content .modal-title {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: #f5efe6;
-            margin-bottom: 0.3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nava-modal-content .modal-title i {
-            color: #f5b042;
-        }
-
-        .nava-modal-content .modal-artist {
-            color: #b0a99b;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .nava-modal-content .modal-artist i {
-            color: #f5b042;
-        }
-
-        .nava-modal-content .modal-mixer {
-            color: #8f887c;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .nava-modal-content .modal-mixer i {
-            color: #f5b042;
-        }
-
-        .nava-modal-lyrics {
-            margin: 0.8rem 0 1rem 0;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            transition: 0.4s;
-            overflow: hidden;
-        }
-
-        .nava-modal-lyrics:hover {
-            border-color: rgba(255, 215, 100, 0.1);
-        }
-
-        .nava-modal-lyrics-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.7rem 1.2rem;
-            cursor: pointer;
-            transition: 0.3s;
-            gap: 1rem;
-        }
-
-        .nava-modal-lyrics-header:hover {
-            background: rgba(255, 215, 100, 0.04);
-        }
-
-        .nava-modal-lyrics-header h4 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700;
-            color: #f5b042;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin: 0;
-        }
-
-        .nava-modal-lyrics-header .lyrics-toggle-icon {
-            color: #f5b042;
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-size: 1rem;
-        }
-
-        .nava-modal-lyrics-header .lyrics-toggle-icon.open {
-            transform: rotate(180deg);
-        }
-
-        .nava-modal-lyrics-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, padding 0.3s ease;
-            opacity: 0;
-            padding: 0 1.2rem;
-        }
-
-        .nava-modal-lyrics-body.open {
-            max-height: 450px;
-            opacity: 1;
-            padding: 0.5rem 1.2rem 1.2rem 1.2rem;
-        }
-
-        .lyrics-box {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.95rem;
-            color: #d6d0c4;
-            line-height: 2.2;
-            max-height: 350px;
-            overflow-y: auto;
-            padding-left: 0.3rem;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255, 215, 100, 0.2) transparent;
-            direction: rtl;
-            text-align: right;
-        }
-
-        .lyrics-box::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .lyrics-box::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .lyrics-box::-webkit-scrollbar-thumb {
-            background: rgba(255, 215, 100, 0.2);
-            border-radius: 10px;
-        }
-
-        .lyric-line {
-            margin: 0;
-            padding: 0.2rem 0.6rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            opacity: 0.6;
-            color: #b0a99b;
-            border-right: 2px solid transparent;
-            font-size: 0.95rem;
-        }
-
-        .lyric-line.active {
-            opacity: 1;
-            color: #f5efe6;
-            background: rgba(255, 215, 100, 0.06);
-            border-right: 3px solid #f5b042;
-            padding-right: 1rem;
-            transform: translateX(-4px);
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .lyric-line.highlight {
-            color: #f5b042;
-            font-weight: 600;
-            background: rgba(255, 215, 100, 0.06);
-            border-right: 3px solid #f5b042;
-            padding-right: 0.8rem;
-        }
-
-        .nava-modal-player {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 1rem 1.5rem;
-            margin-top: 0.5rem;
-            border: 1px solid rgba(255, 215, 100, 0.06);
-            transition: 0.3s;
-        }
-
-        .nava-modal-player:hover {
-            background: rgba(255, 215, 100, 0.04);
-            border-color: rgba(255, 215, 100, 0.1);
-        }
-
-        .nava-modal-player .nava-progress-wrap {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 0.6rem;
-        }
-
-        .nava-modal-player .nava-time {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.7rem;
-            color: #b0a99b;
-            min-width: 36px;
-            font-weight: 500;
-        }
-
-        .nava-modal-player .nava-progress-bar {
-            flex: 1;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            position: relative;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .nava-modal-player .nava-progress-bar:hover {
-            height: 6px;
-        }
-
-        .nava-modal-player .nava-progress-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #f5b042, #d48f2b);
-            border-radius: 10px;
-            transition: width 0.1s ease;
-            position: relative;
-        }
-
-        .nava-modal-player .nava-progress-fill::after {
-            content: '';
-            position: absolute;
-            left: -4px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #f5b042;
-            box-shadow: 0 0 16px rgba(245, 176, 66, 0.4);
-            opacity: 0;
-            transition: 0.3s;
-        }
-
-        .nava-modal-player .nava-progress-bar:hover .nava-progress-fill::after {
-            opacity: 1;
-        }
-
-        .nava-modal-player .nava-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.2rem;
-        }
-
-        .nava-modal-player .nava-controls button {
-            background: none;
-            border: none;
-            color: #d6d0c4;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            padding: 0.3rem;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nava-modal-player .nava-controls button:hover {
-            color: #f5b042;
-            transform: scale(1.12);
-            background: rgba(255, 215, 100, 0.06);
-        }
-
-        .nava-modal-player .nava-controls .nava-play-btn {
-            width: 52px;
-            height: 52px;
-            font-size: 1.6rem;
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.15), rgba(212, 143, 43, 0.05));
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            color: #f5b042;
-        }
-
-        .nava-modal-player .nava-controls .nava-play-btn:hover {
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.25), rgba(212, 143, 43, 0.1));
-            border-color: rgba(255, 215, 100, 0.3);
-            transform: scale(1.08);
-            box-shadow: 0 8px 24px -8px rgba(245, 176, 66, 0.2);
-        }
-
-        .nava-modal-player .nava-controls .nava-play-btn.playing {
-            background: linear-gradient(145deg, rgba(245, 176, 66, 0.2), rgba(212, 143, 43, 0.08));
-            border-color: #f5b042;
-            box-shadow: 0 0 30px rgba(245, 176, 66, 0.1);
-        }
-
-        /* ========== دکمه AI چت ========== */
-        .ai-chat-button {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 9999;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            color: #f5b042;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 8px 32px -6px rgba(0, 0, 0, 0.4);
-            animation: pulseGlow 3s ease-in-out infinite;
-            text-decoration: none;
-        }
-
-        .ai-chat-button:hover {
-            transform: scale(1.1);
-            background: rgba(255, 215, 100, 0.08);
-            border-color: rgba(255, 215, 100, 0.3);
-            box-shadow: 0 8px 40px -6px rgba(245, 176, 66, 0.2);
-        }
-
-        .ai-chat-button .tooltip {
-            position: absolute;
-            bottom: 70px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.7rem;
-            color: #b0a99b;
-            white-space: nowrap;
-            opacity: 0;
-            transition: 0.3s;
-            pointer-events: none;
-        }
-
-        .ai-chat-button:hover .tooltip {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-4px);
-        }
-
-        @keyframes pulseGlow {
-            0%,
-            100% {
-                box-shadow: 0 8px 32px -6px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(245, 176, 66, 0);
-            }
-            50% {
-                box-shadow: 0 8px 40px -6px rgba(245, 176, 66, 0.1), 0 0 20px 4px rgba(245, 176, 66, 0.05);
-            }
-        }
-
-        /* ===== فوتر ===== */
-        .footer {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 215, 100, 0.06);
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            color: #8f887c;
-            font-size: 0.9rem;
-        }
-
-        .footer-social a {
-            color: #b8b2a6;
-            font-size: 1.3rem;
-            margin-right: 1.2rem;
-            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: inline-flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .footer-social a:hover {
-            color: #f5b042;
-            transform: translateY(-4px) scale(1.1);
-        }
-
-        .footer-copy {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-
-        /* ===== مودال شیشه‌ای (برای طراحی) ===== */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(16px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 99998;
-            animation: fadeInModal 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            padding: 1rem;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        @keyframes fadeInModal {
-            0% {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes slideUpModal {
-            0% {
-                opacity: 0;
-                transform: translateY(40px) scale(0.96);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .modal-content {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            border-radius: 32px;
-            padding: 2rem;
-            max-width: 700px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 24px 80px -16px rgba(0, 0, 0, 0.6);
-            animation: slideUpModal 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .modal-content .modal-close {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            color: #f5efe6;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: 0.3s;
-            z-index: 10;
-        }
-
-        .modal-content .modal-close:hover {
-            background: rgba(255, 215, 100, 0.15);
-            transform: rotate(90deg) scale(1.1);
-            border-color: #f5b042;
-        }
-
-        .modal-content .modal-image {
-            width: 100%;
-            aspect-ratio: 1/1;
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .modal-content .modal-image .modal-img-wrapper {
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform-style: preserve-3d;
-        }
-
-        .modal-content .modal-image .modal-img-wrapper.rotated-3d {
-            transform: rotateY(180deg) rotateX(10deg) scale(1.05);
-        }
-
-        .modal-content .modal-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .modal-content .modal-title {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: #f5efe6;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .modal-content .modal-title i {
-            color: #f5b042;
-        }
-
-        .modal-content .modal-controls {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.8rem;
-            margin: 1.5rem 0;
-        }
-
-        .modal-content .modal-controls button {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 215, 100, 0.1);
-            color: #d6d0c4;
-            padding: 0.7rem 1rem;
-            border-radius: 16px;
-            cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .modal-content .modal-controls button i {
-            color: #f5b042;
-            font-size: 1.1rem;
-        }
-
-        .modal-content .modal-controls button:hover {
-            background: rgba(255, 215, 100, 0.08);
-            border-color: rgba(255, 215, 100, 0.25);
-            transform: scale(1.04);
-            color: #f5efe6;
-        }
-
-        .modal-content .modal-controls button:active {
-            transform: scale(0.96);
-        }
-
-        .modal-content .modal-controls button.active-3d {
-            background: rgba(245, 176, 66, 0.15);
-            border-color: #f5b042;
-            color: #f5b042;
-        }
-
-        .modal-content .modal-controls button.active-3d i {
-            color: #f5b042;
-        }
-
-        .modal-content .modal-copyright {
-            background: rgba(255, 215, 100, 0.05);
-            border: 1px solid rgba(255, 215, 100, 0.08);
-            border-radius: 16px;
-            padding: 1rem;
-            margin-top: 1rem;
-            display: none;
-            animation: fadeUp 0.4s ease;
-        }
-
-        .modal-content .modal-copyright.active {
-            display: block;
-        }
-
-        .modal-content .modal-copyright p {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.9rem;
-            color: #b0a99b;
-            line-height: 2;
-            margin: 0;
-        }
-
-        .modal-content .modal-copyright p strong {
-            color: #f5b042;
-        }
-
-        .modal-content .modal-footer-text {
-            text-align: center;
-            margin-top: 1rem;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.8rem;
-            color: #8f887c;
-        }
-
-        /* ===== نوتیفیکیشن ===== */
-        .welcome-notification {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 215, 100, 0.15);
-            border-radius: 20px;
-            padding: 1.2rem 2rem;
-            z-index: 5000;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.6);
-            animation: slideUpNotif 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .welcome-notification.hide {
-            opacity: 0;
-            transform: translateX(-50%) translateY(30px) scale(0.95);
-            pointer-events: none;
-        }
-
-        @keyframes slideUpNotif {
-            0% {
-                opacity: 0;
-                transform: translateX(-50%) translateY(40px) scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0) scale(1);
-            }
-        }
-
-        .welcome-notification .notif-header {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .welcome-notification .notif-header i {
-            font-size: 1.8rem;
-            color: #f5b042;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-
-        .welcome-notification .notif-header h3 {
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: #f5efe6;
-            margin: 0;
-        }
-
-        .welcome-notification .notif-body {
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.9rem;
-            color: #b0a99b;
-            line-height: 1.8;
-            padding-right: 0.5rem;
-        }
-
-        .welcome-notification .notif-body ul {
-            list-style: none;
-            padding-right: 0.5rem;
-            margin: 0.3rem 0;
-        }
-
-        .welcome-notification .notif-body ul li {
-            position: relative;
-            padding-right: 1.5rem;
-            margin-bottom: 0.2rem;
-            font-size: 0.85rem;
-        }
-
-        .welcome-notification .notif-body ul li i {
-            position: absolute;
-            right: 0;
-            top: 4px;
-            color: #f5b042;
-            font-size: 0.8rem;
-            width: 1.2rem;
-            text-align: center;
-        }
-
-        .welcome-notification .notif-body .notif-update-title {
-            color: #f5b042;
-            font-weight: 600;
-            font-size: 0.85rem;
-            display: block;
-            margin-top: 0.3rem;
-        }
-
-        .welcome-notification .notif-body .notif-update-title i {
-            margin-left: 0.3rem;
-        }
-
-        /* ========== ریسپانسیو ========== */
-        @media (max-width: 992px) {
-            .hero-card .hero-content {
-                padding: 2rem 1.8rem;
-            }
-            .hero-card .hero-content h1 {
-                font-size: 1.8rem;
-            }
-            .apps-header h2 {
-                font-size: 2.2rem;
-            }
-            .app-detail-header {
-                flex-direction: column;
-                text-align: center;
-                padding: 1.5rem;
-            }
-            .app-detail-rating {
-                justify-content: center;
-            }
-            .app-detail-install {
-                width: 100%;
-            }
-            .app-detail-install-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .vod-hero-slider .hero-slide .hero-overlay h3 {
-                font-size: 1.4rem;
-            }
-            .nava-glass-container {
-                padding: 1.2rem 1.5rem;
-            }
-            .nava-modal-content {
-                padding: 1.5rem;
-            }
-            .nava-modal-content .modal-title {
-                font-size: 1.5rem;
-            }
-            .design-card-new .design-title {
-                font-size: 1.3rem;
-            }
-            .promo-banner {
-                aspect-ratio: 3/1.2;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem 1.5rem;
-            }
-            .brand-name {
-                font-size: 1.2rem;
-            }
-            .logo {
-                width: 48px;
-                height: 48px;
-                font-size: 1.6rem;
-            }
-            .tab-content h2 {
-                font-size: 2rem;
-                padding-right: 1rem;
-            }
-            .nav-menu a {
-                font-size: 1.6rem;
-                gap: 1rem;
-                padding: 0.6rem 1rem;
-            }
-            .nav-menu a i {
-                font-size: 1.5rem;
-                width: 2rem;
-            }
-            .home-design-cards {
-                grid-template-columns: 1fr;
-            }
-            .footer {
-                flex-direction: column-reverse;
-                align-items: center;
-                text-align: center;
-            }
-            .footer-social a {
-                margin: 0 0.8rem;
-            }
-            .bio-intro {
-                padding: 1rem 1.2rem;
-            }
-            .bio-intro p {
-                font-size: 1rem;
-            }
-            .hero-card .hero-content {
-                padding: 1.5rem 1.2rem;
-                text-align: center;
-            }
-            .hero-card .hero-content h1 {
-                font-size: 1.4rem;
-            }
-            .hero-card .hero-content .hero-sub {
-                font-size: 0.9rem;
-                margin: 0 auto;
-            }
-            .hero-card .hero-buttons {
-                justify-content: center;
-            }
-            .hero-card .hero-buttons a {
-                padding: 0.5rem 1.2rem;
-                font-size: 0.85rem;
-            }
-            .vod-hero-slider .hero-slide .hero-overlay {
-                padding: 1.2rem;
-            }
-            .vod-hero-slider .hero-slide .hero-overlay h3 {
-                font-size: 1.2rem;
-            }
-            .vod-hero-slider .hero-slide .hero-overlay p {
-                font-size: 0.8rem;
-                max-width: 100%;
-            }
-            .vod-hero-slider .hero-slide .hero-overlay .hero-btn {
-                font-size: 0.8rem;
-                padding: 0.4rem 1.2rem;
-            }
-            .vod-slider .slider-item {
-                width: 130px;
-            }
-            .vod-slider .slider-header h4 {
-                font-size: 1rem;
-            }
-            .hero-slider-nav {
-                width: 32px;
-                height: 32px;
-                font-size: 0.8rem;
-            }
-            .hero-slider-dots .dot {
-                width: 8px;
-                height: 8px;
-            }
-            .hero-slider-dots .dot.active {
-                width: 18px;
-            }
-            .ai-chat-button {
-                width: 50px;
-                height: 50px;
-                font-size: 1.4rem;
-                bottom: 20px;
-                left: 20px;
-            }
-            .ai-chat-button .tooltip {
-                display: none;
-            }
-            .modal-content {
-                padding: 1.5rem;
-                margin: 0.5rem;
-            }
-            .modal-content .modal-controls {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .nava-glass-container {
-                padding: 1rem 1rem;
-            }
-            .nava-glass-container .nava-thumb {
-                width: 56px;
-                height: 56px;
-            }
-            .nava-glass-container .nava-info .nava-title {
-                font-size: 1rem;
-            }
-            .nava-modal-content {
-                padding: 1.2rem;
-                margin: 0.5rem;
-            }
-            .nava-modal-content .modal-title {
-                font-size: 1.3rem;
-            }
-            .lyrics-box {
-                font-size: 0.85rem;
-                max-height: 150px;
-            }
-            .nava-modal-player {
-                padding: 0.8rem 1rem;
-            }
-            .nava-modal-player .nava-controls button {
-                font-size: 1rem;
-                width: 34px;
-                height: 34px;
-            }
-            .nava-modal-player .nava-controls .nava-play-btn {
-                width: 44px;
-                height: 44px;
-                font-size: 1.3rem;
-            }
-            .design-card-new .design-title {
-                font-size: 1.2rem;
-            }
-            .design-card-new {
-                padding: 1rem;
-            }
-            .nava-glass-container .nava-arrow {
-                width: 32px;
-                height: 32px;
-                font-size: 1rem;
-            }
-            .apps-header h2 {
-                font-size: 1.8rem;
-            }
-            .app-detail-header {
-                padding: 1rem;
-            }
-            .app-detail-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 2rem;
-            }
-            .app-detail-title-section .app-detail-name {
-                font-size: 1.4rem;
-            }
-            .app-features-list {
-                grid-template-columns: 1fr;
-            }
-            .app-detail-more {
-                grid-template-columns: 1fr 1fr;
-            }
-            .screenshot-item {
-                width: 120px;
-            }
-            .promo-banner {
-                aspect-ratio: 3/1.2;
-                margin: 1rem auto 1.5rem auto;
-                border-radius: 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 1rem 1rem;
-            }
-            .tab-content h2 {
-                font-size: 1.6rem;
-            }
-            .tab-content p {
-                font-size: 1rem;
-            }
-            .nav-menu a {
-                font-size: 1.3rem;
-                gap: 0.8rem;
-                padding: 0.5rem 0.8rem;
-            }
-            .nav-menu a i {
-                font-size: 1.2rem;
-                width: 1.8rem;
-            }
-            .hero-card .hero-content h1 {
-                font-size: 1.2rem;
-            }
-            .hero-card .hero-content .hero-sub {
-                font-size: 0.8rem;
-            }
-            .hero-card .hero-buttons a {
-                padding: 0.4rem 1rem;
-                font-size: 0.75rem;
-            }
-            .hero-card .hero-buttons a i {
-                font-size: 0.9rem;
-            }
-            .vod-hero-slider .hero-slide .hero-overlay h3 {
-                font-size: 1rem;
-            }
-            .vod-hero-slider .hero-slide .hero-overlay p {
-                font-size: 0.7rem;
-            }
-            .vod-slider .slider-item {
-                width: 110px;
-            }
-            .vod-slider .slider-item .item-info h5 {
-                font-size: 0.75rem;
-            }
-            .vod-slider .slider-item .item-info p {
-                font-size: 0.6rem;
-            }
-            .vod-section .vod-title {
-                font-size: 1.4rem;
-            }
-            .hero-slider-nav {
-                width: 28px;
-                height: 28px;
-                font-size: 0.7rem;
-            }
-            .hero-slider-nav.prev {
-                right: 6px;
-            }
-            .hero-slider-nav.next {
-                left: 6px;
-            }
-            .hero-slider-dots .dot {
-                width: 6px;
-                height: 6px;
-            }
-            .hero-slider-dots .dot.active {
-                width: 14px;
-            }
-            .ai-chat-button {
-                width: 44px;
-                height: 44px;
-                font-size: 1.2rem;
-                bottom: 15px;
-                left: 15px;
-            }
-            .modal-content {
-                padding: 1rem;
-            }
-            .modal-content .modal-controls {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.5rem;
-            }
-            .modal-content .modal-controls button {
-                font-size: 0.8rem;
-                padding: 0.5rem 0.8rem;
-            }
-            .nava-glass-container {
-                padding: 0.8rem 0.8rem;
-            }
-            .nava-glass-container .nava-thumb {
-                width: 48px;
-                height: 48px;
-            }
-            .nava-glass-container .nava-info .nava-title {
-                font-size: 0.9rem;
-            }
-            .nava-glass-container .nava-info .nava-artist,
-            .nava-glass-container .nava-info .nava-mixer {
-                font-size: 0.7rem;
-            }
-            .nava-glass-container .nava-arrow {
-                font-size: 1rem;
-                width: 28px;
-                height: 28px;
-            }
-            .nava-modal-content {
-                padding: 1rem;
-                margin: 0.3rem;
-            }
-            .nava-modal-content .modal-title {
-                font-size: 1.1rem;
-            }
-            .nava-modal-content .modal-artist,
-            .nava-modal-content .modal-mixer {
-                font-size: 0.85rem;
-            }
-            .lyrics-box {
-                font-size: 0.8rem;
-                max-height: 120px;
-            }
-            .nava-modal-player {
-                padding: 0.6rem 0.8rem;
-            }
-            .nava-modal-player .nava-controls button {
-                font-size: 0.8rem;
-                width: 30px;
-                height: 30px;
-            }
-            .nava-modal-player .nava-controls .nava-play-btn {
-                width: 38px;
-                height: 38px;
-                font-size: 1.1rem;
-            }
-            .nava-modal-player .nava-time {
-                font-size: 0.6rem;
-                min-width: 28px;
-            }
-            .design-card-new .design-title {
-                font-size: 1rem;
-            }
-            .design-card-new {
-                padding: 0.8rem;
-            }
-            .design-card-new .download-buttons a {
-                font-size: 0.75rem;
-                padding: 0.2rem 0.8rem;
-            }
-            .design-3d-hint {
-                font-size: 0.7rem;
-                padding: 0.3rem 0.8rem;
-            }
-            .apps-header h2 {
-                font-size: 1.4rem;
-                padding-right: 0.8rem;
-            }
-            .app-store-card-inner {
-                flex-wrap: wrap;
-                gap: 0.8rem;
-            }
-            .app-store-action {
-                width: 100%;
-            }
-            .app-store-action .app-store-get-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .app-detail-header {
-                padding: 0.8rem;
-                gap: 0.8rem;
-            }
-            .app-detail-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
-            .app-detail-title-section .app-detail-name {
-                font-size: 1.2rem;
-            }
-            .app-detail-about {
-                padding: 1rem;
-            }
-            .app-detail-more {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
-            .app-detail-bottom-install-btn {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.95rem;
-            }
-            .screenshot-item {
-                width: 100px;
-            }
-            .app-detail-rating .stars {
-                font-size: 0.85rem;
-            }
-            .app-detail-rating .rating-text {
-                font-size: 0.75rem;
-            }
-            .app-coming-soon h2 {
-                font-size: 1.5rem;
-            }
-            .app-coming-soon .coming-icon {
-                font-size: 3.5rem;
-            }
-            .promo-banner {
-                aspect-ratio: 3/1.4;
-                border-radius: 12px;
-                margin: 0.8rem auto 1.2rem auto;
-            }
-        }
+        * { margin: 0; padding: 0; }
+        body { overflow: hidden; touch-action: none; background: #1a1a2e; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        canvas { display: block; width: 100vw; height: 100vh; }
+        
+        #ui { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px; 
+              background: linear-gradient(transparent, rgba(0,0,0,0.8)); pointer-events: none; }
+        #ui > * { pointer-events: auto; }
+        
+        #topBar { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; 
+                  justify-content: space-between; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+                  font-size: 14px; font-weight: bold; }
+        .res { background: rgba(0,0,0,0.6); padding: 6px 14px; border-radius: 20px; 
+               backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1); }
+        .res span { color: #ffd700; }
+        .res .elixir { color: #9b59b6; }
+        
+        #buildMenu { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; 
+                     margin-bottom: 10px; }
+        .buildBtn { background: rgba(30,30,60,0.9); border: 2px solid #4a4a8a; color: white;
+                    padding: 8px 14px; border-radius: 12px; font-size: 12px; font-weight: bold;
+                    backdrop-filter: blur(4px); min-width: 60px; text-align: center; }
+        .buildBtn:active { transform: scale(0.95); background: #4a4a8a; }
+        .buildBtn .cost { font-size: 10px; color: #ffd700; display: block; }
+        
+        #infoPanel { position: absolute; top: 60px; right: 10px; background: rgba(0,0,0,0.7);
+                     border-radius: 12px; padding: 8px 14px; color: white; font-size: 12px;
+                     backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1);
+                     display: none; max-width: 150px; }
+        #infoPanel .title { font-weight: bold; color: #ffd700; }
     </style>
 </head>
 <body>
 
-    <div class="container">
+<div id="topBar">
+    <div class="res">💰 <span id="goldDisplay">100</span></div>
+    <div class="res">🧪 <span class="elixir" id="elixirDisplay">50</span></div>
+    <div class="res">⭐ <span id="starsDisplay">0</span></div>
+</div>
 
-        <!-- ========== هدر ========== -->
-        <header class="header">
-            <div class="logo-area">
-                <div class="logo">M</div>
-                <div class="brand">
-                    <span class="brand-name">mohamad hossein snti</span>
-                    <span class="brand-sub">Portfolio</span>
-                </div>
-            </div>
-            <div class="hamburger" id="hamburgerBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </header>
+<div id="infoPanel">
+    <div class="title" id="infoTitle">Building</div>
+    <div id="infoDesc">Level 1</div>
+    <button id="upgradeBtn" style="margin-top:6px;background:#ffd700;border:none;border-radius:8px;padding:4px 12px;font-weight:bold;">⬆ Upgrade</button>
+</div>
 
-        <!-- ========== منوی همبرگری ========== -->
-        <div class="nav-overlay" id="navOverlay">
-            <nav class="nav-menu" id="navMenu">
-                <a href="#" data-tab="home" class="active"><i class="fas fa-home"></i> خانه</a>
-                <a href="#" data-tab="about"><i class="fas fa-user"></i> درباره من</a>
-                <a href="#" data-tab="sites"><i class="fas fa-laptop-code"></i> سایت‌های طراحی شده</a>
-                <a href="#" data-tab="apps"><i class="fas fa-puzzle-piece"></i> برنامه‌ها</a>
-                <a href="#" data-tab="design"><i class="fas fa-palette"></i> طراحی‌هام</a>
-                <a href="#" data-tab="nava"><i class="fas fa-headphones"></i> نوا</a>
-            </nav>
-        </div>
-
-        <!-- ========== محتوای اصلی ========== -->
-        <main class="main-content">
-
-            <!-- ===== تب خانه ===== -->
-            <div class="tab-content active" id="home">
-                <div class="hero-card" id="heroCard">
-                    <img class="hero-bg" src="https://cdn.imgurl.ir/uploads/q589216_ya_ali12155.jpg" alt="mohamad hossein" />
-                    <div class="hero-overlay"></div>
-                    <div class="hero-content">
-                        <h1>سلام! من <span>mohamad hossein</span> هستم</h1>
-                        <p class="hero-sub">به سایت من خوش آمدید! اینجا جاییه که هنر، کد و خلاقیت به هم می‌رسن.</p>
-                        <div class="hero-buttons">
-                            <a href="#" data-tab="about" class="btn-primary" onclick="switchTab('about')">
-                                <i class="fas fa-user-astronaut"></i> درباره من
-                            </a>
-                            <a href="#" data-tab="design" onclick="switchTab('design')">
-                                <i class="fas fa-palette"></i> طراحی
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <h2><i class="fas fa-home" style="color:#f5b042; margin-left:0.8rem;"></i> خانه</h2>
-                <div class="bio-intro">
-                    <p>سلام! من mohamad hossein snti هستم.</p>
-                    <p>عاشق ساختن چیزهای جدیدم؛ از طراحی و توسعه وب‌سایت گرفته تا طراحی گرافیک، تولید محتوا و پروژه‌های خلاقانه. بیشتر وقتم را صرف یاد گرفتن، تجربه کردن و ساختن ایده‌هایی می‌کنم که هم زیبا باشند و هم کاربردی.</p>
-                    <p>این سایت جایی است که پروژه‌ها، نمونه‌کارها، مهارت‌ها و فعالیت‌هایم را با شما به اشتراک می‌گذارم. اگر دوست دارید با کارهایم بیشتر آشنا شوید، خوشحال می‌شوم نگاهی به بخش‌های مختلف سایت بیندازید.</p>
-                    <p style="font-weight: 600; color: #f5b042;">به دنیای من خوش آمدید.</p>
-                </div>
-                <div class="home-design-cards">
-                    <div class="home-design-card">
-                        <div class="icon"><i class="fas fa-pen-fancy"></i></div>
-                        <h3>طراحی</h3>
-                        <p>طراحی مدرن و مینیمال برای وب‌سایت‌ها و برندها</p>
-                    </div>
-                    <div class="home-design-card">
-                        <div class="icon"><i class="fas fa-code"></i></div>
-                        <h3>توسعه</h3>
-                        <p>پیاده‌سازی حرفه‌ای با تکنولوژی‌های روز</p>
-                    </div>
-                    <div class="home-design-card">
-                        <div class="icon"><i class="fas fa-rocket"></i></div>
-                        <h3>خلاقیت</h3>
-                        <p>ایده‌های نو برای تجربه‌های دیجیتال متفاوت</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== درباره من ===== -->
-            <div class="tab-content" id="about">
-                <h2>درباره من</h2>
-                <p>سلام! من <strong>mohamad hossein snti</strong> هستم، توسعه‌دهنده‌ی وب با عشق به کد تمیز، طراحی مینیمال و تجربه‌ی کاربری روان. از سال ۱۴۰۳ وارد دنیای برنامه‌نویسی شدم و از اون موقع تا حالا پروژه‌های مختلفی رو از صفر تا صد اجرا کردم.</p>
-                <div style="background:rgba(255,215,100,0.04); border-radius:24px; padding:1.5rem 2rem; margin:1.5rem 0; border:1px solid rgba(255,215,100,0.06); transition:0.3s; position:relative; overflow:hidden;">
-                    <div style="position:absolute; top:-50%; right:-50%; width:200%; height:200%; background:radial-gradient(circle at 30% 40%, rgba(255,215,100,0.03), transparent 70%); animation:shimmerBg 8s ease-in-out infinite alternate; pointer-events:none;"></div>
-                    <p style="margin:0; position:relative; z-index:1;"><i class="fas fa-quote-right" style="color:#f5b042; margin-left:0.5rem;"></i>هدف من اینه که با ترکیب هنر و تکنولوژی، فضاهای دیجیتالی بسازم که نه تنها کاربردی باشن، بلکه حس خوبی به کاربر منتقل کنن.</p>
-                </div>
-                <p>الان به عنوان فریلنسر و هم‌بنیان‌گذار یه استارتاپ کوچیک، روزانه دارم روی پروژه‌های فرانت‌اند و بک‌اند کار می‌کنم. عاشق یادگیری تکنولوژی‌های جدید و به‌اشتراک‌گذاری دانشم.</p>
-            </div>
-
-            <!-- ===== سایت‌های طراحی شده ===== -->
-            <div class="tab-content" id="sites">
-                <div class="vod-section">
-                    <h2 class="vod-title"><i class="fas fa-laptop-code" style="color:#f5b042; margin-left:0.8rem;"></i> سایت‌های طراحی شده</h2>
-
-                    <div class="vod-hero-slider" id="heroSlider">
-                        <div class="hero-slide active" data-index="0">
-                            <img class="hero-img" src="https://uploadkon.ir/uploads/511301_26Zerox-۱۲۱۲.jpg" alt="ZEROX" />
-                            <div class="hero-overlay">
-                                <span class="hero-badge"><i class="fas fa-fire"></i> جدید</span>
-                                <h3>🎮 سایت خفن دنیای گیم با زروکس</h3>
-                                <p>پلتفرم تخصصی گیم و اخبار با طراحی مدرن و جذاب</p>
-                                <a href="https://zeroxgame74-afk.github.io/zeroxgamee/" target="_blank" class="hero-btn">
-                                    <i class="fas fa-external-link-alt"></i> مشاهده سایت
-                                </a>
-                            </div>
-                        </div>
-                        <div class="hero-slide" data-index="1">
-                            <img class="hero-img" src="https://uploadkon.ir/uploads/481d01_26call-food-۱۲۱۲۳.jpg" alt="کالفود" />
-                            <div class="hero-overlay">
-                                <span class="hero-badge"><i class="fas fa-star"></i> محبوب</span>
-                                <h3>🍔 سایت خفن کالفود!</h3>
-                                <p>پلتفرم خاص برای سفارش غذای لذیذ!</p>
-                                <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="hero-btn">
-                                    <i class="fas fa-external-link-alt"></i> مشاهده سایت
-                                </a>
-                            </div>
-                        </div>
-                        <div class="hero-slide" data-index="2">
-                            <img class="hero-img" src="https://uploadkon.ir/uploads/d66b01_26Kourosh-Gameir۱۲.jpg" alt="کوروش گیم" />
-                            <div class="hero-overlay">
-                                <span class="hero-badge"><i class="fas fa-gamepad"></i> جدید</span>
-                                <h3>🎮 کوروش گیم!</h3>
-                                <p>یک سایت مثل دیوار اما با چاشنی گیم!</p>
-                                <a href="https://zeroxgame74-afk.github.io/Kourosh-Game.ir/" target="_blank" class="hero-btn">
-                                    <i class="fas fa-external-link-alt"></i> مشاهده سایت
-                                </a>
-                            </div>
-                        </div>
-
-                        <button class="hero-slider-nav prev" onclick="changeHeroSlide(-1)" aria-label="اسلاید قبلی">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                        <button class="hero-slider-nav next" onclick="changeHeroSlide(1)" aria-label="اسلاید بعدی">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-
-                        <div class="hero-slider-dots" id="heroDots">
-                            <button class="dot active" data-index="0" onclick="goToHeroSlide(0)"></button>
-                            <button class="dot" data-index="1" onclick="goToHeroSlide(1)"></button>
-                            <button class="dot" data-index="2" onclick="goToHeroSlide(2)"></button>
-                        </div>
-                    </div>
-
-                    <div class="vod-slider">
-                        <div class="slider-header">
-                            <h4><i class="fas fa-fire" style="color:#f5b042; margin-left:0.3rem;"></i> سایت‌های پیشنهادی</h4>
-                            <div class="slider-nav">
-                                <button onclick="scrollSlider('sitesSlider', -1)" aria-label="بچپ">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                                <button onclick="scrollSlider('sitesSlider', 1)" aria-label="بچپ">
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="slider-track-wrapper" id="sitesSlider">
-                            <div class="slider-track">
-                                <div class="slider-item">
-                                    <a href="https://zeroxgame74-afk.github.io/zeroxgamee/" target="_blank" class="item-overlay-link"></a>
-                                    <img class="item-img" src="https://uploadkon.ir/uploads/511301_26Zerox-۱۲۱۲.jpg" alt="ZEROX" />
-                                    <div class="item-info">
-                                        <h5>🎮 ZEROX</h5>
-                                        <p>پلتفرم گیم</p>
-                                    </div>
-                                </div>
-                                <div class="slider-item">
-                                    <a href="https://zeroxgame74-afk.github.io/call-food.ir/" target="_blank" class="item-overlay-link"></a>
-                                    <img class="item-img" src="https://uploadkon.ir/uploads/481d01_26call-food-۱۲۱۲۳.jpg" alt="کالفود" />
-                                    <div class="item-info">
-                                        <h5>🍔 کالفود</h5>
-                                        <p>پلتفرم سفارش غذا</p>
-                                    </div>
-                                </div>
-                                <div class="slider-item">
-                                    <a href="https://zeroxgame74-afk.github.io/Kourosh-Game.ir/" target="_blank" class="item-overlay-link"></a>
-                                    <img class="item-img" src="https://uploadkon.ir/uploads/d66b01_26Kourosh-Gameir۱۲.jpg" alt="کوروش گیم" />
-                                    <div class="item-info">
-                                        <h5>🎮 کوروش گیم</h5>
-                                        <p>فروشگاه اکانت</p>
-                                    </div>
-                                </div>
-                                <div class="slider-item">
-                                    <div class="item-img" style="display:flex; align-items:center; justify-content:center; background:rgba(255,215,100,0.05);">
-                                        <i class="fas fa-rocket" style="font-size:2.5rem; color:#f5b042;"></i>
-                                    </div>
-                                    <div class="item-info">
-                                        <h5>پروژه جدید</h5>
-                                        <p>به زودی...</p>
-                                    </div>
-                                </div>
-                                <div class="slider-item">
-                                    <div class="item-img" style="display:flex; align-items:center; justify-content:center; background:rgba(255,215,100,0.05);">
-                                        <i class="fas fa-code" style="font-size:2.5rem; color:#f5b042;"></i>
-                                    </div>
-                                    <div class="item-info">
-                                        <h5>پروژه جدید</h5>
-                                        <p>به زودی...</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====================================================== -->
-            <!-- ===== بخش برنامه‌ها با بنر تبلیغاتی ===== -->
-            <!-- ====================================================== -->
-            <div class="tab-content" id="apps">
-                <!-- صفحه اصلی برنامه‌ها -->
-                <div id="appsHome">
-                    <div class="apps-header">
-                        <h2><i class="fas fa-puzzle-piece" style="color:#f5b042; margin-left:0.8rem;"></i> برنامه‌ها</h2>
-                        <p style="color:#b0a99b; margin-bottom:2rem;">برنامه‌های اختصاصی ساخته شده توسط بنده</p>
-                    </div>
-
-                    <!-- ===== بنر تبلیغاتی ===== -->
-                    <div class="promo-banner" onclick="window.location.hash = 'app_pargar';">
-                        <img src="https://cdn.imgurl.ir/uploads/u04624_pargar_.webp" alt="پَرگار نسخه ۵.۰" class="promo-banner-img" loading="lazy">
-                    </div>
-
-                    <!-- ===== لیست برنامه‌ها ===== -->
-                    <div class="apps-store-grid">
-                        <!-- کارت برنامه ۱: پَرگار -->
-                        <div class="app-store-card" onclick="openAppPage('pargar')">
-                            <div class="app-store-card-inner">
-                                <div class="app-store-icon">
-                                    <img src="https://uploadkon.ir/uploads/505318_26pargar-icon-1.png" alt="آیکون پرگار" loading="lazy">
-                                </div>
-                                <div class="app-store-info">
-                                    <h3 class="app-store-name">پَرگار</h3>
-                                    <p class="app-store-desc">برنامه‌ریزی روزانه و هدف‌گذاری هوشمند</p>
-                                    <div class="app-store-meta">
-                                        <span class="app-store-status ready">
-                                            <i class="fas fa-check-circle"></i> آماده دانلود
-                                        </span>
-                                        <span class="app-store-version">v5.0</span>
-                                    </div>
-                                </div>
-                                <div class="app-store-action">
-                                    <button class="app-store-get-btn">
-                                        <span>دریافت</span>
-                                        <i class="fas fa-arrow-left"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- کارت برنامه ۲: رفیق -->
-                        <div class="app-store-card" onclick="openAppPage('rafigh')">
-                            <div class="app-store-card-inner">
-                                <div class="app-store-icon">
-                                    <i class="fas fa-user-friends"></i>
-                                </div>
-                                <div class="app-store-info">
-                                    <h3 class="app-store-name">رفیق</h3>
-                                    <p class="app-store-desc">برنامه‌ای برای ارتباط بهتر با دوستان</p>
-                                    <div class="app-store-meta">
-                                        <span class="app-store-status developing">
-                                            <i class="fas fa-code"></i> در دست توسعه
-                                        </span>
-                                        <span class="app-store-version">v1.0.0</span>
-                                    </div>
-                                </div>
-                                <div class="app-store-action">
-                                    <button class="app-store-get-btn disabled">
-                                        <span>به زودی</span>
-                                        <i class="fas fa-clock"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- کارت برنامه ۳: پروژه بعدی -->
-                        <div class="app-store-card" onclick="openAppPage('future')">
-                            <div class="app-store-card-inner">
-                                <div class="app-store-icon">
-                                    <i class="fas fa-rocket"></i>
-                                </div>
-                                <div class="app-store-info">
-                                    <h3 class="app-store-name">پروژه بعدی</h3>
-                                    <p class="app-store-desc">به زودی...</p>
-                                    <div class="app-store-meta">
-                                        <span class="app-store-status coming-soon">
-                                            <i class="fas fa-clock"></i> به زودی
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="app-store-action">
-                                    <button class="app-store-get-btn disabled">
-                                        <span>به زودی</span>
-                                        <i class="fas fa-clock"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ====================================================== -->
-                <!-- ===== صفحه‌ی اختصاصی برنامه "پَرگار" ===== -->
-                <!-- ====================================================== -->
-                <div class="tab-content app-detail-page" id="app_pargar">
-                    <button class="back-to-apps" onclick="closeAppPage()">
-                        <i class="fas fa-arrow-right"></i> بازگشت
-                    </button>
-
-                    <div class="app-detail-header">
-                        <div class="app-detail-icon-wrapper">
-                            <div class="app-detail-icon">
-                                <img src="https://uploadkon.ir/uploads/505318_26pargar-icon-1.png" alt="آیکون پرگار" loading="lazy">
-                            </div>
-                        </div>
-                        <div class="app-detail-title-section">
-                            <h1 class="app-detail-name">پَرگار (Pargâr)</h1>
-                            <p class="app-detail-developer">توسعه‌دهنده: mohamad hossein snti</p>
-                            <div class="app-detail-rating">
-                                <span class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </span>
-                                <span class="rating-text">۴.۶ <span class="reviews-count">(۲۰ مرور)</span></span>
-                            </div>
-                        </div>
-                        <div class="app-detail-install">
-                            <a href="https://uploadkon.ir/uploads/728718_26pargar-5-0.zip" download class="app-detail-install-btn">
-                                <i class="fas fa-download"></i>
-                                <span>دانلود APK</span>
-                            </a>
-                            <span class="app-detail-size">حجم: ۴۸.۳ مگابایت</span>
-                        </div>
-                    </div>
-
-                    <div class="app-detail-screenshots">
-                        <h4><i class="fas fa-images"></i> تصاویر برنامه</h4>
-                        <div class="screenshots-scroll">
-                            <div class="screenshot-item">
-                                <img src="https://uploadkon.ir/uploads/a6b518_26paergar-image-1.png" alt="صفحه اصلی پرگار" loading="lazy">
-                            </div>
-                            <div class="screenshot-item">
-                                <img src="https://uploadkon.ir/uploads/e66318_26pargar-image-2.png" alt="داشبورد پرگار" loading="lazy">
-                            </div>
-                            <div class="screenshot-item">
-                                <img src="https://uploadkon.ir/uploads/ef0a18_26pargar-image-3.png" alt="تسک‌های پرگار" loading="lazy">
-                            </div>
-                            <div class="screenshot-item">
-                                <img src="https://uploadkon.ir/uploads/e0de18_26pargar-image-4.png" alt="تنظیمات پرگار" loading="lazy">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="app-detail-about">
-                        <h4><i class="fas fa-info-circle"></i> درباره این برنامه</h4>
-                        <p><strong>پَرگار (Pargâr)</strong> یک اپلیکیشن برنامه‌ریزی روزانه و هدف‌گذاری هوشمند است. اسمش از پرگار (ابزار رسم دایره) اومده، چون کارش دقیق و حساب‌شده‌ست.</p>
-                        
-                        <h4 style="margin-top:1rem;"><i class="fas fa-lightbulb"></i> چرا پرگار؟</h4>
-                        <p>این اپلیکیشن با الهام از پرگار ساخته شده؛ چون زندگی مثل یک دایره‌ست که باید دقیق و حساب‌شده رسمش کنی.</p>
-
-                        <h4 style="margin-top:1rem;"><i class="fas fa-bullseye"></i> هدف پرگار</h4>
-                        <p>کمک به آدم‌هایی که می‌خوان:</p>
-                        <div class="app-features-list">
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>زندگی‌شون رو منظم‌تر کنن</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>اهداف‌شون رو واضح ببینن</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>برنامه‌ریزی روزانه داشته باشن</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>انگیزه‌شون رو بالا نگه دارن</span>
-                            </div>
-                        </div>
-
-                        <h4 style="margin-top:1rem;"><i class="fas fa-star"></i> ویژگی‌های خاص نسخه ۵.۰</h4>
-                        <div class="app-features-list">
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>🎯 هدف‌گذاری کوتاه و بلندمدت با نمایش دایره‌ای پیشرفت</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>📅 اولویت‌بندی کارها با ماتریس آیزنهاور (فوری/مهم)</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>🧠 دفترچه یادداشت برای ایده‌ها و یادآوری‌ها</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>📊 پیشرفت کلی از همه بخش‌ها (تسک، یادداشت، خرید)</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>🛒 سبد خرید با قیمت تومان</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>⏰ یادآور هوشمند با ساعت</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>💾 ذخیره‌سازی خودکار (داده‌هات نمی‌ره)</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>🌙 حالت شب</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>📱 طراحی اختصاصی برای گوشی</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="app-detail-more">
-                        <div class="more-item">
-                            <span class="more-label">وضعیت</span>
-                            <span class="more-value ready">✅ آماده انتشار</span>
-                        </div>
-                        <div class="more-item">
-                            <span class="more-label">نسخه</span>
-                            <span class="more-value">۵.۰</span>
-                        </div>
-                        <div class="more-item">
-                            <span class="more-label">سیستم‌عامل</span>
-                            <span class="more-value">اندروید (APK)</span>
-                        </div>
-                        <div class="more-item">
-                            <span class="more-label">سازنده</span>
-                            <span class="more-value">Mohamad Hossein Snti</span>
-                        </div>
-                    </div>
-
-                    <div class="app-detail-bottom-install">
-                        <a href="https://uploadkon.ir/uploads/728718_26pargar-5-0.zip" download class="app-detail-bottom-install-btn">
-                            <i class="fas fa-download"></i>
-                            <span>دانلود برنامه پَرگار ۵.۰ (APK)</span>
-                        </a>
-                        <p style="color:#8f887c; font-size:0.8rem; margin-top:0.5rem;">«با پَرگار، زندگی‌ات را دقیق‌تر نقشه‌کشی کن.» 🧭</p>
-                    </div>
-                </div>
-
-                <!-- ====================================================== -->
-                <!-- ===== صفحه‌ی اختصاصی برنامه "رفیق" ===== -->
-                <!-- ====================================================== -->
-                <div class="tab-content app-detail-page" id="app_rafigh">
-                    <button class="back-to-apps" onclick="closeAppPage()">
-                        <i class="fas fa-arrow-right"></i> بازگشت
-                    </button>
-
-                    <div class="app-coming-soon">
-                        <div class="coming-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h2>رفیق</h2>
-                        <p>برنامه‌ای برای ارتباط بهتر با دوستان</p>
-                        <p style="font-size:0.9rem; color:#f5b042; margin-top:0.5rem;">در دست توسعه</p>
-                        <p style="font-size:0.8rem; color:#8f887c;">به زودی...</p>
-                    </div>
-                </div>
-
-                <!-- ====================================================== -->
-                <!-- ===== صفحه‌ی "در دست توسعه" برای برنامه‌های آینده ===== -->
-                <!-- ====================================================== -->
-                <div class="tab-content app-detail-page" id="app_future">
-                    <button class="back-to-apps" onclick="closeAppPage()">
-                        <i class="fas fa-arrow-right"></i> بازگشت
-                    </button>
-
-                    <div class="app-coming-soon">
-                        <div class="coming-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h2>در دست توسعه</h2>
-                        <p>این برنامه به زودی منتشر خواهد شد...</p>
-                        <p style="font-size:0.9rem; color:#8f887c; margin-top:0.5rem;">صفحات این برنامه در حال طراحی است</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== طراحی‌هام ===== -->
-            <div class="tab-content" id="design">
-                <h2><i class="fas fa-palette" style="color:#f5b042; margin-left:0.8rem;"></i> طراحی‌هام</h2>
-                <p style="margin-bottom:1.5rem;">نمونه‌ای از طراحی‌های هنری و گرافیکی:</p>
-
-                <div class="design-card-new">
-                    <div class="design-image" onclick="openModal('https://cdn.imgurl.ir/uploads/z820650_ya_imam_hossein_pishnamaesh___mhsnti.png', 'در حسرت کربلا...')">
-                        <img src="https://cdn.imgurl.ir/uploads/z820650_ya_imam_hossein_pishnamaesh___mhsnti.png" alt="در حسرت کربلا" />
-                        <div class="image-overlay">
-                            <i class="fas fa-expand"></i>
-                            <span>برای مشاهده کلیک کن</span>
-                        </div>
-                    </div>
-                    <div class="design-header">
-                        <h3 class="design-title"><i class="fas fa-heart"></i> در حسرت کربلا...</h3>
-                        <button class="toggle-details" onclick="toggleDetails(this)">
-                            <span>توضیحات بیشتر</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="design-details">
-                        <p class="design-desc">یک اثر که دلتنگی کربلا رو نشان میده و هرسال خیلی ها آرزوشونه که برن کربلا...</p>
-                        <p class="design-author"><i class="fas fa-user-astronaut"></i> طراح: Mohamad Hossein SNTI</p>
-                    </div>
-                    <div class="download-buttons">
-                        <a href="https://cdn.imgurl.ir/uploads/p792290_ya_imam_hossein___4k.png" download target="_blank">
-                            <i class="fas fa-download"></i> دانلود 4K
-                        </a>
-                        <a href="https://cdn.imgurl.ir/uploads/n28554_ya_imam_hossein___2k.png" download target="_blank">
-                            <i class="fas fa-download"></i> دانلود 2K
-                        </a>
-                    </div>
-                    <div class="design-3d-hint">
-                        <i class="fas fa-cube"></i>
-                        <span>حالت ۳ بعدی با کلیک روی تصویر فعال می‌شود</span>
-                    </div>
-                </div>
-
-                <div class="design-card-new">
-                    <div class="design-image" onclick="openModal('https://cdn.imgurl.ir/uploads/q589216_ya_ali12155.jpg', 'گفتند زلف یار، شنیدم ذوالفقار...')">
-                        <img src="https://cdn.imgurl.ir/uploads/q589216_ya_ali12155.jpg" alt="طراحی یا علی" />
-                        <div class="image-overlay">
-                            <i class="fas fa-expand"></i>
-                            <span>برای مشاهده کلیک کن</span>
-                        </div>
-                    </div>
-                    <div class="design-header">
-                        <h3 class="design-title"><i class="fas fa-shield-alt"></i> گفتند زلف یار، شنیدم ذوالفقار...</h3>
-                        <button class="toggle-details" onclick="toggleDetails(this)">
-                            <span>توضیحات بیشتر</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="design-details">
-                        <p class="design-desc">بعضی عکس‌ها فقط برای دیدن نیستن، باید حسشون کنی... این کار فقط یه طراحی نیست؛ یه ادای احترامه به اونایی که با نام علی (ع) جنگیدن، ایستادن و جاودانه شدن.</p>
-                        <p class="design-author"><i class="fas fa-user-astronaut"></i> طراح: Mohamad Hossein SNTI</p>
-                    </div>
-                    <div class="download-buttons">
-                        <a href="https://cdn.imgurl.ir/uploads/y851249_4k_ya_ali125846.png" download target="_blank">
-                            <i class="fas fa-download"></i> دانلود 4K
-                        </a>
-                        <a href="https://cdn.imgurl.ir/uploads/a529737_2k_ya_ali121233.png" download target="_blank">
-                            <i class="fas fa-download"></i> دانلود 2K
-                        </a>
-                    </div>
-                    <div class="design-3d-hint">
-                        <i class="fas fa-cube"></i>
-                        <span>حالت ۳ بعدی با کلیک روی تصویر فعال می‌شود</span>
-                    </div>
-                </div>
-
-                <div class="design-card-new">
-                    <div class="design-image" onclick="openModal('https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png', 'اهواز... خاک غسل‌شده با شهیدانت')">
-                        <img src="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" alt="طراحی جنوب ایران" />
-                        <div class="image-overlay">
-                            <i class="fas fa-expand"></i>
-                            <span>برای مشاهده کلیک کن</span>
-                        </div>
-                    </div>
-                    <div class="design-header">
-                        <h3 class="design-title"><i class="fas fa-heart"></i> اهواز... خاک غسل‌شده با شهیدانت</h3>
-                        <button class="toggle-details" onclick="toggleDetails(this)">
-                            <span>توضیحات بیشتر</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="design-details">
-                        <p class="design-desc">این اثر با الهام از ایثار، مقاومت و یاد شهدای سرافراز خلق شده است؛ روایتی تصویری از شهری که خاکش با خون پاک فرزندانش آمیخته و نامش برای همیشه در تاریخ ماندگار شده است.</p>
-                        <p class="design-author"><i class="fas fa-user-astronaut"></i> طراح: mohamad hossein snti</p>
-                    </div>
-                    <div class="download-buttons">
-                        <a href="https://uploadkon.ir/uploads/99ce24_26jonoob-iran.png" download target="_blank">
-                            <i class="fas fa-download"></i> دانلود 2K
-                        </a>
-                        <a href="https://uploadkon.ir/uploads/828624_26jonnob-mohamad-hossein-sanati-.png" download target="_blank">
-                            <i class="fas fa-download"></i> دانلود 1080p
-                        </a>
-                    </div>
-                    <div class="design-3d-hint">
-                        <i class="fas fa-cube"></i>
-                        <span>حالت ۳ بعدی با کلیک روی تصویر فعال می‌شود</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====================================================== -->
-            <!-- ===== بخش نوا (با کاور جدید) ===== -->
-            <!-- ====================================================== -->
-            <div class="tab-content" id="nava">
-                <h2><i class="fas fa-headphones" style="color:#f5b042; margin-left:0.8rem;"></i> نوا</h2>
-                <p style="margin-bottom:1.5rem;">نماهنگ ها و نواهای ساخته شده توسط بنده:</p>
-
-                <div class="nava-glass-container">
-                    <div class="nava-list">
-                        <div class="nava-card" onclick="openNavaModal()">
-                            <div class="nava-card-content">
-                                <div class="nava-thumb">
-                                    <img src="https://cdn.imgurl.ir/uploads/y982894_InShot_20260814_175851054.jpg" alt="کاور رقیه جان">
-                                </div>
-                                <div class="nava-info">
-                                    <h3 class="nava-title"><i class="fas fa-music"></i> نماهنگ | رقیــه جان</h3>
-                                    <p class="nava-artist"><i class="fas fa-microphone"></i> کربلایی سید علی صفاتی</p>
-                                    <p class="nava-mixer"><i class="fas fa-sliders-h"></i> محمد حسین صنعتی</p>
-                                </div>
-                                <div class="nava-arrow">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </main>
-
-        <!-- ========== فوتر ========== -->
-        <footer class="footer">
-            <div class="footer-copy">
-                &copy; 2026 mohamad hossein snti — تمامی حقوق محفوظ است.
-            </div>
-            <div class="footer-social">
-                <a href="#" aria-label="ایمیل"><i class="fas fa-envelope"></i></a>
-                <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://t.me/@mohamad_hossein_ev18" target="_blank" aria-label="تلگرام">
-                    <i class="fab fa-telegram-plane"></i>
-                </a>
-                <a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" aria-label="اینستاگرام">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </footer>
-
+<div id="ui">
+    <div id="buildMenu">
+        <div class="buildBtn" data-type="house">🏠 House<br><span class="cost">💰30</span></div>
+        <div class="buildBtn" data-type="farm">🌾 Farm<br><span class="cost">💰40</span></div>
+        <div class="buildBtn" data-type="tower">🗼 Tower<br><span class="cost">💰50 🧪20</span></div>
+        <div class="buildBtn" data-type="barracks">⚔️ Barracks<br><span class="cost">💰60 🧪30</span></div>
+        <div class="buildBtn" data-type="wall">🧱 Wall<br><span class="cost">💰20</span></div>
     </div>
-
-    <!-- ========== دکمه AI چت ========== -->
-    <a class="ai-chat-button" href="https://zeroxgame74-afk.github.io/MH-Assistant/" target="_blank" aria-label="دستیار هوش مصنوعی">
-        <i class="fas fa-robot"></i>
-        <span class="tooltip">دستیار هوش مصنوعی</span>
-    </a>
-
-    <!-- ========== مودال نوا ========== -->
-    <div class="nava-modal-overlay" id="navaModal">
-        <div class="nava-modal-content">
-            <button class="modal-close" onclick="closeNavaModal()">
-                <i class="fas fa-times"></i>
-            </button>
-
-            <div class="modal-image">
-                <img src="https://cdn.imgurl.ir/uploads/y982894_InShot_20260814_175851054.jpg" alt="کاور نماهنگ رقیه جان">
-            </div>
-
-            <h3 class="modal-title"><i class="fas fa-music"></i> نماهنگ | رقیــه جان</h3>
-            <p class="modal-artist"><i class="fas fa-microphone"></i> مداح: کربلایی سید علی صفاتی</p>
-            <p class="modal-mixer"><i class="fas fa-sliders-h"></i> تنظیم میکس: محمد حسین صنعتی</p>
-
-            <div class="nava-modal-lyrics">
-                <div class="nava-modal-lyrics-header" onclick="toggleModalLyrics(this)">
-                    <h4><i class="fas fa-scroll"></i> متن نماهنگ</h4>
-                    <span class="lyrics-toggle-icon"><i class="fas fa-chevron-down"></i></span>
-                </div>
-                <div class="nava-modal-lyrics-body">
-                    <div class="lyrics-box" id="lyricsBox">
-                        <p class="lyric-line" data-time="5">دست تو کجاست منو ناز کنی...</p>
-                        <p class="lyric-line" data-time="10">لباست پاره لباسم پاره</p>
-                        <p class="lyric-line" data-time="15">الان گوشوارم کدوم بازاره؟</p>
-                        <p class="lyric-line" data-time="23">لبات پرخونه لبام پرخونه روی مشت زجر جای دندونه</p>
-                        <p class="lyric-line" data-time="32">اونقدر از زجر میترسید هرموقع یاد زجر میوفتاد یاد این میوفتاد که توی کاروان گم شد</p>
-                        <p class="lyric-line" data-time="50">منو بیشتر میزد زجر بی‌حیا منو با پشت خنجر میزد</p>
-                        <p class="lyric-line" data-time="63">تا میگفتم یواش تر منو بدتر میزد بابا</p>
-                        <p class="lyric-line" data-time="77">دست تو کجاست منو ناز کنی؟</p>
-                        <p class="lyric-line" data-time="84">موی سوخته منو باز کنی با محبتت رو به من ابراز کنی دخترت شده عزادار تو</p>
-                        <p class="lyric-line" data-time="98">رقیه جان رقیه جان</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="nava-modal-player">
-                <audio id="navaModalAudio" src="https://uploadkon.ir/uploads/581514_26لباست.mp3"></audio>
-                <div class="nava-progress-wrap">
-                    <span class="nava-time" id="modalCurrentTime">0:00</span>
-                    <div class="nava-progress-bar" id="modalProgressBar">
-                        <div class="nava-progress-fill" id="modalProgressFill"></div>
-                    </div>
-                    <span class="nava-time" id="modalDuration">0:00</span>
-                </div>
-                <div class="nava-controls">
-                    <button onclick="modalPrevTrack()"><i class="fas fa-step-backward"></i></button>
-                    <button class="nava-play-btn" id="modalPlayBtn" onclick="modalTogglePlay()"><i class="fas fa-play"></i></button>
-                    <button onclick="modalNextTrack()"><i class="fas fa-step-forward"></i></button>
-                </div>
-            </div>
-        </div>
+    <div style="text-align:center;color:white;font-size:11px;text-shadow:0 2px 4px black;">
+        👆 Tap ground to build • Tap building to upgrade
     </div>
+</div>
 
-    <!-- ========== نوتیفیکیشن ========== -->
-    <div class="welcome-notification" id="welcomeNotif">
-        <div class="notif-header">
-            <i class="fas fa-hand-peace"></i>
-            <h3>سلام! به سایت خوش آمدید</h3>
-        </div>
-        <div class="notif-body">
-            <span class="notif-update-title"><i class="fas fa-list"></i> لیست آپدیت‌ها:</span>
-            <ul>
-                <li><i class="fas fa-palette"></i> اضافه شدن طراحی‌های جدید</li>
-                <li><i class="fas fa-headphones"></i> بخش نوا با پخش‌کننده موسیقی</li>
-                <li><i class="fas fa-music"></i> اضافه شدن نماهنگ "رقیــه جان" با کاور جدید</li>
-                <li><i class="fas fa-scroll"></i> لیریکس هم‌زمان با پخش (هایلایت خودکار)</li>
-                <li><i class="fas fa-mobile-alt"></i> بخش برنامه‌ها شبیه اپ استور</li>
-                <li><i class="fas fa-compass"></i> آپدیت پَرگار به نسخه ۵.۰</li>
-                <li><i class="fas fa-robot"></i> دستیار هوش مصنوعی</li>
-            </ul>
-        </div>
-    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/6.25.1/babylon.js"></script>
+<script>
+// ====== GAME STATE ======
+const game = {
+    gold: 100, elixir: 50, stars: 0, level: 1,
+    buildings: [], enemies: [], troops: [],
+    selectedBuilding: null,
+    buildMode: null,
+    gridSize: 2,
+    mapSize: 20
+};
 
-    <!-- ========== مودال شیشه‌ای (برای طراحی) ========== -->
-    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">
-                <i class="fas fa-times"></i>
-            </button>
+// ====== BABYLON SETUP ======
+const canvas = document.createElement('canvas');
+document.body.prepend(canvas);
+const engine = new BABYLON.Engine(canvas, true, { adaptToDeviceRatio: true });
+const scene = new BABYLON.Scene(engine);
+scene.clearColor = new BABYLON.Color3(0.1, 0.15, 0.25);
+scene.ambientColor = new BABYLON.Color3(0.5, 0.5, 0.5);
 
-            <div class="modal-image" id="modalImage">
-                <div class="modal-img-wrapper" id="modalImgWrapper">
-                    <img id="modalImg" src="" alt="طراحی" />
-                </div>
-            </div>
+// Camera
+const camera = new BABYLON.ArcRotateCamera("cam", -Math.PI/2, Math.PI/3, 25, BABYLON.Vector3.Zero(), scene);
+camera.attachControl(canvas, true);
+camera.lowerRadiusLimit = 8;
+camera.upperRadiusLimit = 40;
+camera.wheelPrecision = 30;
+camera.panningSensibility = 0;
 
-            <h3 class="modal-title" id="modalTitle"><i class="fas fa-heart"></i></h3>
+// Lights
+const hemi = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0), scene);
+hemi.intensity = 0.8;
+hemi.groundColor = new BABYLON.Color3(0.3, 0.2, 0.1);
+const sun = new BABYLON.DirectionalLight("sun", new BABYLON.Vector3(-1, -2, -1), scene);
+sun.intensity = 1.2;
 
-            <div class="modal-controls">
-                <button onclick="rotate3D('left')">
-                    <i class="fas fa-arrow-left"></i> چپ
-                </button>
-                <button onclick="rotate3D('right')">
-                    <i class="fas fa-arrow-right"></i> راست
-                </button>
-                <button onclick="rotate3D('up')">
-                    <i class="fas fa-arrow-up"></i> بالا
-                </button>
-                <button onclick="rotate3D('down')">
-                    <i class="fas fa-arrow-down"></i> پایین
-                </button>
-                <button onclick="toggle3D()" id="btn3d">
-                    <i class="fas fa-cube"></i> ۳D
-                </button>
-                <button onclick="showCopyright()">
-                    <i class="fas fa-copyright"></i> کپی رایت
-                </button>
-            </div>
+// Ground
+const groundMat = new BABYLON.StandardMaterial("groundMat", scene);
+groundMat.diffuseColor = new BABYLON.Color3(0.2, 0.5, 0.15);
+groundMat.specularColor = BABYLON.Color3.Black();
+const ground = BABYLON.MeshBuilder.CreateGround("ground", {width: game.mapSize, height: game.mapSize}, scene);
+ground.material = groundMat;
+ground.position.y = -0.05;
 
-            <div class="modal-copyright" id="copyrightBox">
-                <p>
-                    <strong>© 2026 mohamad hossein snti.</strong> تمامی حقوق محفوظ است.
-                    <br><br>
-                    تمامی محتوای این وب‌سایت، از جمله متن‌ها، تصاویر، طرح‌ها، لوگو، پروژه‌ها، کدها و سایر آثار، متعلق به <strong>mohamad hossein snti</strong> است. هرگونه کپی، بازنشر، انتشار، ویرایش یا استفاده از این محتوا بدون کسب اجازه کتبی ممنوع بوده و مطابق قوانین مربوط به حقوق مالکیت فکری قابل پیگیری است.
-                </p>
-            </div>
+// Grid helper
+const gridMat = new BABYLON.StandardMaterial("gridMat", scene);
+gridMat.diffuseColor = new BABYLON.Color3(1,1,1);
+gridMat.alpha = 0.08;
+gridMat.wireframe = true;
+const gridPlane = BABYLON.MeshBuilder.CreateGround("grid", {width: game.mapSize, height: game.mapSize, subdivisions: 10}, scene);
+gridPlane.material = gridMat;
+gridPlane.position.y = 0.01;
 
-            <div class="modal-footer-text">
-                <i class="fas fa-arrows-alt" style="color:#f5b042;"></i> برای چرخش ۳D از دکمه‌ها استفاده کنید
-            </div>
-        </div>
-    </div>
+// ====== BUILDING SYSTEM ======
+const BUILDING_TYPES = {
+    house: { name: 'House', cost: {gold:30, elixir:0}, color: [0.9,0.6,0.3], hp:50, size:1.2 },
+    farm: { name: 'Farm', cost: {gold:40, elixir:0}, color: [0.3,0.8,0.2], hp:40, size:1.5 },
+    tower: { name: 'Tower', cost: {gold:50, elixir:20}, color: [0.7,0.3,0.7], hp:80, size:1.2 },
+    barracks: { name: 'Barracks', cost: {gold:60, elixir:30}, color: [0.8,0.2,0.2], hp:100, size:1.8 },
+    wall: { name: 'Wall', cost: {gold:20, elixir:0}, color: [0.6,0.6,0.6], hp:120, size:1.0 }
+};
 
-    <!-- ========== اسکریپت ========== -->
-    <script>
-        // ===== منو و تب =====
-        (function() {
-            const hamburger = document.getElementById('hamburgerBtn');
-            const overlay = document.getElementById('navOverlay');
-            const navLinks = document.querySelectorAll('#navMenu a');
-            const tabContents = document.querySelectorAll('.tab-content');
+function createBuildingMesh(type, pos) {
+    const data = BUILDING_TYPES[type];
+    const box = BABYLON.MeshBuilder.CreateBox(type + '_mesh', {size: data.size}, scene);
+    box.position.copyFrom(pos);
+    box.position.y = data.size/2;
+    
+    const mat = new BABYLON.StandardMaterial(type + '_mat', scene);
+    mat.diffuseColor = new BABYLON.Color3(data.color[0], data.color[1], data.color[2]);
+    mat.specularColor = new BABYLON.Color3(0.1, 0.1, 0.1);
+    box.material = mat;
+    
+    // Roof for houses
+    if (type === 'house' || type === 'tower') {
+        const roof = BABYLON.MeshBuilder.CreateCylinder('roof', {diameter: data.size*0.9, height: data.size*0.6, tessellation: 4}, scene);
+        roof.position.copyFrom(pos);
+        roof.position.y = data.size + 0.2;
+        const roofMat = new BABYLON.StandardMaterial('roof_mat', scene);
+        roofMat.diffuseColor = new BABYLON.Color3(0.8, 0.2, 0.2);
+        roof.material = roofMat;
+        box.roof = roof;
+    }
+    
+    // Add a glow ring for towers
+    if (type === 'tower') {
+        const ring = BABYLON.MeshBuilder.CreateTorus('ring', {diameter: data.size*1.5, thickness: 0.05}, scene);
+        ring.position.copyFrom(pos);
+        ring.position.y = 0.1;
+        const ringMat = new BABYLON.StandardMaterial('ring_mat', scene);
+        ringMat.diffuseColor = new BABYLON.Color3(1, 0.5, 0);
+        ringMat.emissiveColor = new BABYLON.Color3(0.5, 0.2, 0);
+        ring.material = ringMat;
+        box.ring = ring;
+    }
+    
+    return box;
+}
 
-            function toggleMenu() {
-                hamburger.classList.toggle('active');
-                overlay.classList.toggle('open');
-                document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
-            }
+function canAfford(cost) {
+    return game.gold >= cost.gold && game.elixir >= (cost.elixir || 0);
+}
 
-            hamburger.addEventListener('click', toggleMenu);
+function spend(cost) {
+    game.gold -= cost.gold;
+    game.elixir -= (cost.elixir || 0);
+    updateUI();
+}
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const tabId = this.dataset.tab;
-                    if (tabId) {
-                        activateTab(tabId);
-                        if (overlay.classList.contains('open')) toggleMenu();
-                        history.pushState(null, null, `#${tabId}`);
+function addBuilding(type, x, z) {
+    const data = BUILDING_TYPES[type];
+    if (!canAfford(data.cost)) return false;
+    
+    // Check grid placement (simple)
+    const pos = new BABYLON.Vector3(x, 0, z);
+    // Simple collision check
+    for (let b of game.buildings) {
+        if (BABYLON.Vector3.Distance(b.mesh.position, pos) < data.size + 0.5) return false;
+    }
+    
+    spend(data.cost);
+    const mesh = createBuildingMesh(type, pos);
+    const building = {
+        id: Date.now() + Math.random(),
+        type: type,
+        mesh: mesh,
+        level: 1,
+        hp: data.hp,
+        maxHp: data.hp,
+        pos: pos,
+        size: data.size,
+        attackCooldown: 0
+    };
+    game.buildings.push(building);
+    
+    // Add floating label
+    const label = BABYLON.MeshBuilder.CreatePlane('label', {size: 0.8}, scene);
+    label.position.copyFrom(pos);
+    label.position.y = data.size + 1.5;
+    label.billboardMode = BABYLON.Mesh.BILLBOARDMODE_ALL;
+    const labelMat = new BABYLON.StandardMaterial('label_mat', scene);
+    labelMat.diffuseColor = new BABYLON.Color3(1,1,0);
+    labelMat.emissiveColor = new BABYLON.Color3(0.3,0.3,0);
+    label.material = labelMat;
+    building.label = label;
+    
+    // Particle effect on build
+    createParticles(pos, new BABYLON.Color3(0,1,0.5), 20);
+    
+    updateUI();
+    return true;
+}
+
+// ====== PARTICLES ======
+function createParticles(pos, color, count=30) {
+    const particleSystem = new BABYLON.ParticleSystem("particles", count, scene);
+    particleSystem.particleTexture = new BABYLON.Texture("https://www.babylonjs.com/img/particles/star.png", scene);
+    particleSystem.emitter = pos;
+    particleSystem.minSize = 0.1;
+    particleSystem.maxSize = 0.5;
+    particleSystem.color1 = color;
+    particleSystem.color2 = color;
+    particleSystem.minLifeTime = 0.5;
+    particleSystem.maxLifeTime = 1.5;
+    particleSystem.emitRate = count;
+    particleSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ADD;
+    particleSystem.minEmitBox = new BABYLON.Vector3(-0.5,0,-0.5);
+    particleSystem.maxEmitBox = new BABYLON.Vector3(0.5,0,0.5);
+    particleSystem.start();
+    setTimeout(() => particleSystem.stop(), 100);
+    setTimeout(() => particleSystem.dispose(), 2000);
+}
+
+// ====== ENEMY SYSTEM ======
+let enemySpawnTimer = 0;
+
+function spawnEnemy() {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 12 + Math.random() * 3;
+    const pos = new BABYLON.Vector3(Math.cos(angle)*dist, 0, Math.sin(angle)*dist);
+    
+    const sphere = BABYLON.MeshBuilder.CreateSphere('enemy', {diameter: 0.8}, scene);
+    sphere.position.copyFrom(pos);
+    sphere.position.y = 0.4;
+    const mat = new BABYLON.StandardMaterial('enemy_mat', scene);
+    mat.diffuseColor = new BABYLON.Color3(1, 0.2, 0.2);
+    mat.emissiveColor = new BABYLON.Color3(0.3, 0, 0);
+    sphere.material = mat;
+    
+    const enemy = {
+        mesh: sphere,
+        pos: pos,
+        hp: 20 + game.level * 5,
+        maxHp: 20 + game.level * 5,
+        speed: 1 + game.level * 0.2,
+        target: null,
+        attackCooldown: 0,
+        attackDamage: 5 + game.level
+    };
+    game.enemies.push(enemy);
+}
+
+// ====== TROOP SYSTEM ======
+function spawnTroop(type) {
+    // Find barracks
+    const barracks = game.buildings.find(b => b.type === 'barracks');
+    if (!barracks) return false;
+    if (game.elixir < 15) return false;
+    
+    game.elixir -= 15;
+    const pos = barracks.pos.clone();
+    pos.x += (Math.random() - 0.5) * 3;
+    pos.z += (Math.random() - 0.5) * 3;
+    
+    const sphere = BABYLON.MeshBuilder.CreateSphere('troop', {diameter: 0.6}, scene);
+    sphere.position.copyFrom(pos);
+    sphere.position.y = 0.3;
+    const mat = new BABYLON.StandardMaterial('troop_mat', scene);
+    mat.diffuseColor = new BABYLON.Color3(0.2, 0.6, 1);
+    sphere.material = mat;
+    
+    const troop = {
+        mesh: sphere,
+        pos: pos,
+        hp: 30,
+        speed: 2 + Math.random(),
+        attackDamage: 8,
+        attackCooldown: 0,
+        target: null
+    };
+    game.troops.push(troop);
+    createParticles(pos, new BABYLON.Color3(0.2, 0.6, 1), 15);
+    updateUI();
+    return true;
+}
+
+// ====== UPDATE LOOP ======
+scene.onBeforeRenderObservable.add(() => {
+    const delta = engine.getDeltaTime() / 1000;
+    
+    // Enemy spawn
+    enemySpawnTimer += delta;
+    if (enemySpawnTimer > 4 - game.level * 0.2 && game.enemies.length < 5 + game.level) {
+        enemySpawnTimer = 0;
+        spawnEnemy();
+    }
+    
+    // Move enemies toward nearest building
+    for (let i = game.enemies.length - 1; i >= 0; i--) {
+        const e = game.enemies[i];
+        let target = null;
+        let minDist = Infinity;
+        for (let b of game.buildings) {
+            const d = BABYLON.Vector3.Distance(e.pos, b.mesh.position);
+            if (d < minDist) { minDist = d; target = b; }
+        }
+        if (target) {
+            const dir = target.mesh.position.subtract(e.pos).normalize();
+            e.pos.x += dir.x * e.speed * delta;
+            e.pos.z += dir.z * e.speed * delta;
+            e.mesh.position.x = e.pos.x;
+            e.mesh.position.z = e.pos.z;
+            e.mesh.position.y = 0.4 + Math.sin(Date.now()/300 + i) * 0.1;
+            
+            // Attack building
+            if (minDist < 1.5) {
+                e.attackCooldown -= delta;
+                if (e.attackCooldown <= 0) {
+                    target.hp -= e.attackDamage;
+                    e.attackCooldown = 1;
+                    createParticles(target.mesh.position, new BABYLON.Color3(1,0.5,0), 8);
+                    if (target.hp <= 0) {
+                        // Destroy building
+                        const idx = game.buildings.indexOf(target);
+                        if (idx > -1) {
+                            createParticles(target.mesh.position, new BABYLON.Color3(1,0,0), 40);
+                            target.mesh.dispose();
+                            if (target.mesh.roof) target.mesh.roof.dispose();
+                            if (target.mesh.ring) target.mesh.ring.dispose();
+                            if (target.label) target.label.dispose();
+                            game.buildings.splice(idx, 1);
+                            game.stars = Math.max(0, game.stars - 1);
+                            updateUI();
+                        }
                     }
-                });
-            });
-
-            window.activateTab = function(tabId) {
-                tabContents.forEach(content => content.classList.remove('active'));
-                const target = document.getElementById(tabId);
-                if (target) target.classList.add('active');
-                navLinks.forEach(link => link.classList.remove('active'));
-                const activeLink = document.querySelector(`#navMenu a[data-tab="${tabId}"]`);
-                if (activeLink) activeLink.classList.add('active');
-            };
-
-            const hash = window.location.hash.replace('#', '');
-            if (hash && document.getElementById(hash)) {
-                activateTab(hash);
-            } else {
-                activateTab('home');
-            }
-
-            window.addEventListener('hashchange', function() {
-                const newHash = window.location.hash.replace('#', '');
-                if (newHash && document.getElementById(newHash)) {
-                    activateTab(newHash);
+                    updateUI();
                 }
-            });
-
-            overlay.addEventListener('click', function(e) {
-                if (e.target === overlay && overlay.classList.contains('open')) toggleMenu();
-            });
-
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && overlay.classList.contains('open')) toggleMenu();
-            });
-        })();
-
-        // ===== تابع switchTab برای دکمه‌های هدر =====
-        function switchTab(tabId) {
-            event.preventDefault();
-            activateTab(tabId);
-            document.querySelector(`#navMenu a[data-tab="${tabId}"]`)?.click();
-            document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        // ===== اسلایدر خودکار بنر =====
-        let currentSlide = 0;
-        let slideInterval;
-
-        function showSlide(index) {
-            const slides = document.querySelectorAll('.hero-slide');
-            const dots = document.querySelectorAll('.hero-slider-dots .dot');
-
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-
-            currentSlide = index;
-        }
-
-        function changeHeroSlide(direction) {
-            const slides = document.querySelectorAll('.hero-slide');
-            const totalSlides = slides.length;
-            let newIndex = (currentSlide + direction + totalSlides) % totalSlides;
-            showSlide(newIndex);
-            resetSlideTimer();
-        }
-
-        function goToHeroSlide(index) {
-            showSlide(index);
-            resetSlideTimer();
-        }
-
-        function resetSlideTimer() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(() => {
-                const slides = document.querySelectorAll('.hero-slide');
-                const nextIndex = (currentSlide + 1) % slides.length;
-                showSlide(nextIndex);
-            }, 5000);
-        }
-
-        // ===== اسکرول اسلایدر افقی =====
-        function scrollSlider(containerId, direction) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            const scrollAmount = container.clientWidth * 0.8;
-            const targetScroll = container.scrollLeft + (scrollAmount * direction);
-            container.scrollTo({
-                left: targetScroll,
-                behavior: 'smooth'
-            });
-        }
-
-        // ===== شروع اسلایدر =====
-        document.addEventListener('DOMContentLoaded', function() {
-            showSlide(0);
-            slideInterval = setInterval(() => {
-                const slides = document.querySelectorAll('.hero-slide');
-                const nextIndex = (currentSlide + 1) % slides.length;
-                showSlide(nextIndex);
-            }, 5000);
-        });
-
-        // ===== توضیحات بیشتر طراحی (کشویی) =====
-        function toggleDetails(btn) {
-            const card = btn.closest('.design-card-new');
-            const details = card.querySelector('.design-details');
-
-            details.classList.toggle('open');
-            btn.classList.toggle('open');
-
-            if (details.classList.contains('open')) {
-                btn.innerHTML = 'بستن توضیحات <i class="fas fa-chevron-up"></i>';
-            } else {
-                btn.innerHTML = 'توضیحات بیشتر <i class="fas fa-chevron-down"></i>';
             }
         }
-
-        // ============================================
-        // بخش برنامه‌ها - مدیریت صفحات
-        // ============================================
-        function openAppPage(appId) {
-            const appsTab = document.getElementById('apps');
-            const appsHome = document.getElementById('appsHome');
-            const detailPages = document.querySelectorAll('.app-detail-page');
-
-            // مخفی کردن صفحه اصلی
-            appsHome.style.display = 'none';
-
-            // نمایش صفحه مورد نظر
-            detailPages.forEach(page => {
-                if (page.id === 'app_' + appId) {
-                    page.classList.add('active');
-                    page.style.display = 'block';
-                } else {
-                    page.classList.remove('active');
-                    page.style.display = 'none';
-                }
-            });
-        }
-
-        function closeAppPage() {
-            const appsHome = document.getElementById('appsHome');
-            const detailPages = document.querySelectorAll('.app-detail-page');
-
-            // نمایش صفحه اصلی
-            appsHome.style.display = 'block';
-
-            // مخفی کردن صفحات جزئیات
-            detailPages.forEach(page => {
-                page.classList.remove('active');
-                page.style.display = 'none';
-            });
-        }
-
-        // ============================================
-        // مودال نوا
-        // ============================================
-
-        const modalAudio = document.getElementById('navaModalAudio');
-        const modalPlayBtn = document.getElementById('modalPlayBtn');
-        const modalProgressFill = document.getElementById('modalProgressFill');
-        const modalProgressBar = document.getElementById('modalProgressBar');
-        const modalCurrentTime = document.getElementById('modalCurrentTime');
-        const modalDuration = document.getElementById('modalDuration');
-        const lyricsLines = document.querySelectorAll('.lyric-line');
-        let modalPlayer = { playing: false };
-        let lyricsInterval = null;
-
-        function openNavaModal() {
-            document.getElementById('navaModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => {
-                if (!modalPlayer.playing) {
-                    modalTogglePlay();
-                }
-            }, 300);
-        }
-
-        function closeNavaModal() {
-            document.getElementById('navaModal').classList.remove('active');
-            document.body.style.overflow = '';
-            modalAudio.pause();
-            modalAudio.currentTime = 0;
-            modalPlayBtn.querySelector('i').className = 'fas fa-play';
-            modalPlayBtn.classList.remove('playing');
-            modalPlayer.playing = false;
-            modalProgressFill.style.width = '0%';
-            modalCurrentTime.textContent = '0:00';
-            lyricsLines.forEach(line => line.classList.remove('active'));
-            if (lyricsInterval) {
-                clearInterval(lyricsInterval);
-                lyricsInterval = null;
-            }
-        }
-
-        document.getElementById('navaModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeNavaModal();
-            }
-        });
-
-        function toggleModalLyrics(header) {
-            const body = header.nextElementSibling;
-            const icon = header.querySelector('.lyrics-toggle-icon');
-            body.classList.toggle('open');
-            icon.classList.toggle('open');
-        }
-
-        function updateLyrics(currentTime) {
-            let activeIndex = -1;
-            const seconds = Math.floor(currentTime);
-
-            lyricsLines.forEach((line, index) => {
-                const time = parseInt(line.dataset.time);
-                if (seconds >= time) {
-                    activeIndex = index;
-                }
-            });
-
-            lyricsLines.forEach((line, index) => {
-                if (index === activeIndex) {
-                    line.classList.add('active');
-                    line.scrollIntoView({ block: 'center', behavior: 'smooth' });
-                } else {
-                    line.classList.remove('active');
-                }
-            });
-        }
-
-        modalAudio.addEventListener('loadedmetadata', () => {
-            modalDuration.textContent = formatTime(modalAudio.duration);
-        });
-
-        modalAudio.addEventListener('timeupdate', () => {
-            const percent = (modalAudio.currentTime / modalAudio.duration) * 100;
-            modalProgressFill.style.width = percent + '%';
-            modalCurrentTime.textContent = formatTime(modalAudio.currentTime);
-            updateLyrics(modalAudio.currentTime);
-        });
-
-        modalAudio.addEventListener('ended', () => {
-            modalPlayBtn.querySelector('i').className = 'fas fa-play';
-            modalPlayBtn.classList.remove('playing');
-            modalPlayer.playing = false;
-            modalProgressFill.style.width = '0%';
-            modalCurrentTime.textContent = '0:00';
-            lyricsLines.forEach(line => line.classList.remove('active'));
-            if (lyricsInterval) {
-                clearInterval(lyricsInterval);
-                lyricsInterval = null;
-            }
-        });
-
-        modalProgressBar.addEventListener('click', (e) => {
-            const rect = modalProgressBar.getBoundingClientRect();
-            const percent = (e.clientX - rect.left) / rect.width;
-            modalAudio.currentTime = percent * modalAudio.duration;
-            modalProgressFill.style.width = (percent * 100) + '%';
-        });
-
-        function modalTogglePlay() {
-            if (modalPlayer.playing) {
-                modalAudio.pause();
-                modalPlayBtn.querySelector('i').className = 'fas fa-play';
-                modalPlayBtn.classList.remove('playing');
-                modalPlayer.playing = false;
-                if (lyricsInterval) {
-                    clearInterval(lyricsInterval);
-                    lyricsInterval = null;
-                }
-            } else {
-                modalAudio.play();
-                modalPlayBtn.querySelector('i').className = 'fas fa-pause';
-                modalPlayBtn.classList.add('playing');
-                modalPlayer.playing = true;
-                updateLyrics(modalAudio.currentTime);
-                lyricsInterval = setInterval(() => {
-                    updateLyrics(modalAudio.currentTime);
-                }, 200);
-            }
-        }
-
-        function modalPrevTrack() {
-            modalAudio.currentTime = 0;
-            modalProgressFill.style.width = '0%';
-            modalCurrentTime.textContent = '0:00';
-            lyricsLines.forEach(line => line.classList.remove('active'));
-        }
-
-        function modalNextTrack() {
-            modalAudio.currentTime = 0;
-            modalProgressFill.style.width = '0%';
-            modalCurrentTime.textContent = '0:00';
-            lyricsLines.forEach(line => line.classList.remove('active'));
-        }
-
-        function formatTime(seconds) {
-            if (isNaN(seconds)) return '0:00';
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return mins + ':' + (secs < 10 ? '0' : '') + secs;
-        }
-
-        // ===== مودال طراحی =====
-        let is3D = false;
-        let currentRotationX = 0;
-        let currentRotationY = 0;
-
-        function openModal(imgSrc, title) {
-            const overlay = document.getElementById('modalOverlay');
-            document.getElementById('modalImg').src = imgSrc;
-            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-heart"></i> ' + title;
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            currentRotationX = 0;
-            currentRotationY = 0;
-            const wrapper = document.getElementById('modalImgWrapper');
-            wrapper.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-            is3D = false;
-            document.getElementById('btn3d').classList.remove('active-3d');
-            document.getElementById('copyrightBox').classList.remove('active');
-        }
-
-        function closeModal() {
-            const overlay = document.getElementById('modalOverlay');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function closeModalOutside(e) {
-            if (e.target === e.currentTarget) {
-                closeModal();
-            }
-        }
-
-        function rotate3D(direction) {
-            const wrapper = document.getElementById('modalImgWrapper');
-            const step = 20;
-
-            switch (direction) {
-                case 'left':
-                    currentRotationY -= step;
-                    break;
-                case 'right':
-                    currentRotationY += step;
-                    break;
-                case 'up':
-                    currentRotationX += step;
-                    break;
-                case 'down':
-                    currentRotationX -= step;
-                    break;
-            }
-
-            wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(${is3D ? 1.05 : 1})`;
-        }
-
-        function toggle3D() {
-            const wrapper = document.getElementById('modalImgWrapper');
-            const btn = document.getElementById('btn3d');
-            is3D = !is3D;
-
-            if (is3D) {
-                wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(1.05)`;
-                btn.classList.add('active-3d');
-                btn.innerHTML = '<i class="fas fa-cube"></i> ۳D (فعال)';
-            } else {
-                wrapper.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(1)`;
-                btn.classList.remove('active-3d');
-                btn.innerHTML = '<i class="fas fa-cube"></i> ۳D';
-            }
-        }
-
-        function showCopyright() {
-            const box = document.getElementById('copyrightBox');
-            box.classList.toggle('active');
-        }
-
-        // ===== انیمیشن اسکرول =====
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.home-design-card, .design-card-new, .nava-card, .app-store-card');
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0) scale(1)';
-                        }, index * 100);
+    }
+    
+    // Auto attack towers
+    for (let b of game.buildings) {
+        if (b.type === 'tower') {
+            b.attackCooldown -= delta;
+            for (let e of game.enemies) {
+                if (BABYLON.Vector3.Distance(b.mesh.position, e.pos) < 5) {
+                    if (b.attackCooldown <= 0) {
+                        e.hp -= 10;
+                        b.attackCooldown = 1.5;
+                        createParticles(e.pos, new BABYLON.Color3(1,0.8,0.2), 5);
+                        if (e.hp <= 0) {
+                            const idx = game.enemies.indexOf(e);
+                            if (idx > -1) {
+                                createParticles(e.pos, new BABYLON.Color3(1,0.3,0), 20);
+                                e.mesh.dispose();
+                                game.enemies.splice(idx, 1);
+                                game.gold += 10 + game.level * 2;
+                                updateUI();
+                                // Level up progression
+                                if (game.enemies.length === 0 && game.buildings.length > 3) {
+                                    game.level++;
+                                    document.getElementById('infoTitle').innerText = '🎉 Level Up!';
+                                    setTimeout(() => document.getElementById('infoTitle').innerText = 'Building', 2000);
+                                }
+                            }
+                        }
+                        break;
                     }
-                });
-            }, { threshold: 0.1 });
-
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px) scale(0.97)';
-                card.style.transition =
-                    `opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)`;
-                observer.observe(card);
-            });
-
-            setTimeout(() => {
-                cards.forEach(card => {
-                    const rect = card.getBoundingClientRect();
-                    if (rect.top < window.innerHeight && rect.bottom > 0) {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0) scale(1)';
+                }
+            }
+        }
+    }
+    
+    // Move troops toward enemies
+    for (let t of game.troops) {
+        let target = null;
+        let minDist = Infinity;
+        for (let e of game.enemies) {
+            const d = BABYLON.Vector3.Distance(t.pos, e.pos);
+            if (d < minDist) { minDist = d; target = e; }
+        }
+        if (target) {
+            const dir = target.pos.subtract(t.pos).normalize();
+            t.pos.x += dir.x * t.speed * delta;
+            t.pos.z += dir.z * t.speed * delta;
+            t.mesh.position.x = t.pos.x;
+            t.mesh.position.z = t.pos.z;
+            if (minDist < 1.5) {
+                t.attackCooldown -= delta;
+                if (t.attackCooldown <= 0) {
+                    target.hp -= t.attackDamage;
+                    t.attackCooldown = 1;
+                    createParticles(target.pos, new BABYLON.Color3(0.2,0.8,1), 5);
+                    if (target.hp <= 0) {
+                        const idx = game.enemies.indexOf(target);
+                        if (idx > -1) {
+                            createParticles(target.pos, new BABYLON.Color3(1,0.3,0), 20);
+                            target.mesh.dispose();
+                            game.enemies.splice(idx, 1);
+                            game.gold += 15;
+                            updateUI();
+                        }
                     }
-                });
-            }, 100);
-
-            const heroCard = document.getElementById('heroCard');
-            if (heroCard) {
-                heroCard.style.opacity = '0';
-                heroCard.style.transform = 'translateY(30px) scale(0.97)';
-                setTimeout(() => {
-                    heroCard.style.transition =
-                        'opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
-                    heroCard.style.opacity = '1';
-                    heroCard.style.transform = 'translateY(0) scale(1)';
-                }, 100);
-            }
-        });
-
-        // ===== کیبورد برای بستن مودال‌ها =====
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                const navaModal = document.getElementById('navaModal');
-                if (navaModal.classList.contains('active')) {
-                    closeNavaModal();
-                }
-                const designModal = document.getElementById('modalOverlay');
-                if (designModal.classList.contains('active')) {
-                    closeModal();
                 }
             }
-        });
-
-        // ===== نوتیفیکیشن =====
-        document.addEventListener('DOMContentLoaded', function() {
-            const notif = document.getElementById('welcomeNotif');
-            const APP_VERSION = '6.3.0';
-
-            const hasSeen = localStorage.getItem('mhs_notification_version');
-
-            if (hasSeen !== APP_VERSION) {
-                notif.style.display = 'block';
-
-                setTimeout(() => {
-                    notif.classList.add('hide');
-                    setTimeout(() => {
-                        notif.style.display = 'none';
-                    }, 500);
-                }, 8000);
-
-                localStorage.setItem('mhs_notification_version', APP_VERSION);
-            } else {
-                notif.style.display = 'none';
+        }
+    }
+    
+    // Resource generation
+    for (let b of game.buildings) {
+        if (b.type === 'farm') {
+            if (Math.random() < 0.01 * delta * 10) {
+                game.gold += 1;
+                createParticles(b.mesh.position, new BABYLON.Color3(0,1,0), 3);
+                updateUI();
             }
-        });
-    </script>
+        }
+        if (b.type === 'house') {
+            if (Math.random() < 0.005 * delta * 10) {
+                game.elixir += 1;
+                createParticles(b.mesh.position, new BABYLON.Color3(0.8,0.3,1), 3);
+                updateUI();
+            }
+        }
+    }
+});
 
+// ====== UI INTERACTIONS ======
+function updateUI() {
+    document.getElementById('goldDisplay').innerText = Math.floor(game.gold);
+    document.getElementById('elixirDisplay').innerText = Math.floor(game.elixir);
+    document.getElementById('starsDisplay').innerText = game.stars;
+}
+
+// Build buttons
+document.querySelectorAll('.buildBtn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const type = btn.dataset.type;
+        game.buildMode = type;
+        document.querySelectorAll('.buildBtn').forEach(b => b.style.borderColor = '#4a4a8a');
+        btn.style.borderColor = '#ffd700';
+        document.getElementById('infoPanel').style.display = 'none';
+    });
+});
+
+// Tap ground to build
+canvas.addEventListener('click', (e) => {
+    if (!game.buildMode) return;
+    const pick = scene.pick(e.clientX, e.clientY, mesh => mesh === ground);
+    if (pick && pick.pickedPoint) {
+        const x = Math.round(pick.pickedPoint.x / game.gridSize) * game.gridSize;
+        const z = Math.round(pick.pickedPoint.z / game.gridSize) * game.gridSize;
+        if (Math.abs(x) < game.mapSize/2 - 1 && Math.abs(z) < game.mapSize/2 - 1) {
+            if (addBuilding(game.buildMode, x, z)) {
+                createParticles(new BABYLON.Vector3(x,0,z), new BABYLON.Color3(1,1,0.5), 15);
+            }
+        }
+    }
+});
+
+// Select building for upgrade
+canvas.addEventListener('dblclick', (e) => {
+    const pick = scene.pick(e.clientX, e.clientY);
+    if (pick && pick.pickedMesh) {
+        for (let b of game.buildings) {
+            if (b.mesh === pick.pickedMesh || (b.mesh.roof && b.mesh.roof === pick.pickedMesh)) {
+                game.selectedBuilding = b;
+                const panel = document.getElementById('infoPanel');
+                panel.style.display = 'block';
+                document.getElementById('infoTitle').innerText = b.type.toUpperCase() + ' Lv.' + b.level;
+                document.getElementById('infoDesc').innerText = 'HP: ' + Math.floor(b.hp) + '/' + b.maxHp;
+                document.getElementById('upgradeBtn').onclick = () => {
+                    const cost = {gold: 30 * b.level, elixir: 10 * b.level};
+                    if (canAfford(cost)) {
+                        spend(cost);
+                        b.level++;
+                        b.maxHp += 20;
+                        b.hp = b.maxHp;
+                        // Visual upgrade: scale up slightly
+                        b.mesh.scaling.x = 1 + b.level * 0.05;
+                        b.mesh.scaling.z = 1 + b.level * 0.05;
+                        b.mesh.scaling.y = 1 + b.level * 0.05;
+                        createParticles(b.mesh.position, new BABYLON.Color3(1,1,0), 25);
+                        updateUI();
+                        document.getElementById('infoTitle').innerText = b.type.toUpperCase() + ' Lv.' + b.level;
+                        document.getElementById('infoDesc').innerText = 'HP: ' + Math.floor(b.hp) + '/' + b.maxHp;
+                    }
+                };
+                return;
+            }
+        }
+    }
+});
+
+// ====== RESIZE ======
+window.addEventListener('resize', () => engine.resize());
+
+// ====== START ======
+updateUI();
+
+// Spawn initial buildings
+addBuilding('house', -3, -3);
+addBuilding('house', 3, -3);
+addBuilding('farm', -4, 3);
+addBuilding('tower', 4, 4);
+addBuilding('barracks', 0, -5);
+
+// Set camera target to center
+camera.setTarget(BABYLON.Vector3.Zero());
+
+engine.runRenderLoop(() => scene.render());
+
+console.log('🏰 Fantasy Kingdom RTS started!');
+console.log('📱 Tap ground to build, double-tap building to upgrade');
+</script>
 </body>
-    </html>
+</html>
