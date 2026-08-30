@@ -63,6 +63,7 @@
 
         .logo {
             flex-shrink: 0;
+            cursor: pointer;
         }
 
         .logo h1 {
@@ -244,7 +245,6 @@
             transform: scale(1.03);
         }
 
-        /* ===== نقاط راهنما ===== */
         .slider-dots {
             position: absolute;
             bottom: 20px;
@@ -440,6 +440,156 @@
             font-weight: 600;
         }
 
+        /* ===== PAGE SEARCH ===== */
+        .search-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            min-height: 60vh;
+        }
+
+        .search-page .logo-big {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #B61C1C, #d43a3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .search-page .logo-big span {
+            font-family: 'Estedad', sans-serif;
+            font-size: 1.2rem;
+            background: #B61C1C;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 30px;
+            -webkit-text-fill-color: white;
+            margin-right: 8px;
+        }
+
+        .search-page .subtitle {
+            font-family: 'Estedad', sans-serif;
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .search-page .search-box-big {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 50px;
+            padding: 6px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .search-page .search-box-big:focus-within {
+            border-color: #B61C1C;
+        }
+
+        .search-page .search-box-big input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 16px 24px;
+            font-family: 'Estedad', sans-serif;
+            font-size: 1rem;
+            background: transparent;
+        }
+
+        .search-page .search-box-big button {
+            font-family: 'Estedad', sans-serif;
+            background: #B61C1C;
+            border: none;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-page .search-box-big button:hover {
+            background: #8f1515;
+        }
+
+        .search-results {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 30px;
+        }
+
+        .search-results .result-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: white;
+            border-radius: 16px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .search-results .result-item:hover {
+            transform: translateX(-4px);
+            box-shadow: 0 4px 16px rgba(182, 28, 28, 0.12);
+        }
+
+        .search-results .result-item img {
+            width: 70px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .search-results .result-item .info {
+            flex: 1;
+        }
+
+        .search-results .result-item .info h4 {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .search-results .result-item .info .meta {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.75rem;
+            color: #888;
+            display: flex;
+            gap: 12px;
+        }
+
+        .search-results .result-item .info .meta .rating {
+            color: #f5b342;
+        }
+
+        .search-results .no-result {
+            text-align: center;
+            font-family: 'Estedad', sans-serif;
+            color: #888;
+            padding: 40px 0;
+            font-size: 1rem;
+        }
+
+        .search-results .no-result i {
+            font-size: 2.5rem;
+            color: #ddd;
+            display: block;
+            margin-bottom: 12px;
+        }
+
         /* ===== VIDEO PAGE ===== */
         .video-container {
             max-width: 1000px;
@@ -489,7 +639,6 @@
             gap: 4px;
         }
 
-        /* ===== توضیحات کشویی ===== */
         .description-wrapper {
             position: relative;
             border-top: 1px solid #eee;
@@ -539,7 +688,6 @@
             transform: rotate(180deg);
         }
 
-        /* ===== COMMENTS ===== */
         .comments-section {
             margin-top: 30px;
         }
@@ -680,6 +828,26 @@
             .user-actions i {
                 font-size: 1rem;
             }
+            .search-page .logo-big {
+                font-size: 2.5rem;
+            }
+            .search-page .search-box-big {
+                flex-wrap: wrap;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                gap: 8px;
+            }
+            .search-page .search-box-big input {
+                background: white;
+                border-radius: 30px;
+                padding: 14px 18px;
+                border: 1px solid #eee;
+            }
+            .search-page .search-box-big button {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -739,6 +907,16 @@
             .comment-box button {
                 width: 100%;
             }
+            .search-page .logo-big {
+                font-size: 2rem;
+            }
+            .search-page .logo-big span {
+                font-size: 0.9rem;
+            }
+            .search-results .result-item img {
+                width: 55px;
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -747,7 +925,7 @@
     <div class="container">
         <!-- ===== HEADER ===== -->
         <header class="navbar">
-            <div class="logo">
+            <div class="logo" onclick="showPage('home')">
                 <h1>Zerox <span>VOD</span></h1>
             </div>
             <div class="nav-links">
@@ -755,7 +933,7 @@
                 <a onclick="showPage('movies')"><i class="fas fa-film"></i> ویدیوها</a>
             </div>
             <div class="user-actions">
-                <i class="fas fa-search"></i>
+                <i class="fas fa-search" onclick="showPage('search')" style="cursor:pointer;"></i>
                 <i class="fas fa-bell"></i>
                 <i class="fas fa-user-circle"></i>
             </div>
@@ -765,40 +943,36 @@
         <div class="page active" id="page-home">
             <!-- ===== HERO SLIDER ===== -->
             <div class="hero-slider" id="heroSlider">
-                <!-- اسلاید ۱: اوتلست -->
                 <div class="hero-slide active" style="background-image: url('https://uploadkon.ir/uploads/03bd30_26Zerox-th12.png');">
                     <div class="hero-content">
                         <span class="badge">جدید</span>
                         <h2>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h2>
-                        <p>😨🏚️ Outlast | یه شب توی جهنم! امشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀 ببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀</p>
+                        <p>😨🏚️ Outlast | یه شب توی جهنم! امشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀</p>
                         <button class="btn-play" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
                             <i class="fas fa-play"></i> پخش فیلم
                         </button>
                     </div>
                 </div>
-
-                <!-- اسلاید ۲: no im not a human -->
                 <div class="hero-slide" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
                     <div class="hero-content">
                         <span class="badge">ویژه</span>
                         <h2>داستان بازی | no im not a human</h2>
-                        <p>😨🚪 No, I'm Not a Human | یه شب جهنمی! امشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️ باید بفهمیم کی انسانه و کی نه... 👀</p>
+                        <p>😨🚪 No, I'm Not a Human | یه شب جهنمی! امشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️</p>
                         <button class="btn-play" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                             <i class="fas fa-play"></i> پخش فیلم
                         </button>
                     </div>
                 </div>
-
-                <!-- ===== نقاط راهنما ===== -->
                 <div class="slider-dots" id="sliderDots">
                     <span class="active" onclick="goToSlide(0)"></span>
                     <span onclick="goToSlide(1)"></span>
                 </div>
             </div>
 
+            <!-- جستجوی سریع صفحه اصلی -->
             <div class="search-box">
-                <input type="text" placeholder="جستجوی عنوان، بازیگر..." />
-                <button><i class="fas fa-search"></i> جستجو</button>
+                <input type="text" placeholder="جستجوی عنوان، بازیگر..." id="homeSearchInput" onkeydown="if(event.key==='Enter'){performSearch(this.value)}" />
+                <button onclick="performSearch(document.getElementById('homeSearchInput').value)"><i class="fas fa-search"></i> جستجو</button>
             </div>
 
             <div class="genre-tabs">
@@ -815,7 +989,6 @@
             </div>
 
             <div class="movie-grid" id="movieGrid">
-                <!-- کارت جدید اوتلست (بالاتر) -->
                 <div class="movie-card" data-genre="horror" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/03bd30_26Zerox-th12.png');">
                         <span class="badge">جدید</span>
@@ -829,8 +1002,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- کارت قبلی no im not a human -->
                 <div class="movie-card" data-genre="horror,psycho" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
                         <span class="badge">ویژه</span>
@@ -842,6 +1013,28 @@
                             <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
                             <span class="rating"><i class="fas fa-star"></i> 8.7</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== صفحه جستجو ===== -->
+        <div class="page" id="page-search">
+            <div class="search-page">
+                <div class="logo-big">
+                    Zerox <span>VOD</span>
+                </div>
+                <p class="subtitle">هر چیزی که دنبالشی رو پیدا کن</p>
+                
+                <div class="search-box-big">
+                    <input type="text" placeholder="جستجوی عنوان، بازیگر..." id="searchInput" oninput="liveSearch(this.value)" onkeydown="if(event.key==='Enter'){liveSearch(this.value)}" />
+                    <button onclick="liveSearch(document.getElementById('searchInput').value)"><i class="fas fa-search"></i> جستجو</button>
+                </div>
+
+                <div class="search-results" id="searchResults">
+                    <div class="no-result">
+                        <i class="fas fa-search"></i>
+                        جستجو کن تا نتایج رو ببینی...
                     </div>
                 </div>
             </div>
@@ -895,7 +1088,6 @@
                         <span><i class="fas fa-eye"></i> ۱٬۲۳۴ بازدید</span>
                     </div>
                     
-                    <!-- ===== توضیحات کشویی ===== -->
                     <div class="description-wrapper">
                         <div class="description-text" id="videoDescription">
                             توضیحات فیلم اینجا قرار می‌گیرد.
@@ -907,10 +1099,8 @@
                     </div>
                 </div>
 
-                <!-- ===== کامنت‌ها ===== -->
                 <div class="comments-section">
                     <h3><i class="fas fa-comments"></i> نظرات</h3>
-                    
                     <div class="comment-box">
                         <input type="text" placeholder="نظر خود را بنویسید..." />
                         <button>ارسال</button>
@@ -933,6 +1123,28 @@
     </div>
 
     <script>
+        // ===== دیتابیس فیلم‌ها (برای جستجو) =====
+        const moviesDB = [
+            {
+                title: 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا',
+                url: 'https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame',
+                desc: '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox',
+                duration: '۵ دقیقه',
+                rating: '9.2',
+                poster: 'https://uploadkon.ir/uploads/03bd30_26Zerox-th12.png',
+                genre: 'horror'
+            },
+            {
+                title: 'داستان بازی | no im not a human',
+                url: 'https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame',
+                desc: '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟',
+                duration: '۹ دقیقه',
+                rating: '8.7',
+                poster: 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg',
+                genre: 'horror,psycho'
+            }
+        ];
+
         // ===== اسلایدر =====
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
@@ -982,17 +1194,70 @@
             
             if (page === 'video') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                // ریست کردن توضیحات کشویی
                 const desc = document.getElementById('videoDescription');
                 const toggle = document.getElementById('descToggle');
-                if (desc) {
-                    desc.classList.remove('expanded');
-                }
+                if (desc) desc.classList.remove('expanded');
                 if (toggle) {
                     toggle.classList.remove('rotated');
                     document.getElementById('toggleText').textContent = 'نمایش بیشتر';
                 }
             }
+            
+            if (page === 'search') {
+                document.getElementById('searchInput').focus();
+            }
+        }
+
+        // ===== جستجو =====
+        function performSearch(query) {
+            if (query.trim()) {
+                document.getElementById('searchInput').value = query;
+                showPage('search');
+                liveSearch(query);
+            }
+        }
+
+        function liveSearch(query) {
+            const resultsContainer = document.getElementById('searchResults');
+            const q = query.trim().toLowerCase();
+            
+            if (!q) {
+                resultsContainer.innerHTML = `
+                    <div class="no-result">
+                        <i class="fas fa-search"></i>
+                        جستجو کن تا نتایج رو ببینی...
+                    </div>
+                `;
+                return;
+            }
+
+            const results = moviesDB.filter(movie => 
+                movie.title.toLowerCase().includes(q) || 
+                movie.desc.toLowerCase().includes(q)
+            );
+
+            if (results.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="no-result">
+                        <i class="fas fa-frown"></i>
+                        هیچ نتیجه‌ای برای "${query}" پیدا نشد!
+                    </div>
+                `;
+                return;
+            }
+
+            resultsContainer.innerHTML = results.map(movie => `
+                <div class="result-item" onclick="openVideo('${movie.url}', '${movie.title}', '${movie.desc}', '${movie.duration}', '${movie.rating}')">
+                    <img src="${movie.poster}" alt="${movie.title}" />
+                    <div class="info">
+                        <h4>${movie.title}</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> ${movie.duration}</span>
+                            <span class="rating"><i class="fas fa-star"></i> ${movie.rating}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
         }
 
         // ===== توضیحات کشویی =====
@@ -1034,12 +1299,9 @@
             document.getElementById('videoDuration').textContent = duration || '۰ دقیقه';
             document.getElementById('videoRating').textContent = rating || '۰.۰';
             
-            // ریست کردن وضعیت کشویی
             const descEl = document.getElementById('videoDescription');
             const toggle = document.getElementById('descToggle');
-            if (descEl) {
-                descEl.classList.remove('expanded');
-            }
+            if (descEl) descEl.classList.remove('expanded');
             if (toggle) {
                 toggle.classList.remove('rotated');
                 document.getElementById('toggleText').textContent = 'نمایش بیشتر';
@@ -1048,7 +1310,7 @@
             showPage('video');
         }
 
-        // ===== کلید ESC برای خروج از ویدیو =====
+        // ===== کلید ESC =====
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 const videoPage = document.getElementById('page-video');
