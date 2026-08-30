@@ -1,645 +1,295 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🏰 دهکده فانتزی</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroX | زروکس - مرجع بازی و ویدیوهای داستانی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @font-face {
-            font-family: 'Ardekan';
-            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/ardekan@v1.0.0/Ardekan-Regular.woff2') format('woff2');
-            font-weight: normal;
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --accent-color: #ffcc00;
+            --text-color: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #2a2a2a;
         }
-        @font-face {
-            font-family: 'Ardekan';
-            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/ardekan@v1.0.0/Ardekan-Bold.woff2') format('woff2');
-            font-weight: bold;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+
         body {
-            background: #0a0a1a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: 'Estedad', 'Ardekan', sans-serif;
-            overflow: hidden;
-            direction: rtl;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
-        #container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            max-width: 500px;
-            max-height: 850px;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 0 60px rgba(0,0,0,0.9);
-            background: #2d5a27;
-        }
-        #bgLayer {
-            position: absolute;
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(13, 13, 13, 0.95);
+            border-bottom: 2px solid var(--accent-color);
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://uploadkon.ir/uploads/ba7f30_261787609126995.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 0;
-        }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            cursor: pointer;
-            background: transparent !important;
-        }
-        
-        /* ====== نوار بالایی ====== */
-        #topBar {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            right: 12px;
+            z-index: 1000;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
-            color: white;
-            font-size: 14px;
-            font-weight: 700;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.95);
-            pointer-events: none;
-            z-index: 2;
-            font-family: 'Estedad', 'Ardekan', sans-serif;
+            align-items: center;
         }
-        #topBar > div {
-            background: rgba(0,0,0,0.6);
-            padding: 6px 16px;
-            border-radius: 30px;
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(255,255,255,0.08);
-            font-size: 13px;
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 10px;
         }
-        #topBar .gold { color: #ffd700; }
-        #topBar .elixir { color: #9b59b6; }
-        #topBar .star { color: #ff6b6b; }
-        
-        /* ====== پنل اطلاعات ====== */
-        #infoPanel {
-            position: absolute;
-            top: 65px;
-            left: 12px;
-            right: 12px;
-            background: rgba(0,0,0,0.85);
-            border-radius: 16px;
-            padding: 12px 16px;
-            color: white;
-            font-size: 14px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,215,0,0.25);
-            display: none;
-            z-index: 3;
-            font-family: 'Estedad', 'Ardekan', sans-serif;
-            text-align: center;
-        }
-        #infoPanel .title { 
-            font-weight: 900; 
-            color: #ffd700; 
-            font-size: 18px;
-        }
-        #infoPanel .desc {
-            font-size: 13px;
-            opacity: 0.8;
-            margin: 4px 0;
-        }
-        #upgradeBtn {
-            margin-top: 8px;
-            background: linear-gradient(135deg, #ffd700, #f9a825);
-            border: none;
-            border-radius: 12px;
-            padding: 8px 20px;
-            font-weight: 700;
-            color: #1a1a2e;
-            font-family: 'Estedad', 'Ardekan', sans-serif;
-            font-size: 15px;
-            width: 100%;
-            cursor: pointer;
-            transition: 0.15s;
-        }
-        #upgradeBtn:active { transform: scale(0.95); }
-        
-        /* ====== منوی ساخت ====== */
-        #buildMenu {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            right: 12px;
+
+        nav ul {
             display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            justify-content: center;
-            padding: 12px 8px 8px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            border-radius: 20px;
-            pointer-events: none;
-            z-index: 2;
+            list-style: none;
+            gap: 20px;
         }
-        #buildMenu > * { pointer-events: auto; }
-        .btn {
-            background: rgba(20,20,50,0.88);
-            border: 2px solid #5a5a9a;
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 700;
-            backdrop-filter: blur(4px);
-            min-width: 50px;
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 20px;
             text-align: center;
-            transition: 0.1s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-            font-family: 'Estedad', 'Ardekan', sans-serif;
-            cursor: pointer;
+            background: linear-gradient(180deg, rgba(255,204,0,0.05) 0%, rgba(13,13,13,1) 100%);
+            border-bottom: 1px solid var(--border-color);
         }
-        .btn:active { transform: scale(0.92); background: #4a4a8a; }
-        .btn .cost { 
-            display: block; 
-            font-size: 9px; 
-            color: #ffd700;
-            font-weight: 400;
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
         }
-        .btn.active {
-            border-color: #ffd700;
-            background: rgba(255,215,0,0.2);
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 25px;
         }
-        #trainBtn {
-            background: rgba(155,89,182,0.3);
-            border-color: #9b59b6;
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-        #trainBtn:active { background: #9b59b6; }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border-right: 4px solid var(--accent-color);
+            padding-right: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .card-media {
+            width: 100%;
+            height: 200px;
+            background-color: #252525;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .card-media iframe, .card-media img {
+            width: 100%;
+            height: 100%;
+            border: none;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-tag {
+            background: rgba(255, 204, 0, 0.15);
+            color: var(--accent-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #050505;
+            border-top: 1px solid var(--border-color);
+            padding: 30px 20px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .socials a {
+            color: var(--text-color);
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+
+        .socials a:hover {
+            color: var(--accent-color);
+        }
     </style>
 </head>
 <body>
 
-<div id="container">
-    <!-- لایه زمینه با عکس شما -->
-    <div id="bgLayer"></div>
-    
-    <!-- کانوس برای المان‌های بازی -->
-    <canvas id="gameCanvas"></canvas>
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-gamepad"></i> ZeroX
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#games">بازی‌ها</a></li>
+                <li><a href="#videos">ویدیوها و داستان</a></li>
+                <li><a href="#about">درباره زروکس</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- نوار بالایی -->
-    <div id="topBar">
-        <div>💰 <span class="gold" id="goldDisplay">۱۰۰</span></div>
-        <div>🧪 <span class="elixir" id="elixirDisplay">۴۰</span></div>
-        <div>⭐ <span class="star" id="starsDisplay">۰</span></div>
+    <section class="hero">
+        <h1>دنیای بازی و داستان‌های زروکس</h1>
+        <p>پروژه‌های گیمینگ، معرفی داستان بازی‌ها و ویدیوهای اختصاصی</p>
+        <a href="#games" class="btn">مشاهده پروژه‌ها</a>
+    </section>
+
+    <div class="container">
+
+        <h2 class="section-title" id="games">
+            <i class="fa-solid fa-rocket" style="color: var(--accent-color);"></i> بازی‌های ساخته شده
+        </h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-media">
+                    <i class="fa-solid fa-ghost fa-3x" style="color: var(--text-muted);"></i>
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">سبک: ترسناک / بقا</span>
+                    <h3 class="card-title">عنوان بازی اول</h3>
+                    <p class="card-text">توضیح کوتاه درباره داستان، مکانیزم‌ها و ویژگی‌های این بازی.</p>
+                    <a href="#" class="btn">دانلود / دانلود دمو</a>
+                </div>
+            </div>
+            </div>
+
+        <h2 class="section-title" id="videos">
+            <i class="fa-solid fa-film" style="color: var(--accent-color);"></i> ویدیوها و معرفی داستان
+        </h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-media">
+                    <i class="fa-solid fa-play-circle fa-4x" style="color: var(--accent-color);"></i>
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">تحلیل داستان</span>
+                    <h3 class="card-title">معرفی و بررسی داستان بازی</h3>
+                    <p class="card-text">در این ویدیو به بررسی لایه‌های مخفی و جزئیات داستانی پرداخته‌ایم.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-media">
+                    <i class="fa-solid fa-play-circle fa-4x" style="color: var(--accent-color);"></i>
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">گیم‌پلی / توضیحات</span>
+                    <h3 class="card-title">ویدیو توضیحات پروژه جدید</h3>
+                    <p class="card-text">توضیحات اختصاصی درباره روند توسعه و ساخت بخش‌های جدید.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- پنل اطلاعات ساختمان -->
-    <div id="infoPanel">
-        <div class="title" id="infoTitle">🏠 کلبه</div>
-        <div class="desc" id="infoDesc">سطح ۱</div>
-        <button id="upgradeBtn">⬆ ارتقا</button>
-    </div>
+    <footer id="about">
+        <div class="socials">
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <p>© 2026 ZeroX. تمامی حقوق محفوظ است.</p>
+    </footer>
 
-    <!-- منوی ساخت -->
-    <div id="buildMenu">
-        <div class="btn" data-type="house">🏠<span class="cost">💰۳۰</span></div>
-        <div class="btn" data-type="farm">🌾<span class="cost">💰۴۰</span></div>
-        <div class="btn" data-type="tower">🗼<span class="cost">💰۵۰🧪۲۰</span></div>
-        <div class="btn" data-type="barracks">⚔️<span class="cost">💰۶۰🧪۳۰</span></div>
-        <div class="btn" data-type="wall">🧱<span class="cost">💰۲۰</span></div>
-        <div class="btn" id="trainBtn">👤 سرباز<span class="cost">🧪۱۵</span></div>
-    </div>
-</div>
-
-<script>
-// ============================================================
-//  بازی روی عکس زمینه
-// ============================================================
-
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-
-let W, H;
-function resize() {
-    const rect = canvas.parentElement.getBoundingClientRect();
-    canvas.width = rect.width * window.devicePixelRatio;
-    canvas.height = rect.height * window.devicePixelRatio;
-    W = canvas.width;
-    H = canvas.height;
-    ctx.scale(1, 1);
-}
-resize();
-window.addEventListener('resize', resize);
-
-// ====== حالت بازی ======
-const game = {
-    gold: 100,
-    elixir: 40,
-    stars: 0,
-    level: 1,
-    buildings: [],
-    enemies: [],
-    troops: [],
-    selectedBuilding: null,
-    buildMode: null,
-    gridSize: 40,
-    camera: { x: 0, y: 0, zoom: 1 }
-};
-
-// ====== تبدیل مختصات ایزومتریک ======
-function toScreen(worldX, worldY) {
-    const cx = W/2 + (worldX - worldY) * game.gridSize * 0.5 * game.camera.zoom;
-    const cy = H/2 + (worldX + worldY) * game.gridSize * 0.25 * game.camera.zoom;
-    return { x: cx, y: cy };
-}
-
-// ====== ساختمان‌ها ======
-const BUILDINGS = {
-    house: { name: 'کلبه', cost: {gold:30, elixir:0}, hp:50, size:0.8, emoji: '🏠' },
-    farm: { name: 'مزرعه', cost: {gold:40, elixir:0}, hp:40, size:0.9, emoji: '🌾' },
-    tower: { name: 'برج', cost: {gold:50, elixir:20}, hp:80, size:0.7, emoji: '🗼' },
-    barracks: { name: 'پادگان', cost: {gold:60, elixir:30}, hp:100, size:1.0, emoji: '⚔️' },
-    wall: { name: 'دیوار', cost: {gold:20, elixir:0}, hp:120, size:0.6, emoji: '🧱' }
-};
-
-function addBuilding(type, wx, wy) {
-    const data = BUILDINGS[type];
-    if (game.gold < data.cost.gold || game.elixir < data.cost.elixir) return false;
-    
-    for (let b of game.buildings) {
-        if (Math.abs(b.x - wx) < 0.8 && Math.abs(b.y - wy) < 0.8) return false;
-    }
-    
-    game.gold -= data.cost.gold;
-    game.elixir -= data.cost.elixir;
-    
-    game.buildings.push({
-        type: type,
-        x: wx, y: wy,
-        level: 1,
-        hp: data.hp,
-        maxHp: data.hp,
-        attackCooldown: 0,
-        emoji: data.emoji
-    });
-    
-    updateUI();
-    return true;
-}
-
-// ====== دشمنان ======
-let enemySpawnTimer = 0;
-
-function spawnEnemy() {
-    const angle = Math.random() * Math.PI * 2;
-    const dist = 6 + Math.random() * 4;
-    const wx = Math.cos(angle) * dist;
-    const wy = Math.sin(angle) * dist;
-    
-    game.enemies.push({
-        x: wx, y: wy,
-        hp: 15 + game.level * 5,
-        maxHp: 15 + game.level * 5,
-        speed: 0.8 + game.level * 0.1,
-        attackCooldown: 0,
-        damage: 3 + game.level,
-        emoji: '👹'
-    });
-}
-
-// ====== سربازها ======
-function spawnTroop() {
-    const barracks = game.buildings.find(b => b.type === 'barracks');
-    if (!barracks) return false;
-    if (game.elixir < 15) return false;
-    
-    game.elixir -= 15;
-    game.troops.push({
-        x: barracks.x + (Math.random() - 0.5) * 1.5,
-        y: barracks.y + (Math.random() - 0.5) * 1.5,
-        hp: 30,
-        speed: 1.5 + Math.random(),
-        damage: 6,
-        attackCooldown: 0,
-        emoji: '⚔️'
-    });
-    updateUI();
-    return true;
-}
-
-// ====== بروزرسانی ======
-function update() {
-    // تولید دشمن
-    enemySpawnTimer += 1/60;
-    if (enemySpawnTimer > 4 - game.level * 0.2 && game.enemies.length < 3 + game.level) {
-        enemySpawnTimer = 0;
-        spawnEnemy();
-    }
-    
-    // حرکت دشمنان
-    for (let i = game.enemies.length - 1; i >= 0; i--) {
-        const e = game.enemies[i];
-        let target = null;
-        let minDist = Infinity;
-        for (let b of game.buildings) {
-            const d = Math.hypot(e.x - b.x, e.y - b.y);
-            if (d < minDist) { minDist = d; target = b; }
-        }
-        if (target) {
-            const dx = target.x - e.x;
-            const dy = target.y - e.y;
-            const len = Math.hypot(dx, dy);
-            if (len > 0.1) {
-                e.x += (dx / len) * e.speed * 0.02;
-                e.y += (dy / len) * e.speed * 0.02;
-            }
-            if (minDist < 0.8) {
-                e.attackCooldown -= 1/60;
-                if (e.attackCooldown <= 0) {
-                    target.hp -= e.damage;
-                    e.attackCooldown = 1;
-                    if (target.hp <= 0) {
-                        const idx = game.buildings.indexOf(target);
-                        if (idx > -1) {
-                            game.buildings.splice(idx, 1);
-                            game.stars = Math.max(0, game.stars - 1);
-                            updateUI();
-                        }
-                    }
-                    updateUI();
-                }
-            }
-        }
-    }
-    
-    // برج‌ها حمله می‌کنن
-    for (let b of game.buildings) {
-        if (b.type === 'tower') {
-            b.attackCooldown -= 1/60;
-            for (let e of game.enemies) {
-                if (Math.hypot(b.x - e.x, b.y - e.y) < 2.5) {
-                    if (b.attackCooldown <= 0) {
-                        e.hp -= 8;
-                        b.attackCooldown = 1.2;
-                        if (e.hp <= 0) {
-                            const idx = game.enemies.indexOf(e);
-                            if (idx > -1) {
-                                game.enemies.splice(idx, 1);
-                                game.gold += 8 + game.level * 2;
-                                updateUI();
-                                if (game.enemies.length === 0 && game.buildings.length > 2) {
-                                    game.level++;
-                                    document.getElementById('infoTitle').innerHTML = '🎉 سطح بالا رفت!';
-                                    setTimeout(() => document.getElementById('infoTitle').innerHTML = '🏠 کلبه', 2000);
-                                }
-                            }
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    
-    // سربازها
-    for (let t of game.troops) {
-        let target = null;
-        let minDist = Infinity;
-        for (let e of game.enemies) {
-            const d = Math.hypot(t.x - e.x, t.y - e.y);
-            if (d < minDist) { minDist = d; target = e; }
-        }
-        if (target) {
-            const dx = target.x - t.x;
-            const dy = target.y - t.y;
-            const len = Math.hypot(dx, dy);
-            if (len > 0.1) {
-                t.x += (dx / len) * t.speed * 0.02;
-                t.y += (dy / len) * t.speed * 0.02;
-            }
-            if (minDist < 0.6) {
-                t.attackCooldown -= 1/60;
-                if (t.attackCooldown <= 0) {
-                    target.hp -= t.damage;
-                    t.attackCooldown = 0.8;
-                    if (target.hp <= 0) {
-                        const idx = game.enemies.indexOf(target);
-                        if (idx > -1) {
-                            game.enemies.splice(idx, 1);
-                            game.gold += 10;
-                            updateUI();
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    // تولید منابع
-    for (let b of game.buildings) {
-        if (b.type === 'farm' && Math.random() < 0.01) {
-            game.gold += 1;
-            updateUI();
-        }
-        if (b.type === 'house' && Math.random() < 0.008) {
-            game.elixir += 1;
-            updateUI();
-        }
-    }
-}
-
-// ====== رندر ======
-function draw() {
-    ctx.clearRect(0, 0, W, H);
-    
-    // ====== ساختمان‌ها ======
-    for (let b of game.buildings) {
-        const pos = toScreen(b.x, b.y);
-        const size = game.gridSize * 0.5 * game.camera.zoom;
-        
-        // سایه
-        ctx.shadowColor = 'rgba(0,0,0,0.4)';
-        ctx.shadowBlur = 20;
-        ctx.shadowOffsetY = 8;
-        
-        // ایموجی ساختمان
-        ctx.font = `${size * 1.8}px 'Estedad', 'Ardekan', sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.shadowColor = 'rgba(0,0,0,0.6)';
-        ctx.shadowBlur = 25;
-        ctx.fillText(b.emoji, pos.x, pos.y - 5);
-        
-        // نوار HP
-        ctx.shadowBlur = 0;
-        const hpW = size * 0.8;
-        const hpH = 5;
-        const hpX = pos.x - hpW/2;
-        const hpY = pos.y - size * 0.7;
-        ctx.fillStyle = 'rgba(0,0,0,0.7)';
-        ctx.roundRect(hpX, hpY, hpW, hpH, 3);
-        ctx.fill();
-        const hpRatio = b.hp / b.maxHp;
-        ctx.fillStyle = hpRatio > 0.5 ? '#4caf50' : hpRatio > 0.25 ? '#ff9800' : '#f44336';
-        ctx.roundRect(hpX, hpY, hpW * hpRatio, hpH, 3);
-        ctx.fill();
-        
-        // سطح
-        ctx.font = `${size * 0.5}px 'Estedad', 'Ardekan', sans-serif`;
-        ctx.fillStyle = '#ffd700';
-        ctx.shadowColor = 'rgba(0,0,0,0.8)';
-        ctx.shadowBlur = 10;
-        ctx.fillText(`Lv${b.level}`, pos.x, hpY - 8);
-    }
-    
-    // ====== دشمنان ======
-    for (let e of game.enemies) {
-        const pos = toScreen(e.x, e.y);
-        const size = game.gridSize * 0.4 * game.camera.zoom;
-        ctx.font = `${size * 2}px 'Estedad', 'Ardekan', sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.shadowColor = 'rgba(255,0,0,0.6)';
-        ctx.shadowBlur = 30;
-        ctx.fillText(e.emoji, pos.x, pos.y);
-        
-        ctx.shadowBlur = 0;
-        const hpW = size * 0.6;
-        const hpH = 3;
-        const hpX = pos.x - hpW/2;
-        const hpY = pos.y - size * 0.6;
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
-        ctx.roundRect(hpX, hpY, hpW, hpH, 2);
-        ctx.fill();
-        ctx.fillStyle = '#f44336';
-        ctx.roundRect(hpX, hpY, hpW * (e.hp/e.maxHp), hpH, 2);
-        ctx.fill();
-    }
-    
-    // ====== سربازها ======
-    for (let t of game.troops) {
-        const pos = toScreen(t.x, t.y);
-        const size = game.gridSize * 0.35 * game.camera.zoom;
-        ctx.font = `${size * 2}px 'Estedad', 'Ardekan', sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.shadowColor = 'rgba(0,150,255,0.6)';
-        ctx.shadowBlur = 25;
-        ctx.fillText(t.emoji, pos.x, pos.y);
-    }
-    
-    // ====== حالت ساخت ======
-    if (game.buildMode) {
-        ctx.shadowBlur = 0;
-        ctx.fillStyle = 'rgba(255,215,0,0.1)';
-        ctx.fillRect(0, 0, W, H);
-        ctx.font = `18px 'Estedad', 'Ardekan', sans-serif`;
-        ctx.fillStyle = '#ffd700';
-        ctx.textAlign = 'center';
-        ctx.shadowColor = 'rgba(0,0,0,0.9)';
-        ctx.shadowBlur = 20;
-        ctx.fillText(`📍 ساخت ${BUILDINGS[game.buildMode].name}`, W/2, 50);
-    }
-    
-    ctx.shadowBlur = 0;
-}
-
-// ====== UI ======
-function updateUI() {
-    document.getElementById('goldDisplay').innerText = Math.floor(game.gold);
-    document.getElementById('elixirDisplay').innerText = Math.floor(game.elixir);
-    document.getElementById('starsDisplay').innerText = game.stars;
-}
-
-// ====== رویدادهای کلیک ======
-canvas.addEventListener('click', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    const mx = (e.clientX - rect.left) / rect.width;
-    const my = (e.clientY - rect.top) / rect.height;
-    const cx = mx * W;
-    const cy = my * H;
-    
-    if (game.buildMode) {
-        const wx = (cx - W/2) / (game.gridSize * 0.5 * game.camera.zoom) + (cy - H/2) / (game.gridSize * 0.25 * game.camera.zoom);
-        const wy = (cy - H/2) / (game.gridSize * 0.25 * game.camera.zoom) - (cx - W/2) / (game.gridSize * 0.5 * game.camera.zoom);
-        const gx = Math.round(wx / 0.8) * 0.8;
-        const gy = Math.round(wy / 0.8) * 0.8;
-        if (Math.abs(gx) < 5 && Math.abs(gy) < 5) {
-            addBuilding(game.buildMode, gx, gy);
-        }
-        return;
-    }
-    
-    for (let b of game.buildings) {
-        const pos = toScreen(b.x, b.y);
-        const size = game.gridSize * 0.5 * game.camera.zoom;
-        if (Math.abs(cx - pos.x) < size && Math.abs(cy - pos.y) < size) {
-            game.selectedBuilding = b;
-            const panel = document.getElementById('infoPanel');
-            panel.style.display = 'block';
-            document.getElementById('infoTitle').innerHTML = `${b.emoji} ${BUILDINGS[b.type].name}`;
-            document.getElementById('infoDesc').innerText = `سطح ${b.level} | ❤️ ${Math.floor(b.hp)}/${b.maxHp}`;
-            document.getElementById('upgradeBtn').onclick = () => {
-                const cost = {gold: 25 * b.level, elixir: 10 * b.level};
-                if (game.gold >= cost.gold && game.elixir >= cost.elixir) {
-                    game.gold -= cost.gold;
-                    game.elixir -= cost.elixir;
-                    b.level++;
-                    b.maxHp += 15;
-                    b.hp = b.maxHp;
-                    updateUI();
-                    document.getElementById('infoDesc').innerText = `سطح ${b.level} | ❤️ ${Math.floor(b.hp)}/${b.maxHp}`;
-                }
-            };
-            return;
-        }
-    }
-    document.getElementById('infoPanel').style.display = 'none';
-});
-
-// ====== دکمه‌ها ======
-document.querySelectorAll('.btn[data-type]').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const type = btn.dataset.type;
-        game.buildMode = type;
-        document.querySelectorAll('.btn[data-type]').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById('infoPanel').style.display = 'none';
-    });
-});
-
-document.getElementById('trainBtn').addEventListener('click', spawnTroop);
-
-// ====== راند گیم ======
-function gameLoop() {
-    update();
-    draw();
-    requestAnimationFrame(gameLoop);
-}
-
-// ====== استارت ======
-updateUI();
-addBuilding('house', -1.6, -1.6);
-addBuilding('house', 1.6, -1.6);
-addBuilding('farm', -2.4, 1.6);
-addBuilding('tower', 2.4, 1.6);
-addBuilding('barracks', 0, -3.2);
-
-gameLoop();
-
-console.log('✅ بازی با عکس زمینه آماده‌ست!');
-</script>
 </body>
 </html>
