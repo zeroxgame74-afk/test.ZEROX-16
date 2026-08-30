@@ -525,17 +525,32 @@
             padding: 20px;
         }
 
-        .notifications-page h2 {
+        .notifications-page .notif-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .notifications-page .notif-header h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.8rem;
-            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .notifications-page h2 i {
+        .notifications-page .notif-header h2 i {
             color: #B61C1C;
+        }
+
+        .notifications-page .notif-header .badge-count {
+            background: #B61C1C;
+            color: white;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
         }
 
         .notif-item {
@@ -549,15 +564,17 @@
             gap: 14px;
             transition: 0.3s;
             border-right: 4px solid #B61C1C;
+            position: relative;
         }
 
         .notif-item:hover {
             box-shadow: 0 4px 20px rgba(182, 28, 28, 0.1);
+            transform: translateX(-4px);
         }
 
         .notif-item .notif-icon {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background: rgba(182, 28, 28, 0.1);
             display: flex;
@@ -566,6 +583,16 @@
             color: #B61C1C;
             font-size: 1.2rem;
             flex-shrink: 0;
+        }
+
+        .notif-item .notif-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #B61C1C;
+            position: absolute;
+            top: 16px;
+            left: 16px;
         }
 
         .notif-item .notif-content {
@@ -591,14 +618,29 @@
             font-size: 0.7rem;
             color: #aaa;
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        .notif-item.unread {
-            background: #fef6f6;
-            border-right-color: #d43a3a;
+        .notif-item .notif-time i {
+            font-size: 0.6rem;
         }
 
-        /* ===== PROFILE PAGE ===== */
+        .notif-item.read {
+            border-right-color: #ddd;
+        }
+
+        .notif-item.read .notif-dot {
+            background: #ddd;
+        }
+
+        .notif-item.read .notif-icon {
+            background: #f0f0f0;
+            color: #999;
+        }
+
+        /* ===== GUEST PROFILE PAGE ===== */
         .profile-page {
             max-width: 600px;
             margin: 20px auto;
@@ -628,9 +670,22 @@
             box-shadow: 0 4px 20px rgba(182, 28, 28, 0.3);
         }
 
+        .profile-page .profile-header .guest-badge {
+            display: inline-block;
+            background: #f0ebe5;
+            color: #888;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-family: 'Estedad', sans-serif;
+        }
+
         .profile-page .profile-header h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.5rem;
+            margin-bottom: 4px;
         }
 
         .profile-page .profile-header p {
@@ -639,31 +694,44 @@
             font-size: 0.9rem;
         }
 
-        .profile-page .profile-stats {
+        .profile-page .profile-actions {
             display: flex;
-            gap: 16px;
-            margin-top: 16px;
+            gap: 12px;
+            margin-top: 20px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .profile-page .profile-stats .stat {
-            background: rgba(182, 28, 28, 0.06);
-            padding: 10px 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .profile-page .profile-stats .stat .num {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #B61C1C;
-        }
-
-        .profile-page .profile-stats .stat .label {
+        .profile-page .profile-actions .btn {
+            padding: 10px 28px;
+            border-radius: 30px;
+            border: none;
             font-family: 'Estedad', sans-serif;
-            font-size: 0.75rem;
-            color: #888;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .profile-page .profile-actions .btn-primary {
+            background: #B61C1C;
+            color: white;
+        }
+
+        .profile-page .profile-actions .btn-primary:hover {
+            background: #8f1515;
+            transform: scale(1.03);
+        }
+
+        .profile-page .profile-actions .btn-outline {
+            background: transparent;
+            color: #B61C1C;
+            border: 2px solid #B61C1C;
+        }
+
+        .profile-page .profile-actions .btn-outline:hover {
+            background: #B61C1C;
+            color: white;
         }
 
         .profile-page .profile-menu {
@@ -703,6 +771,17 @@
         .profile-page .profile-menu .menu-item .arrow {
             margin-right: auto;
             color: #ccc;
+            font-size: 0.8rem;
+        }
+
+        .profile-page .profile-menu .menu-item .menu-badge {
+            background: #B61C1C;
+            color: white;
+            padding: 0 10px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-right: auto;
         }
 
         /* ===== VIDEO PAGE ===== */
@@ -954,6 +1033,9 @@
             .profile-page {
                 padding: 12px;
             }
+            .notif-item {
+                padding: 14px 16px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1025,14 +1107,15 @@
             }
             .notif-item .notif-time {
                 width: 100%;
-                margin-right: 54px;
+                margin-right: 56px;
             }
-            .profile-page .profile-stats {
-                flex-wrap: wrap;
+            .notif-item .notif-dot {
+                top: 12px;
+                left: 12px;
             }
-            .profile-page .profile-stats .stat {
-                flex: 1;
-                min-width: 80px;
+            .profile-page .profile-actions .btn {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
@@ -1144,78 +1227,84 @@
         <!-- ===== صفحه اعلان‌ها ===== -->
         <div class="page" id="page-notifications">
             <div class="notifications-page">
-                <h2><i class="fas fa-bell"></i> اعلان‌ها</h2>
+                <div class="notif-header">
+                    <h2><i class="fas fa-bell"></i> اعلان‌ها</h2>
+                    <span class="badge-count">۳ جدید</span>
+                </div>
                 
-                <div class="notif-item unread">
-                    <div class="notif-icon"><i class="fas fa-play"></i></div>
+                <div class="notif-item">
+                    <span class="notif-dot"></span>
+                    <div class="notif-icon"><i class="fas fa-play-circle"></i></div>
                     <div class="notif-content">
-                        <h4>ویدیوی جدید منتشر شد!</h4>
-                        <p>🎬 بازی اوتلست 1 | بهترین بازی ترسناک دنیا</p>
+                        <h4>🎬 ویدیوی جدید منتشر شد!</h4>
+                        <p>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</p>
                     </div>
-                    <span class="notif-time">۲ دقیقه پیش</span>
-                </div>
-
-                <div class="notif-item unread">
-                    <div class="notif-icon"><i class="fas fa-thumbs-up"></i></div>
-                    <div class="notif-content">
-                        <h4>نظر جدید</h4>
-                        <p>💬 علی: "داشتم میمردم از ترس! عالی بود😂"</p>
-                    </div>
-                    <span class="notif-time">۱ ساعت پیش</span>
+                    <span class="notif-time"><i class="far fa-clock"></i> ۲ دقیقه پیش</span>
                 </div>
 
                 <div class="notif-item">
-                    <div class="notif-icon"><i class="fas fa-user-plus"></i></div>
+                    <span class="notif-dot"></span>
+                    <div class="notif-icon"><i class="fas fa-fire"></i></div>
                     <div class="notif-content">
-                        <h4>دنبال‌کننده جدید</h4>
-                        <p>👤 محمد شما رو دنبال کرد</p>
+                        <h4>🔥 ویدیو داغ شد!</h4>
+                        <p>ویدیوی جدید به ۵۰۰ بازدید رسید</p>
                     </div>
-                    <span class="notif-time">۳ ساعت پیش</span>
+                    <span class="notif-time"><i class="far fa-clock"></i> ۱۵ دقیقه پیش</span>
                 </div>
 
                 <div class="notif-item">
-                    <div class="notif-icon"><i class="fas fa-film"></i></div>
-                    <div class="notif-content">
-                        <h4>ویدیو محبوب شد</h4>
-                        <p>🔥 داستان بازی | no im not a human به ۱۰۰۰ بازدید رسید</p>
-                    </div>
-                    <span class="notif-time">دیروز</span>
-                </div>
-
-                <div class="notif-item">
+                    <span class="notif-dot"></span>
                     <div class="notif-icon"><i class="fas fa-heart"></i></div>
                     <div class="notif-content">
-                        <h4>لایک جدید</h4>
-                        <p>❤️ ۱۲ نفر ویدیوی شما رو لایک کردن</p>
+                        <h4>❤️ لایک جدید</h4>
+                        <p>رضا به ویدیوی شما لایک کرد</p>
                     </div>
-                    <span class="notif-time">۲ روز پیش</span>
+                    <span class="notif-time"><i class="far fa-clock"></i> ۱ ساعت پیش</span>
+                </div>
+
+                <div class="notif-item read">
+                    <div class="notif-icon"><i class="fas fa-user-plus"></i></div>
+                    <div class="notif-content">
+                        <h4>👤 دنبال‌کننده جدید</h4>
+                        <p>سارا شما رو دنبال کرد</p>
+                    </div>
+                    <span class="notif-time"><i class="far fa-clock"></i> ۳ ساعت پیش</span>
+                </div>
+
+                <div class="notif-item read">
+                    <div class="notif-icon"><i class="fas fa-comment"></i></div>
+                    <div class="notif-content">
+                        <h4>💬 نظر جدید</h4>
+                        <p>علی: "داشتم میمردم از ترس! عالی بود😂"</p>
+                    </div>
+                    <span class="notif-time"><i class="far fa-clock"></i> دیروز</span>
+                </div>
+
+                <div class="notif-item read">
+                    <div class="notif-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="notif-content">
+                        <h4>🏆 ویدیو محبوب شد</h4>
+                        <p>داستان بازی به ۱۰۰۰ بازدید رسید</p>
+                    </div>
+                    <span class="notif-time"><i class="far fa-clock"></i> ۲ روز پیش</span>
                 </div>
             </div>
         </div>
 
-        <!-- ===== صفحه پروفایل ===== -->
+        <!-- ===== صفحه پروفایل مهمان ===== -->
         <div class="page" id="page-profile">
             <div class="profile-page">
                 <div class="profile-header">
                     <div class="profile-avatar">
                         <i class="fas fa-user"></i>
                     </div>
-                    <h2>کاربر Zerox</h2>
-                    <p>🎬 عضو از ۱۴۰۴</p>
+                    <span class="guest-badge">👤 مهمان</span>
+                    <h2>خوش آمدی!</h2>
+                    <p>برای دسترسی به امکانات کامل وارد شوید</p>
                     
-                    <div class="profile-stats">
-                        <div class="stat">
-                            <div class="num">۱۲</div>
-                            <div class="label">ویدیو</div>
-                        </div>
-                        <div class="stat">
-                            <div class="num">۳٬۴۵۶</div>
-                            <div class="label">دنبال‌کننده</div>
-                        </div>
-                        <div class="stat">
-                            <div class="num">۴.۸</div>
-                            <div class="label">امتیاز</div>
-                        </div>
+                    <div class="profile-actions">
+                        <button class="btn btn-primary" onclick="showPage('home')">ورود / ثبت‌نام</button>
+                        <button class="btn btn-outline" onclick="showPage('home')">مرور بدون حساب</button>
                     </div>
                 </div>
 
@@ -1223,16 +1312,18 @@
                     <div class="menu-item" onclick="showPage('home')">
                         <i class="fas fa-history"></i>
                         تاریخچه تماشا
+                        <span class="menu-badge">۰</span>
                         <span class="arrow"><i class="fas fa-chevron-left"></i></span>
                     </div>
                     <div class="menu-item" onclick="showPage('home')">
                         <i class="fas fa-heart"></i>
                         ویدیوهای مورد علاقه
+                        <span class="menu-badge">۰</span>
                         <span class="arrow"><i class="fas fa-chevron-left"></i></span>
                     </div>
                     <div class="menu-item" onclick="showPage('home')">
-                        <i class="fas fa-download"></i>
-                        دانلودها
+                        <i class="fas fa-clock"></i>
+                        تماشای بعدی
                         <span class="arrow"><i class="fas fa-chevron-left"></i></span>
                     </div>
                     <div class="menu-item" onclick="showPage('home')">
@@ -1241,8 +1332,8 @@
                         <span class="arrow"><i class="fas fa-chevron-left"></i></span>
                     </div>
                     <div class="menu-item" onclick="showPage('home')" style="color:#B61C1C;">
-                        <i class="fas fa-sign-out-alt"></i>
-                        خروج از حساب
+                        <i class="fas fa-sign-in-alt"></i>
+                        ورود به حساب
                         <span class="arrow"><i class="fas fa-chevron-left"></i></span>
                     </div>
                 </div>
@@ -1513,4 +1604,4 @@
         });
     </script>
 </body>
-    </html>
+                        </html>
