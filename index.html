@@ -7,7 +7,6 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     
-    <!-- ===== فونت‌ها از Google Fonts ===== -->
     <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@400;700&display=swap" rel="stylesheet" />
 
@@ -43,7 +42,6 @@
             padding: 0 20px;
         }
 
-        /* ===== HEADER ===== */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -139,7 +137,6 @@
             cursor: pointer;
         }
 
-        /* ===== PAGES ===== */
         .page {
             display: none;
             animation: fadeIn 0.4s ease;
@@ -154,7 +151,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== HERO SLIDER ===== */
         .hero-slider {
             position: relative;
             border-radius: 24px;
@@ -273,7 +269,6 @@
             transform: scale(1.2);
         }
 
-        /* ===== HOME PAGE ===== */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -294,7 +289,6 @@
             cursor: pointer;
         }
 
-        /* ===== MOVIE GRID ===== */
         .movie-grid {
             display: flex;
             flex-direction: column;
@@ -389,25 +383,17 @@
         }
 
         .search-page .logo-big {
-            width: 280px;
-            max-width: 90%;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            width: 300px;
+            max-width: 85%;
             margin-bottom: 20px;
-            background: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            flex-shrink: 0;
-            border: 2px solid rgba(182, 28, 28, 0.1);
         }
 
         .search-page .logo-big img {
             width: 100%;
             height: auto;
-            object-fit: contain;
             display: block;
         }
 
@@ -673,7 +659,6 @@
             background: #8f1515;
         }
 
-        /* ===== FOOTER ===== */
         footer {
             margin-top: 60px;
             padding: 40px 0 20px;
@@ -716,7 +701,6 @@
             color: white;
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .navbar {
                 padding: 10px 16px;
@@ -757,8 +741,7 @@
                 font-size: 1rem;
             }
             .search-page .logo-big {
-                width: 220px;
-                padding: 15px;
+                width: 250px;
             }
             .search-page .search-box-big {
                 flex-wrap: wrap;
@@ -834,8 +817,7 @@
                 width: 100%;
             }
             .search-page .logo-big {
-                width: 180px;
-                padding: 12px;
+                width: 200px;
             }
             .search-results .result-item img {
                 width: 55px;
@@ -850,7 +832,6 @@
 <body>
 
     <div class="container">
-        <!-- ===== HEADER ===== -->
         <header class="navbar">
             <div class="logo" onclick="showPage('home')">
                 <h1>Zerox <span>VOD</span></h1>
@@ -866,9 +847,7 @@
             </div>
         </header>
 
-        <!-- ===== صفحه خانه ===== -->
         <div class="page active" id="page-home">
-            <!-- ===== HERO SLIDER ===== -->
             <div class="hero-slider" id="heroSlider">
                 <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
                     <div class="hero-content">
@@ -931,7 +910,6 @@
             </div>
         </div>
 
-        <!-- ===== صفحه جستجو ===== -->
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
@@ -953,7 +931,6 @@
             </div>
         </div>
 
-        <!-- ===== صفحه ویدیوها ===== -->
         <div class="page" id="page-movies">
             <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin:20px 0;"><i class="fas fa-film" style="color:#B61C1C;"></i> ویدیوها</h2>
             <p style="font-family:'Estedad',sans-serif; color:#888;">همه ویدیوهای سینمایی و کوتاه</p>
@@ -986,7 +963,6 @@
             </div>
         </div>
 
-        <!-- ===== صفحه ویدیو ===== -->
         <div class="page" id="page-video">
             <div class="video-container">
                 <div class="video-wrapper">
@@ -1022,7 +998,6 @@
             </div>
         </div>
 
-        <!-- ===== FOOTER ===== -->
         <footer>
             <h2>Zerox Studio</h2>
             <p>پلتفرم سینمایی و سرگرمی دیجیتال</p>
@@ -1036,7 +1011,6 @@
     </div>
 
     <script>
-        // ===== دیتابیس فیلم‌ها (برای جستجو) =====
         const moviesDB = [
             {
                 title: 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا',
@@ -1044,8 +1018,7 @@
                 desc: '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox',
                 duration: '۵ دقیقه',
                 rating: '9.2',
-                poster: 'https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png',
-                genre: 'horror'
+                poster: 'https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png'
             },
             {
                 title: 'داستان بازی | no im not a human',
@@ -1053,12 +1026,10 @@
                 desc: '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟',
                 duration: '۹ دقیقه',
                 rating: '8.7',
-                poster: 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg',
-                genre: 'horror,psycho'
+                poster: 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg'
             }
         ];
 
-        // ===== اسلایدر =====
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.slider-dots span');
@@ -1093,7 +1064,6 @@
 
         startAutoPlay();
 
-        // ===== صفحه‌بندی =====
         function showPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const target = document.getElementById('page-' + page);
@@ -1125,7 +1095,6 @@
             }
         }
 
-        // ===== جستجو =====
         function liveSearch(query) {
             const resultsContainer = document.getElementById('searchResults');
             const q = query.trim().toLowerCase();
@@ -1156,13 +1125,8 @@
             }
 
             resultsContainer.innerHTML = results.map(movie => {
-                const safeTitle = encodeURIComponent(movie.title);
-                const safeDesc = encodeURIComponent(movie.desc);
-                const safeDuration = encodeURIComponent(movie.duration);
-                const safeRating = encodeURIComponent(movie.rating);
-                
                 return `
-                    <div class="result-item" onclick="openVideoFromSearch('${movie.url}', '${safeTitle}', '${safeDesc}', '${safeDuration}', '${safeRating}')">
+                    <div class="result-item" onclick="openVideo('${movie.url}', '${movie.title.replace(/'/g, "\\'")}', '${movie.desc.replace(/'/g, "\\'").replace(/\n/g, '\\n')}', '${movie.duration}', '${movie.rating}')">
                         <img src="${movie.poster}" alt="${movie.title}" />
                         <div class="info">
                             <h4>${movie.title}</h4>
@@ -1176,15 +1140,6 @@
             }).join('');
         }
 
-        function openVideoFromSearch(url, titleEnc, descEnc, durationEnc, ratingEnc) {
-            const title = decodeURIComponent(titleEnc);
-            const desc = decodeURIComponent(descEnc);
-            const duration = decodeURIComponent(durationEnc);
-            const rating = decodeURIComponent(ratingEnc);
-            openVideo(url, title, desc, duration, rating);
-        }
-
-        // ===== توضیحات کشویی =====
         function toggleDescription() {
             const desc = document.getElementById('videoDescription');
             const toggle = document.getElementById('descToggle');
@@ -1200,7 +1155,6 @@
             }
         }
 
-        // ===== باز کردن ویدیو =====
         function openVideo(url, title, desc, duration, rating) {
             const iframe = document.getElementById('videoIframe');
             if (iframe) iframe.src = url;
@@ -1227,7 +1181,6 @@
             showPage('video');
         }
 
-        // ===== کلید ESC =====
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 const videoPage = document.getElementById('page-video');
