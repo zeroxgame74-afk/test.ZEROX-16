@@ -135,6 +135,10 @@
             color: #B61C1C;
         }
 
+        .user-actions .search-icon {
+            cursor: pointer;
+        }
+
         /* ===== PAGES ===== */
         .page {
             display: none;
@@ -270,42 +274,6 @@
         }
 
         /* ===== HOME PAGE ===== */
-        .search-box {
-            display: flex;
-            align-items: center;
-            background: white;
-            border-radius: 50px;
-            padding: 4px;
-            margin: 20px 0;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-        }
-
-        .search-box input {
-            flex: 1;
-            border: none;
-            outline: none;
-            padding: 14px 20px;
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.95rem;
-            background: transparent;
-        }
-
-        .search-box button {
-            font-family: 'Estedad', sans-serif;
-            background: #B61C1C;
-            border: none;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .search-box button:hover {
-            background: #8f1515;
-        }
-
         .genre-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -801,21 +769,6 @@
             .hero-content p {
                 font-size: 0.8rem;
             }
-            .search-box {
-                flex-wrap: wrap;
-                background: transparent;
-                box-shadow: none;
-                gap: 8px;
-            }
-            .search-box input {
-                background: white;
-                border-radius: 30px;
-                padding: 12px 16px;
-            }
-            .search-box button {
-                width: 100%;
-                justify-content: center;
-            }
             .video-info-section h2 {
                 font-size: 1.2rem;
             }
@@ -933,7 +886,7 @@
                 <a onclick="showPage('movies')"><i class="fas fa-film"></i> ویدیوها</a>
             </div>
             <div class="user-actions">
-                <i class="fas fa-search" onclick="showPage('search')" style="cursor:pointer;"></i>
+                <i class="fas fa-search search-icon" onclick="showPage('search')"></i>
                 <i class="fas fa-bell"></i>
                 <i class="fas fa-user-circle"></i>
             </div>
@@ -948,7 +901,7 @@
                         <span class="badge">جدید</span>
                         <h2>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h2>
                         <p>😨🏚️ Outlast | یه شب توی جهنم! امشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀</p>
-                        <button class="btn-play" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
+                        <button class="btn-play" onclick="event.stopPropagation(); openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
                             <i class="fas fa-play"></i> پخش فیلم
                         </button>
                     </div>
@@ -958,7 +911,7 @@
                         <span class="badge">ویژه</span>
                         <h2>داستان بازی | no im not a human</h2>
                         <p>😨🚪 No, I'm Not a Human | یه شب جهنمی! امشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️</p>
-                        <button class="btn-play" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
+                        <button class="btn-play" onclick="event.stopPropagation(); openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                             <i class="fas fa-play"></i> پخش فیلم
                         </button>
                     </div>
@@ -967,12 +920,6 @@
                     <span class="active" onclick="goToSlide(0)"></span>
                     <span onclick="goToSlide(1)"></span>
                 </div>
-            </div>
-
-            <!-- جستجوی سریع صفحه اصلی -->
-            <div class="search-box">
-                <input type="text" placeholder="جستجوی عنوان، بازیگر..." id="homeSearchInput" onkeydown="if(event.key==='Enter'){performSearch(this.value)}" />
-                <button onclick="performSearch(document.getElementById('homeSearchInput').value)"><i class="fas fa-search"></i> جستجو</button>
             </div>
 
             <div class="genre-tabs">
@@ -985,7 +932,7 @@
 
             <div class="section-header">
                 <h2><i class="fas fa-fire" style="color:#B61C1C;"></i> جدیدترین عناوین</h2>
-                <a href="#">مشاهده همه</a>
+                <a href="#" onclick="showPage('movies'); return false;">مشاهده همه</a>
             </div>
 
             <div class="movie-grid" id="movieGrid">
@@ -1204,19 +1151,13 @@
             }
             
             if (page === 'search') {
-                document.getElementById('searchInput').focus();
+                setTimeout(() => {
+                    document.getElementById('searchInput').focus();
+                }, 100);
             }
         }
 
         // ===== جستجو =====
-        function performSearch(query) {
-            if (query.trim()) {
-                document.getElementById('searchInput').value = query;
-                showPage('search');
-                liveSearch(query);
-            }
-        }
-
         function liveSearch(query) {
             const resultsContainer = document.getElementById('searchResults');
             const q = query.trim().toLowerCase();
@@ -1246,18 +1187,23 @@
                 return;
             }
 
-            resultsContainer.innerHTML = results.map(movie => `
-                <div class="result-item" onclick="openVideo('${movie.url}', '${movie.title}', '${movie.desc}', '${movie.duration}', '${movie.rating}')">
-                    <img src="${movie.poster}" alt="${movie.title}" />
-                    <div class="info">
-                        <h4>${movie.title}</h4>
-                        <div class="meta">
-                            <span><i class="fas fa-clock"></i> ${movie.duration}</span>
-                            <span class="rating"><i class="fas fa-star"></i> ${movie.rating}</span>
+            resultsContainer.innerHTML = results.map(movie => {
+                // برای جلوگیری از مشکل نقل قول در onclick
+                const safeTitle = movie.title.replace(/'/g, "\\'");
+                const safeDesc = movie.desc.replace(/'/g, "\\'");
+                return `
+                    <div class="result-item" onclick="openVideo('${movie.url}', '${safeTitle}', '${safeDesc}', '${movie.duration}', '${movie.rating}')">
+                        <img src="${movie.poster}" alt="${movie.title}" />
+                        <div class="info">
+                            <h4>${movie.title}</h4>
+                            <div class="meta">
+                                <span><i class="fas fa-clock"></i> ${movie.duration}</span>
+                                <span class="rating"><i class="fas fa-star"></i> ${movie.rating}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         // ===== توضیحات کشویی =====
