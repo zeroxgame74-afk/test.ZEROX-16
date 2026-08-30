@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEROX | زروکس</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Zerox Studio | VOD Platform</title>
     
-    <!-- Font Awesome 6 Pro / Free -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     
-    <!-- CDN فونت استعداد و اردکان -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/estedad-font@v1.0.0/dist/font-face.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/amir-s/Ardekan-Font@master/fontface.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/estedad-font@v1.0.0/dist/font-face.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/amir-s/Ardekan-Font@master/fontface.css" />
 
     <style>
         @font-face {
@@ -18,549 +16,464 @@
             src: url('https://cdn.jsdelivr.net/gh/amir-s/Ardekan-Font@master/fonts/ttf/Ardekan.ttf') format('truetype');
         }
 
-        :root {
-            --bg-body: #08080a;
-            --bg-card: rgba(18, 20, 29, 0.75);
-            --bg-card-hover: rgba(26, 30, 43, 0.9);
-            --accent-yellow: #ffd000;
-            --accent-glow: rgba(255, 208, 0, 0.18);
-            --text-main: #f0f2f5;
-            --text-sub: #8c93a6;
-            --border: rgba(255, 255, 255, 0.08);
-            --font-main: 'Estedad', system-ui, -apple-system, sans-serif;
-            --font-head: 'Ardekan', 'Estedad', sans-serif;
-        }
-
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             user-select: none;
         }
 
         body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            font-family: var(--font-main);
-            line-height: 1.8;
+            background: #f9f5f0;
+            font-family: 'Estedad', sans-serif;
+            color: #2d2a24;
+            direction: rtl;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(255, 208, 0, 0.03) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 208, 0, 0.02) 0%, transparent 40%);
         }
 
-        h1, h2, h3, h4, .font-head {
-            font-family: var(--font-head);
-        }
-
-        /* --- Custom Scrollbar --- */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #08080a;
+            background: #efe8e0;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1f2330;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-yellow);
-        }
-
-        /* --- Header / Navbar --- */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(8, 8, 10, 0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .brand-logo {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, var(--accent-yellow), #b39200);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #000;
-            font-size: 1.4rem;
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .brand-name {
-            font-size: 1.6rem;
-            color: var(--text-main);
-            letter-spacing: 1px;
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 5px;
+            background: linear-gradient(135deg, #B61C1C, #d43a3a);
             border-radius: 12px;
-            border: 1px solid var(--border);
         }
 
-        .tab-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-sub);
-            padding: 8px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: var(--font-head);
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
-
-        .tab-btn.active, .tab-btn:hover {
-            color: #000;
-            background: var(--accent-yellow);
-            box-shadow: 0 0 12px var(--accent-glow);
-        }
-
-        /* --- Main Layout --- */
         .container {
-            max-width: 1000px;
-            margin: 40px auto;
+            max-width: 1440px;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* --- Hero Profile Box --- */
-        .profile-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 35px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 100%; height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-yellow), transparent);
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        .avatar-box {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            flex-shrink: 0;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
         }
 
-        .avatar-box img {
-            width: 100%;
-            height: 100%;
-            border-radius: 18px;
-            object-fit: cover;
-            border: 2px solid var(--border);
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
 
-        .status-badge {
-            position: absolute;
-            bottom: -5px;
-            left: -5px;
-            background: var(--accent-yellow);
-            color: #000;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-family: var(--font-head);
-        }
-
-        .profile-info h1 {
-            font-size: 2rem;
-            margin-bottom: 8px;
-            color: var(--accent-yellow);
-        }
-
-        .profile-info p {
-            color: var(--text-sub);
-            font-size: 0.98rem;
-            margin-bottom: 15px;
-        }
-
-        .tech-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.82rem;
-            color: var(--text-main);
-        }
-
-        /* --- Feed Posts / Cards --- */
-        .content-feed {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .feed-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
-        }
-
-        .feed-item:hover {
-            transform: translateY(-3px);
-            border-color: rgba(255, 208, 0, 0.3);
-            background: var(--bg-card-hover);
-        }
-
-        .media-container {
-            width: 100%;
-            height: 380px;
-            position: relative;
-            background: #10121a;
-            overflow: hidden;
-        }
-
-        .media-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .feed-item:hover .media-container img {
-            transform: scale(1.03);
-        }
-
-        .play-trigger {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.45);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0.9;
-            transition: opacity 0.3s;
-        }
-
-        .play-trigger:hover {
-            opacity: 1;
-        }
-
-        .play-trigger i {
-            font-size: 3.5rem;
-            color: var(--accent-yellow);
-            filter: drop-shadow(0 0 12px rgba(0,0,0,0.8));
-            transition: transform 0.2s;
-        }
-
-        .play-trigger:hover i {
-            transform: scale(1.1);
-        }
-
-        .item-details {
-            padding: 28px;
-        }
-
-        .item-header {
+        /* ===== HEADER ===== */
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            flex-wrap: wrap;
+            padding: 16px 28px;
+            border-radius: 24px;
+            margin: 16px 0 12px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 16px;
+            z-index: 1000;
+            transition: all 0.4s ease;
         }
 
-        .category-pill {
-            background: var(--accent-glow);
-            color: var(--accent-yellow);
-            border: 1px solid rgba(255, 208, 0, 0.2);
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-family: var(--font-head);
+        .navbar.scrolled {
+            background: rgba(249, 245, 240, 0.95);
+            box-shadow: 0 8px 40px rgba(182, 28, 28, 0.08);
         }
 
-        .item-date {
-            color: var(--text-sub);
+        .logo h1 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 900;
+            background: linear-gradient(145deg, #B61C1C, #d43a3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .logo span {
             font-size: 0.85rem;
+            background: linear-gradient(135deg, #B61C1C, #d43a3a);
+            padding: 3px 14px;
+            border-radius: 40px;
+            margin-right: 8px;
+            color: white;
+            font-weight: 700;
+            -webkit-text-fill-color: white;
         }
 
-        .item-title {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-
-        .item-description {
-            color: var(--text-sub);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        .action-bar {
+        .nav-links {
             display: flex;
-            gap: 15px;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #3a322a;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a:hover {
+            color: #B61C1C;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 18px;
             align-items: center;
         }
 
-        .btn-action {
-            background: var(--accent-yellow);
-            color: #000;
-            padding: 10px 22px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-family: var(--font-head);
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .user-actions i {
+            font-size: 1.3rem;
+            color: #3a322a;
+            cursor: pointer;
             transition: all 0.3s ease;
+        }
+
+        .user-actions i:hover {
+            color: #B61C1C;
+            transform: scale(1.1);
+        }
+
+        /* ===== SEARCH ===== */
+        .search-section {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-radius: 60px;
+            padding: 4px 4px 4px 20px;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            margin: 20px 0 16px;
+        }
+
+        .search-section input {
             border: none;
+            outline: none;
+            background: transparent;
+            padding: 14px 16px;
+            font-size: 0.95rem;
+            width: 100%;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        .search-section button {
+            background: linear-gradient(135deg, #B61C1C, #d43a3a);
+            border: none;
+            border-radius: 40px;
+            padding: 12px 30px;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        .search-section button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(182, 28, 28, 0.3);
+        }
+
+        /* ===== GENRE TABS ===== */
+        .genre-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0 30px;
+        }
+
+        .genre-tabs .genre-item {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .genre-tabs .genre-item.active, .genre-tabs .genre-item:hover {
+            background: linear-gradient(135deg, #B61C1C, #d43a3a);
+            color: white;
+            border-color: #B61C1C;
+        }
+
+        /* ===== MOVIE GRID ===== */
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0 20px;
+        }
+
+        .section-title h2 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.8rem;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .movie-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.4s ease;
             cursor: pointer;
         }
 
-        .btn-action:hover {
-            box-shadow: 0 0 15px var(--accent-glow);
-            transform: translateY(-2px);
+        .movie-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(182, 28, 28, 0.1);
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-main);
-            border: 1px solid var(--border);
+        .movie-poster {
+            height: 280px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: none;
+        .movie-poster .badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: #B61C1C;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
         }
 
-        /* --- Footer --- */
+        .movie-info {
+            padding: 16px;
+        }
+
+        .movie-info h4 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .movie-info .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #6b5f53;
+        }
+
+        /* ===== VOD CONTAINER ===== */
+        .video-page-container {
+            display: none;
+            padding: 20px 0 40px;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .video-page-container.active {
+            display: block;
+        }
+
+        .video-wrapper {
+            background: #000;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .close-btn {
+            background: #B61C1C;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Estedad', sans-serif;
+            font-weight: bold;
+        }
+
+        /* ===== FOOTER ===== */
         footer {
-            border-top: 1px solid var(--border);
-            padding: 40px 20px;
+            margin-top: 60px;
+            padding: 40px 0 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 30px 30px 0 0;
             text-align: center;
-            margin-top: 80px;
-            background: rgba(8, 8, 10, 0.95);
         }
 
-        .social-links {
+        .footer-social {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 16px;
+            margin-top: 15px;
         }
 
-        .social-btn {
-            width: 44px;
-            height: 44px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(182, 28, 28, 0.1);
+            color: #B61C1C;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-main);
-            font-size: 1.2rem;
-            transition: all 0.3s;
             text-decoration: none;
+            transition: all 0.3s;
         }
 
-        .social-btn:hover {
-            background: var(--accent-yellow);
-            color: #000;
-            border-color: var(--accent-yellow);
-            transform: translateY(-3px);
-        }
-
-        .copy-text {
-            color: var(--text-sub);
-            font-size: 0.85rem;
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            header { padding: 12px 15px; }
-            .nav-tabs { gap: 4px; }
-            .tab-btn { padding: 6px 12px; font-size: 0.85rem; }
-            .profile-card { flex-direction: column; text-align: center; padding: 25px; }
-            .tech-tags { justify-content: center; }
-            .media-container { height: 230px; }
-            .item-details { padding: 20px; }
-            .item-title { font-size: 1.25rem; }
+        .footer-social a:hover {
+            background: #B61C1C;
+            color: white;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
-    <header>
-        <a href="#" class="brand">
-            <div class="brand-logo">
-                <i class="fa-solid fa-gamepad"></i>
-            </div>
-            <span class="brand-name font-head">ZEROX</span>
-        </a>
-
-        <div class="nav-tabs">
-            <button class="tab-btn active" onclick="filterTab('all', this)">همه</button>
-            <button class="tab-btn" onclick="filterTab('game', this)">بازی‌ها</button>
-            <button class="tab-btn" onclick="filterTab('video', this)">ویدیوها</button>
-        </div>
-    </header>
-
-    <!-- Main Container -->
     <div class="container">
-
-        <!-- Developer / Profile Bio Banner -->
-        <div class="profile-card">
-            <div class="avatar-box">
-                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400" alt="ZeroX Avatar">
-                <span class="status-badge">DEV</span>
+        <header class="navbar" id="navbar">
+            <div class="logo">
+                <h1>Zerox <span>VOD</span></h1>
             </div>
-            <div class="profile-info">
-                <h1 class="font-head">پایگاه رسمی زروکس (ZeroX)</h1>
-                <p>توسعه‌دهنده بازی‌های ۳بعدی مستقل، طراح گرافیک و سازنده ویدیوهای تحلیل داستان بازی‌ها.</p>
-                <div class="tech-tags">
-                    <span class="tag"><i class="fa-brands fa-unity"></i> Unity 3D</span>
-                    <span class="tag"><i class="fa-solid fa-code"></i> C# Scripting</span>
-                    <span class="tag"><i class="fa-solid fa-paintbrush"></i> Photoshop</span>
-                    <span class="tag"><i class="fa-solid fa-font"></i> Font Designer</span>
+            <div class="nav-links">
+                <a href="#" onclick="showHome()"><i class="fas fa-home"></i> خانه</a>
+                <a href="#"><i class="fas fa-film"></i> فیلم‌ها</a>
+                <a href="#"><i class="fas fa-tv"></i> سریال‌ها</a>
+            </div>
+            <div class="user-actions">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-user-circle"></i>
+            </div>
+        </header>
+
+        <div id="homePage">
+            <div class="search-section">
+                <input type="text" placeholder="جستجوی عنوان، بازیگر..." />
+                <button><i class="fas fa-search"></i> جستجو</button>
+            </div>
+
+            <div class="genre-tabs">
+                <span class="genre-item active" onclick="filterGenre('all', this)">همه</span>
+                <span class="genre-item" onclick="filterGenre('horror', this)">ترسناک</span>
+                <span class="genre-item" onclick="filterGenre('psycho', this)">روانشناختی</span>
+            </div>
+
+            <div class="section-title">
+                <h2><i class="fas fa-fire" style="color:#B61C1C;"></i> جدیدترین عناوین</h2>
+            </div>
+
+            <div class="movie-grid">
+                <div class="movie-card" data-genre="horror,psycho" onclick="openVideoPage('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame')">
+                    <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
+                        <span class="badge">ویژه</span>
+                    </div>
+                    <div class="movie-info">
+                        <h4>داستان بازی (No, I'm Not a Human)</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
+                            <span><i class="fas fa-star" style="color:#f5b342;"></i> 8.7</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Content Feed -->
-        <div class="content-feed">
-
-            <!-- Item 1: Game Project -->
-            <article class="feed-item" data-category="game">
-                <div class="media-container">
-                    <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000" alt="Last Patient Game">
-                </div>
-                <div class="item-details">
-                    <div class="item-header">
-                        <span class="category-pill"><i class="fa-solid fa-ghost"></i> پروژه بازی</span>
-                        <span class="item-date"><i class="fa-regular fa-clock"></i> شهریور ۱۴۰۵</span>
-                    </div>
-                    <h2 class="item-title font-head">بازی سه‌بعدی Last Patient (نسخه دمو)</h2>
-                    <p class="item-description">
-                        پروژه Last Patient یک عنوان مستقل در سبک ترس و بقا (Horror Survival) است که تمام سیستم‌های نورپردازی، معماها و هوش مصنوعی آن با زبان C# پیاده‌سازی شده است. در این بازی شما باید از تیمارستان متروکه‌ای که اسرار تاریکی دارد فرار کنید.
-                    </p>
-                    <div class="action-bar">
-                        <a href="#" class="btn-action"><i class="fa-solid fa-download"></i> دانلود مستقیم دمو</a>
-                        <button class="btn-action btn-secondary"><i class="fa-solid fa-circle-info"></i> توضیحات فنی</button>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Item 2: Story Analysis Video -->
-            <article class="feed-item" data-category="video">
-                <div class="media-container">
-                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000" alt="تحلیل داستان بازی">
-                    <div class="play-trigger">
-                        <i class="fa-solid fa-play"></i>
-                    </div>
-                </div>
-                <div class="item-details">
-                    <div class="item-header">
-                        <span class="category-pill"><i class="fa-solid fa-video"></i> تحلیل و داستان</span>
-                        <span class="item-date"><i class="fa-regular fa-clock"></i> مرداد ۱۴۰۵</span>
-                    </div>
-                    <h2 class="item-title font-head">بررسی رازها و خط داستانی سری Call of Duty</h2>
-                    <p class="item-description">
-                        در این ویدیو به بررسی عمیق اتفاقات پشت پرده، کاراکترها و جزئیات پنهانی که هنگام بازی ممکن است از دست داده باشید پرداخته‌ایم.
-                    </p>
-                    <div class="action-bar">
-                        <button class="btn-action"><i class="fa-solid fa-play"></i> پخش ویدیو</button>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Item 3: Technical / Devlog Video -->
-            <article class="feed-item" data-category="video">
-                <div class="media-container">
-                    <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1000" alt="توسعه بازی">
-                    <div class="play-trigger">
-                        <i class="fa-solid fa-play"></i>
-                    </div>
-                </div>
-                <div class="item-details">
-                    <div class="item-header">
-                        <span class="category-pill"><i class="fa-solid fa-code"></i> دیو بلاگ / برنامه نویسی</span>
-                        <span class="item-date"><i class="fa-regular fa-clock"></i> تیر ۱۴۰۵</span>
-                    </div>
-                    <h2 class="item-title font-head">آموزش پیاده‌سازی مکانیزم‌های حرکت سه‌بعدی در Unity</h2>
-                    <p class="item-description">
-                        توضیحات اختصاصی و گام‌به‌گام درباره نحوه کدنویسی فیزیک حرکت، جابه‌جایی دوربین و تعامل با اشیاء در محیط‌های سه‌بعدی.
-                    </p>
-                    <div class="action-bar">
-                        <button class="btn-action"><i class="fa-solid fa-play"></i> تماشای ویدیو آموزشی</button>
-                    </div>
-                </div>
-            </article>
-
+        <div class="video-page-container" id="videoPage">
+            <div class="video-header">
+                <h3>پخش آنلاین</h3>
+                <button class="close-btn" onclick="closeVideoPage()"><i class="fas fa-times"></i> بستن</button>
+            </div>
+            <div class="video-wrapper">
+                <iframe id="videoIframe" src="" allowfullscreen></iframe>
+            </div>
         </div>
 
+        <footer>
+            <div class="footer-brand">
+                <h2 style="font-family: 'Ardekan', sans-serif; color:#B61C1C;">Zerox Studio</h2>
+                <p style="font-size:0.85rem; color:#6b5f53;">پلتفرم سینمایی و سرگرمی دیجیتال</p>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </footer>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="social-links">
-            <a href="#" class="social-btn" title="یوتیوب"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#" class="social-btn" title="تلگرام"><i class="fa-brands fa-telegram"></i></a>
-            <a href="#" class="social-btn" title="گیت‌هاب"><i class="fa-brands fa-github"></i></a>
-            <a href="#" class="social-btn" title="اینستاگرام"><i class="fa-brands fa-instagram"></i></a>
-        </div>
-        <p class="copy-text">طراحی و توسعه توسط ZEROX | تمامی حقوق محفوظ است ۲۰۲۶ ©</p>
-    </footer>
-
-    <!-- Interactive Filtering Script -->
     <script>
-        function filterTab(category, btnElement) {
-            // Update active tab styling
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            btnElement.classList.add('active');
-
-            // Filter items
-            const items = document.querySelectorAll('.feed-item');
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
+        function filterGenre(genre, el) {
+            document.querySelectorAll('.genre-item').forEach(item => item.classList.remove('active'));
+            el.classList.add('active');
+            const cards = document.querySelectorAll('.movie-card');
+            cards.forEach(card => {
+                const genres = card.dataset.genre.split(',');
+                if (genre === 'all' || genres.includes(genre)) {
+                    card.style.display = 'block';
                 } else {
-                    item.style.display = 'none';
+                    card.style.display = 'none';
                 }
             });
+        }
+
+        function openVideoPage(videoUrl) {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('videoPage').classList.add('active');
+            document.getElementById('videoIframe').src = videoUrl;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeVideoPage() {
+            document.getElementById('videoPage').classList.remove('active');
+            document.getElementById('homePage').style.display = 'block';
+            document.getElementById('videoIframe').src = '';
+        }
+
+        function showHome() {
+            closeVideoPage();
         }
     </script>
 </body>
