@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@400;700&display=swap" rel="stylesheet" />
 
     <style>
+        /* ===== تمام استایل‌های قبلی ===== */
         * {
             margin: 0;
             padding: 0;
@@ -518,33 +519,51 @@
             margin-bottom: 12px;
         }
 
-        /* ===== NOTIFICATIONS PAGE ===== */
+        /* ===== NOTIFICATIONS PAGE با آیکون جدید ===== */
         .notifications-page {
             max-width: 700px;
             margin: 20px auto;
             padding: 20px;
         }
 
-        .notifications-page .notif-header {
+        .notifications-page .notif-hero {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
         }
 
-        .notifications-page .notif-header h2 {
+        .notifications-page .notif-hero .notif-icon-big {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .notifications-page .notif-hero .notif-icon-big img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .notifications-page .notif-hero h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.8rem;
             display: flex;
             align-items: center;
             gap: 10px;
+            color: #1a1a1a;
         }
 
-        .notifications-page .notif-header h2 i {
+        .notifications-page .notif-hero h2 i {
             color: #B61C1C;
         }
 
-        .notifications-page .notif-header .studio-badge {
+        .notifications-page .notif-hero .studio-badge {
             background: linear-gradient(135deg, #B61C1C, #d43a3a);
             color: white;
             padding: 4px 16px;
@@ -552,6 +571,7 @@
             font-size: 0.7rem;
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
+            margin-top: 4px;
         }
 
         .notif-item {
@@ -1034,6 +1054,10 @@
             .notifications-page {
                 padding: 12px;
             }
+            .notifications-page .notif-hero .notif-icon-big {
+                width: 100px;
+                height: 100px;
+            }
             .profile-page {
                 padding: 12px;
             }
@@ -1104,6 +1128,13 @@
             }
             .search-page .subtitle {
                 font-size: 0.8rem;
+            }
+            .notifications-page .notif-hero .notif-icon-big {
+                width: 80px;
+                height: 80px;
+            }
+            .notifications-page .notif-hero h2 {
+                font-size: 1.3rem;
             }
             .notif-item {
                 padding: 12px 14px;
@@ -1252,11 +1283,14 @@
             </div>
         </div>
 
-        <!-- ===== صفحه اعلان‌ها ===== -->
+        <!-- ===== صفحه اعلان‌ها با آیکون جدید ===== -->
         <div class="page" id="page-notifications">
             <div class="notifications-page">
-                <div class="notif-header">
-                    <h2><i class="fas fa-bell"></i> اعلان‌ها</h2>
+                <div class="notif-hero">
+                    <div class="notif-icon-big">
+                        <img src="https://cdn.imgurl.ir/uploads/r800856_Zerox_icon_12.png" alt="Zerox" />
+                    </div>
+                    <h2>اعلان‌ها</h2>
                     <span class="studio-badge">🎬 Zerox Studio</span>
                 </div>
                 
@@ -1403,7 +1437,6 @@
             </div>
         </div>
 
-        <!-- ===== فوتر با متن قبلی ===== -->
         <footer>
             <h2>Zerox Studio</h2>
             <p>پلتفرم سینمایی و سرگرمی دیجیتال</p>
