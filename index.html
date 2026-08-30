@@ -3,345 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🏰 Fantasy Kingdom - RTS</title>
+    <title>🏰 دهکده فانتزی</title>
+    
+    <!-- ====== فقط فونت Estedad و Ardekan ====== -->
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; }
-        body { overflow: hidden; touch-action: none; background: #1a1a2e; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        canvas { display: block; width: 100vw; height: 100vh; }
+        @font-face {
+            font-family: 'Ardekan';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/ardekan@v1.0.0/Ardekan-Regular.woff2') format('woff2');
+            font-weight: normal;
+        }
+        @font-face {
+            font-family: 'Ardekan';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/ardekan@v1.0.0/Ardekan-Bold.woff2') format('woff2');
+            font-weight: bold;
+        }
         
-        #ui { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px; 
-              background: linear-gradient(transparent, rgba(0,0,0,0.8)); pointer-events: none; }
-        #ui > * { pointer-events: auto; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            user-select: none; 
+        }
+        body {
+            background: #0a0a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+            overflow: hidden;
+            direction: rtl;
+        }
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            max-width: 500px;
+            max-height: 850px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(0,0,0,0.9);
+            background: #1a3a1a;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
         
-        #topBar { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; 
-                  justify-content: space-between; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-                  font-size: 14px; font-weight: bold; }
-        .res { background: rgba(0,0,0,0.6); padding: 6px 14px; border-radius: 20px; 
-               backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1); }
-        .res span { color: #ffd700; }
-        .res .elixir { color: #9b59b6; }
+        /* ====== نوار بالایی ====== */
+        #topBar {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.95);
+            pointer-events: none;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+        }
+        #topBar > div {
+            background: rgba(0,0,0,0.6);
+            padding: 6px 16px;
+            border-radius: 30px;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,0.08);
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        #topBar .gold { color: #ffd700; }
+        #topBar .elixir { color: #9b59b6; }
+        #topBar .star { color: #ff6b6b; }
         
-        #buildMenu { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; 
-                     margin-bottom: 10px; }
-        .buildBtn { background: rgba(30,30,60,0.9); border: 2px solid #4a4a8a; color: white;
-                    padding: 8px 14px; border-radius: 12px; font-size: 12px; font-weight: bold;
-                    backdrop-filter: blur(4px); min-width: 60px; text-align: center; }
-        .buildBtn:active { transform: scale(0.95); background: #4a4a8a; }
-        .buildBtn .cost { font-size: 10px; color: #ffd700; display: block; }
+        /* ====== پنل اطلاعات ====== */
+        #infoPanel {
+            position: absolute;
+            top: 65px;
+            left: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.85);
+            border-radius: 16px;
+            padding: 12px 16px;
+            color: white;
+            font-size: 14px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,215,0,0.25);
+            display: none;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+            text-align: center;
+            z-index: 10;
+        }
+        #infoPanel .title { 
+            font-weight: 900; 
+            color: #ffd700; 
+            font-size: 18px;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+        }
+        #infoPanel .desc {
+            font-size: 13px;
+            opacity: 0.8;
+            margin: 4px 0;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+        }
+        #upgradeBtn {
+            margin-top: 8px;
+            background: linear-gradient(135deg, #ffd700, #f9a825);
+            border: none;
+            border-radius: 12px;
+            padding: 8px 20px;
+            font-weight: 700;
+            color: #1a1a2e;
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+            font-size: 15px;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        #upgradeBtn:active { transform: scale(0.95); }
         
-        #infoPanel { position: absolute; top: 60px; right: 10px; background: rgba(0,0,0,0.7);
-                     border-radius: 12px; padding: 8px 14px; color: white; font-size: 12px;
-                     backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1);
-                     display: none; max-width: 150px; }
-        #infoPanel .title { font-weight: bold; color: #ffd700; }
+        /* ====== منوی ساخت ====== */
+        #buildMenu {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            padding: 12px 8px 8px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            border-radius: 20px;
+            pointer-events: none;
+        }
+        #buildMenu > * { pointer-events: auto; }
+        .btn {
+            background: rgba(20,20,50,0.88);
+            border: 2px solid #5a5a9a;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            backdrop-filter: blur(4px);
+            min-width: 50px;
+            text-align: center;
+            transition: 0.1s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            font-family: 'Estedad', 'Ardekan', sans-serif;
+            cursor: pointer;
+        }
+        .btn:active { transform: scale(0.92); background: #4a4a8a; }
+        .btn .cost { 
+            display: block; 
+            font-size: 9px; 
+            color: #ffd700;
+            font-weight: 400;
+        }
+        .btn.active {
+            border-color: #ffd700;
+            background: rgba(255,215,0,0.2);
+        }
+        #trainBtn {
+            background: rgba(155,89,182,0.3);
+            border-color: #9b59b6;
+        }
+        #trainBtn:active { background: #9b59b6; }
     </style>
 </head>
 <body>
 
-<div id="topBar">
-    <div class="res">💰 <span id="goldDisplay">100</span></div>
-    <div class="res">🧪 <span class="elixir" id="elixirDisplay">50</span></div>
-    <div class="res">⭐ <span id="starsDisplay">0</span></div>
-</div>
+<div id="container">
+    <canvas id="gameCanvas"></canvas>
 
-<div id="infoPanel">
-    <div class="title" id="infoTitle">Building</div>
-    <div id="infoDesc">Level 1</div>
-    <button id="upgradeBtn" style="margin-top:6px;background:#ffd700;border:none;border-radius:8px;padding:4px 12px;font-weight:bold;">⬆ Upgrade</button>
-</div>
+    <!-- نوار بالایی -->
+    <div id="topBar">
+        <div>💰 <span class="gold" id="goldDisplay">۱۰۰</span></div>
+        <div>🧪 <span class="elixir" id="elixirDisplay">۴۰</span></div>
+        <div>⭐ <span class="star" id="starsDisplay">۰</span></div>
+    </div>
 
-<div id="ui">
+    <!-- پنل اطلاعات ساختمان -->
+    <div id="infoPanel">
+        <div class="title" id="infoTitle">🏠 کلبه</div>
+        <div class="desc" id="infoDesc">سطح ۱</div>
+        <button id="upgradeBtn">⬆ ارتقا</button>
+    </div>
+
+    <!-- منوی ساخت -->
     <div id="buildMenu">
-        <div class="buildBtn" data-type="house">🏠 House<br><span class="cost">💰30</span></div>
-        <div class="buildBtn" data-type="farm">🌾 Farm<br><span class="cost">💰40</span></div>
-        <div class="buildBtn" data-type="tower">🗼 Tower<br><span class="cost">💰50 🧪20</span></div>
-        <div class="buildBtn" data-type="barracks">⚔️ Barracks<br><span class="cost">💰60 🧪30</span></div>
-        <div class="buildBtn" data-type="wall">🧱 Wall<br><span class="cost">💰20</span></div>
-    </div>
-    <div style="text-align:center;color:white;font-size:11px;text-shadow:0 2px 4px black;">
-        👆 Tap ground to build • Tap building to upgrade
+        <div class="btn" data-type="house">🏠<span class="cost">💰۳۰</span></div>
+        <div class="btn" data-type="farm">🌾<span class="cost">💰۴۰</span></div>
+        <div class="btn" data-type="tower">🗼<span class="cost">💰۵۰🧪۲۰</span></div>
+        <div class="btn" data-type="barracks">⚔️<span class="cost">💰۶۰🧪۳۰</span></div>
+        <div class="btn" data-type="wall">🧱<span class="cost">💰۲۰</span></div>
+        <div class="btn" id="trainBtn">👤 سرباز<span class="cost">🧪۱۵</span></div>
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/6.25.1/babylon.js"></script>
 <script>
-// ====== GAME STATE ======
+// ============================================================
+//  بازی کامل ۲D با عکس زمینه
+// ============================================================
+
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+let W, H;
+function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * window.devicePixelRatio;
+    canvas.height = rect.height * window.devicePixelRatio;
+    W = canvas.width;
+    H = canvas.height;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// ====== بارگذاری عکس زمینه ======
+const bgImage = new Image();
+bgImage.crossOrigin = "Anonymous";
+bgImage.src = "https://uploadkon.ir/uploads/ba7f30_261787609126995.jpg";
+let bgLoaded = false;
+bgImage.onload = () => { bgLoaded = true; };
+bgImage.onerror = () => { 
+    console.warn("عکس لود نشد، از گرادینت استفاده می‌شه");
+    bgLoaded = false;
+};
+
+// ====== حالت بازی ======
 const game = {
-    gold: 100, elixir: 50, stars: 0, level: 1,
-    buildings: [], enemies: [], troops: [],
+    gold: 100,
+    elixir: 40,
+    stars: 0,
+    level: 1,
+    buildings: [],
+    enemies: [],
+    troops: [],
     selectedBuilding: null,
     buildMode: null,
-    gridSize: 2,
-    mapSize: 20
+    gridSize: 40,
+    mapSize: 300,
+    camera: { x: 0, y: 0, zoom: 1 }
 };
 
-// ====== BABYLON SETUP ======
-const canvas = document.createElement('canvas');
-document.body.prepend(canvas);
-const engine = new BABYLON.Engine(canvas, true, { adaptToDeviceRatio: true });
-const scene = new BABYLON.Scene(engine);
-scene.clearColor = new BABYLON.Color3(0.1, 0.15, 0.25);
-scene.ambientColor = new BABYLON.Color3(0.5, 0.5, 0.5);
+// ====== سیستم مختصات ایزومتریک ======
+function toScreen(worldX, worldY) {
+    const cx = W/2 + (worldX - worldY) * game.gridSize * 0.5 * game.camera.zoom;
+    const cy = H/2 + (worldX + worldY) * game.gridSize * 0.25 * game.camera.zoom;
+    return { x: cx, y: cy };
+}
 
-// Camera
-const camera = new BABYLON.ArcRotateCamera("cam", -Math.PI/2, Math.PI/3, 25, BABYLON.Vector3.Zero(), scene);
-camera.attachControl(canvas, true);
-camera.lowerRadiusLimit = 8;
-camera.upperRadiusLimit = 40;
-camera.wheelPrecision = 30;
-camera.panningSensibility = 0;
-
-// Lights
-const hemi = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0), scene);
-hemi.intensity = 0.8;
-hemi.groundColor = new BABYLON.Color3(0.3, 0.2, 0.1);
-const sun = new BABYLON.DirectionalLight("sun", new BABYLON.Vector3(-1, -2, -1), scene);
-sun.intensity = 1.2;
-
-// Ground
-const groundMat = new BABYLON.StandardMaterial("groundMat", scene);
-groundMat.diffuseColor = new BABYLON.Color3(0.2, 0.5, 0.15);
-groundMat.specularColor = BABYLON.Color3.Black();
-const ground = BABYLON.MeshBuilder.CreateGround("ground", {width: game.mapSize, height: game.mapSize}, scene);
-ground.material = groundMat;
-ground.position.y = -0.05;
-
-// Grid helper
-const gridMat = new BABYLON.StandardMaterial("gridMat", scene);
-gridMat.diffuseColor = new BABYLON.Color3(1,1,1);
-gridMat.alpha = 0.08;
-gridMat.wireframe = true;
-const gridPlane = BABYLON.MeshBuilder.CreateGround("grid", {width: game.mapSize, height: game.mapSize, subdivisions: 10}, scene);
-gridPlane.material = gridMat;
-gridPlane.position.y = 0.01;
-
-// ====== BUILDING SYSTEM ======
-const BUILDING_TYPES = {
-    house: { name: 'House', cost: {gold:30, elixir:0}, color: [0.9,0.6,0.3], hp:50, size:1.2 },
-    farm: { name: 'Farm', cost: {gold:40, elixir:0}, color: [0.3,0.8,0.2], hp:40, size:1.5 },
-    tower: { name: 'Tower', cost: {gold:50, elixir:20}, color: [0.7,0.3,0.7], hp:80, size:1.2 },
-    barracks: { name: 'Barracks', cost: {gold:60, elixir:30}, color: [0.8,0.2,0.2], hp:100, size:1.8 },
-    wall: { name: 'Wall', cost: {gold:20, elixir:0}, color: [0.6,0.6,0.6], hp:120, size:1.0 }
+// ====== ساختمان‌ها ======
+const BUILDINGS = {
+    house: { name: 'کلبه', cost: {gold:30, elixir:0}, color: '#d4a373', hp:50, size:0.8, emoji: '🏠' },
+    farm: { name: 'مزرعه', cost: {gold:40, elixir:0}, color: '#6a994e', hp:40, size:0.9, emoji: '🌾' },
+    tower: { name: 'برج', cost: {gold:50, elixir:20}, color: '#7b2cbf', hp:80, size:0.7, emoji: '🗼' },
+    barracks: { name: 'پادگان', cost: {gold:60, elixir:30}, color: '#d62828', hp:100, size:1.0, emoji: '⚔️' },
+    wall: { name: 'دیوار', cost: {gold:20, elixir:0}, color: '#8d99ae', hp:120, size:0.6, emoji: '🧱' }
 };
 
-function createBuildingMesh(type, pos) {
-    const data = BUILDING_TYPES[type];
-    const box = BABYLON.MeshBuilder.CreateBox(type + '_mesh', {size: data.size}, scene);
-    box.position.copyFrom(pos);
-    box.position.y = data.size/2;
+function addBuilding(type, wx, wy) {
+    const data = BUILDINGS[type];
+    if (game.gold < data.cost.gold || game.elixir < data.cost.elixir) return false;
     
-    const mat = new BABYLON.StandardMaterial(type + '_mat', scene);
-    mat.diffuseColor = new BABYLON.Color3(data.color[0], data.color[1], data.color[2]);
-    mat.specularColor = new BABYLON.Color3(0.1, 0.1, 0.1);
-    box.material = mat;
-    
-    // Roof for houses
-    if (type === 'house' || type === 'tower') {
-        const roof = BABYLON.MeshBuilder.CreateCylinder('roof', {diameter: data.size*0.9, height: data.size*0.6, tessellation: 4}, scene);
-        roof.position.copyFrom(pos);
-        roof.position.y = data.size + 0.2;
-        const roofMat = new BABYLON.StandardMaterial('roof_mat', scene);
-        roofMat.diffuseColor = new BABYLON.Color3(0.8, 0.2, 0.2);
-        roof.material = roofMat;
-        box.roof = roof;
-    }
-    
-    // Add a glow ring for towers
-    if (type === 'tower') {
-        const ring = BABYLON.MeshBuilder.CreateTorus('ring', {diameter: data.size*1.5, thickness: 0.05}, scene);
-        ring.position.copyFrom(pos);
-        ring.position.y = 0.1;
-        const ringMat = new BABYLON.StandardMaterial('ring_mat', scene);
-        ringMat.diffuseColor = new BABYLON.Color3(1, 0.5, 0);
-        ringMat.emissiveColor = new BABYLON.Color3(0.5, 0.2, 0);
-        ring.material = ringMat;
-        box.ring = ring;
-    }
-    
-    return box;
-}
-
-function canAfford(cost) {
-    return game.gold >= cost.gold && game.elixir >= (cost.elixir || 0);
-}
-
-function spend(cost) {
-    game.gold -= cost.gold;
-    game.elixir -= (cost.elixir || 0);
-    updateUI();
-}
-
-function addBuilding(type, x, z) {
-    const data = BUILDING_TYPES[type];
-    if (!canAfford(data.cost)) return false;
-    
-    // Check grid placement (simple)
-    const pos = new BABYLON.Vector3(x, 0, z);
-    // Simple collision check
+    // برخورد ساده
     for (let b of game.buildings) {
-        if (BABYLON.Vector3.Distance(b.mesh.position, pos) < data.size + 0.5) return false;
+        if (Math.abs(b.x - wx) < 0.8 && Math.abs(b.y - wy) < 0.8) return false;
     }
     
-    spend(data.cost);
-    const mesh = createBuildingMesh(type, pos);
-    const building = {
-        id: Date.now() + Math.random(),
+    game.gold -= data.cost.gold;
+    game.elixir -= data.cost.elixir;
+    
+    game.buildings.push({
         type: type,
-        mesh: mesh,
+        x: wx, y: wy,
         level: 1,
         hp: data.hp,
         maxHp: data.hp,
-        pos: pos,
-        size: data.size,
-        attackCooldown: 0
-    };
-    game.buildings.push(building);
-    
-    // Add floating label
-    const label = BABYLON.MeshBuilder.CreatePlane('label', {size: 0.8}, scene);
-    label.position.copyFrom(pos);
-    label.position.y = data.size + 1.5;
-    label.billboardMode = BABYLON.Mesh.BILLBOARDMODE_ALL;
-    const labelMat = new BABYLON.StandardMaterial('label_mat', scene);
-    labelMat.diffuseColor = new BABYLON.Color3(1,1,0);
-    labelMat.emissiveColor = new BABYLON.Color3(0.3,0.3,0);
-    label.material = labelMat;
-    building.label = label;
-    
-    // Particle effect on build
-    createParticles(pos, new BABYLON.Color3(0,1,0.5), 20);
+        attackCooldown: 0,
+        emoji: data.emoji
+    });
     
     updateUI();
     return true;
 }
 
-// ====== PARTICLES ======
-function createParticles(pos, color, count=30) {
-    const particleSystem = new BABYLON.ParticleSystem("particles", count, scene);
-    particleSystem.particleTexture = new BABYLON.Texture("https://www.babylonjs.com/img/particles/star.png", scene);
-    particleSystem.emitter = pos;
-    particleSystem.minSize = 0.1;
-    particleSystem.maxSize = 0.5;
-    particleSystem.color1 = color;
-    particleSystem.color2 = color;
-    particleSystem.minLifeTime = 0.5;
-    particleSystem.maxLifeTime = 1.5;
-    particleSystem.emitRate = count;
-    particleSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ADD;
-    particleSystem.minEmitBox = new BABYLON.Vector3(-0.5,0,-0.5);
-    particleSystem.maxEmitBox = new BABYLON.Vector3(0.5,0,0.5);
-    particleSystem.start();
-    setTimeout(() => particleSystem.stop(), 100);
-    setTimeout(() => particleSystem.dispose(), 2000);
-}
-
-// ====== ENEMY SYSTEM ======
+// ====== دشمنان ======
 let enemySpawnTimer = 0;
 
 function spawnEnemy() {
     const angle = Math.random() * Math.PI * 2;
-    const dist = 12 + Math.random() * 3;
-    const pos = new BABYLON.Vector3(Math.cos(angle)*dist, 0, Math.sin(angle)*dist);
+    const dist = 8 + Math.random() * 4;
+    const wx = Math.cos(angle) * dist;
+    const wy = Math.sin(angle) * dist;
     
-    const sphere = BABYLON.MeshBuilder.CreateSphere('enemy', {diameter: 0.8}, scene);
-    sphere.position.copyFrom(pos);
-    sphere.position.y = 0.4;
-    const mat = new BABYLON.StandardMaterial('enemy_mat', scene);
-    mat.diffuseColor = new BABYLON.Color3(1, 0.2, 0.2);
-    mat.emissiveColor = new BABYLON.Color3(0.3, 0, 0);
-    sphere.material = mat;
-    
-    const enemy = {
-        mesh: sphere,
-        pos: pos,
-        hp: 20 + game.level * 5,
-        maxHp: 20 + game.level * 5,
-        speed: 1 + game.level * 0.2,
+    game.enemies.push({
+        x: wx, y: wy,
+        hp: 15 + game.level * 5,
+        maxHp: 15 + game.level * 5,
+        speed: 0.8 + game.level * 0.1,
         target: null,
         attackCooldown: 0,
-        attackDamage: 5 + game.level
-    };
-    game.enemies.push(enemy);
+        damage: 3 + game.level,
+        emoji: '👹'
+    });
 }
 
-// ====== TROOP SYSTEM ======
-function spawnTroop(type) {
-    // Find barracks
+// ====== سربازها ======
+function spawnTroop() {
     const barracks = game.buildings.find(b => b.type === 'barracks');
     if (!barracks) return false;
     if (game.elixir < 15) return false;
     
     game.elixir -= 15;
-    const pos = barracks.pos.clone();
-    pos.x += (Math.random() - 0.5) * 3;
-    pos.z += (Math.random() - 0.5) * 3;
-    
-    const sphere = BABYLON.MeshBuilder.CreateSphere('troop', {diameter: 0.6}, scene);
-    sphere.position.copyFrom(pos);
-    sphere.position.y = 0.3;
-    const mat = new BABYLON.StandardMaterial('troop_mat', scene);
-    mat.diffuseColor = new BABYLON.Color3(0.2, 0.6, 1);
-    sphere.material = mat;
-    
-    const troop = {
-        mesh: sphere,
-        pos: pos,
+    game.troops.push({
+        x: barracks.x + (Math.random() - 0.5) * 1.5,
+        y: barracks.y + (Math.random() - 0.5) * 1.5,
         hp: 30,
-        speed: 2 + Math.random(),
-        attackDamage: 8,
+        speed: 1.5 + Math.random(),
+        damage: 6,
         attackCooldown: 0,
-        target: null
-    };
-    game.troops.push(troop);
-    createParticles(pos, new BABYLON.Color3(0.2, 0.6, 1), 15);
+        target: null,
+        emoji: '⚔️'
+    });
     updateUI();
     return true;
 }
 
-// ====== UPDATE LOOP ======
-scene.onBeforeRenderObservable.add(() => {
-    const delta = engine.getDeltaTime() / 1000;
-    
-    // Enemy spawn
-    enemySpawnTimer += delta;
-    if (enemySpawnTimer > 4 - game.level * 0.2 && game.enemies.length < 5 + game.level) {
+// ====== بروزرسانی ======
+function update() {
+    // تولید دشمن
+    enemySpawnTimer += 1/60;
+    if (enemySpawnTimer > 4 - game.level * 0.2 && game.enemies.length < 3 + game.level) {
         enemySpawnTimer = 0;
         spawnEnemy();
     }
     
-    // Move enemies toward nearest building
+    // حرکت دشمنان به سمت نزدیک‌ترین ساختمان
     for (let i = game.enemies.length - 1; i >= 0; i--) {
         const e = game.enemies[i];
         let target = null;
         let minDist = Infinity;
         for (let b of game.buildings) {
-            const d = BABYLON.Vector3.Distance(e.pos, b.mesh.position);
+            const d = Math.hypot(e.x - b.x, e.y - b.y);
             if (d < minDist) { minDist = d; target = b; }
         }
         if (target) {
-            const dir = target.mesh.position.subtract(e.pos).normalize();
-            e.pos.x += dir.x * e.speed * delta;
-            e.pos.z += dir.z * e.speed * delta;
-            e.mesh.position.x = e.pos.x;
-            e.mesh.position.z = e.pos.z;
-            e.mesh.position.y = 0.4 + Math.sin(Date.now()/300 + i) * 0.1;
-            
-            // Attack building
-            if (minDist < 1.5) {
-                e.attackCooldown -= delta;
+            const dx = target.x - e.x;
+            const dy = target.y - e.y;
+            const len = Math.hypot(dx, dy);
+            if (len > 0.1) {
+                e.x += (dx / len) * e.speed * 0.02;
+                e.y += (dy / len) * e.speed * 0.02;
+            }
+            if (minDist < 0.8) {
+                e.attackCooldown -= 1/60;
                 if (e.attackCooldown <= 0) {
-                    target.hp -= e.attackDamage;
+                    target.hp -= e.damage;
                     e.attackCooldown = 1;
-                    createParticles(target.mesh.position, new BABYLON.Color3(1,0.5,0), 8);
                     if (target.hp <= 0) {
-                        // Destroy building
                         const idx = game.buildings.indexOf(target);
                         if (idx > -1) {
-                            createParticles(target.mesh.position, new BABYLON.Color3(1,0,0), 40);
-                            target.mesh.dispose();
-                            if (target.mesh.roof) target.mesh.roof.dispose();
-                            if (target.mesh.ring) target.mesh.ring.dispose();
-                            if (target.label) target.label.dispose();
                             game.buildings.splice(idx, 1);
                             game.stars = Math.max(0, game.stars - 1);
                             updateUI();
@@ -353,29 +384,25 @@ scene.onBeforeRenderObservable.add(() => {
         }
     }
     
-    // Auto attack towers
+    // برج‌ها حمله می‌کنن
     for (let b of game.buildings) {
         if (b.type === 'tower') {
-            b.attackCooldown -= delta;
+            b.attackCooldown -= 1/60;
             for (let e of game.enemies) {
-                if (BABYLON.Vector3.Distance(b.mesh.position, e.pos) < 5) {
+                if (Math.hypot(b.x - e.x, b.y - e.y) < 2.5) {
                     if (b.attackCooldown <= 0) {
-                        e.hp -= 10;
-                        b.attackCooldown = 1.5;
-                        createParticles(e.pos, new BABYLON.Color3(1,0.8,0.2), 5);
+                        e.hp -= 8;
+                        b.attackCooldown = 1.2;
                         if (e.hp <= 0) {
                             const idx = game.enemies.indexOf(e);
                             if (idx > -1) {
-                                createParticles(e.pos, new BABYLON.Color3(1,0.3,0), 20);
-                                e.mesh.dispose();
                                 game.enemies.splice(idx, 1);
-                                game.gold += 10 + game.level * 2;
+                                game.gold += 8 + game.level * 2;
                                 updateUI();
-                                // Level up progression
-                                if (game.enemies.length === 0 && game.buildings.length > 3) {
+                                if (game.enemies.length === 0 && game.buildings.length > 2) {
                                     game.level++;
-                                    document.getElementById('infoTitle').innerText = '🎉 Level Up!';
-                                    setTimeout(() => document.getElementById('infoTitle').innerText = 'Building', 2000);
+                                    document.getElementById('infoTitle').innerText = '🎉 سطح بالا رفت!';
+                                    setTimeout(() => document.getElementById('infoTitle').innerText = '🏠 کلبه', 2000);
                                 }
                             }
                         }
@@ -386,33 +413,32 @@ scene.onBeforeRenderObservable.add(() => {
         }
     }
     
-    // Move troops toward enemies
+    // سربازها به دشمن حمله می‌کنن
     for (let t of game.troops) {
         let target = null;
         let minDist = Infinity;
         for (let e of game.enemies) {
-            const d = BABYLON.Vector3.Distance(t.pos, e.pos);
+            const d = Math.hypot(t.x - e.x, t.y - e.y);
             if (d < minDist) { minDist = d; target = e; }
         }
         if (target) {
-            const dir = target.pos.subtract(t.pos).normalize();
-            t.pos.x += dir.x * t.speed * delta;
-            t.pos.z += dir.z * t.speed * delta;
-            t.mesh.position.x = t.pos.x;
-            t.mesh.position.z = t.pos.z;
-            if (minDist < 1.5) {
-                t.attackCooldown -= delta;
+            const dx = target.x - t.x;
+            const dy = target.y - t.y;
+            const len = Math.hypot(dx, dy);
+            if (len > 0.1) {
+                t.x += (dx / len) * t.speed * 0.02;
+                t.y += (dy / len) * t.speed * 0.02;
+            }
+            if (minDist < 0.6) {
+                t.attackCooldown -= 1/60;
                 if (t.attackCooldown <= 0) {
-                    target.hp -= t.attackDamage;
-                    t.attackCooldown = 1;
-                    createParticles(target.pos, new BABYLON.Color3(0.2,0.8,1), 5);
+                    target.hp -= t.damage;
+                    t.attackCooldown = 0.8;
                     if (target.hp <= 0) {
                         const idx = game.enemies.indexOf(target);
                         if (idx > -1) {
-                            createParticles(target.pos, new BABYLON.Color3(1,0.3,0), 20);
-                            target.mesh.dispose();
                             game.enemies.splice(idx, 1);
-                            game.gold += 15;
+                            game.gold += 10;
                             updateUI();
                         }
                     }
@@ -421,113 +447,216 @@ scene.onBeforeRenderObservable.add(() => {
         }
     }
     
-    // Resource generation
+    // تولید منابع
     for (let b of game.buildings) {
-        if (b.type === 'farm') {
-            if (Math.random() < 0.01 * delta * 10) {
-                game.gold += 1;
-                createParticles(b.mesh.position, new BABYLON.Color3(0,1,0), 3);
-                updateUI();
-            }
+        if (b.type === 'farm' && Math.random() < 0.01) {
+            game.gold += 1;
+            updateUI();
         }
-        if (b.type === 'house') {
-            if (Math.random() < 0.005 * delta * 10) {
-                game.elixir += 1;
-                createParticles(b.mesh.position, new BABYLON.Color3(0.8,0.3,1), 3);
-                updateUI();
-            }
+        if (b.type === 'house' && Math.random() < 0.008) {
+            game.elixir += 1;
+            updateUI();
         }
     }
-});
+}
 
-// ====== UI INTERACTIONS ======
+// ====== رندر ======
+function draw() {
+    ctx.clearRect(0, 0, W, H);
+    
+    // ====== زمینه ======
+    if (bgLoaded) {
+        ctx.drawImage(bgImage, 0, 0, W, H);
+    } else {
+        const grad = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, W*0.7);
+        grad.addColorStop(0, '#4a7c3f');
+        grad.addColorStop(1, '#1a3a1a');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, W, H);
+    }
+    
+    // ====== ساختمان‌ها ======
+    for (let b of game.buildings) {
+        const pos = toScreen(b.x, b.y);
+        const size = game.gridSize * 0.5 * game.camera.zoom;
+        
+        // سایه
+        ctx.shadowColor = 'rgba(0,0,0,0.3)';
+        ctx.shadowBlur = 15;
+        ctx.shadowOffsetY = 5;
+        
+        // بدنه
+        ctx.font = `${size * 1.5}px 'Estedad', 'Ardekan', sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor = 'rgba(0,0,0,0.5)';
+        ctx.shadowBlur = 20;
+        ctx.fillText(b.emoji, pos.x, pos.y - 5);
+        
+        // نوار HP
+        ctx.shadowBlur = 0;
+        const hpW = size * 0.8;
+        const hpH = 4;
+        const hpX = pos.x - hpW/2;
+        const hpY = pos.y - size * 0.7;
+        ctx.fillStyle = 'rgba(0,0,0,0.6)';
+        ctx.roundRect(hpX, hpY, hpW, hpH, 2);
+        ctx.fill();
+        const hpRatio = b.hp / b.maxHp;
+        ctx.fillStyle = hpRatio > 0.5 ? '#4caf50' : hpRatio > 0.25 ? '#ff9800' : '#f44336';
+        ctx.roundRect(hpX, hpY, hpW * hpRatio, hpH, 2);
+        ctx.fill();
+        
+        // سطح
+        ctx.font = `${size * 0.4}px 'Estedad', 'Ardekan', sans-serif`;
+        ctx.fillStyle = '#ffd700';
+        ctx.shadowBlur = 8;
+        ctx.fillText(`Lv${b.level}`, pos.x, hpY - 6);
+    }
+    
+    // ====== دشمنان ======
+    for (let e of game.enemies) {
+        const pos = toScreen(e.x, e.y);
+        const size = game.gridSize * 0.4 * game.camera.zoom;
+        ctx.font = `${size * 1.8}px 'Estedad', 'Ardekan', sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor = 'rgba(255,0,0,0.5)';
+        ctx.shadowBlur = 25;
+        ctx.fillText(e.emoji, pos.x, pos.y);
+        
+        // نوار HP دشمن
+        ctx.shadowBlur = 0;
+        const hpW = size * 0.6;
+        const hpH = 3;
+        const hpX = pos.x - hpW/2;
+        const hpY = pos.y - size * 0.6;
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.roundRect(hpX, hpY, hpW, hpH, 2);
+        ctx.fill();
+        ctx.fillStyle = '#f44336';
+        ctx.roundRect(hpX, hpY, hpW * (e.hp/e.maxHp), hpH, 2);
+        ctx.fill();
+    }
+    
+    // ====== سربازها ======
+    for (let t of game.troops) {
+        const pos = toScreen(t.x, t.y);
+        const size = game.gridSize * 0.35 * game.camera.zoom;
+        ctx.font = `${size * 1.8}px 'Estedad', 'Ardekan', sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor = 'rgba(0,150,255,0.5)';
+        ctx.shadowBlur = 20;
+        ctx.fillText(t.emoji, pos.x, pos.y);
+    }
+    
+    // ====== حالت ساخت (هایلایت) ======
+    if (game.buildMode) {
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = 'rgba(255,215,0,0.15)';
+        ctx.fillRect(0, 0, W, H);
+        ctx.font = '20px Estedad, Ardekan, sans-serif';
+        ctx.fillStyle = '#ffd700';
+        ctx.textAlign = 'center';
+        ctx.shadowColor = 'rgba(0,0,0,0.8)';
+        ctx.shadowBlur = 15;
+        ctx.fillText(`📍 برای ساخت ${BUILDINGS[game.buildMode].name} روی زمین ضربه بزن`, W/2, 50);
+    }
+    
+    ctx.shadowBlur = 0;
+}
+
+// ====== UI ======
 function updateUI() {
     document.getElementById('goldDisplay').innerText = Math.floor(game.gold);
     document.getElementById('elixirDisplay').innerText = Math.floor(game.elixir);
     document.getElementById('starsDisplay').innerText = game.stars;
 }
 
-// Build buttons
-document.querySelectorAll('.buildBtn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
+// ====== رویدادهای کلیک ======
+canvas.addEventListener('click', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX - rect.left) / rect.width;
+    const my = (e.clientY - rect.top) / rect.height;
+    const cx = mx * W;
+    const cy = my * H;
+    
+    // اگر حالت ساخت فعاله
+    if (game.buildMode) {
+        // تبدیل مختصات صفحه به جهان (تقریبی)
+        const wx = (cx - W/2) / (game.gridSize * 0.5 * game.camera.zoom) + (cy - H/2) / (game.gridSize * 0.25 * game.camera.zoom);
+        const wy = (cy - H/2) / (game.gridSize * 0.25 * game.camera.zoom) - (cx - W/2) / (game.gridSize * 0.5 * game.camera.zoom);
+        const gx = Math.round(wx / 0.8) * 0.8;
+        const gy = Math.round(wy / 0.8) * 0.8;
+        if (Math.abs(gx) < 6 && Math.abs(gy) < 6) {
+            addBuilding(game.buildMode, gx, gy);
+        }
+        return;
+    }
+    
+    // انتخاب ساختمان برای ارتقا
+    for (let b of game.buildings) {
+        const pos = toScreen(b.x, b.y);
+        const size = game.gridSize * 0.5 * game.camera.zoom;
+        if (Math.abs(cx - pos.x) < size && Math.abs(cy - pos.y) < size) {
+            game.selectedBuilding = b;
+            const panel = document.getElementById('infoPanel');
+            panel.style.display = 'block';
+            document.getElementById('infoTitle').innerHTML = `${b.emoji} ${BUILDINGS[b.type].name}`;
+            document.getElementById('infoDesc').innerText = `سطح ${b.level} | 💚 ${Math.floor(b.hp)}/${b.maxHp}`;
+            document.getElementById('upgradeBtn').onclick = () => {
+                const cost = {gold: 25 * b.level, elixir: 10 * b.level};
+                if (game.gold >= cost.gold && game.elixir >= cost.elixir) {
+                    game.gold -= cost.gold;
+                    game.elixir -= cost.elixir;
+                    b.level++;
+                    b.maxHp += 15;
+                    b.hp = b.maxHp;
+                    updateUI();
+                    document.getElementById('infoDesc').innerText = `سطح ${b.level} | 💚 ${Math.floor(b.hp)}/${b.maxHp}`;
+                }
+            };
+            return;
+        }
+    }
+    document.getElementById('infoPanel').style.display = 'none';
+});
+
+// ====== دکمه‌ها ======
+document.querySelectorAll('.btn[data-type]').forEach(btn => {
+    btn.addEventListener('click', () => {
         const type = btn.dataset.type;
         game.buildMode = type;
-        document.querySelectorAll('.buildBtn').forEach(b => b.style.borderColor = '#4a4a8a');
-        btn.style.borderColor = '#ffd700';
+        document.querySelectorAll('.btn[data-type]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
         document.getElementById('infoPanel').style.display = 'none';
     });
 });
 
-// Tap ground to build
-canvas.addEventListener('click', (e) => {
-    if (!game.buildMode) return;
-    const pick = scene.pick(e.clientX, e.clientY, mesh => mesh === ground);
-    if (pick && pick.pickedPoint) {
-        const x = Math.round(pick.pickedPoint.x / game.gridSize) * game.gridSize;
-        const z = Math.round(pick.pickedPoint.z / game.gridSize) * game.gridSize;
-        if (Math.abs(x) < game.mapSize/2 - 1 && Math.abs(z) < game.mapSize/2 - 1) {
-            if (addBuilding(game.buildMode, x, z)) {
-                createParticles(new BABYLON.Vector3(x,0,z), new BABYLON.Color3(1,1,0.5), 15);
-            }
-        }
-    }
-});
+document.getElementById('trainBtn').addEventListener('click', spawnTroop);
 
-// Select building for upgrade
-canvas.addEventListener('dblclick', (e) => {
-    const pick = scene.pick(e.clientX, e.clientY);
-    if (pick && pick.pickedMesh) {
-        for (let b of game.buildings) {
-            if (b.mesh === pick.pickedMesh || (b.mesh.roof && b.mesh.roof === pick.pickedMesh)) {
-                game.selectedBuilding = b;
-                const panel = document.getElementById('infoPanel');
-                panel.style.display = 'block';
-                document.getElementById('infoTitle').innerText = b.type.toUpperCase() + ' Lv.' + b.level;
-                document.getElementById('infoDesc').innerText = 'HP: ' + Math.floor(b.hp) + '/' + b.maxHp;
-                document.getElementById('upgradeBtn').onclick = () => {
-                    const cost = {gold: 30 * b.level, elixir: 10 * b.level};
-                    if (canAfford(cost)) {
-                        spend(cost);
-                        b.level++;
-                        b.maxHp += 20;
-                        b.hp = b.maxHp;
-                        // Visual upgrade: scale up slightly
-                        b.mesh.scaling.x = 1 + b.level * 0.05;
-                        b.mesh.scaling.z = 1 + b.level * 0.05;
-                        b.mesh.scaling.y = 1 + b.level * 0.05;
-                        createParticles(b.mesh.position, new BABYLON.Color3(1,1,0), 25);
-                        updateUI();
-                        document.getElementById('infoTitle').innerText = b.type.toUpperCase() + ' Lv.' + b.level;
-                        document.getElementById('infoDesc').innerText = 'HP: ' + Math.floor(b.hp) + '/' + b.maxHp;
-                    }
-                };
-                return;
-            }
-        }
-    }
-});
+// ====== راند گیم ======
+function gameLoop() {
+    update();
+    draw();
+    requestAnimationFrame(gameLoop);
+}
 
-// ====== RESIZE ======
-window.addEventListener('resize', () => engine.resize());
-
-// ====== START ======
+// ====== استارت ======
 updateUI();
 
-// Spawn initial buildings
-addBuilding('house', -3, -3);
-addBuilding('house', 3, -3);
-addBuilding('farm', -4, 3);
-addBuilding('tower', 4, 4);
-addBuilding('barracks', 0, -5);
+// ساختمان‌های اولیه
+addBuilding('house', -1.6, -1.6);
+addBuilding('house', 1.6, -1.6);
+addBuilding('farm', -2.4, 1.6);
+addBuilding('tower', 2.4, 1.6);
+addBuilding('barracks', 0, -3.2);
 
-// Set camera target to center
-camera.setTarget(BABYLON.Vector3.Zero());
+gameLoop();
 
-engine.runRenderLoop(() => scene.render());
-
-console.log('🏰 Fantasy Kingdom RTS started!');
-console.log('📱 Tap ground to build, double-tap building to upgrade');
+console.log('🏰 بازی دهکده فانتزی با فونت Estedad و Ardekan آماده‌ست!');
+console.log('📱 روی زمین ضربه بزن تا بسازی، روی ساختمان ضربه بزن تا ارتقا بدی');
 </script>
 </body>
 </html>
