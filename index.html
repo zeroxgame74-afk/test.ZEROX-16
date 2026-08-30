@@ -66,10 +66,25 @@
             cursor: pointer;
         }
 
-        .logo img {
-            height: 45px;
-            width: auto;
-            display: block;
+        .logo h1 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 2rem;
+            background: linear-gradient(135deg, #B61C1C, #d43a3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.75rem;
+            background: #B61C1C;
+            color: white;
+            padding: 2px 12px;
+            border-radius: 30px;
+            -webkit-text-fill-color: white;
+            margin-right: 6px;
         }
 
         .nav-links {
@@ -303,6 +318,10 @@
             box-shadow: 0 12px 30px rgba(182, 28, 28, 0.12);
         }
 
+        .movie-card.hidden {
+            display: none;
+        }
+
         .movie-poster {
             position: relative;
             padding-top: 56.25%;
@@ -373,10 +392,19 @@
             min-height: 60vh;
         }
 
-        .search-page .logo-big img {
-            height: 80px;
-            width: auto;
+        .search-page .logo-big {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
             margin-bottom: 12px;
+        }
+
+        .search-page .logo-big img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .search-page .subtitle {
@@ -688,8 +716,8 @@
                 padding: 10px 16px;
                 flex-wrap: wrap;
             }
-            .logo img {
-                height: 35px;
+            .logo h1 {
+                font-size: 1.6rem;
             }
             .nav-links {
                 gap: 16px;
@@ -722,8 +750,9 @@
             .user-actions i {
                 font-size: 1rem;
             }
-            .search-page .logo-big img {
-                height: 60px;
+            .search-page .logo-big {
+                width: 80px;
+                height: 80px;
             }
             .search-page .search-box-big {
                 flex-wrap: wrap;
@@ -749,8 +778,8 @@
                 padding: 10px 12px;
                 gap: 6px;
             }
-            .logo img {
-                height: 30px;
+            .logo h1 {
+                font-size: 1.3rem;
             }
             .nav-links {
                 gap: 10px;
@@ -797,8 +826,9 @@
             .comment-box button {
                 width: 100%;
             }
-            .search-page .logo-big img {
-                height: 50px;
+            .search-page .logo-big {
+                width: 60px;
+                height: 60px;
             }
             .search-results .result-item img {
                 width: 55px;
@@ -813,7 +843,7 @@
         <!-- ===== HEADER ===== -->
         <header class="navbar">
             <div class="logo" onclick="showPage('home')">
-                <img src="https://uploadkon.ir/uploads/e96830_26file-000000004d2071fb9a46cad018bd1f48.png" alt="Zerox Studio" />
+                <h1>Zerox <span>VOD</span></h1>
             </div>
             <div class="nav-links">
                 <a class="active" onclick="showPage('home')"><i class="fas fa-home"></i> خانه</a>
@@ -858,7 +888,7 @@
 
             <div class="section-header">
                 <h2><i class="fas fa-fire" style="color:#B61C1C;"></i> جدیدترین عناوین</h2>
-                <a onclick="showPage('movies')">مشاهده همه</a>
+                <a href="#" onclick="showPage('movies'); return false;">مشاهده همه</a>
             </div>
 
             <div class="movie-grid" id="movieGrid">
@@ -895,7 +925,7 @@
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
-                    <img src="https://uploadkon.ir/uploads/e96830_26file-000000004d2071fb9a46cad018bd1f48.png" alt="Zerox Studio" />
+                    <img src="https://uploadkon.ir/uploads/e96830_26file-000000004d2071fb9a46cad018bd1f48.png" alt="Zerox" />
                 </div>
                 <p class="subtitle">هر چیزی که دنبالشی رو پیدا کن</p>
                 
@@ -1004,7 +1034,8 @@
                 desc: '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox',
                 duration: '۵ دقیقه',
                 rating: '9.2',
-                poster: 'https://uploadkon.ir/uploads/03bd30_26Zerox-th12.png'
+                poster: 'https://uploadkon.ir/uploads/03bd30_26Zerox-th12.png',
+                genre: 'horror'
             },
             {
                 title: 'داستان بازی | no im not a human',
@@ -1012,7 +1043,8 @@
                 desc: '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟',
                 duration: '۹ دقیقه',
                 rating: '8.7',
-                poster: 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg'
+                poster: 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg',
+                genre: 'horror,psycho'
             }
         ];
 
@@ -1054,12 +1086,13 @@
         // ===== صفحه‌بندی =====
         function showPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page-' + page).classList.add('active');
+            const target = document.getElementById('page-' + page);
+            if (target) target.classList.add('active');
             
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             const links = document.querySelectorAll('.nav-links a');
             const map = { home: 0, movies: 1 };
-            if (map[page] !== undefined) {
+            if (map[page] !== undefined && links[map[page]]) {
                 links[map[page]].classList.add('active');
             }
             
@@ -1076,7 +1109,8 @@
             
             if (page === 'search') {
                 setTimeout(() => {
-                    document.getElementById('searchInput').focus();
+                    const input = document.getElementById('searchInput');
+                    if (input) input.focus();
                 }, 100);
             }
         }
@@ -1147,15 +1181,24 @@
 
         // ===== باز کردن ویدیو =====
         function openVideo(url, title, desc, duration, rating) {
-            document.getElementById('videoIframe').src = url;
-            document.getElementById('videoTitle').textContent = title || 'عنوان فیلم';
-            document.getElementById('videoDescription').textContent = desc || 'توضیحات فیلم اینجا قرار می‌گیرد.';
-            document.getElementById('videoDuration').textContent = duration || '۰ دقیقه';
-            document.getElementById('videoRating').textContent = rating || '۰.۰';
+            const iframe = document.getElementById('videoIframe');
+            if (iframe) iframe.src = url;
+            
+            const titleEl = document.getElementById('videoTitle');
+            if (titleEl) titleEl.textContent = title || 'عنوان فیلم';
             
             const descEl = document.getElementById('videoDescription');
-            const toggle = document.getElementById('descToggle');
+            if (descEl) descEl.textContent = desc || 'توضیحات فیلم اینجا قرار می‌گیرد.';
+            
+            const durationEl = document.getElementById('videoDuration');
+            if (durationEl) durationEl.textContent = duration || '۰ دقیقه';
+            
+            const ratingEl = document.getElementById('videoRating');
+            if (ratingEl) ratingEl.textContent = rating || '۰.۰';
+            
+            // ریست کردن کشویی
             if (descEl) descEl.classList.remove('expanded');
+            const toggle = document.getElementById('descToggle');
             if (toggle) {
                 toggle.classList.remove('rotated');
                 document.getElementById('toggleText').textContent = 'نمایش بیشتر';
@@ -1168,12 +1211,13 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 const videoPage = document.getElementById('page-video');
-                if (videoPage.classList.contains('active')) {
-                    document.getElementById('videoIframe').src = '';
+                if (videoPage && videoPage.classList.contains('active')) {
+                    const iframe = document.getElementById('videoIframe');
+                    if (iframe) iframe.src = '';
                     showPage('home');
                 }
             }
         });
     </script>
 </body>
-</html>
+    </html>
