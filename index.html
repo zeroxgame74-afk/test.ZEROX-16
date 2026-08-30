@@ -66,25 +66,10 @@
             cursor: pointer;
         }
 
-        .logo h1 {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 2rem;
-            background: linear-gradient(135deg, #B61C1C, #d43a3a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            white-space: nowrap;
-        }
-
-        .logo span {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.75rem;
-            background: #B61C1C;
-            color: white;
-            padding: 2px 12px;
-            border-radius: 30px;
-            -webkit-text-fill-color: white;
-            margin-right: 6px;
+        .logo img {
+            height: 45px;
+            width: auto;
+            display: block;
         }
 
         .nav-links {
@@ -274,32 +259,6 @@
         }
 
         /* ===== HOME PAGE ===== */
-        .genre-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 16px 0 28px;
-        }
-
-        .genre-tabs span {
-            font-family: 'Estedad', sans-serif;
-            padding: 8px 22px;
-            border-radius: 30px;
-            background: white;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.3s;
-            border: 1px solid #eee;
-        }
-
-        .genre-tabs span:hover,
-        .genre-tabs span.active {
-            background: #B61C1C;
-            color: white;
-            border-color: #B61C1C;
-        }
-
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -317,6 +276,7 @@
             color: #B61C1C;
             text-decoration: none;
             font-size: 0.85rem;
+            cursor: pointer;
         }
 
         /* ===== MOVIE GRID ===== */
@@ -341,10 +301,6 @@
         .movie-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 30px rgba(182, 28, 28, 0.12);
-        }
-
-        .movie-card.hidden {
-            display: none;
         }
 
         .movie-poster {
@@ -417,25 +373,10 @@
             min-height: 60vh;
         }
 
-        .search-page .logo-big {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 3.5rem;
-            background: linear-gradient(135deg, #B61C1C, #d43a3a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-
-        .search-page .logo-big span {
-            font-family: 'Estedad', sans-serif;
-            font-size: 1.2rem;
-            background: #B61C1C;
-            color: white;
-            padding: 4px 16px;
-            border-radius: 30px;
-            -webkit-text-fill-color: white;
-            margin-right: 8px;
+        .search-page .logo-big img {
+            height: 80px;
+            width: auto;
+            margin-bottom: 12px;
         }
 
         .search-page .subtitle {
@@ -747,8 +688,8 @@
                 padding: 10px 16px;
                 flex-wrap: wrap;
             }
-            .logo h1 {
-                font-size: 1.6rem;
+            .logo img {
+                height: 35px;
             }
             .nav-links {
                 gap: 16px;
@@ -781,8 +722,8 @@
             .user-actions i {
                 font-size: 1rem;
             }
-            .search-page .logo-big {
-                font-size: 2.5rem;
+            .search-page .logo-big img {
+                height: 60px;
             }
             .search-page .search-box-big {
                 flex-wrap: wrap;
@@ -808,8 +749,8 @@
                 padding: 10px 12px;
                 gap: 6px;
             }
-            .logo h1 {
-                font-size: 1.3rem;
+            .logo img {
+                height: 30px;
             }
             .nav-links {
                 gap: 10px;
@@ -850,21 +791,14 @@
             .movie-info .meta {
                 font-size: 0.7rem;
             }
-            .genre-tabs span {
-                padding: 6px 14px;
-                font-size: 0.75rem;
-            }
             .comment-box {
                 flex-wrap: wrap;
             }
             .comment-box button {
                 width: 100%;
             }
-            .search-page .logo-big {
-                font-size: 2rem;
-            }
-            .search-page .logo-big span {
-                font-size: 0.9rem;
+            .search-page .logo-big img {
+                height: 50px;
             }
             .search-results .result-item img {
                 width: 55px;
@@ -879,7 +813,7 @@
         <!-- ===== HEADER ===== -->
         <header class="navbar">
             <div class="logo" onclick="showPage('home')">
-                <h1>Zerox <span>VOD</span></h1>
+                <img src="https://uploadkon.ir/uploads/e96830_26file-000000004d2071fb9a46cad018bd1f48.png" alt="Zerox Studio" />
             </div>
             <div class="nav-links">
                 <a class="active" onclick="showPage('home')"><i class="fas fa-home"></i> خانه</a>
@@ -922,21 +856,13 @@
                 </div>
             </div>
 
-            <div class="genre-tabs">
-                <span class="active" data-genre="all" onclick="filterGenre('all', this)">همه</span>
-                <span data-genre="horror" onclick="filterGenre('horror', this)">ترسناک</span>
-                <span data-genre="psycho" onclick="filterGenre('psycho', this)">روانشناختی</span>
-                <span data-genre="action" onclick="filterGenre('action', this)">اکشن</span>
-                <span data-genre="drama" onclick="filterGenre('drama', this)">درام</span>
-            </div>
-
             <div class="section-header">
                 <h2><i class="fas fa-fire" style="color:#B61C1C;"></i> جدیدترین عناوین</h2>
-                <a href="#" onclick="showPage('movies'); return false;">مشاهده همه</a>
+                <a onclick="showPage('movies')">مشاهده همه</a>
             </div>
 
             <div class="movie-grid" id="movieGrid">
-                <div class="movie-card" data-genre="horror" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
+                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/03bd30_26Zerox-th12.png');">
                         <span class="badge">جدید</span>
                         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
@@ -949,7 +875,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="movie-card" data-genre="horror,psycho" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
+                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
                         <span class="badge">ویژه</span>
                         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
@@ -969,7 +895,7 @@
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
-                    Zerox <span>VOD</span>
+                    <img src="https://uploadkon.ir/uploads/e96830_26file-000000004d2071fb9a46cad018bd1f48.png" alt="Zerox Studio" />
                 </div>
                 <p class="subtitle">هر چیزی که دنبالشی رو پیدا کن</p>
                 
@@ -1078,8 +1004,7 @@
                 desc: '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox',
                 duration: '۵ دقیقه',
                 rating: '9.2',
-                poster: 'https://uploadkon.ir/uploads/03bd30_26Zerox-th12.png',
-                genre: 'horror'
+                poster: 'https://uploadkon.ir/uploads/03bd30_26Zerox-th12.png'
             },
             {
                 title: 'داستان بازی | no im not a human',
@@ -1087,8 +1012,7 @@
                 desc: '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟',
                 duration: '۹ دقیقه',
                 rating: '8.7',
-                poster: 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg',
-                genre: 'horror,psycho'
+                poster: 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg'
             }
         ];
 
@@ -1188,7 +1112,6 @@
             }
 
             resultsContainer.innerHTML = results.map(movie => {
-                // برای جلوگیری از مشکل نقل قول در onclick
                 const safeTitle = movie.title.replace(/'/g, "\\'");
                 const safeDesc = movie.desc.replace(/'/g, "\\'");
                 return `
@@ -1222,21 +1145,6 @@
             }
         }
 
-        // ===== فیلتر ژانر =====
-        function filterGenre(genre, el) {
-            document.querySelectorAll('.genre-tabs span').forEach(item => item.classList.remove('active'));
-            el.classList.add('active');
-
-            document.querySelectorAll('.movie-card').forEach(card => {
-                const genres = card.dataset.genre.split(',');
-                if (genre === 'all' || genres.includes(genre)) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-        }
-
         // ===== باز کردن ویدیو =====
         function openVideo(url, title, desc, duration, rating) {
             document.getElementById('videoIframe').src = url;
@@ -1268,4 +1176,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
