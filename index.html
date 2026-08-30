@@ -518,6 +518,193 @@
             margin-bottom: 12px;
         }
 
+        /* ===== NOTIFICATIONS PAGE ===== */
+        .notifications-page {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .notifications-page h2 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notifications-page h2 i {
+            color: #B61C1C;
+        }
+
+        .notif-item {
+            background: white;
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            transition: 0.3s;
+            border-right: 4px solid #B61C1C;
+        }
+
+        .notif-item:hover {
+            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.1);
+        }
+
+        .notif-item .notif-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(182, 28, 28, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #B61C1C;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .notif-item .notif-content {
+            flex: 1;
+        }
+
+        .notif-item .notif-content h4 {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .notif-item .notif-content p {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.85rem;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .notif-item .notif-time {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.7rem;
+            color: #aaa;
+            white-space: nowrap;
+        }
+
+        .notif-item.unread {
+            background: #fef6f6;
+            border-right-color: #d43a3a;
+        }
+
+        /* ===== PROFILE PAGE ===== */
+        .profile-page {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .profile-page .profile-header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+        }
+
+        .profile-page .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #B61C1C, #d43a3a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.3);
+        }
+
+        .profile-page .profile-header h2 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .profile-page .profile-header p {
+            font-family: 'Estedad', sans-serif;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .profile-page .profile-stats {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+
+        .profile-page .profile-stats .stat {
+            background: rgba(182, 28, 28, 0.06);
+            padding: 10px 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .profile-page .profile-stats .stat .num {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #B61C1C;
+        }
+
+        .profile-page .profile-stats .stat .label {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        .profile-page .profile-menu {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .profile-page .profile-menu .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            border-bottom: 1px solid #f0ebe5;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Estedad', sans-serif;
+            color: #2d2a24;
+            text-decoration: none;
+        }
+
+        .profile-page .profile-menu .menu-item:hover {
+            background: #f8f4f0;
+        }
+
+        .profile-page .profile-menu .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .profile-page .profile-menu .menu-item i {
+            width: 24px;
+            color: #B61C1C;
+            font-size: 1.1rem;
+        }
+
+        .profile-page .profile-menu .menu-item .arrow {
+            margin-right: auto;
+            color: #ccc;
+        }
+
         /* ===== VIDEO PAGE ===== */
         .video-container {
             max-width: 1000px;
@@ -761,6 +948,12 @@
                 width: 100%;
                 justify-content: center;
             }
+            .notifications-page {
+                padding: 12px;
+            }
+            .profile-page {
+                padding: 12px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -826,6 +1019,21 @@
             .search-page .subtitle {
                 font-size: 0.8rem;
             }
+            .notif-item {
+                padding: 12px 14px;
+                flex-wrap: wrap;
+            }
+            .notif-item .notif-time {
+                width: 100%;
+                margin-right: 54px;
+            }
+            .profile-page .profile-stats {
+                flex-wrap: wrap;
+            }
+            .profile-page .profile-stats .stat {
+                flex: 1;
+                min-width: 80px;
+            }
         }
     </style>
 </head>
@@ -842,11 +1050,12 @@
             </div>
             <div class="user-actions">
                 <i class="fas fa-search search-icon" onclick="showPage('search')"></i>
-                <i class="fas fa-bell"></i>
-                <i class="fas fa-user-circle"></i>
+                <i class="fas fa-bell" onclick="showPage('notifications')"></i>
+                <i class="fas fa-user-circle" onclick="showPage('profile')"></i>
             </div>
         </header>
 
+        <!-- ===== صفحه خانه ===== -->
         <div class="page active" id="page-home">
             <div class="hero-slider" id="heroSlider">
                 <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
@@ -910,6 +1119,7 @@
             </div>
         </div>
 
+        <!-- ===== صفحه جستجو ===== -->
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
@@ -931,6 +1141,115 @@
             </div>
         </div>
 
+        <!-- ===== صفحه اعلان‌ها ===== -->
+        <div class="page" id="page-notifications">
+            <div class="notifications-page">
+                <h2><i class="fas fa-bell"></i> اعلان‌ها</h2>
+                
+                <div class="notif-item unread">
+                    <div class="notif-icon"><i class="fas fa-play"></i></div>
+                    <div class="notif-content">
+                        <h4>ویدیوی جدید منتشر شد!</h4>
+                        <p>🎬 بازی اوتلست 1 | بهترین بازی ترسناک دنیا</p>
+                    </div>
+                    <span class="notif-time">۲ دقیقه پیش</span>
+                </div>
+
+                <div class="notif-item unread">
+                    <div class="notif-icon"><i class="fas fa-thumbs-up"></i></div>
+                    <div class="notif-content">
+                        <h4>نظر جدید</h4>
+                        <p>💬 علی: "داشتم میمردم از ترس! عالی بود😂"</p>
+                    </div>
+                    <span class="notif-time">۱ ساعت پیش</span>
+                </div>
+
+                <div class="notif-item">
+                    <div class="notif-icon"><i class="fas fa-user-plus"></i></div>
+                    <div class="notif-content">
+                        <h4>دنبال‌کننده جدید</h4>
+                        <p>👤 محمد شما رو دنبال کرد</p>
+                    </div>
+                    <span class="notif-time">۳ ساعت پیش</span>
+                </div>
+
+                <div class="notif-item">
+                    <div class="notif-icon"><i class="fas fa-film"></i></div>
+                    <div class="notif-content">
+                        <h4>ویدیو محبوب شد</h4>
+                        <p>🔥 داستان بازی | no im not a human به ۱۰۰۰ بازدید رسید</p>
+                    </div>
+                    <span class="notif-time">دیروز</span>
+                </div>
+
+                <div class="notif-item">
+                    <div class="notif-icon"><i class="fas fa-heart"></i></div>
+                    <div class="notif-content">
+                        <h4>لایک جدید</h4>
+                        <p>❤️ ۱۲ نفر ویدیوی شما رو لایک کردن</p>
+                    </div>
+                    <span class="notif-time">۲ روز پیش</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== صفحه پروفایل ===== -->
+        <div class="page" id="page-profile">
+            <div class="profile-page">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h2>کاربر Zerox</h2>
+                    <p>🎬 عضو از ۱۴۰۴</p>
+                    
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <div class="num">۱۲</div>
+                            <div class="label">ویدیو</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">۳٬۴۵۶</div>
+                            <div class="label">دنبال‌کننده</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">۴.۸</div>
+                            <div class="label">امتیاز</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-menu">
+                    <div class="menu-item" onclick="showPage('home')">
+                        <i class="fas fa-history"></i>
+                        تاریخچه تماشا
+                        <span class="arrow"><i class="fas fa-chevron-left"></i></span>
+                    </div>
+                    <div class="menu-item" onclick="showPage('home')">
+                        <i class="fas fa-heart"></i>
+                        ویدیوهای مورد علاقه
+                        <span class="arrow"><i class="fas fa-chevron-left"></i></span>
+                    </div>
+                    <div class="menu-item" onclick="showPage('home')">
+                        <i class="fas fa-download"></i>
+                        دانلودها
+                        <span class="arrow"><i class="fas fa-chevron-left"></i></span>
+                    </div>
+                    <div class="menu-item" onclick="showPage('home')">
+                        <i class="fas fa-cog"></i>
+                        تنظیمات
+                        <span class="arrow"><i class="fas fa-chevron-left"></i></span>
+                    </div>
+                    <div class="menu-item" onclick="showPage('home')" style="color:#B61C1C;">
+                        <i class="fas fa-sign-out-alt"></i>
+                        خروج از حساب
+                        <span class="arrow"><i class="fas fa-chevron-left"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== صفحه ویدیوها ===== -->
         <div class="page" id="page-movies">
             <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin:20px 0;"><i class="fas fa-film" style="color:#B61C1C;"></i> ویدیوها</h2>
             <p style="font-family:'Estedad',sans-serif; color:#888;">همه ویدیوهای سینمایی و کوتاه</p>
@@ -963,6 +1282,7 @@
             </div>
         </div>
 
+        <!-- ===== صفحه ویدیو ===== -->
         <div class="page" id="page-video">
             <div class="video-container">
                 <div class="video-wrapper">
@@ -1193,4 +1513,4 @@
         });
     </script>
 </body>
-                </html>
+    </html>
