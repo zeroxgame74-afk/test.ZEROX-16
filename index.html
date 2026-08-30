@@ -149,7 +149,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== HERO SLIDER ===== */
+        /* ===== HERO SLIDER (فقط یک اسلاید) ===== */
         .hero-slider {
             position: relative;
             border-radius: 24px;
@@ -245,27 +245,7 @@
         }
 
         .slider-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            display: flex;
-            gap: 10px;
-        }
-
-        .slider-dots span {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.4);
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .slider-dots span.active {
-            background: white;
-            transform: scale(1.2);
+            display: none;
         }
 
         /* ===== HOME PAGE ===== */
@@ -488,15 +468,54 @@
             gap: 4px;
         }
 
-        .video-info-section .description {
+        /* ===== توضیحات کشویی ===== */
+        .description-wrapper {
+            position: relative;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 16px 0;
+        }
+
+        .description-text {
             font-family: 'Estedad', sans-serif;
             font-size: 0.95rem;
             color: #555;
             line-height: 1.8;
-            padding: 16px 0;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
+            max-height: 80px;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
             white-space: pre-line;
+        }
+
+        .description-text.expanded {
+            max-height: 500px;
+        }
+
+        .description-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            color: #B61C1C;
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            background: none;
+            transition: 0.3s;
+        }
+
+        .description-toggle:hover {
+            color: #8f1515;
+        }
+
+        .description-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .description-toggle.rotated i {
+            transform: rotate(180deg);
         }
 
         /* ===== COMMENTS ===== */
@@ -725,34 +744,15 @@
         <div class="page active" id="page-home">
             <!-- ===== HERO SLIDER ===== -->
             <div class="hero-slider" id="heroSlider">
-                <!-- اسلاید ۱ - بازی اوتلست 1 (جدید - بالاتر) -->
                 <div class="hero-slide active" style="background-image: url('https://uploadkon.ir/uploads/03bd30_26Zerox-th12.png');">
                     <div class="hero-content">
                         <span class="badge">جدید</span>
                         <h2>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h2>
                         <p>😨🏚️ Outlast | یه شب توی جهنم! امشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀 ببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀</p>
-                        <button class="btn-play" onclick="openVideo('https://www.aparat.com/v/gkcxc4t', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۱۴ دقیقه', '9.4')">
+                        <button class="btn-play" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۱۵ دقیقه', '9.2')">
                             <i class="fas fa-play"></i> پخش فیلم
                         </button>
                     </div>
-                </div>
-
-                <!-- اسلاید ۲ - no im not a human -->
-                <div class="hero-slide" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
-                    <div class="hero-content">
-                        <span class="badge">ویژه</span>
-                        <h2>داستان بازی | no im not a human</h2>
-                        <p>😨🚪 No, I'm Not a Human | یه شب جهنمی! امشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️ باید بفهمیم کی انسانه و کی نه... 👀</p>
-                        <button class="btn-play" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
-                            <i class="fas fa-play"></i> پخش فیلم
-                        </button>
-                    </div>
-                </div>
-
-                <!-- نقاط راهنما -->
-                <div class="slider-dots" id="sliderDots">
-                    <span class="active" onclick="goToSlide(0)"></span>
-                    <span onclick="goToSlide(1)"></span>
                 </div>
             </div>
 
@@ -775,8 +775,8 @@
             </div>
 
             <div class="movie-grid" id="movieGrid">
-                <!-- کارت ۱ - بازی اوتلست 1 (جدید - بالاتر) -->
-                <div class="movie-card" data-genre="horror" onclick="openVideo('https://www.aparat.com/v/gkcxc4t', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۱۴ دقیقه', '9.4')">
+                <!-- کارت جدید اوتلست (بالاتر) -->
+                <div class="movie-card" data-genre="horror" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۱۵ دقیقه', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/03bd30_26Zerox-th12.png');">
                         <span class="badge">جدید</span>
                         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
@@ -784,13 +784,13 @@
                     <div class="movie-info">
                         <h4>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h4>
                         <div class="meta">
-                            <span><i class="fas fa-clock"></i> ۱۴ دقیقه</span>
-                            <span class="rating"><i class="fas fa-star"></i> 9.4</span>
+                            <span><i class="fas fa-clock"></i> ۱۵ دقیقه</span>
+                            <span class="rating"><i class="fas fa-star"></i> 9.2</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- کارت ۲ - no im not a human -->
+                <!-- کارت قبلی no im not a human -->
                 <div class="movie-card" data-genre="horror,psycho" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
                         <span class="badge">ویژه</span>
@@ -812,8 +812,7 @@
             <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin:20px 0;"><i class="fas fa-film" style="color:#B61C1C;"></i> ویدیوها</h2>
             <p style="font-family:'Estedad',sans-serif; color:#888;">همه ویدیوهای سینمایی و کوتاه</p>
             <div class="movie-grid" style="margin-top:20px;">
-                <!-- کارت ۱ - بازی اوتلست 1 -->
-                <div class="movie-card" onclick="openVideo('https://www.aparat.com/v/gkcxc4t', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۱۴ دقیقه', '9.4')">
+                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۱۵ دقیقه', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/03bd30_26Zerox-th12.png');">
                         <span class="badge">جدید</span>
                         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
@@ -821,13 +820,11 @@
                     <div class="movie-info">
                         <h4>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h4>
                         <div class="meta">
-                            <span><i class="fas fa-clock"></i> ۱۴ دقیقه</span>
-                            <span class="rating"><i class="fas fa-star"></i> 9.4</span>
+                            <span><i class="fas fa-clock"></i> ۱۵ دقیقه</span>
+                            <span class="rating"><i class="fas fa-star"></i> 9.2</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- کارت ۲ - no im not a human -->
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
                         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
@@ -857,8 +854,16 @@
                         <span><i class="fas fa-star" style="color:#f5b342;"></i> <span id="videoRating">۰.۰</span></span>
                         <span><i class="fas fa-eye"></i> ۱٬۲۳۴ بازدید</span>
                     </div>
-                    <div class="description" id="videoDescription">
-                        توضیحات فیلم اینجا قرار می‌گیرد.
+                    
+                    <!-- ===== توضیحات کشویی ===== -->
+                    <div class="description-wrapper">
+                        <div class="description-text" id="videoDescription">
+                            توضیحات فیلم اینجا قرار می‌گیرد.
+                        </div>
+                        <button class="description-toggle" id="descToggle" onclick="toggleDescription()">
+                            <span id="toggleText">نمایش بیشتر</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -888,41 +893,7 @@
     </div>
 
     <script>
-        // ===== اسلایدر =====
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.slider-dots span');
-        let autoPlayInterval;
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-            currentSlide = index;
-        }
-
-        function goToSlide(index) {
-            showSlide(index);
-            resetAutoPlay();
-        }
-
-        function resetAutoPlay() {
-            clearInterval(autoPlayInterval);
-            startAutoPlay();
-        }
-
-        function startAutoPlay() {
-            autoPlayInterval = setInterval(() => {
-                let next = (currentSlide + 1) % slides.length;
-                showSlide(next);
-            }, 4000);
-        }
-
-        startAutoPlay();
-
+        // ===== اسلایدر (فقط یک اسلاید) =====
         // ===== صفحه‌بندی =====
         function showPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -937,6 +908,32 @@
             
             if (page === 'video') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                // ریست کردن توضیحات کشویی
+                const desc = document.getElementById('videoDescription');
+                const toggle = document.getElementById('descToggle');
+                if (desc) {
+                    desc.classList.remove('expanded');
+                }
+                if (toggle) {
+                    toggle.classList.remove('rotated');
+                    document.getElementById('toggleText').textContent = 'نمایش بیشتر';
+                }
+            }
+        }
+
+        // ===== توضیحات کشویی =====
+        function toggleDescription() {
+            const desc = document.getElementById('videoDescription');
+            const toggle = document.getElementById('descToggle');
+            const toggleText = document.getElementById('toggleText');
+            
+            desc.classList.toggle('expanded');
+            toggle.classList.toggle('rotated');
+            
+            if (desc.classList.contains('expanded')) {
+                toggleText.textContent = 'نمایش کمتر';
+            } else {
+                toggleText.textContent = 'نمایش بیشتر';
             }
         }
 
@@ -963,6 +960,17 @@
             document.getElementById('videoDuration').textContent = duration || '۰ دقیقه';
             document.getElementById('videoRating').textContent = rating || '۰.۰';
             
+            // ریست کردن وضعیت کشویی
+            const descEl = document.getElementById('videoDescription');
+            const toggle = document.getElementById('descToggle');
+            if (descEl) {
+                descEl.classList.remove('expanded');
+            }
+            if (toggle) {
+                toggle.classList.remove('rotated');
+                document.getElementById('toggleText').textContent = 'نمایش بیشتر';
+            }
+            
             showPage('video');
         }
 
@@ -978,4 +986,4 @@
         });
     </script>
 </body>
-                    </html>
+</html>
