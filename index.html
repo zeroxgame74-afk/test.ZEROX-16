@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@400;700&display=swap" rel="stylesheet" />
 
     <style>
+        /* ===== تمام استایل‌های قبلی ===== */
         * {
             margin: 0;
             padding: 0;
@@ -544,13 +545,14 @@
             color: #B61C1C;
         }
 
-        .notifications-page .notif-header .badge-count {
-            background: #B61C1C;
+        .notifications-page .notif-header .studio-badge {
+            background: linear-gradient(135deg, #B61C1C, #d43a3a);
             color: white;
-            padding: 2px 12px;
+            padding: 4px 16px;
             border-radius: 30px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 700;
+            font-family: 'Estedad', sans-serif;
         }
 
         .notif-item {
@@ -604,6 +606,17 @@
             font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 4px;
+            color: #1a1a1a;
+        }
+
+        .notif-item .notif-content h4 .studio-tag {
+            color: #B61C1C;
+            font-size: 0.65rem;
+            background: rgba(182, 28, 28, 0.1);
+            padding: 0 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-right: 6px;
         }
 
         .notif-item .notif-content p {
@@ -611,6 +624,11 @@
             font-size: 0.85rem;
             color: #888;
             line-height: 1.6;
+        }
+
+        .notif-item .notif-content .highlight {
+            color: #B61C1C;
+            font-weight: 700;
         }
 
         .notif-item .notif-time {
@@ -1141,7 +1159,18 @@
         <!-- ===== صفحه خانه ===== -->
         <div class="page active" id="page-home">
             <div class="hero-slider" id="heroSlider">
-                <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
+                <!-- اسلاید جدید GTA 6 -->
+                <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/p569168_Negar_1788104194156.png');">
+                    <div class="hero-content">
+                        <span class="badge">🔥 جدید</span>
+                        <h2>گیم پلی بازی GTA6 | راکستار ترکوند!</h2>
+                        <p>🎮 سلام رفقااا! بالاخره ویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و قراره گیم‌پلی بازی رو باهم زیر و رو کنیم! 👀🔥</p>
+                        <button class="btn-play" onclick="event.stopPropagation(); openVideo('https://www.aparat.com/video/video/embed/videohash/jqnf14f/vt/frame', 'گیم پلی بازی GTA6 | راکستار ترکوند!', 'سلام رفقااا! 😎🎮\nبالاخره ویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و قراره گیم‌پلی بازی رو باهم زیر و رو کنیم! 👀🔥\n\nاز گرافیک خفن و جزئیات دیوونه‌کننده بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه رو توی این ویدیو داریم! 😳💥\n\n🎬 ساخته شده توسط Zerox Studio\n💬 نظرت رو برامون بنویس!', '۱۲ دقیقه', '9.8')">
+                            <i class="fas fa-play"></i> پخش فیلم
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-slide" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
                     <div class="hero-content">
                         <span class="badge">جدید</span>
                         <h2>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h2>
@@ -1164,6 +1193,7 @@
                 <div class="slider-dots" id="sliderDots">
                     <span class="active" onclick="goToSlide(0)"></span>
                     <span onclick="goToSlide(1)"></span>
+                    <span onclick="goToSlide(2)"></span>
                 </div>
             </div>
 
@@ -1173,6 +1203,20 @@
             </div>
 
             <div class="movie-grid" id="movieGrid">
+                <!-- کارت جدید GTA 6 -->
+                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/jqnf14f/vt/frame', 'گیم پلی بازی GTA6 | راکستار ترکوند!', 'سلام رفقااا! 😎🎮\nبالاخره ویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و قراره گیم‌پلی بازی رو باهم زیر و رو کنیم! 👀🔥\n\nاز گرافیک خفن و جزئیات دیوونه‌کننده بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه رو توی این ویدیو داریم! 😳💥\n\n🎬 ساخته شده توسط Zerox Studio\n💬 نظرت رو برامون بنویس!', '۱۲ دقیقه', '9.8')">
+                    <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/p569168_Negar_1788104194156.png');">
+                        <span class="badge">🔥 جدید</span>
+                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="movie-info">
+                        <h4>گیم پلی بازی GTA6 | راکستار ترکوند!</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> ۱۲ دقیقه</span>
+                            <span class="rating"><i class="fas fa-star"></i> 9.8</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
                         <span class="badge">جدید</span>
@@ -1229,53 +1273,53 @@
             <div class="notifications-page">
                 <div class="notif-header">
                     <h2><i class="fas fa-bell"></i> اعلان‌ها</h2>
-                    <span class="badge-count">۳ جدید</span>
+                    <span class="studio-badge">🎬 Zerox Studio</span>
                 </div>
                 
                 <div class="notif-item">
                     <span class="notif-dot"></span>
                     <div class="notif-icon"><i class="fas fa-play-circle"></i></div>
                     <div class="notif-content">
-                        <h4>🎬 ویدیوی جدید منتشر شد!</h4>
-                        <p>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</p>
+                        <h4>🎬 ویدیوی جدید <span class="studio-tag">Zerox Studio</span></h4>
+                        <p>ویدیوی <span class="highlight">«گیم پلی GTA 6»</span> در Zerox Studio منتشر شد! 🎮🔥</p>
                     </div>
-                    <span class="notif-time"><i class="far fa-clock"></i> ۲ دقیقه پیش</span>
+                    <span class="notif-time"><i class="far fa-clock"></i> ۱ دقیقه پیش</span>
                 </div>
 
                 <div class="notif-item">
                     <span class="notif-dot"></span>
                     <div class="notif-icon"><i class="fas fa-fire"></i></div>
                     <div class="notif-content">
-                        <h4>🔥 ویدیو داغ شد!</h4>
-                        <p>ویدیوی جدید به ۵۰۰ بازدید رسید</p>
+                        <h4>🔥 ویدیو داغ شد! <span class="studio-tag">Zerox Studio</span></h4>
+                        <p>ویدیوی <span class="highlight">«گیم پلی GTA 6»</span> در Zerox Studio به ۵۰ بازدید رسید! 🚀</p>
                     </div>
-                    <span class="notif-time"><i class="far fa-clock"></i> ۱۵ دقیقه پیش</span>
+                    <span class="notif-time"><i class="far fa-clock"></i> ۱۰ دقیقه پیش</span>
                 </div>
 
                 <div class="notif-item">
                     <span class="notif-dot"></span>
                     <div class="notif-icon"><i class="fas fa-heart"></i></div>
                     <div class="notif-content">
-                        <h4>❤️ لایک جدید</h4>
-                        <p>رضا به ویدیوی شما لایک کرد</p>
+                        <h4>❤️ لایک جدید <span class="studio-tag">Zerox Studio</span></h4>
+                        <p>کاربر <span class="highlight">علی</span> به ویدیوی GTA 6 لایک کرد! 🎮</p>
                     </div>
-                    <span class="notif-time"><i class="far fa-clock"></i> ۱ ساعت پیش</span>
+                    <span class="notif-time"><i class="far fa-clock"></i> ۳۰ دقیقه پیش</span>
                 </div>
 
                 <div class="notif-item read">
                     <div class="notif-icon"><i class="fas fa-user-plus"></i></div>
                     <div class="notif-content">
-                        <h4>👤 دنبال‌کننده جدید</h4>
-                        <p>سارا شما رو دنبال کرد</p>
+                        <h4>👤 دنبال‌کننده جدید <span class="studio-tag">Zerox Studio</span></h4>
+                        <p>کاربر <span class="highlight">سارا</span> Zerox Studio رو دنبال کرد! 🎯</p>
                     </div>
-                    <span class="notif-time"><i class="far fa-clock"></i> ۳ ساعت پیش</span>
+                    <span class="notif-time"><i class="far fa-clock"></i> ۲ ساعت پیش</span>
                 </div>
 
                 <div class="notif-item read">
                     <div class="notif-icon"><i class="fas fa-comment"></i></div>
                     <div class="notif-content">
-                        <h4>💬 نظر جدید</h4>
-                        <p>علی: "داشتم میمردم از ترس! عالی بود😂"</p>
+                        <h4>💬 نظر جدید <span class="studio-tag">Zerox Studio</span></h4>
+                        <p>محمد: <span class="highlight">«این گرافیک واقعاً دیوونه‌کننده‌ست! 😍»</span></p>
                     </div>
                     <span class="notif-time"><i class="far fa-clock"></i> دیروز</span>
                 </div>
@@ -1283,8 +1327,8 @@
                 <div class="notif-item read">
                     <div class="notif-icon"><i class="fas fa-trophy"></i></div>
                     <div class="notif-content">
-                        <h4>🏆 ویدیو محبوب شد</h4>
-                        <p>داستان بازی به ۱۰۰۰ بازدید رسید</p>
+                        <h4>🏆 ویدیو محبوب شد <span class="studio-tag">Zerox Studio</span></h4>
+                        <p>ویدیوی <span class="highlight">«بازی اوتلست 1»</span> به ۱۰۰۰ بازدید رسید! 🎉</p>
                     </div>
                     <span class="notif-time"><i class="far fa-clock"></i> ۲ روز پیش</span>
                 </div>
@@ -1300,7 +1344,7 @@
                     </div>
                     <span class="guest-badge">👤 مهمان</span>
                     <h2>خوش آمدی!</h2>
-                    <p>برای دسترسی به امکانات کامل وارد شوید</p>
+                    <p>به <strong>Zerox Studio</strong> خوش اومدی 🎬</p>
                     
                     <div class="profile-actions">
                         <button class="btn btn-primary" onclick="showPage('home')">ورود / ثبت‌نام</button>
@@ -1345,6 +1389,19 @@
             <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin:20px 0;"><i class="fas fa-film" style="color:#B61C1C;"></i> ویدیوها</h2>
             <p style="font-family:'Estedad',sans-serif; color:#888;">همه ویدیوهای سینمایی و کوتاه</p>
             <div class="movie-grid" style="margin-top:20px;">
+                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/jqnf14f/vt/frame', 'گیم پلی بازی GTA6 | راکستار ترکوند!', 'سلام رفقااا! 😎🎮\nبالاخره ویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و قراره گیم‌پلی بازی رو باهم زیر و رو کنیم! 👀🔥\n\nاز گرافیک خفن و جزئیات دیوونه‌کننده بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه رو توی این ویدیو داریم! 😳💥\n\n🎬 ساخته شده توسط Zerox Studio\n💬 نظرت رو برامون بنویس!', '۱۲ دقیقه', '9.8')">
+                    <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/p569168_Negar_1788104194156.png');">
+                        <span class="badge">🔥 جدید</span>
+                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="movie-info">
+                        <h4>گیم پلی بازی GTA6 | راکستار ترکوند!</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> ۱۲ دقیقه</span>
+                            <span class="rating"><i class="fas fa-star"></i> 9.8</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
                         <span class="badge">جدید</span>
@@ -1411,7 +1468,7 @@
 
         <footer>
             <h2>Zerox Studio</h2>
-            <p>پلتفرم سینمایی و سرگرمی دیجیتال</p>
+            <p>🎮 Create. Play. Be Different.</p>
             <div class="footer-social">
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-telegram"></i></a>
@@ -1423,6 +1480,14 @@
 
     <script>
         const moviesDB = [
+            {
+                title: 'گیم پلی بازی GTA6 | راکستار ترکوند!',
+                url: 'https://www.aparat.com/video/video/embed/videohash/jqnf14f/vt/frame',
+                desc: 'سلام رفقااا! 😎🎮\nبالاخره ویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و قراره گیم‌پلی بازی رو باهم زیر و رو کنیم! 👀🔥\n\nاز گرافیک خفن و جزئیات دیوونه‌کننده بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه رو توی این ویدیو داریم! 😳💥\n\n🎬 ساخته شده توسط Zerox Studio\n💬 نظرت رو برامون بنویس!',
+                duration: '۱۲ دقیقه',
+                rating: '9.8',
+                poster: 'https://cdn.imgurl.ir/uploads/p569168_Negar_1788104194156.png'
+            },
             {
                 title: 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا',
                 url: 'https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame',
@@ -1604,4 +1669,4 @@
         });
     </script>
 </body>
-                        </html>
+</html>
