@@ -244,8 +244,29 @@
             transform: scale(1.03);
         }
 
+        /* ===== نقاط راهنما ===== */
         .slider-dots {
-            display: none;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        .slider-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .slider-dots span.active {
+            background: white;
+            transform: scale(1.2);
         }
 
         /* ===== HOME PAGE ===== */
@@ -744,6 +765,7 @@
         <div class="page active" id="page-home">
             <!-- ===== HERO SLIDER ===== -->
             <div class="hero-slider" id="heroSlider">
+                <!-- اسلاید ۱: اوتلست -->
                 <div class="hero-slide active" style="background-image: url('https://uploadkon.ir/uploads/03bd30_26Zerox-th12.png');">
                     <div class="hero-content">
                         <span class="badge">جدید</span>
@@ -753,6 +775,24 @@
                             <i class="fas fa-play"></i> پخش فیلم
                         </button>
                     </div>
+                </div>
+
+                <!-- اسلاید ۲: no im not a human -->
+                <div class="hero-slide" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
+                    <div class="hero-content">
+                        <span class="badge">ویژه</span>
+                        <h2>داستان بازی | no im not a human</h2>
+                        <p>😨🚪 No, I'm Not a Human | یه شب جهنمی! امشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️ باید بفهمیم کی انسانه و کی نه... 👀</p>
+                        <button class="btn-play" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
+                            <i class="fas fa-play"></i> پخش فیلم
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ===== نقاط راهنما ===== -->
+                <div class="slider-dots" id="sliderDots">
+                    <span class="active" onclick="goToSlide(0)"></span>
+                    <span onclick="goToSlide(1)"></span>
                 </div>
             </div>
 
@@ -893,7 +933,41 @@
     </div>
 
     <script>
-        // ===== اسلایدر (فقط یک اسلاید) =====
+        // ===== اسلایدر =====
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dots span');
+        let autoPlayInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+            resetAutoPlay();
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                let next = (currentSlide + 1) % slides.length;
+                showSlide(next);
+            }, 5000);
+        }
+
+        startAutoPlay();
+
         // ===== صفحه‌بندی =====
         function showPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
