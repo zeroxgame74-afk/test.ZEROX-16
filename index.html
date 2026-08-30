@@ -6,8 +6,10 @@
     <title>Zerox Studio | VOD Platform</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/estedad-font@v1.0.0/dist/font-face.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sepandhaghighi/Ardekan-font@master/fontface.css" />
+    
+    <!-- ===== فونت‌ها از Google Fonts ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@400;700&display=swap" rel="stylesheet" />
 
     <style>
         * {
@@ -65,6 +67,7 @@
             background: linear-gradient(135deg, #B61C1C, #d43a3a);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .logo span {
@@ -138,7 +141,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== HERO SLIDER / CAROUSEL ===== */
+        /* ===== HERO SLIDER (بدون دکمه) ===== */
         .hero-slider {
             position: relative;
             border-radius: 24px;
@@ -192,6 +195,7 @@
             font-size: 0.7rem;
             font-weight: 700;
             margin-bottom: 10px;
+            font-family: 'Estedad', sans-serif;
         }
 
         .hero-content h2 {
@@ -202,6 +206,7 @@
         }
 
         .hero-content p {
+            font-family: 'Estedad', sans-serif;
             font-size: 0.95rem;
             opacity: 0.9;
             margin-bottom: 16px;
@@ -231,39 +236,7 @@
             transform: scale(1.03);
         }
 
-        /* دکمه‌های اسلایدر */
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(8px);
-            border: none;
-            color: white;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slider-btn:hover {
-            background: rgba(255,255,255,0.35);
-        }
-
-        .slider-btn.prev {
-            right: 16px;
-        }
-        .slider-btn.next {
-            left: 16px;
-        }
-
-        /* نقاط راهنما */
+        /* ===== فقط نقاط راهنما ===== */
         .slider-dots {
             position: absolute;
             bottom: 20px;
@@ -689,11 +662,6 @@
             .movie-card {
                 max-width: 100%;
             }
-            .slider-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 0.9rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -758,7 +726,7 @@
 
         <!-- ===== صفحه خانه ===== -->
         <div class="page active" id="page-home">
-            <!-- ===== HERO SLIDER ===== -->
+            <!-- ===== HERO SLIDER (بدون دکمه) ===== -->
             <div class="hero-slider" id="heroSlider">
                 <!-- اسلاید ۱ -->
                 <div class="hero-slide active" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
@@ -796,11 +764,7 @@
                     </div>
                 </div>
 
-                <!-- دکمه‌های قبلی و بعدی -->
-                <button class="slider-btn prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-right"></i></button>
-                <button class="slider-btn next" onclick="changeSlide(1)"><i class="fas fa-chevron-left"></i></button>
-
-                <!-- نقاط راهنما -->
+                <!-- ===== فقط نقاط راهنما ===== -->
                 <div class="slider-dots" id="sliderDots">
                     <span class="active" onclick="goToSlide(0)"></span>
                     <span onclick="goToSlide(1)"></span>
@@ -971,14 +935,6 @@
             currentSlide = index;
         }
 
-        function changeSlide(direction) {
-            let newIndex = currentSlide + direction;
-            if (newIndex < 0) newIndex = slides.length - 1;
-            if (newIndex >= slides.length) newIndex = 0;
-            showSlide(newIndex);
-            resetAutoPlay();
-        }
-
         function goToSlide(index) {
             showSlide(index);
             resetAutoPlay();
@@ -1054,4 +1010,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
