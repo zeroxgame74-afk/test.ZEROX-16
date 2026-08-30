@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>🏰 دهکده فانتزی</title>
     
-    <!-- ====== فقط فونت Estedad و Ardekan ====== -->
-    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'Ardekan';
@@ -19,12 +18,7 @@
             font-weight: bold;
         }
         
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            user-select: none; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
         body {
             background: #0a0a1a;
             display: flex;
@@ -44,13 +38,29 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 0 60px rgba(0,0,0,0.9);
-            background: #1a3a1a;
+            background: #2d5a27;
         }
-        canvas {
-            display: block;
+        #bgLayer {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            background-image: url('https://uploadkon.ir/uploads/ba7f30_261787609126995.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
             cursor: pointer;
+            background: transparent !important;
         }
         
         /* ====== نوار بالایی ====== */
@@ -66,6 +76,7 @@
             font-weight: 700;
             text-shadow: 0 2px 12px rgba(0,0,0,0.95);
             pointer-events: none;
+            z-index: 2;
             font-family: 'Estedad', 'Ardekan', sans-serif;
         }
         #topBar > div {
@@ -97,21 +108,19 @@
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255,215,0,0.25);
             display: none;
+            z-index: 3;
             font-family: 'Estedad', 'Ardekan', sans-serif;
             text-align: center;
-            z-index: 10;
         }
         #infoPanel .title { 
             font-weight: 900; 
             color: #ffd700; 
             font-size: 18px;
-            font-family: 'Estedad', 'Ardekan', sans-serif;
         }
         #infoPanel .desc {
             font-size: 13px;
             opacity: 0.8;
             margin: 4px 0;
-            font-family: 'Estedad', 'Ardekan', sans-serif;
         }
         #upgradeBtn {
             margin-top: 8px;
@@ -143,6 +152,7 @@
             background: linear-gradient(transparent, rgba(0,0,0,0.8));
             border-radius: 20px;
             pointer-events: none;
+            z-index: 2;
         }
         #buildMenu > * { pointer-events: auto; }
         .btn {
@@ -182,6 +192,10 @@
 <body>
 
 <div id="container">
+    <!-- لایه زمینه با عکس شما -->
+    <div id="bgLayer"></div>
+    
+    <!-- کانوس برای المان‌های بازی -->
     <canvas id="gameCanvas"></canvas>
 
     <!-- نوار بالایی -->
@@ -211,7 +225,7 @@
 
 <script>
 // ============================================================
-//  بازی کامل ۲D با عکس زمینه
+//  بازی روی عکس زمینه
 // ============================================================
 
 const canvas = document.getElementById('gameCanvas');
@@ -224,20 +238,10 @@ function resize() {
     canvas.height = rect.height * window.devicePixelRatio;
     W = canvas.width;
     H = canvas.height;
+    ctx.scale(1, 1);
 }
 resize();
 window.addEventListener('resize', resize);
-
-// ====== بارگذاری عکس زمینه ======
-const bgImage = new Image();
-bgImage.crossOrigin = "Anonymous";
-bgImage.src = "https://uploadkon.ir/uploads/ba7f30_261787609126995.jpg";
-let bgLoaded = false;
-bgImage.onload = () => { bgLoaded = true; };
-bgImage.onerror = () => { 
-    console.warn("عکس لود نشد، از گرادینت استفاده می‌شه");
-    bgLoaded = false;
-};
 
 // ====== حالت بازی ======
 const game = {
@@ -251,11 +255,10 @@ const game = {
     selectedBuilding: null,
     buildMode: null,
     gridSize: 40,
-    mapSize: 300,
     camera: { x: 0, y: 0, zoom: 1 }
 };
 
-// ====== سیستم مختصات ایزومتریک ======
+// ====== تبدیل مختصات ایزومتریک ======
 function toScreen(worldX, worldY) {
     const cx = W/2 + (worldX - worldY) * game.gridSize * 0.5 * game.camera.zoom;
     const cy = H/2 + (worldX + worldY) * game.gridSize * 0.25 * game.camera.zoom;
@@ -264,18 +267,17 @@ function toScreen(worldX, worldY) {
 
 // ====== ساختمان‌ها ======
 const BUILDINGS = {
-    house: { name: 'کلبه', cost: {gold:30, elixir:0}, color: '#d4a373', hp:50, size:0.8, emoji: '🏠' },
-    farm: { name: 'مزرعه', cost: {gold:40, elixir:0}, color: '#6a994e', hp:40, size:0.9, emoji: '🌾' },
-    tower: { name: 'برج', cost: {gold:50, elixir:20}, color: '#7b2cbf', hp:80, size:0.7, emoji: '🗼' },
-    barracks: { name: 'پادگان', cost: {gold:60, elixir:30}, color: '#d62828', hp:100, size:1.0, emoji: '⚔️' },
-    wall: { name: 'دیوار', cost: {gold:20, elixir:0}, color: '#8d99ae', hp:120, size:0.6, emoji: '🧱' }
+    house: { name: 'کلبه', cost: {gold:30, elixir:0}, hp:50, size:0.8, emoji: '🏠' },
+    farm: { name: 'مزرعه', cost: {gold:40, elixir:0}, hp:40, size:0.9, emoji: '🌾' },
+    tower: { name: 'برج', cost: {gold:50, elixir:20}, hp:80, size:0.7, emoji: '🗼' },
+    barracks: { name: 'پادگان', cost: {gold:60, elixir:30}, hp:100, size:1.0, emoji: '⚔️' },
+    wall: { name: 'دیوار', cost: {gold:20, elixir:0}, hp:120, size:0.6, emoji: '🧱' }
 };
 
 function addBuilding(type, wx, wy) {
     const data = BUILDINGS[type];
     if (game.gold < data.cost.gold || game.elixir < data.cost.elixir) return false;
     
-    // برخورد ساده
     for (let b of game.buildings) {
         if (Math.abs(b.x - wx) < 0.8 && Math.abs(b.y - wy) < 0.8) return false;
     }
@@ -302,7 +304,7 @@ let enemySpawnTimer = 0;
 
 function spawnEnemy() {
     const angle = Math.random() * Math.PI * 2;
-    const dist = 8 + Math.random() * 4;
+    const dist = 6 + Math.random() * 4;
     const wx = Math.cos(angle) * dist;
     const wy = Math.sin(angle) * dist;
     
@@ -311,7 +313,6 @@ function spawnEnemy() {
         hp: 15 + game.level * 5,
         maxHp: 15 + game.level * 5,
         speed: 0.8 + game.level * 0.1,
-        target: null,
         attackCooldown: 0,
         damage: 3 + game.level,
         emoji: '👹'
@@ -332,7 +333,6 @@ function spawnTroop() {
         speed: 1.5 + Math.random(),
         damage: 6,
         attackCooldown: 0,
-        target: null,
         emoji: '⚔️'
     });
     updateUI();
@@ -348,7 +348,7 @@ function update() {
         spawnEnemy();
     }
     
-    // حرکت دشمنان به سمت نزدیک‌ترین ساختمان
+    // حرکت دشمنان
     for (let i = game.enemies.length - 1; i >= 0; i--) {
         const e = game.enemies[i];
         let target = null;
@@ -401,8 +401,8 @@ function update() {
                                 updateUI();
                                 if (game.enemies.length === 0 && game.buildings.length > 2) {
                                     game.level++;
-                                    document.getElementById('infoTitle').innerText = '🎉 سطح بالا رفت!';
-                                    setTimeout(() => document.getElementById('infoTitle').innerText = '🏠 کلبه', 2000);
+                                    document.getElementById('infoTitle').innerHTML = '🎉 سطح بالا رفت!';
+                                    setTimeout(() => document.getElementById('infoTitle').innerHTML = '🏠 کلبه', 2000);
                                 }
                             }
                         }
@@ -413,7 +413,7 @@ function update() {
         }
     }
     
-    // سربازها به دشمن حمله می‌کنن
+    // سربازها
     for (let t of game.troops) {
         let target = null;
         let minDist = Infinity;
@@ -464,68 +464,57 @@ function update() {
 function draw() {
     ctx.clearRect(0, 0, W, H);
     
-    // ====== زمینه ======
-    if (bgLoaded) {
-        ctx.drawImage(bgImage, 0, 0, W, H);
-    } else {
-        const grad = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, W*0.7);
-        grad.addColorStop(0, '#4a7c3f');
-        grad.addColorStop(1, '#1a3a1a');
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, W, H);
-    }
-    
     // ====== ساختمان‌ها ======
     for (let b of game.buildings) {
         const pos = toScreen(b.x, b.y);
         const size = game.gridSize * 0.5 * game.camera.zoom;
         
         // سایه
-        ctx.shadowColor = 'rgba(0,0,0,0.3)';
-        ctx.shadowBlur = 15;
-        ctx.shadowOffsetY = 5;
+        ctx.shadowColor = 'rgba(0,0,0,0.4)';
+        ctx.shadowBlur = 20;
+        ctx.shadowOffsetY = 8;
         
-        // بدنه
-        ctx.font = `${size * 1.5}px 'Estedad', 'Ardekan', sans-serif`;
+        // ایموجی ساختمان
+        ctx.font = `${size * 1.8}px 'Estedad', 'Ardekan', sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.shadowColor = 'rgba(0,0,0,0.5)';
-        ctx.shadowBlur = 20;
+        ctx.shadowColor = 'rgba(0,0,0,0.6)';
+        ctx.shadowBlur = 25;
         ctx.fillText(b.emoji, pos.x, pos.y - 5);
         
         // نوار HP
         ctx.shadowBlur = 0;
         const hpW = size * 0.8;
-        const hpH = 4;
+        const hpH = 5;
         const hpX = pos.x - hpW/2;
         const hpY = pos.y - size * 0.7;
-        ctx.fillStyle = 'rgba(0,0,0,0.6)';
-        ctx.roundRect(hpX, hpY, hpW, hpH, 2);
+        ctx.fillStyle = 'rgba(0,0,0,0.7)';
+        ctx.roundRect(hpX, hpY, hpW, hpH, 3);
         ctx.fill();
         const hpRatio = b.hp / b.maxHp;
         ctx.fillStyle = hpRatio > 0.5 ? '#4caf50' : hpRatio > 0.25 ? '#ff9800' : '#f44336';
-        ctx.roundRect(hpX, hpY, hpW * hpRatio, hpH, 2);
+        ctx.roundRect(hpX, hpY, hpW * hpRatio, hpH, 3);
         ctx.fill();
         
         // سطح
-        ctx.font = `${size * 0.4}px 'Estedad', 'Ardekan', sans-serif`;
+        ctx.font = `${size * 0.5}px 'Estedad', 'Ardekan', sans-serif`;
         ctx.fillStyle = '#ffd700';
-        ctx.shadowBlur = 8;
-        ctx.fillText(`Lv${b.level}`, pos.x, hpY - 6);
+        ctx.shadowColor = 'rgba(0,0,0,0.8)';
+        ctx.shadowBlur = 10;
+        ctx.fillText(`Lv${b.level}`, pos.x, hpY - 8);
     }
     
     // ====== دشمنان ======
     for (let e of game.enemies) {
         const pos = toScreen(e.x, e.y);
         const size = game.gridSize * 0.4 * game.camera.zoom;
-        ctx.font = `${size * 1.8}px 'Estedad', 'Ardekan', sans-serif`;
+        ctx.font = `${size * 2}px 'Estedad', 'Ardekan', sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.shadowColor = 'rgba(255,0,0,0.5)';
-        ctx.shadowBlur = 25;
+        ctx.shadowColor = 'rgba(255,0,0,0.6)';
+        ctx.shadowBlur = 30;
         ctx.fillText(e.emoji, pos.x, pos.y);
         
-        // نوار HP دشمن
         ctx.shadowBlur = 0;
         const hpW = size * 0.6;
         const hpH = 3;
@@ -543,25 +532,25 @@ function draw() {
     for (let t of game.troops) {
         const pos = toScreen(t.x, t.y);
         const size = game.gridSize * 0.35 * game.camera.zoom;
-        ctx.font = `${size * 1.8}px 'Estedad', 'Ardekan', sans-serif`;
+        ctx.font = `${size * 2}px 'Estedad', 'Ardekan', sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.shadowColor = 'rgba(0,150,255,0.5)';
-        ctx.shadowBlur = 20;
+        ctx.shadowColor = 'rgba(0,150,255,0.6)';
+        ctx.shadowBlur = 25;
         ctx.fillText(t.emoji, pos.x, pos.y);
     }
     
-    // ====== حالت ساخت (هایلایت) ======
+    // ====== حالت ساخت ======
     if (game.buildMode) {
         ctx.shadowBlur = 0;
-        ctx.fillStyle = 'rgba(255,215,0,0.15)';
+        ctx.fillStyle = 'rgba(255,215,0,0.1)';
         ctx.fillRect(0, 0, W, H);
-        ctx.font = '20px Estedad, Ardekan, sans-serif';
+        ctx.font = `18px 'Estedad', 'Ardekan', sans-serif`;
         ctx.fillStyle = '#ffd700';
         ctx.textAlign = 'center';
-        ctx.shadowColor = 'rgba(0,0,0,0.8)';
-        ctx.shadowBlur = 15;
-        ctx.fillText(`📍 برای ساخت ${BUILDINGS[game.buildMode].name} روی زمین ضربه بزن`, W/2, 50);
+        ctx.shadowColor = 'rgba(0,0,0,0.9)';
+        ctx.shadowBlur = 20;
+        ctx.fillText(`📍 ساخت ${BUILDINGS[game.buildMode].name}`, W/2, 50);
     }
     
     ctx.shadowBlur = 0;
@@ -582,20 +571,17 @@ canvas.addEventListener('click', (e) => {
     const cx = mx * W;
     const cy = my * H;
     
-    // اگر حالت ساخت فعاله
     if (game.buildMode) {
-        // تبدیل مختصات صفحه به جهان (تقریبی)
         const wx = (cx - W/2) / (game.gridSize * 0.5 * game.camera.zoom) + (cy - H/2) / (game.gridSize * 0.25 * game.camera.zoom);
         const wy = (cy - H/2) / (game.gridSize * 0.25 * game.camera.zoom) - (cx - W/2) / (game.gridSize * 0.5 * game.camera.zoom);
         const gx = Math.round(wx / 0.8) * 0.8;
         const gy = Math.round(wy / 0.8) * 0.8;
-        if (Math.abs(gx) < 6 && Math.abs(gy) < 6) {
+        if (Math.abs(gx) < 5 && Math.abs(gy) < 5) {
             addBuilding(game.buildMode, gx, gy);
         }
         return;
     }
     
-    // انتخاب ساختمان برای ارتقا
     for (let b of game.buildings) {
         const pos = toScreen(b.x, b.y);
         const size = game.gridSize * 0.5 * game.camera.zoom;
@@ -604,7 +590,7 @@ canvas.addEventListener('click', (e) => {
             const panel = document.getElementById('infoPanel');
             panel.style.display = 'block';
             document.getElementById('infoTitle').innerHTML = `${b.emoji} ${BUILDINGS[b.type].name}`;
-            document.getElementById('infoDesc').innerText = `سطح ${b.level} | 💚 ${Math.floor(b.hp)}/${b.maxHp}`;
+            document.getElementById('infoDesc').innerText = `سطح ${b.level} | ❤️ ${Math.floor(b.hp)}/${b.maxHp}`;
             document.getElementById('upgradeBtn').onclick = () => {
                 const cost = {gold: 25 * b.level, elixir: 10 * b.level};
                 if (game.gold >= cost.gold && game.elixir >= cost.elixir) {
@@ -614,7 +600,7 @@ canvas.addEventListener('click', (e) => {
                     b.maxHp += 15;
                     b.hp = b.maxHp;
                     updateUI();
-                    document.getElementById('infoDesc').innerText = `سطح ${b.level} | 💚 ${Math.floor(b.hp)}/${b.maxHp}`;
+                    document.getElementById('infoDesc').innerText = `سطح ${b.level} | ❤️ ${Math.floor(b.hp)}/${b.maxHp}`;
                 }
             };
             return;
@@ -645,8 +631,6 @@ function gameLoop() {
 
 // ====== استارت ======
 updateUI();
-
-// ساختمان‌های اولیه
 addBuilding('house', -1.6, -1.6);
 addBuilding('house', 1.6, -1.6);
 addBuilding('farm', -2.4, 1.6);
@@ -655,8 +639,7 @@ addBuilding('barracks', 0, -3.2);
 
 gameLoop();
 
-console.log('🏰 بازی دهکده فانتزی با فونت Estedad و Ardekan آماده‌ست!');
-console.log('📱 روی زمین ضربه بزن تا بسازی، روی ساختمان ضربه بزن تا ارتقا بدی');
+console.log('✅ بازی با عکس زمینه آماده‌ست!');
 </script>
 </body>
 </html>
