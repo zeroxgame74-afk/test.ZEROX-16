@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEROX | زروکس</title> <!-- Font Awesome Icons -->
+    <title>ZEROX | زروکس</title>
+    
+    <!-- Font Awesome 6 Pro / Free -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- CDN فونت استعداد (Estedad) و اردکان (Ardekan) -->
+    <!-- CDN فونت استعداد و اردکان -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/estedad-font@v1.0.0/dist/font-face.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/amir-s/Ardekan-Font@master/fontface.css">
 
@@ -17,13 +19,15 @@
         }
 
         :root {
-            --bg-color: #0b0c10;
-            --card-bg: #12141c;
-            --accent-color: #ffcc00;
-            --text-color: #ffffff;
-            --text-muted: #a0a5b5;
-            --border-color: #1f2330;
-            --font-body: 'Estedad', 'Segoe UI', Tahoma, sans-serif;
+            --bg-body: #08080a;
+            --bg-card: rgba(18, 20, 29, 0.75);
+            --bg-card-hover: rgba(26, 30, 43, 0.9);
+            --accent-yellow: #ffd000;
+            --accent-glow: rgba(255, 208, 0, 0.18);
+            --text-main: #f0f2f5;
+            --text-sub: #8c93a6;
+            --border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Estedad', system-ui, -apple-system, sans-serif;
             --font-head: 'Ardekan', 'Estedad', sans-serif;
         }
 
@@ -31,290 +35,533 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            user-select: none;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-body);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
             line-height: 1.8;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(255, 208, 0, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 208, 0, 0.02) 0%, transparent 40%);
         }
 
-        /* تیترها و فونت اردکان */
-        h1, h2, h3, h4, .logo, .btn, .nav-link {
-            font-family: var(--font-head) !important;
+        h1, h2, h3, h4, .font-head {
+            font-family: var(--font-head);
         }
 
-        /* --- الهدر / Navigation --- */
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08080a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2330;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-yellow);
+        }
+
+        /* --- Header / Navbar --- */
         header {
-            background-color: rgba(11, 12, 16, 0.95);
-            border-bottom: 2px solid var(--accent-color);
             position: sticky;
             top: 0;
-            z-index: 1000;
-            padding: 1.2rem 2rem;
+            z-index: 100;
+            background: rgba(8, 8, 10, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            font-size: 2rem;
-            color: var(--accent-color);
-            letter-spacing: 1px;
+        .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            color: var(--text-color);
+            gap: 12px;
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: var(--accent-color);
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--accent-yellow), #b39200);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.4rem;
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* --- Main Feed (لیست یکپارچه بدون قفسه) --- */
-        .main-container {
-            max-width: 850px;
+        .brand-name {
+            font-size: 1.6rem;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 5px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-sub);
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-head);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            color: #000;
+            background: var(--accent-yellow);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        /* --- Main Layout --- */
+        .container {
+            max-width: 1000px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        .page-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .page-header h1 {
-            font-size: 2.8rem;
-            color: var(--accent-color);
-            margin-bottom: 10px;
-        }
-
-        .page-header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        /* --- تک پستی / کارت‌های اصلی --- */
-        .post-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
+        /* --- Hero Profile Box --- */
+        .profile-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
             margin-bottom: 40px;
-            transition: border-color 0.3s, transform 0.3s;
-        }
-
-        .post-card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-4px);
-        }
-
-        .post-media {
-            width: 100%;
-            height: 400px;
-            background-color: #1a1d28;
+            backdrop-filter: blur(10px);
             position: relative;
+            overflow: hidden;
         }
 
-        .post-media img, .post-media iframe {
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-yellow), transparent);
+        }
+
+        .avatar-box {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            flex-shrink: 0;
+        }
+
+        .avatar-box img {
             width: 100%;
             height: 100%;
+            border-radius: 18px;
             object-fit: cover;
-            border: none;
+            border: 2px solid var(--border);
         }
 
-        .post-content {
-            padding: 30px;
-        }
-
-        .post-meta {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .badge {
-            background: rgba(255, 204, 0, 0.15);
-            color: var(--accent-color);
-            padding: 4px 12px;
+        .status-badge {
+            position: absolute;
+            bottom: -5px;
+            left: -5px;
+            background: var(--accent-yellow);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 2px 8px;
             border-radius: 6px;
-            font-size: 0.9rem;
             font-family: var(--font-head);
         }
 
-        .post-date {
-            color: var(--text-muted);
-            font-size: 0.85rem;
+        .profile-info h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: var(--accent-yellow);
         }
 
-        .post-title {
-            font-size: 1.8rem;
+        .profile-info p {
+            color: var(--text-sub);
+            font-size: 0.98rem;
             margin-bottom: 15px;
-            color: #fff;
         }
 
-        .post-text {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 25px;
-            text-align: justify;
+        .tech-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        .btn {
-            display: inline-flex;
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            color: var(--text-main);
+        }
+
+        /* --- Feed Posts / Cards --- */
+        .content-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .feed-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .feed-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 208, 0, 0.3);
+            background: var(--bg-card-hover);
+        }
+
+        .media-container {
+            width: 100%;
+            height: 380px;
+            position: relative;
+            background: #10121a;
+            overflow: hidden;
+        }
+
+        .media-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .feed-item:hover .media-container img {
+            transform: scale(1.03);
+        }
+
+        .play-trigger {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            display: flex;
             align-items: center;
-            gap: 8px;
-            background-color: var(--accent-color);
-            color: #000;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0.9;
             transition: opacity 0.3s;
         }
 
-        .btn:hover {
-            opacity: 0.9;
+        .play-trigger:hover {
+            opacity: 1;
+        }
+
+        .play-trigger i {
+            font-size: 3.5rem;
+            color: var(--accent-yellow);
+            filter: drop-shadow(0 0 12px rgba(0,0,0,0.8));
+            transition: transform 0.2s;
+        }
+
+        .play-trigger:hover i {
+            transform: scale(1.1);
+        }
+
+        .item-details {
+            padding: 28px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .category-pill {
+            background: var(--accent-glow);
+            color: var(--accent-yellow);
+            border: 1px solid rgba(255, 208, 0, 0.2);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-family: var(--font-head);
+        }
+
+        .item-date {
+            color: var(--text-sub);
+            font-size: 0.85rem;
+        }
+
+        .item-title {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .item-description {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-action {
+            background: var(--accent-yellow);
+            color: #000;
+            padding: 10px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-family: var(--font-head);
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-action:hover {
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: none;
         }
 
         /* --- Footer --- */
         footer {
-            background-color: #06070a;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--border);
             padding: 40px 20px;
             text-align: center;
             margin-top: 80px;
+            background: rgba(8, 8, 10, 0.95);
         }
 
-        .socials {
+        .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-bottom: 20px;
         }
 
-        .socials a {
-            color: var(--text-color);
-            font-size: 1.4rem;
-            transition: color 0.3s;
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            text-decoration: none;
         }
 
-        .socials a:hover {
-            color: var(--accent-color);
+        .social-btn:hover {
+            background: var(--accent-yellow);
+            color: #000;
+            border-color: var(--accent-yellow);
+            transform: translateY(-3px);
         }
 
+        .copy-text {
+            color: var(--text-sub);
+            font-size: 0.85rem;
+        }
+
+        /* --- Responsive Design --- */
         @media (max-width: 768px) {
-            .post-media { height: 240px; }
-            .post-content { padding: 20px; }
-            .page-header h1 { font-size: 2rem; }
+            header { padding: 12px 15px; }
+            .nav-tabs { gap: 4px; }
+            .tab-btn { padding: 6px 12px; font-size: 0.85rem; }
+            .profile-card { flex-direction: column; text-align: center; padding: 25px; }
+            .tech-tags { justify-content: center; }
+            .media-container { height: 230px; }
+            .item-details { padding: 20px; }
+            .item-title { font-size: 1.25rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header / Navbar -->
     <header>
-        <div class="logo">
-            <i class="fa-solid fa-gamepad"></i> زروکس
+        <a href="#" class="brand">
+            <div class="brand-logo">
+                <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <span class="brand-name font-head">ZEROX</span>
+        </a>
+
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="filterTab('all', this)">همه</button>
+            <button class="tab-btn" onclick="filterTab('game', this)">بازی‌ها</button>
+            <button class="tab-btn" onclick="filterTab('video', this)">ویدیوها</button>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#" class="nav-link">صفحه اصلی</a></li>
-                <li><a href="#games" class="nav-link">بازی‌ها</a></li>
-                <li><a href="#videos" class="nav-link">ویدیوها</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="main-container">
+    <!-- Main Container -->
+    <div class="container">
 
-        <div class="page-header">
-            <h1>دنیای بازی و داستان‌های زروکس</h1>
-            <p>آخرین ویدیوها، معرفی داستان بازی‌ها و پروژه‌های اختصاصی</p>
+        <!-- Developer / Profile Bio Banner -->
+        <div class="profile-card">
+            <div class="avatar-box">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400" alt="ZeroX Avatar">
+                <span class="status-badge">DEV</span>
+            </div>
+            <div class="profile-info">
+                <h1 class="font-head">پایگاه رسمی زروکس (ZeroX)</h1>
+                <p>توسعه‌دهنده بازی‌های ۳بعدی مستقل، طراح گرافیک و سازنده ویدیوهای تحلیل داستان بازی‌ها.</p>
+                <div class="tech-tags">
+                    <span class="tag"><i class="fa-brands fa-unity"></i> Unity 3D</span>
+                    <span class="tag"><i class="fa-solid fa-code"></i> C# Scripting</span>
+                    <span class="tag"><i class="fa-solid fa-paintbrush"></i> Photoshop</span>
+                    <span class="tag"><i class="fa-solid fa-font"></i> Font Designer</span>
+                </div>
+            </div>
         </div>
 
-        <!-- پست ۱: بازی اصلی -->
-        <article class="post-card" id="games">
-            <div class="post-media">
-                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000" alt="پروژه Last Patient">
-            </div>
-            <div class="post-content">
-                <div class="post-meta">
-                    <span class="badge">پروژه بازی</span>
-                    <span class="post-date"><i class="fa-regular fa-calendar"></i> شهریور ۱۴۰۵</span>
-                </div>
-                <h2 class="post-title">معرفی و دانلود دمو بازی Last Patient</h2>
-                <p class="post-text">
-                    بازی Last Patient یک عنوان سه‌بعدی در سبک ترس و بقا (Horror Survival) است که تمامی مراحل برنامه‌نویسی و طراحی آن با سی‌شارپ انجام شده است. در این بازی شما در نقش آخرین بیمار یک تیمارستان متروکه قرار می‌گیرید که باید با حل معماها و فرار از خطرات، راه نجات خود را پیدا کنید.
-                </p>
-                <a href="#" class="btn"><i class="fa-solid fa-download"></i> دانلود دمو بازی</a>
-            </div>
-        </article>
+        <!-- Content Feed -->
+        <div class="content-feed">
 
-        <!-- پست ۲: ویدیو داستانی -->
-        <article class="post-card" id="videos">
-            <div class="post-media">
-                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000" alt="تحلیل داستان بازی">
-            </div>
-            <div class="post-content">
-                <div class="post-meta">
-                    <span class="badge">ویدیو / تحلیل داستان</span>
-                    <span class="post-date"><i class="fa-regular fa-calendar"></i> مرداد ۱۴۰۵</span>
+            <!-- Item 1: Game Project -->
+            <article class="feed-item" data-category="game">
+                <div class="media-container">
+                    <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000" alt="Last Patient Game">
                 </div>
-                <h2 class="post-title">بررسی لایه‌های مخفی و داستان Call of Duty</h2>
-                <p class="post-text">
-                    در این ویدیو به شکافتن جزئیات داستانی، سرنوشت شخصیت‌های اصلی و نکات پنهانی که ممکن است هنگام تجربه بازی به آن‌ها توجه نکرده باشید پرداخته‌ایم. تماشای این ویدیو برای علاقه‌مندان به دنیای داستان‌گویی در بازی‌ها توصیه می‌شود.
-                </p>
-                <a href="#" class="btn"><i class="fa-solid fa-play"></i> مشاهده ویدیو کامل</a>
-            </div>
-        </article>
-
-        <!-- پست ۳: توضیحات و برنامه‌نویسی -->
-        <article class="post-card">
-            <div class="post-media">
-                <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1000" alt="توسعه بازی">
-            </div>
-            <div class="post-content">
-                <div class="post-meta">
-                    <span class="badge">پشت صحنه / توسعه</span>
-                    <span class="post-date"><i class="fa-regular fa-calendar"></i> تیر ۱۴۰۵</span>
+                <div class="item-details">
+                    <div class="item-header">
+                        <span class="category-pill"><i class="fa-solid fa-ghost"></i> پروژه بازی</span>
+                        <span class="item-date"><i class="fa-regular fa-clock"></i> شهریور ۱۴۰۵</span>
+                    </div>
+                    <h2 class="item-title font-head">بازی سه‌بعدی Last Patient (نسخه دمو)</h2>
+                    <p class="item-description">
+                        پروژه Last Patient یک عنوان مستقل در سبک ترس و بقا (Horror Survival) است که تمام سیستم‌های نورپردازی، معماها و هوش مصنوعی آن با زبان C# پیاده‌سازی شده است. در این بازی شما باید از تیمارستان متروکه‌ای که اسرار تاریکی دارد فرار کنید.
+                    </p>
+                    <div class="action-bar">
+                        <a href="#" class="btn-action"><i class="fa-solid fa-download"></i> دانلود مستقیم دمو</a>
+                        <button class="btn-action btn-secondary"><i class="fa-solid fa-circle-info"></i> توضیحات فنی</button>
+                    </div>
                 </div>
-                <h2 class="post-title">روند ساخت مکانیزم‌های بازی با C# و هوش مصنوعی</h2>
-                <p class="post-text">
-                    توضیحات کامل درباره روند پیاده‌سازی سیستم روشنایی، هوش مصنوعی دشمنان و بهبود کیفیت گرافیک پروژه. در این بخش می‌توانید ویدیوهای مربوط به مراحل توسعه فنی بازی را دنبال کنید.
-                </p>
-                <a href="#" class="btn"><i class="fa-solid fa-code"></i> مطالعه توضیحات فنی</a>
-            </div>
-        </article>
+            </article>
 
-    </main>
+            <!-- Item 2: Story Analysis Video -->
+            <article class="feed-item" data-category="video">
+                <div class="media-container">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000" alt="تحلیل داستان بازی">
+                    <div class="play-trigger">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                </div>
+                <div class="item-details">
+                    <div class="item-header">
+                        <span class="category-pill"><i class="fa-solid fa-video"></i> تحلیل و داستان</span>
+                        <span class="item-date"><i class="fa-regular fa-clock"></i> مرداد ۱۴۰۵</span>
+                    </div>
+                    <h2 class="item-title font-head">بررسی رازها و خط داستانی سری Call of Duty</h2>
+                    <p class="item-description">
+                        در این ویدیو به بررسی عمیق اتفاقات پشت پرده، کاراکترها و جزئیات پنهانی که هنگام بازی ممکن است از دست داده باشید پرداخته‌ایم.
+                    </p>
+                    <div class="action-bar">
+                        <button class="btn-action"><i class="fa-solid fa-play"></i> پخش ویدیو</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Item 3: Technical / Devlog Video -->
+            <article class="feed-item" data-category="video">
+                <div class="media-container">
+                    <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1000" alt="توسعه بازی">
+                    <div class="play-trigger">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                </div>
+                <div class="item-details">
+                    <div class="item-header">
+                        <span class="category-pill"><i class="fa-solid fa-code"></i> دیو بلاگ / برنامه نویسی</span>
+                        <span class="item-date"><i class="fa-regular fa-clock"></i> تیر ۱۴۰۵</span>
+                    </div>
+                    <h2 class="item-title font-head">آموزش پیاده‌سازی مکانیزم‌های حرکت سه‌بعدی در Unity</h2>
+                    <p class="item-description">
+                        توضیحات اختصاصی و گام‌به‌گام درباره نحوه کدنویسی فیزیک حرکت، جابه‌جایی دوربین و تعامل با اشیاء در محیط‌های سه‌بعدی.
+                    </p>
+                    <div class="action-bar">
+                        <button class="btn-action"><i class="fa-solid fa-play"></i> تماشای ویدیو آموزشی</button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </div>
 
     <!-- Footer -->
     <footer>
-        <div class="socials">
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#"><i class="fa-brands fa-telegram"></i></a>
-            <a href="#"><i class="fa-brands fa-github"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <div class="social-links">
+            <a href="#" class="social-btn" title="یوتیوب"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-btn" title="تلگرام"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#" class="social-btn" title="گیت‌هاب"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="social-btn" title="اینستاگرام"><i class="fa-brands fa-instagram"></i></a>
         </div>
-        <p>© 2026 ZEROX | تمامی حقوق محفوظ است.</p>
+        <p class="copy-text">طراحی و توسعه توسط ZEROX | تمامی حقوق محفوظ است ۲۰۲۶ ©</p>
     </footer>
 
+    <!-- Interactive Filtering Script -->
+    <script>
+        function filterTab(category, btnElement) {
+            // Update active tab styling
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Filter items
+            const items = document.querySelectorAll('.feed-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
