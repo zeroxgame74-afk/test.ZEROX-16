@@ -55,7 +55,7 @@
             position: sticky;
             top: 16px;
             z-index: 999;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             gap: 10px;
         }
 
@@ -87,10 +87,9 @@
 
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             align-items: center;
-            flex-wrap: nowrap;
-            flex-shrink: 0;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -105,18 +104,18 @@
             align-items: center;
             gap: 6px;
             white-space: nowrap;
+            padding: 6px 12px;
+            border-radius: 30px;
         }
 
         .nav-links a:hover {
             color: #B61C1C;
+            background: rgba(182, 28, 28, 0.06);
         }
 
         .nav-links a.active {
             color: #B61C1C;
-        }
-
-        .nav-links a.music-link {
-            color: #B61C1C;
+            background: rgba(182, 28, 28, 0.1);
         }
 
         .user-actions {
@@ -131,10 +130,13 @@
             color: #2d2a24;
             cursor: pointer;
             transition: 0.3s;
+            padding: 6px;
+            border-radius: 50%;
         }
 
         .user-actions i:hover {
             color: #B61C1C;
+            background: rgba(182, 28, 28, 0.06);
         }
 
         .user-actions .search-icon {
@@ -273,7 +275,7 @@
             transform: scale(1.2);
         }
 
-        /* ===== MUSIC LIST HORIZONTAL ===== */
+        /* ===== MUSIC SECTION HOME ===== */
         .music-section {
             margin: 30px 0 40px;
         }
@@ -307,7 +309,7 @@
 
         .music-scroll {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             overflow-x: auto;
             padding: 10px 0 20px;
             scroll-snap-type: x mandatory;
@@ -422,14 +424,18 @@
             transform: translateX(-4px);
         }
 
+        /* ===== GLASSMORPHISM BACKGROUND ===== */
         .music-detail-page .detail-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 30px;
-            background: white;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
         .music-detail-page .detail-cover {
@@ -445,6 +451,7 @@
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.8rem;
             margin-bottom: 6px;
+            color: #1a1a1a;
         }
 
         .music-detail-page .detail-info .game-name {
@@ -458,7 +465,7 @@
         .music-detail-page .detail-info .platform {
             font-family: 'Estedad', sans-serif;
             font-size: 0.85rem;
-            color: #888;
+            color: #666;
             margin-bottom: 12px;
         }
 
@@ -476,7 +483,7 @@
         .music-detail-page .detail-info .desc {
             font-family: 'Estedad', sans-serif;
             font-size: 0.9rem;
-            color: #555;
+            color: #444;
             line-height: 1.8;
             margin-bottom: 20px;
         }
@@ -485,11 +492,11 @@
             width: 100%;
             border-radius: 30px;
             outline: none;
-            background: #f0ebe5;
+            background: rgba(255,255,255,0.5);
         }
 
         .music-detail-page .detail-info .audio-player::-webkit-media-controls-panel {
-            background: #f0ebe5;
+            background: rgba(255,255,255,0.5);
         }
 
         .music-detail-page .detail-info .audio-player::-webkit-media-controls-play-button {
@@ -1222,17 +1229,17 @@
         @media (max-width: 768px) {
             .navbar {
                 padding: 10px 16px;
-                flex-wrap: wrap;
+                gap: 8px;
             }
             .logo h1 {
                 font-size: 1.6rem;
             }
             .nav-links {
-                gap: 16px;
-                flex-wrap: wrap;
+                gap: 10px;
             }
             .nav-links a {
                 font-size: 0.8rem;
+                padding: 4px 10px;
             }
             .hero-slider {
                 height: 280px;
@@ -1253,7 +1260,7 @@
                 max-width: 100%;
             }
             .user-actions {
-                gap: 10px;
+                gap: 8px;
             }
             .user-actions i {
                 font-size: 1rem;
@@ -1310,11 +1317,12 @@
                 font-size: 1.3rem;
             }
             .nav-links {
-                gap: 10px;
+                gap: 6px;
             }
             .nav-links a {
                 font-size: 0.7rem;
                 gap: 4px;
+                padding: 4px 8px;
             }
             .nav-links a i {
                 font-size: 0.8rem;
@@ -1406,7 +1414,7 @@
             <div class="nav-links">
                 <a class="active" onclick="showPage('home')"><i class="fas fa-home"></i> خانه</a>
                 <a onclick="showPage('movies')"><i class="fas fa-film"></i> ویدیوها</a>
-                <a class="music-link" onclick="showPage('music')"><i class="fas fa-music"></i> موسیقی</a>
+                <a onclick="showPage('music')"><i class="fas fa-music"></i> موسیقی</a>
             </div>
             <div class="user-actions">
                 <i class="fas fa-search search-icon" onclick="showPage('search')"></i>
@@ -1587,9 +1595,6 @@
         <!-- ===== صفحه موسیقی ===== -->
         <div class="page" id="page-music">
             <div class="music-detail-page" id="musicDetailPage">
-                <button class="back-btn" onclick="showPage('home')">
-                    <i class="fas fa-arrow-right"></i> بازگشت
-                </button>
                 <div id="musicListContainer">
                     <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin-bottom:20px;">
                         <i class="fas fa-music" style="color:#B61C1C;"></i> همه موسیقی‌ها
@@ -1886,7 +1891,6 @@
                 </div>
             `;
 
-            // اسکرول به بالا
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1997,4 +2001,4 @@
         });
     </script>
 </body>
-            </html>
+    </html>
