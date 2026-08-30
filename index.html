@@ -389,8 +389,8 @@
         }
 
         .search-page .logo-big {
-            width: 160px;
-            height: 160px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             overflow: hidden;
             box-shadow: 0 8px 30px rgba(0,0,0,0.1);
@@ -399,13 +399,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 25px;
+            flex-shrink: 0;
         }
 
         .search-page .logo-big img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            border-radius: 50%;
         }
 
         .search-page .subtitle {
@@ -453,6 +455,7 @@
             font-size: 1rem;
             cursor: pointer;
             transition: 0.3s;
+            white-space: nowrap;
         }
 
         .search-page .search-box-big button:hover {
@@ -569,6 +572,7 @@
             font-size: 0.85rem;
             color: #888;
             margin-bottom: 12px;
+            flex-wrap: wrap;
         }
 
         .video-info-section .video-meta span {
@@ -752,9 +756,9 @@
                 font-size: 1rem;
             }
             .search-page .logo-big {
-                width: 100px;
-                height: 100px;
-                padding: 12px;
+                width: 150px;
+                height: 150px;
+                padding: 20px;
             }
             .search-page .search-box-big {
                 flex-wrap: wrap;
@@ -768,6 +772,7 @@
                 border-radius: 30px;
                 padding: 14px 18px;
                 border: 1px solid #eee;
+                width: 100%;
             }
             .search-page .search-box-big button {
                 width: 100%;
@@ -829,13 +834,16 @@
                 width: 100%;
             }
             .search-page .logo-big {
-                width: 80px;
-                height: 80px;
-                padding: 10px;
+                width: 120px;
+                height: 120px;
+                padding: 16px;
             }
             .search-results .result-item img {
                 width: 55px;
                 height: 40px;
+            }
+            .search-page .subtitle {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -1149,10 +1157,14 @@
             }
 
             resultsContainer.innerHTML = results.map(movie => {
-                const safeTitle = movie.title.replace(/'/g, "\\'");
-                const safeDesc = movie.desc.replace(/'/g, "\\'");
+                // استفاده از encodeURIComponent برای جلوگیری از مشکل نقل قول‌ها
+                const safeTitle = encodeURIComponent(movie.title);
+                const safeDesc = encodeURIComponent(movie.desc);
+                const safeDuration = encodeURIComponent(movie.duration);
+                const safeRating = encodeURIComponent(movie.rating);
+                
                 return `
-                    <div class="result-item" onclick="openVideo('${movie.url}', '${safeTitle}', '${safeDesc}', '${movie.duration}', '${movie.rating}')">
+                    <div class="result-item" onclick="openVideoFromSearch('${movie.url}', '${safeTitle}', '${safeDesc}', '${safeDuration}', '${safeRating}')">
                         <img src="${movie.poster}" alt="${movie.title}" />
                         <div class="info">
                             <h4>${movie.title}</h4>
@@ -1164,6 +1176,15 @@
                     </div>
                 `;
             }).join('');
+        }
+
+        // ===== تابع مخصوص جستجو برای باز کردن ویدیو (با decodeURIComponent) =====
+        function openVideoFromSearch(url, titleEnc, descEnc, durationEnc, ratingEnc) {
+            const title = decodeURIComponent(titleEnc);
+            const desc = decodeURIComponent(descEnc);
+            const duration = decodeURIComponent(durationEnc);
+            const rating = decodeURIComponent(ratingEnc);
+            openVideo(url, title, desc, duration, rating);
         }
 
         // ===== توضیحات کشویی =====
@@ -1222,4 +1243,4 @@
         });
     </script>
 </body>
-    </html>
+                </html>
