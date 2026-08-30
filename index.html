@@ -141,7 +141,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== HERO SLIDER (بدون دکمه) ===== */
+        /* ===== HERO SLIDER ===== */
         .hero-slider {
             position: relative;
             border-radius: 24px;
@@ -236,7 +236,6 @@
             transform: scale(1.03);
         }
 
-        /* ===== فقط نقاط راهنما ===== */
         .slider-dots {
             position: absolute;
             bottom: 20px;
@@ -481,14 +480,47 @@
             gap: 4px;
         }
 
-        .video-info-section .description {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.8;
+        /* ===== توضیحات کشویی ===== */
+        .description-wrapper {
+            position: relative;
+            max-height: 80px;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            cursor: pointer;
             padding: 16px 0;
             border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
+        }
+
+        .description-wrapper.expanded {
+            max-height: 500px;
+        }
+
+        .description-wrapper .description {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 2;
+            white-space: pre-line;
+        }
+
+        .description-wrapper .expand-hint {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.8rem;
+            color: #B61C1C;
+            font-weight: 600;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .description-wrapper .expand-hint i {
+            transition: transform 0.3s ease;
+        }
+
+        .description-wrapper.expanded .expand-hint i {
+            transform: rotate(180deg);
         }
 
         /* ===== COMMENTS ===== */
@@ -532,44 +564,6 @@
 
         .comment-box button:hover {
             background: #8f1515;
-        }
-
-        .comment-item {
-            display: flex;
-            gap: 12px;
-            padding: 14px 0;
-            border-bottom: 1px solid #f0ebe5;
-        }
-
-        .comment-item .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #ddd;
-            flex-shrink: 0;
-        }
-
-        .comment-item .comment-content {
-            flex: 1;
-        }
-
-        .comment-item .comment-content .name {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .comment-item .comment-content .text {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: 2px;
-        }
-
-        .comment-item .comment-content .time {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.7rem;
-            color: #aaa;
         }
 
         /* ===== FOOTER ===== */
@@ -701,6 +695,9 @@
             .comment-box button {
                 width: 100%;
             }
+            .description-wrapper .description {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -714,8 +711,7 @@
             </div>
             <div class="nav-links">
                 <a class="active" onclick="showPage('home')"><i class="fas fa-home"></i> خانه</a>
-                <a onclick="showPage('movies')"><i class="fas fa-film"></i> فیلم‌ها</a>
-                <a onclick="showPage('series')"><i class="fas fa-tv"></i> سریال‌ها</a>
+                <a onclick="showPage('movies')"><i class="fas fa-film"></i> ویدیوها</a>
             </div>
             <div class="user-actions">
                 <i class="fas fa-search"></i>
@@ -726,15 +722,15 @@
 
         <!-- ===== صفحه خانه ===== -->
         <div class="page active" id="page-home">
-            <!-- ===== HERO SLIDER (بدون دکمه) ===== -->
+            <!-- ===== HERO SLIDER ===== -->
             <div class="hero-slider" id="heroSlider">
                 <!-- اسلاید ۱ -->
                 <div class="hero-slide active" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
                     <div class="hero-content">
                         <span class="badge">جدید</span>
-                        <h2>no im not a human</h2>
-                        <p>فیلمی روانشناختی و ترسناک درباره بازی ذهن‌ها. داستانی پر از تعلیق و پیچش‌های غیرمنتظره.</p>
-                        <button class="btn-play" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'no im not a human', 'فیلمی روانشناختی و ترسناک درباره بازی ذهن‌ها', '۹ دقیقه', '8.7')">
+                        <h2>داستان بازی | no im not a human</h2>
+                        <p>😨🚪 یه شب جهنمی! امشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک...</p>
+                        <button class="btn-play" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                             <i class="fas fa-play"></i> پخش فیلم
                         </button>
                     </div>
@@ -764,7 +760,7 @@
                     </div>
                 </div>
 
-                <!-- ===== فقط نقاط راهنما ===== -->
+                <!-- نقاط راهنما -->
                 <div class="slider-dots" id="sliderDots">
                     <span class="active" onclick="goToSlide(0)"></span>
                     <span onclick="goToSlide(1)"></span>
@@ -791,13 +787,13 @@
             </div>
 
             <div class="movie-grid" id="movieGrid">
-                <div class="movie-card" data-genre="horror,psycho" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'no im not a human', 'فیلمی روانشناختی و ترسناک درباره بازی ذهن‌ها', '۹ دقیقه', '8.7')">
+                <div class="movie-card" data-genre="horror,psycho" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
                         <span class="badge">ویژه</span>
                         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
                     <div class="movie-info">
-                        <h4>no im not a human</h4>
+                        <h4>داستان بازی | no im not a human</h4>
                         <div class="meta">
                             <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
                             <span class="rating"><i class="fas fa-star"></i> 8.7</span>
@@ -807,40 +803,20 @@
             </div>
         </div>
 
-        <!-- ===== صفحه فیلم‌ها ===== -->
+        <!-- ===== صفحه ویدیوها ===== -->
         <div class="page" id="page-movies">
-            <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin:20px 0;"><i class="fas fa-film" style="color:#B61C1C;"></i> فیلم‌ها</h2>
-            <p style="font-family:'Estedad',sans-serif; color:#888;">همه فیلم‌های سینمایی و کوتاه</p>
+            <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin:20px 0;"><i class="fas fa-film" style="color:#B61C1C;"></i> ویدیوها</h2>
+            <p style="font-family:'Estedad',sans-serif; color:#888;">همه ویدیوهای سینمایی و کوتاه</p>
             <div class="movie-grid" style="margin-top:20px;">
-                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'no im not a human', 'فیلمی روانشناختی و ترسناک درباره بازی ذهن‌ها', '۹ دقیقه', '8.7')">
+                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
                         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
                     <div class="movie-info">
-                        <h4>no im not a human</h4>
+                        <h4>داستان بازی | no im not a human</h4>
                         <div class="meta">
                             <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
                             <span class="rating"><i class="fas fa-star"></i> 8.7</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== صفحه سریال‌ها ===== -->
-        <div class="page" id="page-series">
-            <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin:20px 0;"><i class="fas fa-tv" style="color:#B61C1C;"></i> سریال‌ها</h2>
-            <p style="font-family:'Estedad',sans-serif; color:#888;">سریال‌های محبوب و جدید</p>
-            <div class="movie-grid" style="margin-top:20px;">
-                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'سریال نمونه', 'توضیحات سریال', '۴۵ دقیقه', '9.0')">
-                    <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
-                    </div>
-                    <div class="movie-info">
-                        <h4>سریال نمونه</h4>
-                        <div class="meta">
-                            <span><i class="fas fa-clock"></i> ۴۵ دقیقه</span>
-                            <span class="rating"><i class="fas fa-star"></i> 9.0</span>
                         </div>
                     </div>
                 </div>
@@ -861,8 +837,15 @@
                         <span><i class="fas fa-star" style="color:#f5b342;"></i> <span id="videoRating">۰.۰</span></span>
                         <span><i class="fas fa-eye"></i> ۱٬۲۳۴ بازدید</span>
                     </div>
-                    <div class="description" id="videoDescription">
-                        توضیحات فیلم اینجا قرار می‌گیرد.
+
+                    <!-- ===== توضیحات کشویی ===== -->
+                    <div class="description-wrapper" onclick="toggleDescription()">
+                        <div class="description" id="videoDescription">
+                            توضیحات فیلم اینجا قرار می‌گیرد.
+                        </div>
+                        <div class="expand-hint">
+                            <i class="fas fa-chevron-down"></i> مشاهده بیشتر
+                        </div>
                     </div>
                 </div>
 
@@ -873,33 +856,6 @@
                     <div class="comment-box">
                         <input type="text" placeholder="نظر خود را بنویسید..." />
                         <button>ارسال</button>
-                    </div>
-
-                    <div class="comment-item">
-                        <div class="avatar"></div>
-                        <div class="comment-content">
-                            <div class="name">کاربر مهمان</div>
-                            <div class="text">فیلم فوق‌العاده‌ای بود! 😍</div>
-                            <div class="time">۲ ساعت پیش</div>
-                        </div>
-                    </div>
-
-                    <div class="comment-item">
-                        <div class="avatar"></div>
-                        <div class="comment-content">
-                            <div class="name">کاربر ناشناس</div>
-                            <div class="text">داستان جذابی داشت، منتظر قسمت بعدی هستم</div>
-                            <div class="time">۵ ساعت پیش</div>
-                        </div>
-                    </div>
-
-                    <div class="comment-item">
-                        <div class="avatar"></div>
-                        <div class="comment-content">
-                            <div class="name">علی رضایی</div>
-                            <div class="text">بازیگری عالی و فیلمنامه قوی 👏</div>
-                            <div class="time">۱ روز پیش</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -919,6 +875,12 @@
     </div>
 
     <script>
+        // ===== توضیحات کشویی =====
+        function toggleDescription() {
+            const wrapper = document.querySelector('.description-wrapper');
+            wrapper.classList.toggle('expanded');
+        }
+
         // ===== اسلایدر =====
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
@@ -952,7 +914,6 @@
             }, 4000);
         }
 
-        // شروع اتوپلی
         startAutoPlay();
 
         // ===== صفحه‌بندی =====
@@ -962,7 +923,7 @@
             
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             const links = document.querySelectorAll('.nav-links a');
-            const map = { home: 0, movies: 1, series: 2 };
+            const map = { home: 0, movies: 1 };
             if (map[page] !== undefined) {
                 links[map[page]].classList.add('active');
             }
@@ -994,6 +955,12 @@
             document.getElementById('videoDescription').textContent = desc || 'توضیحات فیلم اینجا قرار می‌گیرد.';
             document.getElementById('videoDuration').textContent = duration || '۰ دقیقه';
             document.getElementById('videoRating').textContent = rating || '۰.۰';
+            
+            // ریست وضعیت کشویی
+            const wrapper = document.querySelector('.description-wrapper');
+            if (wrapper) {
+                wrapper.classList.remove('expanded');
+            }
             
             showPage('video');
         }
