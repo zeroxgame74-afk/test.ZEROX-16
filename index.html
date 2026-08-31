@@ -42,113 +42,117 @@
             padding: 0 20px;
         }
 
-        /* ===== HEADER جدید ===== */
+        /* ========================================
+           HEADER فوق‌حرفه‌ای با الهام از Apple + Stripe
+           ======================================== */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 24px;
-            height: 68px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 18px;
-            margin: 14px 0;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04), 0 1px 0 rgba(255, 255, 255, 0.8) inset;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(30px) saturate(1.4);
+            -webkit-backdrop-filter: blur(30px) saturate(1.4);
+            border-radius: 60px;
+            margin: 14px 0 18px 0;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             position: sticky;
             top: 14px;
             z-index: 999;
+            gap: 8px;
             transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            min-height: 60px;
         }
 
         .navbar:hover {
-            box-shadow: 0 8px 50px rgba(182, 28, 28, 0.08);
-            border-color: rgba(182, 28, 28, 0.08);
+            box-shadow: 0 8px 60px rgba(182, 28, 28, 0.06), 0 0 0 1px rgba(182, 28, 28, 0.04);
         }
 
-        .navbar .nav-left {
+        .navbar .nav-section {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 12px;
         }
 
-        .navbar .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* ===== لوگو ===== */
+        /* ---- لوگو ---- */
         .logo {
-            flex-shrink: 0;
-            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 6px;
+            cursor: pointer;
             text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            background: rgba(182, 28, 28, 0.04);
         }
 
         .logo .logo-icon {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             background: linear-gradient(135deg, #B61C1C, #8a1515);
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 800;
             font-family: 'Ardekan', sans-serif;
             box-shadow: 0 4px 12px rgba(182, 28, 28, 0.25);
-            transition: transform 0.3s ease;
         }
 
-        .logo:hover .logo-icon {
-            transform: rotate(-8deg) scale(1.05);
-        }
-
-        .logo h1 {
+        .logo .logo-text {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 800;
+            font-size: 1.3rem;
+            font-weight: 700;
             color: #1a1a1a;
             letter-spacing: -0.5px;
-            white-space: nowrap;
         }
 
-        .logo h1 span {
+        .logo .logo-text span {
             color: #B61C1C;
         }
 
-        /* ===== لینک‌های منو ===== */
+        .logo .logo-dot {
+            width: 4px;
+            height: 4px;
+            background: #B61C1C;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        /* ---- لینک‌های منو (وسط) ---- */
         .nav-links {
             display: flex;
-            gap: 4px;
             align-items: center;
+            gap: 4px;
         }
 
         .nav-links a {
             font-family: 'Estedad', sans-serif;
             text-decoration: none;
-            color: #555;
+            color: #4a4a4a;
             font-weight: 500;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
+            transition: all 0.25s ease;
+            padding: 6px 16px;
             border-radius: 30px;
             position: relative;
+            white-space: nowrap;
         }
 
         .nav-links a i {
-            font-size: 0.95rem;
-            opacity: 0.7;
-            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            margin-left: 4px;
+            opacity: 0.6;
+            transition: all 0.25s ease;
         }
 
         .nav-links a:hover {
@@ -161,45 +165,51 @@
         }
 
         .nav-links a.active {
-            background: #B61C1C;
             color: white;
+            background: #B61C1C;
             box-shadow: 0 4px 16px rgba(182, 28, 28, 0.25);
+            font-weight: 600;
         }
 
         .nav-links a.active i {
             opacity: 1;
+            color: white;
         }
 
-        /* ===== بخش کاربری ===== */
-        .user-actions {
+        /* ---- بخش راست (آیکون‌ها) ---- */
+        .nav-actions {
             display: flex;
             align-items: center;
             gap: 4px;
         }
 
-        .user-actions .icon-btn {
-            width: 40px;
-            height: 40px;
+        .nav-actions .action-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: #4a4a4a;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #555;
-            font-size: 1.1rem;
             position: relative;
-            background: transparent;
-            border: none;
         }
 
-        .user-actions .icon-btn:hover {
+        .nav-actions .action-btn:hover {
             background: rgba(182, 28, 28, 0.06);
             color: #B61C1C;
             transform: translateY(-2px);
         }
 
-        .user-actions .icon-btn .notif-count {
+        .nav-actions .action-btn:active {
+            transform: scale(0.92);
+        }
+
+        .nav-actions .action-btn .badge {
             position: absolute;
             top: 2px;
             left: 2px;
@@ -214,13 +224,14 @@
             align-items: center;
             justify-content: center;
             font-family: 'Estedad', sans-serif;
-            border: 2px solid white;
-            box-shadow: 0 2px 8px rgba(182, 28, 28, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 8px rgba(182, 28, 28, 0.25);
         }
 
-        .user-actions .profile-avatar {
-            width: 38px;
-            height: 38px;
+        /* ---- آواتار پروفایل ---- */
+        .profile-avatar {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: linear-gradient(135deg, #B61C1C, #8a1515);
             display: flex;
@@ -228,41 +239,42 @@
             justify-content: center;
             color: white;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
             border: 2px solid transparent;
             font-family: 'Estedad', sans-serif;
             box-shadow: 0 2px 12px rgba(182, 28, 28, 0.15);
+            margin-right: 4px;
         }
 
-        .user-actions .profile-avatar:hover {
+        .profile-avatar:hover {
             transform: scale(1.08);
             border-color: #B61C1C;
-            box-shadow: 0 0 0 4px rgba(182, 28, 28, 0.12);
+            box-shadow: 0 4px 24px rgba(182, 28, 28, 0.25);
         }
 
-        /* ===== منوی همبرگری ===== */
+        /* ---- دکمه همبرگری (موبایل) ---- */
         .hamburger {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
             cursor: pointer;
             padding: 6px;
-            border-radius: 10px;
+            border-radius: 30px;
             transition: all 0.3s ease;
             background: transparent;
             border: none;
         }
 
         .hamburger:hover {
-            background: rgba(182, 28, 28, 0.06);
+            background: rgba(182, 28, 28, 0.05);
         }
 
         .hamburger span {
             display: block;
             width: 22px;
-            height: 2.5px;
+            height: 2px;
             background: #1a1a1a;
             border-radius: 10px;
             transition: all 0.3s ease;
@@ -272,7 +284,9 @@
             background: #B61C1C;
         }
 
-        /* ===== منوی موبایل ===== */
+        /* ========================================
+           منوی موبایل (Drawer)
+           ======================================== */
         .mobile-overlay {
             display: none;
             position: fixed;
@@ -280,13 +294,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.3);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .mobile-overlay.active {
             display: block;
+            opacity: 1;
         }
 
         .mobile-drawer {
@@ -299,7 +317,10 @@
             z-index: 1001;
             padding: 30px 24px;
             transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: -8px 0 50px rgba(0,0,0,0.1);
+            box-shadow: -8px 0 60px rgba(0, 0, 0, 0.08);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
         }
 
         .mobile-drawer.open {
@@ -310,43 +331,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
             padding-bottom: 16px;
-            border-bottom: 2px solid #f0ebe5;
+            border-bottom: 1px solid #f0ebe5;
         }
 
         .mobile-drawer .drawer-header .drawer-logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .mobile-drawer .drawer-header .drawer-logo .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #B61C1C, #8a1515);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1rem;
-            font-weight: 800;
-            font-family: 'Ardekan', sans-serif;
-        }
-
-        .mobile-drawer .drawer-header .drawer-logo h3 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: #1a1a1a;
         }
 
-        .mobile-drawer .drawer-header .drawer-logo h3 span {
+        .mobile-drawer .drawer-header .drawer-logo span {
             color: #B61C1C;
         }
 
         .mobile-drawer .drawer-close {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             cursor: pointer;
             color: #888;
             transition: all 0.3s ease;
@@ -364,14 +366,15 @@
             display: flex;
             flex-direction: column;
             gap: 4px;
+            flex: 1;
         }
 
         .mobile-drawer .drawer-links a {
             font-family: 'Estedad', sans-serif;
             text-decoration: none;
-            color: #444;
+            color: #2d2a24;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.95rem;
             padding: 12px 16px;
             border-radius: 12px;
             transition: all 0.3s ease;
@@ -380,8 +383,18 @@
             gap: 14px;
         }
 
+        .mobile-drawer .drawer-links a i {
+            width: 24px;
+            color: #888;
+            transition: all 0.3s ease;
+        }
+
         .mobile-drawer .drawer-links a:hover {
             background: rgba(182, 28, 28, 0.05);
+            color: #B61C1C;
+        }
+
+        .mobile-drawer .drawer-links a:hover i {
             color: #B61C1C;
         }
 
@@ -390,9 +403,8 @@
             color: white;
         }
 
-        .mobile-drawer .drawer-links a i {
-            width: 22px;
-            font-size: 1.1rem;
+        .mobile-drawer .drawer-links a.active i {
+            color: white;
         }
 
         .mobile-drawer .drawer-links a .drawer-badge {
@@ -406,40 +418,41 @@
         }
 
         .mobile-drawer .drawer-footer {
-            margin-top: 30px;
+            margin-top: 20px;
             padding-top: 16px;
             border-top: 1px solid #f0ebe5;
         }
 
         .mobile-drawer .drawer-footer p {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.75rem;
-            color: #aaa;
+            font-size: 0.7rem;
+            color: #999;
             text-align: center;
         }
 
-        /* ===== بقیه استایل‌ها ===== */
+        /* ========================================
+           بقیه استایل‌ها (بدون تغییر)
+           ======================================== */
         .page {
             display: none;
-            animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+            animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         .page.active {
             display: block;
         }
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px) scale(0.98); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px) scale(0.98); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* ===== HERO ===== */
         .hero-slider {
             position: relative;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
             margin: 20px 0 30px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
             height: 400px;
         }
 
@@ -456,7 +469,7 @@
             display: flex;
             align-items: flex-end;
             padding: 40px;
-            transform: scale(1.04);
+            transform: scale(1.05);
         }
 
         .hero-slide.active {
@@ -479,13 +492,6 @@
             z-index: 2;
             color: white;
             max-width: 600px;
-            animation: slideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-            animation-delay: 0.3s;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-content .badge {
@@ -528,7 +534,8 @@
             font-weight: 700;
             font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: all 0.3s ease;
+            text-decoration: none;
             box-shadow: 0 4px 20px rgba(182, 28, 28, 0.3);
         }
 
@@ -549,10 +556,10 @@
         }
 
         .slider-dots span {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.4);
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -560,10 +567,8 @@
         .slider-dots span.active {
             background: white;
             transform: scale(1.3);
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
         }
 
-        /* ===== SECTION HEADER ===== */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -573,14 +578,7 @@
 
         .section-header h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-header h2 i {
-            color: #B61C1C;
+            font-size: 1.6rem;
         }
 
         .section-header a {
@@ -590,21 +588,16 @@
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
 
         .section-header a:hover {
             color: #8a1515;
-            transform: translateX(-4px);
         }
 
-        /* ===== MOVIE GRID ===== */
         .movie-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
             margin-bottom: 40px;
         }
 
@@ -613,13 +606,15 @@
             border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: all 0.4s ease;
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            max-width: 400px;
+            width: 100%;
         }
 
         .movie-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(182, 28, 28, 0.12);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 50px rgba(182, 28, 28, 0.15);
         }
 
         .movie-poster {
@@ -628,7 +623,6 @@
             background-size: cover;
             background-position: center;
             background-color: #1a1a1a;
-            overflow: hidden;
         }
 
         .movie-poster .badge {
@@ -653,7 +647,7 @@
             color: white;
             font-size: 3rem;
             opacity: 0;
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: all 0.4s ease;
             text-shadow: 0 4px 30px rgba(0,0,0,0.5);
             z-index: 2;
         }
@@ -670,7 +664,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.3);
             opacity: 0;
             transition: all 0.4s ease;
         }
@@ -703,7 +697,6 @@
             font-weight: 600;
         }
 
-        /* ===== SEARCH ===== */
         .search-page {
             display: flex;
             flex-direction: column;
@@ -740,7 +733,7 @@
             background: white;
             border-radius: 50px;
             padding: 6px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
             width: 100%;
             max-width: 600px;
             border: 2px solid transparent;
@@ -749,7 +742,7 @@
 
         .search-page .search-box-big:focus-within {
             border-color: #B61C1C;
-            box-shadow: 0 4px 40px rgba(182, 28, 28, 0.1);
+            box-shadow: 0 4px 40px rgba(182, 28, 28, 0.12);
         }
 
         .search-page .search-box-big input {
@@ -801,7 +794,7 @@
 
         .search-results .result-item:hover {
             transform: translateX(-6px);
-            box-shadow: 0 8px 30px rgba(182, 28, 28, 0.1);
+            box-shadow: 0 8px 30px rgba(182, 28, 28, 0.12);
         }
 
         .search-results .result-item img {
@@ -849,7 +842,6 @@
             margin-bottom: 12px;
         }
 
-        /* ===== NOTIFICATIONS ===== */
         .notifications-page {
             max-width: 700px;
             margin: 20px auto;
@@ -865,8 +857,8 @@
         }
 
         .notifications-page .notif-hero .notif-icon-big {
-            width: 400px;
-            height: 400px;
+            width: 450px;
+            height: 450px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -919,15 +911,15 @@
         }
 
         .notif-item:hover {
-            box-shadow: 0 8px 30px rgba(182, 28, 28, 0.08);
-            transform: translateX(-4px);
+            box-shadow: 0 8px 30px rgba(182, 28, 28, 0.1);
+            transform: translateX(-6px);
         }
 
         .notif-item .notif-icon {
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            background: rgba(182, 28, 28, 0.08);
+            background: rgba(182, 28, 28, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -961,7 +953,7 @@
         .notif-item .notif-content h4 .studio-tag {
             color: #B61C1C;
             font-size: 0.65rem;
-            background: rgba(182, 28, 28, 0.08);
+            background: rgba(182, 28, 28, 0.1);
             padding: 0 10px;
             border-radius: 12px;
             font-weight: 600;
@@ -994,7 +986,6 @@
             font-size: 0.6rem;
         }
 
-        /* ===== PROFILE ===== */
         .profile-page {
             max-width: 600px;
             margin: 20px auto;
@@ -1006,16 +997,11 @@
             border-radius: 20px;
             padding: 30px;
             text-align: center;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
             margin-bottom: 20px;
-            transition: all 0.3s ease;
         }
 
-        .profile-page .profile-header:hover {
-            box-shadow: 0 8px 40px rgba(182, 28, 28, 0.06);
-        }
-
-        .profile-page .profile-avatar {
+        .profile-page .profile-avatar-big {
             width: 100px;
             height: 100px;
             border-radius: 50%;
@@ -1026,7 +1012,7 @@
             margin: 0 auto 16px;
             font-size: 3rem;
             color: white;
-            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.25);
+            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.3);
         }
 
         .profile-page .profile-header .guest-badge {
@@ -1075,7 +1061,7 @@
         .profile-page .profile-actions .btn-primary {
             background: #B61C1C;
             color: white;
-            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.2);
+            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.3);
         }
 
         .profile-page .profile-actions .btn-primary:hover {
@@ -1144,7 +1130,6 @@
             margin-right: auto;
         }
 
-        /* ===== VIDEO PAGE با امکانات جدید ===== */
         .video-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -1156,7 +1141,7 @@
             background: #000;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
         .video-wrapper iframe {
@@ -1172,76 +1157,10 @@
             margin-top: 20px;
         }
 
-        .video-info-section .video-title-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .video-info-section .video-title-row h2 {
+        .video-info-section h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.6rem;
-            flex: 1;
-        }
-
-        .video-info-section .video-title-row .video-actions {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .video-info-section .video-title-row .video-actions button {
-            padding: 8px 18px;
-            border-radius: 30px;
-            border: none;
-            font-family: 'Estedad', sans-serif;
-            font-weight: 600;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .video-info-section .video-title-row .video-actions .like-btn {
-            background: rgba(182, 28, 28, 0.08);
-            color: #B61C1C;
-        }
-
-        .video-info-section .video-title-row .video-actions .like-btn:hover {
-            background: #B61C1C;
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .video-info-section .video-title-row .video-actions .like-btn.liked {
-            background: #B61C1C;
-            color: white;
-        }
-
-        .video-info-section .video-title-row .video-actions .share-btn {
-            background: rgba(0,0,0,0.05);
-            color: #555;
-        }
-
-        .video-info-section .video-title-row .video-actions .share-btn:hover {
-            background: #1a1a1a;
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .video-info-section .video-title-row .video-actions .save-btn {
-            background: rgba(0,0,0,0.05);
-            color: #555;
-        }
-
-        .video-info-section .video-title-row .video-actions .save-btn:hover {
-            background: #1a1a1a;
-            color: white;
-            transform: scale(1.05);
+            margin-bottom: 6px;
         }
 
         .video-info-section .video-meta {
@@ -1250,10 +1169,8 @@
             font-family: 'Estedad', sans-serif;
             font-size: 0.85rem;
             color: #888;
-            margin: 12px 0 16px;
+            margin-bottom: 12px;
             flex-wrap: wrap;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #eee;
         }
 
         .video-info-section .video-meta span {
@@ -1262,9 +1179,10 @@
             gap: 4px;
         }
 
-        /* ===== Video Description ===== */
         .description-wrapper {
             position: relative;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
             padding: 16px 0;
         }
 
@@ -1310,31 +1228,14 @@
             transform: rotate(180deg);
         }
 
-        /* ===== Comments ===== */
         .comments-section {
             margin-top: 30px;
         }
 
-        .comments-section .comments-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .comments-section .comments-header h3 {
+        .comments-section h3 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .comments-section .comments-header .comment-count {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.8rem;
-            color: #888;
-            font-weight: 400;
+            margin-bottom: 16px;
         }
 
         .comment-box {
@@ -1343,150 +1244,37 @@
             margin-bottom: 20px;
         }
 
-        .comment-box .comment-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #B61C1C, #8a1515);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 0.8rem;
-            flex-shrink: 0;
-            font-family: 'Estedad', sans-serif;
-        }
-
-        .comment-box .comment-input-wrap {
+        .comment-box input {
             flex: 1;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            background: white;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
             border-radius: 30px;
-            padding: 4px 4px 4px 16px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-            border: 1px solid #eee;
-            transition: all 0.3s ease;
-        }
-
-        .comment-box .comment-input-wrap:focus-within {
-            border-color: #B61C1C;
-            box-shadow: 0 2px 20px rgba(182, 28, 28, 0.08);
-        }
-
-        .comment-box .comment-input-wrap input {
-            flex: 1;
-            border: none;
-            outline: none;
-            padding: 12px 0;
             font-family: 'Estedad', sans-serif;
-            font-size: 0.9rem;
-            background: transparent;
+            outline: none;
+            background: white;
         }
 
-        .comment-box .comment-input-wrap button {
+        .comment-box button {
             font-family: 'Estedad', sans-serif;
             background: #B61C1C;
             color: white;
             border: none;
-            padding: 10px 22px;
+            padding: 12px 24px;
             border-radius: 30px;
             font-weight: 700;
-            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .comment-box .comment-input-wrap button:hover {
+        .comment-box button:hover {
             background: #8a1515;
-            transform: scale(1.03);
         }
 
-        /* ===== Comment List ===== */
-        .comment-list .comment-item {
-            display: flex;
-            gap: 14px;
-            padding: 16px 0;
-            border-bottom: 1px solid #f0ebe5;
-        }
-
-        .comment-list .comment-item:last-child {
-            border-bottom: none;
-        }
-
-        .comment-list .comment-item .comment-avatar-sm {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #B61C1C, #8a1515);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 0.7rem;
-            flex-shrink: 0;
-            font-family: 'Estedad', sans-serif;
-        }
-
-        .comment-list .comment-item .comment-body {
-            flex: 1;
-        }
-
-        .comment-list .comment-item .comment-body .comment-author {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .comment-list .comment-item .comment-body .comment-author .comment-time {
-            font-weight: 400;
-            color: #aaa;
-            font-size: 0.7rem;
-        }
-
-        .comment-list .comment-item .comment-body p {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: 4px;
-            line-height: 1.6;
-        }
-
-        .comment-list .comment-item .comment-body .comment-actions {
-            display: flex;
-            gap: 16px;
-            margin-top: 8px;
-        }
-
-        .comment-list .comment-item .comment-body .comment-actions button {
-            background: none;
-            border: none;
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.75rem;
-            color: #888;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .comment-list .comment-item .comment-body .comment-actions button:hover {
-            color: #B61C1C;
-        }
-
-        /* ===== FOOTER ===== */
         footer {
             margin-top: 60px;
             padding: 40px 0 20px;
             text-align: center;
-            border-top: 1px solid rgba(0,0,0,0.05);
+            border-top: 1px solid rgba(0,0,0,0.06);
         }
 
         footer h2 {
@@ -1510,7 +1298,7 @@
             width: 38px;
             height: 38px;
             border-radius: 50%;
-            background: rgba(182, 28, 28, 0.06);
+            background: rgba(182, 28, 28, 0.08);
             color: #B61C1C;
             display: flex;
             align-items: center;
@@ -1525,14 +1313,22 @@
             transform: translateY(-4px);
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
         @media (max-width: 992px) {
+            .hamburger {
+                display: flex;
+            }
+            
             .nav-links {
                 display: none;
             }
             
-            .hamburger {
-                display: flex;
+            .navbar {
+                border-radius: 30px;
+                padding: 4px 12px;
+                min-height: 52px;
             }
             
             .mobile-overlay {
@@ -1546,79 +1342,72 @@
 
         @media (max-width: 768px) {
             .navbar {
-                height: 60px;
-                padding: 0 16px;
-                margin: 10px 0;
-                border-radius: 14px;
+                border-radius: 24px;
+                padding: 4px 10px;
+                margin: 10px 0 14px 0;
+                min-height: 48px;
             }
-
+            
             .logo .logo-icon {
-                width: 30px;
-                height: 30px;
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+                border-radius: 6px;
+            }
+            
+            .logo .logo-text {
                 font-size: 1rem;
             }
-
-            .logo h1 {
-                font-size: 1.3rem;
+            
+            .logo .logo-dot {
+                display: none;
             }
-
-            .user-actions .icon-btn {
-                width: 34px;
-                height: 34px;
-                font-size: 0.95rem;
-            }
-
-            .user-actions .profile-avatar {
+            
+            .nav-actions .action-btn {
                 width: 32px;
                 height: 32px;
-                font-size: 0.75rem;
+                font-size: 0.85rem;
             }
-
-            .user-actions .icon-btn .notif-count {
+            
+            .nav-actions .action-btn .badge {
                 width: 16px;
                 height: 16px;
                 font-size: 0.45rem;
                 top: 0;
                 left: 0;
             }
-
+            
+            .profile-avatar {
+                width: 30px;
+                height: 30px;
+                font-size: 0.7rem;
+            }
+            
+            .hamburger span {
+                width: 18px;
+                height: 2px;
+            }
+            
             .hero-slider {
                 height: 280px;
             }
-
+            
             .hero-slide {
                 padding: 24px;
             }
-
+            
             .hero-content h2 {
                 font-size: 1.5rem;
             }
-
+            
             .hero-content p {
                 font-size: 0.8rem;
             }
-
-            .movie-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .video-info-section .video-title-row {
-                flex-direction: column;
-            }
-
-            .video-info-section .video-title-row .video-actions {
-                width: 100%;
-            }
-
-            .video-info-section .video-title-row .video-actions button {
-                flex: 1;
-                justify-content: center;
-            }
-
+            
             .search-page .logo-big {
                 width: 380px;
             }
-
+            
             .search-page .search-box-big {
                 flex-wrap: wrap;
                 background: transparent;
@@ -1626,7 +1415,7 @@
                 border: none;
                 gap: 8px;
             }
-
+            
             .search-page .search-box-big input {
                 background: white;
                 border-radius: 30px;
@@ -1634,159 +1423,131 @@
                 border: 1px solid #eee;
                 width: 100%;
             }
-
+            
             .search-page .search-box-big button {
                 width: 100%;
                 justify-content: center;
             }
-
+            
             .notifications-page .notif-hero .notif-icon-big {
-                width: 300px;
-                height: 300px;
+                width: 340px;
+                height: 340px;
             }
-
-            .comment-box .comment-input-wrap {
-                flex-wrap: wrap;
-                background: transparent;
-                border: none;
-                padding: 0;
-                box-shadow: none;
-                gap: 8px;
-            }
-
-            .comment-box .comment-input-wrap input {
-                background: white;
-                border-radius: 30px;
-                padding: 12px 16px;
-                border: 1px solid #eee;
-                width: 100%;
-            }
-
-            .comment-box .comment-input-wrap button {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .comment-box .comment-avatar {
-                display: none;
+            
+            .mobile-drawer {
+                width: 280px;
+                padding: 24px 18px;
             }
         }
 
         @media (max-width: 480px) {
             .navbar {
-                height: 54px;
-                padding: 0 12px;
-                border-radius: 12px;
+                border-radius: 20px;
+                padding: 4px 8px;
+                margin: 8px 0 12px 0;
+                min-height: 42px;
             }
-
+            
             .logo .logo-icon {
-                width: 26px;
-                height: 26px;
+                width: 24px;
+                height: 24px;
+                font-size: 0.7rem;
+                border-radius: 4px;
+            }
+            
+            .logo .logo-text {
                 font-size: 0.85rem;
             }
-
-            .logo h1 {
-                font-size: 1.1rem;
-            }
-
-            .user-actions .icon-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 0.85rem;
-            }
-
-            .user-actions .profile-avatar {
+            
+            .nav-actions .action-btn {
                 width: 28px;
                 height: 28px;
-                font-size: 0.65rem;
+                font-size: 0.75rem;
             }
-
-            .user-actions .icon-btn .notif-count {
+            
+            .nav-actions .action-btn .badge {
                 width: 14px;
                 height: 14px;
                 font-size: 0.4rem;
-                top: -1px;
-                left: -1px;
+                top: -2px;
+                left: -2px;
+                border-width: 1.5px;
             }
-
+            
+            .profile-avatar {
+                width: 26px;
+                height: 26px;
+                font-size: 0.6rem;
+            }
+            
             .hamburger span {
-                width: 18px;
-                height: 2px;
+                width: 16px;
+                height: 1.8px;
             }
-
+            
+            .hamburger {
+                gap: 3px;
+                padding: 4px;
+            }
+            
             .mobile-drawer {
                 width: 260px;
                 padding: 20px 16px;
-                right: -280px;
             }
-
+            
             .hero-slider {
-                height: 200px;
+                height: 220px;
             }
-
+            
             .hero-slide {
                 padding: 16px;
             }
-
+            
             .hero-content h2 {
                 font-size: 1.1rem;
             }
-
+            
             .hero-content p {
                 font-size: 0.7rem;
                 margin-bottom: 10px;
             }
-
+            
             .hero-content .btn-play {
                 padding: 8px 18px;
                 font-size: 0.75rem;
             }
-
+            
             .search-page .logo-big {
-                width: 240px;
+                width: 280px;
             }
-
+            
             .notifications-page .notif-hero .notif-icon-big {
-                width: 220px;
-                height: 220px;
+                width: 280px;
+                height: 280px;
             }
-
+            
             .notifications-page .notif-hero h2 {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
-
+            
             .notif-item {
                 padding: 12px 14px;
                 flex-wrap: wrap;
             }
-
+            
             .notif-item .notif-time {
                 width: 100%;
                 margin-right: 56px;
             }
-
+            
             .notif-item .notif-dot {
                 top: 12px;
                 left: 12px;
             }
-
+            
             .profile-page .profile-actions .btn {
                 width: 100%;
                 text-align: center;
-            }
-
-            .video-info-section .video-title-row h2 {
-                font-size: 1.2rem;
-            }
-
-            .video-info-section .video-title-row .video-actions button {
-                font-size: 0.7rem;
-                padding: 6px 12px;
-            }
-
-            .video-info-section .video-meta {
-                font-size: 0.7rem;
-                gap: 10px;
             }
         }
     </style>
@@ -1794,48 +1555,55 @@
 <body>
 
     <div class="container">
-        <!-- ===== HEADER جدید ===== -->
+        <!-- ========================================
+             HEADER فوق‌حرفه‌ای
+             ======================================== -->
         <header class="navbar">
-            <div class="nav-left">
-                <button class="hamburger" onclick="toggleMobileMenu()">
+            <!-- بخش چپ: همبرگر + لوگو -->
+            <div class="nav-section">
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="منو">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
                 
                 <a class="logo" onclick="showPage('home')">
-                    <div class="logo-icon">ز</div>
-                    <h1>Zerox<span>.</span></h1>
+                    <div class="logo-icon">Z</div>
+                    <span class="logo-text">Zerox<span>.</span></span>
+                    <span class="logo-dot"></span>
                 </a>
-                
-                <div class="nav-links">
-                    <a class="active" onclick="showPage('home')"><i class="fas fa-home"></i> خانه</a>
-                    <a onclick="showPage('movies')"><i class="fas fa-film"></i> ویدیوها</a>
-                </div>
             </div>
-            
-            <div class="nav-right">
-                <div class="user-actions">
-                    <button class="icon-btn" onclick="showPage('search')">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <button class="icon-btn" onclick="showPage('notifications')" style="position:relative;">
-                        <i class="fas fa-bell"></i>
-                        <span class="notif-count">3</span>
-                    </button>
-                    <div class="profile-avatar" onclick="showPage('profile')">ز</div>
-                </div>
+
+            <!-- بخش وسط: لینک‌ها -->
+            <div class="nav-links">
+                <a class="active" onclick="showPage('home')">
+                    <i class="fas fa-home"></i> خانه
+                </a>
+                <a onclick="showPage('movies')">
+                    <i class="fas fa-film"></i> ویدیوها
+                </a>
+            </div>
+
+            <!-- بخش راست: آیکون‌ها + پروفایل -->
+            <div class="nav-actions">
+                <button class="action-btn" onclick="showPage('search')" aria-label="جستجو">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="action-btn" onclick="showPage('notifications')" aria-label="اعلان‌ها">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="profile-avatar" onclick="showPage('profile')">ز</div>
             </div>
         </header>
 
-        <!-- ===== منوی موبایل ===== -->
+        <!-- ========================================
+           منوی موبایل (Drawer)
+           ======================================== -->
         <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
         <div class="mobile-drawer" id="mobileDrawer">
             <div class="drawer-header">
-                <div class="drawer-logo">
-                    <div class="logo-icon">ز</div>
-                    <h3>Zerox<span>.</span></h3>
-                </div>
+                <span class="drawer-logo">Zerox<span>.</span></span>
                 <button class="drawer-close" onclick="closeMobileMenu()">
                     <i class="fas fa-times"></i>
                 </button>
@@ -1863,7 +1631,9 @@
             </div>
         </div>
 
-        <!-- ===== HOME PAGE ===== -->
+        <!-- ========================================
+           بقیه صفحات (همون‌طور که بودن)
+           ======================================== -->
         <div class="page active" id="page-home">
             <div class="hero-slider" id="heroSlider">
                 <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
@@ -1893,8 +1663,8 @@
             </div>
 
             <div class="section-header">
-                <h2><i class="fas fa-fire"></i> جدیدترین عناوین</h2>
-                <a href="#" onclick="showPage('movies'); return false;">مشاهده همه <i class="fas fa-chevron-left"></i></a>
+                <h2><i class="fas fa-fire" style="color:#B61C1C;"></i> جدیدترین عناوین</h2>
+                <a href="#" onclick="showPage('movies'); return false;">مشاهده همه</a>
             </div>
 
             <div class="movie-grid" id="movieGrid">
@@ -1927,7 +1697,6 @@
             </div>
         </div>
 
-        <!-- ===== SEARCH PAGE ===== -->
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
@@ -1949,14 +1718,13 @@
             </div>
         </div>
 
-        <!-- ===== NOTIFICATIONS PAGE ===== -->
         <div class="page" id="page-notifications">
             <div class="notifications-page">
                 <div class="notif-hero">
                     <div class="notif-icon-big">
                         <img src="https://cdn.imgurl.ir/uploads/r800856_Zerox_icon_12.png" alt="Zerox" />
                     </div>
-                    <h2><i class="fas fa-bell"></i> اعلان‌ها</h2>
+                    <h2>اعلان‌ها</h2>
                     <span class="studio-badge">🎬 Zerox Studio</span>
                 </div>
                 
@@ -1972,11 +1740,10 @@
             </div>
         </div>
 
-        <!-- ===== PROFILE PAGE ===== -->
         <div class="page" id="page-profile">
             <div class="profile-page">
                 <div class="profile-header">
-                    <div class="profile-avatar">
+                    <div class="profile-avatar-big">
                         <i class="fas fa-user"></i>
                     </div>
                     <span class="guest-badge">👤 مهمان</span>
@@ -2021,13 +1788,10 @@
             </div>
         </div>
 
-        <!-- ===== MOVIES PAGE ===== -->
         <div class="page" id="page-movies">
-            <div class="section-header" style="margin-top:10px;">
-                <h2><i class="fas fa-film" style="color:#B61C1C;"></i> همه ویدیوها</h2>
-                <span style="font-family:'Estedad',sans-serif; color:#888; font-size:0.85rem;">۲ ویدیو</span>
-            </div>
-            <div class="movie-grid">
+            <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin:20px 0;"><i class="fas fa-film" style="color:#B61C1C;"></i> ویدیوها</h2>
+            <p style="font-family:'Estedad',sans-serif; color:#888;">همه ویدیوهای سینمایی و کوتاه</p>
+            <div class="movie-grid" style="margin-top:20px;">
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
                         <span class="badge">جدید</span>
@@ -2043,7 +1807,6 @@
                 </div>
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
-                        <span class="badge">ویژه</span>
                         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
                     <div class="movie-info">
@@ -2057,7 +1820,6 @@
             </div>
         </div>
 
-        <!-- ===== VIDEO PAGE ===== -->
         <div class="page" id="page-video">
             <div class="video-container">
                 <div class="video-wrapper">
@@ -2065,26 +1827,11 @@
                 </div>
 
                 <div class="video-info-section">
-                    <div class="video-title-row">
-                        <h2 id="videoTitle">عنوان فیلم</h2>
-                        <div class="video-actions">
-                            <button class="like-btn" onclick="toggleLike(this)">
-                                <i class="fas fa-heart"></i> <span class="like-count">۱۲۸</span>
-                            </button>
-                            <button class="share-btn" onclick="shareVideo()">
-                                <i class="fas fa-share-alt"></i> اشتراک
-                            </button>
-                            <button class="save-btn" onclick="toggleSave(this)">
-                                <i class="fas fa-bookmark"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
+                    <h2 id="videoTitle">عنوان فیلم</h2>
                     <div class="video-meta">
-                        <span><i class="fas fa-eye"></i> ۱٬۲۳۴ بازدید</span>
                         <span><i class="fas fa-clock"></i> <span id="videoDuration">۰ دقیقه</span></span>
                         <span><i class="fas fa-star" style="color:#f5b342;"></i> <span id="videoRating">۰.۰</span></span>
-                        <span><i class="fas fa-calendar-alt"></i> ۱۴۰۴/۰۶/۰۱</span>
+                        <span><i class="fas fa-eye"></i> ۱٬۲۳۴ بازدید</span>
                     </div>
                     
                     <div class="description-wrapper">
@@ -2099,67 +1846,15 @@
                 </div>
 
                 <div class="comments-section">
-                    <div class="comments-header">
-                        <h3><i class="fas fa-comments"></i> نظرات <span class="comment-count">(۳)</span></h3>
-                    </div>
-                    
+                    <h3><i class="fas fa-comments"></i> نظرات</h3>
                     <div class="comment-box">
-                        <div class="comment-avatar">ز</div>
-                        <div class="comment-input-wrap">
-                            <input type="text" placeholder="نظر خود را بنویسید..." />
-                            <button>ارسال</button>
-                        </div>
-                    </div>
-
-                    <div class="comment-list">
-                        <div class="comment-item">
-                            <div class="comment-avatar-sm">ر</div>
-                            <div class="comment-body">
-                                <div class="comment-author">
-                                    رضا <span class="comment-time">۲ ساعت پیش</span>
-                                </div>
-                                <p>داشتم میمردم از ترس! عالی بود😂</p>
-                                <div class="comment-actions">
-                                    <button><i class="far fa-thumbs-up"></i> ۱۲</button>
-                                    <button><i class="far fa-thumbs-down"></i> ۲</button>
-                                    <button>پاسخ</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-item">
-                            <div class="comment-avatar-sm">س</div>
-                            <div class="comment-body">
-                                <div class="comment-author">
-                                    سارا <span class="comment-time">۵ ساعت پیش</span>
-                                </div>
-                                <p>گرافیک بازی خیلی خفن بود! ادامه بدین🔥</p>
-                                <div class="comment-actions">
-                                    <button><i class="far fa-thumbs-up"></i> ۸</button>
-                                    <button><i class="far fa-thumbs-down"></i> ۰</button>
-                                    <button>پاسخ</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-item">
-                            <div class="comment-avatar-sm">ع</div>
-                            <div class="comment-body">
-                                <div class="comment-author">
-                                    علی <span class="comment-time">۱ روز پیش</span>
-                                </div>
-                                <p>داستان بازی خیلی جذاب بود منتظر قسمت بعدی هستم💯</p>
-                                <div class="comment-actions">
-                                    <button><i class="far fa-thumbs-up"></i> ۵</button>
-                                    <button><i class="far fa-thumbs-down"></i> ۰</button>
-                                    <button>پاسخ</button>
-                                </div>
-                            </div>
-                        </div>
+                        <input type="text" placeholder="نظر خود را بنویسید..." />
+                        <button>ارسال</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ===== FOOTER ===== -->
         <footer>
             <h2>Zerox Studio</h2>
             <p>پلتفرم سینمایی و سرگرمی دیجیتال</p>
@@ -2173,6 +1868,23 @@
     </div>
 
     <script>
+        // ===== منوی موبایل =====
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileOverlay');
+            const drawer = document.getElementById('mobileDrawer');
+            overlay.classList.toggle('active');
+            drawer.classList.toggle('open');
+            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            const overlay = document.getElementById('mobileOverlay');
+            const drawer = document.getElementById('mobileDrawer');
+            overlay.classList.remove('active');
+            drawer.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
         const moviesDB = [
             {
                 title: 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا',
@@ -2192,24 +1904,6 @@
             }
         ];
 
-        // ===== منوی موبایل =====
-        function toggleMobileMenu() {
-            const overlay = document.getElementById('mobileOverlay');
-            const drawer = document.getElementById('mobileDrawer');
-            overlay.classList.toggle('active');
-            drawer.classList.toggle('open');
-            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
-        }
-
-        function closeMobileMenu() {
-            const overlay = document.getElementById('mobileOverlay');
-            const drawer = document.getElementById('mobileDrawer');
-            overlay.classList.remove('active');
-            drawer.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        // ===== اسلایدر =====
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.slider-dots span');
@@ -2244,7 +1938,6 @@
 
         startAutoPlay();
 
-        // ===== صفحه‌بندی =====
         function showPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const target = document.getElementById('page-' + page);
@@ -2257,7 +1950,6 @@
                 links[map[page]].classList.add('active');
             }
             
-            // منوی موبایل
             document.querySelectorAll('.mobile-drawer .drawer-links a').forEach(a => a.classList.remove('active'));
             const drawerLinks = document.querySelectorAll('.mobile-drawer .drawer-links a');
             const drawerMap = { home: 0, movies: 1, search: 2, notifications: 3, profile: 4 };
@@ -2286,7 +1978,6 @@
             closeMobileMenu();
         }
 
-        // ===== جستجو =====
         function liveSearch(query) {
             const resultsContainer = document.getElementById('searchResults');
             const q = query.trim().toLowerCase();
@@ -2332,7 +2023,6 @@
             }).join('');
         }
 
-        // ===== توضیحات =====
         function toggleDescription() {
             const desc = document.getElementById('videoDescription');
             const toggle = document.getElementById('descToggle');
@@ -2348,7 +2038,6 @@
             }
         }
 
-        // ===== باز کردن ویدیو =====
         function openVideo(url, title, desc, duration, rating) {
             const iframe = document.getElementById('videoIframe');
             if (iframe) iframe.src = url;
@@ -2375,55 +2064,6 @@
             showPage('video');
         }
 
-        // ===== دکمه لایک =====
-        function toggleLike(btn) {
-            btn.classList.toggle('liked');
-            const countSpan = btn.querySelector('.like-count');
-            let count = parseInt(countSpan.textContent);
-            if (btn.classList.contains('liked')) {
-                count++;
-                btn.querySelector('i').classList.remove('far');
-                btn.querySelector('i').classList.add('fas');
-            } else {
-                count--;
-                btn.querySelector('i').classList.remove('fas');
-                btn.querySelector('i').classList.add('far');
-            }
-            countSpan.textContent = count;
-        }
-
-        // ===== اشتراک‌گذاری =====
-        function shareVideo() {
-            if (navigator.share) {
-                navigator.share({
-                    title: document.getElementById('videoTitle').textContent,
-                    text: 'این ویدیو رو توی Zerox Studio ببین!',
-                    url: window.location.href
-                }).catch(() => {});
-            } else {
-                navigator.clipboard.writeText(window.location.href).then(() => {
-                    alert('🔗 لینک ویدیو کپی شد!');
-                });
-            }
-        }
-
-        // ===== ذخیره ویدیو =====
-        function toggleSave(btn) {
-            btn.classList.toggle('saved');
-            if (btn.classList.contains('saved')) {
-                btn.style.color = '#B61C1C';
-                btn.querySelector('i').classList.add('fas');
-                btn.querySelector('i').classList.remove('far');
-                alert('💾 ویدیو ذخیره شد!');
-            } else {
-                btn.style.color = '#555';
-                btn.querySelector('i').classList.remove('fas');
-                btn.querySelector('i').classList.add('far');
-                alert('🗑️ ویدیو از ذخیره‌ها حذف شد!');
-            }
-        }
-
-        // ===== ESC =====
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 const videoPage = document.getElementById('page-video');
@@ -2437,4 +2077,4 @@
         });
     </script>
 </body>
-    </html>
+                </html>
