@@ -56,32 +56,9 @@
             user-drag: none;
             -webkit-user-select: none;
             user-select: none;
-            pointer-events: auto;
         }
 
-        .gallery-item img,
-        .game-hero img,
-        .movie-poster {
-            pointer-events: none;
-        }
-        .gallery-item {
-            cursor: pointer;
-        }
-
-        /* ===== انیمیشن ساعت شنی ===== */
-        @keyframes sandShake {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(6deg); }
-            75% { transform: rotate(-6deg); }
-        }
-        .sand-icon {
-            display: inline-block;
-            animation: sandShake 2.5s ease-in-out infinite;
-        }
-
-        /* ============================================
-           HEADER بزرگتر
-           ============================================ */
+        /* ===== HEADER ===== */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -155,15 +132,16 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            flex-wrap: wrap;
         }
         .nav-links a {
             font-family: 'Estedad', sans-serif;
             text-decoration: none;
             color: #4a4a4a;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
-            padding: 10px 24px;
+            padding: 10px 22px;
             border-radius: 40px;
             white-space: nowrap;
         }
@@ -171,7 +149,7 @@
             color: #aaa;
         }
         .nav-links a i {
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin-left: 8px;
             opacity: 0.6;
         }
@@ -228,7 +206,6 @@
             align-items: center;
             justify-content: center;
             border: 2px solid rgba(255,255,255,0.9);
-            box-shadow: 0 2px 10px rgba(182,28,28,0.25);
         }
 
         .profile-avatar {
@@ -246,12 +223,10 @@
             border: 2px solid transparent;
             font-family: 'Estedad', sans-serif;
             box-shadow: 0 2px 16px rgba(182,28,28,0.2);
-            margin-right: 4px;
         }
         .profile-avatar:hover {
             transform: scale(1.06);
             border-color: #B61C1C;
-            box-shadow: 0 4px 24px rgba(182,28,28,0.3);
         }
 
         .hamburger {
@@ -340,7 +315,6 @@
         .mobile-drawer .drawer-header .drawer-logo span {
             color: #B61C1C;
         }
-
         .mobile-drawer .drawer-close {
             font-size: 1.5rem;
             cursor: pointer;
@@ -443,225 +417,264 @@
             font-size: 0.9rem;
         }
 
-        /* ===== GAME CARDS ===== */
-        .game-cards-grid {
+        /* ============================================
+           OLD GAMES CARDS
+           ============================================ */
+        .old-games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
             margin-bottom: 40px;
         }
-        .game-card {
+
+        .old-game-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             cursor: pointer;
+            position: relative;
         }
-        body.dark-mode .game-card {
+        body.dark-mode .old-game-card {
             background: #252525;
         }
-        .game-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 40px rgba(182,28,28,0.1);
+
+        .old-game-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 20px 60px rgba(182,28,28,0.15);
         }
 
-        .game-card .game-card-img {
+        .old-game-card .card-img {
             position: relative;
             aspect-ratio: 16/9;
             overflow: hidden;
             background: #1a1a1a;
         }
-        .game-card .game-card-img img {
+
+        .old-game-card .card-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
-            pointer-events: none;
-        }
-        .game-card:hover .game-card-img img {
-            transform: scale(1.03);
+            transition: transform 0.6s ease;
         }
 
-        .game-card .game-card-img .game-status {
+        .old-game-card:hover .card-img img {
+            transform: scale(1.06);
+        }
+
+        .old-game-card .card-img .card-year {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(6px);
-            color: #ffa500;
-            padding: 4px 12px;
+            top: 12px;
+            right: 12px;
+            background: rgba(182,28,28,0.9);
+            color: white;
+            padding: 4px 14px;
             border-radius: 30px;
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
-            border: 1px solid rgba(255,165,0,0.2);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .game-card .game-card-img .game-status .sand-icon {
-            font-size: 0.65rem;
+            backdrop-filter: blur(4px);
         }
 
-        .game-card .game-card-body {
-            padding: 14px 16px 16px;
+        .old-game-card .card-img .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 16px 16px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
         }
-        .game-card .game-card-body h3 {
+
+        .old-game-card .card-img .card-overlay .card-title {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
             margin-bottom: 2px;
         }
-        body.dark-mode .game-card .game-card-body h3 {
-            color: #f0ebe5;
-        }
-        .game-card .game-card-body .game-genre {
+
+        .old-game-card .card-img .card-overlay .card-dev {
             font-family: 'Estedad', sans-serif;
             font-size: 0.7rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .old-game-card .card-body {
+            padding: 14px 18px 18px;
+        }
+
+        .old-game-card .card-body .card-genre {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.75rem;
             color: #888;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
             margin-bottom: 6px;
         }
-        .game-card .game-card-body .game-desc {
+
+        .old-game-card .card-body .card-genre span {
+            background: rgba(182,28,28,0.06);
+            color: #B61C1C;
+            padding: 2px 12px;
+            border-radius: 30px;
+        }
+        body.dark-mode .old-game-card .card-body .card-genre span {
+            background: rgba(182,28,28,0.15);
+        }
+
+        .old-game-card .card-body .card-desc {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #666;
-            line-height: 1.6;
+            line-height: 1.7;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        body.dark-mode .game-card .game-card-body .game-desc {
+        body.dark-mode .old-game-card .card-body .card-desc {
             color: #999;
         }
-        .game-card .game-card-body .game-footer {
+
+        .old-game-card .card-body .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 10px;
-            padding-top: 10px;
+            margin-top: 12px;
+            padding-top: 12px;
             border-top: 1px solid #f0ebe5;
         }
-        body.dark-mode .game-card .game-card-body .game-footer {
+        body.dark-mode .old-game-card .card-body .card-footer {
             border-color: #333;
         }
-        .game-card .game-card-body .game-footer .game-platform {
+
+        .old-game-card .card-body .card-footer .card-platform {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             color: #888;
         }
-        .game-card .game-card-body .game-footer .game-platform i {
-            margin-left: 4px;
-        }
-        .game-card .game-card-body .game-footer .btn-view {
+
+        .old-game-card .card-body .card-footer .btn-detail {
             background: #B61C1C;
             color: white;
             border: none;
-            padding: 5px 16px;
+            padding: 6px 20px;
             border-radius: 30px;
             font-family: 'Estedad', sans-serif;
             font-weight: 600;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             cursor: pointer;
-        }
-        .game-card .game-card-body .game-footer .btn-view:hover {
-            background: #8a1515;
+            transition: all 0.3s ease;
         }
 
-        /* ===== GAME DETAIL ===== */
-        .game-detail-hero {
+        .old-game-card .card-body .card-footer .btn-detail:hover {
+            background: #8a1515;
+            transform: scale(1.04);
+        }
+
+        /* ============================================
+           OLD GAME DETAIL
+           ============================================ */
+        .old-detail-hero {
             position: relative;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
             margin-bottom: 24px;
-            box-shadow: 0 6px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
         }
-        .game-detail-hero img {
+
+        .old-detail-hero img {
             width: 100%;
             display: block;
             aspect-ratio: 16/9;
             object-fit: cover;
-            pointer-events: none;
         }
-        .game-detail-hero .game-overlay {
+
+        .old-detail-hero .detail-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 30px 24px 24px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            padding: 40px 30px 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
         }
-        .game-detail-hero .game-overlay .game-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #ff8c00;
+
+        .old-detail-hero .detail-overlay .detail-badge {
+            display: inline-block;
+            background: #B61C1C;
             color: white;
-            padding: 3px 14px;
+            padding: 4px 16px;
             border-radius: 30px;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
             margin-bottom: 8px;
         }
-        .game-detail-hero .game-overlay .game-badge .sand-icon {
-            font-size: 0.65rem;
-        }
-        .game-detail-hero .game-overlay h1 {
+
+        .old-detail-hero .detail-overlay h1 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             color: white;
-            margin-bottom: 2px;
             text-shadow: 0 2px 20px rgba(0,0,0,0.5);
-        }
-        .game-detail-hero .game-overlay .game-tagline {
-            font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.65);
-            font-size: 0.9rem;
+            margin-bottom: 2px;
         }
 
-        .game-detail-info {
+        .old-detail-hero .detail-overlay .detail-sub {
+            font-family: 'Estedad', sans-serif;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+
+        .old-detail-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
             margin-bottom: 24px;
             background: white;
             border-radius: 18px;
-            padding: 16px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            padding: 20px 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
         }
-        body.dark-mode .game-detail-info {
+        body.dark-mode .old-detail-info {
             background: #252525;
         }
-        .game-detail-info .info-item {
+
+        .old-detail-info .info-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
         }
-        .game-detail-info .info-item i {
+
+        .old-detail-info .info-item i {
             color: #B61C1C;
             font-size: 1.1rem;
-            width: 30px;
+            width: 28px;
             text-align: center;
+            margin-top: 2px;
         }
-        .game-detail-info .info-item .info-label {
+
+        .old-detail-info .info-item .info-label {
             font-family: 'Estedad', sans-serif;
             font-size: 0.6rem;
             color: #888;
         }
-        .game-detail-info .info-item .info-value {
+
+        .old-detail-info .info-item .info-value {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
         }
-        body.dark-mode .game-detail-info .info-item .info-value {
+        body.dark-mode .old-detail-info .info-item .info-value {
             color: #f0ebe5;
         }
 
-        .game-detail-gallery {
+        .old-detail-gallery {
             margin-bottom: 24px;
         }
-        .game-detail-gallery .gallery-title {
+
+        .old-detail-gallery .gallery-title {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.3rem;
             margin-bottom: 14px;
@@ -669,43 +682,84 @@
             align-items: center;
             gap: 10px;
         }
-        .game-detail-gallery .gallery-title i {
+
+        .old-detail-gallery .gallery-title i {
             color: #B61C1C;
         }
-        .game-detail-gallery .gallery-grid {
+
+        .old-detail-gallery .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 14px;
         }
-        .game-detail-gallery .gallery-grid .gallery-item {
+
+        .old-detail-gallery .gallery-grid .gallery-item {
             border-radius: 14px;
             overflow: hidden;
             aspect-ratio: 16/9;
             cursor: pointer;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
-        .game-detail-gallery .gallery-grid .gallery-item:hover {
+
+        .old-detail-gallery .gallery-grid .gallery-item:hover {
             transform: scale(1.02);
             box-shadow: 0 8px 30px rgba(182,28,28,0.12);
         }
-        .game-detail-gallery .gallery-grid .gallery-item img {
+
+        .old-detail-gallery .gallery-grid .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            pointer-events: none;
         }
 
-        .game-detail-description {
+        .old-detail-music {
+            margin-bottom: 24px;
+            background: white;
+            border-radius: 18px;
+            padding: 16px 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        body.dark-mode .old-detail-music {
+            background: #252525;
+        }
+
+        .old-detail-music .music-title {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .old-detail-music .music-title i {
+            color: #B61C1C;
+        }
+
+        .old-detail-music audio {
+            width: 100%;
+            border-radius: 30px;
+            outline: none;
+        }
+
+        .old-detail-music audio::-webkit-media-controls-panel {
+            background: rgba(182,28,28,0.05);
+        }
+
+        .old-detail-description {
             background: white;
             border-radius: 18px;
             padding: 20px 24px;
             margin-bottom: 24px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
         }
-        body.dark-mode .game-detail-description {
+        body.dark-mode .old-detail-description {
             background: #252525;
         }
-        .game-detail-description h3 {
+
+        .old-detail-description h3 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.2rem;
             margin-bottom: 10px;
@@ -713,35 +767,20 @@
             align-items: center;
             gap: 10px;
         }
-        .game-detail-description h3 i {
+
+        .old-detail-description h3 i {
             color: #B61C1C;
         }
-        .game-detail-description p {
+
+        .old-detail-description p {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #555;
-            line-height: 1.9;
+            line-height: 2;
+            white-space: pre-line;
         }
-        body.dark-mode .game-detail-description p {
+        body.dark-mode .old-detail-description p {
             color: #aaa;
-        }
-        .game-detail-description .genre-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 10px;
-        }
-        .game-detail-description .genre-tags span {
-            background: rgba(182,28,28,0.08);
-            color: #B61C1C;
-            padding: 3px 12px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            font-family: 'Estedad', sans-serif;
-        }
-        body.dark-mode .game-detail-description .genre-tags span {
-            background: rgba(182,28,28,0.2);
         }
 
         .btn-back {
@@ -758,6 +797,7 @@
             padding: 6px 0;
             margin-bottom: 12px;
         }
+
         .btn-back:hover {
             color: #8a1515;
             transform: translateX(-4px);
@@ -920,10 +960,6 @@
             background-position: center;
             background-color: #1a1a1a;
             pointer-events: none;
-            -webkit-user-drag: none;
-            user-drag: none;
-            -webkit-user-select: none;
-            user-select: none;
         }
         .movie-poster .badge {
             position: absolute;
@@ -1095,7 +1131,6 @@
             border-radius: 10px;
             object-fit: cover;
             flex-shrink: 0;
-            pointer-events: none;
         }
         .search-results .result-item .info {
             flex: 1;
@@ -1722,11 +1757,11 @@
             .hero-slide { padding: 20px; }
             .hero-content h2 { font-size: 1.4rem; }
             .hero-content p { font-size: 0.75rem; }
-            .game-cards-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-            .game-detail-hero .game-overlay h1 { font-size: 1.5rem; }
-            .game-detail-hero .game-overlay { padding: 16px 16px 16px; }
-            .game-detail-gallery .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
-            .game-detail-info { grid-template-columns: 1fr 1fr; padding: 12px 14px; gap: 10px; }
+            .old-games-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+            .old-detail-hero .detail-overlay h1 { font-size: 1.6rem; }
+            .old-detail-hero .detail-overlay { padding: 20px 16px 16px; }
+            .old-detail-gallery .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+            .old-detail-info { grid-template-columns: 1fr 1fr; padding: 12px 14px; gap: 10px; }
             .search-page .logo-big { width: 380px; }
             .search-page .search-box-big { flex-wrap: wrap; background: transparent; box-shadow: none; border: none; gap: 8px; }
             .search-page .search-box-big input { background: white; border-radius: 30px; padding: 12px 16px; border: 1px solid #eee; width: 100%; }
@@ -1750,14 +1785,14 @@
             .hero-content h2 { font-size: 1.1rem; }
             .hero-content p { font-size: 0.65rem; margin-bottom: 8px; }
             .hero-content .btn-play { padding: 6px 16px; font-size: 0.7rem; }
-            .game-cards-grid { grid-template-columns: 1fr; gap: 14px; }
-            .game-detail-hero .game-overlay h1 { font-size: 1.2rem; }
-            .game-detail-hero .game-overlay .game-tagline { font-size: 0.75rem; }
-            .game-detail-hero .game-overlay { padding: 12px 12px 12px; }
-            .game-detail-info { grid-template-columns: 1fr; padding: 10px 12px; gap: 8px; }
-            .game-detail-gallery .gallery-grid { grid-template-columns: 1fr; }
-            .game-detail-description { padding: 14px; }
-            .game-detail-description p { font-size: 0.8rem; }
+            .old-games-grid { grid-template-columns: 1fr; gap: 14px; }
+            .old-detail-hero .detail-overlay h1 { font-size: 1.2rem; }
+            .old-detail-hero .detail-overlay .detail-sub { font-size: 0.8rem; }
+            .old-detail-hero .detail-overlay { padding: 14px 12px 12px; }
+            .old-detail-info { grid-template-columns: 1fr; padding: 10px 12px; gap: 8px; }
+            .old-detail-gallery .gallery-grid { grid-template-columns: 1fr; }
+            .old-detail-description { padding: 14px; }
+            .old-detail-description p { font-size: 0.85rem; }
             .search-page .logo-big { width: 240px; }
             .notifications-page .notif-hero .notif-icon-big { width: 200px; height: 200px; }
             .notifications-page .notif-hero h2 { font-size: 1.2rem; }
@@ -1773,7 +1808,7 @@
 <body>
 
     <div class="container">
-        <!-- ===== HEADER بزرگتر ===== -->
+        <!-- ===== HEADER ===== -->
         <header class="navbar">
             <div class="nav-section">
                 <button class="hamburger" onclick="toggleMobileMenu()" aria-label="منو">
@@ -1789,6 +1824,7 @@
                 <a class="active" onclick="showPage('home')"><i class="fas fa-home"></i> خانه</a>
                 <a onclick="showPage('movies')"><i class="fas fa-film"></i> ویدیوها</a>
                 <a onclick="showPage('games')"><i class="fas fa-gamepad"></i> زروکس گیمز</a>
+                <a onclick="showPage('oldgames')"><i class="fas fa-history"></i> زروکس‌اُلد</a>
             </div>
 
             <div class="nav-actions">
@@ -1812,6 +1848,7 @@
                 <a class="active" onclick="showPage('home'); closeMobileMenu();"><i class="fas fa-home"></i> خانه</a>
                 <a onclick="showPage('movies'); closeMobileMenu();"><i class="fas fa-film"></i> ویدیوها</a>
                 <a onclick="showPage('games'); closeMobileMenu();"><i class="fas fa-gamepad"></i> زروکس گیمز</a>
+                <a onclick="showPage('oldgames'); closeMobileMenu();"><i class="fas fa-history"></i> زروکس‌اُلد</a>
                 <a onclick="showPage('search'); closeMobileMenu();"><i class="fas fa-search"></i> جستجو</a>
                 <a onclick="showPage('notifications'); closeMobileMenu();">
                     <i class="fas fa-bell"></i> اعلان‌ها
@@ -1822,7 +1859,9 @@
             <div class="drawer-footer"><p>© 2026 Zerox Studio</p></div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== HOME ===== -->
+        <!-- ============================================ -->
         <div class="page active" id="page-home">
             <div class="hero-slider" id="heroSlider">
                 <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
@@ -1886,7 +1925,9 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== SEARCH ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
@@ -1903,7 +1944,9 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== NOTIFICATIONS ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-notifications">
             <div class="notifications-page">
                 <div class="notif-hero">
@@ -1924,7 +1967,9 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== PROFILE ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-profile">
             <div class="profile-page">
                 <div class="profile-header">
@@ -1950,7 +1995,9 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== SETTINGS ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-settings">
             <h2 class="page-header"><i class="fas fa-cog"></i> تنظیمات</h2>
             <p class="page-sub">تنظیمات حساب کاربری و برنامه</p>
@@ -1989,7 +2036,9 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== MOVIES ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-movies">
             <h2 class="page-header"><i class="fas fa-film"></i> ویدیوها</h2>
             <p class="page-sub">همه ویدیوهای سینمایی و کوتاه</p>
@@ -2022,14 +2071,11 @@
         <div class="page" id="page-games">
             <h2 class="page-header"><i class="fas fa-gamepad"></i> زروکس گیمز</h2>
             <p class="page-sub">بازی‌های ساخته شده توسط استودیو Zerox</p>
-
             <div class="game-cards-grid">
                 <div class="game-card" onclick="showPage('game-silentgears')">
                     <div class="game-card-img">
                         <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" />
-                        <span class="game-status">
-                            <i class="fas fa-hourglass-half sand-icon"></i> در دست توسعه
-                        </span>
+                        <span class="game-status"><i class="fas fa-hourglass-half sand-icon"></i> در دست توسعه</span>
                     </div>
                     <div class="game-card-body">
                         <h3>SilentGears | چرخ‌دنده‌ساکت</h3>
@@ -2041,7 +2087,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="game-card" style="opacity:0.5;cursor:default;">
                     <div class="game-card-img" style="background:#2a2a2a;display:flex;align-items:center;justify-content:center;">
                         <span style="color:#666;font-family:'Estedad',sans-serif;font-size:1.2rem;">🎮</span>
@@ -2063,55 +2108,27 @@
         <!-- ===== GAME DETAIL: SilentGears ===== -->
         <!-- ============================================ -->
         <div class="page" id="page-game-silentgears">
-            <button class="btn-back" onclick="showPage('games')">
-                <i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها
-            </button>
-
+            <button class="btn-back" onclick="showPage('games')"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</button>
             <div class="game-detail-hero">
                 <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" />
                 <div class="game-overlay">
-                    <span class="game-badge">
-                        <i class="fas fa-hourglass-half sand-icon"></i> در دست توسعه
-                    </span>
+                    <span class="game-badge"><i class="fas fa-hourglass-half sand-icon"></i> در دست توسعه</span>
                     <h1>SilentGears</h1>
                     <div class="game-tagline">چرخ‌دنده‌ساکت</div>
                 </div>
             </div>
-
             <div class="game-detail-info">
-                <div class="info-item">
-                    <i class="fas fa-tag"></i>
-                    <div><div class="info-label">ژانر</div><div class="info-value">اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور</div></div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-building"></i>
-                    <div><div class="info-label">استودیو</div><div class="info-value">Zerox Studios</div></div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-mobile-alt"></i>
-                    <div><div class="info-label">پلتفرم</div><div class="info-value">اندروید | PC</div></div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-clock"></i>
-                    <div><div class="info-label">مدت زمان</div><div class="info-value">۱۲ تا ۱۶ ساعت</div></div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-user"></i>
-                    <div><div class="info-label">حالت بازی</div><div class="info-value">تکنفره، روایت خطی</div></div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-flag-checkered"></i>
-                    <div><div class="info-label">پایان‌ها</div><div class="info-value">۳ پایان مختلف</div></div>
-                </div>
+                <div class="info-item"><i class="fas fa-tag"></i><div><div class="info-label">ژانر</div><div class="info-value">اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور</div></div></div>
+                <div class="info-item"><i class="fas fa-building"></i><div><div class="info-label">استودیو</div><div class="info-value">Zerox Studios</div></div></div>
+                <div class="info-item"><i class="fas fa-mobile-alt"></i><div><div class="info-label">پلتفرم</div><div class="info-value">اندروید | PC</div></div></div>
+                <div class="info-item"><i class="fas fa-clock"></i><div><div class="info-label">مدت زمان</div><div class="info-value">۱۲ تا ۱۶ ساعت</div></div></div>
+                <div class="info-item"><i class="fas fa-user"></i><div><div class="info-label">حالت بازی</div><div class="info-value">تکنفره، روایت خطی</div></div></div>
+                <div class="info-item"><i class="fas fa-flag-checkered"></i><div><div class="info-label">پایان‌ها</div><div class="info-value">۳ پایان مختلف</div></div></div>
                 <div class="info-item" style="grid-column:1/-1;background:rgba(255,165,0,0.08);border-radius:10px;padding:8px 14px;border-right:3px solid #ffa500;">
                     <i class="fas fa-hourglass-half sand-icon" style="color:#ffa500;"></i>
-                    <div>
-                        <div class="info-label" style="color:#ffa500;">وضعیت</div>
-                        <div class="info-value" style="color:#ffa500;">در دست توسعه • تاریخ انتشار نامشخص</div>
-                    </div>
+                    <div><div class="info-label" style="color:#ffa500;">وضعیت</div><div class="info-value" style="color:#ffa500;">در دست توسعه • تاریخ انتشار نامشخص</div></div>
                 </div>
             </div>
-
             <div class="game-detail-gallery">
                 <div class="gallery-title"><i class="fas fa-images"></i> گالری تصاویر</div>
                 <div class="gallery-grid">
@@ -2123,35 +2140,42 @@
                     </div>
                 </div>
             </div>
-
             <div class="game-detail-description">
                 <h3><i class="fas fa-info-circle"></i> درباره بازی</h3>
-                <p>
-                    🎮 <strong>SilentGears | چرخ‌دنده‌ساکت</strong> یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط <strong>Zerox Studios</strong> ساخته شده.
-                </p>
-                <p style="margin-top:10px;">
-                    داستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخ‌دنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از <strong>۳ پایان مختلف</strong> ختم می‌شود.
-                </p>
-                <p style="margin-top:10px;">
-                    بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌ساکت می‌برد.
-                </p>
+                <p>🎮 <strong>SilentGears | چرخ‌دنده‌ساکت</strong> یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط <strong>Zerox Studios</strong> ساخته شده.</p>
+                <p style="margin-top:10px;">داستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخ‌دنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از <strong>۳ پایان مختلف</strong> ختم می‌شود.</p>
                 <div style="margin-top:14px;padding:14px;background:rgba(255,165,0,0.06);border-radius:10px;border-right:3px solid #ffa500;">
-                    <p style="font-family:'Estedad',sans-serif;font-size:0.85rem;color:#ffa500;font-weight:600;margin:0;">
-                        <i class="fas fa-hourglass-half sand-icon"></i>
-                        این بازی در حال حاضر در دست توسعه است و به زودی منتشر خواهد شد.
-                    </p>
+                    <p style="font-family:'Estedad',sans-serif;font-size:0.85rem;color:#ffa500;font-weight:600;margin:0;"><i class="fas fa-hourglass-half sand-icon"></i> این بازی در حال حاضر در دست توسعه است و به زودی منتشر خواهد شد.</p>
                 </div>
                 <div class="genre-tags">
-                    <span>🎯 اکشن-ماجرایی</span>
-                    <span>🎭 نقش‌آفرینی</span>
-                    <span>🎵 ریتم‌محور</span>
-                    <span>🌆 پساآخرالزمانی</span>
-                    <span>🎮 تکنفره</span>
+                    <span>🎯 اکشن-ماجرایی</span><span>🎭 نقش‌آفرینی</span><span>🎵 ریتم‌محور</span><span>🌆 پساآخرالزمانی</span><span>🎮 تکنفره</span>
                 </div>
             </div>
         </div>
 
+        <!-- ============================================ -->
+        <!-- ===== ZEROX OLD ===== -->
+        <!-- ============================================ -->
+        <div class="page" id="page-oldgames">
+            <h2 class="page-header"><i class="fas fa-history"></i> زروکس‌اُلد</h2>
+            <p class="page-sub">بازی‌های کلاسیک و قدیمی که توسط Zerox معرفی شدن</p>
+
+            <div class="old-games-grid" id="oldGamesGrid">
+                <!-- کارت‌ها توسط جاوااسکریپت ساخته میشن -->
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- ===== OLD GAME DETAIL ===== -->
+        <!-- ============================================ -->
+        <div class="page" id="page-old-detail">
+            <button class="btn-back" onclick="showPage('oldgames')"><i class="fas fa-arrow-right"></i> بازگشت به زروکس‌اُلد</button>
+            <div id="oldDetailContent"></div>
+        </div>
+
+        <!-- ============================================ -->
         <!-- ===== VIDEO ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-video">
             <div class="video-container">
                 <div class="video-wrapper">
@@ -2203,6 +2227,80 @@
     </div>
 
     <script>
+        // ============================================
+        // DATA
+        // ============================================
+        const oldData = [
+            { 
+                id: 3, 
+                title: "Grand Theft Auto: San Andreas | ZEROX", 
+                name: "Grand Theft Auto: San Andreas", 
+                year: "۲۰۰۴", 
+                developer: "Rockstar North", 
+                publisher: "Rockstar Games", 
+                director: "Leslie Benzies (کارگردان اصلی / لید دیزاینر) - Dan Houser (نقش مهم در نویسندگی و هدایت داستان)", 
+                producer: "Leslie Benzies - Imran Sarwar", 
+                composers: ["Michael Hunter (موسیقی اصلی بازی) - موسیقی‌های لایسنس شده از هنرمندان مختلف"], 
+                platform: "PlayStation 2, Xbox, PC (ویندوز), بعداً: موبایل", 
+                genre: "اکشن-ماجراجویی، جهان‌باز (Open World)، رانندگی، تیراندازی سوم‌شخص", 
+                engine: "RenderWare", 
+                cover: "https://uploadkon.ir/uploads/724812_26gta-sa-Zerox-.jpg", 
+                gallery: [
+                    "https://uploadkon.ir/uploads/724812_26gta-sa-Zerox-.jpg",
+                    "https://uploadkon.ir/uploads/3eb712_26InShot-20260613-014303120.jpg",
+                    "https://uploadkon.ir/uploads/777112_26InShot-20260613-014628932.jpg"
+                ],
+                music: "https://uploadkon.ir/uploads/444012_26GTA-SA-ZEROX-.mp3", 
+                desc: "داستان درباره کارل \"CJ\" جانسون است که بعد از مرگ مادرش به لس سانتوس برمی‌گردد. او دوباره وارد محله و گنگ قدیمی‌اش می‌شود، اما خیلی زود درگیر فساد پلیس، خیانت، جنگ باندها و قدرت‌گیری در شهرهای مختلف ایالت سن آندریاس می‌شود. هدف اصلی CJ این است که خانواده‌اش را دوباره جمع کند و کنترل محله‌اش را پس بگیرد.", 
+                fullText: "داستان درباره کارل \"CJ\" جانسون است که بعد از مرگ مادرش به لس سانتوس برمی‌گردد. او دوباره وارد محله و گنگ قدیمی‌اش می‌شود، اما خیلی زود درگیر فساد پلیس، خیانت، جنگ باندها و قدرت‌گیری در شهرهای مختلف ایالت سن آندریاس می‌شود. هدف اصلی CJ این است که خانواده‌اش را دوباره جمع کند و کنترل محله‌اش را پس بگیرد. در این مسیر طولانی و حماسی، شخصیت‌های ماندگاری مثل Big Smoke، Ryder، Sweet و Officer Tenpenny روبروی CJ قرار می‌گیرند و توطئه‌های بزرگی شکل می‌گیرد." 
+            },
+            { 
+                id: 2, 
+                title: "PRINCE OF PERSIA | ZEROX", 
+                name: "Prince of Persia", 
+                year: "۱۹۸۹", 
+                developer: "Jordan Mechner", 
+                publisher: "Brøderbund", 
+                director: "Jordan Mechner", 
+                producer: "Brøderbund Software", 
+                composers: ["صدا و موسیقی محدود و ساده"], 
+                platform: "Apple II / DOS / Commodore 64 / Amiga", 
+                genre: "اکشن، پلتفرمر، ماجراجویی", 
+                engine: "موتور اختصاصی اولیه", 
+                cover: "https://cdn.imgurl.ir/uploads/f82900_____Zerox_.jpg", 
+                gallery: [
+                    "https://cdn.imgurl.ir/uploads/f82900_____Zerox_.jpg"
+                ],
+                music: "https://uploadkon.ir/uploads/da8b10_26Prince-of-Persia-Zerox.mp3", 
+                desc: "شاهزاده‌ای جوان در یک سرزمین شرقی، زمانی که سلطان در جنگ است، وزیر خبیث به نام Jaffar قدرت را در دست می‌گیرد. او به شاهزاده‌خانم اولتیماتوم می‌دهد: یا با او ازدواج کند یا در زندان بمیرد. شاهزاده در سیاهچال زندانی می‌شود و باید در کمتر از ۶۰ دقیقه از میان تله‌های مرگبار، شمشیرزن‌ها و مسیرهای خطرناک عبور کند تا خودش را به قصر برساند و شاهزاده‌خانم را نجات دهد.", 
+                fullText: "شاهزاده‌ای جوان در یک سرزمین شرقی، زمانی که سلطان در جنگ است، وزیر خبیث به نام Jaffar قدرت را در دست می‌گیرد. او به شاهزاده‌خانم اولتیماتوم می‌دهد: یا با او ازدواج کند یا در زندان بمیرد.\nشاهزاده در سیاهچال زندانی می‌شود و باید در کمتر از ۶۰ دقیقه از میان تله‌های مرگبار، شمشیرزن‌ها و مسیرهای خطرناک عبور کند تا خودش را به قصر برساند و شاهزاده‌خانم را نجات دهد.\nگیم‌پلی بازی بر پایه دقت در حرکت، زمان‌بندی و حل کردن مسیرهای سخت طراحی شده و برای زمان خودش یکی از واقعی‌ترین انیمیشن‌های حرکتی شخصیت‌ها را داشت.\nاین بازی یکی از پایه‌گذاران سبک پلتفرمر سینمایی محسوب می‌شود و تأثیر بزرگی روی بازی‌های بعدی گذاشت." 
+            },
+            { 
+                id: 1, 
+                title: "GOD OF WAR | ZEROX", 
+                name: "God of War", 
+                year: "۲۲ مارس ۲۰۰۵", 
+                developer: "Santa Monica Studio", 
+                publisher: "Sony Computer Entertainment", 
+                director: "David Jaffe", 
+                producer: "Shannon Studstill", 
+                composers: ["Gerard Marino", "Mike Reagan", "Ron Fish", "Winifred Phillips", "Cris Velasco"], 
+                platform: "PlayStation 2", 
+                genre: "اکشن ماجراجویی، هک اند اسلش", 
+                engine: "Kinetica Engine", 
+                cover: "https://uploadkon.ir/uploads/4c9d09_26god-of-war-Zerox-ir-28.jpg", 
+                gallery: [
+                    "https://uploadkon.ir/uploads/4c9d09_26god-of-war-Zerox-ir-28.jpg"
+                ],
+                music: "https://uploadkon.ir/uploads/157a09_26ef9f06-26Zerox-god-of-war.mp3", 
+                desc: "کریتوس، یک جنگجوی اسپارتی، برای گرفتن انتقام و رهایی از کابوس‌های گذشته‌اش به دنبال نابودی خدای جنگ یعنی Ares می‌رود. در طول مسیر با هیولاها، تایتان‌ها و خدایان اساطیر یونان روبه‌رو می‌شود.", 
+                fullText: "داستان God of War یکی از حماسی‌ترین داستان‌های تاریخ بازی است. کریتوس، جنگجوی اسپارتی، پس از اینکه آرس (خدای جنگ) او را فریب می‌دهد و خانواده‌اش را می‌کشد، تصمیم می‌گیرد انتقام بگیرد. او با کمک آتنا، خدای خرد، وارد ماجرایی می‌شود تا جعبه پاندورا را پیدا کند و آرس را نابود کند. در این مسیر با موجودات افسانه‌ای مانند مینوتور، سیرن، و مدوسا روبرو می‌شود و قدرت‌های جدیدی به دست می‌آورد. نبرد نهایی کریتوس با آرس یکی از به‌یادماندنی‌ترین نبردهای تاریخ بازی‌های ویدیویی است." 
+            }
+        ];
+
+        // ============================================
+        // FUNCTIONS
+        // ============================================
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
         }
@@ -2236,6 +2334,113 @@
             document.body.style.overflow = '';
         }
 
+        // ============================================
+        // RENDER OLD GAMES
+        // ============================================
+        function renderOldGames() {
+            const grid = document.getElementById('oldGamesGrid');
+            if (!grid) return;
+
+            grid.innerHTML = oldData.map(game => `
+                <div class="old-game-card" onclick="showOldDetail(${game.id})">
+                    <div class="card-img">
+                        <img src="${game.cover}" alt="${game.name}" />
+                        <span class="card-year">${game.year}</span>
+                        <div class="card-overlay">
+                            <div class="card-title">${game.name}</div>
+                            <div class="card-dev">${game.developer}</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-genre">
+                            ${game.genre.split('،').map(g => `<span>${g.trim()}</span>`).join('')}
+                        </div>
+                        <div class="card-desc">${game.desc}</div>
+                        <div class="card-footer">
+                            <span class="card-platform"><i class="fas fa-desktop"></i> ${game.platform.split(',').slice(0,2).join(', ')}</span>
+                            <button class="btn-detail" onclick="event.stopPropagation(); showOldDetail(${game.id})">مشاهده</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ============================================
+        // SHOW OLD DETAIL
+        // ============================================
+        function showOldDetail(id) {
+            const game = oldData.find(g => g.id === id);
+            if (!game) return;
+
+            const container = document.getElementById('oldDetailContent');
+            if (!container) return;
+
+            // گالری
+            let galleryHtml = '';
+            if (game.gallery && game.gallery.length > 0) {
+                galleryHtml = `
+                    <div class="old-detail-gallery">
+                        <div class="gallery-title"><i class="fas fa-images"></i> گالری تصاویر</div>
+                        <div class="gallery-grid">
+                            ${game.gallery.map(img => `
+                                <div class="gallery-item" onclick="openImageModal('${img}')">
+                                    <img src="${img}" alt="${game.name}" />
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // موسیقی
+            let musicHtml = '';
+            if (game.music) {
+                musicHtml = `
+                    <div class="old-detail-music">
+                        <div class="music-title"><i class="fas fa-music"></i> موسیقی بازی</div>
+                        <audio controls>
+                            <source src="${game.music}" type="audio/mpeg" />
+                            مرورگر شما از پخش موسیقی پشتیبانی نمی‌کند.
+                        </audio>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <div class="old-detail-hero">
+                    <img src="${game.cover}" alt="${game.name}" />
+                    <div class="detail-overlay">
+                        <span class="detail-badge">🎮 ${game.year}</span>
+                        <h1>${game.name}</h1>
+                        <div class="detail-sub">${game.developer}</div>
+                    </div>
+                </div>
+
+                <div class="old-detail-info">
+                    <div class="info-item"><i class="fas fa-building"></i><div><div class="info-label">توسعه‌دهنده</div><div class="info-value">${game.developer}</div></div></div>
+                    <div class="info-item"><i class="fas fa-globe"></i><div><div class="info-label">ناشر</div><div class="info-value">${game.publisher}</div></div></div>
+                    <div class="info-item"><i class="fas fa-user-tie"></i><div><div class="info-label">کارگردان</div><div class="info-value">${game.director}</div></div></div>
+                    <div class="info-item"><i class="fas fa-tag"></i><div><div class="info-label">ژانر</div><div class="info-value">${game.genre}</div></div></div>
+                    <div class="info-item"><i class="fas fa-desktop"></i><div><div class="info-label">پلتفرم</div><div class="info-value">${game.platform}</div></div></div>
+                    <div class="info-item"><i class="fas fa-microchip"></i><div><div class="info-label">موتور بازی</div><div class="info-value">${game.engine || 'نامشخص'}</div></div></div>
+                    ${game.composers ? `<div class="info-item" style="grid-column:1/-1;"><i class="fas fa-music"></i><div><div class="info-label">آهنگسازان</div><div class="info-value">${game.composers.join(' • ')}</div></div></div>` : ''}
+                </div>
+
+                ${musicHtml}
+                ${galleryHtml}
+
+                <div class="old-detail-description">
+                    <h3><i class="fas fa-info-circle"></i> داستان کامل</h3>
+                    <p>${game.fullText || game.desc}</p>
+                </div>
+            `;
+
+            showPage('old-detail');
+        }
+
+        // ============================================
+        // MOVIES DB
+        // ============================================
         const moviesDB = [
             {
                 title: 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا',
@@ -2255,6 +2460,9 @@
             }
         ];
 
+        // ============================================
+        // HERO SLIDER
+        // ============================================
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.slider-dots span');
@@ -2281,6 +2489,9 @@
             showSlide(next);
         }, 5000);
 
+        // ============================================
+        // PAGE NAVIGATION
+        // ============================================
         function showPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const target = document.getElementById('page-' + page);
@@ -2288,12 +2499,12 @@
 
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             const links = document.querySelectorAll('.nav-links a');
-            const map = { home: 0, movies: 1, games: 2 };
+            const map = { home: 0, movies: 1, games: 2, oldgames: 3 };
             if (map[page] !== undefined && links[map[page]]) links[map[page]].classList.add('active');
 
             document.querySelectorAll('.mobile-drawer .drawer-links a').forEach(a => a.classList.remove('active'));
             const drawerLinks = document.querySelectorAll('.mobile-drawer .drawer-links a');
-            const drawerMap = { home: 0, movies: 1, games: 2, search: 3, notifications: 4, profile: 5 };
+            const drawerMap = { home: 0, movies: 1, games: 2, oldgames: 3, search: 4, notifications: 5, profile: 6 };
             if (drawerMap[page] !== undefined && drawerLinks[drawerMap[page]]) {
                 drawerLinks[drawerMap[page]].classList.add('active');
             }
@@ -2314,9 +2525,15 @@
                     if (input) input.focus();
                 }, 100);
             }
+            if (page === 'oldgames') {
+                renderOldGames();
+            }
             closeMobileMenu();
         }
 
+        // ============================================
+        // LIVE SEARCH
+        // ============================================
         function liveSearch(query) {
             const container = document.getElementById('searchResults');
             const q = query.trim().toLowerCase();
@@ -2343,6 +2560,9 @@
             `).join('');
         }
 
+        // ============================================
+        // DESCRIPTION TOGGLE
+        // ============================================
         function toggleDescription() {
             const desc = document.getElementById('videoDescription');
             const toggle = document.getElementById('descToggle');
@@ -2352,6 +2572,9 @@
             text.textContent = desc.classList.contains('expanded') ? 'نمایش کمتر' : 'نمایش بیشتر';
         }
 
+        // ============================================
+        // OPEN VIDEO
+        // ============================================
         function openVideo(url, title, desc, duration, rating) {
             document.getElementById('videoIframe').src = url;
             document.getElementById('videoTitle').textContent = title || 'عنوان فیلم';
@@ -2368,6 +2591,9 @@
             showPage('video');
         }
 
+        // ============================================
+        // ESC KEY
+        // ============================================
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 const vp = document.getElementById('page-video');
@@ -2379,6 +2605,11 @@
                 closeImageModal();
             }
         });
+
+        // ============================================
+        // INIT
+        // ============================================
+        renderOldGames();
     </script>
 </body>
     </html>
