@@ -42,17 +42,15 @@
             padding: 0 20px;
         }
 
-        /* ========================================
-           HEADER بزرگتر و خواناتر
-           ======================================== */
+        /* ===== HEADER ===== */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px 24px;
             background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(30px) saturate(1.4);
-            -webkit-backdrop-filter: blur(30px) saturate(1.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 80px;
             margin: 16px 0 20px 0;
             box-shadow: 0 4px 40px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02);
@@ -61,7 +59,7 @@
             top: 16px;
             z-index: 999;
             gap: 12px;
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: all 0.3s ease;
             min-height: 68px;
         }
 
@@ -75,7 +73,6 @@
             gap: 16px;
         }
 
-        /* ---- لوگو بزرگتر ---- */
         .logo {
             display: flex;
             align-items: center;
@@ -127,7 +124,6 @@
             margin: 0 3px;
         }
 
-        /* ---- لینک‌های منو (درشت‌تر) ---- */
         .nav-links {
             display: flex;
             align-items: center;
@@ -176,7 +172,6 @@
             color: white;
         }
 
-        /* ---- دکمه‌های راست (بزرگتر) ---- */
         .nav-actions {
             display: flex;
             align-items: center;
@@ -192,7 +187,7 @@
             color: #4a4a4a;
             font-size: 1.15rem;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -228,7 +223,6 @@
             box-shadow: 0 2px 10px rgba(182, 28, 28, 0.3);
         }
 
-        /* ---- آواتار پروفایل (بزرگتر) ---- */
         .profile-avatar {
             width: 42px;
             height: 42px;
@@ -241,7 +235,7 @@
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: all 0.3s ease;
             border: 2px solid transparent;
             font-family: 'Estedad', sans-serif;
             box-shadow: 0 2px 16px rgba(182, 28, 28, 0.2);
@@ -254,7 +248,6 @@
             box-shadow: 0 4px 28px rgba(182, 28, 28, 0.3);
         }
 
-        /* ---- همبرگری (بزرگتر) ---- */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -284,9 +277,7 @@
             background: #B61C1C;
         }
 
-        /* ========================================
-           منوی موبایل (Drawer)
-           ======================================== */
+        /* ===== MOBILE DRAWER ===== */
         .mobile-overlay {
             display: none;
             position: fixed;
@@ -431,12 +422,10 @@
             text-align: center;
         }
 
-        /* ========================================
-           بقیه استایل‌ها (بدون تغییر)
-           ======================================== */
+        /* ===== PAGES ===== */
         .page {
             display: none;
-            animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+            animation: fadeInUp 0.4s ease both;
         }
 
         .page.active {
@@ -444,8 +433,54 @@
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px) scale(0.98); }
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
             to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .page-header {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.8rem;
+            margin: 20px 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .page-header i {
+            color: #B61C1C;
+        }
+
+        .page-sub {
+            font-family: 'Estedad', sans-serif;
+            color: #888;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: #ddd;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .empty-state h3 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            font-family: 'Estedad', sans-serif;
+            color: #888;
         }
 
         .hero-slider {
@@ -464,7 +499,7 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -607,15 +642,15 @@
             border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
             max-width: 400px;
             width: 100%;
         }
 
         .movie-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 20px 50px rgba(182, 28, 28, 0.15);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 16px 40px rgba(182, 28, 28, 0.12);
         }
 
         .movie-poster {
@@ -648,7 +683,7 @@
             color: white;
             font-size: 3rem;
             opacity: 0;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             text-shadow: 0 4px 30px rgba(0,0,0,0.5);
             z-index: 2;
         }
@@ -667,7 +702,7 @@
             bottom: 0;
             background: rgba(0,0,0,0.3);
             opacity: 0;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
 
         .movie-card:hover .movie-poster::after {
@@ -698,6 +733,7 @@
             font-weight: 600;
         }
 
+        /* ===== SEARCH ===== */
         .search-page {
             display: flex;
             flex-direction: column;
@@ -843,6 +879,7 @@
             margin-bottom: 12px;
         }
 
+        /* ===== NOTIFICATIONS ===== */
         .notifications-page {
             max-width: 700px;
             margin: 20px auto;
@@ -858,8 +895,8 @@
         }
 
         .notifications-page .notif-hero .notif-icon-big {
-            width: 450px;
-            height: 450px;
+            width: 400px;
+            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -973,20 +1010,7 @@
             font-weight: 700;
         }
 
-        .notif-item .notif-time {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.7rem;
-            color: #aaa;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .notif-item .notif-time i {
-            font-size: 0.6rem;
-        }
-
+        /* ===== PROFILE ===== */
         .profile-page {
             max-width: 600px;
             margin: 20px auto;
@@ -1068,6 +1092,7 @@
         .profile-page .profile-actions .btn-primary:hover {
             background: #8a1515;
             transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(182, 28, 28, 0.4);
         }
 
         .profile-page .profile-actions .btn-outline {
@@ -1079,6 +1104,7 @@
         .profile-page .profile-actions .btn-outline:hover {
             background: #B61C1C;
             color: white;
+            transform: translateY(-3px);
         }
 
         .profile-page .profile-menu {
@@ -1131,6 +1157,7 @@
             margin-right: auto;
         }
 
+        /* ===== VIDEO ===== */
         .video-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -1314,9 +1341,7 @@
             transform: translateY(-4px);
         }
 
-        /* ========================================
-           RESPONSIVE
-           ======================================== */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 992px) {
             .hamburger {
                 display: flex;
@@ -1440,8 +1465,8 @@
             }
             
             .notifications-page .notif-hero .notif-icon-big {
-                width: 340px;
-                height: 340px;
+                width: 300px;
+                height: 300px;
             }
         }
 
@@ -1526,8 +1551,8 @@
             }
             
             .notifications-page .notif-hero .notif-icon-big {
-                width: 280px;
-                height: 280px;
+                width: 240px;
+                height: 240px;
             }
             
             .notifications-page .notif-hero h2 {
@@ -1537,11 +1562,6 @@
             .notif-item {
                 padding: 12px 14px;
                 flex-wrap: wrap;
-            }
-            
-            .notif-item .notif-time {
-                width: 100%;
-                margin-right: 56px;
             }
             
             .notif-item .notif-dot {
@@ -1559,9 +1579,7 @@
 <body>
 
     <div class="container">
-        <!-- ========================================
-             HEADER بزرگتر و خواناتر
-             ======================================== -->
+        <!-- ===== HEADER ===== -->
         <header class="navbar">
             <div class="nav-section">
                 <button class="hamburger" onclick="toggleMobileMenu()" aria-label="منو">
@@ -1598,9 +1616,7 @@
             </div>
         </header>
 
-        <!-- ========================================
-           منوی موبایل
-           ======================================== -->
+        <!-- ===== MOBILE DRAWER ===== -->
         <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
         <div class="mobile-drawer" id="mobileDrawer">
             <div class="drawer-header">
@@ -1632,9 +1648,7 @@
             </div>
         </div>
 
-        <!-- ========================================
-           بقیه صفحات
-           ======================================== -->
+        <!-- ===== HOME ===== -->
         <div class="page active" id="page-home">
             <div class="hero-slider" id="heroSlider">
                 <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
@@ -1698,6 +1712,7 @@
             </div>
         </div>
 
+        <!-- ===== SEARCH ===== -->
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
@@ -1719,6 +1734,7 @@
             </div>
         </div>
 
+        <!-- ===== NOTIFICATIONS ===== -->
         <div class="page" id="page-notifications">
             <div class="notifications-page">
                 <div class="notif-hero">
@@ -1736,11 +1752,11 @@
                         <h4>🎬 ویدیوی جدید <span class="studio-tag">Zerox Studio</span></h4>
                         <p>ویدیوی <span class="highlight">«بازی اوتلست 1»</span> در Zerox Studio منتشر شد! 😨🔥</p>
                     </div>
-                    <span class="notif-time"><i class="far fa-clock"></i> ۱ دقیقه پیش</span>
                 </div>
             </div>
         </div>
 
+        <!-- ===== PROFILE ===== -->
         <div class="page" id="page-profile">
             <div class="profile-page">
                 <div class="profile-header">
@@ -1752,30 +1768,35 @@
                     <p>به <strong>Zerox Studio</strong> خوش اومدی 🎬</p>
                     
                     <div class="profile-actions">
-                        <button class="btn btn-primary" onclick="showPage('home')">ورود / ثبت‌نام</button>
-                        <button class="btn btn-outline" onclick="showPage('home')">مرور بدون حساب</button>
+                        <button class="btn btn-primary" onclick="showPage('home')">
+                            <i class="fas fa-sign-in-alt"></i> ورود / ثبت‌نام
+                        </button>
+                        <button class="btn btn-outline" onclick="showPage('home')">
+                            <i class="fas fa-eye"></i> مرور بدون حساب
+                        </button>
                     </div>
                 </div>
 
                 <div class="profile-menu">
-                    <div class="menu-item" onclick="showPage('home')">
+                    <div class="menu-item" onclick="showPage('history')">
                         <i class="fas fa-history"></i>
                         تاریخچه تماشا
-                        <span class="menu-badge">۰</span>
+                        <span class="menu-badge">۲</span>
                         <span class="arrow"><i class="fas fa-chevron-left"></i></span>
                     </div>
-                    <div class="menu-item" onclick="showPage('home')">
+                    <div class="menu-item" onclick="showPage('favorites')">
                         <i class="fas fa-heart"></i>
                         ویدیوهای مورد علاقه
+                        <span class="menu-badge">۱</span>
+                        <span class="arrow"><i class="fas fa-chevron-left"></i></span>
+                    </div>
+                    <div class="menu-item" onclick="showPage('watchlater')">
+                        <i class="fas fa-clock"></i>
+                        تماشای بعدی
                         <span class="menu-badge">۰</span>
                         <span class="arrow"><i class="fas fa-chevron-left"></i></span>
                     </div>
-                    <div class="menu-item" onclick="showPage('home')">
-                        <i class="fas fa-clock"></i>
-                        تماشای بعدی
-                        <span class="arrow"><i class="fas fa-chevron-left"></i></span>
-                    </div>
-                    <div class="menu-item" onclick="showPage('home')">
+                    <div class="menu-item" onclick="showPage('settings')">
                         <i class="fas fa-cog"></i>
                         تنظیمات
                         <span class="arrow"><i class="fas fa-chevron-left"></i></span>
@@ -1789,9 +1810,106 @@
             </div>
         </div>
 
+        <!-- ===== HISTORY ===== -->
+        <div class="page" id="page-history">
+            <h2 class="page-header"><i class="fas fa-history"></i> تاریخچه تماشا</h2>
+            <p class="page-sub">ویدیوهایی که اخیراً تماشا کردی</p>
+            <div class="movie-grid">
+                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
+                    <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
+                        <span class="badge">تماشا شده</span>
+                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="movie-info">
+                        <h4>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> ۵ دقیقه</span>
+                            <span class="rating"><i class="fas fa-star"></i> 9.2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
+                    <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
+                        <span class="badge">تماشا شده</span>
+                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="movie-info">
+                        <h4>داستان بازی | no im not a human</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
+                            <span class="rating"><i class="fas fa-star"></i> 8.7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FAVORITES ===== -->
+        <div class="page" id="page-favorites">
+            <h2 class="page-header"><i class="fas fa-heart"></i> ویدیوهای مورد علاقه</h2>
+            <p class="page-sub">ویدیوهایی که لایک کردی</p>
+            <div class="movie-grid">
+                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
+                    <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
+                        <span class="badge">❤️ مورد علاقه</span>
+                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="movie-info">
+                        <h4>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> ۵ دقیقه</span>
+                            <span class="rating"><i class="fas fa-star"></i> 9.2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== WATCH LATER ===== -->
+        <div class="page" id="page-watchlater">
+            <h2 class="page-header"><i class="fas fa-clock"></i> تماشای بعدی</h2>
+            <p class="page-sub">ویدیوهایی که برای بعد ذخیره کردی</p>
+            <div class="empty-state">
+                <i class="fas fa-clock"></i>
+                <h3>هیچ ویدیویی ذخیره نشده!</h3>
+                <p>ویدیوهایی که میخوای بعد ببینی رو اینجا ذخیره کن</p>
+            </div>
+        </div>
+
+        <!-- ===== SETTINGS ===== -->
+        <div class="page" id="page-settings">
+            <h2 class="page-header"><i class="fas fa-cog"></i> تنظیمات</h2>
+            <p class="page-sub">تنظیمات حساب کاربری و برنامه</p>
+            <div style="background:white;border-radius:20px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #f0ebe5;">
+                    <span style="font-family:'Estedad',sans-serif;">🌙 حالت شب</span>
+                    <label style="position:relative;display:inline-block;width:50px;height:28px;">
+                        <input type="checkbox" style="opacity:0;width:0;height:0;" />
+                        <span style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;transition:.3s;border-radius:28px;"></span>
+                    </label>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #f0ebe5;">
+                    <span style="font-family:'Estedad',sans-serif;">🔔 اعلان‌ها</span>
+                    <label style="position:relative;display:inline-block;width:50px;height:28px;">
+                        <input type="checkbox" checked style="opacity:0;width:0;height:0;" />
+                        <span style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#B61C1C;transition:.3s;border-radius:28px;"></span>
+                    </label>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #f0ebe5;">
+                    <span style="font-family:'Estedad',sans-serif;">📱 کیفیت پخش</span>
+                    <span style="font-family:'Estedad',sans-serif;color:#888;font-size:0.85rem;">خودکار</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;">
+                    <span style="font-family:'Estedad',sans-serif;">🌐 زبان</span>
+                    <span style="font-family:'Estedad',sans-serif;color:#888;font-size:0.85rem;">فارسی</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== MOVIES ===== -->
         <div class="page" id="page-movies">
-            <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin:20px 0;"><i class="fas fa-film" style="color:#B61C1C;"></i> ویدیوها</h2>
-            <p style="font-family:'Estedad',sans-serif; color:#888;">همه ویدیوهای سینمایی و کوتاه</p>
+            <h2 class="page-header"><i class="fas fa-film"></i> ویدیوها</h2>
+            <p class="page-sub">همه ویدیوهای سینمایی و کوتاه</p>
             <div class="movie-grid" style="margin-top:20px;">
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
@@ -1821,6 +1939,7 @@
             </div>
         </div>
 
+        <!-- ===== VIDEO ===== -->
         <div class="page" id="page-video">
             <div class="video-container">
                 <div class="video-wrapper">
@@ -1869,7 +1988,7 @@
     </div>
 
     <script>
-        // ===== منوی موبایل =====
+        // ===== MOBILE MENU =====
         function toggleMobileMenu() {
             const overlay = document.getElementById('mobileOverlay');
             const drawer = document.getElementById('mobileDrawer');
@@ -2078,4 +2197,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
