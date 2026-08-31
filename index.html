@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@400;700&display=swap" rel="stylesheet" />
 
     <style>
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -68,6 +69,18 @@
 
         .gallery-item {
             cursor: pointer;
+        }
+
+        /* ===== انیمیشن ساعت شنی ===== */
+        @keyframes sandShake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(8deg); }
+            75% { transform: rotate(-8deg); }
+        }
+
+        .sand-icon {
+            display: inline-block;
+            animation: sandShake 2.5s ease-in-out infinite;
         }
 
         /* ===== HEADER ===== */
@@ -483,7 +496,7 @@
             font-size: 0.95rem;
         }
 
-        /* ===== GAME CARDS (مثل استیم) ===== */
+        /* ===== GAME CARDS ===== */
         .game-cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -534,20 +547,24 @@
             position: absolute;
             top: 12px;
             right: 12px;
-            background: rgba(0,0,0,0.75);
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(8px);
-            color: #ffd700;
+            color: #ffa500;
             padding: 4px 14px;
             border-radius: 30px;
             font-size: 0.65rem;
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
-            border: 1px solid rgba(255,215,0,0.2);
+            border: 1px solid rgba(255,165,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .game-card .game-card-img .game-status.development {
-            color: #ffa500;
-            border-color: rgba(255,165,0,0.3);
+        .game-card .game-card-img .game-status .sand-icon {
+            display: inline-block;
+            animation: sandShake 2.5s ease-in-out infinite;
+            font-size: 0.7rem;
         }
 
         .game-card .game-card-body {
@@ -657,8 +674,10 @@
         }
 
         .game-detail-hero .game-overlay .game-badge {
-            display: inline-block;
-            background: #B61C1C;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ff8c00;
             color: white;
             padding: 4px 16px;
             border-radius: 30px;
@@ -668,8 +687,10 @@
             margin-bottom: 10px;
         }
 
-        .game-detail-hero .game-overlay .game-badge.dev {
-            background: #ff8c00;
+        .game-detail-hero .game-overlay .game-badge .sand-icon {
+            display: inline-block;
+            animation: sandShake 2.5s ease-in-out infinite;
+            font-size: 0.7rem;
         }
 
         .game-detail-hero .game-overlay h1 {
@@ -2340,9 +2361,7 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
         <!-- ===== HOME ===== -->
-        <!-- ============================================ -->
         <div class="page active" id="page-home">
             <div class="hero-slider" id="heroSlider">
                 <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
@@ -2406,9 +2425,7 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
         <!-- ===== SEARCH ===== -->
-        <!-- ============================================ -->
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
@@ -2430,9 +2447,7 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
         <!-- ===== NOTIFICATIONS ===== -->
-        <!-- ============================================ -->
         <div class="page" id="page-notifications">
             <div class="notifications-page">
                 <div class="notif-hero">
@@ -2454,9 +2469,7 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
         <!-- ===== PROFILE ===== -->
-        <!-- ============================================ -->
         <div class="page" id="page-profile">
             <div class="profile-page">
                 <div class="profile-header">
@@ -2492,9 +2505,7 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
         <!-- ===== SETTINGS ===== -->
-        <!-- ============================================ -->
         <div class="page" id="page-settings">
             <h2 class="page-header"><i class="fas fa-cog"></i> تنظیمات</h2>
             <p class="page-sub">تنظیمات حساب کاربری و برنامه</p>
@@ -2550,9 +2561,7 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
         <!-- ===== MOVIES ===== -->
-        <!-- ============================================ -->
         <div class="page" id="page-movies">
             <h2 class="page-header"><i class="fas fa-film"></i> ویدیوها</h2>
             <p class="page-sub">همه ویدیوهای سینمایی و کوتاه</p>
@@ -2586,7 +2595,7 @@
         </div>
 
         <!-- ============================================ -->
-        <!-- ===== ZEROX GAMES (صفحه اصلی) ===== -->
+        <!-- ===== ZEROX GAMES ===== -->
         <!-- ============================================ -->
         <div class="page" id="page-games">
             <h2 class="page-header"><i class="fas fa-gamepad"></i> زروکس گیمز</h2>
@@ -2596,13 +2605,15 @@
                 <!-- کارت بازی Silent Gears -->
                 <div class="game-card" onclick="showPage('game-silentgears')">
                     <div class="game-card-img">
-                        <img src="https://uploadkon.ir/uploads/78a031_26SilentGears-Zerox-studios-.jpg" alt="Silent Gears" />
-                        <span class="game-status development">⏳ در دست توسعه</span>
+                        <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="چرخ‌دنده‌های ساکت" />
+                        <span class="game-status">
+                            <i class="fas fa-hourglass-half sand-icon"></i> در دست توسعه
+                        </span>
                     </div>
                     <div class="game-card-body">
-                        <h3>🎮 Silent Gears</h3>
+                        <h3>چرخ‌دنده‌های ساکت</h3>
                         <div class="game-genre">اکشن-ماجرایی • نقش‌آفرینی</div>
-                        <div class="game-desc">چرخدنده‌های خاموش | یک بازی پساآخرالزمانی با گیم‌پلی ریتم‌محور و داستانی عمیق...</div>
+                        <div class="game-desc">یک بازی پساآخرالزمانی با گیم‌پلی ریتم‌محور و داستانی عمیق...</div>
                         <div class="game-footer">
                             <span class="game-platform"><i class="fas fa-mobile-alt"></i> <i class="fas fa-desktop"></i> اندروید | PC</span>
                             <button class="btn-view" onclick="event.stopPropagation(); showPage('game-silentgears')">مشاهده بازی</button>
@@ -2610,7 +2621,7 @@
                     </div>
                 </div>
 
-                <!-- کارت بازی بعدی (نمونه برای آینده) -->
+                <!-- کارت بازی بعدی -->
                 <div class="game-card" style="opacity:0.5;cursor:default;">
                     <div class="game-card-img" style="background:#2a2a2a;display:flex;align-items:center;justify-content:center;">
                         <span style="color:#666;font-family:'Estedad',sans-serif;font-size:1.2rem;">🎮</span>
@@ -2620,7 +2631,7 @@
                         <div class="game-genre">به زودی...</div>
                         <div class="game-desc" style="color:#999;">بازی جدید استودیو Zerox در حال ساخت است</div>
                         <div class="game-footer">
-                            <span class="game-platform">⏳ در دست توسعه</span>
+                            <span class="game-platform">در دست توسعه</span>
                             <span style="font-family:'Estedad',sans-serif;font-size:0.7rem;color:#666;">به زودی</span>
                         </div>
                     </div>
@@ -2629,7 +2640,7 @@
         </div>
 
         <!-- ============================================ -->
-        <!-- ===== GAME DETAIL: SILENT GEARS ===== -->
+        <!-- ===== GAME DETAIL: چرخ‌دنده‌های ساکت ===== -->
         <!-- ============================================ -->
         <div class="page" id="page-game-silentgears">
             <button class="btn-back" onclick="showPage('games')">
@@ -2637,11 +2648,13 @@
             </button>
 
             <div class="game-detail-hero">
-                <img src="https://uploadkon.ir/uploads/78a031_26SilentGears-Zerox-studios-.jpg" alt="Silent Gears" />
+                <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="چرخ‌دنده‌های ساکت" />
                 <div class="game-overlay">
-                    <span class="game-badge dev">⏳ در دست توسعه</span>
-                    <h1>🎮 SILENT GEARS</h1>
-                    <div class="game-tagline">چرخدنده‌های خاموش</div>
+                    <span class="game-badge">
+                        <i class="fas fa-hourglass-half sand-icon"></i> در دست توسعه
+                    </span>
+                    <h1>چرخ‌دنده‌های ساکت</h1>
+                    <div class="game-tagline">Silent Gears</div>
                 </div>
             </div>
 
@@ -2689,7 +2702,7 @@
                     </div>
                 </div>
                 <div class="info-item" style="grid-column:1/-1;background:rgba(255,165,0,0.08);border-radius:12px;padding:10px 16px;border-right:3px solid #ffa500;">
-                    <i class="fas fa-info-circle" style="color:#ffa500;"></i>
+                    <i class="fas fa-hourglass-half sand-icon" style="color:#ffa500;animation:sandShake 2.5s ease-in-out infinite;"></i>
                     <div>
                         <div class="info-label" style="color:#ffa500;">وضعیت</div>
                         <div class="info-value" style="color:#ffa500;">در دست توسعه • تاریخ انتشار نامشخص</div>
@@ -2703,10 +2716,10 @@
                 </div>
                 <div class="gallery-grid">
                     <div class="gallery-item" onclick="openImageModal('https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg')">
-                        <img src="https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg" alt="Silent Gears 1" />
+                        <img src="https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg" alt="چرخ‌دنده‌های ساکت ۱" />
                     </div>
                     <div class="gallery-item" onclick="openImageModal('https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg')">
-                        <img src="https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg" alt="Silent Gears 2" />
+                        <img src="https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg" alt="چرخ‌دنده‌های ساکت ۲" />
                     </div>
                 </div>
             </div>
@@ -2714,17 +2727,18 @@
             <div class="game-detail-description">
                 <h3><i class="fas fa-info-circle"></i> درباره بازی</h3>
                 <p>
-                    🎮 <strong>Silent Gears</strong> (چرخدنده‌های خاموش) یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط <strong>Zerox Studios</strong> ساخته شده.
+                    🎮 <strong>چرخ‌دنده‌های ساکت</strong> (Silent Gears) یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط <strong>Zerox Studios</strong> ساخته شده.
                 </p>
                 <p style="margin-top:12px;">
-                    داستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخدنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از <strong>۳ پایان مختلف</strong> ختم می‌شود.
+                    داستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخ‌دنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از <strong>۳ پایان مختلف</strong> ختم می‌شود.
                 </p>
                 <p style="margin-top:12px;">
-                    بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای Silent Gears می‌برد.
+                    بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌های ساکت می‌برد.
                 </p>
                 <div style="margin-top:16px;padding:16px;background:rgba(255,165,0,0.06);border-radius:12px;border-right:3px solid #ffa500;">
                     <p style="font-family:'Estedad',sans-serif;font-size:0.9rem;color:#ffa500;font-weight:600;margin:0;">
-                        ⏳ این بازی در حال حاضر در دست توسعه است و به زودی منتشر خواهد شد.
+                        <i class="fas fa-hourglass-half sand-icon" style="animation:sandShake 2.5s ease-in-out infinite;"></i>
+                        این بازی در حال حاضر در دست توسعه است و به زودی منتشر خواهد شد.
                     </p>
                 </div>
                 <div class="genre-tags">
@@ -2737,9 +2751,7 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
         <!-- ===== VIDEO ===== -->
-        <!-- ============================================ -->
         <div class="page" id="page-video">
             <div class="video-container">
                 <div class="video-wrapper">
@@ -2774,9 +2786,7 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
         <!-- ===== FOOTER ===== -->
-        <!-- ============================================ -->
         <footer>
             <h2>Zerox Studio</h2>
             <p>پلتفرم سینمایی و سرگرمی دیجیتال</p>
@@ -2789,7 +2799,7 @@
         </footer>
     </div>
 
-    <!-- ===== MODAL برای بزرگ‌نمایی تصاویر ===== -->
+    <!-- ===== IMAGE MODAL ===== -->
     <div id="imageModal" onclick="closeImageModal()">
         <button class="modal-close" onclick="event.stopPropagation(); closeImageModal()">
             <i class="fas fa-times"></i>
