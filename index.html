@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@400;700&display=swap" rel="stylesheet" />
 
     <style>
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -34,6 +35,15 @@
         ::-webkit-scrollbar-thumb {
             background: #B61C1C;
             border-radius: 10px;
+        }
+
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #f0ebe5;
+        }
+
+        body.dark-mode ::-webkit-scrollbar-track {
+            background: #2a2a2a;
         }
 
         .container {
@@ -63,8 +73,9 @@
             min-height: 68px;
         }
 
-        .navbar:hover {
-            box-shadow: 0 8px 60px rgba(182, 28, 28, 0.06), 0 0 0 1px rgba(182, 28, 28, 0.04);
+        body.dark-mode .navbar {
+            background: rgba(30, 30, 30, 0.9);
+            border-color: rgba(255,255,255,0.05);
         }
 
         .navbar .nav-section {
@@ -103,6 +114,10 @@
             box-shadow: 0 4px 16px rgba(182, 28, 28, 0.3);
         }
 
+        body.dark-mode .logo .logo-icon {
+            box-shadow: 0 4px 16px rgba(182, 28, 28, 0.5);
+        }
+
         .logo .logo-text {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.6rem;
@@ -111,17 +126,12 @@
             letter-spacing: -0.5px;
         }
 
-        .logo .logo-text span {
-            color: #B61C1C;
+        body.dark-mode .logo .logo-text {
+            color: #f0ebe5;
         }
 
-        .logo .logo-dot {
-            width: 5px;
-            height: 5px;
-            background: #B61C1C;
-            border-radius: 50%;
-            display: inline-block;
-            margin: 0 3px;
+        .logo .logo-text span {
+            color: #B61C1C;
         }
 
         .nav-links {
@@ -144,6 +154,10 @@
             white-space: nowrap;
         }
 
+        body.dark-mode .nav-links a {
+            color: #aaa;
+        }
+
         .nav-links a i {
             font-size: 0.95rem;
             margin-left: 6px;
@@ -156,8 +170,8 @@
             background: rgba(182, 28, 28, 0.06);
         }
 
-        .nav-links a:hover i {
-            opacity: 1;
+        body.dark-mode .nav-links a:hover {
+            background: rgba(182, 28, 28, 0.1);
         }
 
         .nav-links a.active {
@@ -165,11 +179,6 @@
             background: #B61C1C;
             box-shadow: 0 4px 20px rgba(182, 28, 28, 0.3);
             font-weight: 600;
-        }
-
-        .nav-links a.active i {
-            opacity: 1;
-            color: white;
         }
 
         .nav-actions {
@@ -194,14 +203,14 @@
             position: relative;
         }
 
+        body.dark-mode .nav-actions .action-btn {
+            color: #aaa;
+        }
+
         .nav-actions .action-btn:hover {
             background: rgba(182, 28, 28, 0.08);
             color: #B61C1C;
             transform: translateY(-2px);
-        }
-
-        .nav-actions .action-btn:active {
-            transform: scale(0.92);
         }
 
         .nav-actions .action-btn .badge {
@@ -273,8 +282,8 @@
             transition: all 0.3s ease;
         }
 
-        .hamburger:hover span {
-            background: #B61C1C;
+        body.dark-mode .hamburger span {
+            background: #f0ebe5;
         }
 
         /* ===== MOBILE DRAWER ===== */
@@ -287,7 +296,6 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             z-index: 1000;
             opacity: 0;
             transition: opacity 0.4s ease;
@@ -314,6 +322,10 @@
             flex-direction: column;
         }
 
+        body.dark-mode .mobile-drawer {
+            background: #252525;
+        }
+
         .mobile-drawer.open {
             right: 0;
         }
@@ -327,11 +339,19 @@
             border-bottom: 1px solid #f0ebe5;
         }
 
+        body.dark-mode .mobile-drawer .drawer-header {
+            border-color: #333;
+        }
+
         .mobile-drawer .drawer-header .drawer-logo {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.6rem;
             font-weight: 700;
             color: #1a1a1a;
+        }
+
+        body.dark-mode .mobile-drawer .drawer-header .drawer-logo {
+            color: #f0ebe5;
         }
 
         .mobile-drawer .drawer-header .drawer-logo span {
@@ -374,6 +394,10 @@
             gap: 14px;
         }
 
+        body.dark-mode .mobile-drawer .drawer-links a {
+            color: #f0ebe5;
+        }
+
         .mobile-drawer .drawer-links a i {
             width: 24px;
             color: #888;
@@ -386,16 +410,8 @@
             color: #B61C1C;
         }
 
-        .mobile-drawer .drawer-links a:hover i {
-            color: #B61C1C;
-        }
-
         .mobile-drawer .drawer-links a.active {
             background: #B61C1C;
-            color: white;
-        }
-
-        .mobile-drawer .drawer-links a.active i {
             color: white;
         }
 
@@ -413,6 +429,10 @@
             margin-top: 20px;
             padding-top: 16px;
             border-top: 1px solid #f0ebe5;
+        }
+
+        body.dark-mode .mobile-drawer .drawer-footer {
+            border-color: #333;
         }
 
         .mobile-drawer .drawer-footer p {
@@ -457,32 +477,206 @@
             font-size: 0.95rem;
         }
 
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
+        /* ===== GAME PAGE ===== */
+        .game-hero {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+        }
+
+        .game-hero img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        .game-hero .game-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 30px 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+        }
+
+        .game-hero .game-overlay .game-badge {
+            display: inline-block;
+            background: #B61C1C;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            font-family: 'Estedad', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .game-hero .game-overlay h1 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 2.4rem;
+            color: white;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        }
+
+        .game-hero .game-overlay .game-tagline {
+            font-family: 'Estedad', sans-serif;
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+        }
+
+        /* ===== GAME INFO ===== */
+        .game-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
             background: white;
             border-radius: 20px;
+            padding: 20px 24px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
         }
 
-        .empty-state i {
-            font-size: 4rem;
-            color: #ddd;
-            display: block;
-            margin-bottom: 16px;
+        body.dark-mode .game-info-grid {
+            background: #252525;
         }
 
-        .empty-state h3 {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
+        .game-info-grid .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .game-info-grid .info-item i {
+            color: #B61C1C;
             font-size: 1.3rem;
-            margin-bottom: 8px;
+            width: 36px;
+            text-align: center;
         }
 
-        .empty-state p {
+        .game-info-grid .info-item .info-label {
             font-family: 'Estedad', sans-serif;
+            font-size: 0.7rem;
             color: #888;
         }
 
+        .game-info-grid .info-item .info-value {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        body.dark-mode .game-info-grid .info-item .info-value {
+            color: #f0ebe5;
+        }
+
+        /* ===== GAME GALLERY ===== */
+        .game-gallery {
+            margin-bottom: 30px;
+        }
+
+        .game-gallery .gallery-title {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .game-gallery .gallery-title i {
+            color: #B61C1C;
+        }
+
+        .game-gallery .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .game-gallery .gallery-grid .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .game-gallery .gallery-grid .gallery-item:hover {
+            transform: scale(1.02) translateY(-4px);
+            box-shadow: 0 12px 40px rgba(182, 28, 28, 0.15);
+        }
+
+        .game-gallery .gallery-grid .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== GAME DESCRIPTION ===== */
+        .game-description {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        body.dark-mode .game-description {
+            background: #252525;
+        }
+
+        .game-description h3 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .game-description h3 i {
+            color: #B61C1C;
+        }
+
+        .game-description p {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 2;
+        }
+
+        body.dark-mode .game-description p {
+            color: #aaa;
+        }
+
+        .game-description .genre-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .game-description .genre-tags span {
+            background: rgba(182, 28, 28, 0.08);
+            color: #B61C1C;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        body.dark-mode .game-description .genre-tags span {
+            background: rgba(182, 28, 28, 0.2);
+        }
+
+        /* ===== HERO SLIDER (همون قبلی) ===== */
         .hero-slider {
             position: relative;
             border-radius: 24px;
@@ -605,6 +799,7 @@
             transform: scale(1.3);
         }
 
+        /* ===== MOVIE GRID ===== */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -646,6 +841,10 @@
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
             max-width: 400px;
             width: 100%;
+        }
+
+        body.dark-mode .movie-card {
+            background: #252525;
         }
 
         .movie-card:hover {
@@ -720,6 +919,10 @@
             margin-bottom: 4px;
         }
 
+        body.dark-mode .movie-info h4 {
+            color: #f0ebe5;
+        }
+
         .movie-info .meta {
             display: flex;
             justify-content: space-between;
@@ -777,6 +980,20 @@
             transition: all 0.3s ease;
         }
 
+        body.dark-mode .search-page .search-box-big {
+            background: #252525;
+            border-color: #333;
+        }
+
+        body.dark-mode .search-page .search-box-big input {
+            color: #f0ebe5;
+            background: transparent;
+        }
+
+        body.dark-mode .search-page .search-box-big input::placeholder {
+            color: #666;
+        }
+
         .search-page .search-box-big:focus-within {
             border-color: #B61C1C;
             box-shadow: 0 4px 40px rgba(182, 28, 28, 0.12);
@@ -829,6 +1046,10 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
+        body.dark-mode .search-results .result-item {
+            background: #252525;
+        }
+
         .search-results .result-item:hover {
             transform: translateX(-6px);
             box-shadow: 0 8px 30px rgba(182, 28, 28, 0.12);
@@ -850,6 +1071,10 @@
             font-family: 'Estedad', sans-serif;
             font-size: 0.9rem;
             font-weight: 700;
+        }
+
+        body.dark-mode .search-results .result-item .info h4 {
+            color: #f0ebe5;
         }
 
         .search-results .result-item .info .meta {
@@ -919,6 +1144,10 @@
             color: #1a1a1a;
         }
 
+        body.dark-mode .notifications-page .notif-hero h2 {
+            color: #f0ebe5;
+        }
+
         .notifications-page .notif-hero h2 i {
             color: #B61C1C;
         }
@@ -946,6 +1175,10 @@
             transition: all 0.3s ease;
             border-right: 4px solid #B61C1C;
             position: relative;
+        }
+
+        body.dark-mode .notif-item {
+            background: #252525;
         }
 
         .notif-item:hover {
@@ -988,6 +1221,10 @@
             color: #1a1a1a;
         }
 
+        body.dark-mode .notif-item .notif-content h4 {
+            color: #f0ebe5;
+        }
+
         .notif-item .notif-content h4 .studio-tag {
             color: #B61C1C;
             font-size: 0.65rem;
@@ -1003,6 +1240,10 @@
             font-size: 0.85rem;
             color: #888;
             line-height: 1.6;
+        }
+
+        body.dark-mode .notif-item .notif-content p {
+            color: #aaa;
         }
 
         .notif-item .notif-content .highlight {
@@ -1024,6 +1265,10 @@
             text-align: center;
             box-shadow: 0 2px 20px rgba(0,0,0,0.06);
             margin-bottom: 20px;
+        }
+
+        body.dark-mode .profile-page .profile-header {
+            background: #252525;
         }
 
         .profile-page .profile-avatar-big {
@@ -1052,10 +1297,19 @@
             font-family: 'Estedad', sans-serif;
         }
 
+        body.dark-mode .profile-page .profile-header .guest-badge {
+            background: #333;
+            color: #888;
+        }
+
         .profile-page .profile-header h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.5rem;
             margin-bottom: 4px;
+        }
+
+        body.dark-mode .profile-page .profile-header h2 {
+            color: #f0ebe5;
         }
 
         .profile-page .profile-header p {
@@ -1112,6 +1366,11 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            margin-top: 16px;
+        }
+
+        body.dark-mode .profile-page .profile-menu {
+            background: #252525;
         }
 
         .profile-page .profile-menu .menu-item {
@@ -1127,8 +1386,17 @@
             text-decoration: none;
         }
 
+        body.dark-mode .profile-page .profile-menu .menu-item {
+            color: #f0ebe5;
+            border-color: #333;
+        }
+
         .profile-page .profile-menu .menu-item:hover {
             background: #f8f4f0;
+        }
+
+        body.dark-mode .profile-page .profile-menu .menu-item:hover {
+            background: #333;
         }
 
         .profile-page .profile-menu .menu-item:last-child {
@@ -1147,14 +1415,96 @@
             font-size: 0.8rem;
         }
 
-        .profile-page .profile-menu .menu-item .menu-badge {
+        /* ===== SETTINGS ===== */
+        .settings-box {
+            background: white;
+            border-radius: 20px;
+            padding: 8px 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        body.dark-mode .settings-box {
+            background: #252525;
+        }
+
+        .settings-box .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid #f0ebe5;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .settings-box .setting-item {
+            border-color: #333;
+        }
+
+        .settings-box .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .settings-box .setting-item .setting-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        body.dark-mode .settings-box .setting-item .setting-label {
+            color: #f0ebe5;
+        }
+
+        .settings-box .setting-item .setting-label i {
+            color: #B61C1C;
+            width: 22px;
+            font-size: 1.1rem;
+        }
+
+        .settings-box .setting-item .toggle-switch {
+            position: relative;
+            width: 48px;
+            height: 26px;
+            cursor: pointer;
+        }
+
+        .settings-box .setting-item .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .settings-box .setting-item .toggle-switch .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #ccc;
+            border-radius: 26px;
+            transition: all 0.3s ease;
+        }
+
+        .settings-box .setting-item .toggle-switch .slider::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 3px;
+            bottom: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .settings-box .setting-item .toggle-switch input:checked + .slider {
             background: #B61C1C;
-            color: white;
-            padding: 0 10px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            margin-right: auto;
+        }
+
+        .settings-box .setting-item .toggle-switch input:checked + .slider::before {
+            transform: translateX(22px);
         }
 
         /* ===== VIDEO ===== */
@@ -1214,6 +1564,10 @@
             padding: 16px 0;
         }
 
+        body.dark-mode .description-wrapper {
+            border-color: #333;
+        }
+
         .description-text {
             font-family: 'Estedad', sans-serif;
             font-size: 0.95rem;
@@ -1223,6 +1577,10 @@
             overflow: hidden;
             transition: max-height 0.4s ease;
             white-space: pre-line;
+        }
+
+        body.dark-mode .description-text {
+            color: #aaa;
         }
 
         .description-text.expanded {
@@ -1282,6 +1640,21 @@
             background: white;
         }
 
+        body.dark-mode .comment-box input {
+            background: #252525;
+            border-color: #333;
+            color: #f0ebe5;
+        }
+
+        body.dark-mode .comment-box input::placeholder {
+            color: #666;
+        }
+
+        .comment-box input:focus {
+            border-color: #B61C1C;
+            box-shadow: 0 0 0 3px rgba(182, 28, 28, 0.08);
+        }
+
         .comment-box button {
             font-family: 'Estedad', sans-serif;
             background: #B61C1C;
@@ -1298,11 +1671,16 @@
             background: #8a1515;
         }
 
+        /* ===== FOOTER ===== */
         footer {
             margin-top: 60px;
             padding: 40px 0 20px;
             text-align: center;
             border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        body.dark-mode footer {
+            border-color: #333;
         }
 
         footer h2 {
@@ -1313,6 +1691,10 @@
         footer p {
             font-family: 'Estedad', sans-serif;
             color: #888;
+        }
+
+        body.dark-mode footer p {
+            color: #666;
         }
 
         .footer-social {
@@ -1365,6 +1747,11 @@
             .mobile-overlay.active {
                 display: block;
             }
+
+            .game-info-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                padding: 16px 18px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1384,10 +1771,6 @@
             
             .logo .logo-text {
                 font-size: 1.3rem;
-            }
-            
-            .logo .logo-dot {
-                display: none;
             }
             
             .nav-actions .action-btn {
@@ -1438,7 +1821,25 @@
             .hero-content p {
                 font-size: 0.8rem;
             }
-            
+
+            .game-hero .game-overlay h1 {
+                font-size: 1.6rem;
+            }
+
+            .game-hero .game-overlay {
+                padding: 20px 16px 20px;
+            }
+
+            .game-gallery .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .game-info-grid {
+                grid-template-columns: 1fr 1fr;
+                padding: 14px 16px;
+                gap: 12px;
+            }
+
             .search-page .logo-big {
                 width: 380px;
             }
@@ -1457,6 +1858,11 @@
                 padding: 14px 18px;
                 border: 1px solid #eee;
                 width: 100%;
+            }
+
+            body.dark-mode .search-page .search-box-big input {
+                background: #252525;
+                border-color: #333;
             }
             
             .search-page .search-box-big button {
@@ -1545,7 +1951,37 @@
                 padding: 8px 18px;
                 font-size: 0.75rem;
             }
-            
+
+            .game-hero .game-overlay h1 {
+                font-size: 1.3rem;
+            }
+
+            .game-hero .game-overlay .game-tagline {
+                font-size: 0.8rem;
+            }
+
+            .game-hero .game-overlay {
+                padding: 16px 12px 16px;
+            }
+
+            .game-info-grid {
+                grid-template-columns: 1fr;
+                padding: 12px 14px;
+                gap: 10px;
+            }
+
+            .game-gallery .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .game-description {
+                padding: 16px;
+            }
+
+            .game-description p {
+                font-size: 0.85rem;
+            }
+
             .search-page .logo-big {
                 width: 280px;
             }
@@ -1573,6 +2009,11 @@
                 width: 100%;
                 text-align: center;
             }
+            
+            .settings-box .setting-item {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
         }
     </style>
 </head>
@@ -1596,12 +2037,9 @@
             </div>
 
             <div class="nav-links">
-                <a class="active" onclick="showPage('home')">
-                    <i class="fas fa-home"></i> خانه
-                </a>
-                <a onclick="showPage('movies')">
-                    <i class="fas fa-film"></i> ویدیوها
-                </a>
+                <a class="active" onclick="showPage('home')"><i class="fas fa-home"></i> خانه</a>
+                <a onclick="showPage('movies')"><i class="fas fa-film"></i> ویدیوها</a>
+                <a onclick="showPage('games')"><i class="fas fa-gamepad"></i> زروکس گیمز</a>
             </div>
 
             <div class="nav-actions">
@@ -1626,29 +2064,24 @@
                 </button>
             </div>
             <div class="drawer-links">
-                <a class="active" onclick="showPage('home'); closeMobileMenu();">
-                    <i class="fas fa-home"></i> خانه
-                </a>
-                <a onclick="showPage('movies'); closeMobileMenu();">
-                    <i class="fas fa-film"></i> ویدیوها
-                </a>
-                <a onclick="showPage('search'); closeMobileMenu();">
-                    <i class="fas fa-search"></i> جستجو
-                </a>
+                <a class="active" onclick="showPage('home'); closeMobileMenu();"><i class="fas fa-home"></i> خانه</a>
+                <a onclick="showPage('movies'); closeMobileMenu();"><i class="fas fa-film"></i> ویدیوها</a>
+                <a onclick="showPage('games'); closeMobileMenu();"><i class="fas fa-gamepad"></i> زروکس گیمز</a>
+                <a onclick="showPage('search'); closeMobileMenu();"><i class="fas fa-search"></i> جستجو</a>
                 <a onclick="showPage('notifications'); closeMobileMenu();">
                     <i class="fas fa-bell"></i> اعلان‌ها
                     <span class="drawer-badge">3</span>
                 </a>
-                <a onclick="showPage('profile'); closeMobileMenu();">
-                    <i class="fas fa-user-circle"></i> پروفایل
-                </a>
+                <a onclick="showPage('profile'); closeMobileMenu();"><i class="fas fa-user-circle"></i> پروفایل</a>
             </div>
             <div class="drawer-footer">
                 <p>© 2026 Zerox Studio</p>
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== HOME ===== -->
+        <!-- ============================================ -->
         <div class="page active" id="page-home">
             <div class="hero-slider" id="heroSlider">
                 <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
@@ -1712,7 +2145,9 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== SEARCH ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
@@ -1734,7 +2169,9 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== NOTIFICATIONS ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-notifications">
             <div class="notifications-page">
                 <div class="notif-hero">
@@ -1756,7 +2193,9 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== PROFILE ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-profile">
             <div class="profile-page">
                 <div class="profile-header">
@@ -1778,24 +2217,6 @@
                 </div>
 
                 <div class="profile-menu">
-                    <div class="menu-item" onclick="showPage('history')">
-                        <i class="fas fa-history"></i>
-                        تاریخچه تماشا
-                        <span class="menu-badge">۲</span>
-                        <span class="arrow"><i class="fas fa-chevron-left"></i></span>
-                    </div>
-                    <div class="menu-item" onclick="showPage('favorites')">
-                        <i class="fas fa-heart"></i>
-                        ویدیوهای مورد علاقه
-                        <span class="menu-badge">۱</span>
-                        <span class="arrow"><i class="fas fa-chevron-left"></i></span>
-                    </div>
-                    <div class="menu-item" onclick="showPage('watchlater')">
-                        <i class="fas fa-clock"></i>
-                        تماشای بعدی
-                        <span class="menu-badge">۰</span>
-                        <span class="arrow"><i class="fas fa-chevron-left"></i></span>
-                    </div>
                     <div class="menu-item" onclick="showPage('settings')">
                         <i class="fas fa-cog"></i>
                         تنظیمات
@@ -1810,103 +2231,67 @@
             </div>
         </div>
 
-        <!-- ===== HISTORY ===== -->
-        <div class="page" id="page-history">
-            <h2 class="page-header"><i class="fas fa-history"></i> تاریخچه تماشا</h2>
-            <p class="page-sub">ویدیوهایی که اخیراً تماشا کردی</p>
-            <div class="movie-grid">
-                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
-                    <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
-                        <span class="badge">تماشا شده</span>
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
-                    </div>
-                    <div class="movie-info">
-                        <h4>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h4>
-                        <div class="meta">
-                            <span><i class="fas fa-clock"></i> ۵ دقیقه</span>
-                            <span class="rating"><i class="fas fa-star"></i> 9.2</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
-                    <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
-                        <span class="badge">تماشا شده</span>
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
-                    </div>
-                    <div class="movie-info">
-                        <h4>داستان بازی | no im not a human</h4>
-                        <div class="meta">
-                            <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
-                            <span class="rating"><i class="fas fa-star"></i> 8.7</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== FAVORITES ===== -->
-        <div class="page" id="page-favorites">
-            <h2 class="page-header"><i class="fas fa-heart"></i> ویدیوهای مورد علاقه</h2>
-            <p class="page-sub">ویدیوهایی که لایک کردی</p>
-            <div class="movie-grid">
-                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
-                    <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
-                        <span class="badge">❤️ مورد علاقه</span>
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
-                    </div>
-                    <div class="movie-info">
-                        <h4>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h4>
-                        <div class="meta">
-                            <span><i class="fas fa-clock"></i> ۵ دقیقه</span>
-                            <span class="rating"><i class="fas fa-star"></i> 9.2</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== WATCH LATER ===== -->
-        <div class="page" id="page-watchlater">
-            <h2 class="page-header"><i class="fas fa-clock"></i> تماشای بعدی</h2>
-            <p class="page-sub">ویدیوهایی که برای بعد ذخیره کردی</p>
-            <div class="empty-state">
-                <i class="fas fa-clock"></i>
-                <h3>هیچ ویدیویی ذخیره نشده!</h3>
-                <p>ویدیوهایی که میخوای بعد ببینی رو اینجا ذخیره کن</p>
-            </div>
-        </div>
-
+        <!-- ============================================ -->
         <!-- ===== SETTINGS ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-settings">
             <h2 class="page-header"><i class="fas fa-cog"></i> تنظیمات</h2>
             <p class="page-sub">تنظیمات حساب کاربری و برنامه</p>
-            <div style="background:white;border-radius:20px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
-                <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #f0ebe5;">
-                    <span style="font-family:'Estedad',sans-serif;">🌙 حالت شب</span>
-                    <label style="position:relative;display:inline-block;width:50px;height:28px;">
-                        <input type="checkbox" style="opacity:0;width:0;height:0;" />
-                        <span style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;transition:.3s;border-radius:28px;"></span>
+            
+            <div class="settings-box">
+                <div class="setting-item">
+                    <span class="setting-label">
+                        <i class="fas fa-moon"></i> حالت شب
+                    </span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()" />
+                        <span class="slider"></span>
                     </label>
                 </div>
-                <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #f0ebe5;">
-                    <span style="font-family:'Estedad',sans-serif;">🔔 اعلان‌ها</span>
-                    <label style="position:relative;display:inline-block;width:50px;height:28px;">
-                        <input type="checkbox" checked style="opacity:0;width:0;height:0;" />
-                        <span style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#B61C1C;transition:.3s;border-radius:28px;"></span>
+                <div class="setting-item">
+                    <span class="setting-label">
+                        <i class="fas fa-bell"></i> اعلان‌ها
+                    </span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked />
+                        <span class="slider"></span>
                     </label>
                 </div>
-                <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #f0ebe5;">
-                    <span style="font-family:'Estedad',sans-serif;">📱 کیفیت پخش</span>
-                    <span style="font-family:'Estedad',sans-serif;color:#888;font-size:0.85rem;">خودکار</span>
+                <div class="setting-item">
+                    <span class="setting-label">
+                        <i class="fas fa-video"></i> کیفیت پخش
+                    </span>
+                    <select style="font-family:'Estedad',sans-serif;background:transparent;border:none;color:#888;font-size:0.85rem;cursor:pointer;outline:none;padding:4px 8px;border-radius:8px;">
+                        <option>خودکار</option>
+                        <option>۴۸۰p</option>
+                        <option>۷۲۰p</option>
+                        <option>۱۰۸۰p</option>
+                    </select>
                 </div>
-                <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;">
-                    <span style="font-family:'Estedad',sans-serif;">🌐 زبان</span>
-                    <span style="font-family:'Estedad',sans-serif;color:#888;font-size:0.85rem;">فارسی</span>
+                <div class="setting-item">
+                    <span class="setting-label">
+                        <i class="fas fa-globe"></i> زبان
+                    </span>
+                    <select style="font-family:'Estedad',sans-serif;background:transparent;border:none;color:#888;font-size:0.85rem;cursor:pointer;outline:none;padding:4px 8px;border-radius:8px;">
+                        <option>فارسی</option>
+                        <option>English</option>
+                    </select>
+                </div>
+                <div class="setting-item" style="border-bottom:none;justify-content:center;gap:8px;padding:16px 20px;">
+                    <span style="font-family:'Estedad',sans-serif;color:#888;font-size:0.75rem;">
+                        Zerox Studio v2.0
+                    </span>
+                    <span style="color:#ddd;">•</span>
+                    <span style="font-family:'Estedad',sans-serif;color:#888;font-size:0.75rem;">
+                        © 2026
+                    </span>
                 </div>
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== MOVIES ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-movies">
             <h2 class="page-header"><i class="fas fa-film"></i> ویدیوها</h2>
             <p class="page-sub">همه ویدیوهای سینمایی و کوتاه</p>
@@ -1939,7 +2324,109 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
+        <!-- ===== ZEROX GAMES ===== -->
+        <!-- ============================================ -->
+        <div class="page" id="page-games">
+            <h2 class="page-header"><i class="fas fa-gamepad"></i> زروکس گیمز</h2>
+            <p class="page-sub">بازی‌های ساخته شده توسط استودیو Zerox</p>
+
+            <!-- بازی اصلی -->
+            <div class="game-hero">
+                <img src="https://uploadkon.ir/uploads/78a031_26SilentGears-Zerox-studios-.jpg" alt="Silent Gears" />
+                <div class="game-overlay">
+                    <span class="game-badge">🎮 بازی جدید</span>
+                    <h1>🎮 SILENT GEARS</h1>
+                    <div class="game-tagline">چرخدنده‌های خاموش</div>
+                </div>
+            </div>
+
+            <!-- اطلاعات بازی -->
+            <div class="game-info-grid">
+                <div class="info-item">
+                    <i class="fas fa-tag"></i>
+                    <div>
+                        <div class="info-label">ژانر</div>
+                        <div class="info-value">اکشن-ماجرایی، نقش‌آفرینی</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-building"></i>
+                    <div>
+                        <div class="info-label">استودیو</div>
+                        <div class="info-value">Zerox Studios</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <div>
+                        <div class="info-label">پلتفرم</div>
+                        <div class="info-value">اندروید | PC</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <div class="info-label">مدت زمان</div>
+                        <div class="info-value">۱۲ تا ۱۶ ساعت</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-user"></i>
+                    <div>
+                        <div class="info-label">حالت بازی</div>
+                        <div class="info-value">تکنفره، روایت خطی</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-flag-checkered"></i>
+                    <div>
+                        <div class="info-label">پایان‌ها</div>
+                        <div class="info-value">۳ پایان مختلف</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- گالری تصاویر -->
+            <div class="game-gallery">
+                <div class="gallery-title">
+                    <i class="fas fa-images"></i> گالری تصاویر
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openImageModal('https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg')">
+                        <img src="https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg" alt="Silent Gears 1" />
+                    </div>
+                    <div class="gallery-item" onclick="openImageModal('https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg')">
+                        <img src="https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg" alt="Silent Gears 2" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- توضیحات -->
+            <div class="game-description">
+                <h3><i class="fas fa-info-circle"></i> درباره بازی</h3>
+                <p>
+                    🎮 <strong>Silent Gears</strong> (چرخدنده‌های خاموش) یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتممحور (Rhythm-Based) و پساآخرالزمانی است که توسط <strong>Zerox Studios</strong> ساخته شده.
+                </p>
+                <p style="margin-top:12px;">
+                    داستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخدنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از <strong>۳ پایان مختلف</strong> ختم می‌شود.
+                </p>
+                <p style="margin-top:12px;">
+                    بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای Silent Gears می‌برد.
+                </p>
+                <div class="genre-tags">
+                    <span>🎯 اکشن-ماجرایی</span>
+                    <span>🎭 نقش‌آفرینی</span>
+                    <span>🎵 ریتم‌محور</span>
+                    <span>🌆 پساآخرالزمانی</span>
+                    <span>🎮 تکنفره</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
         <!-- ===== VIDEO ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-video">
             <div class="video-container">
                 <div class="video-wrapper">
@@ -1951,7 +2438,6 @@
                     <div class="video-meta">
                         <span><i class="fas fa-clock"></i> <span id="videoDuration">۰ دقیقه</span></span>
                         <span><i class="fas fa-star" style="color:#f5b342;"></i> <span id="videoRating">۰.۰</span></span>
-                        <span><i class="fas fa-eye"></i> ۱٬۲۳۴ بازدید</span>
                     </div>
                     
                     <div class="description-wrapper">
@@ -1975,6 +2461,9 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
+        <!-- ===== FOOTER ===== -->
+        <!-- ============================================ -->
         <footer>
             <h2>Zerox Studio</h2>
             <p>پلتفرم سینمایی و سرگرمی دیجیتال</p>
@@ -1987,7 +2476,41 @@
         </footer>
     </div>
 
+    <!-- ===== MODAL برای بزرگ‌نمایی تصاویر ===== -->
+    <div id="imageModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:9999;backdrop-filter:blur(8px);cursor:pointer;align-items:center;justify-content:center;padding:20px;" onclick="closeImageModal()">
+        <img id="modalImage" src="" alt="تصویر بزرگ" style="max-width:95%;max-height:95%;border-radius:16px;box-shadow:0 20px 80px rgba(0,0,0,0.5);object-fit:contain;" />
+        <button style="position:absolute;top:20px;left:20px;background:rgba(255,255,255,0.1);border:none;color:white;font-size:2rem;cursor:pointer;padding:8px 16px;border-radius:50%;backdrop-filter:blur(8px);transition:all 0.3s ease;" onclick="event.stopPropagation();closeImageModal()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
     <script>
+        // ===== DARK MODE =====
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // ===== IMAGE MODAL =====
+        function openImageModal(src) {
+            const modal = document.getElementById('imageModal');
+            const img = document.getElementById('modalImage');
+            modal.style.display = 'flex';
+            img.src = src;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // بستن مودال با کلید ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+
         // ===== MOBILE MENU =====
         function toggleMobileMenu() {
             const overlay = document.getElementById('mobileOverlay');
@@ -2065,14 +2588,14 @@
             
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             const links = document.querySelectorAll('.nav-links a');
-            const map = { home: 0, movies: 1 };
+            const map = { home: 0, movies: 1, games: 2 };
             if (map[page] !== undefined && links[map[page]]) {
                 links[map[page]].classList.add('active');
             }
             
             document.querySelectorAll('.mobile-drawer .drawer-links a').forEach(a => a.classList.remove('active'));
             const drawerLinks = document.querySelectorAll('.mobile-drawer .drawer-links a');
-            const drawerMap = { home: 0, movies: 1, search: 2, notifications: 3, profile: 4 };
+            const drawerMap = { home: 0, movies: 1, games: 2, search: 3, notifications: 4, profile: 5 };
             if (drawerMap[page] !== undefined && drawerLinks[drawerMap[page]]) {
                 drawerLinks[drawerMap[page]].classList.add('active');
             }
@@ -2193,8 +2716,9 @@
                     showPage('home');
                 }
                 closeMobileMenu();
+                closeImageModal();
             }
         });
     </script>
 </body>
-    </html>
+                        </html>
