@@ -7,7 +7,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     
-    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@400;700&display=swap" rel="stylesheet" />
 
     <style>
@@ -19,8 +19,8 @@
 
         body {
             font-family: 'Estedad', 'Segoe UI', Tahoma, sans-serif;
-            background: #0d0d0d;
-            color: #ffffff;
+            background: #f5f0ea;
+            color: #1a1a1a;
             direction: rtl;
             overflow-x: hidden;
         }
@@ -29,7 +29,7 @@
             width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #1a1a1a;
+            background: #ede8e2;
         }
         ::-webkit-scrollbar-thumb {
             background: #B61C1C;
@@ -42,103 +42,84 @@
             padding: 0 20px;
         }
 
-        /* ===== HEADER خفن جدید با تم تاریک ===== */
+        /* ===== HEADER جدید ===== */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 24px;
-            background: rgba(13, 13, 13, 0.92);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-radius: 20px;
-            margin: 12px 0;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+            padding: 0 24px;
+            height: 68px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 18px;
+            margin: 14px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04), 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             position: sticky;
-            top: 12px;
+            top: 14px;
             z-index: 999;
-            flex-wrap: nowrap;
-            gap: 10px;
             transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .navbar:hover {
-            border-color: rgba(182, 28, 28, 0.2);
-            box-shadow: 0 8px 60px rgba(182, 28, 28, 0.08), 0 4px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 50px rgba(182, 28, 28, 0.08);
+            border-color: rgba(182, 28, 28, 0.08);
         }
 
-        .nav-left {
+        .navbar .nav-left {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
         }
 
-        .nav-right {
+        .navbar .nav-right {
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        /* ===== لوگو با افکت نور ===== */
+        /* ===== لوگو ===== */
         .logo {
             flex-shrink: 0;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 6px;
-            position: relative;
+            text-decoration: none;
         }
 
-        .logo::before {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, rgba(182, 28, 28, 0.15), transparent 70%);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+        .logo .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #B61C1C, #8a1515);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 800;
+            font-family: 'Ardekan', sans-serif;
+            box-shadow: 0 4px 12px rgba(182, 28, 28, 0.25);
+            transition: transform 0.3s ease;
         }
 
-        .logo:hover::before {
-            opacity: 1;
+        .logo:hover .logo-icon {
+            transform: rotate(-8deg) scale(1.05);
         }
 
         .logo h1 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.8rem;
-            background: linear-gradient(135deg, #ffffff, #B61C1C, #ffffff);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: logoShine 4s ease-in-out infinite;
-            white-space: nowrap;
-            letter-spacing: 2px;
-        }
-
-        @keyframes logoShine {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .logo .logo-badge {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.5rem;
-            background: linear-gradient(135deg, #B61C1C, #8a1515);
-            color: white;
-            padding: 2px 10px;
-            border-radius: 30px;
-            -webkit-text-fill-color: white;
+            font-size: 1.6rem;
             font-weight: 800;
-            letter-spacing: 1px;
-            margin-top: -4px;
-            border: 1px solid rgba(255,255,255,0.1);
-            text-transform: uppercase;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        .logo h1 span {
+            color: #B61C1C;
         }
 
         /* ===== لینک‌های منو ===== */
@@ -146,14 +127,12 @@
             display: flex;
             gap: 4px;
             align-items: center;
-            flex-wrap: nowrap;
-            flex-shrink: 0;
         }
 
         .nav-links a {
             font-family: 'Estedad', sans-serif;
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.6);
+            color: #555;
             font-weight: 500;
             font-size: 0.85rem;
             cursor: pointer;
@@ -161,56 +140,41 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            padding: 8px 18px;
+            padding: 8px 16px;
             border-radius: 30px;
-            white-space: nowrap;
             position: relative;
         }
 
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 30px;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(182, 28, 28, 0.3), transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-links a:hover::before {
-            opacity: 1;
+        .nav-links a i {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #ffffff;
-            background: rgba(182, 28, 28, 0.08);
+            color: #B61C1C;
+            background: rgba(182, 28, 28, 0.05);
+        }
+
+        .nav-links a:hover i {
+            opacity: 1;
         }
 
         .nav-links a.active {
-            color: #ffffff;
-            background: linear-gradient(135deg, rgba(182, 28, 28, 0.2), rgba(138, 21, 21, 0.1));
-            box-shadow: 0 0 30px rgba(182, 28, 28, 0.05);
+            background: #B61C1C;
+            color: white;
+            box-shadow: 0 4px 16px rgba(182, 28, 28, 0.25);
         }
 
         .nav-links a.active i {
-            color: #B61C1C;
-        }
-
-        .nav-links a i {
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
+            opacity: 1;
         }
 
         /* ===== بخش کاربری ===== */
         .user-actions {
             display: flex;
-            gap: 4px;
             align-items: center;
-            flex-shrink: 0;
+            gap: 4px;
         }
 
         .user-actions .icon-btn {
@@ -222,16 +186,17 @@
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
-            color: rgba(255, 255, 255, 0.6);
+            color: #555;
             font-size: 1.1rem;
             position: relative;
-            background: rgba(255, 255, 255, 0.03);
+            background: transparent;
+            border: none;
         }
 
         .user-actions .icon-btn:hover {
-            background: rgba(182, 28, 28, 0.12);
-            color: #ffffff;
-            transform: translateY(-2px) scale(1.05);
+            background: rgba(182, 28, 28, 0.06);
+            color: #B61C1C;
+            transform: translateY(-2px);
         }
 
         .user-actions .icon-btn .notif-count {
@@ -241,7 +206,7 @@
             background: #B61C1C;
             color: white;
             font-size: 0.5rem;
-            font-weight: 800;
+            font-weight: 700;
             width: 18px;
             height: 18px;
             border-radius: 50%;
@@ -249,13 +214,13 @@
             align-items: center;
             justify-content: center;
             font-family: 'Estedad', sans-serif;
-            border: 2px solid #0d0d0d;
-            box-shadow: 0 2px 10px rgba(182, 28, 28, 0.4);
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(182, 28, 28, 0.3);
         }
 
         .user-actions .profile-avatar {
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: linear-gradient(135deg, #B61C1C, #8a1515);
             display: flex;
@@ -266,116 +231,145 @@
             font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
             font-family: 'Estedad', sans-serif;
+            box-shadow: 0 2px 12px rgba(182, 28, 28, 0.15);
         }
 
         .user-actions .profile-avatar:hover {
             transform: scale(1.08);
             border-color: #B61C1C;
-            box-shadow: 0 0 30px rgba(182, 28, 28, 0.2);
+            box-shadow: 0 0 0 4px rgba(182, 28, 28, 0.12);
         }
 
         /* ===== منوی همبرگری ===== */
-        .hamburger-menu {
+        .hamburger {
             display: none;
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
-            padding: 4px;
+            padding: 6px;
+            border-radius: 10px;
             transition: all 0.3s ease;
+            background: transparent;
+            border: none;
         }
 
-        .hamburger-menu span {
+        .hamburger:hover {
+            background: rgba(182, 28, 28, 0.06);
+        }
+
+        .hamburger span {
             display: block;
-            width: 24px;
+            width: 22px;
             height: 2.5px;
-            background: rgba(255, 255, 255, 0.7);
+            background: #1a1a1a;
             border-radius: 10px;
             transition: all 0.3s ease;
         }
 
-        .hamburger-menu:hover span {
-            background: #ffffff;
+        .hamburger:hover span {
+            background: #B61C1C;
         }
 
         /* ===== منوی موبایل ===== */
-        .mobile-menu-overlay {
+        .mobile-overlay {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
             z-index: 1000;
-            backdrop-filter: blur(10px);
         }
 
-        .mobile-menu-overlay.active {
+        .mobile-overlay.active {
             display: block;
         }
 
-        .mobile-menu-drawer {
+        .mobile-drawer {
             position: fixed;
             top: 0;
             right: -320px;
-            width: 290px;
+            width: 300px;
             height: 100%;
-            background: #141414;
+            background: white;
             z-index: 1001;
             padding: 30px 24px;
             transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: -8px 0 60px rgba(0,0,0,0.5);
-            overflow-y: auto;
-            border-left: 1px solid rgba(255,255,255,0.05);
+            box-shadow: -8px 0 50px rgba(0,0,0,0.1);
         }
 
-        .mobile-menu-drawer.open {
+        .mobile-drawer.open {
             right: 0;
         }
 
-        .mobile-menu-drawer .drawer-header {
+        .mobile-drawer .drawer-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
             padding-bottom: 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 2px solid #f0ebe5;
         }
 
-        .mobile-menu-drawer .drawer-header h3 {
+        .mobile-drawer .drawer-header .drawer-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mobile-drawer .drawer-header .drawer-logo .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #B61C1C, #8a1515);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            font-weight: 800;
+            font-family: 'Ardekan', sans-serif;
+        }
+
+        .mobile-drawer .drawer-header .drawer-logo h3 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.4rem;
-            background: linear-gradient(135deg, #ffffff, #B61C1C);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.3rem;
+            color: #1a1a1a;
         }
 
-        .mobile-menu-drawer .drawer-close {
-            font-size: 1.5rem;
+        .mobile-drawer .drawer-header .drawer-logo h3 span {
+            color: #B61C1C;
+        }
+
+        .mobile-drawer .drawer-close {
+            font-size: 1.3rem;
             cursor: pointer;
-            color: rgba(255,255,255,0.5);
+            color: #888;
             transition: all 0.3s ease;
             background: none;
             border: none;
+            padding: 4px;
         }
 
-        .mobile-menu-drawer .drawer-close:hover {
-            color: #ffffff;
+        .mobile-drawer .drawer-close:hover {
+            color: #B61C1C;
             transform: rotate(90deg);
         }
 
-        .mobile-menu-drawer .drawer-links {
+        .mobile-drawer .drawer-links {
             display: flex;
             flex-direction: column;
             gap: 4px;
         }
 
-        .mobile-menu-drawer .drawer-links a {
+        .mobile-drawer .drawer-links a {
             font-family: 'Estedad', sans-serif;
             text-decoration: none;
-            color: rgba(255,255,255,0.6);
+            color: #444;
             font-weight: 500;
             font-size: 1rem;
             padding: 12px 16px;
@@ -383,60 +377,70 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
-        .mobile-menu-drawer .drawer-links a:hover {
-            background: rgba(182, 28, 28, 0.1);
-            color: #ffffff;
-        }
-
-        .mobile-menu-drawer .drawer-links a.active {
-            background: rgba(182, 28, 28, 0.15);
-            color: #ffffff;
-        }
-
-        .mobile-menu-drawer .drawer-links a i {
-            width: 24px;
+        .mobile-drawer .drawer-links a:hover {
+            background: rgba(182, 28, 28, 0.05);
             color: #B61C1C;
         }
 
-        .mobile-menu-drawer .drawer-footer {
-            margin-top: 30px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+        .mobile-drawer .drawer-links a.active {
+            background: #B61C1C;
+            color: white;
         }
 
-        .mobile-menu-drawer .drawer-footer p {
+        .mobile-drawer .drawer-links a i {
+            width: 22px;
+            font-size: 1.1rem;
+        }
+
+        .mobile-drawer .drawer-links a .drawer-badge {
+            background: #B61C1C;
+            color: white;
+            padding: 0 10px;
+            border-radius: 30px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            margin-right: auto;
+        }
+
+        .mobile-drawer .drawer-footer {
+            margin-top: 30px;
+            padding-top: 16px;
+            border-top: 1px solid #f0ebe5;
+        }
+
+        .mobile-drawer .drawer-footer p {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.3);
+            font-size: 0.75rem;
+            color: #aaa;
             text-align: center;
         }
 
-        /* ===== PAGES ===== */
+        /* ===== بقیه استایل‌ها ===== */
         .page {
             display: none;
-            animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+            animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         .page.active {
             display: block;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px) scale(0.97); }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px) scale(0.98); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* ===== HERO SLIDER ===== */
+        /* ===== HERO ===== */
         .hero-slider {
             position: relative;
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             margin: 20px 0 30px;
-            box-shadow: 0 8px 60px rgba(0,0,0,0.4);
-            height: 420px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            height: 400px;
         }
 
         .hero-slide {
@@ -452,7 +456,7 @@
             display: flex;
             align-items: flex-end;
             padding: 40px;
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
 
         .hero-slide.active {
@@ -466,8 +470,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 75%;
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+            height: 70%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
         }
 
         .hero-content {
@@ -475,12 +479,12 @@
             z-index: 2;
             color: white;
             max-width: 600px;
-            animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+            animation: slideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
             animation-delay: 0.3s;
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -497,41 +501,41 @@
 
         .hero-content h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             margin-bottom: 8px;
-            text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
 
         .hero-content p {
             font-family: 'Estedad', sans-serif;
             font-size: 0.95rem;
-            opacity: 0.8;
+            opacity: 0.9;
             margin-bottom: 16px;
             line-height: 1.6;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .hero-content .btn-play {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: linear-gradient(135deg, #B61C1C, #8a1515);
+            background: #B61C1C;
             color: white;
             border: none;
-            padding: 12px 32px;
+            padding: 12px 28px;
             border-radius: 50px;
             font-family: 'Estedad', sans-serif;
             font-weight: 700;
             font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-            text-decoration: none;
-            box-shadow: 0 4px 30px rgba(182, 28, 28, 0.3);
+            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.3);
         }
 
         .hero-content .btn-play:hover {
+            background: #8a1515;
             transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 50px rgba(182, 28, 28, 0.4);
+            box-shadow: 0 8px 30px rgba(182, 28, 28, 0.4);
         }
 
         .slider-dots {
@@ -545,8 +549,8 @@
         }
 
         .slider-dots span {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255,255,255,0.3);
             cursor: pointer;
@@ -554,9 +558,9 @@
         }
 
         .slider-dots span.active {
-            background: #B61C1C;
+            background: white;
             transform: scale(1.3);
-            box-shadow: 0 0 30px rgba(182, 28, 28, 0.3);
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
         }
 
         /* ===== SECTION HEADER ===== */
@@ -569,7 +573,7 @@
 
         .section-header h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -581,40 +585,41 @@
 
         .section-header a {
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.5);
+            color: #B61C1C;
             text-decoration: none;
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .section-header a:hover {
-            color: #ffffff;
+            color: #8a1515;
+            transform: translateX(-4px);
         }
 
         /* ===== MOVIE GRID ===== */
         .movie-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
             margin-bottom: 40px;
         }
 
         .movie-card {
-            background: #1a1a1a;
+            background: white;
             border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            border: 1px solid rgba(255,255,255,0.04);
-            max-width: 400px;
-            width: 100%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
         }
 
         .movie-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            border-color: rgba(182, 28, 28, 0.2);
-            box-shadow: 0 20px 60px rgba(182, 28, 28, 0.08);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(182, 28, 28, 0.12);
         }
 
         .movie-poster {
@@ -623,6 +628,7 @@
             background-size: cover;
             background-position: center;
             background-color: #1a1a1a;
+            overflow: hidden;
         }
 
         .movie-poster .badge {
@@ -645,10 +651,10 @@
             left: 50%;
             transform: translate(-50%, -50%) scale(0.8);
             color: white;
-            font-size: 3.5rem;
+            font-size: 3rem;
             opacity: 0;
             transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            text-shadow: 0 4px 40px rgba(0,0,0,0.6);
+            text-shadow: 0 4px 30px rgba(0,0,0,0.5);
             z-index: 2;
         }
 
@@ -664,7 +670,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.2);
             opacity: 0;
             transition: all 0.4s ease;
         }
@@ -682,88 +688,19 @@
             font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 4px;
-            transition: color 0.3s ease;
-        }
-
-        .movie-card:hover .movie-info h4 {
-            color: #B61C1C;
         }
 
         .movie-info .meta {
             display: flex;
             justify-content: space-between;
             font-size: 0.75rem;
-            color: rgba(255,255,255,0.4);
+            color: #888;
             font-family: 'Estedad', sans-serif;
         }
 
         .movie-info .meta .rating {
             color: #f5b342;
             font-weight: 600;
-        }
-
-        /* ===== PAGE MOVIES با امکانات جدید ===== */
-        .movies-header-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin: 20px 0 24px;
-        }
-
-        .movies-header-section h1 {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .movies-header-section h1 i {
-            color: #B61C1C;
-        }
-
-        .movies-filters {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .movies-filters .filter-btn {
-            padding: 8px 18px;
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: transparent;
-            color: rgba(255,255,255,0.5);
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .movies-filters .filter-btn:hover {
-            border-color: rgba(182, 28, 28, 0.3);
-            color: #ffffff;
-        }
-
-        .movies-filters .filter-btn.active {
-            background: #B61C1C;
-            border-color: #B61C1C;
-            color: white;
-        }
-
-        .movies-stats {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            color: rgba(255,255,255,0.4);
-            font-size: 0.85rem;
-            font-family: 'Estedad', sans-serif;
-        }
-
-        .movies-stats span i {
-            margin-left: 4px;
         }
 
         /* ===== SEARCH ===== */
@@ -792,7 +729,7 @@
 
         .search-page .subtitle {
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.4);
+            color: #888;
             margin-bottom: 30px;
             font-size: 0.95rem;
         }
@@ -800,19 +737,19 @@
         .search-page .search-box-big {
             display: flex;
             align-items: center;
-            background: #1a1a1a;
+            background: white;
             border-radius: 50px;
             padding: 6px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
             width: 100%;
             max-width: 600px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 2px solid transparent;
             transition: all 0.3s ease;
         }
 
         .search-page .search-box-big:focus-within {
             border-color: #B61C1C;
-            box-shadow: 0 4px 50px rgba(182, 28, 28, 0.08);
+            box-shadow: 0 4px 40px rgba(182, 28, 28, 0.1);
         }
 
         .search-page .search-box-big input {
@@ -823,16 +760,11 @@
             font-family: 'Estedad', sans-serif;
             font-size: 1rem;
             background: transparent;
-            color: white;
-        }
-
-        .search-page .search-box-big input::placeholder {
-            color: rgba(255,255,255,0.3);
         }
 
         .search-page .search-box-big button {
             font-family: 'Estedad', sans-serif;
-            background: linear-gradient(135deg, #B61C1C, #8a1515);
+            background: #B61C1C;
             border: none;
             color: white;
             padding: 14px 32px;
@@ -845,8 +777,7 @@
         }
 
         .search-page .search-box-big button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 4px 30px rgba(182, 28, 28, 0.3);
+            background: #8a1515;
         }
 
         .search-results {
@@ -859,19 +790,18 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            background: #1a1a1a;
+            background: white;
             border-radius: 16px;
             padding: 12px 16px;
             margin-bottom: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
         .search-results .result-item:hover {
             transform: translateX(-6px);
-            border-color: rgba(182, 28, 28, 0.2);
-            box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 30px rgba(182, 28, 28, 0.1);
         }
 
         .search-results .result-item img {
@@ -890,13 +820,12 @@
             font-family: 'Estedad', sans-serif;
             font-size: 0.9rem;
             font-weight: 700;
-            color: white;
         }
 
         .search-results .result-item .info .meta {
             font-family: 'Estedad', sans-serif;
             font-size: 0.75rem;
-            color: rgba(255,255,255,0.3);
+            color: #888;
             display: flex;
             gap: 12px;
         }
@@ -908,14 +837,14 @@
         .search-results .no-result {
             text-align: center;
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.3);
+            color: #888;
             padding: 40px 0;
             font-size: 1rem;
         }
 
         .search-results .no-result i {
             font-size: 2.5rem;
-            color: rgba(255,255,255,0.05);
+            color: #ddd;
             display: block;
             margin-bottom: 12px;
         }
@@ -936,8 +865,8 @@
         }
 
         .notifications-page .notif-hero .notif-icon-big {
-            width: 450px;
-            height: 450px;
+            width: 400px;
+            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -957,7 +886,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            color: white;
+            color: #1a1a1a;
         }
 
         .notifications-page .notif-hero h2 i {
@@ -976,11 +905,11 @@
         }
 
         .notif-item {
-            background: #1a1a1a;
+            background: white;
             border-radius: 16px;
             padding: 16px 20px;
             margin-bottom: 12px;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
             display: flex;
             align-items: flex-start;
             gap: 14px;
@@ -990,16 +919,15 @@
         }
 
         .notif-item:hover {
-            border-color: rgba(182, 28, 28, 0.2);
-            transform: translateX(-6px);
-            box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 30px rgba(182, 28, 28, 0.08);
+            transform: translateX(-4px);
         }
 
         .notif-item .notif-icon {
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            background: rgba(182, 28, 28, 0.15);
+            background: rgba(182, 28, 28, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1016,7 +944,6 @@
             position: absolute;
             top: 16px;
             left: 16px;
-            box-shadow: 0 0 20px rgba(182, 28, 28, 0.3);
         }
 
         .notif-item .notif-content {
@@ -1028,13 +955,13 @@
             font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 4px;
-            color: white;
+            color: #1a1a1a;
         }
 
         .notif-item .notif-content h4 .studio-tag {
             color: #B61C1C;
             font-size: 0.65rem;
-            background: rgba(182, 28, 28, 0.1);
+            background: rgba(182, 28, 28, 0.08);
             padding: 0 10px;
             border-radius: 12px;
             font-weight: 600;
@@ -1044,7 +971,7 @@
         .notif-item .notif-content p {
             font-family: 'Estedad', sans-serif;
             font-size: 0.85rem;
-            color: rgba(255,255,255,0.4);
+            color: #888;
             line-height: 1.6;
         }
 
@@ -1056,11 +983,15 @@
         .notif-item .notif-time {
             font-family: 'Estedad', sans-serif;
             font-size: 0.7rem;
-            color: rgba(255,255,255,0.2);
+            color: #aaa;
             white-space: nowrap;
             display: flex;
             align-items: center;
             gap: 4px;
+        }
+
+        .notif-item .notif-time i {
+            font-size: 0.6rem;
         }
 
         /* ===== PROFILE ===== */
@@ -1071,17 +1002,17 @@
         }
 
         .profile-page .profile-header {
-            background: #1a1a1a;
+            background: white;
             border-radius: 20px;
             padding: 30px;
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
             margin-bottom: 20px;
             transition: all 0.3s ease;
         }
 
         .profile-page .profile-header:hover {
-            border-color: rgba(182, 28, 28, 0.1);
+            box-shadow: 0 8px 40px rgba(182, 28, 28, 0.06);
         }
 
         .profile-page .profile-avatar {
@@ -1095,13 +1026,13 @@
             margin: 0 auto 16px;
             font-size: 3rem;
             color: white;
-            box-shadow: 0 4px 30px rgba(182, 28, 28, 0.3);
+            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.25);
         }
 
         .profile-page .profile-header .guest-badge {
             display: inline-block;
-            background: rgba(255,255,255,0.05);
-            color: rgba(255,255,255,0.4);
+            background: #f0ebe5;
+            color: #888;
             padding: 4px 16px;
             border-radius: 30px;
             font-size: 0.75rem;
@@ -1118,7 +1049,7 @@
 
         .profile-page .profile-header p {
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.4);
+            color: #888;
             font-size: 0.9rem;
         }
 
@@ -1142,20 +1073,20 @@
         }
 
         .profile-page .profile-actions .btn-primary {
-            background: linear-gradient(135deg, #B61C1C, #8a1515);
+            background: #B61C1C;
             color: white;
-            box-shadow: 0 4px 30px rgba(182, 28, 28, 0.3);
+            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.2);
         }
 
         .profile-page .profile-actions .btn-primary:hover {
+            background: #8a1515;
             transform: translateY(-3px);
-            box-shadow: 0 8px 50px rgba(182, 28, 28, 0.4);
         }
 
         .profile-page .profile-actions .btn-outline {
             background: transparent;
             color: #B61C1C;
-            border: 1px solid #B61C1C;
+            border: 2px solid #B61C1C;
         }
 
         .profile-page .profile-actions .btn-outline:hover {
@@ -1164,10 +1095,10 @@
         }
 
         .profile-page .profile-menu {
-            background: #1a1a1a;
+            background: white;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
         }
 
         .profile-page .profile-menu .menu-item {
@@ -1175,17 +1106,16 @@
             align-items: center;
             gap: 14px;
             padding: 16px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+            border-bottom: 1px solid #f0ebe5;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.7);
+            color: #2d2a24;
             text-decoration: none;
         }
 
         .profile-page .profile-menu .menu-item:hover {
-            background: rgba(182, 28, 28, 0.05);
-            color: white;
+            background: #f8f4f0;
         }
 
         .profile-page .profile-menu .menu-item:last-child {
@@ -1200,7 +1130,7 @@
 
         .profile-page .profile-menu .menu-item .arrow {
             margin-right: auto;
-            color: rgba(255,255,255,0.1);
+            color: #ccc;
             font-size: 0.8rem;
         }
 
@@ -1214,7 +1144,7 @@
             margin-right: auto;
         }
 
-        /* ===== VIDEO ===== */
+        /* ===== VIDEO PAGE با امکانات جدید ===== */
         .video-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -1226,7 +1156,7 @@
             background: #000;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
         }
 
         .video-wrapper iframe {
@@ -1242,10 +1172,76 @@
             margin-top: 20px;
         }
 
-        .video-info-section h2 {
+        .video-info-section .video-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .video-info-section .video-title-row h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.6rem;
-            margin-bottom: 6px;
+            flex: 1;
+        }
+
+        .video-info-section .video-title-row .video-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .video-info-section .video-title-row .video-actions button {
+            padding: 8px 18px;
+            border-radius: 30px;
+            border: none;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .video-info-section .video-title-row .video-actions .like-btn {
+            background: rgba(182, 28, 28, 0.08);
+            color: #B61C1C;
+        }
+
+        .video-info-section .video-title-row .video-actions .like-btn:hover {
+            background: #B61C1C;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .video-info-section .video-title-row .video-actions .like-btn.liked {
+            background: #B61C1C;
+            color: white;
+        }
+
+        .video-info-section .video-title-row .video-actions .share-btn {
+            background: rgba(0,0,0,0.05);
+            color: #555;
+        }
+
+        .video-info-section .video-title-row .video-actions .share-btn:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .video-info-section .video-title-row .video-actions .save-btn {
+            background: rgba(0,0,0,0.05);
+            color: #555;
+        }
+
+        .video-info-section .video-title-row .video-actions .save-btn:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: scale(1.05);
         }
 
         .video-info-section .video-meta {
@@ -1253,9 +1249,11 @@
             gap: 16px;
             font-family: 'Estedad', sans-serif;
             font-size: 0.85rem;
-            color: rgba(255,255,255,0.4);
-            margin-bottom: 12px;
+            color: #888;
+            margin: 12px 0 16px;
             flex-wrap: wrap;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
         }
 
         .video-info-section .video-meta span {
@@ -1264,17 +1262,16 @@
             gap: 4px;
         }
 
+        /* ===== Video Description ===== */
         .description-wrapper {
             position: relative;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
             padding: 16px 0;
         }
 
         .description-text {
             font-family: 'Estedad', sans-serif;
             font-size: 0.95rem;
-            color: rgba(255,255,255,0.6);
+            color: #555;
             line-height: 1.8;
             max-height: 80px;
             overflow: hidden;
@@ -1313,14 +1310,31 @@
             transform: rotate(180deg);
         }
 
+        /* ===== Comments ===== */
         .comments-section {
             margin-top: 30px;
         }
 
-        .comments-section h3 {
+        .comments-section .comments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .comments-section .comments-header h3 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.3rem;
-            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .comments-section .comments-header .comment-count {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.8rem;
+            color: #888;
+            font-weight: 400;
         }
 
         .comment-box {
@@ -1329,40 +1343,142 @@
             margin-bottom: 20px;
         }
 
-        .comment-box input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 30px;
-            font-family: 'Estedad', sans-serif;
-            outline: none;
-            background: #1a1a1a;
-            color: white;
-        }
-
-        .comment-box input::placeholder {
-            color: rgba(255,255,255,0.2);
-        }
-
-        .comment-box input:focus {
-            border-color: #B61C1C;
-        }
-
-        .comment-box button {
-            font-family: 'Estedad', sans-serif;
+        .comment-box .comment-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             background: linear-gradient(135deg, #B61C1C, #8a1515);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        .comment-box .comment-input-wrap {
+            flex: 1;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            background: white;
+            border-radius: 30px;
+            padding: 4px 4px 4px 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .comment-box .comment-input-wrap:focus-within {
+            border-color: #B61C1C;
+            box-shadow: 0 2px 20px rgba(182, 28, 28, 0.08);
+        }
+
+        .comment-box .comment-input-wrap input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 12px 0;
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.9rem;
+            background: transparent;
+        }
+
+        .comment-box .comment-input-wrap button {
+            font-family: 'Estedad', sans-serif;
+            background: #B61C1C;
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 10px 22px;
             border-radius: 30px;
             font-weight: 700;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .comment-box button:hover {
+        .comment-box .comment-input-wrap button:hover {
+            background: #8a1515;
             transform: scale(1.03);
-            box-shadow: 0 4px 30px rgba(182, 28, 28, 0.3);
+        }
+
+        /* ===== Comment List ===== */
+        .comment-list .comment-item {
+            display: flex;
+            gap: 14px;
+            padding: 16px 0;
+            border-bottom: 1px solid #f0ebe5;
+        }
+
+        .comment-list .comment-item:last-child {
+            border-bottom: none;
+        }
+
+        .comment-list .comment-item .comment-avatar-sm {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #B61C1C, #8a1515);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        .comment-list .comment-item .comment-body {
+            flex: 1;
+        }
+
+        .comment-list .comment-item .comment-body .comment-author {
+            font-family: 'Estedad', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .comment-list .comment-item .comment-body .comment-author .comment-time {
+            font-weight: 400;
+            color: #aaa;
+            font-size: 0.7rem;
+        }
+
+        .comment-list .comment-item .comment-body p {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+
+        .comment-list .comment-item .comment-body .comment-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .comment-list .comment-item .comment-body .comment-actions button {
+            background: none;
+            border: none;
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.75rem;
+            color: #888;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .comment-list .comment-item .comment-body .comment-actions button:hover {
+            color: #B61C1C;
         }
 
         /* ===== FOOTER ===== */
@@ -1370,19 +1486,17 @@
             margin-top: 60px;
             padding: 40px 0 20px;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.04);
+            border-top: 1px solid rgba(0,0,0,0.05);
         }
 
         footer h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            background: linear-gradient(135deg, #ffffff, #B61C1C);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #B61C1C;
         }
 
         footer p {
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.3);
+            color: #888;
         }
 
         .footer-social {
@@ -1396,8 +1510,8 @@
             width: 38px;
             height: 38px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.03);
-            color: rgba(255,255,255,0.4);
+            background: rgba(182, 28, 28, 0.06);
+            color: #B61C1C;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1409,56 +1523,102 @@
             background: #B61C1C;
             color: white;
             transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(182, 28, 28, 0.2);
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 992px) {
-            .hamburger-menu {
-                display: flex;
-            }
             .nav-links {
                 display: none;
             }
-            .navbar {
-                padding: 8px 16px;
-                margin: 8px 0;
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .mobile-overlay {
+                display: none;
+            }
+            
+            .mobile-overlay.active {
+                display: block;
             }
         }
 
         @media (max-width: 768px) {
             .navbar {
-                padding: 6px 12px;
+                height: 60px;
+                padding: 0 16px;
+                margin: 10px 0;
                 border-radius: 14px;
             }
+
+            .logo .logo-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
+
             .logo h1 {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
-            .logo .logo-badge {
-                display: none;
-            }
+
             .user-actions .icon-btn {
                 width: 34px;
                 height: 34px;
                 font-size: 0.95rem;
             }
+
             .user-actions .profile-avatar {
-                width: 30px;
-                height: 30px;
+                width: 32px;
+                height: 32px;
                 font-size: 0.75rem;
             }
+
+            .user-actions .icon-btn .notif-count {
+                width: 16px;
+                height: 16px;
+                font-size: 0.45rem;
+                top: 0;
+                left: 0;
+            }
+
             .hero-slider {
                 height: 280px;
             }
+
             .hero-slide {
                 padding: 24px;
             }
+
             .hero-content h2 {
                 font-size: 1.5rem;
             }
+
+            .hero-content p {
+                font-size: 0.8rem;
+            }
+
+            .movie-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-info-section .video-title-row {
+                flex-direction: column;
+            }
+
+            .video-info-section .video-title-row .video-actions {
+                width: 100%;
+            }
+
+            .video-info-section .video-title-row .video-actions button {
+                flex: 1;
+                justify-content: center;
+            }
+
             .search-page .logo-big {
                 width: 380px;
             }
+
             .search-page .search-box-big {
                 flex-wrap: wrap;
                 background: transparent;
@@ -1466,63 +1626,81 @@
                 border: none;
                 gap: 8px;
             }
+
             .search-page .search-box-big input {
-                background: #1a1a1a;
+                background: white;
                 border-radius: 30px;
                 padding: 14px 18px;
-                border: 1px solid rgba(255,255,255,0.05);
+                border: 1px solid #eee;
                 width: 100%;
             }
+
             .search-page .search-box-big button {
                 width: 100%;
                 justify-content: center;
             }
+
             .notifications-page .notif-hero .notif-icon-big {
-                width: 340px;
-                height: 340px;
+                width: 300px;
+                height: 300px;
             }
-            .movies-header-section {
-                flex-direction: column;
-                align-items: flex-start;
+
+            .comment-box .comment-input-wrap {
+                flex-wrap: wrap;
+                background: transparent;
+                border: none;
+                padding: 0;
+                box-shadow: none;
+                gap: 8px;
             }
-            .movies-header-section h1 {
-                font-size: 1.5rem;
-            }
-            .movies-filters {
+
+            .comment-box .comment-input-wrap input {
+                background: white;
+                border-radius: 30px;
+                padding: 12px 16px;
+                border: 1px solid #eee;
                 width: 100%;
-                overflow-x: auto;
-                flex-wrap: nowrap;
-                padding-bottom: 8px;
             }
-            .movies-filters .filter-btn {
-                white-space: nowrap;
-                font-size: 0.7rem;
-                padding: 6px 14px;
+
+            .comment-box .comment-input-wrap button {
+                width: 100%;
+                justify-content: center;
             }
-            .movies-stats {
-                font-size: 0.75rem;
-                gap: 12px;
+
+            .comment-box .comment-avatar {
+                display: none;
             }
         }
 
         @media (max-width: 480px) {
             .navbar {
-                padding: 4px 10px;
+                height: 54px;
+                padding: 0 12px;
                 border-radius: 12px;
             }
+
+            .logo .logo-icon {
+                width: 26px;
+                height: 26px;
+                font-size: 0.85rem;
+            }
+
             .logo h1 {
                 font-size: 1.1rem;
             }
+
             .user-actions .icon-btn {
                 width: 30px;
                 height: 30px;
                 font-size: 0.85rem;
             }
+
             .user-actions .profile-avatar {
-                width: 26px;
-                height: 26px;
+                width: 28px;
+                height: 28px;
                 font-size: 0.65rem;
             }
+
             .user-actions .icon-btn .notif-count {
                 width: 14px;
                 height: 14px;
@@ -1530,32 +1708,85 @@
                 top: -1px;
                 left: -1px;
             }
-            .hero-slider {
-                height: 220px;
+
+            .hamburger span {
+                width: 18px;
+                height: 2px;
             }
+
+            .mobile-drawer {
+                width: 260px;
+                padding: 20px 16px;
+                right: -280px;
+            }
+
+            .hero-slider {
+                height: 200px;
+            }
+
             .hero-slide {
                 padding: 16px;
             }
+
             .hero-content h2 {
                 font-size: 1.1rem;
             }
+
             .hero-content p {
                 font-size: 0.7rem;
+                margin-bottom: 10px;
             }
+
             .hero-content .btn-play {
                 padding: 8px 18px;
                 font-size: 0.75rem;
             }
+
             .search-page .logo-big {
-                width: 280px;
+                width: 240px;
             }
+
             .notifications-page .notif-hero .notif-icon-big {
-                width: 280px;
-                height: 280px;
+                width: 220px;
+                height: 220px;
             }
-            .mobile-menu-drawer {
-                width: 260px;
-                padding: 20px 16px;
+
+            .notifications-page .notif-hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .notif-item {
+                padding: 12px 14px;
+                flex-wrap: wrap;
+            }
+
+            .notif-item .notif-time {
+                width: 100%;
+                margin-right: 56px;
+            }
+
+            .notif-item .notif-dot {
+                top: 12px;
+                left: 12px;
+            }
+
+            .profile-page .profile-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .video-info-section .video-title-row h2 {
+                font-size: 1.2rem;
+            }
+
+            .video-info-section .video-title-row .video-actions button {
+                font-size: 0.7rem;
+                padding: 6px 12px;
+            }
+
+            .video-info-section .video-meta {
+                font-size: 0.7rem;
+                gap: 10px;
             }
         }
     </style>
@@ -1566,16 +1797,16 @@
         <!-- ===== HEADER جدید ===== -->
         <header class="navbar">
             <div class="nav-left">
-                <div class="hamburger-menu" onclick="toggleMobileMenu()">
+                <button class="hamburger" onclick="toggleMobileMenu()">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
                 
-                <div class="logo" onclick="showPage('home')">
-                    <h1>Zerox</h1>
-                    <span class="logo-badge">VOD</span>
-                </div>
+                <a class="logo" onclick="showPage('home')">
+                    <div class="logo-icon">ز</div>
+                    <h1>Zerox<span>.</span></h1>
+                </a>
                 
                 <div class="nav-links">
                     <a class="active" onclick="showPage('home')"><i class="fas fa-home"></i> خانه</a>
@@ -1585,21 +1816,26 @@
             
             <div class="nav-right">
                 <div class="user-actions">
-                    <i class="fas fa-search icon-btn search-icon" onclick="showPage('search')"></i>
-                    <div class="icon-btn" onclick="showPage('notifications')" style="position:relative;">
+                    <button class="icon-btn" onclick="showPage('search')">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="icon-btn" onclick="showPage('notifications')" style="position:relative;">
                         <i class="fas fa-bell"></i>
                         <span class="notif-count">3</span>
-                    </div>
+                    </button>
                     <div class="profile-avatar" onclick="showPage('profile')">ز</div>
                 </div>
             </div>
         </header>
 
         <!-- ===== منوی موبایل ===== -->
-        <div class="mobile-menu-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-        <div class="mobile-menu-drawer" id="mobileDrawer">
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+        <div class="mobile-drawer" id="mobileDrawer">
             <div class="drawer-header">
-                <h3>Zerox</h3>
+                <div class="drawer-logo">
+                    <div class="logo-icon">ز</div>
+                    <h3>Zerox<span>.</span></h3>
+                </div>
                 <button class="drawer-close" onclick="closeMobileMenu()">
                     <i class="fas fa-times"></i>
                 </button>
@@ -1616,7 +1852,7 @@
                 </a>
                 <a onclick="showPage('notifications'); closeMobileMenu();">
                     <i class="fas fa-bell"></i> اعلان‌ها
-                    <span style="background:#B61C1C;color:white;padding:0 10px;border-radius:30px;font-size:0.6rem;font-weight:700;margin-right:auto;">3</span>
+                    <span class="drawer-badge">3</span>
                 </a>
                 <a onclick="showPage('profile'); closeMobileMenu();">
                     <i class="fas fa-user-circle"></i> پروفایل
@@ -1627,7 +1863,7 @@
             </div>
         </div>
 
-        <!-- ===== HOME ===== -->
+        <!-- ===== HOME PAGE ===== -->
         <div class="page active" id="page-home">
             <div class="hero-slider" id="heroSlider">
                 <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
@@ -1658,7 +1894,7 @@
 
             <div class="section-header">
                 <h2><i class="fas fa-fire"></i> جدیدترین عناوین</h2>
-                <a href="#" onclick="showPage('movies'); return false;">مشاهده همه</a>
+                <a href="#" onclick="showPage('movies'); return false;">مشاهده همه <i class="fas fa-chevron-left"></i></a>
             </div>
 
             <div class="movie-grid" id="movieGrid">
@@ -1691,7 +1927,7 @@
             </div>
         </div>
 
-        <!-- ===== SEARCH ===== -->
+        <!-- ===== SEARCH PAGE ===== -->
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
@@ -1713,14 +1949,14 @@
             </div>
         </div>
 
-        <!-- ===== NOTIFICATIONS ===== -->
+        <!-- ===== NOTIFICATIONS PAGE ===== -->
         <div class="page" id="page-notifications">
             <div class="notifications-page">
                 <div class="notif-hero">
                     <div class="notif-icon-big">
                         <img src="https://cdn.imgurl.ir/uploads/r800856_Zerox_icon_12.png" alt="Zerox" />
                     </div>
-                    <h2>اعلان‌ها</h2>
+                    <h2><i class="fas fa-bell"></i> اعلان‌ها</h2>
                     <span class="studio-badge">🎬 Zerox Studio</span>
                 </div>
                 
@@ -1736,7 +1972,7 @@
             </div>
         </div>
 
-        <!-- ===== PROFILE ===== -->
+        <!-- ===== PROFILE PAGE ===== -->
         <div class="page" id="page-profile">
             <div class="profile-page">
                 <div class="profile-header">
@@ -1785,33 +2021,16 @@
             </div>
         </div>
 
-        <!-- ===== MOVIES با امکانات جدید ===== -->
+        <!-- ===== MOVIES PAGE ===== -->
         <div class="page" id="page-movies">
-            <div class="movies-header-section">
-                <h1><i class="fas fa-film"></i> ویدیوها</h1>
-                <div class="movies-stats">
-                    <span><i class="fas fa-video"></i> ۲ ویدیو</span>
-                    <span><i class="fas fa-eye"></i> ۱٬۲۳۴ بازدید</span>
-                </div>
+            <div class="section-header" style="margin-top:10px;">
+                <h2><i class="fas fa-film" style="color:#B61C1C;"></i> همه ویدیوها</h2>
+                <span style="font-family:'Estedad',sans-serif; color:#888; font-size:0.85rem;">۲ ویدیو</span>
             </div>
-            
-            <div class="movies-filters">
-                <button class="filter-btn active">همه</button>
-                <button class="filter-btn">🎮 گیم‌پلی</button>
-                <button class="filter-btn">🎬 سینمایی</button>
-                <button class="filter-btn">🔥 جدید</button>
-                <button class="filter-btn">⭐ محبوب</button>
-            </div>
-
-            <p style="font-family:'Estedad',sans-serif; color:rgba(255,255,255,0.3); font-size:0.85rem; margin:12px 0 20px;">
-                <i class="fas fa-arrow-left" style="margin-left:6px;"></i>
-                جدیدترین ویدیوهای Zerox Studio
-            </p>
-
-            <div class="movie-grid" style="margin-top:0;">
+            <div class="movie-grid">
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
-                        <span class="badge">🔥 جدید</span>
+                        <span class="badge">جدید</span>
                         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
                     <div class="movie-info">
@@ -1824,7 +2043,7 @@
                 </div>
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
-                        <span class="badge">⭐ ویژه</span>
+                        <span class="badge">ویژه</span>
                         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
                     <div class="movie-info">
@@ -1838,7 +2057,7 @@
             </div>
         </div>
 
-        <!-- ===== VIDEO ===== -->
+        <!-- ===== VIDEO PAGE ===== -->
         <div class="page" id="page-video">
             <div class="video-container">
                 <div class="video-wrapper">
@@ -1846,11 +2065,26 @@
                 </div>
 
                 <div class="video-info-section">
-                    <h2 id="videoTitle">عنوان فیلم</h2>
+                    <div class="video-title-row">
+                        <h2 id="videoTitle">عنوان فیلم</h2>
+                        <div class="video-actions">
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <i class="fas fa-heart"></i> <span class="like-count">۱۲۸</span>
+                            </button>
+                            <button class="share-btn" onclick="shareVideo()">
+                                <i class="fas fa-share-alt"></i> اشتراک
+                            </button>
+                            <button class="save-btn" onclick="toggleSave(this)">
+                                <i class="fas fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
                     <div class="video-meta">
+                        <span><i class="fas fa-eye"></i> ۱٬۲۳۴ بازدید</span>
                         <span><i class="fas fa-clock"></i> <span id="videoDuration">۰ دقیقه</span></span>
                         <span><i class="fas fa-star" style="color:#f5b342;"></i> <span id="videoRating">۰.۰</span></span>
-                        <span><i class="fas fa-eye"></i> ۱٬۲۳۴ بازدید</span>
+                        <span><i class="fas fa-calendar-alt"></i> ۱۴۰۴/۰۶/۰۱</span>
                     </div>
                     
                     <div class="description-wrapper">
@@ -1865,10 +2099,61 @@
                 </div>
 
                 <div class="comments-section">
-                    <h3><i class="fas fa-comments"></i> نظرات</h3>
+                    <div class="comments-header">
+                        <h3><i class="fas fa-comments"></i> نظرات <span class="comment-count">(۳)</span></h3>
+                    </div>
+                    
                     <div class="comment-box">
-                        <input type="text" placeholder="نظر خود را بنویسید..." />
-                        <button>ارسال</button>
+                        <div class="comment-avatar">ز</div>
+                        <div class="comment-input-wrap">
+                            <input type="text" placeholder="نظر خود را بنویسید..." />
+                            <button>ارسال</button>
+                        </div>
+                    </div>
+
+                    <div class="comment-list">
+                        <div class="comment-item">
+                            <div class="comment-avatar-sm">ر</div>
+                            <div class="comment-body">
+                                <div class="comment-author">
+                                    رضا <span class="comment-time">۲ ساعت پیش</span>
+                                </div>
+                                <p>داشتم میمردم از ترس! عالی بود😂</p>
+                                <div class="comment-actions">
+                                    <button><i class="far fa-thumbs-up"></i> ۱۲</button>
+                                    <button><i class="far fa-thumbs-down"></i> ۲</button>
+                                    <button>پاسخ</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-item">
+                            <div class="comment-avatar-sm">س</div>
+                            <div class="comment-body">
+                                <div class="comment-author">
+                                    سارا <span class="comment-time">۵ ساعت پیش</span>
+                                </div>
+                                <p>گرافیک بازی خیلی خفن بود! ادامه بدین🔥</p>
+                                <div class="comment-actions">
+                                    <button><i class="far fa-thumbs-up"></i> ۸</button>
+                                    <button><i class="far fa-thumbs-down"></i> ۰</button>
+                                    <button>پاسخ</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-item">
+                            <div class="comment-avatar-sm">ع</div>
+                            <div class="comment-body">
+                                <div class="comment-author">
+                                    علی <span class="comment-time">۱ روز پیش</span>
+                                </div>
+                                <p>داستان بازی خیلی جذاب بود منتظر قسمت بعدی هستم💯</p>
+                                <div class="comment-actions">
+                                    <button><i class="far fa-thumbs-up"></i> ۵</button>
+                                    <button><i class="far fa-thumbs-down"></i> ۰</button>
+                                    <button>پاسخ</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1888,31 +2173,6 @@
     </div>
 
     <script>
-        // ===== منوی موبایل =====
-        function toggleMobileMenu() {
-            const overlay = document.getElementById('mobileOverlay');
-            const drawer = document.getElementById('mobileDrawer');
-            overlay.classList.toggle('active');
-            drawer.classList.toggle('open');
-            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
-        }
-
-        function closeMobileMenu() {
-            const overlay = document.getElementById('mobileOverlay');
-            const drawer = document.getElementById('mobileDrawer');
-            overlay.classList.remove('active');
-            drawer.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        // ===== فیلترها =====
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
         const moviesDB = [
             {
                 title: 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا',
@@ -1932,6 +2192,24 @@
             }
         ];
 
+        // ===== منوی موبایل =====
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileOverlay');
+            const drawer = document.getElementById('mobileDrawer');
+            overlay.classList.toggle('active');
+            drawer.classList.toggle('open');
+            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            const overlay = document.getElementById('mobileOverlay');
+            const drawer = document.getElementById('mobileDrawer');
+            overlay.classList.remove('active');
+            drawer.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ===== اسلایدر =====
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.slider-dots span');
@@ -1966,6 +2244,7 @@
 
         startAutoPlay();
 
+        // ===== صفحه‌بندی =====
         function showPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const target = document.getElementById('page-' + page);
@@ -1978,8 +2257,9 @@
                 links[map[page]].classList.add('active');
             }
             
-            document.querySelectorAll('.mobile-menu-drawer .drawer-links a').forEach(a => a.classList.remove('active'));
-            const drawerLinks = document.querySelectorAll('.mobile-menu-drawer .drawer-links a');
+            // منوی موبایل
+            document.querySelectorAll('.mobile-drawer .drawer-links a').forEach(a => a.classList.remove('active'));
+            const drawerLinks = document.querySelectorAll('.mobile-drawer .drawer-links a');
             const drawerMap = { home: 0, movies: 1, search: 2, notifications: 3, profile: 4 };
             if (drawerMap[page] !== undefined && drawerLinks[drawerMap[page]]) {
                 drawerLinks[drawerMap[page]].classList.add('active');
@@ -2006,6 +2286,7 @@
             closeMobileMenu();
         }
 
+        // ===== جستجو =====
         function liveSearch(query) {
             const resultsContainer = document.getElementById('searchResults');
             const q = query.trim().toLowerCase();
@@ -2051,6 +2332,7 @@
             }).join('');
         }
 
+        // ===== توضیحات =====
         function toggleDescription() {
             const desc = document.getElementById('videoDescription');
             const toggle = document.getElementById('descToggle');
@@ -2066,6 +2348,7 @@
             }
         }
 
+        // ===== باز کردن ویدیو =====
         function openVideo(url, title, desc, duration, rating) {
             const iframe = document.getElementById('videoIframe');
             if (iframe) iframe.src = url;
@@ -2092,6 +2375,55 @@
             showPage('video');
         }
 
+        // ===== دکمه لایک =====
+        function toggleLike(btn) {
+            btn.classList.toggle('liked');
+            const countSpan = btn.querySelector('.like-count');
+            let count = parseInt(countSpan.textContent);
+            if (btn.classList.contains('liked')) {
+                count++;
+                btn.querySelector('i').classList.remove('far');
+                btn.querySelector('i').classList.add('fas');
+            } else {
+                count--;
+                btn.querySelector('i').classList.remove('fas');
+                btn.querySelector('i').classList.add('far');
+            }
+            countSpan.textContent = count;
+        }
+
+        // ===== اشتراک‌گذاری =====
+        function shareVideo() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.getElementById('videoTitle').textContent,
+                    text: 'این ویدیو رو توی Zerox Studio ببین!',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('🔗 لینک ویدیو کپی شد!');
+                });
+            }
+        }
+
+        // ===== ذخیره ویدیو =====
+        function toggleSave(btn) {
+            btn.classList.toggle('saved');
+            if (btn.classList.contains('saved')) {
+                btn.style.color = '#B61C1C';
+                btn.querySelector('i').classList.add('fas');
+                btn.querySelector('i').classList.remove('far');
+                alert('💾 ویدیو ذخیره شد!');
+            } else {
+                btn.style.color = '#555';
+                btn.querySelector('i').classList.remove('fas');
+                btn.querySelector('i').classList.add('far');
+                alert('🗑️ ویدیو از ذخیره‌ها حذف شد!');
+            }
+        }
+
+        // ===== ESC =====
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 const videoPage = document.getElementById('page-video');
