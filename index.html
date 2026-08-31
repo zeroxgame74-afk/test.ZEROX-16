@@ -42,41 +42,76 @@
             padding: 0 20px;
         }
 
-        /* ===== HEADER با افکت شیشه‌ای و نور ===== */
+        /* ===== HEADER جدید با الهام از Netflix + YouTube + Aparat ===== */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.85);
+            padding: 10px 24px;
+            background: rgba(255, 255, 255, 0.97);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
-            margin: 12px 0;
-            box-shadow: 0 2px 24px rgba(182, 28, 28, 0.08), 0 0 60px rgba(182, 28, 28, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0;
+            margin: 0 -20px 0 -20px;
+            padding-left: 44px;
+            padding-right: 44px;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05), 0 2px 20px rgba(0,0,0,0.04);
+            border-bottom: 3px solid #B61C1C;
             position: sticky;
-            top: 12px;
+            top: 0;
             z-index: 999;
             flex-wrap: nowrap;
             gap: 10px;
             transition: all 0.3s ease;
         }
 
-        .navbar:hover {
-            box-shadow: 0 4px 40px rgba(182, 28, 28, 0.12), 0 0 80px rgba(182, 28, 28, 0.05);
-            border-color: rgba(182, 28, 28, 0.15);
+        .navbar .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
+        .navbar .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* ===== منو همبرگری ===== */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-menu:hover span {
+            background: #B61C1C;
+        }
+
+        /* ===== لوگو ===== */
         .logo {
             flex-shrink: 0;
             cursor: pointer;
-            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .logo h1 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             background: linear-gradient(135deg, #B61C1C, #8a1515, #B61C1C);
             background-size: 200% 200%;
             -webkit-background-clip: text;
@@ -87,31 +122,28 @@
         }
 
         @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
+            0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
-        .logo span {
+        .logo .logo-badge {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.7rem;
+            font-size: 0.55rem;
             background: linear-gradient(135deg, #B61C1C, #8a1515);
             color: white;
-            padding: 2px 14px;
+            padding: 2px 10px;
             border-radius: 30px;
             -webkit-text-fill-color: white;
-            margin-right: 6px;
-            animation: pulse 2s ease-in-out infinite;
+            margin-right: 2px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-top: -6px;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.9; }
-        }
-
+        /* ===== لینک‌های منو ===== */
         .nav-links {
             display: flex;
-            gap: 4px;
+            gap: 6px;
             align-items: center;
             flex-wrap: nowrap;
             flex-shrink: 0;
@@ -128,7 +160,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 30px;
             white-space: nowrap;
             position: relative;
@@ -140,7 +172,7 @@
             bottom: 2px;
             left: 50%;
             width: 0;
-            height: 2px;
+            height: 2.5px;
             background: #B61C1C;
             transition: all 0.3s ease;
             transform: translateX(-50%);
@@ -148,7 +180,7 @@
         }
 
         .nav-links a:hover::after {
-            width: 60%;
+            width: 50%;
         }
 
         .nav-links a:hover {
@@ -159,49 +191,198 @@
         .nav-links a.active {
             background: #B61C1C;
             color: white;
-            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.3);
+            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.25);
         }
 
         .nav-links a.active::after {
             display: none;
         }
 
+        /* ===== بخش کاربری ===== */
         .user-actions {
             display: flex;
-            gap: 4px;
+            gap: 6px;
             align-items: center;
             flex-shrink: 0;
         }
 
-        .user-actions i {
-            font-size: 1.1rem;
-            color: #4a4a4a;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 38px;
-            height: 38px;
+        .user-actions .icon-btn {
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #4a4a4a;
+            font-size: 1.1rem;
             position: relative;
         }
 
-        .user-actions i:hover {
+        .user-actions .icon-btn:hover {
             background: rgba(182, 28, 28, 0.08);
             color: #B61C1C;
-            transform: translateY(-2px) scale(1.05);
+            transform: translateY(-2px);
         }
 
-        .user-actions i:active {
-            transform: scale(0.95);
+        .user-actions .icon-btn .notif-count {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            background: #B61C1C;
+            color: white;
+            font-size: 0.55rem;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Estedad', sans-serif;
+            border: 2px solid white;
+        }
+
+        .user-actions .profile-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #B61C1C, #8a1515);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        .user-actions .profile-avatar:hover {
+            transform: scale(1.08);
+            border-color: #B61C1C;
+            box-shadow: 0 0 0 4px rgba(182, 28, 28, 0.15);
         }
 
         .user-actions .search-icon {
             cursor: pointer;
         }
 
-        /* ===== PAGE ===== */
+        /* ===== منوی موبایل (Drawer) ===== */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+
+        .mobile-menu-drawer {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            background: white;
+            z-index: 1001;
+            padding: 30px 24px;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: -4px 0 40px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
+
+        .mobile-menu-drawer.open {
+            right: 0;
+        }
+
+        .mobile-menu-drawer .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f0ebe5;
+        }
+
+        .mobile-menu-drawer .drawer-header h3 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.4rem;
+            color: #B61C1C;
+        }
+
+        .mobile-menu-drawer .drawer-close {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+            transition: all 0.3s ease;
+            background: none;
+            border: none;
+        }
+
+        .mobile-menu-drawer .drawer-close:hover {
+            color: #B61C1C;
+            transform: rotate(90deg);
+        }
+
+        .mobile-menu-drawer .drawer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .mobile-menu-drawer .drawer-links a {
+            font-family: 'Estedad', sans-serif;
+            text-decoration: none;
+            color: #2d2a24;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 12px 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mobile-menu-drawer .drawer-links a:hover {
+            background: rgba(182, 28, 28, 0.06);
+            color: #B61C1C;
+        }
+
+        .mobile-menu-drawer .drawer-links a.active {
+            background: #B61C1C;
+            color: white;
+        }
+
+        .mobile-menu-drawer .drawer-links a i {
+            width: 24px;
+        }
+
+        .mobile-menu-drawer .drawer-footer {
+            margin-top: 30px;
+            padding-top: 16px;
+            border-top: 1px solid #f0ebe5;
+        }
+
+        .mobile-menu-drawer .drawer-footer p {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.75rem;
+            color: #888;
+            text-align: center;
+        }
+
+        /* ===== بقیه استایل‌ها مثل قبل ===== */
         .page {
             display: none;
             animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -216,7 +397,6 @@
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* ===== HERO SLIDER با افکت زوم ===== */
         .hero-slider {
             position: relative;
             border-radius: 24px;
@@ -280,7 +460,6 @@
             font-weight: 700;
             margin-bottom: 10px;
             font-family: 'Estedad', sans-serif;
-            animation: pulse 2s ease-in-out infinite;
         }
 
         .hero-content h2 {
@@ -323,10 +502,6 @@
             box-shadow: 0 8px 30px rgba(182, 28, 28, 0.4);
         }
 
-        .hero-content .btn-play:active {
-            transform: scale(0.97);
-        }
-
         .slider-dots {
             position: absolute;
             bottom: 20px;
@@ -349,15 +524,8 @@
         .slider-dots span.active {
             background: white;
             transform: scale(1.3);
-            box-shadow: 0 0 20px rgba(255,255,255,0.3);
         }
 
-        .slider-dots span:hover {
-            transform: scale(1.1);
-            background: rgba(255,255,255,0.7);
-        }
-
-        /* ===== SECTION HEADER ===== */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -368,18 +536,6 @@
         .section-header h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.6rem;
-            position: relative;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            right: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, #B61C1C, transparent);
-            border-radius: 10px;
         }
 
         .section-header a {
@@ -393,10 +549,8 @@
 
         .section-header a:hover {
             color: #8a1515;
-            transform: translateX(-4px);
         }
 
-        /* ===== MOVIE GRID با کارت‌های خفن ===== */
         .movie-grid {
             display: flex;
             flex-direction: column;
@@ -413,31 +567,11 @@
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
             max-width: 400px;
             width: 100%;
-            position: relative;
-        }
-
-        .movie-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(182, 28, 28, 0.05), transparent);
-            opacity: 0;
-            transition: all 0.4s ease;
-            border-radius: 16px;
-            pointer-events: none;
-            z-index: 1;
         }
 
         .movie-card:hover {
             transform: translateY(-8px) scale(1.01);
             box-shadow: 0 20px 50px rgba(182, 28, 28, 0.15);
-        }
-
-        .movie-card:hover::before {
-            opacity: 1;
         }
 
         .movie-poster {
@@ -446,7 +580,6 @@
             background-size: cover;
             background-position: center;
             background-color: #1a1a1a;
-            overflow: hidden;
         }
 
         .movie-poster .badge {
@@ -461,7 +594,6 @@
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
             z-index: 2;
-            animation: pulse 2s ease-in-out infinite;
         }
 
         .movie-poster .play-icon {
@@ -500,8 +632,6 @@
 
         .movie-info {
             padding: 14px 16px;
-            position: relative;
-            z-index: 2;
         }
 
         .movie-info h4 {
@@ -509,11 +639,6 @@
             font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 4px;
-            transition: color 0.3s ease;
-        }
-
-        .movie-card:hover .movie-info h4 {
-            color: #B61C1C;
         }
 
         .movie-info .meta {
@@ -529,7 +654,7 @@
             font-weight: 600;
         }
 
-        /* ===== PAGE SEARCH ===== */
+        /* ===== SEARCH ===== */
         .search-page {
             display: flex;
             flex-direction: column;
@@ -545,11 +670,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .search-page .logo-big:hover {
-            transform: scale(1.02) rotate(-1deg);
         }
 
         .search-page .logo-big img {
@@ -581,7 +701,6 @@
         .search-page .search-box-big:focus-within {
             border-color: #B61C1C;
             box-shadow: 0 4px 40px rgba(182, 28, 28, 0.12);
-            transform: translateY(-2px);
         }
 
         .search-page .search-box-big input {
@@ -610,8 +729,6 @@
 
         .search-page .search-box-big button:hover {
             background: #8a1515;
-            transform: scale(1.03);
-            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.3);
         }
 
         .search-results {
@@ -629,12 +746,12 @@
             padding: 12px 16px;
             margin-bottom: 12px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
         .search-results .result-item:hover {
-            transform: translateX(-6px) scale(1.02);
+            transform: translateX(-6px);
             box-shadow: 0 8px 30px rgba(182, 28, 28, 0.12);
         }
 
@@ -644,11 +761,6 @@
             border-radius: 10px;
             object-fit: cover;
             flex-shrink: 0;
-            transition: transform 0.3s ease;
-        }
-
-        .search-results .result-item:hover img {
-            transform: scale(1.05);
         }
 
         .search-results .result-item .info {
@@ -688,7 +800,7 @@
             margin-bottom: 12px;
         }
 
-        /* ===== NOTIFICATIONS PAGE ===== */
+        /* ===== NOTIFICATIONS ===== */
         .notifications-page {
             max-width: 700px;
             margin: 20px auto;
@@ -701,7 +813,6 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 30px;
-            animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         .notifications-page .notif-hero .notif-icon-big {
@@ -711,11 +822,6 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 12px;
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .notifications-page .notif-hero .notif-icon-big:hover {
-            transform: scale(1.03) rotate(-2deg);
         }
 
         .notifications-page .notif-hero .notif-icon-big img {
@@ -747,7 +853,6 @@
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
             margin-top: 4px;
-            animation: pulse 2s ease-in-out infinite;
         }
 
         .notif-item {
@@ -759,7 +864,7 @@
             display: flex;
             align-items: flex-start;
             gap: 14px;
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: all 0.3s ease;
             border-right: 4px solid #B61C1C;
             position: relative;
         }
@@ -780,12 +885,6 @@
             color: #B61C1C;
             font-size: 1.2rem;
             flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-
-        .notif-item:hover .notif-icon {
-            background: rgba(182, 28, 28, 0.15);
-            transform: scale(1.05);
         }
 
         .notif-item .notif-dot {
@@ -796,7 +895,6 @@
             position: absolute;
             top: 16px;
             left: 16px;
-            animation: pulse 2s ease-in-out infinite;
         }
 
         .notif-item .notif-content {
@@ -847,7 +945,7 @@
             font-size: 0.6rem;
         }
 
-        /* ===== GUEST PROFILE PAGE ===== */
+        /* ===== PROFILE ===== */
         .profile-page {
             max-width: 600px;
             margin: 20px auto;
@@ -861,12 +959,6 @@
             text-align: center;
             box-shadow: 0 2px 20px rgba(0,0,0,0.06);
             margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .profile-page .profile-header:hover {
-            box-shadow: 0 8px 40px rgba(182, 28, 28, 0.08);
-            transform: translateY(-4px);
         }
 
         .profile-page .profile-avatar {
@@ -881,12 +973,6 @@
             font-size: 3rem;
             color: white;
             box-shadow: 0 4px 20px rgba(182, 28, 28, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .profile-page .profile-header:hover .profile-avatar {
-            transform: scale(1.05) rotate(-5deg);
-            box-shadow: 0 8px 40px rgba(182, 28, 28, 0.4);
         }
 
         .profile-page .profile-header .guest-badge {
@@ -928,7 +1014,7 @@
             font-family: 'Estedad', sans-serif;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: all 0.3s ease;
             font-size: 0.9rem;
         }
 
@@ -940,8 +1026,7 @@
 
         .profile-page .profile-actions .btn-primary:hover {
             background: #8a1515;
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 30px rgba(182, 28, 28, 0.4);
+            transform: translateY(-3px);
         }
 
         .profile-page .profile-actions .btn-outline {
@@ -953,7 +1038,6 @@
         .profile-page .profile-actions .btn-outline:hover {
             background: #B61C1C;
             color: white;
-            transform: translateY(-3px);
         }
 
         .profile-page .profile-menu {
@@ -978,7 +1062,6 @@
 
         .profile-page .profile-menu .menu-item:hover {
             background: #f8f4f0;
-            transform: translateX(-4px);
         }
 
         .profile-page .profile-menu .menu-item:last-child {
@@ -989,23 +1072,12 @@
             width: 24px;
             color: #B61C1C;
             font-size: 1.1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-page .profile-menu .menu-item:hover i {
-            transform: scale(1.1);
         }
 
         .profile-page .profile-menu .menu-item .arrow {
             margin-right: auto;
             color: #ccc;
             font-size: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-page .profile-menu .menu-item:hover .arrow {
-            transform: translateX(-4px);
-            color: #B61C1C;
         }
 
         .profile-page .profile-menu .menu-item .menu-badge {
@@ -1018,7 +1090,7 @@
             margin-right: auto;
         }
 
-        /* ===== VIDEO PAGE ===== */
+        /* ===== VIDEO ===== */
         .video-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -1031,11 +1103,6 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-
-        .video-wrapper:hover {
-            box-shadow: 0 30px 80px rgba(182, 28, 28, 0.15);
         }
 
         .video-wrapper iframe {
@@ -1112,7 +1179,6 @@
 
         .description-toggle:hover {
             color: #8a1515;
-            transform: translateX(-4px);
         }
 
         .description-toggle i {
@@ -1147,12 +1213,6 @@
             font-family: 'Estedad', sans-serif;
             outline: none;
             background: white;
-            transition: all 0.3s ease;
-        }
-
-        .comment-box input:focus {
-            border-color: #B61C1C;
-            box-shadow: 0 0 0 4px rgba(182, 28, 28, 0.1);
         }
 
         .comment-box button {
@@ -1169,8 +1229,6 @@
 
         .comment-box button:hover {
             background: #8a1515;
-            transform: scale(1.03);
-            box-shadow: 0 4px 20px rgba(182, 28, 28, 0.3);
         }
 
         /* ===== FOOTER ===== */
@@ -1184,11 +1242,6 @@
         footer h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             color: #B61C1C;
-            transition: color 0.3s ease;
-        }
-
-        footer h2:hover {
-            color: #8a1515;
         }
 
         footer p {
@@ -1213,62 +1266,98 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: all 0.3s ease;
         }
 
         .footer-social a:hover {
             background: #B61C1C;
             color: white;
-            transform: translateY(-4px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(182, 28, 28, 0.3);
+            transform: translateY(-4px);
         }
 
         /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hamburger-menu {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .navbar {
+                padding: 10px 20px;
+                margin: 0 -20px 0 -20px;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            
+            .mobile-menu-overlay {
+                display: none;
+            }
+            
+            .mobile-menu-overlay.active {
+                display: block;
+            }
+        }
+
         @media (max-width: 768px) {
             .navbar {
-                padding: 10px 16px;
-                flex-wrap: wrap;
+                padding: 8px 16px;
+                margin: 0 -20px 0 -20px;
+                padding-left: 20px;
+                padding-right: 20px;
             }
+            
             .logo h1 {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
-            .nav-links {
-                gap: 4px;
-                flex-wrap: wrap;
+            
+            .logo .logo-badge {
+                font-size: 0.5rem;
+                padding: 1px 8px;
             }
-            .nav-links a {
-                font-size: 0.8rem;
-                padding: 6px 12px;
+            
+            .user-actions .icon-btn {
+                width: 34px;
+                height: 34px;
+                font-size: 0.95rem;
             }
+            
+            .user-actions .profile-avatar {
+                width: 30px;
+                height: 30px;
+                font-size: 0.75rem;
+            }
+            
+            .user-actions .icon-btn .notif-count {
+                width: 16px;
+                height: 16px;
+                font-size: 0.5rem;
+                top: 0;
+                left: 0;
+            }
+            
             .hero-slider {
                 height: 280px;
             }
+            
             .hero-slide {
                 padding: 24px;
             }
+            
             .hero-content h2 {
                 font-size: 1.5rem;
             }
+            
             .hero-content p {
                 font-size: 0.8rem;
             }
-            .video-info-section h2 {
-                font-size: 1.2rem;
-            }
-            .movie-card {
-                max-width: 100%;
-            }
-            .user-actions {
-                gap: 2px;
-            }
-            .user-actions i {
-                font-size: 1rem;
-                width: 34px;
-                height: 34px;
-            }
+            
             .search-page .logo-big {
                 width: 380px;
             }
+            
             .search-page .search-box-big {
                 flex-wrap: wrap;
                 background: transparent;
@@ -1276,6 +1365,7 @@
                 border: none;
                 gap: 8px;
             }
+            
             .search-page .search-box-big input {
                 background: white;
                 border-radius: 30px;
@@ -1283,110 +1373,109 @@
                 border: 1px solid #eee;
                 width: 100%;
             }
+            
             .search-page .search-box-big button {
                 width: 100%;
                 justify-content: center;
             }
-            .notifications-page {
-                padding: 12px;
-            }
+            
             .notifications-page .notif-hero .notif-icon-big {
                 width: 340px;
                 height: 340px;
-            }
-            .profile-page {
-                padding: 12px;
-            }
-            .notif-item {
-                padding: 14px 16px;
             }
         }
 
         @media (max-width: 480px) {
             .navbar {
-                padding: 8px 12px;
-                gap: 6px;
+                padding: 6px 12px;
+                margin: 0 -20px 0 -20px;
+                padding-left: 16px;
+                padding-right: 16px;
             }
+            
             .logo h1 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
-            .nav-links {
-                gap: 2px;
+            
+            .logo .logo-badge {
+                display: none;
             }
-            .nav-links a {
-                font-size: 0.7rem;
-                gap: 4px;
-                padding: 4px 10px;
-            }
-            .nav-links a i {
-                font-size: 0.8rem;
-            }
-            .user-actions i {
-                font-size: 0.9rem;
+            
+            .user-actions .icon-btn {
                 width: 30px;
                 height: 30px;
+                font-size: 0.85rem;
             }
+            
+            .user-actions .profile-avatar {
+                width: 26px;
+                height: 26px;
+                font-size: 0.65rem;
+            }
+            
+            .user-actions .icon-btn .notif-count {
+                width: 14px;
+                height: 14px;
+                font-size: 0.45rem;
+                top: -1px;
+                left: -1px;
+            }
+            
+            .mobile-menu-drawer {
+                width: 260px;
+                padding: 20px 16px;
+            }
+            
             .hero-slider {
                 height: 220px;
             }
+            
             .hero-slide {
                 padding: 16px;
             }
+            
             .hero-content h2 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
+            
             .hero-content p {
                 font-size: 0.7rem;
                 margin-bottom: 10px;
             }
+            
             .hero-content .btn-play {
                 padding: 8px 18px;
                 font-size: 0.75rem;
             }
-            .movie-info {
-                padding: 10px 12px;
-            }
-            .movie-info h4 {
-                font-size: 0.9rem;
-            }
-            .movie-info .meta {
-                font-size: 0.7rem;
-            }
-            .comment-box {
-                flex-wrap: wrap;
-            }
-            .comment-box button {
-                width: 100%;
-            }
+            
             .search-page .logo-big {
                 width: 280px;
             }
-            .search-results .result-item img {
-                width: 55px;
-                height: 40px;
-            }
-            .search-page .subtitle {
-                font-size: 0.8rem;
-            }
+            
             .notifications-page .notif-hero .notif-icon-big {
                 width: 280px;
                 height: 280px;
             }
+            
             .notifications-page .notif-hero h2 {
                 font-size: 1.3rem;
             }
+            
             .notif-item {
                 padding: 12px 14px;
                 flex-wrap: wrap;
             }
+            
             .notif-item .notif-time {
                 width: 100%;
                 margin-right: 56px;
             }
+            
             .notif-item .notif-dot {
                 top: 12px;
                 left: 12px;
             }
+            
             .profile-page .profile-actions .btn {
                 width: 100%;
                 text-align: center;
@@ -1397,23 +1486,72 @@
 <body>
 
     <div class="container">
-        <!-- ===== HEADER ===== -->
+        <!-- ===== HEADER جدید ===== -->
         <header class="navbar">
-            <div class="logo" onclick="showPage('home')">
-                <h1>Zerox <span>VOD</span></h1>
+            <div class="nav-left">
+                <!-- منو همبرگری -->
+                <div class="hamburger-menu" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <div class="logo" onclick="showPage('home')">
+                    <h1>Zerox</h1>
+                    <span class="logo-badge">VOD</span>
+                </div>
+                
+                <div class="nav-links">
+                    <a class="active" onclick="showPage('home')"><i class="fas fa-home"></i> خانه</a>
+                    <a onclick="showPage('movies')"><i class="fas fa-film"></i> ویدیوها</a>
+                </div>
             </div>
-            <div class="nav-links">
-                <a class="active" onclick="showPage('home')"><i class="fas fa-home"></i> خانه</a>
-                <a onclick="showPage('movies')"><i class="fas fa-film"></i> ویدیوها</a>
-            </div>
-            <div class="user-actions">
-                <i class="fas fa-search search-icon" onclick="showPage('search')"></i>
-                <i class="fas fa-bell" onclick="showPage('notifications')"></i>
-                <i class="fas fa-user-circle" onclick="showPage('profile')"></i>
+            
+            <div class="nav-right">
+                <div class="user-actions">
+                    <i class="fas fa-search icon-btn search-icon" onclick="showPage('search')"></i>
+                    <div class="icon-btn" onclick="showPage('notifications')" style="position:relative;">
+                        <i class="fas fa-bell"></i>
+                        <span class="notif-count">3</span>
+                    </div>
+                    <div class="profile-avatar" onclick="showPage('profile')">ز</div>
+                </div>
             </div>
         </header>
 
-        <!-- ===== HOME ===== -->
+        <!-- ===== منوی موبایل (Drawer) ===== -->
+        <div class="mobile-menu-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+        <div class="mobile-menu-drawer" id="mobileDrawer">
+            <div class="drawer-header">
+                <h3>Zerox</h3>
+                <button class="drawer-close" onclick="closeMobileMenu()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="drawer-links">
+                <a class="active" onclick="showPage('home'); closeMobileMenu();">
+                    <i class="fas fa-home"></i> خانه
+                </a>
+                <a onclick="showPage('movies'); closeMobileMenu();">
+                    <i class="fas fa-film"></i> ویدیوها
+                </a>
+                <a onclick="showPage('search'); closeMobileMenu();">
+                    <i class="fas fa-search"></i> جستجو
+                </a>
+                <a onclick="showPage('notifications'); closeMobileMenu();">
+                    <i class="fas fa-bell"></i> اعلان‌ها
+                    <span style="background:#B61C1C;color:white;padding:0 10px;border-radius:30px;font-size:0.6rem;font-weight:700;margin-right:auto;">3</span>
+                </a>
+                <a onclick="showPage('profile'); closeMobileMenu();">
+                    <i class="fas fa-user-circle"></i> پروفایل
+                </a>
+            </div>
+            <div class="drawer-footer">
+                <p>© 2026 Zerox Studio</p>
+            </div>
+        </div>
+
+        <!-- ===== بقیه صفحات مثل قبل ===== -->
         <div class="page active" id="page-home">
             <div class="hero-slider" id="heroSlider">
                 <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
@@ -1477,7 +1615,6 @@
             </div>
         </div>
 
-        <!-- ===== SEARCH ===== -->
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
@@ -1499,7 +1636,6 @@
             </div>
         </div>
 
-        <!-- ===== NOTIFICATIONS ===== -->
         <div class="page" id="page-notifications">
             <div class="notifications-page">
                 <div class="notif-hero">
@@ -1522,7 +1658,6 @@
             </div>
         </div>
 
-        <!-- ===== PROFILE ===== -->
         <div class="page" id="page-profile">
             <div class="profile-page">
                 <div class="profile-header">
@@ -1571,7 +1706,6 @@
             </div>
         </div>
 
-        <!-- ===== MOVIES ===== -->
         <div class="page" id="page-movies">
             <h2 style="font-family:'Ardekan','Estedad',sans-serif; font-size:1.8rem; margin:20px 0;"><i class="fas fa-film" style="color:#B61C1C;"></i> ویدیوها</h2>
             <p style="font-family:'Estedad',sans-serif; color:#888;">همه ویدیوهای سینمایی و کوتاه</p>
@@ -1604,7 +1738,6 @@
             </div>
         </div>
 
-        <!-- ===== VIDEO ===== -->
         <div class="page" id="page-video">
             <div class="video-container">
                 <div class="video-wrapper">
@@ -1640,7 +1773,6 @@
             </div>
         </div>
 
-        <!-- ===== FOOTER ===== -->
         <footer>
             <h2>Zerox Studio</h2>
             <p>پلتفرم سینمایی و سرگرمی دیجیتال</p>
@@ -1654,6 +1786,23 @@
     </div>
 
     <script>
+        // ===== توابع منوی موبایل =====
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileOverlay');
+            const drawer = document.getElementById('mobileDrawer');
+            overlay.classList.toggle('active');
+            drawer.classList.toggle('open');
+            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            const overlay = document.getElementById('mobileOverlay');
+            const drawer = document.getElementById('mobileDrawer');
+            overlay.classList.remove('active');
+            drawer.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
         const moviesDB = [
             {
                 title: 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا',
@@ -1719,6 +1868,14 @@
                 links[map[page]].classList.add('active');
             }
             
+            // آپدیت منوی موبایل
+            document.querySelectorAll('.mobile-menu-drawer .drawer-links a').forEach(a => a.classList.remove('active'));
+            const drawerLinks = document.querySelectorAll('.mobile-menu-drawer .drawer-links a');
+            const drawerMap = { home: 0, movies: 1, search: 2, notifications: 3, profile: 4 };
+            if (drawerMap[page] !== undefined && drawerLinks[drawerMap[page]]) {
+                drawerLinks[drawerMap[page]].classList.add('active');
+            }
+            
             if (page === 'video') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 const desc = document.getElementById('videoDescription');
@@ -1736,6 +1893,9 @@
                     if (input) input.focus();
                 }, 100);
             }
+
+            // بستن منوی موبایل
+            closeMobileMenu();
         }
 
         function liveSearch(query) {
@@ -1832,8 +1992,9 @@
                     if (iframe) iframe.src = '';
                     showPage('home');
                 }
+                closeMobileMenu();
             }
         });
     </script>
 </body>
-                            </html>
+    </html>
