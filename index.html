@@ -10,13 +10,11 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     
-    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@400;700&display=swap" rel="stylesheet" />
 
     <style>
-        /* ============================================
-           RESET & BASE
-           ============================================ */
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -25,21 +23,29 @@
 
         body {
             font-family: 'Estedad', 'Segoe UI', Tahoma, sans-serif;
-            background: #0a0a0a;
-            color: #f0ebe5;
+            background: #f5f0ea;
+            color: #1a1a1a;
             direction: rtl;
             overflow-x: hidden;
         }
 
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: #1a1a1a;
+            background: #ede8e2;
         }
         ::-webkit-scrollbar-thumb {
             background: #B61C1C;
             border-radius: 10px;
+        }
+
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #f0ebe5;
+        }
+        body.dark-mode ::-webkit-scrollbar-track {
+            background: #2a2a2a;
         }
 
         .container {
@@ -55,54 +61,39 @@
             user-select: none;
         }
 
-        /* ============================================
-           ANIMATIONS
-           ============================================ */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ===== انیمیشن ساعت شنی ===== */
+        @keyframes sandShake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(6deg); }
+            75% { transform: rotate(-6deg); }
+        }
+        .sand-icon {
+            display: inline-block;
+            animation: sandShake 2.5s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        .animate-on-load {
-            animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-
-        /* ============================================
-           HEADER (شفاف و شیشه‌ای مثل راکستار)
-           ============================================ */
+        /* ===== HEADER ===== */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 12px 28px;
-            background: rgba(10, 10, 10, 0.6);
-            backdrop-filter: blur(24px) saturate(1.6);
-            -webkit-backdrop-filter: blur(24px) saturate(1.6);
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-radius: 80px;
             margin: 16px 0 20px 0;
-            box-shadow: 0 4px 40px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255,255,255,0.5);
             position: sticky;
             top: 16px;
             z-index: 999;
             gap: 16px;
-            min-height: 72px;
-            transition: all 0.3s ease;
+            min-height: 78px;
         }
-
-        .navbar:hover {
-            background: rgba(10, 10, 10, 0.8);
-            border-color: rgba(182, 28, 28, 0.2);
+        body.dark-mode .navbar {
+            background: rgba(30,30,30,0.9);
+            border-color: rgba(255,255,255,0.05);
         }
 
         .navbar .nav-section {
@@ -118,10 +109,9 @@
             cursor: pointer;
             padding: 4px 14px;
             border-radius: 30px;
-            transition: all 0.3s ease;
         }
         .logo:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(182,28,28,0.04);
         }
 
         .logo .logo-icon {
@@ -136,15 +126,17 @@
             font-size: 1.4rem;
             font-weight: 800;
             font-family: 'Ardekan', sans-serif;
-            box-shadow: 0 4px 20px rgba(182,28,28,0.4);
+            box-shadow: 0 4px 16px rgba(182,28,28,0.3);
         }
 
         .logo .logo-text {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
+            color: #1a1a1a;
+        }
+        body.dark-mode .logo .logo-text {
             color: #f0ebe5;
-            letter-spacing: -0.5px;
         }
         .logo .logo-text span {
             color: #B61C1C;
@@ -159,15 +151,16 @@
         .nav-links a {
             font-family: 'Estedad', sans-serif;
             text-decoration: none;
-            color: rgba(255,255,255,0.7);
+            color: #4a4a4a;
             font-weight: 500;
             font-size: 0.95rem;
             cursor: pointer;
-            padding: 8px 20px;
+            padding: 10px 22px;
             border-radius: 40px;
             white-space: nowrap;
-            transition: all 0.3s ease;
-            position: relative;
+        }
+        body.dark-mode .nav-links a {
+            color: #aaa;
         }
         .nav-links a i {
             font-size: 0.95rem;
@@ -175,17 +168,14 @@
             opacity: 0.6;
         }
         .nav-links a:hover {
-            color: white;
-            background: rgba(255,255,255,0.06);
+            color: #B61C1C;
+            background: rgba(182,28,28,0.06);
         }
         .nav-links a.active {
             color: white;
             background: #B61C1C;
-            box-shadow: 0 4px 24px rgba(182,28,28,0.35);
+            box-shadow: 0 4px 20px rgba(182,28,28,0.25);
             font-weight: 600;
-        }
-        .nav-links a.active i {
-            opacity: 1;
         }
 
         .nav-actions {
@@ -194,47 +184,47 @@
             gap: 8px;
         }
         .nav-actions .action-btn {
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             border: none;
-            background: rgba(255,255,255,0.05);
-            color: rgba(255,255,255,0.7);
+            background: transparent;
+            color: #4a4a4a;
             font-size: 1.2rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(4px);
+        }
+        body.dark-mode .nav-actions .action-btn {
+            color: #aaa;
         }
         .nav-actions .action-btn:hover {
-            background: rgba(255,255,255,0.1);
-            color: white;
+            background: rgba(182,28,28,0.08);
+            color: #B61C1C;
             transform: translateY(-2px);
         }
         .nav-actions .action-btn .badge {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 2px;
+            left: 2px;
             background: #B61C1C;
             color: white;
-            font-size: 0.5rem;
+            font-size: 0.55rem;
             font-weight: 700;
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid #0a0a0a;
-            box-shadow: 0 2px 12px rgba(182,28,28,0.4);
+            border: 2px solid rgba(255,255,255,0.9);
         }
 
         .profile-avatar {
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             background: linear-gradient(135deg, #B61C1C, #8a1515);
             display: flex;
@@ -244,10 +234,9 @@
             font-weight: 700;
             font-size: 1.1rem;
             cursor: pointer;
-            border: 2px solid rgba(255,255,255,0.1);
+            border: 2px solid transparent;
             font-family: 'Estedad', sans-serif;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 20px rgba(182,28,28,0.3);
+            box-shadow: 0 2px 16px rgba(182,28,28,0.2);
         }
         .profile-avatar:hover {
             transform: scale(1.06);
@@ -265,23 +254,20 @@
             border: none;
         }
         .hamburger:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(182,28,28,0.06);
         }
         .hamburger span {
             display: block;
             width: 28px;
-            height: 2.5px;
-            background: #f0ebe5;
+            height: 3px;
+            background: #1a1a1a;
             border-radius: 10px;
-            transition: all 0.3s ease;
         }
-        .hamburger:hover span {
-            background: #B61C1C;
+        body.dark-mode .hamburger span {
+            background: #f0ebe5;
         }
 
-        /* ============================================
-           MOBILE DRAWER
-           ============================================ */
+        /* ===== MOBILE DRAWER ===== */
         .mobile-overlay {
             display: none;
             position: fixed;
@@ -289,11 +275,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(12px);
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(6px);
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.4s ease;
         }
         .mobile-overlay.active {
             display: block;
@@ -305,16 +290,17 @@
             right: -340px;
             width: 320px;
             height: 100%;
-            background: rgba(15,15,15,0.98);
-            backdrop-filter: blur(20px);
+            background: white;
             z-index: 1001;
             padding: 30px 24px;
-            transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
-            box-shadow: -8px 0 60px rgba(0,0,0,0.4);
+            transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+            box-shadow: -8px 0 60px rgba(0,0,0,0.08);
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            border-left: 1px solid rgba(255,255,255,0.05);
+        }
+        body.dark-mode .mobile-drawer {
+            background: #252525;
         }
         .mobile-drawer.open {
             right: 0;
@@ -326,12 +312,18 @@
             align-items: center;
             margin-bottom: 28px;
             padding-bottom: 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid #f0ebe5;
+        }
+        body.dark-mode .mobile-drawer .drawer-header {
+            border-color: #333;
         }
         .mobile-drawer .drawer-header .drawer-logo {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.6rem;
             font-weight: 700;
+            color: #1a1a1a;
+        }
+        body.dark-mode .mobile-drawer .drawer-header .drawer-logo {
             color: #f0ebe5;
         }
         .mobile-drawer .drawer-header .drawer-logo span {
@@ -340,14 +332,13 @@
         .mobile-drawer .drawer-close {
             font-size: 1.5rem;
             cursor: pointer;
-            color: rgba(255,255,255,0.5);
+            color: #888;
             background: none;
             border: none;
             padding: 4px;
-            transition: all 0.3s ease;
         }
         .mobile-drawer .drawer-close:hover {
-            color: white;
+            color: #B61C1C;
             transform: rotate(90deg);
         }
 
@@ -360,7 +351,7 @@
         .mobile-drawer .drawer-links a {
             font-family: 'Estedad', sans-serif;
             text-decoration: none;
-            color: rgba(255,255,255,0.7);
+            color: #2d2a24;
             font-weight: 500;
             font-size: 1rem;
             padding: 14px 18px;
@@ -368,16 +359,18 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            transition: all 0.3s ease;
+        }
+        body.dark-mode .mobile-drawer .drawer-links a {
+            color: #f0ebe5;
         }
         .mobile-drawer .drawer-links a i {
             width: 24px;
-            color: rgba(255,255,255,0.4);
+            color: #888;
             font-size: 1.1rem;
         }
         .mobile-drawer .drawer-links a:hover {
-            background: rgba(255,255,255,0.05);
-            color: white;
+            background: rgba(182,28,28,0.06);
+            color: #B61C1C;
         }
         .mobile-drawer .drawer-links a.active {
             background: #B61C1C;
@@ -395,29 +388,34 @@
         .mobile-drawer .drawer-footer {
             margin-top: 20px;
             padding-top: 16px;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid #f0ebe5;
+        }
+        body.dark-mode .mobile-drawer .drawer-footer {
+            border-color: #333;
         }
         .mobile-drawer .drawer-footer p {
             font-family: 'Estedad', sans-serif;
             font-size: 0.75rem;
-            color: rgba(255,255,255,0.3);
+            color: #999;
             text-align: center;
         }
 
-        /* ============================================
-           PAGES
-           ============================================ */
+        /* ===== PAGES ===== */
         .page {
             display: none;
+            animation: fadeInUp 0.35s ease both;
         }
         .page.active {
             display: block;
-            animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .page-header {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 2rem;
+            font-size: 1.7rem;
             margin: 20px 0 8px 0;
             display: flex;
             align-items: center;
@@ -428,284 +426,249 @@
         }
         .page-sub {
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.5);
+            color: #888;
             margin-bottom: 16px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         /* ============================================
-           HERO SLIDER (همه‌صفحه مثل راکستار)
-           ============================================ */
-        .hero-slider {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            margin: 16px 0 30px;
-            box-shadow: 0 8px 60px rgba(0,0,0,0.5);
-            height: 480px;
-        }
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: flex-end;
-            padding: 50px;
-            transform: scale(1.04);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .hero-slide.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .hero-slide::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 70%;
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-            max-width: 600px;
-        }
-        .hero-content .badge {
-            display: inline-block;
-            background: #B61C1C;
-            padding: 4px 16px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            font-family: 'Estedad', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .hero-content h2 {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 2.6rem;
-            margin-bottom: 8px;
-            text-shadow: 0 4px 40px rgba(0,0,0,0.5);
-            line-height: 1.2;
-        }
-        .hero-content p {
-            font-family: 'Estedad', sans-serif;
-            font-size: 1rem;
-            opacity: 0.85;
-            margin-bottom: 18px;
-            line-height: 1.8;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
-        }
-        .hero-content .btn-play {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #B61C1C;
-            color: white;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-family: 'Estedad', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: 0 4px 30px rgba(182,28,28,0.4);
-        }
-        .hero-content .btn-play:hover {
-            background: #8a1515;
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 40px rgba(182,28,28,0.5);
-        }
-
-        .slider-dots {
-            position: absolute;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            display: flex;
-            gap: 12px;
-        }
-        .slider-dots span {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .slider-dots span.active {
-            background: #B61C1C;
-            transform: scale(1.3);
-            box-shadow: 0 0 20px rgba(182,28,28,0.3);
-        }
-
-        /* ============================================
-           SECTION HEADER
-           ============================================ */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 32px 0 18px;
-        }
-        .section-header h2 {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.7rem;
-            color: #f0ebe5;
-        }
-        .section-header h2 i {
-            color: #B61C1C;
-            margin-left: 8px;
-        }
-        .section-header a {
-            font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 6px 16px;
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-        .section-header a:hover {
-            color: white;
-            border-color: rgba(182,28,28,0.3);
-            background: rgba(182,28,28,0.1);
-        }
-
-        /* ============================================
-           MOVIE GRID
+           MOVIE CARDS (کارت‌های خفن و جدید)
            ============================================ */
         .movie-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
             margin-bottom: 40px;
         }
+
         .movie-card {
-            background: rgba(255,255,255,0.03);
-            border-radius: 16px;
+            background: white;
+            border-radius: 20px;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            border: 1px solid rgba(255,255,255,0.04);
-            max-width: 400px;
-            width: 100%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            position: relative;
         }
-        .movie-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            border-color: rgba(182,28,28,0.2);
-            box-shadow: 0 20px 60px rgba(182,28,28,0.1);
+        body.dark-mode .movie-card {
+            background: #252525;
         }
 
-        .movie-poster {
+        .movie-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 20px 60px rgba(182,28,28,0.15);
+        }
+
+        .movie-card .movie-poster {
             position: relative;
             padding-top: 56.25%;
             background-size: cover;
             background-position: center;
             background-color: #1a1a1a;
+            overflow: hidden;
         }
-        .movie-poster .badge {
+
+        .movie-card .movie-poster img {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(182,28,28,0.9);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .movie-card .movie-poster .badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(182,28,28,0.92);
             color: white;
-            padding: 3px 12px;
-            border-radius: 20px;
+            padding: 4px 14px;
+            border-radius: 30px;
             font-size: 0.6rem;
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
             z-index: 2;
             backdrop-filter: blur(4px);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-        .movie-poster .play-icon {
+
+        .movie-card .movie-poster .badge i {
+            font-size: 0.5rem;
+        }
+
+        .movie-card .movie-poster .duration-badge {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
+            bottom: 14px;
+            right: 14px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
             color: white;
-            font-size: 3.5rem;
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            text-shadow: 0 4px 40px rgba(0,0,0,0.6);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            font-family: 'Estedad', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             z-index: 2;
         }
-        .movie-card:hover .play-icon {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
+
+        .movie-card .movie-poster .duration-badge i {
+            font-size: 0.65rem;
         }
-        .movie-poster::after {
-            content: '';
+
+        .movie-card .movie-poster .play-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.3);
             opacity: 0;
             transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
         }
-        .movie-card:hover .movie-poster::after {
+
+        .movie-card .movie-poster .play-overlay .play-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(182,28,28,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            transform: scale(0.8);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .movie-card:hover .movie-poster .play-overlay {
             opacity: 1;
         }
 
-        .movie-info {
-            padding: 14px 16px;
+        .movie-card:hover .movie-poster .play-overlay .play-circle {
+            transform: scale(1);
         }
-        .movie-info h4 {
+
+        .movie-card .movie-poster .play-overlay .play-circle:hover {
+            background: #8a1515;
+            transform: scale(1.1);
+        }
+
+        .movie-card .movie-info {
+            padding: 16px 18px 18px;
+        }
+
+        .movie-card .movie-info .movie-title {
             font-family: 'Estedad', sans-serif;
             font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 4px;
+            line-height: 1.5;
+        }
+        body.dark-mode .movie-card .movie-info .movie-title {
             color: #f0ebe5;
         }
-        .movie-info .meta {
+
+        .movie-card .movie-info .movie-meta {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             font-size: 0.75rem;
-            color: rgba(255,255,255,0.4);
+            color: #888;
             font-family: 'Estedad', sans-serif;
         }
-        .movie-info .meta .rating {
+
+        .movie-card .movie-info .movie-meta .rating {
             color: #f5b342;
-            font-weight: 600;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        /* ============================================
-           GAME CARDS (زروکس گیمز) - مثل راکستار
-           ============================================ */
+        .movie-card .movie-info .movie-meta .rating i {
+            font-size: 0.7rem;
+        }
+
+        .movie-card .movie-info .movie-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #f0ebe5;
+        }
+        body.dark-mode .movie-card .movie-info .movie-footer {
+            border-color: #333;
+        }
+
+        .movie-card .movie-info .movie-footer .movie-views {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.7rem;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .movie-card .movie-info .movie-footer .btn-watch {
+            background: #B61C1C;
+            color: white;
+            border: none;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .movie-card .movie-info .movie-footer .btn-watch:hover {
+            background: #8a1515;
+            transform: scale(1.05);
+        }
+
+        .movie-card .movie-info .movie-footer .btn-watch i {
+            font-size: 0.7rem;
+        }
+
+        /* ===== GAME CARDS ===== */
         .game-cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
             margin-bottom: 40px;
         }
         .game-card {
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px;
+            background: white;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.04);
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
             cursor: pointer;
-            position: relative;
+        }
+        body.dark-mode .game-card {
+            background: #252525;
         }
         .game-card:hover {
-            transform: translateY(-10px) scale(1.01);
-            border-color: rgba(182,28,28,0.25);
-            box-shadow: 0 24px 60px rgba(182,28,28,0.12);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(182,28,28,0.1);
         }
 
         .game-card .game-card-img {
@@ -718,121 +681,93 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.4s ease;
+            pointer-events: none;
         }
         .game-card:hover .game-card-img img {
-            transform: scale(1.06);
+            transform: scale(1.03);
         }
 
         .game-card .game-card-img .game-status {
             position: absolute;
-            top: 14px;
-            right: 14px;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(8px);
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(6px);
             color: #ffa500;
-            padding: 4px 14px;
+            padding: 4px 12px;
             border-radius: 30px;
             font-size: 0.6rem;
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
-            border: 1px solid rgba(255,165,0,0.15);
+            border: 1px solid rgba(255,165,0,0.2);
             display: flex;
             align-items: center;
             gap: 6px;
         }
-        .game-card .game-card-img .game-status .sand-icon {
-            display: inline-block;
-            animation: sandShake 2.5s ease-in-out infinite;
-            font-size: 0.65rem;
-        }
-
-        @keyframes sandShake {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(6deg); }
-            75% { transform: rotate(-6deg); }
-        }
-
-        .game-card .game-card-img .game-overlay-bottom {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 40px 16px 16px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
-        }
-        .game-card .game-card-img .game-overlay-bottom .game-title {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.1rem;
-            color: white;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
-        }
-        .game-card .game-card-img .game-overlay-bottom .game-dev {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.6);
-        }
 
         .game-card .game-card-body {
-            padding: 16px 18px 18px;
+            padding: 14px 16px 16px;
+        }
+        .game-card .game-card-body h3 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.05rem;
+            margin-bottom: 2px;
+        }
+        body.dark-mode .game-card .game-card-body h3 {
+            color: #f0ebe5;
         }
         .game-card .game-card-body .game-genre {
             font-family: 'Estedad', sans-serif;
             font-size: 0.7rem;
-            color: rgba(255,255,255,0.4);
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
+            color: #888;
             margin-bottom: 6px;
-        }
-        .game-card .game-card-body .game-genre span {
-            background: rgba(182,28,28,0.1);
-            color: #B61C1C;
-            padding: 2px 10px;
-            border-radius: 30px;
         }
         .game-card .game-card-body .game-desc {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-            line-height: 1.7;
+            font-size: 0.8rem;
+            color: #666;
+            line-height: 1.6;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
+        body.dark-mode .game-card .game-card-body .game-desc {
+            color: #999;
+        }
         .game-card .game-card-body .game-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255,255,255,0.04);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #f0ebe5;
+        }
+        body.dark-mode .game-card .game-card-body .game-footer {
+            border-color: #333;
         }
         .game-card .game-card-body .game-footer .game-platform {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.4);
+            font-size: 0.65rem;
+            color: #888;
         }
         .game-card .game-card-body .game-footer .game-platform i {
             margin-left: 4px;
         }
         .game-card .game-card-body .game-footer .btn-view {
-            background: rgba(182,28,28,0.15);
-            color: #B61C1C;
+            background: #B61C1C;
+            color: white;
             border: none;
-            padding: 6px 20px;
+            padding: 5px 16px;
             border-radius: 30px;
             font-family: 'Estedad', sans-serif;
             font-weight: 600;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
         .game-card .game-card-body .game-footer .btn-view:hover {
-            background: #B61C1C;
-            color: white;
-            transform: scale(1.04);
+            background: #8a1515;
         }
 
         /* ============================================
@@ -840,24 +775,25 @@
            ============================================ */
         .game-detail-hero {
             position: relative;
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             margin-bottom: 24px;
-            box-shadow: 0 8px 50px rgba(0,0,0,0.4);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.1);
         }
         .game-detail-hero img {
             width: 100%;
             display: block;
             aspect-ratio: 16/9;
             object-fit: cover;
+            pointer-events: none;
         }
         .game-detail-hero .game-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 40px 30px 30px;
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+            padding: 30px 24px 24px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
         }
         .game-detail-hero .game-overlay .game-badge {
             display: inline-flex;
@@ -865,45 +801,46 @@
             gap: 6px;
             background: #ff8c00;
             color: white;
-            padding: 4px 16px;
+            padding: 3px 14px;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
             margin-bottom: 8px;
         }
         .game-detail-hero .game-overlay .game-badge .sand-icon {
-            display: inline-block;
-            animation: sandShake 2.5s ease-in-out infinite;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
         .game-detail-hero .game-overlay h1 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 2.6rem;
+            font-size: 2.2rem;
             color: white;
             margin-bottom: 2px;
-            text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
         }
         .game-detail-hero .game-overlay .game-tagline {
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.6);
-            font-size: 1rem;
+            color: rgba(255,255,255,0.65);
+            font-size: 0.9rem;
         }
 
         .game-detail-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 14px;
+            gap: 12px;
             margin-bottom: 24px;
-            background: rgba(255,255,255,0.03);
+            background: white;
             border-radius: 18px;
-            padding: 18px 22px;
-            border: 1px solid rgba(255,255,255,0.04);
+            padding: 16px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        body.dark-mode .game-detail-info {
+            background: #252525;
         }
         .game-detail-info .info-item {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
         .game-detail-info .info-item i {
             color: #B61C1C;
@@ -914,12 +851,14 @@
         .game-detail-info .info-item .info-label {
             font-family: 'Estedad', sans-serif;
             font-size: 0.6rem;
-            color: rgba(255,255,255,0.3);
+            color: #888;
         }
         .game-detail-info .info-item .info-value {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
+        }
+        body.dark-mode .game-detail-info .info-item .info-value {
             color: #f0ebe5;
         }
 
@@ -947,26 +886,28 @@
             overflow: hidden;
             aspect-ratio: 16/9;
             cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .game-detail-gallery .gallery-grid .gallery-item:hover {
             transform: scale(1.02);
-            border-color: rgba(182,28,28,0.2);
-            box-shadow: 0 8px 40px rgba(182,28,28,0.1);
+            box-shadow: 0 8px 30px rgba(182,28,28,0.12);
         }
         .game-detail-gallery .gallery-grid .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            pointer-events: none;
         }
 
         .game-detail-description {
-            background: rgba(255,255,255,0.03);
+            background: white;
             border-radius: 18px;
-            padding: 22px 24px;
+            padding: 20px 24px;
             margin-bottom: 24px;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        body.dark-mode .game-detail-description {
+            background: #252525;
         }
         .game-detail-description h3 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
@@ -981,28 +922,34 @@
         }
         .game-detail-description p {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.7);
-            line-height: 2;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.9;
+        }
+        body.dark-mode .game-detail-description p {
+            color: #aaa;
         }
         .game-detail-description .genre-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-top: 12px;
+            margin-top: 10px;
         }
         .game-detail-description .genre-tags span {
-            background: rgba(182,28,28,0.1);
+            background: rgba(182,28,28,0.08);
             color: #B61C1C;
-            padding: 4px 14px;
+            padding: 3px 12px;
             border-radius: 30px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             font-family: 'Estedad', sans-serif;
         }
+        body.dark-mode .game-detail-description .genre-tags span {
+            background: rgba(182,28,28,0.2);
+        }
 
         /* ============================================
-           OLD GAMES (زروکس‌اُلد)
+           OLD GAMES
            ============================================ */
         .old-games-grid {
             display: grid;
@@ -1010,19 +957,23 @@
             gap: 24px;
             margin-bottom: 40px;
         }
+
         .old-game-card {
-            background: rgba(255,255,255,0.03);
+            background: white;
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
             transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             cursor: pointer;
             position: relative;
         }
+        body.dark-mode .old-game-card {
+            background: #252525;
+        }
+
         .old-game-card:hover {
             transform: translateY(-10px) scale(1.01);
-            border-color: rgba(182,28,28,0.2);
-            box-shadow: 0 20px 60px rgba(182,28,28,0.1);
+            box-shadow: 0 20px 60px rgba(182,28,28,0.15);
         }
 
         .old-game-card .card-img {
@@ -1036,15 +987,17 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
+            pointer-events: none;
         }
         .old-game-card:hover .card-img img {
             transform: scale(1.06);
         }
+
         .old-game-card .card-img .card-year {
             position: absolute;
-            top: 14px;
-            right: 14px;
-            background: rgba(182,28,28,0.85);
+            top: 12px;
+            right: 12px;
+            background: rgba(182,28,28,0.9);
             color: white;
             padding: 4px 14px;
             border-radius: 30px;
@@ -1053,25 +1006,27 @@
             font-family: 'Estedad', sans-serif;
             backdrop-filter: blur(4px);
         }
+
         .old-game-card .card-img .card-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 40px 16px 16px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            padding: 30px 16px 16px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
         }
+
         .old-game-card .card-img .card-overlay .card-title {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.1rem;
             color: white;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
             margin-bottom: 2px;
         }
         .old-game-card .card-img .card-overlay .card-dev {
             font-family: 'Estedad', sans-serif;
             font-size: 0.7rem;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.7);
         }
 
         .old-game-card .card-body {
@@ -1079,28 +1034,34 @@
         }
         .old-game-card .card-body .card-genre {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.4);
+            font-size: 0.75rem;
+            color: #888;
             display: flex;
-            gap: 6px;
+            gap: 8px;
             flex-wrap: wrap;
             margin-bottom: 6px;
         }
         .old-game-card .card-body .card-genre span {
-            background: rgba(182,28,28,0.1);
+            background: rgba(182,28,28,0.06);
             color: #B61C1C;
-            padding: 2px 10px;
+            padding: 2px 12px;
             border-radius: 30px;
+        }
+        body.dark-mode .old-game-card .card-body .card-genre span {
+            background: rgba(182,28,28,0.15);
         }
         .old-game-card .card-body .card-desc {
             font-family: 'Estedad', sans-serif;
             font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
+            color: #666;
             line-height: 1.7;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+        }
+        body.dark-mode .old-game-card .card-body .card-desc {
+            color: #999;
         }
         .old-game-card .card-body .card-footer {
             display: flex;
@@ -1108,16 +1069,19 @@
             align-items: center;
             margin-top: 12px;
             padding-top: 12px;
-            border-top: 1px solid rgba(255,255,255,0.04);
+            border-top: 1px solid #f0ebe5;
+        }
+        body.dark-mode .old-game-card .card-body .card-footer {
+            border-color: #333;
         }
         .old-game-card .card-body .card-footer .card-platform {
             font-family: 'Estedad', sans-serif;
             font-size: 0.7rem;
-            color: rgba(255,255,255,0.4);
+            color: #888;
         }
         .old-game-card .card-body .card-footer .btn-detail {
-            background: rgba(182,28,28,0.15);
-            color: #B61C1C;
+            background: #B61C1C;
+            color: white;
             border: none;
             padding: 6px 20px;
             border-radius: 30px;
@@ -1128,8 +1092,7 @@
             transition: all 0.3s ease;
         }
         .old-game-card .card-body .card-footer .btn-detail:hover {
-            background: #B61C1C;
-            color: white;
+            background: #8a1515;
             transform: scale(1.04);
         }
 
@@ -1141,13 +1104,14 @@
             border-radius: 24px;
             overflow: hidden;
             margin-bottom: 24px;
-            box-shadow: 0 8px 50px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
         }
         .old-detail-hero img {
             width: 100%;
             display: block;
             aspect-ratio: 16/9;
             object-fit: cover;
+            pointer-events: none;
         }
         .old-detail-hero .detail-overlay {
             position: absolute;
@@ -1172,12 +1136,12 @@
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 2.4rem;
             color: white;
-            text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
             margin-bottom: 2px;
         }
         .old-detail-hero .detail-overlay .detail-sub {
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.7);
             font-size: 0.95rem;
         }
 
@@ -1186,10 +1150,13 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 14px;
             margin-bottom: 24px;
-            background: rgba(255,255,255,0.03);
+            background: white;
             border-radius: 18px;
-            padding: 18px 22px;
-            border: 1px solid rgba(255,255,255,0.04);
+            padding: 20px 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        body.dark-mode .old-detail-info {
+            background: #252525;
         }
         .old-detail-info .info-item {
             display: flex;
@@ -1206,12 +1173,14 @@
         .old-detail-info .info-item .info-label {
             font-family: 'Estedad', sans-serif;
             font-size: 0.6rem;
-            color: rgba(255,255,255,0.3);
+            color: #888;
         }
         .old-detail-info .info-item .info-value {
             font-family: 'Estedad', sans-serif;
             font-size: 0.85rem;
             font-weight: 600;
+        }
+        body.dark-mode .old-detail-info .info-item .info-value {
             color: #f0ebe5;
         }
 
@@ -1239,25 +1208,29 @@
             overflow: hidden;
             aspect-ratio: 16/9;
             cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.04);
         }
         .old-detail-gallery .gallery-grid .gallery-item:hover {
             transform: scale(1.02);
-            border-color: rgba(182,28,28,0.2);
+            box-shadow: 0 8px 30px rgba(182,28,28,0.12);
         }
         .old-detail-gallery .gallery-grid .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            pointer-events: none;
         }
 
         .old-detail-music {
             margin-bottom: 24px;
-            background: rgba(255,255,255,0.03);
+            background: white;
             border-radius: 18px;
             padding: 16px 20px;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        body.dark-mode .old-detail-music {
+            background: #252525;
         }
         .old-detail-music .music-title {
             font-family: 'Estedad', sans-serif;
@@ -1267,7 +1240,6 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #f0ebe5;
         }
         .old-detail-music .music-title i {
             color: #B61C1C;
@@ -1278,15 +1250,18 @@
             outline: none;
         }
         .old-detail-music audio::-webkit-media-controls-panel {
-            background: rgba(182,28,28,0.1);
+            background: rgba(182,28,28,0.05);
         }
 
         .old-detail-description {
-            background: rgba(255,255,255,0.03);
+            background: white;
             border-radius: 18px;
-            padding: 22px 24px;
+            padding: 20px 24px;
             margin-bottom: 24px;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        body.dark-mode .old-detail-description {
+            background: #252525;
         }
         .old-detail-description h3 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
@@ -1302,9 +1277,12 @@
         .old-detail-description p {
             font-family: 'Estedad', sans-serif;
             font-size: 0.95rem;
-            color: rgba(255,255,255,0.7);
+            color: #555;
             line-height: 2;
             white-space: pre-line;
+        }
+        body.dark-mode .old-detail-description p {
+            color: #aaa;
         }
 
         .btn-back {
@@ -1313,23 +1291,130 @@
             gap: 8px;
             background: transparent;
             border: none;
-            color: rgba(255,255,255,0.5);
+            color: #B61C1C;
             font-family: 'Estedad', sans-serif;
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             padding: 6px 0;
             margin-bottom: 12px;
-            transition: all 0.3s ease;
         }
         .btn-back:hover {
-            color: white;
+            color: #8a1515;
             transform: translateX(-4px);
         }
 
-        /* ============================================
-           SEARCH
-           ============================================ */
+        /* ===== HERO SLIDER ===== */
+        .hero-slider {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 16px 0 24px;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+            height: 400px;
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+            transform: scale(1.04);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 600px;
+        }
+        .hero-content .badge {
+            display: inline-block;
+            background: #B61C1C;
+            padding: 3px 14px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-family: 'Estedad', sans-serif;
+        }
+        .hero-content h2 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 6px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .hero-content p {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 14px;
+            line-height: 1.6;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .hero-content .btn-play {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #B61C1C;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(182,28,28,0.3);
+        }
+        .hero-content .btn-play:hover {
+            background: #8a1515;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(182,28,28,0.4);
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+        .slider-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slider-dots span.active {
+            background: white;
+            transform: scale(1.3);
+        }
+
+        /* ===== SEARCH ===== */
         .search-page {
             display: flex;
             flex-direction: column;
@@ -1352,25 +1437,33 @@
         }
         .search-page .subtitle {
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.4);
+            color: #888;
             margin-bottom: 24px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
         .search-page .search-box-big {
             display: flex;
             align-items: center;
-            background: rgba(255,255,255,0.04);
+            background: white;
             border-radius: 50px;
             padding: 6px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             width: 100%;
             max-width: 600px;
-            border: 2px solid rgba(255,255,255,0.04);
+            border: 2px solid transparent;
             transition: all 0.3s ease;
+        }
+        body.dark-mode .search-page .search-box-big {
+            background: #252525;
+            border-color: #333;
+        }
+        body.dark-mode .search-page .search-box-big input {
+            color: #f0ebe5;
+            background: transparent;
         }
         .search-page .search-box-big:focus-within {
             border-color: #B61C1C;
-            box-shadow: 0 4px 40px rgba(182,28,28,0.2);
+            box-shadow: 0 4px 32px rgba(182,28,28,0.1);
         }
         .search-page .search-box-big input {
             flex: 1;
@@ -1380,10 +1473,6 @@
             font-family: 'Estedad', sans-serif;
             font-size: 0.95rem;
             background: transparent;
-            color: #f0ebe5;
-        }
-        .search-page .search-box-big input::placeholder {
-            color: rgba(255,255,255,0.3);
         }
         .search-page .search-box-big button {
             font-family: 'Estedad', sans-serif;
@@ -1411,18 +1500,20 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            background: rgba(255,255,255,0.03);
+            background: white;
             border-radius: 14px;
             padding: 10px 14px;
             margin-bottom: 10px;
             cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             transition: all 0.3s ease;
+        }
+        body.dark-mode .search-results .result-item {
+            background: #252525;
         }
         .search-results .result-item:hover {
             transform: translateX(-4px);
-            border-color: rgba(182,28,28,0.2);
-            box-shadow: 0 8px 30px rgba(182,28,28,0.05);
+            box-shadow: 0 8px 24px rgba(182,28,28,0.1);
         }
         .search-results .result-item img {
             width: 60px;
@@ -1430,6 +1521,7 @@
             border-radius: 10px;
             object-fit: cover;
             flex-shrink: 0;
+            pointer-events: none;
         }
         .search-results .result-item .info {
             flex: 1;
@@ -1438,12 +1530,14 @@
             font-family: 'Estedad', sans-serif;
             font-size: 0.85rem;
             font-weight: 700;
+        }
+        body.dark-mode .search-results .result-item .info h4 {
             color: #f0ebe5;
         }
         .search-results .result-item .info .meta {
             font-family: 'Estedad', sans-serif;
             font-size: 0.7rem;
-            color: rgba(255,255,255,0.4);
+            color: #888;
             display: flex;
             gap: 12px;
         }
@@ -1453,20 +1547,18 @@
         .search-results .no-result {
             text-align: center;
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.4);
+            color: #888;
             padding: 40px 0;
             font-size: 0.95rem;
         }
         .search-results .no-result i {
             font-size: 2.2rem;
-            color: rgba(255,255,255,0.1);
+            color: #ddd;
             display: block;
             margin-bottom: 10px;
         }
 
-        /* ============================================
-           NOTIFICATIONS
-           ============================================ */
+        /* ===== NOTIFICATIONS ===== */
         .notifications-page {
             max-width: 700px;
             margin: 20px auto;
@@ -1492,13 +1584,17 @@
             height: 100%;
             object-fit: contain;
             display: block;
+            pointer-events: none;
         }
         .notifications-page .notif-hero h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             display: flex;
             align-items: center;
             gap: 10px;
+            color: #1a1a1a;
+        }
+        body.dark-mode .notifications-page .notif-hero h2 {
             color: #f0ebe5;
         }
         .notifications-page .notif-hero h2 i {
@@ -1507,20 +1603,20 @@
         .notifications-page .notif-hero .studio-badge {
             background: linear-gradient(135deg, #B61C1C, #8a1515);
             color: white;
-            padding: 4px 16px;
+            padding: 3px 14px;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
             margin-top: 4px;
         }
 
         .notif-item {
-            background: rgba(255,255,255,0.03);
+            background: white;
             border-radius: 14px;
             padding: 14px 18px;
             margin-bottom: 10px;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
             display: flex;
             align-items: flex-start;
             gap: 12px;
@@ -1528,9 +1624,12 @@
             position: relative;
             transition: all 0.3s ease;
         }
+        body.dark-mode .notif-item {
+            background: #252525;
+        }
         .notif-item:hover {
+            box-shadow: 0 6px 24px rgba(182,28,28,0.08);
             transform: translateX(-4px);
-            border-color: rgba(182,28,28,0.15);
         }
         .notif-item .notif-icon {
             width: 38px;
@@ -1561,6 +1660,9 @@
             font-size: 0.9rem;
             font-weight: 700;
             margin-bottom: 4px;
+            color: #1a1a1a;
+        }
+        body.dark-mode .notif-item .notif-content h4 {
             color: #f0ebe5;
         }
         .notif-item .notif-content h4 .studio-tag {
@@ -1575,29 +1677,33 @@
         .notif-item .notif-content p {
             font-family: 'Estedad', sans-serif;
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.5);
+            color: #888;
             line-height: 1.6;
+        }
+        body.dark-mode .notif-item .notif-content p {
+            color: #aaa;
         }
         .notif-item .notif-content .highlight {
             color: #B61C1C;
             font-weight: 700;
         }
 
-        /* ============================================
-           PROFILE
-           ============================================ */
+        /* ===== PROFILE ===== */
         .profile-page {
             max-width: 600px;
             margin: 20px auto;
             padding: 20px;
         }
         .profile-page .profile-header {
-            background: rgba(255,255,255,0.03);
+            background: white;
             border-radius: 18px;
             padding: 30px;
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
             margin-bottom: 16px;
+        }
+        body.dark-mode .profile-page .profile-header {
+            background: #252525;
         }
         .profile-page .profile-avatar-big {
             width: 100px;
@@ -1610,28 +1716,34 @@
             margin: 0 auto 16px;
             font-size: 3rem;
             color: white;
-            box-shadow: 0 4px 30px rgba(182,28,28,0.3);
+            box-shadow: 0 4px 20px rgba(182,28,28,0.3);
         }
         .profile-page .profile-header .guest-badge {
             display: inline-block;
-            background: rgba(255,255,255,0.04);
-            color: rgba(255,255,255,0.4);
-            padding: 4px 16px;
+            background: #f0ebe5;
+            color: #888;
+            padding: 3px 14px;
             border-radius: 30px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             margin-bottom: 10px;
             font-family: 'Estedad', sans-serif;
         }
+        body.dark-mode .profile-page .profile-header .guest-badge {
+            background: #333;
+            color: #888;
+        }
         .profile-page .profile-header h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 4px;
+        }
+        body.dark-mode .profile-page .profile-header h2 {
             color: #f0ebe5;
         }
         .profile-page .profile-header p {
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.4);
+            color: #888;
             font-size: 0.85rem;
         }
         .profile-page .profile-actions {
@@ -1642,7 +1754,7 @@
             flex-wrap: wrap;
         }
         .profile-page .profile-actions .btn {
-            padding: 10px 24px;
+            padding: 8px 24px;
             border-radius: 30px;
             border: none;
             font-family: 'Estedad', sans-serif;
@@ -1654,7 +1766,7 @@
         .profile-page .profile-actions .btn-primary {
             background: #B61C1C;
             color: white;
-            box-shadow: 0 4px 24px rgba(182,28,28,0.3);
+            box-shadow: 0 4px 16px rgba(182,28,28,0.3);
         }
         .profile-page .profile-actions .btn-primary:hover {
             background: #8a1515;
@@ -1671,26 +1783,35 @@
         }
 
         .profile-page .profile-menu {
-            background: rgba(255,255,255,0.03);
+            background: white;
             border-radius: 14px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
             margin-top: 14px;
+        }
+        body.dark-mode .profile-page .profile-menu {
+            background: #252525;
         }
         .profile-page .profile-menu .menu-item {
             display: flex;
             align-items: center;
             gap: 14px;
             padding: 14px 18px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+            border-bottom: 1px solid #f0ebe5;
             cursor: pointer;
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.7);
+            color: #2d2a24;
             transition: all 0.3s ease;
         }
+        body.dark-mode .profile-page .profile-menu .menu-item {
+            color: #f0ebe5;
+            border-color: #333;
+        }
         .profile-page .profile-menu .menu-item:hover {
-            background: rgba(255,255,255,0.03);
-            color: white;
+            background: #f8f4f0;
+        }
+        body.dark-mode .profile-page .profile-menu .menu-item:hover {
+            background: #333;
         }
         .profile-page .profile-menu .menu-item:last-child {
             border-bottom: none;
@@ -1702,25 +1823,29 @@
         }
         .profile-page .profile-menu .menu-item .arrow {
             margin-right: auto;
-            color: rgba(255,255,255,0.2);
+            color: #ccc;
             font-size: 0.75rem;
         }
 
-        /* ============================================
-           SETTINGS
-           ============================================ */
+        /* ===== SETTINGS ===== */
         .settings-box {
-            background: rgba(255,255,255,0.03);
+            background: white;
             border-radius: 18px;
             padding: 8px 0;
-            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        body.dark-mode .settings-box {
+            background: #252525;
         }
         .settings-box .setting-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 14px 18px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+            border-bottom: 1px solid #f0ebe5;
+        }
+        body.dark-mode .settings-box .setting-item {
+            border-color: #333;
         }
         .settings-box .setting-item:last-child {
             border-bottom: none;
@@ -1731,6 +1856,8 @@
             gap: 10px;
             font-family: 'Estedad', sans-serif;
             font-size: 0.9rem;
+        }
+        body.dark-mode .settings-box .setting-item .setting-label {
             color: #f0ebe5;
         }
         .settings-box .setting-item .setting-label i {
@@ -1755,7 +1882,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(255,255,255,0.15);
+            background: #ccc;
             border-radius: 24px;
             transition: all 0.3s ease;
         }
@@ -1768,7 +1895,7 @@
             bottom: 3px;
             background: white;
             border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
             transition: all 0.3s ease;
         }
         .settings-box .setting-item .toggle-switch input:checked + .slider {
@@ -1777,24 +1904,8 @@
         .settings-box .setting-item .toggle-switch input:checked + .slider::before {
             transform: translateX(20px);
         }
-        .settings-box .setting-item select {
-            font-family: 'Estedad', sans-serif;
-            background: transparent;
-            border: none;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.8rem;
-            cursor: pointer;
-            outline: none;
-            padding: 4px 8px;
-            border-radius: 8px;
-        }
-        .settings-box .setting-item select:hover {
-            color: #f0ebe5;
-        }
 
-        /* ============================================
-           VIDEO
-           ============================================ */
+        /* ===== VIDEO ===== */
         .video-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -1805,7 +1916,7 @@
             background: #000;
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.3);
         }
         .video-wrapper iframe {
             position: absolute;
@@ -1820,16 +1931,15 @@
         }
         .video-info-section h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin-bottom: 4px;
-            color: #f0ebe5;
         }
         .video-info-section .video-meta {
             display: flex;
             gap: 14px;
             font-family: 'Estedad', sans-serif;
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.4);
+            color: #888;
             margin-bottom: 10px;
             flex-wrap: wrap;
         }
@@ -1841,19 +1951,25 @@
 
         .description-wrapper {
             position: relative;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
             padding: 14px 0;
+        }
+        body.dark-mode .description-wrapper {
+            border-color: #333;
         }
         .description-text {
             font-family: 'Estedad', sans-serif;
             font-size: 0.9rem;
-            color: rgba(255,255,255,0.6);
+            color: #555;
             line-height: 1.8;
             max-height: 70px;
             overflow: hidden;
             transition: max-height 0.4s ease;
             white-space: pre-line;
+        }
+        body.dark-mode .description-text {
+            color: #aaa;
         }
         .description-text.expanded {
             max-height: 500px;
@@ -1889,10 +2005,6 @@
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.2rem;
             margin-bottom: 14px;
-            color: #f0ebe5;
-        }
-        .comments-section h3 i {
-            color: #B61C1C;
         }
         .comment-box {
             display: flex;
@@ -1902,20 +2014,21 @@
         .comment-box input {
             flex: 1;
             padding: 10px 16px;
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid #ddd;
             border-radius: 30px;
             font-family: 'Estedad', sans-serif;
             outline: none;
-            background: rgba(255,255,255,0.03);
-            color: #f0ebe5;
+            background: white;
             transition: all 0.3s ease;
         }
-        .comment-box input::placeholder {
-            color: rgba(255,255,255,0.3);
+        body.dark-mode .comment-box input {
+            background: #252525;
+            border-color: #333;
+            color: #f0ebe5;
         }
         .comment-box input:focus {
             border-color: #B61C1C;
-            box-shadow: 0 0 0 4px rgba(182,28,28,0.1);
+            box-shadow: 0 0 0 3px rgba(182,28,28,0.08);
         }
         .comment-box button {
             font-family: 'Estedad', sans-serif;
@@ -1932,14 +2045,15 @@
             background: #8a1515;
         }
 
-        /* ============================================
-           FOOTER (مثل راکستار)
-           ============================================ */
+        /* ===== FOOTER ===== */
         footer {
-            margin-top: 60px;
-            padding: 40px 0 20px;
+            margin-top: 50px;
+            padding: 30px 0 16px;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.04);
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+        body.dark-mode footer {
+            border-color: #333;
         }
         footer h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
@@ -1947,60 +2061,36 @@
         }
         footer p {
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.3);
+            color: #888;
         }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin: 16px 0;
-            flex-wrap: wrap;
-        }
-        .footer-links a {
-            font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.4);
-            text-decoration: none;
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-        }
-        .footer-links a:hover {
-            color: white;
+        body.dark-mode footer p {
+            color: #666;
         }
         .footer-social {
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin: 16px 0;
+            margin: 14px 0;
         }
         .footer-social a {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.04);
-            color: rgba(255,255,255,0.5);
+            background: rgba(182,28,28,0.08);
+            color: #B61C1C;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.04);
         }
         .footer-social a:hover {
             background: #B61C1C;
             color: white;
-            transform: translateY(-4px);
-            border-color: #B61C1C;
-        }
-        .footer-bottom {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.65rem;
-            color: rgba(255,255,255,0.2);
-            margin-top: 12px;
+            transform: translateY(-3px);
         }
 
-        /* ============================================
-           IMAGE MODAL
-           ============================================ */
+        /* ===== IMAGE MODAL ===== */
         #imageModal {
             display: none;
             position: fixed;
@@ -2008,9 +2098,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.95);
+            background: rgba(0,0,0,0.9);
             z-index: 9999;
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(8px);
             cursor: pointer;
             align-items: center;
             justify-content: center;
@@ -2022,27 +2112,47 @@
         #imageModal img {
             max-width: 95%;
             max-height: 95%;
-            border-radius: 16px;
-            box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+            border-radius: 14px;
+            box-shadow: 0 16px 60px rgba(0,0,0,0.5);
             object-fit: contain;
+            pointer-events: none;
         }
         #imageModal .modal-close {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(255,255,255,0.05);
+            top: 16px;
+            left: 16px;
+            background: rgba(255,255,255,0.1);
             border: none;
             color: white;
             font-size: 1.6rem;
             cursor: pointer;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 50%;
             backdrop-filter: blur(8px);
             transition: all 0.3s ease;
         }
         #imageModal .modal-close:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.2);
             transform: rotate(90deg);
+        }
+
+        /* ===== SECTION HEADER ===== */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 24px 0 18px;
+        }
+        .section-header h2 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.5rem;
+        }
+        .section-header a {
+            font-family: 'Estedad', sans-serif;
+            color: #B61C1C;
+            text-decoration: none;
+            font-size: 0.8rem;
+            cursor: pointer;
         }
 
         /* ============================================
@@ -2051,71 +2161,76 @@
         @media (max-width: 992px) {
             .hamburger { display: flex; }
             .nav-links { display: none; }
-            .navbar { border-radius: 50px; padding: 10px 20px; min-height: 64px; margin: 12px 0 16px 0; }
+            .navbar { border-radius: 50px; padding: 10px 20px; min-height: 66px; margin: 12px 0 16px 0; }
             .mobile-overlay { display: none; }
             .mobile-overlay.active { display: block; }
             .game-cards-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
             .old-games-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-            .hero-slider { height: 360px; }
-            .hero-content h2 { font-size: 2rem; }
+            .movie-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
         }
 
         @media (max-width: 768px) {
-            .navbar { border-radius: 40px; padding: 8px 16px; min-height: 56px; margin: 10px 0 14px 0; }
+            .navbar { border-radius: 40px; padding: 8px 16px; min-height: 58px; margin: 10px 0 14px 0; }
             .logo .logo-icon { width: 34px; height: 34px; font-size: 1.1rem; border-radius: 8px; }
-            .logo .logo-text { font-size: 1.3rem; }
-            .nav-actions .action-btn { width: 38px; height: 38px; font-size: 1rem; }
-            .nav-actions .action-btn .badge { width: 16px; height: 16px; font-size: 0.45rem; }
-            .profile-avatar { width: 36px; height: 36px; font-size: 0.85rem; }
+            .logo .logo-text { font-size: 1.4rem; }
+            .nav-actions .action-btn { width: 40px; height: 40px; font-size: 1rem; }
+            .nav-actions .action-btn .badge { width: 17px; height: 17px; font-size: 0.5rem; }
+            .profile-avatar { width: 38px; height: 38px; font-size: 0.9rem; }
             .hamburger span { width: 22px; height: 2.5px; }
             .hamburger { gap: 4px; padding: 6px; }
             .mobile-drawer { width: 300px; padding: 24px 20px; }
-            .hero-slider { height: 300px; }
-            .hero-slide { padding: 30px; }
-            .hero-content h2 { font-size: 1.6rem; }
-            .hero-content p { font-size: 0.85rem; }
+            .hero-slider { height: 260px; }
+            .hero-slide { padding: 20px; }
+            .hero-content h2 { font-size: 1.4rem; }
+            .hero-content p { font-size: 0.75rem; }
             .game-cards-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
             .old-games-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+            .movie-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
             .game-detail-hero .game-overlay h1 { font-size: 1.6rem; }
             .game-detail-hero .game-overlay { padding: 20px 16px 16px; }
+            .game-detail-gallery .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
             .game-detail-info { grid-template-columns: 1fr 1fr; padding: 12px 14px; gap: 10px; }
             .old-detail-hero .detail-overlay h1 { font-size: 1.6rem; }
             .old-detail-hero .detail-overlay { padding: 20px 16px 16px; }
+            .old-detail-gallery .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
             .old-detail-info { grid-template-columns: 1fr 1fr; padding: 12px 14px; gap: 10px; }
             .search-page .logo-big { width: 380px; }
             .search-page .search-box-big { flex-wrap: wrap; background: transparent; box-shadow: none; border: none; gap: 8px; }
-            .search-page .search-box-big input { background: rgba(255,255,255,0.04); border-radius: 30px; padding: 12px 16px; border: 1px solid rgba(255,255,255,0.06); width: 100%; }
+            .search-page .search-box-big input { background: white; border-radius: 30px; padding: 12px 16px; border: 1px solid #eee; width: 100%; }
+            body.dark-mode .search-page .search-box-big input { background: #252525; border-color: #333; }
             .search-page .search-box-big button { width: 100%; justify-content: center; }
             .notifications-page .notif-hero .notif-icon-big { width: 280px; height: 280px; }
         }
 
         @media (max-width: 480px) {
-            .navbar { border-radius: 30px; padding: 6px 14px; min-height: 50px; margin: 8px 0 12px 0; }
+            .navbar { border-radius: 30px; padding: 6px 14px; min-height: 52px; margin: 8px 0 12px 0; }
             .logo .logo-icon { width: 30px; height: 30px; font-size: 0.95rem; border-radius: 6px; }
-            .logo .logo-text { font-size: 1.1rem; }
-            .nav-actions .action-btn { width: 34px; height: 34px; font-size: 0.9rem; }
-            .nav-actions .action-btn .badge { width: 15px; height: 15px; font-size: 0.4rem; top: -1px; left: -1px; border-width: 1.5px; }
+            .logo .logo-text { font-size: 1.2rem; }
+            .nav-actions .action-btn { width: 36px; height: 36px; font-size: 0.9rem; }
+            .nav-actions .action-btn .badge { width: 16px; height: 16px; font-size: 0.45rem; top: -1px; left: -1px; border-width: 1.5px; }
             .profile-avatar { width: 32px; height: 32px; font-size: 0.8rem; }
             .hamburger span { width: 18px; height: 2px; }
             .hamburger { gap: 3px; padding: 5px; }
             .mobile-drawer { width: 280px; padding: 20px 16px; }
-            .hero-slider { height: 240px; }
-            .hero-slide { padding: 20px; }
-            .hero-content h2 { font-size: 1.2rem; }
-            .hero-content p { font-size: 0.75rem; margin-bottom: 10px; }
-            .hero-content .btn-play { padding: 8px 18px; font-size: 0.75rem; }
+            .hero-slider { height: 200px; }
+            .hero-slide { padding: 14px; }
+            .hero-content h2 { font-size: 1.1rem; }
+            .hero-content p { font-size: 0.65rem; margin-bottom: 8px; }
+            .hero-content .btn-play { padding: 6px 16px; font-size: 0.7rem; }
             .game-cards-grid { grid-template-columns: 1fr; gap: 14px; }
             .old-games-grid { grid-template-columns: 1fr; gap: 14px; }
+            .movie-grid { grid-template-columns: 1fr; gap: 16px; }
+            .movie-card .movie-poster .play-overlay .play-circle { width: 50px; height: 50px; font-size: 1.3rem; }
             .game-detail-hero .game-overlay h1 { font-size: 1.2rem; }
-            .game-detail-hero .game-overlay .game-tagline { font-size: 0.8rem; }
-            .game-detail-hero .game-overlay { padding: 16px 12px 12px; }
+            .game-detail-hero .game-overlay .game-tagline { font-size: 0.75rem; }
+            .game-detail-hero .game-overlay { padding: 12px 12px 12px; }
             .game-detail-info { grid-template-columns: 1fr; padding: 10px 12px; gap: 8px; }
             .game-detail-gallery .gallery-grid { grid-template-columns: 1fr; }
             .game-detail-description { padding: 14px; }
             .game-detail-description p { font-size: 0.85rem; }
             .old-detail-hero .detail-overlay h1 { font-size: 1.2rem; }
             .old-detail-hero .detail-overlay .detail-sub { font-size: 0.8rem; }
-            .old-detail-hero .detail-overlay { padding: 16px 12px 12px; }
+            .old-detail-hero .detail-overlay { padding: 14px 12px 12px; }
             .old-detail-info { grid-template-columns: 1fr; padding: 10px 12px; gap: 8px; }
             .old-detail-gallery .gallery-grid { grid-template-columns: 1fr; }
             .old-detail-description { padding: 14px; }
@@ -2129,8 +2244,6 @@
             .settings-box .setting-item { flex-wrap: wrap; gap: 6px; }
             #imageModal img { max-width: 100%; max-height: 90%; }
             #imageModal .modal-close { top: 10px; left: 10px; font-size: 1.2rem; padding: 4px 10px; }
-            .footer-links { gap: 12px; }
-            .footer-links a { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -2205,7 +2318,7 @@
                 </div>
                 <div class="hero-slide" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
                     <div class="hero-content">
-                        <span class="badge">ترسناک</span>
+                        <span class="badge">جدید</span>
                         <h2>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h2>
                         <p>😨🏚️ Outlast | یه شب توی جهنم! امشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀</p>
                         <button class="btn-play" onclick="event.stopPropagation(); openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
@@ -2231,47 +2344,71 @@
             </div>
 
             <div class="section-header">
-                <h2><i class="fas fa-fire"></i> جدیدترین ویدیوها</h2>
+                <h2><i class="fas fa-fire" style="color:#B61C1C;"></i> جدیدترین عناوین</h2>
                 <a href="#" onclick="showPage('movies'); return false;">مشاهده همه</a>
             </div>
 
+            <!-- ===== کارت‌های ویدیو با طراحی جدید ===== -->
             <div class="movie-grid" id="movieGrid">
+                <!-- GTA6 -->
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/inbr16i/vt/frame', 'تریلر و گیم‌پلی GTA6 | راکستار ترکونده!', '🚨🔥 GTA 6 | Zerox Edition بالاخره رسید! 🔥🚨\n\nسلام رفقااا! 😎🎮\nویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و گیم‌پلی بازی رو باهم بررسی می‌کنیم. 👀🔥\n\nاز گرافیک و جزئیات خفن بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه‌چی رو توی این ویدیو می‌بینیم! 😳💥\n\nاگه عاشق GTA هستی، این ویدیو رو از دست نده! 🚗💨\n\nتهیه شده در Zerox studios', '5:11', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/n7157_gta_6_thumbnail_.png');">
-                        <span class="badge">🔥 جدید</span>
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge"><i class="fas fa-fire"></i> جدید</span>
+                        <span class="duration-badge"><i class="fas fa-clock"></i> 5:11</span>
+                        <div class="play-overlay">
+                            <div class="play-circle"><i class="fas fa-play"></i></div>
+                        </div>
                     </div>
                     <div class="movie-info">
-                        <h4>تریلر و گیم‌پلی GTA6 | راکستار ترکونده!</h4>
-                        <div class="meta">
-                            <span><i class="fas fa-clock"></i> 5:11</span>
+                        <div class="movie-title">تریلر و گیم‌پلی GTA6 | راکستار ترکونده!</div>
+                        <div class="movie-meta">
                             <span class="rating"><i class="fas fa-star"></i> 9.2</span>
+                        </div>
+                        <div class="movie-footer">
+                            <span class="movie-views"><i class="fas fa-eye"></i> ۱۲۴ بازدید</span>
+                            <button class="btn-watch" onclick="event.stopPropagation(); openVideo('https://www.aparat.com/video/video/embed/videohash/inbr16i/vt/frame', 'تریلر و گیم‌پلی GTA6 | راکستار ترکونده!', '🚨🔥 GTA 6 | Zerox Edition بالاخره رسید! 🔥🚨\n\nسلام رفقااا! 😎🎮\nویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و گیم‌پلی بازی رو باهم بررسی می‌کنیم. 👀🔥\n\nاز گرافیک و جزئیات خفن بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه‌چی رو توی این ویدیو می‌بینیم! 😳💥\n\nاگه عاشق GTA هستی، این ویدیو رو از دست نده! 🚗💨\n\nتهیه شده در Zerox studios', '5:11', '9.2')"><i class="fas fa-play"></i> پخش</button>
                         </div>
                     </div>
                 </div>
+
+                <!-- Outlast -->
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
-                        <span class="badge">جدید</span>
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge"><i class="fas fa-clock"></i> جدید</span>
+                        <span class="duration-badge"><i class="fas fa-clock"></i> ۵ دقیقه</span>
+                        <div class="play-overlay">
+                            <div class="play-circle"><i class="fas fa-play"></i></div>
+                        </div>
                     </div>
                     <div class="movie-info">
-                        <h4>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h4>
-                        <div class="meta">
-                            <span><i class="fas fa-clock"></i> ۵ دقیقه</span>
+                        <div class="movie-title">بازی اوتلست 1 | بهترین بازی ترسناک دنیا</div>
+                        <div class="movie-meta">
                             <span class="rating"><i class="fas fa-star"></i> 9.2</span>
+                        </div>
+                        <div class="movie-footer">
+                            <span class="movie-views"><i class="fas fa-eye"></i> ۸۹ بازدید</span>
+                            <button class="btn-watch" onclick="event.stopPropagation(); openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')"><i class="fas fa-play"></i> پخش</button>
                         </div>
                     </div>
                 </div>
+
+                <!-- No I'm Not a Human -->
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
-                        <span class="badge">ویژه</span>
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge"><i class="fas fa-star"></i> ویژه</span>
+                        <span class="duration-badge"><i class="fas fa-clock"></i> ۹ دقیقه</span>
+                        <div class="play-overlay">
+                            <div class="play-circle"><i class="fas fa-play"></i></div>
+                        </div>
                     </div>
                     <div class="movie-info">
-                        <h4>داستان بازی | no im not a human</h4>
-                        <div class="meta">
-                            <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
+                        <div class="movie-title">داستان بازی | no im not a human</div>
+                        <div class="movie-meta">
                             <span class="rating"><i class="fas fa-star"></i> 8.7</span>
+                        </div>
+                        <div class="movie-footer">
+                            <span class="movie-views"><i class="fas fa-eye"></i> ۵۶ بازدید</span>
+                            <button class="btn-watch" onclick="event.stopPropagation(); openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')"><i class="fas fa-play"></i> پخش</button>
                         </div>
                     </div>
                 </div>
@@ -2371,20 +2508,20 @@
                 </div>
                 <div class="setting-item">
                     <span class="setting-label"><i class="fas fa-video"></i> کیفیت پخش</span>
-                    <select>
+                    <select style="font-family:'Estedad',sans-serif;background:transparent;border:none;color:#888;font-size:0.8rem;cursor:pointer;outline:none;padding:4px 8px;border-radius:8px;">
                         <option>خودکار</option><option>۴۸۰p</option><option>۷۲۰p</option><option>۱۰۸۰p</option>
                     </select>
                 </div>
                 <div class="setting-item">
                     <span class="setting-label"><i class="fas fa-globe"></i> زبان</span>
-                    <select>
+                    <select style="font-family:'Estedad',sans-serif;background:transparent;border:none;color:#888;font-size:0.8rem;cursor:pointer;outline:none;padding:4px 8px;border-radius:8px;">
                         <option>فارسی</option><option>English</option>
                     </select>
                 </div>
                 <div class="setting-item" style="border-bottom:none;justify-content:center;gap:8px;padding:14px 18px;">
-                    <span style="font-family:'Estedad',sans-serif;color:rgba(255,255,255,0.3);font-size:0.7rem;">Zerox Studio v2.0</span>
-                    <span style="color:rgba(255,255,255,0.1);">•</span>
-                    <span style="font-family:'Estedad',sans-serif;color:rgba(255,255,255,0.3);font-size:0.7rem;">© 2026</span>
+                    <span style="font-family:'Estedad',sans-serif;color:#888;font-size:0.7rem;">Zerox Studio v2.0</span>
+                    <span style="color:#ddd;">•</span>
+                    <span style="font-family:'Estedad',sans-serif;color:#888;font-size:0.7rem;">© 2026</span>
                 </div>
             </div>
         </div>
@@ -2396,33 +2533,66 @@
             <h2 class="page-header"><i class="fas fa-film"></i> ویدیوها</h2>
             <p class="page-sub">همه ویدیوهای سینمایی و کوتاه</p>
             <div class="movie-grid" style="margin-top:16px;">
+                <!-- GTA6 -->
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/inbr16i/vt/frame', 'تریلر و گیم‌پلی GTA6 | راکستار ترکونده!', '🚨🔥 GTA 6 | Zerox Edition بالاخره رسید! 🔥🚨\n\nسلام رفقااا! 😎🎮\nویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و گیم‌پلی بازی رو باهم بررسی می‌کنیم. 👀🔥\n\nاز گرافیک و جزئیات خفن بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه‌چی رو توی این ویدیو می‌بینیم! 😳💥\n\nاگه عاشق GTA هستی، این ویدیو رو از دست نده! 🚗💨\n\nتهیه شده در Zerox studios', '5:11', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/n7157_gta_6_thumbnail_.png');">
-                        <span class="badge">🔥 جدید</span>
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge"><i class="fas fa-fire"></i> جدید</span>
+                        <span class="duration-badge"><i class="fas fa-clock"></i> 5:11</span>
+                        <div class="play-overlay">
+                            <div class="play-circle"><i class="fas fa-play"></i></div>
+                        </div>
                     </div>
                     <div class="movie-info">
-                        <h4>تریلر و گیم‌پلی GTA6 | راکستار ترکونده!</h4>
-                        <div class="meta"><span><i class="fas fa-clock"></i> 5:11</span><span class="rating"><i class="fas fa-star"></i> 9.2</span></div>
+                        <div class="movie-title">تریلر و گیم‌پلی GTA6 | راکستار ترکونده!</div>
+                        <div class="movie-meta">
+                            <span class="rating"><i class="fas fa-star"></i> 9.2</span>
+                        </div>
+                        <div class="movie-footer">
+                            <span class="movie-views"><i class="fas fa-eye"></i> ۱۲۴ بازدید</span>
+                            <button class="btn-watch" onclick="event.stopPropagation(); openVideo('https://www.aparat.com/video/video/embed/videohash/inbr16i/vt/frame', 'تریلر و گیم‌پلی GTA6 | راکستار ترکونده!', '🚨🔥 GTA 6 | Zerox Edition بالاخره رسید! 🔥🚨\n\nسلام رفقااا! 😎🎮\nویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و گیم‌پلی بازی رو باهم بررسی می‌کنیم. 👀🔥\n\nاز گرافیک و جزئیات خفن بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه‌چی رو توی این ویدیو می‌بینیم! 😳💥\n\nاگه عاشق GTA هستی، این ویدیو رو از دست نده! 🚗💨\n\nتهیه شده در Zerox studios', '5:11', '9.2')"><i class="fas fa-play"></i> پخش</button>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Outlast -->
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
                     <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
-                        <span class="badge">جدید</span>
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge"><i class="fas fa-clock"></i> جدید</span>
+                        <span class="duration-badge"><i class="fas fa-clock"></i> ۵ دقیقه</span>
+                        <div class="play-overlay">
+                            <div class="play-circle"><i class="fas fa-play"></i></div>
+                        </div>
                     </div>
                     <div class="movie-info">
-                        <h4>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h4>
-                        <div class="meta"><span><i class="fas fa-clock"></i> ۵ دقیقه</span><span class="rating"><i class="fas fa-star"></i> 9.2</span></div>
+                        <div class="movie-title">بازی اوتلست 1 | بهترین بازی ترسناک دنیا</div>
+                        <div class="movie-meta">
+                            <span class="rating"><i class="fas fa-star"></i> 9.2</span>
+                        </div>
+                        <div class="movie-footer">
+                            <span class="movie-views"><i class="fas fa-eye"></i> ۸۹ بازدید</span>
+                            <button class="btn-watch" onclick="event.stopPropagation(); openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')"><i class="fas fa-play"></i> پخش</button>
+                        </div>
                     </div>
                 </div>
+
+                <!-- No I'm Not a Human -->
                 <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
                     <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge"><i class="fas fa-star"></i> ویژه</span>
+                        <span class="duration-badge"><i class="fas fa-clock"></i> ۹ دقیقه</span>
+                        <div class="play-overlay">
+                            <div class="play-circle"><i class="fas fa-play"></i></div>
+                        </div>
                     </div>
                     <div class="movie-info">
-                        <h4>داستان بازی | no im not a human</h4>
-                        <div class="meta"><span><i class="fas fa-clock"></i> ۹ دقیقه</span><span class="rating"><i class="fas fa-star"></i> 8.7</span></div>
+                        <div class="movie-title">داستان بازی | no im not a human</div>
+                        <div class="movie-meta">
+                            <span class="rating"><i class="fas fa-star"></i> 8.7</span>
+                        </div>
+                        <div class="movie-footer">
+                            <span class="movie-views"><i class="fas fa-eye"></i> ۵۶ بازدید</span>
+                            <button class="btn-watch" onclick="event.stopPropagation(); openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')"><i class="fas fa-play"></i> پخش</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2439,34 +2609,28 @@
                     <div class="game-card-img">
                         <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" />
                         <span class="game-status"><i class="fas fa-hourglass-half sand-icon"></i> در دست توسعه</span>
-                        <div class="game-overlay-bottom">
-                            <div class="game-title">SilentGears</div>
-                            <div class="game-dev">Zerox Studios</div>
-                        </div>
                     </div>
                     <div class="game-card-body">
-                        <div class="game-genre">
-                            <span>اکشن-ماجرایی</span>
-                            <span>نقش‌آفرینی</span>
-                        </div>
+                        <h3>SilentGears | چرخ‌دنده‌ساکت</h3>
+                        <div class="game-genre">اکشن-ماجرایی • نقش‌آفرینی</div>
                         <div class="game-desc">یک بازی پساآخرالزمانی با گیم‌پلی ریتم‌محور و داستانی عمیق...</div>
                         <div class="game-footer">
                             <span class="game-platform"><i class="fas fa-mobile-alt"></i> <i class="fas fa-desktop"></i> اندروید | PC</span>
-                            <button class="btn-view" onclick="event.stopPropagation(); showPage('game-silentgears')">مشاهده</button>
+                            <button class="btn-view" onclick="event.stopPropagation(); showPage('game-silentgears')">مشاهده بازی</button>
                         </div>
                     </div>
                 </div>
-                <div class="game-card" style="opacity:0.4;cursor:default;">
-                    <div class="game-card-img" style="background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;">
-                        <span style="color:rgba(255,255,255,0.1);font-family:'Estedad',sans-serif;font-size:3rem;">🎮</span>
+                <div class="game-card" style="opacity:0.5;cursor:default;">
+                    <div class="game-card-img" style="background:#2a2a2a;display:flex;align-items:center;justify-content:center;">
+                        <span style="color:#666;font-family:'Estedad',sans-serif;font-size:1.2rem;">🎮</span>
                     </div>
                     <div class="game-card-body">
-                        <h3 style="color:rgba(255,255,255,0.2);">پروژه بعدی</h3>
-                        <div class="game-genre"><span style="color:rgba(255,255,255,0.2);">به زودی...</span></div>
-                        <div class="game-desc" style="color:rgba(255,255,255,0.2);">بازی جدید استودیو Zerox در حال ساخت است</div>
+                        <h3 style="color:#888;">پروژه بعدی</h3>
+                        <div class="game-genre">به زودی...</div>
+                        <div class="game-desc" style="color:#999;">بازی جدید استودیو Zerox در حال ساخت است</div>
                         <div class="game-footer">
-                            <span class="game-platform" style="color:rgba(255,255,255,0.15);">در دست توسعه</span>
-                            <span style="font-family:'Estedad',sans-serif;font-size:0.65rem;color:rgba(255,255,255,0.15);">به زودی</span>
+                            <span class="game-platform">در دست توسعه</span>
+                            <span style="font-family:'Estedad',sans-serif;font-size:0.65rem;color:#666;">به زودی</span>
                         </div>
                     </div>
                 </div>
@@ -2493,7 +2657,7 @@
                 <div class="info-item"><i class="fas fa-clock"></i><div><div class="info-label">مدت زمان</div><div class="info-value">۱۲ تا ۱۶ ساعت</div></div></div>
                 <div class="info-item"><i class="fas fa-user"></i><div><div class="info-label">حالت بازی</div><div class="info-value">تکنفره، روایت خطی</div></div></div>
                 <div class="info-item"><i class="fas fa-flag-checkered"></i><div><div class="info-label">پایان‌ها</div><div class="info-value">۳ پایان مختلف</div></div></div>
-                <div class="info-item" style="grid-column:1/-1;background:rgba(255,165,0,0.05);border-radius:10px;padding:8px 14px;border-right:3px solid #ffa500;">
+                <div class="info-item" style="grid-column:1/-1;background:rgba(255,165,0,0.08);border-radius:10px;padding:8px 14px;border-right:3px solid #ffa500;">
                     <i class="fas fa-hourglass-half sand-icon" style="color:#ffa500;"></i>
                     <div><div class="info-label" style="color:#ffa500;">وضعیت</div><div class="info-value" style="color:#ffa500;">در دست توسعه • تاریخ انتشار نامشخص</div></div>
                 </div>
@@ -2513,7 +2677,7 @@
                 <h3><i class="fas fa-info-circle"></i> درباره بازی</h3>
                 <p>🎮 <strong>SilentGears | چرخ‌دنده‌ساکت</strong> یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط <strong>Zerox Studios</strong> ساخته شده.</p>
                 <p style="margin-top:10px;">داستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخ‌دنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از <strong>۳ پایان مختلف</strong> ختم می‌شود.</p>
-                <div style="margin-top:14px;padding:14px;background:rgba(255,165,0,0.05);border-radius:10px;border-right:3px solid #ffa500;">
+                <div style="margin-top:14px;padding:14px;background:rgba(255,165,0,0.06);border-radius:10px;border-right:3px solid #ffa500;">
                     <p style="font-family:'Estedad',sans-serif;font-size:0.85rem;color:#ffa500;font-weight:600;margin:0;"><i class="fas fa-hourglass-half sand-icon"></i> این بازی در حال حاضر در دست توسعه است و به زودی منتشر خواهد شد.</p>
                 </div>
                 <div class="genre-tags">
@@ -2571,32 +2735,20 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
-        <!-- ===== FOOTER (مثل راکستار) ===== -->
-        <!-- ============================================ -->
+        <!-- ===== FOOTER ===== -->
         <footer>
             <h2>Zerox Studio</h2>
-            <p>جایی برای ساختن، تجربه کردن و متفاوت بودن</p>
-            <div class="footer-links">
-                <a href="#" onclick="showPage('home')">خانه</a>
-                <a href="#" onclick="showPage('movies')">ویدیوها</a>
-                <a href="#" onclick="showPage('games')">بازی‌ها</a>
-                <a href="#" onclick="showPage('oldgames')">زروکس‌اُلد</a>
-                <a href="#" onclick="showPage('about')">درباره ما</a>
-            </div>
+            <p>پلتفرم سینمایی و سرگرمی دیجیتال</p>
             <div class="footer-social">
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-telegram"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
-            <div class="footer-bottom">© 2026 Zerox Studio. تمامی حقوق محفوظ است.</div>
+            <p style="font-size:0.65rem; margin-top:10px;">© 2026 Zerox Studio. تمامی حقوق محفوظ است.</p>
         </footer>
     </div>
 
-    <!-- ============================================ -->
     <!-- ===== IMAGE MODAL ===== -->
-    <!-- ============================================ -->
     <div id="imageModal" onclick="closeImageModal()">
         <button class="modal-close" onclick="event.stopPropagation(); closeImageModal()">
             <i class="fas fa-times"></i>
@@ -2673,6 +2825,36 @@
                 music: "https://uploadkon.ir/uploads/157a09_26ef9f06-26Zerox-god-of-war.mp3", 
                 desc: "کریتوس، یک جنگجوی اسپارتی، برای گرفتن انتقام و رهایی از کابوس‌های گذشته‌اش به دنبال نابودی خدای جنگ یعنی Ares می‌رود. در طول مسیر با هیولاها، تایتان‌ها و خدایان اساطیر یونان روبه‌رو می‌شود.", 
                 fullText: "داستان God of War یکی از حماسی‌ترین داستان‌های تاریخ بازی است. کریتوس، جنگجوی اسپارتی، پس از اینکه آرس (خدای جنگ) او را فریب می‌دهد و خانواده‌اش را می‌کشد، تصمیم می‌گیرد انتقام بگیرد. او با کمک آتنا، خدای خرد، وارد ماجرایی می‌شود تا جعبه پاندورا را پیدا کند و آرس را نابود کند. در این مسیر با موجودات افسانه‌ای مانند مینوتور، سیرن، و مدوسا روبرو می‌شود و قدرت‌های جدیدی به دست می‌آورد. نبرد نهایی کریتوس با آرس یکی از به‌یادماندنی‌ترین نبردهای تاریخ بازی‌های ویدیویی است." 
+            }
+        ];
+
+        // ============================================
+        // MOVIES DB
+        // ============================================
+        const moviesDB = [
+            {
+                title: 'تریلر و گیم‌پلی GTA6 | راکستار ترکونده!',
+                url: 'https://www.aparat.com/video/video/embed/videohash/inbr16i/vt/frame',
+                desc: '🚨🔥 GTA 6 | Zerox Edition بالاخره رسید! 🔥🚨\n\nسلام رفقااا! 😎🎮\nویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و گیم‌پلی بازی رو باهم بررسی می‌کنیم. 👀🔥\n\nاز گرافیک و جزئیات خفن بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه‌چی رو توی این ویدیو می‌بینیم! 😳💥\n\nاگه عاشق GTA هستی، این ویدیو رو از دست نده! 🚗💨\n\nتهیه شده در Zerox studios',
+                duration: '5:11',
+                rating: '9.2',
+                poster: 'https://cdn.imgurl.ir/uploads/n7157_gta_6_thumbnail_.png'
+            },
+            {
+                title: 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا',
+                url: 'https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame',
+                desc: '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox',
+                duration: '۵ دقیقه',
+                rating: '9.2',
+                poster: 'https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png'
+            },
+            {
+                title: 'داستان بازی | no im not a human',
+                url: 'https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame',
+                desc: '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟',
+                duration: '۹ دقیقه',
+                rating: '8.7',
+                poster: 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg'
             }
         ];
 
@@ -2813,36 +2995,6 @@
 
             showPage('old-detail');
         }
-
-        // ============================================
-        // MOVIES DB
-        // ============================================
-        const moviesDB = [
-            {
-                title: 'تریلر و گیم‌پلی GTA6 | راکستار ترکونده!',
-                url: 'https://www.aparat.com/video/video/embed/videohash/inbr16i/vt/frame',
-                desc: '🚨🔥 GTA 6 | Zerox Edition بالاخره رسید! 🔥🚨\n\nسلام رفقااا! 😎🎮\nویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و گیم‌پلی بازی رو باهم بررسی می‌کنیم. 👀🔥\n\nاز گرافیک و جزئیات خفن بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه‌چی رو توی این ویدیو می‌بینیم! 😳💥\n\nاگه عاشق GTA هستی، این ویدیو رو از دست نده! 🚗💨\n\nتهیه شده در Zerox studios',
-                duration: '5:11',
-                rating: '9.2',
-                poster: 'https://cdn.imgurl.ir/uploads/n7157_gta_6_thumbnail_.png'
-            },
-            {
-                title: 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا',
-                url: 'https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame',
-                desc: '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox',
-                duration: '۵ دقیقه',
-                rating: '9.2',
-                poster: 'https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png'
-            },
-            {
-                title: 'داستان بازی | no im not a human',
-                url: 'https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame',
-                desc: '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟',
-                duration: '۹ دقیقه',
-                rating: '8.7',
-                poster: 'https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg'
-            }
-        ];
 
         // ============================================
         // HERO SLIDER
