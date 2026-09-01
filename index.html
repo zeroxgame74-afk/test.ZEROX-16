@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>Zerox Studio | VOD Platform</title>
     
-    <!-- فاویکون -->
     <link rel="icon" href="https://cdn.imgurl.ir/uploads/m73805_Negar_1788222943199.png" type="image/png" />
     <link rel="shortcut icon" href="https://cdn.imgurl.ir/uploads/m73805_Negar_1788222943199.png" type="image/png" />
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     
-    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@400;700&display=swap" rel="stylesheet" />
 
     <style>
+        /* ============================================
+           RESET & BASE
+           ============================================ */
         * {
             margin: 0;
             padding: 0;
@@ -23,29 +25,21 @@
 
         body {
             font-family: 'Estedad', 'Segoe UI', Tahoma, sans-serif;
-            background: #f5f0ea;
-            color: #1a1a1a;
+            background: #0a0a0a;
+            color: #f0ebe5;
             direction: rtl;
             overflow-x: hidden;
         }
 
         ::-webkit-scrollbar {
-            width: 5px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #ede8e2;
+            background: #1a1a1a;
         }
         ::-webkit-scrollbar-thumb {
             background: #B61C1C;
             border-radius: 10px;
-        }
-
-        body.dark-mode {
-            background: #1a1a1a;
-            color: #f0ebe5;
-        }
-        body.dark-mode ::-webkit-scrollbar-track {
-            background: #2a2a2a;
         }
 
         .container {
@@ -61,39 +55,54 @@
             user-select: none;
         }
 
-        .sand-icon {
-            display: inline-block;
-            animation: sandShake 2.5s ease-in-out infinite;
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes sandShake {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(6deg); }
-            75% { transform: rotate(-6deg); }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
         }
 
-        /* ===== HEADER ===== */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .animate-on-load {
+            animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        /* ============================================
+           HEADER (شفاف و شیشه‌ای مثل راکستار)
+           ============================================ */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 12px 28px;
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(24px) saturate(1.6);
+            -webkit-backdrop-filter: blur(24px) saturate(1.6);
             border-radius: 80px;
             margin: 16px 0 20px 0;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.04);
-            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 4px 40px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.06);
             position: sticky;
             top: 16px;
             z-index: 999;
             gap: 16px;
-            min-height: 78px;
+            min-height: 72px;
+            transition: all 0.3s ease;
         }
-        body.dark-mode .navbar {
-            background: rgba(30,30,30,0.9);
-            border-color: rgba(255,255,255,0.05);
+
+        .navbar:hover {
+            background: rgba(10, 10, 10, 0.8);
+            border-color: rgba(182, 28, 28, 0.2);
         }
 
         .navbar .nav-section {
@@ -109,9 +118,10 @@
             cursor: pointer;
             padding: 4px 14px;
             border-radius: 30px;
+            transition: all 0.3s ease;
         }
         .logo:hover {
-            background: rgba(182,28,28,0.04);
+            background: rgba(255,255,255,0.05);
         }
 
         .logo .logo-icon {
@@ -126,17 +136,15 @@
             font-size: 1.4rem;
             font-weight: 800;
             font-family: 'Ardekan', sans-serif;
-            box-shadow: 0 4px 16px rgba(182,28,28,0.3);
+            box-shadow: 0 4px 20px rgba(182,28,28,0.4);
         }
 
         .logo .logo-text {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
-            color: #1a1a1a;
-        }
-        body.dark-mode .logo .logo-text {
             color: #f0ebe5;
+            letter-spacing: -0.5px;
         }
         .logo .logo-text span {
             color: #B61C1C;
@@ -151,16 +159,15 @@
         .nav-links a {
             font-family: 'Estedad', sans-serif;
             text-decoration: none;
-            color: #4a4a4a;
+            color: rgba(255,255,255,0.7);
             font-weight: 500;
             font-size: 0.95rem;
             cursor: pointer;
-            padding: 10px 22px;
+            padding: 8px 20px;
             border-radius: 40px;
             white-space: nowrap;
-        }
-        body.dark-mode .nav-links a {
-            color: #aaa;
+            transition: all 0.3s ease;
+            position: relative;
         }
         .nav-links a i {
             font-size: 0.95rem;
@@ -168,14 +175,17 @@
             opacity: 0.6;
         }
         .nav-links a:hover {
-            color: #B61C1C;
-            background: rgba(182,28,28,0.06);
+            color: white;
+            background: rgba(255,255,255,0.06);
         }
         .nav-links a.active {
             color: white;
             background: #B61C1C;
-            box-shadow: 0 4px 20px rgba(182,28,28,0.25);
+            box-shadow: 0 4px 24px rgba(182,28,28,0.35);
             font-weight: 600;
+        }
+        .nav-links a.active i {
+            opacity: 1;
         }
 
         .nav-actions {
@@ -184,47 +194,47 @@
             gap: 8px;
         }
         .nav-actions .action-btn {
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             border: none;
-            background: transparent;
-            color: #4a4a4a;
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.7);
             font-size: 1.2rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-        }
-        body.dark-mode .nav-actions .action-btn {
-            color: #aaa;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
         }
         .nav-actions .action-btn:hover {
-            background: rgba(182,28,28,0.08);
-            color: #B61C1C;
+            background: rgba(255,255,255,0.1);
+            color: white;
             transform: translateY(-2px);
         }
         .nav-actions .action-btn .badge {
             position: absolute;
-            top: 2px;
-            left: 2px;
+            top: 0;
+            left: 0;
             background: #B61C1C;
             color: white;
-            font-size: 0.55rem;
+            font-size: 0.5rem;
             font-weight: 700;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid rgba(255,255,255,0.9);
+            border: 2px solid #0a0a0a;
+            box-shadow: 0 2px 12px rgba(182,28,28,0.4);
         }
 
         .profile-avatar {
-            width: 46px;
-            height: 46px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: linear-gradient(135deg, #B61C1C, #8a1515);
             display: flex;
@@ -234,9 +244,10 @@
             font-weight: 700;
             font-size: 1.1rem;
             cursor: pointer;
-            border: 2px solid transparent;
+            border: 2px solid rgba(255,255,255,0.1);
             font-family: 'Estedad', sans-serif;
-            box-shadow: 0 2px 16px rgba(182,28,28,0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(182,28,28,0.3);
         }
         .profile-avatar:hover {
             transform: scale(1.06);
@@ -254,20 +265,23 @@
             border: none;
         }
         .hamburger:hover {
-            background: rgba(182,28,28,0.06);
+            background: rgba(255,255,255,0.05);
         }
         .hamburger span {
             display: block;
             width: 28px;
-            height: 3px;
-            background: #1a1a1a;
-            border-radius: 10px;
-        }
-        body.dark-mode .hamburger span {
+            height: 2.5px;
             background: #f0ebe5;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .hamburger:hover span {
+            background: #B61C1C;
         }
 
-        /* ===== MOBILE DRAWER ===== */
+        /* ============================================
+           MOBILE DRAWER
+           ============================================ */
         .mobile-overlay {
             display: none;
             position: fixed;
@@ -275,10 +289,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.3);
-            backdrop-filter: blur(6px);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(12px);
             z-index: 1000;
             opacity: 0;
+            transition: opacity 0.4s ease;
         }
         .mobile-overlay.active {
             display: block;
@@ -290,17 +305,16 @@
             right: -340px;
             width: 320px;
             height: 100%;
-            background: white;
+            background: rgba(15,15,15,0.98);
+            backdrop-filter: blur(20px);
             z-index: 1001;
             padding: 30px 24px;
-            transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
-            box-shadow: -8px 0 60px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+            box-shadow: -8px 0 60px rgba(0,0,0,0.4);
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-        }
-        body.dark-mode .mobile-drawer {
-            background: #252525;
+            border-left: 1px solid rgba(255,255,255,0.05);
         }
         .mobile-drawer.open {
             right: 0;
@@ -312,18 +326,12 @@
             align-items: center;
             margin-bottom: 28px;
             padding-bottom: 16px;
-            border-bottom: 1px solid #f0ebe5;
-        }
-        body.dark-mode .mobile-drawer .drawer-header {
-            border-color: #333;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
         .mobile-drawer .drawer-header .drawer-logo {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.6rem;
             font-weight: 700;
-            color: #1a1a1a;
-        }
-        body.dark-mode .mobile-drawer .drawer-header .drawer-logo {
             color: #f0ebe5;
         }
         .mobile-drawer .drawer-header .drawer-logo span {
@@ -332,13 +340,14 @@
         .mobile-drawer .drawer-close {
             font-size: 1.5rem;
             cursor: pointer;
-            color: #888;
+            color: rgba(255,255,255,0.5);
             background: none;
             border: none;
             padding: 4px;
+            transition: all 0.3s ease;
         }
         .mobile-drawer .drawer-close:hover {
-            color: #B61C1C;
+            color: white;
             transform: rotate(90deg);
         }
 
@@ -351,7 +360,7 @@
         .mobile-drawer .drawer-links a {
             font-family: 'Estedad', sans-serif;
             text-decoration: none;
-            color: #2d2a24;
+            color: rgba(255,255,255,0.7);
             font-weight: 500;
             font-size: 1rem;
             padding: 14px 18px;
@@ -359,18 +368,16 @@
             display: flex;
             align-items: center;
             gap: 14px;
-        }
-        body.dark-mode .mobile-drawer .drawer-links a {
-            color: #f0ebe5;
+            transition: all 0.3s ease;
         }
         .mobile-drawer .drawer-links a i {
             width: 24px;
-            color: #888;
+            color: rgba(255,255,255,0.4);
             font-size: 1.1rem;
         }
         .mobile-drawer .drawer-links a:hover {
-            background: rgba(182,28,28,0.06);
-            color: #B61C1C;
+            background: rgba(255,255,255,0.05);
+            color: white;
         }
         .mobile-drawer .drawer-links a.active {
             background: #B61C1C;
@@ -388,41 +395,54 @@
         .mobile-drawer .drawer-footer {
             margin-top: 20px;
             padding-top: 16px;
-            border-top: 1px solid #f0ebe5;
-        }
-        body.dark-mode .mobile-drawer .drawer-footer {
-            border-color: #333;
+            border-top: 1px solid rgba(255,255,255,0.06);
         }
         .mobile-drawer .drawer-footer p {
             font-family: 'Estedad', sans-serif;
             font-size: 0.75rem;
-            color: #999;
+            color: rgba(255,255,255,0.3);
             text-align: center;
         }
 
-        /* ===== PAGES ===== */
+        /* ============================================
+           PAGES
+           ============================================ */
         .page {
             display: none;
-            animation: fadeInUp 0.35s ease both;
         }
         .page.active {
             display: block;
+            animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .page-header {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 2rem;
+            margin: 20px 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .page-header i {
+            color: #B61C1C;
+        }
+        .page-sub {
+            font-family: 'Estedad', sans-serif;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
         }
 
         /* ============================================
-           HOME PAGE (جدید و کامل)
+           HERO SLIDER (همه‌صفحه مثل راکستار)
            ============================================ */
         .hero-slider {
             position: relative;
             border-radius: 24px;
             overflow: hidden;
             margin: 16px 0 30px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-            height: 420px;
+            box-shadow: 0 8px 60px rgba(0,0,0,0.5);
+            height: 480px;
         }
         .hero-slide {
             position: absolute;
@@ -435,9 +455,9 @@
             background-position: center;
             display: flex;
             align-items: flex-end;
-            padding: 40px;
+            padding: 50px;
             transform: scale(1.04);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
         .hero-slide.active {
             opacity: 1;
@@ -449,8 +469,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 65%;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+            height: 70%;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
         }
         .hero-content {
             position: relative;
@@ -465,151 +485,142 @@
             border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-family: 'Estedad', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .hero-content h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 2.2rem;
-            margin-bottom: 6px;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            font-size: 2.6rem;
+            margin-bottom: 8px;
+            text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+            line-height: 1.2;
         }
         .hero-content p {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.95rem;
-            opacity: 0.9;
-            margin-bottom: 14px;
-            line-height: 1.6;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 18px;
+            line-height: 1.8;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
         .hero-content .btn-play {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             background: #B61C1C;
             color: white;
             border: none;
-            padding: 10px 24px;
+            padding: 14px 32px;
             border-radius: 50px;
             font-family: 'Estedad', sans-serif;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 1rem;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(182,28,28,0.3);
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 4px 30px rgba(182,28,28,0.4);
         }
         .hero-content .btn-play:hover {
             background: #8a1515;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(182,28,28,0.4);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 40px rgba(182,28,28,0.5);
         }
 
         .slider-dots {
             position: absolute;
-            bottom: 16px;
+            bottom: 24px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
         .slider-dots span {
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.3);
             cursor: pointer;
             transition: all 0.3s ease;
         }
         .slider-dots span.active {
-            background: white;
+            background: #B61C1C;
             transform: scale(1.3);
+            box-shadow: 0 0 20px rgba(182,28,28,0.3);
         }
 
-        /* ===== بخش‌های صفحه خانه ===== */
-        .home-section {
-            margin-bottom: 40px;
-        }
-
-        .home-section .section-header {
+        /* ============================================
+           SECTION HEADER
+           ============================================ */
+        .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
+            margin: 32px 0 18px;
         }
-
-        .home-section .section-header h2 {
+        .section-header h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.7rem;
+            color: #f0ebe5;
         }
-
-        .home-section .section-header h2 i {
+        .section-header h2 i {
             color: #B61C1C;
+            margin-left: 8px;
         }
-
-        .home-section .section-header a {
+        .section-header a {
             font-family: 'Estedad', sans-serif;
-            color: #B61C1C;
+            color: rgba(255,255,255,0.5);
             text-decoration: none;
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .section-header a:hover {
+            color: white;
+            border-color: rgba(182,28,28,0.3);
+            background: rgba(182,28,28,0.1);
         }
 
-        .home-section .section-header a:hover {
-            color: #8a1515;
-        }
-
-        /* ===== کارت‌های کوچک برای صفحه خانه ===== */
-        .home-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        /* ============================================
+           MOVIE GRID
+           ============================================ */
+        .movie-grid {
+            display: flex;
+            flex-direction: column;
             gap: 20px;
+            margin-bottom: 40px;
         }
-
-        .home-card {
-            background: white;
+        .movie-card {
+            background: rgba(255,255,255,0.03);
             border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-            transition: all 0.3s ease;
-        }
-        body.dark-mode .home-card {
-            background: #252525;
-        }
-
-        .home-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 40px rgba(182,28,28,0.1);
-        }
-
-        .home-card .card-img {
-            position: relative;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            background: #1a1a1a;
-        }
-
-        .home-card .card-img img {
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            border: 1px solid rgba(255,255,255,0.04);
+            max-width: 400px;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-            pointer-events: none;
+        }
+        .movie-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(182,28,28,0.2);
+            box-shadow: 0 20px 60px rgba(182,28,28,0.1);
         }
 
-        .home-card:hover .card-img img {
-            transform: scale(1.04);
+        .movie-poster {
+            position: relative;
+            padding-top: 56.25%;
+            background-size: cover;
+            background-position: center;
+            background-color: #1a1a1a;
         }
-
-        .home-card .card-img .card-badge {
+        .movie-poster .badge {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 12px;
+            right: 12px;
             background: rgba(182,28,28,0.9);
             color: white;
             padding: 3px 12px;
@@ -618,202 +629,83 @@
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
             z-index: 2;
+            backdrop-filter: blur(4px);
         }
-
-        .home-card .card-img .card-play {
+        .movie-poster .play-icon {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.8);
             color: white;
-            font-size: 3rem;
+            font-size: 3.5rem;
             opacity: 0;
-            transition: all 0.3s ease;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            text-shadow: 0 4px 40px rgba(0,0,0,0.6);
             z-index: 2;
         }
-
-        .home-card:hover .card-play {
+        .movie-card:hover .play-icon {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
         }
-
-        .home-card .card-img::after {
+        .movie-poster::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.25);
+            background: rgba(0,0,0,0.4);
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
-
-        .home-card:hover .card-img::after {
+        .movie-card:hover .movie-poster::after {
             opacity: 1;
         }
 
-        .home-card .card-body {
-            padding: 12px 14px 14px;
+        .movie-info {
+            padding: 14px 16px;
         }
-
-        .home-card .card-body h4 {
+        .movie-info h4 {
             font-family: 'Estedad', sans-serif;
             font-size: 0.95rem;
             font-weight: 700;
-            margin-bottom: 2px;
-        }
-        body.dark-mode .home-card .card-body h4 {
+            margin-bottom: 4px;
             color: #f0ebe5;
         }
-
-        .home-card .card-body .card-meta {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.7rem;
-            color: #888;
+        .movie-info .meta {
             display: flex;
-            gap: 12px;
-        }
-
-        .home-card .card-body .card-meta .rating {
-            color: #f5b342;
-        }
-
-        .home-card .card-body .card-meta i {
-            margin-left: 3px;
-        }
-
-        /* ===== آمار استودیو ===== */
-        .studio-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 16px;
-            background: white;
-            border-radius: 20px;
-            padding: 24px 20px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-            margin-bottom: 40px;
-        }
-        body.dark-mode .studio-stats {
-            background: #252525;
-        }
-
-        .studio-stats .stat-item {
-            text-align: center;
-        }
-
-        .studio-stats .stat-item .stat-number {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #B61C1C;
-        }
-
-        .studio-stats .stat-item .stat-label {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.8rem;
-            color: #888;
-        }
-
-        /* ===== درباره استودیو ===== */
-        .studio-about {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        body.dark-mode .studio-about {
-            background: #252525;
-        }
-
-        .studio-about h2 {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .studio-about h2 span {
-            color: #B61C1C;
-        }
-
-        .studio-about p {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.9;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        body.dark-mode .studio-about p {
-            color: #aaa;
-        }
-
-        .studio-about .about-tags {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 16px;
-        }
-
-        .studio-about .about-tags span {
-            background: rgba(182,28,28,0.06);
-            color: #B61C1C;
-            padding: 4px 16px;
-            border-radius: 30px;
+            justify-content: space-between;
             font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            font-family: 'Estedad', sans-serif;
+        }
+        .movie-info .meta .rating {
+            color: #f5b342;
             font-weight: 600;
-            font-family: 'Estedad', sans-serif;
-        }
-        body.dark-mode .studio-about .about-tags span {
-            background: rgba(182,28,28,0.15);
-        }
-
-        /* ===== OTHER PAGES ===== */
-        .page-header {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.7rem;
-            margin: 20px 0 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .page-header i {
-            color: #B61C1C;
-        }
-        .page-sub {
-            font-family: 'Estedad', sans-serif;
-            color: #888;
-            margin-bottom: 16px;
-            font-size: 0.9rem;
         }
 
         /* ============================================
-           GAME CARDS (زروکس گیمز)
+           GAME CARDS (زروکس گیمز) - مثل راکستار
            ============================================ */
         .game-cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
             margin-bottom: 40px;
         }
         .game-card {
-            background: white;
-            border-radius: 16px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.04);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             cursor: pointer;
-        }
-        body.dark-mode .game-card {
-            background: #252525;
+            position: relative;
         }
         .game-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 40px rgba(182,28,28,0.1);
+            transform: translateY(-10px) scale(1.01);
+            border-color: rgba(182,28,28,0.25);
+            box-shadow: 0 24px 60px rgba(182,28,28,0.12);
         }
 
         .game-card .game-card-img {
@@ -826,93 +718,121 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
-            pointer-events: none;
+            transition: transform 0.6s ease;
         }
         .game-card:hover .game-card-img img {
-            transform: scale(1.03);
+            transform: scale(1.06);
         }
 
         .game-card .game-card-img .game-status {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(6px);
+            top: 14px;
+            right: 14px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
             color: #ffa500;
-            padding: 4px 12px;
+            padding: 4px 14px;
             border-radius: 30px;
             font-size: 0.6rem;
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
-            border: 1px solid rgba(255,165,0,0.2);
+            border: 1px solid rgba(255,165,0,0.15);
             display: flex;
             align-items: center;
             gap: 6px;
         }
+        .game-card .game-card-img .game-status .sand-icon {
+            display: inline-block;
+            animation: sandShake 2.5s ease-in-out infinite;
+            font-size: 0.65rem;
+        }
+
+        @keyframes sandShake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(6deg); }
+            75% { transform: rotate(-6deg); }
+        }
+
+        .game-card .game-card-img .game-overlay-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 16px 16px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+        }
+        .game-card .game-card-img .game-overlay-bottom .game-title {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.1rem;
+            color: white;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        }
+        .game-card .game-card-img .game-overlay-bottom .game-dev {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.6);
+        }
 
         .game-card .game-card-body {
-            padding: 14px 16px 16px;
-        }
-        .game-card .game-card-body h3 {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.05rem;
-            margin-bottom: 2px;
-        }
-        body.dark-mode .game-card .game-card-body h3 {
-            color: #f0ebe5;
+            padding: 16px 18px 18px;
         }
         .game-card .game-card-body .game-genre {
             font-family: 'Estedad', sans-serif;
             font-size: 0.7rem;
-            color: #888;
+            color: rgba(255,255,255,0.4);
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
             margin-bottom: 6px;
+        }
+        .game-card .game-card-body .game-genre span {
+            background: rgba(182,28,28,0.1);
+            color: #B61C1C;
+            padding: 2px 10px;
+            border-radius: 30px;
         }
         .game-card .game-card-body .game-desc {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.8rem;
-            color: #666;
-            line-height: 1.6;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        body.dark-mode .game-card .game-card-body .game-desc {
-            color: #999;
-        }
         .game-card .game-card-body .game-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid #f0ebe5;
-        }
-        body.dark-mode .game-card .game-card-body .game-footer {
-            border-color: #333;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.04);
         }
         .game-card .game-card-body .game-footer .game-platform {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.65rem;
-            color: #888;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.4);
         }
         .game-card .game-card-body .game-footer .game-platform i {
             margin-left: 4px;
         }
         .game-card .game-card-body .game-footer .btn-view {
-            background: #B61C1C;
-            color: white;
+            background: rgba(182,28,28,0.15);
+            color: #B61C1C;
             border: none;
-            padding: 5px 16px;
+            padding: 6px 20px;
             border-radius: 30px;
             font-family: 'Estedad', sans-serif;
             font-weight: 600;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         .game-card .game-card-body .game-footer .btn-view:hover {
-            background: #8a1515;
+            background: #B61C1C;
+            color: white;
+            transform: scale(1.04);
         }
 
         /* ============================================
@@ -920,25 +840,24 @@
            ============================================ */
         .game-detail-hero {
             position: relative;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
             margin-bottom: 24px;
-            box-shadow: 0 6px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 50px rgba(0,0,0,0.4);
         }
         .game-detail-hero img {
             width: 100%;
             display: block;
             aspect-ratio: 16/9;
             object-fit: cover;
-            pointer-events: none;
         }
         .game-detail-hero .game-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 30px 24px 24px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            padding: 40px 30px 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
         }
         .game-detail-hero .game-overlay .game-badge {
             display: inline-flex;
@@ -946,46 +865,45 @@
             gap: 6px;
             background: #ff8c00;
             color: white;
-            padding: 3px 14px;
+            padding: 4px 16px;
             border-radius: 30px;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
             margin-bottom: 8px;
         }
         .game-detail-hero .game-overlay .game-badge .sand-icon {
-            font-size: 0.65rem;
+            display: inline-block;
+            animation: sandShake 2.5s ease-in-out infinite;
+            font-size: 0.7rem;
         }
         .game-detail-hero .game-overlay h1 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2.6rem;
             color: white;
             margin-bottom: 2px;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 30px rgba(0,0,0,0.5);
         }
         .game-detail-hero .game-overlay .game-tagline {
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.65);
-            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
         }
 
         .game-detail-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
+            gap: 14px;
             margin-bottom: 24px;
-            background: white;
+            background: rgba(255,255,255,0.03);
             border-radius: 18px;
-            padding: 16px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-        }
-        body.dark-mode .game-detail-info {
-            background: #252525;
+            padding: 18px 22px;
+            border: 1px solid rgba(255,255,255,0.04);
         }
         .game-detail-info .info-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         .game-detail-info .info-item i {
             color: #B61C1C;
@@ -996,14 +914,12 @@
         .game-detail-info .info-item .info-label {
             font-family: 'Estedad', sans-serif;
             font-size: 0.6rem;
-            color: #888;
+            color: rgba(255,255,255,0.3);
         }
         .game-detail-info .info-item .info-value {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
-        }
-        body.dark-mode .game-detail-info .info-item .info-value {
             color: #f0ebe5;
         }
 
@@ -1031,28 +947,26 @@
             overflow: hidden;
             aspect-ratio: 16/9;
             cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.04);
         }
         .game-detail-gallery .gallery-grid .gallery-item:hover {
             transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(182,28,28,0.12);
+            border-color: rgba(182,28,28,0.2);
+            box-shadow: 0 8px 40px rgba(182,28,28,0.1);
         }
         .game-detail-gallery .gallery-grid .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            pointer-events: none;
         }
 
         .game-detail-description {
-            background: white;
+            background: rgba(255,255,255,0.03);
             border-radius: 18px;
-            padding: 20px 24px;
+            padding: 22px 24px;
             margin-bottom: 24px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-        }
-        body.dark-mode .game-detail-description {
-            background: #252525;
+            border: 1px solid rgba(255,255,255,0.04);
         }
         .game-detail-description h3 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
@@ -1067,34 +981,28 @@
         }
         .game-detail-description p {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.9;
-        }
-        body.dark-mode .game-detail-description p {
-            color: #aaa;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 2;
         }
         .game-detail-description .genre-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-top: 10px;
+            margin-top: 12px;
         }
         .game-detail-description .genre-tags span {
-            background: rgba(182,28,28,0.08);
+            background: rgba(182,28,28,0.1);
             color: #B61C1C;
-            padding: 3px 12px;
+            padding: 4px 14px;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 600;
             font-family: 'Estedad', sans-serif;
         }
-        body.dark-mode .game-detail-description .genre-tags span {
-            background: rgba(182,28,28,0.2);
-        }
 
         /* ============================================
-           OLD GAMES
+           OLD GAMES (زروکس‌اُلد)
            ============================================ */
         .old-games-grid {
             display: grid;
@@ -1102,23 +1010,19 @@
             gap: 24px;
             margin-bottom: 40px;
         }
-
         .old-game-card {
-            background: white;
+            background: rgba(255,255,255,0.03);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            border: 1px solid rgba(255,255,255,0.04);
             transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             cursor: pointer;
             position: relative;
         }
-        body.dark-mode .old-game-card {
-            background: #252525;
-        }
-
         .old-game-card:hover {
             transform: translateY(-10px) scale(1.01);
-            box-shadow: 0 20px 60px rgba(182,28,28,0.15);
+            border-color: rgba(182,28,28,0.2);
+            box-shadow: 0 20px 60px rgba(182,28,28,0.1);
         }
 
         .old-game-card .card-img {
@@ -1132,17 +1036,15 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
-            pointer-events: none;
         }
         .old-game-card:hover .card-img img {
             transform: scale(1.06);
         }
-
         .old-game-card .card-img .card-year {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(182,28,28,0.9);
+            top: 14px;
+            right: 14px;
+            background: rgba(182,28,28,0.85);
             color: white;
             padding: 4px 14px;
             border-radius: 30px;
@@ -1151,27 +1053,25 @@
             font-family: 'Estedad', sans-serif;
             backdrop-filter: blur(4px);
         }
-
         .old-game-card .card-img .card-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 30px 16px 16px;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+            padding: 40px 16px 16px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
         }
-
         .old-game-card .card-img .card-overlay .card-title {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.1rem;
             color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
             margin-bottom: 2px;
         }
         .old-game-card .card-img .card-overlay .card-dev {
             font-family: 'Estedad', sans-serif;
             font-size: 0.7rem;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.6);
         }
 
         .old-game-card .card-body {
@@ -1179,34 +1079,28 @@
         }
         .old-game-card .card-body .card-genre {
             font-family: 'Estedad', sans-serif;
-            font-size: 0.75rem;
-            color: #888;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.4);
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
             margin-bottom: 6px;
         }
         .old-game-card .card-body .card-genre span {
-            background: rgba(182,28,28,0.06);
+            background: rgba(182,28,28,0.1);
             color: #B61C1C;
-            padding: 2px 12px;
+            padding: 2px 10px;
             border-radius: 30px;
-        }
-        body.dark-mode .old-game-card .card-body .card-genre span {
-            background: rgba(182,28,28,0.15);
         }
         .old-game-card .card-body .card-desc {
             font-family: 'Estedad', sans-serif;
             font-size: 0.85rem;
-            color: #666;
+            color: rgba(255,255,255,0.6);
             line-height: 1.7;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-        }
-        body.dark-mode .old-game-card .card-body .card-desc {
-            color: #999;
         }
         .old-game-card .card-body .card-footer {
             display: flex;
@@ -1214,19 +1108,16 @@
             align-items: center;
             margin-top: 12px;
             padding-top: 12px;
-            border-top: 1px solid #f0ebe5;
-        }
-        body.dark-mode .old-game-card .card-body .card-footer {
-            border-color: #333;
+            border-top: 1px solid rgba(255,255,255,0.04);
         }
         .old-game-card .card-body .card-footer .card-platform {
             font-family: 'Estedad', sans-serif;
             font-size: 0.7rem;
-            color: #888;
+            color: rgba(255,255,255,0.4);
         }
         .old-game-card .card-body .card-footer .btn-detail {
-            background: #B61C1C;
-            color: white;
+            background: rgba(182,28,28,0.15);
+            color: #B61C1C;
             border: none;
             padding: 6px 20px;
             border-radius: 30px;
@@ -1237,7 +1128,8 @@
             transition: all 0.3s ease;
         }
         .old-game-card .card-body .card-footer .btn-detail:hover {
-            background: #8a1515;
+            background: #B61C1C;
+            color: white;
             transform: scale(1.04);
         }
 
@@ -1249,14 +1141,13 @@
             border-radius: 24px;
             overflow: hidden;
             margin-bottom: 24px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 50px rgba(0,0,0,0.4);
         }
         .old-detail-hero img {
             width: 100%;
             display: block;
             aspect-ratio: 16/9;
             object-fit: cover;
-            pointer-events: none;
         }
         .old-detail-hero .detail-overlay {
             position: absolute;
@@ -1281,12 +1172,12 @@
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 2.4rem;
             color: white;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 30px rgba(0,0,0,0.5);
             margin-bottom: 2px;
         }
         .old-detail-hero .detail-overlay .detail-sub {
             font-family: 'Estedad', sans-serif;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.6);
             font-size: 0.95rem;
         }
 
@@ -1295,13 +1186,10 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 14px;
             margin-bottom: 24px;
-            background: white;
+            background: rgba(255,255,255,0.03);
             border-radius: 18px;
-            padding: 20px 24px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-        }
-        body.dark-mode .old-detail-info {
-            background: #252525;
+            padding: 18px 22px;
+            border: 1px solid rgba(255,255,255,0.04);
         }
         .old-detail-info .info-item {
             display: flex;
@@ -1318,14 +1206,12 @@
         .old-detail-info .info-item .info-label {
             font-family: 'Estedad', sans-serif;
             font-size: 0.6rem;
-            color: #888;
+            color: rgba(255,255,255,0.3);
         }
         .old-detail-info .info-item .info-value {
             font-family: 'Estedad', sans-serif;
             font-size: 0.85rem;
             font-weight: 600;
-        }
-        body.dark-mode .old-detail-info .info-item .info-value {
             color: #f0ebe5;
         }
 
@@ -1353,29 +1239,25 @@
             overflow: hidden;
             aspect-ratio: 16/9;
             cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.04);
         }
         .old-detail-gallery .gallery-grid .gallery-item:hover {
             transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(182,28,28,0.12);
+            border-color: rgba(182,28,28,0.2);
         }
         .old-detail-gallery .gallery-grid .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            pointer-events: none;
         }
 
         .old-detail-music {
             margin-bottom: 24px;
-            background: white;
+            background: rgba(255,255,255,0.03);
             border-radius: 18px;
             padding: 16px 20px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-        }
-        body.dark-mode .old-detail-music {
-            background: #252525;
+            border: 1px solid rgba(255,255,255,0.04);
         }
         .old-detail-music .music-title {
             font-family: 'Estedad', sans-serif;
@@ -1385,6 +1267,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: #f0ebe5;
         }
         .old-detail-music .music-title i {
             color: #B61C1C;
@@ -1394,16 +1277,16 @@
             border-radius: 30px;
             outline: none;
         }
+        .old-detail-music audio::-webkit-media-controls-panel {
+            background: rgba(182,28,28,0.1);
+        }
 
         .old-detail-description {
-            background: white;
+            background: rgba(255,255,255,0.03);
             border-radius: 18px;
-            padding: 20px 24px;
+            padding: 22px 24px;
             margin-bottom: 24px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-        }
-        body.dark-mode .old-detail-description {
-            background: #252525;
+            border: 1px solid rgba(255,255,255,0.04);
         }
         .old-detail-description h3 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
@@ -1419,12 +1302,9 @@
         .old-detail-description p {
             font-family: 'Estedad', sans-serif;
             font-size: 0.95rem;
-            color: #555;
+            color: rgba(255,255,255,0.7);
             line-height: 2;
             white-space: pre-line;
-        }
-        body.dark-mode .old-detail-description p {
-            color: #aaa;
         }
 
         .btn-back {
@@ -1433,120 +1313,23 @@
             gap: 8px;
             background: transparent;
             border: none;
-            color: #B61C1C;
+            color: rgba(255,255,255,0.5);
             font-family: 'Estedad', sans-serif;
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             padding: 6px 0;
             margin-bottom: 12px;
+            transition: all 0.3s ease;
         }
         .btn-back:hover {
-            color: #8a1515;
+            color: white;
             transform: translateX(-4px);
         }
 
-        /* ===== MOVIE GRID (برای صفحات ویدیوها) ===== */
-        .movie-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 40px;
-        }
-        .movie-card {
-            background: white;
-            border-radius: 14px;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-            max-width: 400px;
-            width: 100%;
-        }
-        body.dark-mode .movie-card {
-            background: #252525;
-        }
-        .movie-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(182,28,28,0.1);
-        }
-
-        .movie-poster {
-            position: relative;
-            padding-top: 56.25%;
-            background-size: cover;
-            background-position: center;
-            background-color: #1a1a1a;
-            pointer-events: none;
-        }
-        .movie-poster .badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(182,28,28,0.9);
-            color: white;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.55rem;
-            font-weight: 700;
-            font-family: 'Estedad', sans-serif;
-            z-index: 2;
-        }
-        .movie-poster .play-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
-            color: white;
-            font-size: 2.8rem;
-            opacity: 0;
-            transition: all 0.3s ease;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.5);
-            z-index: 2;
-        }
-        .movie-card:hover .play-icon {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
-        .movie-poster::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.3);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        .movie-card:hover .movie-poster::after {
-            opacity: 1;
-        }
-
-        .movie-info {
-            padding: 12px 14px;
-        }
-        .movie-info h4 {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        body.dark-mode .movie-info h4 {
-            color: #f0ebe5;
-        }
-        .movie-info .meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.7rem;
-            color: #888;
-            font-family: 'Estedad', sans-serif;
-        }
-        .movie-info .meta .rating {
-            color: #f5b342;
-            font-weight: 600;
-        }
-
-        /* ===== SEARCH ===== */
+        /* ============================================
+           SEARCH
+           ============================================ */
         .search-page {
             display: flex;
             flex-direction: column;
@@ -1569,33 +1352,25 @@
         }
         .search-page .subtitle {
             font-family: 'Estedad', sans-serif;
-            color: #888;
+            color: rgba(255,255,255,0.4);
             margin-bottom: 24px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
         .search-page .search-box-big {
             display: flex;
             align-items: center;
-            background: white;
+            background: rgba(255,255,255,0.04);
             border-radius: 50px;
             padding: 6px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.2);
             width: 100%;
             max-width: 600px;
-            border: 2px solid transparent;
+            border: 2px solid rgba(255,255,255,0.04);
             transition: all 0.3s ease;
-        }
-        body.dark-mode .search-page .search-box-big {
-            background: #252525;
-            border-color: #333;
-        }
-        body.dark-mode .search-page .search-box-big input {
-            color: #f0ebe5;
-            background: transparent;
         }
         .search-page .search-box-big:focus-within {
             border-color: #B61C1C;
-            box-shadow: 0 4px 32px rgba(182,28,28,0.1);
+            box-shadow: 0 4px 40px rgba(182,28,28,0.2);
         }
         .search-page .search-box-big input {
             flex: 1;
@@ -1605,6 +1380,10 @@
             font-family: 'Estedad', sans-serif;
             font-size: 0.95rem;
             background: transparent;
+            color: #f0ebe5;
+        }
+        .search-page .search-box-big input::placeholder {
+            color: rgba(255,255,255,0.3);
         }
         .search-page .search-box-big button {
             font-family: 'Estedad', sans-serif;
@@ -1632,20 +1411,18 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            background: white;
+            background: rgba(255,255,255,0.03);
             border-radius: 14px;
             padding: 10px 14px;
             margin-bottom: 10px;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255,255,255,0.04);
             transition: all 0.3s ease;
-        }
-        body.dark-mode .search-results .result-item {
-            background: #252525;
         }
         .search-results .result-item:hover {
             transform: translateX(-4px);
-            box-shadow: 0 8px 24px rgba(182,28,28,0.1);
+            border-color: rgba(182,28,28,0.2);
+            box-shadow: 0 8px 30px rgba(182,28,28,0.05);
         }
         .search-results .result-item img {
             width: 60px;
@@ -1653,7 +1430,6 @@
             border-radius: 10px;
             object-fit: cover;
             flex-shrink: 0;
-            pointer-events: none;
         }
         .search-results .result-item .info {
             flex: 1;
@@ -1662,14 +1438,12 @@
             font-family: 'Estedad', sans-serif;
             font-size: 0.85rem;
             font-weight: 700;
-        }
-        body.dark-mode .search-results .result-item .info h4 {
             color: #f0ebe5;
         }
         .search-results .result-item .info .meta {
             font-family: 'Estedad', sans-serif;
             font-size: 0.7rem;
-            color: #888;
+            color: rgba(255,255,255,0.4);
             display: flex;
             gap: 12px;
         }
@@ -1679,18 +1453,20 @@
         .search-results .no-result {
             text-align: center;
             font-family: 'Estedad', sans-serif;
-            color: #888;
+            color: rgba(255,255,255,0.4);
             padding: 40px 0;
             font-size: 0.95rem;
         }
         .search-results .no-result i {
             font-size: 2.2rem;
-            color: #ddd;
+            color: rgba(255,255,255,0.1);
             display: block;
             margin-bottom: 10px;
         }
 
-        /* ===== NOTIFICATIONS ===== */
+        /* ============================================
+           NOTIFICATIONS
+           ============================================ */
         .notifications-page {
             max-width: 700px;
             margin: 20px auto;
@@ -1716,17 +1492,13 @@
             height: 100%;
             object-fit: contain;
             display: block;
-            pointer-events: none;
         }
         .notifications-page .notif-hero h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #1a1a1a;
-        }
-        body.dark-mode .notifications-page .notif-hero h2 {
             color: #f0ebe5;
         }
         .notifications-page .notif-hero h2 i {
@@ -1735,20 +1507,20 @@
         .notifications-page .notif-hero .studio-badge {
             background: linear-gradient(135deg, #B61C1C, #8a1515);
             color: white;
-            padding: 3px 14px;
+            padding: 4px 16px;
             border-radius: 30px;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             font-weight: 700;
             font-family: 'Estedad', sans-serif;
             margin-top: 4px;
         }
 
         .notif-item {
-            background: white;
+            background: rgba(255,255,255,0.03);
             border-radius: 14px;
             padding: 14px 18px;
             margin-bottom: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255,255,255,0.04);
             display: flex;
             align-items: flex-start;
             gap: 12px;
@@ -1756,12 +1528,9 @@
             position: relative;
             transition: all 0.3s ease;
         }
-        body.dark-mode .notif-item {
-            background: #252525;
-        }
         .notif-item:hover {
-            box-shadow: 0 6px 24px rgba(182,28,28,0.08);
             transform: translateX(-4px);
+            border-color: rgba(182,28,28,0.15);
         }
         .notif-item .notif-icon {
             width: 38px;
@@ -1792,9 +1561,6 @@
             font-size: 0.9rem;
             font-weight: 700;
             margin-bottom: 4px;
-            color: #1a1a1a;
-        }
-        body.dark-mode .notif-item .notif-content h4 {
             color: #f0ebe5;
         }
         .notif-item .notif-content h4 .studio-tag {
@@ -1809,33 +1575,29 @@
         .notif-item .notif-content p {
             font-family: 'Estedad', sans-serif;
             font-size: 0.8rem;
-            color: #888;
+            color: rgba(255,255,255,0.5);
             line-height: 1.6;
-        }
-        body.dark-mode .notif-item .notif-content p {
-            color: #aaa;
         }
         .notif-item .notif-content .highlight {
             color: #B61C1C;
             font-weight: 700;
         }
 
-        /* ===== PROFILE ===== */
+        /* ============================================
+           PROFILE
+           ============================================ */
         .profile-page {
             max-width: 600px;
             margin: 20px auto;
             padding: 20px;
         }
         .profile-page .profile-header {
-            background: white;
+            background: rgba(255,255,255,0.03);
             border-radius: 18px;
             padding: 30px;
             text-align: center;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            border: 1px solid rgba(255,255,255,0.04);
             margin-bottom: 16px;
-        }
-        body.dark-mode .profile-page .profile-header {
-            background: #252525;
         }
         .profile-page .profile-avatar-big {
             width: 100px;
@@ -1848,34 +1610,28 @@
             margin: 0 auto 16px;
             font-size: 3rem;
             color: white;
-            box-shadow: 0 4px 20px rgba(182,28,28,0.3);
+            box-shadow: 0 4px 30px rgba(182,28,28,0.3);
         }
         .profile-page .profile-header .guest-badge {
             display: inline-block;
-            background: #f0ebe5;
-            color: #888;
-            padding: 3px 14px;
+            background: rgba(255,255,255,0.04);
+            color: rgba(255,255,255,0.4);
+            padding: 4px 16px;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 600;
             margin-bottom: 10px;
             font-family: 'Estedad', sans-serif;
         }
-        body.dark-mode .profile-page .profile-header .guest-badge {
-            background: #333;
-            color: #888;
-        }
         .profile-page .profile-header h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 4px;
-        }
-        body.dark-mode .profile-page .profile-header h2 {
             color: #f0ebe5;
         }
         .profile-page .profile-header p {
             font-family: 'Estedad', sans-serif;
-            color: #888;
+            color: rgba(255,255,255,0.4);
             font-size: 0.85rem;
         }
         .profile-page .profile-actions {
@@ -1886,7 +1642,7 @@
             flex-wrap: wrap;
         }
         .profile-page .profile-actions .btn {
-            padding: 8px 24px;
+            padding: 10px 24px;
             border-radius: 30px;
             border: none;
             font-family: 'Estedad', sans-serif;
@@ -1898,7 +1654,7 @@
         .profile-page .profile-actions .btn-primary {
             background: #B61C1C;
             color: white;
-            box-shadow: 0 4px 16px rgba(182,28,28,0.3);
+            box-shadow: 0 4px 24px rgba(182,28,28,0.3);
         }
         .profile-page .profile-actions .btn-primary:hover {
             background: #8a1515;
@@ -1915,35 +1671,26 @@
         }
 
         .profile-page .profile-menu {
-            background: white;
+            background: rgba(255,255,255,0.03);
             border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255,255,255,0.04);
             margin-top: 14px;
-        }
-        body.dark-mode .profile-page .profile-menu {
-            background: #252525;
         }
         .profile-page .profile-menu .menu-item {
             display: flex;
             align-items: center;
             gap: 14px;
             padding: 14px 18px;
-            border-bottom: 1px solid #f0ebe5;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
             cursor: pointer;
             font-family: 'Estedad', sans-serif;
-            color: #2d2a24;
+            color: rgba(255,255,255,0.7);
             transition: all 0.3s ease;
         }
-        body.dark-mode .profile-page .profile-menu .menu-item {
-            color: #f0ebe5;
-            border-color: #333;
-        }
         .profile-page .profile-menu .menu-item:hover {
-            background: #f8f4f0;
-        }
-        body.dark-mode .profile-page .profile-menu .menu-item:hover {
-            background: #333;
+            background: rgba(255,255,255,0.03);
+            color: white;
         }
         .profile-page .profile-menu .menu-item:last-child {
             border-bottom: none;
@@ -1955,29 +1702,25 @@
         }
         .profile-page .profile-menu .menu-item .arrow {
             margin-right: auto;
-            color: #ccc;
+            color: rgba(255,255,255,0.2);
             font-size: 0.75rem;
         }
 
-        /* ===== SETTINGS ===== */
+        /* ============================================
+           SETTINGS
+           ============================================ */
         .settings-box {
-            background: white;
+            background: rgba(255,255,255,0.03);
             border-radius: 18px;
             padding: 8px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-        }
-        body.dark-mode .settings-box {
-            background: #252525;
+            border: 1px solid rgba(255,255,255,0.04);
         }
         .settings-box .setting-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 14px 18px;
-            border-bottom: 1px solid #f0ebe5;
-        }
-        body.dark-mode .settings-box .setting-item {
-            border-color: #333;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
         }
         .settings-box .setting-item:last-child {
             border-bottom: none;
@@ -1988,8 +1731,6 @@
             gap: 10px;
             font-family: 'Estedad', sans-serif;
             font-size: 0.9rem;
-        }
-        body.dark-mode .settings-box .setting-item .setting-label {
             color: #f0ebe5;
         }
         .settings-box .setting-item .setting-label i {
@@ -2014,7 +1755,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: #ccc;
+            background: rgba(255,255,255,0.15);
             border-radius: 24px;
             transition: all 0.3s ease;
         }
@@ -2027,7 +1768,7 @@
             bottom: 3px;
             background: white;
             border-radius: 50%;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
         }
         .settings-box .setting-item .toggle-switch input:checked + .slider {
@@ -2036,8 +1777,24 @@
         .settings-box .setting-item .toggle-switch input:checked + .slider::before {
             transform: translateX(20px);
         }
+        .settings-box .setting-item select {
+            font-family: 'Estedad', sans-serif;
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            cursor: pointer;
+            outline: none;
+            padding: 4px 8px;
+            border-radius: 8px;
+        }
+        .settings-box .setting-item select:hover {
+            color: #f0ebe5;
+        }
 
-        /* ===== VIDEO ===== */
+        /* ============================================
+           VIDEO
+           ============================================ */
         .video-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -2048,7 +1805,7 @@
             background: #000;
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 16px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 80px rgba(0,0,0,0.5);
         }
         .video-wrapper iframe {
             position: absolute;
@@ -2063,15 +1820,16 @@
         }
         .video-info-section h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 4px;
+            color: #f0ebe5;
         }
         .video-info-section .video-meta {
             display: flex;
             gap: 14px;
             font-family: 'Estedad', sans-serif;
             font-size: 0.8rem;
-            color: #888;
+            color: rgba(255,255,255,0.4);
             margin-bottom: 10px;
             flex-wrap: wrap;
         }
@@ -2083,25 +1841,19 @@
 
         .description-wrapper {
             position: relative;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
             padding: 14px 0;
-        }
-        body.dark-mode .description-wrapper {
-            border-color: #333;
         }
         .description-text {
             font-family: 'Estedad', sans-serif;
             font-size: 0.9rem;
-            color: #555;
+            color: rgba(255,255,255,0.6);
             line-height: 1.8;
             max-height: 70px;
             overflow: hidden;
             transition: max-height 0.4s ease;
             white-space: pre-line;
-        }
-        body.dark-mode .description-text {
-            color: #aaa;
         }
         .description-text.expanded {
             max-height: 500px;
@@ -2137,6 +1889,10 @@
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.2rem;
             margin-bottom: 14px;
+            color: #f0ebe5;
+        }
+        .comments-section h3 i {
+            color: #B61C1C;
         }
         .comment-box {
             display: flex;
@@ -2146,21 +1902,20 @@
         .comment-box input {
             flex: 1;
             padding: 10px 16px;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(255,255,255,0.06);
             border-radius: 30px;
             font-family: 'Estedad', sans-serif;
             outline: none;
-            background: white;
+            background: rgba(255,255,255,0.03);
+            color: #f0ebe5;
             transition: all 0.3s ease;
         }
-        body.dark-mode .comment-box input {
-            background: #252525;
-            border-color: #333;
-            color: #f0ebe5;
+        .comment-box input::placeholder {
+            color: rgba(255,255,255,0.3);
         }
         .comment-box input:focus {
             border-color: #B61C1C;
-            box-shadow: 0 0 0 3px rgba(182,28,28,0.08);
+            box-shadow: 0 0 0 4px rgba(182,28,28,0.1);
         }
         .comment-box button {
             font-family: 'Estedad', sans-serif;
@@ -2177,15 +1932,14 @@
             background: #8a1515;
         }
 
-        /* ===== FOOTER ===== */
+        /* ============================================
+           FOOTER (مثل راکستار)
+           ============================================ */
         footer {
-            margin-top: 50px;
-            padding: 30px 0 16px;
+            margin-top: 60px;
+            padding: 40px 0 20px;
             text-align: center;
-            border-top: 1px solid rgba(0,0,0,0.06);
-        }
-        body.dark-mode footer {
-            border-color: #333;
+            border-top: 1px solid rgba(255,255,255,0.04);
         }
         footer h2 {
             font-family: 'Ardekan', 'Estedad', sans-serif;
@@ -2193,36 +1947,60 @@
         }
         footer p {
             font-family: 'Estedad', sans-serif;
-            color: #888;
+            color: rgba(255,255,255,0.3);
         }
-        body.dark-mode footer p {
-            color: #666;
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-family: 'Estedad', sans-serif;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: white;
         }
         .footer-social {
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin: 14px 0;
+            margin: 16px 0;
         }
         .footer-social a {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background: rgba(182,28,28,0.08);
-            color: #B61C1C;
+            background: rgba(255,255,255,0.04);
+            color: rgba(255,255,255,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.04);
         }
         .footer-social a:hover {
             background: #B61C1C;
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            border-color: #B61C1C;
+        }
+        .footer-bottom {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.2);
+            margin-top: 12px;
         }
 
-        /* ===== IMAGE MODAL ===== */
+        /* ============================================
+           IMAGE MODAL
+           ============================================ */
         #imageModal {
             display: none;
             position: fixed;
@@ -2230,9 +2008,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             z-index: 9999;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(16px);
             cursor: pointer;
             align-items: center;
             justify-content: center;
@@ -2244,105 +2022,100 @@
         #imageModal img {
             max-width: 95%;
             max-height: 95%;
-            border-radius: 14px;
-            box-shadow: 0 16px 60px rgba(0,0,0,0.5);
+            border-radius: 16px;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.6);
             object-fit: contain;
-            pointer-events: none;
         }
         #imageModal .modal-close {
             position: absolute;
-            top: 16px;
-            left: 16px;
-            background: rgba(255,255,255,0.1);
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.05);
             border: none;
             color: white;
             font-size: 1.6rem;
             cursor: pointer;
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 50%;
             backdrop-filter: blur(8px);
             transition: all 0.3s ease;
         }
         #imageModal .modal-close:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
             transform: rotate(90deg);
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
         @media (max-width: 992px) {
             .hamburger { display: flex; }
             .nav-links { display: none; }
-            .navbar { border-radius: 50px; padding: 10px 20px; min-height: 66px; margin: 12px 0 16px 0; }
+            .navbar { border-radius: 50px; padding: 10px 20px; min-height: 64px; margin: 12px 0 16px 0; }
             .mobile-overlay { display: none; }
             .mobile-overlay.active { display: block; }
             .game-cards-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
             .old-games-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-            .home-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+            .hero-slider { height: 360px; }
+            .hero-content h2 { font-size: 2rem; }
         }
 
         @media (max-width: 768px) {
-            .navbar { border-radius: 40px; padding: 8px 16px; min-height: 58px; margin: 10px 0 14px 0; }
+            .navbar { border-radius: 40px; padding: 8px 16px; min-height: 56px; margin: 10px 0 14px 0; }
             .logo .logo-icon { width: 34px; height: 34px; font-size: 1.1rem; border-radius: 8px; }
-            .logo .logo-text { font-size: 1.4rem; }
-            .nav-actions .action-btn { width: 40px; height: 40px; font-size: 1rem; }
-            .nav-actions .action-btn .badge { width: 17px; height: 17px; font-size: 0.5rem; }
-            .profile-avatar { width: 38px; height: 38px; font-size: 0.9rem; }
+            .logo .logo-text { font-size: 1.3rem; }
+            .nav-actions .action-btn { width: 38px; height: 38px; font-size: 1rem; }
+            .nav-actions .action-btn .badge { width: 16px; height: 16px; font-size: 0.45rem; }
+            .profile-avatar { width: 36px; height: 36px; font-size: 0.85rem; }
             .hamburger span { width: 22px; height: 2.5px; }
             .hamburger { gap: 4px; padding: 6px; }
             .mobile-drawer { width: 300px; padding: 24px 20px; }
-            .hero-slider { height: 280px; }
-            .hero-slide { padding: 24px; }
-            .hero-content h2 { font-size: 1.5rem; }
-            .hero-content p { font-size: 0.8rem; }
-            .home-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+            .hero-slider { height: 300px; }
+            .hero-slide { padding: 30px; }
+            .hero-content h2 { font-size: 1.6rem; }
+            .hero-content p { font-size: 0.85rem; }
             .game-cards-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
             .old-games-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
             .game-detail-hero .game-overlay h1 { font-size: 1.6rem; }
             .game-detail-hero .game-overlay { padding: 20px 16px 16px; }
-            .game-detail-gallery .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
             .game-detail-info { grid-template-columns: 1fr 1fr; padding: 12px 14px; gap: 10px; }
             .old-detail-hero .detail-overlay h1 { font-size: 1.6rem; }
             .old-detail-hero .detail-overlay { padding: 20px 16px 16px; }
-            .old-detail-gallery .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
             .old-detail-info { grid-template-columns: 1fr 1fr; padding: 12px 14px; gap: 10px; }
             .search-page .logo-big { width: 380px; }
             .search-page .search-box-big { flex-wrap: wrap; background: transparent; box-shadow: none; border: none; gap: 8px; }
-            .search-page .search-box-big input { background: white; border-radius: 30px; padding: 12px 16px; border: 1px solid #eee; width: 100%; }
-            body.dark-mode .search-page .search-box-big input { background: #252525; border-color: #333; }
+            .search-page .search-box-big input { background: rgba(255,255,255,0.04); border-radius: 30px; padding: 12px 16px; border: 1px solid rgba(255,255,255,0.06); width: 100%; }
             .search-page .search-box-big button { width: 100%; justify-content: center; }
             .notifications-page .notif-hero .notif-icon-big { width: 280px; height: 280px; }
-            .studio-stats { grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 16px; }
-            .studio-about p { font-size: 0.85rem; }
         }
 
         @media (max-width: 480px) {
-            .navbar { border-radius: 30px; padding: 6px 14px; min-height: 52px; margin: 8px 0 12px 0; }
+            .navbar { border-radius: 30px; padding: 6px 14px; min-height: 50px; margin: 8px 0 12px 0; }
             .logo .logo-icon { width: 30px; height: 30px; font-size: 0.95rem; border-radius: 6px; }
-            .logo .logo-text { font-size: 1.2rem; }
-            .nav-actions .action-btn { width: 36px; height: 36px; font-size: 0.9rem; }
-            .nav-actions .action-btn .badge { width: 16px; height: 16px; font-size: 0.45rem; top: -1px; left: -1px; border-width: 1.5px; }
+            .logo .logo-text { font-size: 1.1rem; }
+            .nav-actions .action-btn { width: 34px; height: 34px; font-size: 0.9rem; }
+            .nav-actions .action-btn .badge { width: 15px; height: 15px; font-size: 0.4rem; top: -1px; left: -1px; border-width: 1.5px; }
             .profile-avatar { width: 32px; height: 32px; font-size: 0.8rem; }
             .hamburger span { width: 18px; height: 2px; }
             .hamburger { gap: 3px; padding: 5px; }
             .mobile-drawer { width: 280px; padding: 20px 16px; }
-            .hero-slider { height: 200px; }
-            .hero-slide { padding: 14px; }
-            .hero-content h2 { font-size: 1.1rem; }
-            .hero-content p { font-size: 0.65rem; margin-bottom: 8px; }
-            .hero-content .btn-play { padding: 6px 16px; font-size: 0.7rem; }
-            .home-grid { grid-template-columns: 1fr; gap: 14px; }
+            .hero-slider { height: 240px; }
+            .hero-slide { padding: 20px; }
+            .hero-content h2 { font-size: 1.2rem; }
+            .hero-content p { font-size: 0.75rem; margin-bottom: 10px; }
+            .hero-content .btn-play { padding: 8px 18px; font-size: 0.75rem; }
             .game-cards-grid { grid-template-columns: 1fr; gap: 14px; }
             .old-games-grid { grid-template-columns: 1fr; gap: 14px; }
             .game-detail-hero .game-overlay h1 { font-size: 1.2rem; }
-            .game-detail-hero .game-overlay .game-tagline { font-size: 0.75rem; }
-            .game-detail-hero .game-overlay { padding: 12px 12px 12px; }
+            .game-detail-hero .game-overlay .game-tagline { font-size: 0.8rem; }
+            .game-detail-hero .game-overlay { padding: 16px 12px 12px; }
             .game-detail-info { grid-template-columns: 1fr; padding: 10px 12px; gap: 8px; }
             .game-detail-gallery .gallery-grid { grid-template-columns: 1fr; }
             .game-detail-description { padding: 14px; }
             .game-detail-description p { font-size: 0.85rem; }
             .old-detail-hero .detail-overlay h1 { font-size: 1.2rem; }
             .old-detail-hero .detail-overlay .detail-sub { font-size: 0.8rem; }
-            .old-detail-hero .detail-overlay { padding: 14px 12px 12px; }
+            .old-detail-hero .detail-overlay { padding: 16px 12px 12px; }
             .old-detail-info { grid-template-columns: 1fr; padding: 10px 12px; gap: 8px; }
             .old-detail-gallery .gallery-grid { grid-template-columns: 1fr; }
             .old-detail-description { padding: 14px; }
@@ -2356,11 +2129,8 @@
             .settings-box .setting-item { flex-wrap: wrap; gap: 6px; }
             #imageModal img { max-width: 100%; max-height: 90%; }
             #imageModal .modal-close { top: 10px; left: 10px; font-size: 1.2rem; padding: 4px 10px; }
-            .studio-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px; }
-            .studio-stats .stat-item .stat-number { font-size: 1.5rem; }
-            .studio-about { padding: 20px; }
-            .studio-about h2 { font-size: 1.3rem; }
-            .studio-about .about-tags span { font-size: 0.65rem; padding: 3px 10px; }
+            .footer-links { gap: 12px; }
+            .footer-links a { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -2422,7 +2192,6 @@
         <!-- ===== HOME ===== -->
         <!-- ============================================ -->
         <div class="page active" id="page-home">
-            <!-- اسلایدر هیرو -->
             <div class="hero-slider" id="heroSlider">
                 <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/n7157_gta_6_thumbnail_.png');">
                     <div class="hero-content">
@@ -2436,7 +2205,7 @@
                 </div>
                 <div class="hero-slide" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
                     <div class="hero-content">
-                        <span class="badge">🎯 محبوب</span>
+                        <span class="badge">ترسناک</span>
                         <h2>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h2>
                         <p>😨🏚️ Outlast | یه شب توی جهنم! امشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀</p>
                         <button class="btn-play" onclick="event.stopPropagation(); openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
@@ -2461,175 +2230,57 @@
                 </div>
             </div>
 
-            <!-- ===== آمار استودیو ===== -->
-            <div class="studio-stats">
-                <div class="stat-item">
-                    <div class="stat-number">۳</div>
-                    <div class="stat-label">🎬 ویدیو</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">۱</div>
-                    <div class="stat-label">🎮 بازی جدید</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">۳</div>
-                    <div class="stat-label">🕹️ بازی کلاسیک</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">۲۶</div>
-                    <div class="stat-label">👥 دنبال‌کننده</div>
-                </div>
+            <div class="section-header">
+                <h2><i class="fas fa-fire"></i> جدیدترین ویدیوها</h2>
+                <a href="#" onclick="showPage('movies'); return false;">مشاهده همه</a>
             </div>
 
-            <!-- ===== جدیدترین ویدیوها ===== -->
-            <div class="home-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-film"></i> جدیدترین ویدیوها</h2>
-                    <a onclick="showPage('movies')">مشاهده همه</a>
-                </div>
-                <div class="home-grid">
-                    <div class="home-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/inbr16i/vt/frame', 'تریلر و گیم‌پلی GTA6 | راکستار ترکونده!', '🚨🔥 GTA 6 | Zerox Edition بالاخره رسید! 🔥🚨\n\nسلام رفقااا! 😎🎮\nویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و گیم‌پلی بازی رو باهم بررسی می‌کنیم. 👀🔥\n\nاز گرافیک و جزئیات خفن بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه‌چی رو توی این ویدیو می‌بینیم! 😳💥\n\nاگه عاشق GTA هستی، این ویدیو رو از دست نده! 🚗💨\n\nتهیه شده در Zerox studios', '5:11', '9.2')">
-                        <div class="card-img">
-                            <img src="https://cdn.imgurl.ir/uploads/n7157_gta_6_thumbnail_.png" alt="GTA6" />
-                            <span class="card-badge">🔥 جدید</span>
-                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
-                        </div>
-                        <div class="card-body">
-                            <h4>تریلر و گیم‌پلی GTA6 | راکستار ترکونده!</h4>
-                            <div class="card-meta">
-                                <span><i class="fas fa-clock"></i> 5:11</span>
-                                <span class="rating"><i class="fas fa-star"></i> 9.2</span>
-                            </div>
-                        </div>
+            <div class="movie-grid" id="movieGrid">
+                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/inbr16i/vt/frame', 'تریلر و گیم‌پلی GTA6 | راکستار ترکونده!', '🚨🔥 GTA 6 | Zerox Edition بالاخره رسید! 🔥🚨\n\nسلام رفقااا! 😎🎮\nویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و گیم‌پلی بازی رو باهم بررسی می‌کنیم. 👀🔥\n\nاز گرافیک و جزئیات خفن بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه‌چی رو توی این ویدیو می‌بینیم! 😳💥\n\nاگه عاشق GTA هستی، این ویدیو رو از دست نده! 🚗💨\n\nتهیه شده در Zerox studios', '5:11', '9.2')">
+                    <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/n7157_gta_6_thumbnail_.png');">
+                        <span class="badge">🔥 جدید</span>
+                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
-                    <div class="home-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
-                        <div class="card-img">
-                            <img src="https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png" alt="Outlast" />
-                            <span class="card-badge">🎯 محبوب</span>
-                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
-                        </div>
-                        <div class="card-body">
-                            <h4>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h4>
-                            <div class="card-meta">
-                                <span><i class="fas fa-clock"></i> ۵ دقیقه</span>
-                                <span class="rating"><i class="fas fa-star"></i> 9.2</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="home-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
-                        <div class="card-img">
-                            <img src="https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg" alt="No Human" />
-                            <span class="card-badge">🎯 ویژه</span>
-                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
-                        </div>
-                        <div class="card-body">
-                            <h4>داستان بازی | no im not a human</h4>
-                            <div class="card-meta">
-                                <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
-                                <span class="rating"><i class="fas fa-star"></i> 8.7</span>
-                            </div>
+                    <div class="movie-info">
+                        <h4>تریلر و گیم‌پلی GTA6 | راکستار ترکونده!</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> 5:11</span>
+                            <span class="rating"><i class="fas fa-star"></i> 9.2</span>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- ===== جدیدترین بازی‌ها (زروکس گیمز) ===== -->
-            <div class="home-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-gamepad"></i> جدیدترین بازی‌ها</h2>
-                    <a onclick="showPage('games')">مشاهده همه</a>
-                </div>
-                <div class="home-grid">
-                    <div class="home-card" onclick="showPage('game-silentgears')">
-                        <div class="card-img">
-                            <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" />
-                            <span class="card-badge">⏳ در دست توسعه</span>
-                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
-                        </div>
-                        <div class="card-body">
-                            <h4>SilentGears | چرخ‌دنده‌ساکت</h4>
-                            <div class="card-meta">
-                                <span><i class="fas fa-tag"></i> اکشن-ماجرایی</span>
-                                <span><i class="fas fa-desktop"></i> PC | اندروید</span>
-                            </div>
+                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
+                    <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
+                        <span class="badge">جدید</span>
+                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="movie-info">
+                        <h4>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> ۵ دقیقه</span>
+                            <span class="rating"><i class="fas fa-star"></i> 9.2</span>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- ===== بازی‌های کلاسیک (زروکس‌اُلد) ===== -->
-            <div class="home-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-history"></i> بازی‌های کلاسیک</h2>
-                    <a onclick="showPage('oldgames')">مشاهده همه</a>
-                </div>
-                <div class="home-grid">
-                    <div class="home-card" onclick="showOldDetail(3)">
-                        <div class="card-img">
-                            <img src="https://uploadkon.ir/uploads/724812_26gta-sa-Zerox-.jpg" alt="GTA SA" />
-                            <span class="card-badge">۲۰۰۴</span>
-                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
-                        </div>
-                        <div class="card-body">
-                            <h4>Grand Theft Auto: San Andreas</h4>
-                            <div class="card-meta">
-                                <span><i class="fas fa-tag"></i> Rockstar</span>
-                                <span><i class="fas fa-star"></i> ۹.۶</span>
-                            </div>
+                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
+                    <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
+                        <span class="badge">ویژه</span>
+                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="movie-info">
+                        <h4>داستان بازی | no im not a human</h4>
+                        <div class="meta">
+                            <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
+                            <span class="rating"><i class="fas fa-star"></i> 8.7</span>
                         </div>
                     </div>
-                    <div class="home-card" onclick="showOldDetail(2)">
-                        <div class="card-img">
-                            <img src="https://cdn.imgurl.ir/uploads/f82900_____Zerox_.jpg" alt="Prince of Persia" />
-                            <span class="card-badge">۱۹۸۹</span>
-                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
-                        </div>
-                        <div class="card-body">
-                            <h4>Prince of Persia</h4>
-                            <div class="card-meta">
-                                <span><i class="fas fa-tag"></i> Jordan Mechner</span>
-                                <span><i class="fas fa-star"></i> ۸.۹</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="home-card" onclick="showOldDetail(1)">
-                        <div class="card-img">
-                            <img src="https://uploadkon.ir/uploads/4c9d09_26god-of-war-Zerox-ir-28.jpg" alt="God of War" />
-                            <span class="card-badge">۲۰۰۵</span>
-                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
-                        </div>
-                        <div class="card-body">
-                            <h4>God of War</h4>
-                            <div class="card-meta">
-                                <span><i class="fas fa-tag"></i> Santa Monica</span>
-                                <span><i class="fas fa-star"></i> ۹.۵</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== درباره استودیو ===== -->
-            <div class="studio-about">
-                <h2>🎬 <span>Zerox</span> Studio</h2>
-                <p>
-                    استودیوی خلاق Zerox، جایی برای ساختن، تجربه کردن و متفاوت بودن. از دنیای بازی و گیمینگ گرفته تا طراحی، ویدیو، موسیقی و پروژه‌های خلاقانه، هدف ما اینه که هر چیزی که می‌سازیم یه هویت خاص خودش رو داشته باشه.
-                </p>
-                <div class="about-tags">
-                    <span>🎮 بازی‌سازی</span>
-                    <span>🎬 تولید محتوا</span>
-                    <span>🎨 طراحی</span>
-                    <span>🎵 موسیقی</span>
-                    <span>💻 پروژه‌های دیجیتال</span>
                 </div>
             </div>
         </div>
 
         <!-- ============================================ -->
-        <!-- ===== سایر صفحات ===== -->
-        <!-- ============================================ -->
-
         <!-- ===== SEARCH ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
@@ -2646,7 +2297,9 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== NOTIFICATIONS ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-notifications">
             <div class="notifications-page">
                 <div class="notif-hero">
@@ -2667,7 +2320,9 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== PROFILE ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-profile">
             <div class="profile-page">
                 <div class="profile-header">
@@ -2693,7 +2348,9 @@
             </div>
         </div>
 
+        <!-- ============================================ -->
         <!-- ===== SETTINGS ===== -->
+        <!-- ============================================ -->
         <div class="page" id="page-settings">
             <h2 class="page-header"><i class="fas fa-cog"></i> تنظیمات</h2>
             <p class="page-sub">تنظیمات حساب کاربری و برنامه</p>
@@ -2714,20 +2371,20 @@
                 </div>
                 <div class="setting-item">
                     <span class="setting-label"><i class="fas fa-video"></i> کیفیت پخش</span>
-                    <select style="font-family:'Estedad',sans-serif;background:transparent;border:none;color:#888;font-size:0.8rem;cursor:pointer;outline:none;padding:4px 8px;border-radius:8px;">
+                    <select>
                         <option>خودکار</option><option>۴۸۰p</option><option>۷۲۰p</option><option>۱۰۸۰p</option>
                     </select>
                 </div>
                 <div class="setting-item">
                     <span class="setting-label"><i class="fas fa-globe"></i> زبان</span>
-                    <select style="font-family:'Estedad',sans-serif;background:transparent;border:none;color:#888;font-size:0.8rem;cursor:pointer;outline:none;padding:4px 8px;border-radius:8px;">
+                    <select>
                         <option>فارسی</option><option>English</option>
                     </select>
                 </div>
                 <div class="setting-item" style="border-bottom:none;justify-content:center;gap:8px;padding:14px 18px;">
-                    <span style="font-family:'Estedad',sans-serif;color:#888;font-size:0.7rem;">Zerox Studio v2.0</span>
-                    <span style="color:#ddd;">•</span>
-                    <span style="font-family:'Estedad',sans-serif;color:#888;font-size:0.7rem;">© 2026</span>
+                    <span style="font-family:'Estedad',sans-serif;color:rgba(255,255,255,0.3);font-size:0.7rem;">Zerox Studio v2.0</span>
+                    <span style="color:rgba(255,255,255,0.1);">•</span>
+                    <span style="font-family:'Estedad',sans-serif;color:rgba(255,255,255,0.3);font-size:0.7rem;">© 2026</span>
                 </div>
             </div>
         </div>
@@ -2782,28 +2439,34 @@
                     <div class="game-card-img">
                         <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" />
                         <span class="game-status"><i class="fas fa-hourglass-half sand-icon"></i> در دست توسعه</span>
+                        <div class="game-overlay-bottom">
+                            <div class="game-title">SilentGears</div>
+                            <div class="game-dev">Zerox Studios</div>
+                        </div>
                     </div>
                     <div class="game-card-body">
-                        <h3>SilentGears | چرخ‌دنده‌ساکت</h3>
-                        <div class="game-genre">اکشن-ماجرایی • نقش‌آفرینی</div>
+                        <div class="game-genre">
+                            <span>اکشن-ماجرایی</span>
+                            <span>نقش‌آفرینی</span>
+                        </div>
                         <div class="game-desc">یک بازی پساآخرالزمانی با گیم‌پلی ریتم‌محور و داستانی عمیق...</div>
                         <div class="game-footer">
                             <span class="game-platform"><i class="fas fa-mobile-alt"></i> <i class="fas fa-desktop"></i> اندروید | PC</span>
-                            <button class="btn-view" onclick="event.stopPropagation(); showPage('game-silentgears')">مشاهده بازی</button>
+                            <button class="btn-view" onclick="event.stopPropagation(); showPage('game-silentgears')">مشاهده</button>
                         </div>
                     </div>
                 </div>
-                <div class="game-card" style="opacity:0.5;cursor:default;">
-                    <div class="game-card-img" style="background:#2a2a2a;display:flex;align-items:center;justify-content:center;">
-                        <span style="color:#666;font-family:'Estedad',sans-serif;font-size:1.2rem;">🎮</span>
+                <div class="game-card" style="opacity:0.4;cursor:default;">
+                    <div class="game-card-img" style="background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;">
+                        <span style="color:rgba(255,255,255,0.1);font-family:'Estedad',sans-serif;font-size:3rem;">🎮</span>
                     </div>
                     <div class="game-card-body">
-                        <h3 style="color:#888;">پروژه بعدی</h3>
-                        <div class="game-genre">به زودی...</div>
-                        <div class="game-desc" style="color:#999;">بازی جدید استودیو Zerox در حال ساخت است</div>
+                        <h3 style="color:rgba(255,255,255,0.2);">پروژه بعدی</h3>
+                        <div class="game-genre"><span style="color:rgba(255,255,255,0.2);">به زودی...</span></div>
+                        <div class="game-desc" style="color:rgba(255,255,255,0.2);">بازی جدید استودیو Zerox در حال ساخت است</div>
                         <div class="game-footer">
-                            <span class="game-platform">در دست توسعه</span>
-                            <span style="font-family:'Estedad',sans-serif;font-size:0.65rem;color:#666;">به زودی</span>
+                            <span class="game-platform" style="color:rgba(255,255,255,0.15);">در دست توسعه</span>
+                            <span style="font-family:'Estedad',sans-serif;font-size:0.65rem;color:rgba(255,255,255,0.15);">به زودی</span>
                         </div>
                     </div>
                 </div>
@@ -2830,7 +2493,7 @@
                 <div class="info-item"><i class="fas fa-clock"></i><div><div class="info-label">مدت زمان</div><div class="info-value">۱۲ تا ۱۶ ساعت</div></div></div>
                 <div class="info-item"><i class="fas fa-user"></i><div><div class="info-label">حالت بازی</div><div class="info-value">تکنفره، روایت خطی</div></div></div>
                 <div class="info-item"><i class="fas fa-flag-checkered"></i><div><div class="info-label">پایان‌ها</div><div class="info-value">۳ پایان مختلف</div></div></div>
-                <div class="info-item" style="grid-column:1/-1;background:rgba(255,165,0,0.08);border-radius:10px;padding:8px 14px;border-right:3px solid #ffa500;">
+                <div class="info-item" style="grid-column:1/-1;background:rgba(255,165,0,0.05);border-radius:10px;padding:8px 14px;border-right:3px solid #ffa500;">
                     <i class="fas fa-hourglass-half sand-icon" style="color:#ffa500;"></i>
                     <div><div class="info-label" style="color:#ffa500;">وضعیت</div><div class="info-value" style="color:#ffa500;">در دست توسعه • تاریخ انتشار نامشخص</div></div>
                 </div>
@@ -2850,7 +2513,7 @@
                 <h3><i class="fas fa-info-circle"></i> درباره بازی</h3>
                 <p>🎮 <strong>SilentGears | چرخ‌دنده‌ساکت</strong> یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط <strong>Zerox Studios</strong> ساخته شده.</p>
                 <p style="margin-top:10px;">داستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخ‌دنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از <strong>۳ پایان مختلف</strong> ختم می‌شود.</p>
-                <div style="margin-top:14px;padding:14px;background:rgba(255,165,0,0.06);border-radius:10px;border-right:3px solid #ffa500;">
+                <div style="margin-top:14px;padding:14px;background:rgba(255,165,0,0.05);border-radius:10px;border-right:3px solid #ffa500;">
                     <p style="font-family:'Estedad',sans-serif;font-size:0.85rem;color:#ffa500;font-weight:600;margin:0;"><i class="fas fa-hourglass-half sand-icon"></i> این بازی در حال حاضر در دست توسعه است و به زودی منتشر خواهد شد.</p>
                 </div>
                 <div class="genre-tags">
@@ -2908,20 +2571,32 @@
             </div>
         </div>
 
-        <!-- ===== FOOTER ===== -->
+        <!-- ============================================ -->
+        <!-- ===== FOOTER (مثل راکستار) ===== -->
+        <!-- ============================================ -->
         <footer>
             <h2>Zerox Studio</h2>
-            <p>پلتفرم سینمایی و سرگرمی دیجیتال</p>
+            <p>جایی برای ساختن، تجربه کردن و متفاوت بودن</p>
+            <div class="footer-links">
+                <a href="#" onclick="showPage('home')">خانه</a>
+                <a href="#" onclick="showPage('movies')">ویدیوها</a>
+                <a href="#" onclick="showPage('games')">بازی‌ها</a>
+                <a href="#" onclick="showPage('oldgames')">زروکس‌اُلد</a>
+                <a href="#" onclick="showPage('about')">درباره ما</a>
+            </div>
             <div class="footer-social">
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-telegram"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
-            <p style="font-size:0.65rem; margin-top:10px;">© 2026 Zerox Studio. تمامی حقوق محفوظ است.</p>
+            <div class="footer-bottom">© 2026 Zerox Studio. تمامی حقوق محفوظ است.</div>
         </footer>
     </div>
 
+    <!-- ============================================ -->
     <!-- ===== IMAGE MODAL ===== -->
+    <!-- ============================================ -->
     <div id="imageModal" onclick="closeImageModal()">
         <button class="modal-close" onclick="event.stopPropagation(); closeImageModal()">
             <i class="fas fa-times"></i>
