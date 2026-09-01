@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>Zerox Studio | VOD Platform</title>
     
+    <!-- فاویکون -->
     <link rel="icon" href="https://cdn.imgurl.ir/uploads/m73805_Negar_1788222943199.png" type="image/png" />
     <link rel="shortcut icon" href="https://cdn.imgurl.ir/uploads/m73805_Negar_1788222943199.png" type="image/png" />
     
@@ -14,7 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Ardekan:wght@400;700&display=swap" rel="stylesheet" />
 
     <style>
-        /* ===== استایل‌های قبلی ===== */
         * {
             margin: 0;
             padding: 0;
@@ -413,6 +413,366 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ============================================
+           HOME PAGE (جدید و کامل)
+           ============================================ */
+        .hero-slider {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            margin: 16px 0 30px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            height: 420px;
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+            transform: scale(1.04);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 600px;
+        }
+        .hero-content .badge {
+            display: inline-block;
+            background: #B61C1C;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-family: 'Estedad', sans-serif;
+        }
+        .hero-content h2 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 6px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .hero-content p {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 14px;
+            line-height: 1.6;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .hero-content .btn-play {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #B61C1C;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(182,28,28,0.3);
+            transition: all 0.3s ease;
+        }
+        .hero-content .btn-play:hover {
+            background: #8a1515;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(182,28,28,0.4);
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+        .slider-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slider-dots span.active {
+            background: white;
+            transform: scale(1.3);
+        }
+
+        /* ===== بخش‌های صفحه خانه ===== */
+        .home-section {
+            margin-bottom: 40px;
+        }
+
+        .home-section .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .home-section .section-header h2 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .home-section .section-header h2 i {
+            color: #B61C1C;
+        }
+
+        .home-section .section-header a {
+            font-family: 'Estedad', sans-serif;
+            color: #B61C1C;
+            text-decoration: none;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .home-section .section-header a:hover {
+            color: #8a1515;
+        }
+
+        /* ===== کارت‌های کوچک برای صفحه خانه ===== */
+        .home-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .home-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+        body.dark-mode .home-card {
+            background: #252525;
+        }
+
+        .home-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(182,28,28,0.1);
+        }
+
+        .home-card .card-img {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+
+        .home-card .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            pointer-events: none;
+        }
+
+        .home-card:hover .card-img img {
+            transform: scale(1.04);
+        }
+
+        .home-card .card-img .card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(182,28,28,0.9);
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            font-family: 'Estedad', sans-serif;
+            z-index: 2;
+        }
+
+        .home-card .card-img .card-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            color: white;
+            font-size: 3rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+            z-index: 2;
+        }
+
+        .home-card:hover .card-play {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .home-card .card-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.25);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .home-card:hover .card-img::after {
+            opacity: 1;
+        }
+
+        .home-card .card-body {
+            padding: 12px 14px 14px;
+        }
+
+        .home-card .card-body h4 {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        body.dark-mode .home-card .card-body h4 {
+            color: #f0ebe5;
+        }
+
+        .home-card .card-body .card-meta {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.7rem;
+            color: #888;
+            display: flex;
+            gap: 12px;
+        }
+
+        .home-card .card-body .card-meta .rating {
+            color: #f5b342;
+        }
+
+        .home-card .card-body .card-meta i {
+            margin-left: 3px;
+        }
+
+        /* ===== آمار استودیو ===== */
+        .studio-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            background: white;
+            border-radius: 20px;
+            padding: 24px 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            margin-bottom: 40px;
+        }
+        body.dark-mode .studio-stats {
+            background: #252525;
+        }
+
+        .studio-stats .stat-item {
+            text-align: center;
+        }
+
+        .studio-stats .stat-item .stat-number {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #B61C1C;
+        }
+
+        .studio-stats .stat-item .stat-label {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* ===== درباره استودیو ===== */
+        .studio-about {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        body.dark-mode .studio-about {
+            background: #252525;
+        }
+
+        .studio-about h2 {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .studio-about h2 span {
+            color: #B61C1C;
+        }
+
+        .studio-about p {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        body.dark-mode .studio-about p {
+            color: #aaa;
+        }
+
+        .studio-about .about-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .studio-about .about-tags span {
+            background: rgba(182,28,28,0.06);
+            color: #B61C1C;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'Estedad', sans-serif;
+        }
+        body.dark-mode .studio-about .about-tags span {
+            background: rgba(182,28,28,0.15);
+        }
+
+        /* ===== OTHER PAGES ===== */
         .page-header {
             font-family: 'Ardekan', 'Estedad', sans-serif;
             font-size: 1.7rem;
@@ -432,7 +792,7 @@
         }
 
         /* ============================================
-           GAME CARDS
+           GAME CARDS (زروکس گیمز)
            ============================================ */
         .game-cards-grid {
             display: grid;
@@ -1034,9 +1394,6 @@
             border-radius: 30px;
             outline: none;
         }
-        .old-detail-music audio::-webkit-media-controls-panel {
-            background: rgba(182,28,28,0.05);
-        }
 
         .old-detail-description {
             background: white;
@@ -1089,135 +1446,7 @@
             transform: translateX(-4px);
         }
 
-        /* ===== HERO SLIDER ===== */
-        .hero-slider {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            margin: 16px 0 24px;
-            box-shadow: 0 6px 30px rgba(0,0,0,0.08);
-            height: 400px;
-        }
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: flex-end;
-            padding: 40px;
-            transform: scale(1.04);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .hero-slide.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .hero-slide::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 65%;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-            max-width: 600px;
-        }
-        .hero-content .badge {
-            display: inline-block;
-            background: #B61C1C;
-            padding: 3px 14px;
-            border-radius: 30px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-family: 'Estedad', sans-serif;
-        }
-        .hero-content h2 {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 6px;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
-        }
-        .hero-content p {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-bottom: 14px;
-            line-height: 1.6;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        .hero-content .btn-play {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #B61C1C;
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-family: 'Estedad', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(182,28,28,0.3);
-        }
-        .hero-content .btn-play:hover {
-            background: #8a1515;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(182,28,28,0.4);
-        }
-
-        .slider-dots {
-            position: absolute;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            display: flex;
-            gap: 10px;
-        }
-        .slider-dots span {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .slider-dots span.active {
-            background: white;
-            transform: scale(1.3);
-        }
-
-        /* ===== MOVIE GRID ===== */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 24px 0 14px;
-        }
-        .section-header h2 {
-            font-family: 'Ardekan', 'Estedad', sans-serif;
-            font-size: 1.5rem;
-        }
-        .section-header a {
-            font-family: 'Estedad', sans-serif;
-            color: #B61C1C;
-            text-decoration: none;
-            font-size: 0.8rem;
-            cursor: pointer;
-        }
-
+        /* ===== MOVIE GRID (برای صفحات ویدیوها) ===== */
         .movie-grid {
             display: flex;
             flex-direction: column;
@@ -2048,6 +2277,7 @@
             .mobile-overlay.active { display: block; }
             .game-cards-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
             .old-games-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+            .home-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
         }
 
         @media (max-width: 768px) {
@@ -2060,10 +2290,11 @@
             .hamburger span { width: 22px; height: 2.5px; }
             .hamburger { gap: 4px; padding: 6px; }
             .mobile-drawer { width: 300px; padding: 24px 20px; }
-            .hero-slider { height: 260px; }
-            .hero-slide { padding: 20px; }
-            .hero-content h2 { font-size: 1.4rem; }
-            .hero-content p { font-size: 0.75rem; }
+            .hero-slider { height: 280px; }
+            .hero-slide { padding: 24px; }
+            .hero-content h2 { font-size: 1.5rem; }
+            .hero-content p { font-size: 0.8rem; }
+            .home-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
             .game-cards-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
             .old-games-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
             .game-detail-hero .game-overlay h1 { font-size: 1.6rem; }
@@ -2080,6 +2311,8 @@
             body.dark-mode .search-page .search-box-big input { background: #252525; border-color: #333; }
             .search-page .search-box-big button { width: 100%; justify-content: center; }
             .notifications-page .notif-hero .notif-icon-big { width: 280px; height: 280px; }
+            .studio-stats { grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 16px; }
+            .studio-about p { font-size: 0.85rem; }
         }
 
         @media (max-width: 480px) {
@@ -2097,6 +2330,7 @@
             .hero-content h2 { font-size: 1.1rem; }
             .hero-content p { font-size: 0.65rem; margin-bottom: 8px; }
             .hero-content .btn-play { padding: 6px 16px; font-size: 0.7rem; }
+            .home-grid { grid-template-columns: 1fr; gap: 14px; }
             .game-cards-grid { grid-template-columns: 1fr; gap: 14px; }
             .old-games-grid { grid-template-columns: 1fr; gap: 14px; }
             .game-detail-hero .game-overlay h1 { font-size: 1.2rem; }
@@ -2122,6 +2356,11 @@
             .settings-box .setting-item { flex-wrap: wrap; gap: 6px; }
             #imageModal img { max-width: 100%; max-height: 90%; }
             #imageModal .modal-close { top: 10px; left: 10px; font-size: 1.2rem; padding: 4px 10px; }
+            .studio-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px; }
+            .studio-stats .stat-item .stat-number { font-size: 1.5rem; }
+            .studio-about { padding: 20px; }
+            .studio-about h2 { font-size: 1.3rem; }
+            .studio-about .about-tags span { font-size: 0.65rem; padding: 3px 10px; }
         }
     </style>
 </head>
@@ -2180,9 +2419,10 @@
         </div>
 
         <!-- ============================================ -->
-        <!-- ===== HOME (با لینک درست) ===== -->
+        <!-- ===== HOME ===== -->
         <!-- ============================================ -->
         <div class="page active" id="page-home">
+            <!-- اسلایدر هیرو -->
             <div class="hero-slider" id="heroSlider">
                 <div class="hero-slide active" style="background-image: url('https://cdn.imgurl.ir/uploads/n7157_gta_6_thumbnail_.png');">
                     <div class="hero-content">
@@ -2196,7 +2436,7 @@
                 </div>
                 <div class="hero-slide" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
                     <div class="hero-content">
-                        <span class="badge">جدید</span>
+                        <span class="badge">🎯 محبوب</span>
                         <h2>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h2>
                         <p>😨🏚️ Outlast | یه شب توی جهنم! امشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀</p>
                         <button class="btn-play" onclick="event.stopPropagation(); openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
@@ -2221,57 +2461,175 @@
                 </div>
             </div>
 
-            <div class="section-header">
-                <h2><i class="fas fa-fire" style="color:#B61C1C;"></i> جدیدترین عناوین</h2>
-                <a href="#" onclick="showPage('movies'); return false;">مشاهده همه</a>
+            <!-- ===== آمار استودیو ===== -->
+            <div class="studio-stats">
+                <div class="stat-item">
+                    <div class="stat-number">۳</div>
+                    <div class="stat-label">🎬 ویدیو</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">۱</div>
+                    <div class="stat-label">🎮 بازی جدید</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">۳</div>
+                    <div class="stat-label">🕹️ بازی کلاسیک</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">۲۶</div>
+                    <div class="stat-label">👥 دنبال‌کننده</div>
+                </div>
             </div>
 
-            <div class="movie-grid" id="movieGrid">
-                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/inbr16i/vt/frame', 'تریلر و گیم‌پلی GTA6 | راکستار ترکونده!', '🚨🔥 GTA 6 | Zerox Edition بالاخره رسید! 🔥🚨\n\nسلام رفقااا! 😎🎮\nویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و گیم‌پلی بازی رو باهم بررسی می‌کنیم. 👀🔥\n\nاز گرافیک و جزئیات خفن بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه‌چی رو توی این ویدیو می‌بینیم! 😳💥\n\nاگه عاشق GTA هستی، این ویدیو رو از دست نده! 🚗💨\n\nتهیه شده در Zerox studios', '5:11', '9.2')">
-                    <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/n7157_gta_6_thumbnail_.png');">
-                        <span class="badge">🔥 جدید</span>
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+            <!-- ===== جدیدترین ویدیوها ===== -->
+            <div class="home-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-film"></i> جدیدترین ویدیوها</h2>
+                    <a onclick="showPage('movies')">مشاهده همه</a>
+                </div>
+                <div class="home-grid">
+                    <div class="home-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/inbr16i/vt/frame', 'تریلر و گیم‌پلی GTA6 | راکستار ترکونده!', '🚨🔥 GTA 6 | Zerox Edition بالاخره رسید! 🔥🚨\n\nسلام رفقااا! 😎🎮\nویدیوی جدید زروکس منتشر شد! این بار رفتیم سراغ GTA 6 و گیم‌پلی بازی رو باهم بررسی می‌کنیم. 👀🔥\n\nاز گرافیک و جزئیات خفن بازی گرفته تا ماشین‌ها، شخصیت‌ها و دنیای جدید GTA 6؛ همه‌چی رو توی این ویدیو می‌بینیم! 😳💥\n\nاگه عاشق GTA هستی، این ویدیو رو از دست نده! 🚗💨\n\nتهیه شده در Zerox studios', '5:11', '9.2')">
+                        <div class="card-img">
+                            <img src="https://cdn.imgurl.ir/uploads/n7157_gta_6_thumbnail_.png" alt="GTA6" />
+                            <span class="card-badge">🔥 جدید</span>
+                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="card-body">
+                            <h4>تریلر و گیم‌پلی GTA6 | راکستار ترکونده!</h4>
+                            <div class="card-meta">
+                                <span><i class="fas fa-clock"></i> 5:11</span>
+                                <span class="rating"><i class="fas fa-star"></i> 9.2</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="movie-info">
-                        <h4>تریلر و گیم‌پلی GTA6 | راکستار ترکونده!</h4>
-                        <div class="meta">
-                            <span><i class="fas fa-clock"></i> 5:11</span>
-                            <span class="rating"><i class="fas fa-star"></i> 9.2</span>
+                    <div class="home-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
+                        <div class="card-img">
+                            <img src="https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png" alt="Outlast" />
+                            <span class="card-badge">🎯 محبوب</span>
+                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="card-body">
+                            <h4>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h4>
+                            <div class="card-meta">
+                                <span><i class="fas fa-clock"></i> ۵ دقیقه</span>
+                                <span class="rating"><i class="fas fa-star"></i> 9.2</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
+                        <div class="card-img">
+                            <img src="https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg" alt="No Human" />
+                            <span class="card-badge">🎯 ویژه</span>
+                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="card-body">
+                            <h4>داستان بازی | no im not a human</h4>
+                            <div class="card-meta">
+                                <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
+                                <span class="rating"><i class="fas fa-star"></i> 8.7</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/gkcxc4t/vt/frame', 'بازی اوتلست 1 | بهترین بازی ترسناک دنیا', '😨🏚️ Outlast | یه شب توی جهنم!\n\nامشب رفتیم سراغ یکی از ترسناک‌ترین بازی‌های تاریخ! 👀\nببینیم می‌تونیم از این تیمارستان سالم فرار کنیم یا نه... 💀\n\n🎬 ساخته شده توسط تیم Zerox', '۵ دقیقه', '9.2')">
-                    <div class="movie-poster" style="background-image: url('https://cdn.imgurl.ir/uploads/o08764_Zerox_th12.png');">
-                        <span class="badge">جدید</span>
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
-                    </div>
-                    <div class="movie-info">
-                        <h4>بازی اوتلست 1 | بهترین بازی ترسناک دنیا</h4>
-                        <div class="meta">
-                            <span><i class="fas fa-clock"></i> ۵ دقیقه</span>
-                            <span class="rating"><i class="fas fa-star"></i> 9.2</span>
+            </div>
+
+            <!-- ===== جدیدترین بازی‌ها (زروکس گیمز) ===== -->
+            <div class="home-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-gamepad"></i> جدیدترین بازی‌ها</h2>
+                    <a onclick="showPage('games')">مشاهده همه</a>
+                </div>
+                <div class="home-grid">
+                    <div class="home-card" onclick="showPage('game-silentgears')">
+                        <div class="card-img">
+                            <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" />
+                            <span class="card-badge">⏳ در دست توسعه</span>
+                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="card-body">
+                            <h4>SilentGears | چرخ‌دنده‌ساکت</h4>
+                            <div class="card-meta">
+                                <span><i class="fas fa-tag"></i> اکشن-ماجرایی</span>
+                                <span><i class="fas fa-desktop"></i> PC | اندروید</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="movie-card" onclick="openVideo('https://www.aparat.com/video/video/embed/videohash/itl9b8h/vt/frame', 'داستان بازی | no im not a human', '😨🚪 No, I\'m Not a Human | یه شب جهنمی!\n\nامشب رفتیم سراغ یکی از عجیب‌ترین بازی‌های ترسناک! 😶‍🌫️\nباید بفهمیم کی انسانه و کی نه... 👀\n\n🎬 ساخته شده توسط Zerox\n💬 تو جای من بودی به کی اعتماد می‌کردی؟', '۹ دقیقه', '8.7')">
-                    <div class="movie-poster" style="background-image: url('https://uploadkon.ir/uploads/406920_2671129478-9827-l-3296.jpg');">
-                        <span class="badge">ویژه</span>
-                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
-                    </div>
-                    <div class="movie-info">
-                        <h4>داستان بازی | no im not a human</h4>
-                        <div class="meta">
-                            <span><i class="fas fa-clock"></i> ۹ دقیقه</span>
-                            <span class="rating"><i class="fas fa-star"></i> 8.7</span>
+            </div>
+
+            <!-- ===== بازی‌های کلاسیک (زروکس‌اُلد) ===== -->
+            <div class="home-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-history"></i> بازی‌های کلاسیک</h2>
+                    <a onclick="showPage('oldgames')">مشاهده همه</a>
+                </div>
+                <div class="home-grid">
+                    <div class="home-card" onclick="showOldDetail(3)">
+                        <div class="card-img">
+                            <img src="https://uploadkon.ir/uploads/724812_26gta-sa-Zerox-.jpg" alt="GTA SA" />
+                            <span class="card-badge">۲۰۰۴</span>
+                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="card-body">
+                            <h4>Grand Theft Auto: San Andreas</h4>
+                            <div class="card-meta">
+                                <span><i class="fas fa-tag"></i> Rockstar</span>
+                                <span><i class="fas fa-star"></i> ۹.۶</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="home-card" onclick="showOldDetail(2)">
+                        <div class="card-img">
+                            <img src="https://cdn.imgurl.ir/uploads/f82900_____Zerox_.jpg" alt="Prince of Persia" />
+                            <span class="card-badge">۱۹۸۹</span>
+                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="card-body">
+                            <h4>Prince of Persia</h4>
+                            <div class="card-meta">
+                                <span><i class="fas fa-tag"></i> Jordan Mechner</span>
+                                <span><i class="fas fa-star"></i> ۸.۹</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home-card" onclick="showOldDetail(1)">
+                        <div class="card-img">
+                            <img src="https://uploadkon.ir/uploads/4c9d09_26god-of-war-Zerox-ir-28.jpg" alt="God of War" />
+                            <span class="card-badge">۲۰۰۵</span>
+                            <div class="card-play"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="card-body">
+                            <h4>God of War</h4>
+                            <div class="card-meta">
+                                <span><i class="fas fa-tag"></i> Santa Monica</span>
+                                <span><i class="fas fa-star"></i> ۹.۵</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== درباره استودیو ===== -->
+            <div class="studio-about">
+                <h2>🎬 <span>Zerox</span> Studio</h2>
+                <p>
+                    استودیوی خلاق Zerox، جایی برای ساختن، تجربه کردن و متفاوت بودن. از دنیای بازی و گیمینگ گرفته تا طراحی، ویدیو، موسیقی و پروژه‌های خلاقانه، هدف ما اینه که هر چیزی که می‌سازیم یه هویت خاص خودش رو داشته باشه.
+                </p>
+                <div class="about-tags">
+                    <span>🎮 بازی‌سازی</span>
+                    <span>🎬 تولید محتوا</span>
+                    <span>🎨 طراحی</span>
+                    <span>🎵 موسیقی</span>
+                    <span>💻 پروژه‌های دیجیتال</span>
                 </div>
             </div>
         </div>
 
         <!-- ============================================ -->
-        <!-- ===== SEARCH ===== -->
+        <!-- ===== سایر صفحات ===== -->
         <!-- ============================================ -->
+
+        <!-- ===== SEARCH ===== -->
         <div class="page" id="page-search">
             <div class="search-page">
                 <div class="logo-big">
@@ -2288,9 +2646,7 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
         <!-- ===== NOTIFICATIONS ===== -->
-        <!-- ============================================ -->
         <div class="page" id="page-notifications">
             <div class="notifications-page">
                 <div class="notif-hero">
@@ -2311,9 +2667,7 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
         <!-- ===== PROFILE ===== -->
-        <!-- ============================================ -->
         <div class="page" id="page-profile">
             <div class="profile-page">
                 <div class="profile-header">
@@ -2339,9 +2693,7 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
         <!-- ===== SETTINGS ===== -->
-        <!-- ============================================ -->
         <div class="page" id="page-settings">
             <h2 class="page-header"><i class="fas fa-cog"></i> تنظیمات</h2>
             <p class="page-sub">تنظیمات حساب کاربری و برنامه</p>
@@ -2381,7 +2733,7 @@
         </div>
 
         <!-- ============================================ -->
-        <!-- ===== MOVIES (با لینک درست) ===== -->
+        <!-- ===== MOVIES ===== -->
         <!-- ============================================ -->
         <div class="page" id="page-movies">
             <h2 class="page-header"><i class="fas fa-film"></i> ویدیوها</h2>
@@ -2788,7 +3140,7 @@
         }
 
         // ============================================
-        // MOVIES DB (با لینک درست GTA6)
+        // MOVIES DB
         // ============================================
         const moviesDB = [
             {
