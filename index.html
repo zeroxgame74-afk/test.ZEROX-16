@@ -13,7 +13,7 @@
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-  <!-- ===== Animate.css برای انیمیشن‌های آماده ===== -->
+  <!-- ===== Animate.css ===== -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <style>
@@ -42,38 +42,18 @@
     a { text-decoration: none; color: inherit; }
     .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
 
-    /* ===== انیمیشن‌های سفارشی ===== */
-    @keyframes glowPulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.8; }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(30px); }
-      to { opacity: 1; transform: translateX(0); }
+    /* ===== انیمیشن‌ها ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @keyframes scaleIn {
       from { opacity: 0; transform: scale(0.9); }
       to { opacity: 1; transform: scale(1); }
     }
-    @keyframes rotateGlow {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .animate-float {
-      animation: float 3s ease-in-out infinite;
-    }
-    .animate-glow {
-      animation: glowPulse 2s ease-in-out infinite;
-    }
-    .animate-slide-right {
-      animation: slideInRight 0.8s ease forwards;
-    }
-    .animate-scale-in {
-      animation: scaleIn 0.6s ease forwards;
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
 
     /* ===== HEADER ===== */
@@ -84,7 +64,6 @@
       padding: 1rem 2rem;
       background: rgba(10, 10, 10, 0.92);
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255,255,255,0.04);
       position: fixed;
       top: 0;
@@ -152,13 +131,12 @@
     .header-actions i:hover { color: #fff; transform: scale(1.1); }
     .menu-mobile { display: none; }
 
-    /* ===== سرچ پیشرفته ===== */
+    /* ===== سرچ ===== */
     .search-overlay {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.97);
       backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
       z-index: 2000;
       display: none;
       align-items: center;
@@ -223,7 +201,7 @@
       cursor: pointer;
       background: rgba(255,255,255,0.02);
     }
-    .search-overlay .search-results .result-item:hover {
+    .search-overlay .search-results .result-item:hover:not(.not-found) {
       border-color: #444;
       background: rgba(255,255,255,0.05);
       transform: translateX(-8px);
@@ -268,7 +246,6 @@
       filter: brightness(0.3) contrast(1.2) saturate(0.8);
       will-change: transform;
       z-index: 0;
-      transition: transform 0.1s;
     }
     .hero-bg::after {
       content: '';
@@ -325,10 +302,6 @@
     .hero-content .btn-ghost {
       animation: fadeUp 1.8s ease forwards;
       opacity: 0;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .btn-ghost {
@@ -393,9 +366,6 @@
       position: relative;
       animation: scaleIn 0.6s ease;
     }
-    .game-card:nth-child(1) { animation-delay: 0.1s; }
-    .game-card:nth-child(2) { animation-delay: 0.2s; }
-    .game-card:nth-child(3) { animation-delay: 0.3s; }
     .game-card:hover {
       border-color: #444;
       transform: translateY(-10px) scale(1.01);
@@ -480,7 +450,7 @@
       margin-bottom: 2.5rem;
       border-right: 3px solid #333;
       padding-right: 1.2rem;
-      animation: slideInRight 0.8s ease;
+      animation: fadeUp 0.8s ease;
     }
     .about-page .about-content p {
       color: #aaa;
@@ -520,9 +490,7 @@
       font-family: 'Inter', 'Estedad', 'Ardakan', sans-serif;
     }
 
-    /* ========================================== */
-    /* ===== صفحه اختصاصی (طراحی خفن) ===== */
-    /* ========================================== */
+    /* ===== صفحه اختصاصی ===== */
     .detail-hero {
       position: relative;
       min-height: 75vh;
@@ -575,7 +543,7 @@
       letter-spacing: -2px;
       line-height: 1.05;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      animation: slideInRight 0.8s ease;
+      animation: fadeUp 0.8s ease;
     }
     .detail-hero .sub {
       font-size: 1.4rem;
@@ -710,46 +678,6 @@
       box-shadow: 0 15px 50px rgba(0,0,0,0.7);
     }
 
-    /* ===== صفحه ۴۰۴ ===== */
-    .page-404 {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 4rem 2rem;
-    }
-    .page-404 .content {
-      max-width: 600px;
-    }
-    .page-404 .content .number {
-      font-size: 10rem;
-      font-weight: 900;
-      color: #fff;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-      line-height: 1;
-      animation: float 3s ease-in-out infinite;
-    }
-    .page-404 .content .number span {
-      color: #333;
-    }
-    .page-404 .content h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #eee;
-      margin: 1rem 0;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-    }
-    .page-404 .content p {
-      color: #666;
-      font-weight: 300;
-      margin-bottom: 2rem;
-    }
-    .page-404 .content .btn-ghost {
-      animation: none;
-      opacity: 1;
-    }
-
     /* ===== FOOTER ===== */
     .footer {
       border-top: 1px solid #0f0f0f;
@@ -789,6 +717,16 @@
       transition: 0.3s;
     }
     .footer-social i:hover { color: #fff; transform: translateY(-3px); }
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      color: #222;
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+      border-top: 1px solid #0f0f0f;
+      padding-top: 1.2rem;
+      font-weight: 300;
+    }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
@@ -806,7 +744,6 @@
       .footer { flex-direction: column; align-items: flex-start; }
       .search-overlay .search-box input { font-size: 1.2rem; padding: 1rem; }
       .about-page .about-header h1 { font-size: 2.5rem; }
-      .page-404 .content .number { font-size: 6rem; }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
@@ -817,23 +754,14 @@
 </head>
 <body>
 
-  <!-- ===== سرچ پیشرفته ===== -->
+  <!-- ===== سرچ ===== -->
   <div class="search-overlay" id="searchOverlay">
     <div class="search-container">
       <div class="search-box">
         <input type="text" placeholder="جستجوی بازی..." id="searchInput" oninput="searchGames(this.value)" />
         <i class="fas fa-times close-search" onclick="closeSearch()"></i>
       </div>
-      <div class="search-results" id="searchResults">
-        <div class="result-item" onclick="navigateTo('detail')">
-          <div class="title">SilentGears</div>
-          <div class="desc">اکشن-ماجرایی • در دست توسعه</div>
-        </div>
-        <div class="result-item" onclick="navigateTo('404')">
-          <div class="title">Project X</div>
-          <div class="desc">علمی-تخیلی • در دست ساخت</div>
-        </div>
-      </div>
+      <div class="search-results" id="searchResults"></div>
       <div class="search-hint">
         <i class="fas fa-arrow-left"></i> برای جستجو تایپ کنید...
       </div>
@@ -917,7 +845,7 @@
     </div>
   </div>
 
-  <!-- ===== صفحه اختصاصی بازی ===== -->
+  <!-- ===== صفحه اختصاصی ===== -->
   <div class="page" id="pageDetail">
     <div class="detail-hero">
       <div class="detail-hero-bg"></div>
@@ -986,18 +914,6 @@
     </div>
   </div>
 
-  <!-- ===== صفحه ۴۰۴ ===== -->
-  <div class="page" id="page404">
-    <div class="page-404">
-      <div class="content">
-        <div class="number">4<span>0</span>4</div>
-        <h2>صفحه‌ای که دنبالش بودی پیدا نشد!</h2>
-        <p>متأسفیم، اما صفحه‌ای که دنبالش هستید وجود ندارد یا تغییر کرده است.</p>
-        <button class="btn-ghost" onclick="navigateTo('home')">بازگشت به خانه <i class="fas fa-arrow-left" style="margin-right:10px;"></i></button>
-      </div>
-    </div>
-  </div>
-
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="logo" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
@@ -1011,34 +927,25 @@
       <i class="fab fa-youtube"></i>
       <i class="fab fa-instagram"></i>
     </div>
-    <div class="footer-copy" style="width:100%; text-align:center; color:#222; font-size:0.75rem; margin-top:0.5rem; border-top:1px solid #0f0f0f; padding-top:1.2rem; font-weight:300;">© 2026 ZER0X GAME · Create Beyond Limits.</div>
+    <div class="footer-copy">© 2026 ZER0X GAME · Create Beyond Limits.</div>
   </footer>
 
   <script>
+    // ===== دیتابیس بازی‌ها =====
+    const gamesDB = [
+      { title: 'SilentGears', desc: 'اکشن-ماجرایی • در دست توسعه', link: 'detail' },
+    ];
+
     // ===== ناوبری =====
     function navigateTo(page) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       
       if (page === 'home') {
         document.getElementById('pageHome').classList.add('active');
-        document.getElementById('pageAbout').classList.remove('active');
-        document.getElementById('pageDetail').classList.remove('active');
-        document.getElementById('page404').classList.remove('active');
       } else if (page === 'about') {
-        document.getElementById('pageHome').classList.remove('active');
         document.getElementById('pageAbout').classList.add('active');
-        document.getElementById('pageDetail').classList.remove('active');
-        document.getElementById('page404').classList.remove('active');
       } else if (page === 'detail') {
-        document.getElementById('pageHome').classList.remove('active');
-        document.getElementById('pageAbout').classList.remove('active');
         document.getElementById('pageDetail').classList.add('active');
-        document.getElementById('page404').classList.remove('active');
-      } else if (page === '404') {
-        document.getElementById('pageHome').classList.remove('active');
-        document.getElementById('pageAbout').classList.remove('active');
-        document.getElementById('pageDetail').classList.remove('active');
-        document.getElementById('page404').classList.add('active');
       }
 
       document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
@@ -1053,35 +960,51 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // ===== سرچ پیشرفته =====
+    // ===== سرچ =====
     function openSearch() {
       document.getElementById('searchOverlay').classList.add('active');
       document.getElementById('searchInput').focus();
+      document.getElementById('searchResults').innerHTML = '';
       document.getElementById('searchResults').classList.remove('active');
     }
     function closeSearch() {
       document.getElementById('searchOverlay').classList.remove('active');
       document.getElementById('searchInput').value = '';
+      document.getElementById('searchResults').innerHTML = '';
       document.getElementById('searchResults').classList.remove('active');
     }
+
     function searchGames(value) {
       const results = document.getElementById('searchResults');
+
       if (value.length > 0) {
+        const filtered = gamesDB.filter(g => 
+          g.title.toLowerCase().includes(value.toLowerCase())
+        );
+        
+        if (filtered.length > 0) {
+          results.innerHTML = filtered.map(g => `
+            <div class="result-item" onclick="navigateTo('${g.link}'); closeSearch();">
+              <div class="title">${g.title}</div>
+              <div class="desc">${g.desc}</div>
+            </div>
+          `).join('');
+        } else {
+          results.innerHTML = `
+            <div class="result-item not-found" style="text-align:center; padding:2rem; border-color:#222; cursor:default;">
+              <i class="fas fa-gamepad" style="font-size:3rem; color:#333; display:block; margin-bottom:1rem;"></i>
+              <div class="title" style="color:#666; font-weight:400;">هیچ بازی‌ای با این نام پیدا نشد!</div>
+              <div class="desc" style="color:#444; font-size:0.8rem;">کلمه دیگری رو امتحان کن...</div>
+            </div>
+          `;
+        }
         results.classList.add('active');
-        // فیلتر کردن نتایج
-        const items = results.querySelectorAll('.result-item');
-        items.forEach(item => {
-          const title = item.querySelector('.title').textContent.toLowerCase();
-          if (title.includes(value.toLowerCase())) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
       } else {
+        results.innerHTML = '';
         results.classList.remove('active');
       }
     }
+
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeSearch();
     });
@@ -1145,4 +1068,4 @@
   </script>
 
 </body>
-</html>
+  </html>
