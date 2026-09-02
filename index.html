@@ -5,15 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZER0X GAME · SilentGears</title>
 
-  <!-- فونت‌ها از Google Fonts -->
+  <!-- فونت‌ها -->
   <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Ardakan:wght@400;500;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
-  <!-- ===== Animate.css ===== -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <style>
@@ -23,16 +19,13 @@
       padding: 0;
       box-sizing: border-box;
     }
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       background-color: #0a0a0a;
       color: #e8e8e8;
       font-family: 'Estedad', 'Ardakan', 'Inter', sans-serif;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
     ::-webkit-scrollbar { width: 6px; }
@@ -40,7 +33,13 @@
     ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     ::-webkit-scrollbar-thumb:hover { background: #555; }
     a { text-decoration: none; color: inherit; }
-    .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+    .container { 
+      max-width: 1400px; 
+      margin: 0 auto; 
+      padding: 0 2rem; 
+      width: 100%;
+      overflow: hidden;
+    }
 
     /* ===== انیمیشن‌ها ===== */
     @keyframes fadeUp {
@@ -51,9 +50,9 @@
       from { opacity: 0; transform: scale(0.9); }
       to { opacity: 1; transform: scale(1); }
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
     /* ===== HEADER ===== */
@@ -130,100 +129,6 @@
     }
     .header-actions i:hover { color: #fff; transform: scale(1.1); }
     .menu-mobile { display: none; }
-
-    /* ===== سرچ ===== */
-    .search-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.97);
-      backdrop-filter: blur(30px);
-      z-index: 2000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      animation: scaleIn 0.4s ease;
-    }
-    .search-overlay.active { display: flex; }
-    .search-overlay .search-container {
-      width: 100%;
-      max-width: 700px;
-    }
-    .search-overlay .search-box {
-      position: relative;
-      margin-bottom: 2rem;
-    }
-    .search-overlay .search-box input {
-      width: 100%;
-      padding: 1.5rem 2rem;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid #222;
-      border-radius: 12px;
-      color: #fff;
-      font-size: 1.8rem;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-      outline: none;
-      transition: 0.4s;
-      font-weight: 300;
-    }
-    .search-overlay .search-box input:focus {
-      border-color: #555;
-      background: rgba(255,255,255,0.05);
-      box-shadow: 0 0 40px rgba(255,255,255,0.02);
-    }
-    .search-overlay .search-box input::placeholder {
-      color: #333;
-      font-weight: 300;
-    }
-    .search-overlay .search-box .close-search {
-      position: absolute;
-      left: 1.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #444;
-      font-size: 1.8rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .search-overlay .search-box .close-search:hover { color: #fff; transform: translateY(-50%) scale(1.1); }
-    
-    .search-overlay .search-results {
-      display: none;
-      margin-top: 1rem;
-    }
-    .search-overlay .search-results.active { display: block; }
-    .search-overlay .search-results .result-item {
-      padding: 1rem 1.5rem;
-      border: 1px solid #181818;
-      border-radius: 8px;
-      margin-bottom: 0.5rem;
-      transition: 0.3s;
-      cursor: pointer;
-      background: rgba(255,255,255,0.02);
-    }
-    .search-overlay .search-results .result-item:hover:not(.not-found) {
-      border-color: #444;
-      background: rgba(255,255,255,0.05);
-      transform: translateX(-8px);
-    }
-    .search-overlay .search-results .result-item .title {
-      color: #fff;
-      font-weight: 700;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-    }
-    .search-overlay .search-results .result-item .desc {
-      color: #666;
-      font-size: 0.85rem;
-      font-weight: 300;
-    }
-    .search-overlay .search-hint {
-      color: #333;
-      text-align: center;
-      font-size: 0.9rem;
-      font-weight: 300;
-      letter-spacing: 2px;
-    }
-    .search-overlay .search-hint i { margin-left: 8px; }
 
     /* ===== صفحات ===== */
     .page { display: none; padding-top: 70px; }
@@ -436,21 +341,29 @@
       letter-spacing: 1px;
     }
 
-    /* ===== درباره ما ===== */
+    /* ========================================== */
+    /* ===== درباره ما (اصلاح شده) ===== */
+    /* ========================================== */
     .about-page {
       padding: 4rem 0;
       max-width: 800px;
       margin: 0 auto;
+      width: 100%;
+      overflow: hidden;
     }
     .about-page .about-header h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: 900;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      letter-spacing: -2px;
+      letter-spacing: -1px;
       margin-bottom: 2.5rem;
       border-right: 3px solid #333;
       padding-right: 1.2rem;
-      animation: fadeUp 0.8s ease;
+      color: #fff;
+      word-wrap: break-word;
+    }
+    .about-page .about-content {
+      width: 100%;
     }
     .about-page .about-content p {
       color: #aaa;
@@ -458,13 +371,11 @@
       line-height: 2.2;
       margin-bottom: 1.5rem;
       font-weight: 300;
-      animation: fadeUp 0.8s ease forwards;
-      opacity: 0;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
+      padding: 0;
     }
-    .about-page .about-content p:nth-child(1) { animation-delay: 0.1s; }
-    .about-page .about-content p:nth-child(2) { animation-delay: 0.2s; }
-    .about-page .about-content p:nth-child(3) { animation-delay: 0.3s; }
-    .about-page .about-content p:nth-child(4) { animation-delay: 0.4s; }
     .about-page .about-content p:last-of-type {
       margin-bottom: 2.5rem;
     }
@@ -476,18 +387,170 @@
       letter-spacing: -1px;
       border-top: 1px solid #1a1a1a;
       padding-top: 2rem;
-      animation: fadeUp 0.8s ease forwards;
-      opacity: 0;
-      animation-delay: 0.5s;
+      word-wrap: break-word;
     }
     .about-page .about-tagline span {
       display: block;
       font-size: 1rem;
       font-weight: 300;
       color: #555;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       margin-top: 0.3rem;
       font-family: 'Inter', 'Estedad', 'Ardakan', sans-serif;
+    }
+
+    /* ===== صفحه جستجو ===== */
+    .search-page {
+      padding: 4rem 0;
+      min-height: 80vh;
+    }
+    .search-page .search-header {
+      margin-bottom: 3rem;
+      animation: fadeUp 0.8s ease;
+    }
+    .search-page .search-header h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      letter-spacing: -2px;
+      border-right: 3px solid #333;
+      padding-right: 1.2rem;
+    }
+    .search-page .search-header h1 i {
+      color: #444;
+      margin-left: 1rem;
+    }
+    .search-page .search-header .sub {
+      color: #666;
+      font-size: 1rem;
+      font-weight: 300;
+      margin-top: 0.5rem;
+      padding-right: 1.5rem;
+    }
+    .search-page .search-box {
+      position: relative;
+      margin-bottom: 3rem;
+      animation: slideInRight 0.8s ease;
+    }
+    .search-page .search-box input {
+      width: 100%;
+      padding: 1.5rem 2rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid #222;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.5rem;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      outline: none;
+      transition: 0.4s;
+      font-weight: 300;
+    }
+    .search-page .search-box input:focus {
+      border-color: #555;
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 0 40px rgba(255,255,255,0.02);
+    }
+    .search-page .search-box input::placeholder {
+      color: #333;
+      font-weight: 300;
+    }
+    .search-page .search-box .search-icon {
+      position: absolute;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #444;
+      font-size: 1.3rem;
+    }
+    .search-page .results-count {
+      color: #555;
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      padding-right: 0.5rem;
+    }
+    .search-page .results-count span {
+      color: #888;
+      font-weight: 700;
+    }
+    .search-page .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .search-page .result-card {
+      background: #0f0f0f;
+      border: 1px solid #181818;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      cursor: pointer;
+      animation: scaleIn 0.6s ease;
+    }
+    .search-page .result-card:hover {
+      border-color: #444;
+      transform: translateY(-8px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+    }
+    .search-page .result-card .card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+      background: #0a0a0a;
+    }
+    .search-page .result-card .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .search-page .result-card:hover .card-img img { transform: scale(1.1); }
+    .search-page .result-card .card-body {
+      padding: 1.5rem;
+    }
+    .search-page .result-card .card-body h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .search-page .result-card .card-body .genre {
+      color: #555;
+      font-size: 0.8rem;
+      font-weight: 300;
+    }
+    .search-page .result-card .card-body .status {
+      display: inline-block;
+      margin-top: 0.6rem;
+      padding: 0.15rem 1rem;
+      border: 1px solid #222;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      color: #666;
+    }
+    .search-page .not-found {
+      text-align: center;
+      padding: 4rem 2rem;
+      animation: fadeUp 0.8s ease;
+      grid-column: 1/-1;
+    }
+    .search-page .not-found i {
+      font-size: 5rem;
+      color: #222;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+    .search-page .not-found h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #666;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .search-page .not-found p {
+      color: #444;
+      font-weight: 300;
+      margin-top: 0.5rem;
     }
 
     /* ===== صفحه اختصاصی ===== */
@@ -610,7 +673,6 @@
       font-weight: 900;
       font-family: 'Estedad', 'Ardakan', sans-serif;
     }
-
     .trailer-section {
       margin: 2.5rem 0;
       padding: 2rem;
@@ -645,7 +707,6 @@
       color: #666;
       transform: scale(1.02);
     }
-
     .gallery-section {
       margin: 2.5rem 0;
       animation: scaleIn 0.8s ease;
@@ -742,31 +803,23 @@
       .detail-info-box { grid-template-columns: 1fr 1fr; padding: 1.2rem; }
       .detail-body .full-desc { padding: 1.2rem; font-size: 0.95rem; }
       .footer { flex-direction: column; align-items: flex-start; }
-      .search-overlay .search-box input { font-size: 1.2rem; padding: 1rem; }
-      .about-page .about-header h1 { font-size: 2.5rem; }
+      .about-page .about-header h1 { font-size: 2.2rem; }
+      .about-page .about-content p { font-size: 0.95rem; }
+      .about-page .about-tagline { font-size: 1.5rem; }
+      .search-page .search-header h1 { font-size: 2.2rem; }
+      .search-page .search-box input { font-size: 1.2rem; padding: 1.2rem; }
+      .search-page .results-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: 1fr; }
       .detail-hero h1 { font-size: 2.2rem; }
+      .about-page .about-header h1 { font-size: 1.8rem; }
+      .about-page .about-tagline { font-size: 1.3rem; }
     }
   </style>
 </head>
 <body>
-
-  <!-- ===== سرچ ===== -->
-  <div class="search-overlay" id="searchOverlay">
-    <div class="search-container">
-      <div class="search-box">
-        <input type="text" placeholder="جستجوی بازی..." id="searchInput" oninput="searchGames(this.value)" />
-        <i class="fas fa-times close-search" onclick="closeSearch()"></i>
-      </div>
-      <div class="search-results" id="searchResults"></div>
-      <div class="search-hint">
-        <i class="fas fa-arrow-left"></i> برای جستجو تایپ کنید...
-      </div>
-    </div>
-  </div>
 
   <!-- ===== HEADER ===== -->
   <header class="header" id="header">
@@ -777,7 +830,7 @@
       <a data-page="about" onclick="navigateTo('about')">درباره ما</a>
     </nav>
     <div class="header-actions">
-      <i class="fas fa-search" onclick="openSearch()"></i>
+      <i class="fas fa-search" onclick="navigateTo('search')"></i>
       <i class="fas fa-bars menu-mobile" onclick="toggleMobileMenu()"></i>
     </div>
   </header>
@@ -817,29 +870,57 @@
     </div>
   </div>
 
-  <!-- ===== صفحه درباره ما ===== -->
+  <!-- ===== صفحه درباره ما (اصلاح شده) ===== -->
   <div class="page" id="pageAbout">
-    <div class="container about-page">
-      <div class="about-header">
-        <h1>درباره Zerox Game</h1>
+    <div class="container">
+      <div class="about-page">
+        <div class="about-header">
+          <h1>درباره Zerox Game</h1>
+        </div>
+        <div class="about-content">
+          <p>
+            Zerox Game بخش اختصاصی گیمینگ Zerox Studios است؛ جایی که ایده‌ها به تجربه‌های تعاملی تبدیل می‌شوند.
+          </p>
+          <p>
+            ما با تمرکز بر ساخت بازی‌های مستقل، تولید محتوای گیمینگ و معرفی آثار ویدیویی فعالیت می‌کنیم و تلاش داریم تجربه‌هایی متفاوت، خلاقانه و به‌یادماندنی خلق کنیم.
+          </p>
+          <p>
+            اولین پروژه‌ی بازی‌سازی Zerox Studios، Silent Gears، آغاز مسیر ما در دنیای توسعه‌ی بازی است؛ مسیری که با هدف یادگیری، نوآوری و ساخت آثار مستقل ادامه خواهد داشت.
+          </p>
+          <p>
+            در Zerox Game، فقط بازی نمی‌سازیم؛<br />
+            دنیایی می‌سازیم که بازیکن بتواند در آن تجربه کند، کشف کند و لذت ببرد.
+          </p>
+          <div class="about-tagline">
+            ZEROX GAME
+            <span>Play. Create. Beyond Limits.</span>
+          </div>
+        </div>
       </div>
-      <div class="about-content">
-        <p>
-          Zerox Game بخش اختصاصی گیمینگ Zerox Studios است؛ جایی که ایده‌ها به تجربه‌های تعاملی تبدیل می‌شوند.
-        </p>
-        <p>
-          ما با تمرکز بر ساخت بازی‌های مستقل، تولید محتوای گیمینگ و معرفی آثار ویدیویی فعالیت می‌کنیم و تلاش داریم تجربه‌هایی متفاوت، خلاقانه و به‌یادماندنی خلق کنیم.
-        </p>
-        <p>
-          اولین پروژه‌ی بازی‌سازی Zerox Studios، Silent Gears، آغاز مسیر ما در دنیای توسعه‌ی بازی است؛ مسیری که با هدف یادگیری، نوآوری و ساخت آثار مستقل ادامه خواهد داشت.
-        </p>
-        <p>
-          در Zerox Game، فقط بازی نمی‌سازیم؛<br />
-          دنیایی می‌سازیم که بازیکن بتواند در آن تجربه کند، کشف کند و لذت ببرد.
-        </p>
-        <div class="about-tagline">
-          ZEROX GAME
-          <span>Play. Create. Beyond Limits.</span>
+    </div>
+  </div>
+
+  <!-- ===== صفحه جستجو ===== -->
+  <div class="page" id="pageSearch">
+    <div class="container search-page">
+      <div class="search-header">
+        <h1><i class="fas fa-search"></i> جستجوی بازی</h1>
+        <div class="sub">بازی مورد نظر خود را پیدا کنید</div>
+      </div>
+
+      <div class="search-box">
+        <input type="text" placeholder="نام بازی را وارد کنید..." id="searchInput" oninput="searchGames()" />
+        <i class="fas fa-search search-icon"></i>
+      </div>
+
+      <div class="results-count">
+        <span id="countNum">۰</span> نتیجه پیدا شد
+      </div>
+
+      <div class="results-grid" id="resultsGrid">
+        <div style="grid-column:1/-1; text-align:center; padding:3rem 0; color:#444; font-weight:300;">
+          <i class="fas fa-search" style="font-size:3rem; display:block; margin-bottom:1rem; color:#222;"></i>
+          برای جستجو نام بازی را وارد کنید...
         </div>
       </div>
     </div>
@@ -933,7 +1014,15 @@
   <script>
     // ===== دیتابیس بازی‌ها =====
     const gamesDB = [
-      { title: 'SilentGears', desc: 'اکشن-ماجرایی • در دست توسعه', link: 'detail' },
+      { 
+        id: 1,
+        title: 'SilentGears', 
+        persianTitle: 'چرخ‌دنده‌ساکت',
+        genre: 'اکشن-ماجرایی • نقش‌آفرینی',
+        status: 'در دست توسعه',
+        cover: 'https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg',
+        link: 'detail'
+      }
     ];
 
     // ===== ناوبری =====
@@ -944,6 +1033,10 @@
         document.getElementById('pageHome').classList.add('active');
       } else if (page === 'about') {
         document.getElementById('pageAbout').classList.add('active');
+      } else if (page === 'search') {
+        document.getElementById('pageSearch').classList.add('active');
+        document.getElementById('searchInput').focus();
+        searchGames();
       } else if (page === 'detail') {
         document.getElementById('pageDetail').classList.add('active');
       }
@@ -960,54 +1053,55 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // ===== سرچ =====
-    function openSearch() {
-      document.getElementById('searchOverlay').classList.add('active');
-      document.getElementById('searchInput').focus();
-      document.getElementById('searchResults').innerHTML = '';
-      document.getElementById('searchResults').classList.remove('active');
-    }
-    function closeSearch() {
-      document.getElementById('searchOverlay').classList.remove('active');
-      document.getElementById('searchInput').value = '';
-      document.getElementById('searchResults').innerHTML = '';
-      document.getElementById('searchResults').classList.remove('active');
-    }
+    // ===== جستجو =====
+    function searchGames() {
+      const input = document.getElementById('searchInput');
+      const query = input.value.trim().toLowerCase();
+      const grid = document.getElementById('resultsGrid');
+      const countEl = document.getElementById('countNum');
 
-    function searchGames(value) {
-      const results = document.getElementById('searchResults');
-
-      if (value.length > 0) {
-        const filtered = gamesDB.filter(g => 
-          g.title.toLowerCase().includes(value.toLowerCase())
-        );
-        
-        if (filtered.length > 0) {
-          results.innerHTML = filtered.map(g => `
-            <div class="result-item" onclick="navigateTo('${g.link}'); closeSearch();">
-              <div class="title">${g.title}</div>
-              <div class="desc">${g.desc}</div>
-            </div>
-          `).join('');
-        } else {
-          results.innerHTML = `
-            <div class="result-item not-found" style="text-align:center; padding:2rem; border-color:#222; cursor:default;">
-              <i class="fas fa-gamepad" style="font-size:3rem; color:#333; display:block; margin-bottom:1rem;"></i>
-              <div class="title" style="color:#666; font-weight:400;">هیچ بازی‌ای با این نام پیدا نشد!</div>
-              <div class="desc" style="color:#444; font-size:0.8rem;">کلمه دیگری رو امتحان کن...</div>
-            </div>
-          `;
-        }
-        results.classList.add('active');
-      } else {
-        results.innerHTML = '';
-        results.classList.remove('active');
+      if (query.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column:1/-1; text-align:center; padding:3rem 0; color:#444; font-weight:300;">
+            <i class="fas fa-search" style="font-size:3rem; display:block; margin-bottom:1rem; color:#222;"></i>
+            برای جستجو نام بازی را وارد کنید...
+          </div>
+        `;
+        countEl.textContent = '۰';
+        return;
       }
-    }
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeSearch();
-    });
+      const results = gamesDB.filter(g => 
+        g.title.toLowerCase().includes(query) || 
+        g.persianTitle.includes(query)
+      );
+
+      countEl.textContent = results.length;
+
+      if (results.length === 0) {
+        grid.innerHTML = `
+          <div class="not-found">
+            <i class="fas fa-gamepad"></i>
+            <h2>هیچ بازی‌ای با این نام پیدا نشد!</h2>
+            <p>کلمه دیگری رو امتحان کن...</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = results.map(g => `
+        <div class="result-card" onclick="navigateTo('${g.link}')">
+          <div class="card-img">
+            <img src="${g.cover}" alt="${g.title}" />
+          </div>
+          <div class="card-body">
+            <h3>${g.title}</h3>
+            <div class="genre">${g.genre}</div>
+            <div class="status"><i class="far fa-clock" style="margin-left:6px;"></i> ${g.status}</div>
+          </div>
+        </div>
+      `).join('');
+    }
 
     // ===== منو موبایل =====
     function toggleMobileMenu() {
