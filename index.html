@@ -49,7 +49,6 @@
       user-select: none;
       -webkit-touch-callout: none;
     }
-
     .card-img img,
     .hero-bg,
     .detail-hero-bg,
@@ -764,7 +763,9 @@
       box-shadow: 0 15px 50px rgba(0,0,0,0.7);
     }
 
-    /* ===== FOOTER ===== */
+    /* ========================================== */
+    /* ===== FOOTER (با لینک‌های فعال) ===== */
+    /* ========================================== */
     .footer {
       border-top: 1px solid #0f0f0f;
       padding: 2.5rem 2rem;
@@ -792,17 +793,28 @@
       font-weight: 300;
     }
     .footer-links a:hover { color: #fff; }
+
     .footer-social {
       display: flex;
       gap: 1.2rem;
       color: #333;
       font-size: 1.2rem;
     }
-    .footer-social i {
-      cursor: pointer;
+    .footer-social a {
+      color: #444;
       transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
-    .footer-social i:hover { color: #fff; transform: translateY(-3px); }
+    .footer-social a:hover {
+      color: #fff;
+      transform: translateY(-3px);
+    }
+    .footer-social a i {
+      font-size: 1.2rem;
+    }
+
     .footer-copy {
       width: 100%;
       text-align: center;
@@ -841,6 +853,8 @@
       .detail-hero h1 { font-size: 2.2rem; }
       .about-page .about-header h1 { font-size: 1.8rem; }
       .about-page .about-tagline { font-size: 1.3rem; }
+      .footer-social { gap: 1rem; }
+      .footer-social a i { font-size: 1rem; }
     }
   </style>
 </head>
@@ -1020,7 +1034,9 @@
     </div>
   </div>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ========================================== -->
+  <!-- ===== FOOTER با لینک‌های فعال ===== -->
+  <!-- ========================================== -->
   <footer class="footer">
     <div class="logo" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
     <div class="footer-links">
@@ -1029,34 +1045,37 @@
       <a onclick="navigateTo('about')">درباره ما</a>
     </div>
     <div class="footer-social">
-      <i class="fab fa-twitter"></i>
-      <i class="fab fa-youtube"></i>
-      <i class="fab fa-instagram"></i>
+      <a href="https://t.me/ZEROX_STUDIOS" target="_blank" rel="noopener noreferrer" aria-label="تلگرام">
+        <i class="fab fa-telegram"></i>
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer" aria-label="توییتر">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer" aria-label="یوتیوب">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام">
+        <i class="fab fa-instagram"></i>
+      </a>
     </div>
     <div class="footer-copy">© 2026 ZER0X GAME · Create Beyond Limits.</div>
   </footer>
 
   <script>
     // ===== جلوگیری از دانلود عکس =====
-    // غیرفعال کردن کلیک راست روی عکس‌ها
     document.addEventListener('contextmenu', function(e) {
       if (e.target.tagName === 'IMG') {
         e.preventDefault();
         return false;
       }
     });
-
-    // غیرفعال کردن درگ عکس
     document.addEventListener('dragstart', function(e) {
       if (e.target.tagName === 'IMG') {
         e.preventDefault();
         return false;
       }
     });
-
-    // غیرفعال کردن Save Image As (کیبورد)
     document.addEventListener('keydown', function(e) {
-      // Ctrl+S یا Cmd+S
       if ((e.ctrlKey || e.metaKey) && e.key === 's') {
         if (e.target.tagName === 'IMG') {
           e.preventDefault();
