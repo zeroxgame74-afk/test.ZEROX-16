@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zerox games | original</title>
-
-    <!-- Google Fonts -->
+    <title>Zerox Games | Original</title>
+    
+    <!-- Font Awesome 6 (آیکون‌های خفن) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+    <!-- Google Fonts: استعداد + اردکان -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;700;900&family=Ardakan:wght@400;700&display=swap" rel="stylesheet" />
-
-    <!-- Font Awesome 6 (free) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;700;900&family=Ardakan:wght@400;700&display=swap" rel="stylesheet" />
+    
     <style>
         * {
             margin: 0;
@@ -26,367 +26,357 @@
             font-family: 'Estedad', sans-serif;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            padding: 2rem 1rem;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* افکت پس‌زمینه گرادیان متحرک */
+        /* پس‌زمینه داینامیک با ذرات */
         body::before {
             content: '';
             position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(255, 70, 70, 0.08), transparent 50%),
-                        radial-gradient(circle at 70% 60%, rgba(0, 200, 255, 0.06), transparent 50%);
-            animation: rotateBg 30s linear infinite;
-            z-index: 0;
-        }
-
-        @keyframes rotateBg {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .card {
-            position: relative;
-            z-index: 1;
-            max-width: 1100px;
-            width: 100%;
-            background: rgba(20, 25, 40, 0.6);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 3.5rem;
-            padding: 3rem 2.5rem;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            box-shadow: 0 40px 100px rgba(255, 70, 70, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
-        }
-
-        /* Header */
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            margin-bottom: 3rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .logo i {
-            font-size: 2.8rem;
-            color: #ff4d4d;
-            filter: drop-shadow(0 0 12px rgba(255, 70, 70, 0.5));
-            transition: 0.3s;
-        }
-
-        .logo i:hover {
-            transform: scale(1.1) rotate(-6deg);
-            color: #ff6b6b;
-        }
-
-        .logo h1 {
-            font-family: 'Ardakan', sans-serif;
-            font-weight: 900;
-            font-size: 2.4rem;
-            background: linear-gradient(135deg, #f0f0ff, #ff7e7e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
-        }
-
-        .logo span {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 300;
-            font-size: 1rem;
-            color: #8892b0;
-            margin-right: 0.4rem;
-            -webkit-text-fill-color: #8892b0;
-        }
-
-        .nav-icons {
-            display: flex;
-            gap: 1.8rem;
-            font-size: 1.6rem;
-        }
-
-        .nav-icons a {
-            color: #ccd6f6;
-            transition: 0.25s ease;
-            text-decoration: none;
-            position: relative;
-        }
-
-        .nav-icons a:hover {
-            color: #ff4d4d;
-            transform: translateY(-3px);
-        }
-
-        .nav-icons a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
+            top: 0;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: #ff4d4d;
-            transition: 0.3s;
-        }
-
-        .nav-icons a:hover::after {
             width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 40%, #1a1f35, #07080e);
+            z-index: -2;
         }
 
-        /* Hero */
-        .hero {
-            margin: 2.5rem 0 3rem;
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
         }
 
-        .hero .badge {
-            display: inline-block;
-            background: rgba(255, 70, 70, 0.15);
-            border: 1px solid rgba(255, 70, 70, 0.25);
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: #ff8a8a;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(4px);
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 215, 0, 0.6);
+            border-radius: 50%;
+            animation: floatParticle 18s infinite linear;
+            box-shadow: 0 0 15px gold;
         }
 
-        .hero h2 {
-            font-family: 'Ardakan', sans-serif;
-            font-weight: 900;
-            font-size: clamp(2.4rem, 8vw, 4.8rem);
-            line-height: 1.1;
-            background: linear-gradient(to left, #ffffff, #b0b9ff, #ff7b7b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        @keyframes floatParticle {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* کارت اصلی */
+        .hero-card {
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(20, 25, 45, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            border-radius: 48px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 215, 0, 0.1) inset;
+            transition: 0.4s ease;
+            animation: fadeUp 1s ease-out;
+        }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(60px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .hero-card:hover {
+            border-color: #ffd700;
+            box-shadow: 0 40px 100px rgba(255, 215, 0, 0.2), 0 0 0 2px rgba(255, 215, 0, 0.2) inset;
+        }
+
+        /* لوگو و عنوان */
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
             margin-bottom: 1.2rem;
         }
 
-        .hero p {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 300;
-            font-size: 1.2rem;
-            max-width: 620px;
-            color: #a8b2d1;
-            line-height: 1.9;
-            margin-bottom: 2.2rem;
+        .logo-icon {
+            font-size: 4.5rem;
+            color: #ffd700;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+            animation: pulseGlow 2.5s infinite alternate;
         }
 
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
+        @keyframes pulseGlow {
+            0% { filter: drop-shadow(0 0 10px gold); }
+            100% { filter: drop-shadow(0 0 40px #ffaa00); }
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            padding: 0.9rem 2.2rem;
-            border-radius: 60px;
+        .main-title {
+            font-family: 'Ardakan', sans-serif;
+            font-weight: 900;
+            font-size: 4rem;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffd700, #ffb800, #ff8c00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 40px rgba(255, 200, 0, 0.3);
+        }
+
+        .sub-title {
             font-family: 'Estedad', sans-serif;
             font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: 0.25s ease;
-            border: 1px solid transparent;
-            cursor: default;
+            font-size: 1.3rem;
+            color: #b9c4e6;
+            margin-top: -0.5rem;
+            letter-spacing: 3px;
+            opacity: 0.9;
         }
 
-        .btn-primary {
-            background: #ff4d4d;
-            color: #0b0d15;
-            box-shadow: 0 8px 28px rgba(255, 70, 70, 0.35);
+        .sub-title i {
+            color: #ffd700;
+            margin: 0 6px;
         }
 
-        .btn-primary:hover {
-            background: #ff6b6b;
-            transform: scale(1.03);
-            box-shadow: 0 12px 36px rgba(255, 70, 70, 0.5);
+        /* تقسیم‌کننده */
+        .divider {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            margin: 1.8rem auto;
+            border-radius: 10px;
         }
 
-        .btn-outline {
-            border-color: rgba(255, 255, 255, 0.2);
-            color: #ccd6f6;
-            background: transparent;
+        /* توضیحات */
+        .desc {
+            font-family: 'Estedad', sans-serif;
+            font-size: 1.2rem;
+            line-height: 2rem;
+            color: #d0d9f0;
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
         }
 
-        .btn-outline:hover {
-            border-color: #ff4d4d;
-            color: #fff;
-            background: rgba(255, 70, 70, 0.08);
+        .desc i {
+            color: #ffd700;
+            margin: 0 4px;
         }
 
-        /* Features Grid */
-        .features {
+        /* شبکه ویژگی‌ها */
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 1.8rem;
-            margin-top: 4rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin: 2.5rem 0 3rem;
         }
 
         .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.6rem 0.8rem;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.02);
-            transition: 0.2s;
-            border: 1px solid transparent;
+            background: rgba(255, 215, 0, 0.06);
+            border-radius: 28px;
+            padding: 1.4rem 0.8rem;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            transition: 0.3s ease;
+            backdrop-filter: blur(4px);
         }
 
         .feature-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 70, 70, 0.15);
-            transform: translateX(-4px);
+            transform: translateY(-8px) scale(1.02);
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.12);
+            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.15);
         }
 
         .feature-item i {
-            font-size: 2rem;
-            color: #ff4d4d;
-            width: 2.6rem;
-            text-align: center;
+            font-size: 2.6rem;
+            color: #ffd700;
+            display: block;
+            margin-bottom: 10px;
         }
 
-        .feature-item .info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .feature-item .info strong {
+        .feature-item span {
             font-family: 'Ardakan', sans-serif;
             font-weight: 700;
-            font-size: 1rem;
-            color: #e6f1ff;
+            font-size: 1.1rem;
+            color: #f0f4ff;
         }
 
-        .feature-item .info small {
+        /* دکمه‌ها */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
             font-family: 'Estedad', sans-serif;
-            font-weight: 300;
-            font-size: 0.75rem;
-            color: #8892b0;
+            font-weight: 700;
+            padding: 1rem 2.8rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #ffd700;
         }
 
-        /* Responsive */
+        .btn-primary {
+            background: #ffd700;
+            color: #0b0d15;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #ffed4a;
+            transform: scale(1.06);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 215, 0, 0.12);
+            transform: scale(1.05);
+            border-color: #ffed4a;
+        }
+
+        .btn i {
+            font-size: 1.3rem;
+        }
+
+        /* فوتر */
+        .footer-note {
+            margin-top: 3rem;
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.95rem;
+            color: #6b7399;
+            letter-spacing: 1px;
+        }
+
+        .footer-note i {
+            color: #ffd700;
+            margin: 0 5px;
+        }
+
+        /* ریسپانسیو */
         @media (max-width: 700px) {
-            .card {
-                padding: 2rem 1.2rem;
-                border-radius: 2rem;
-            }
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .nav-icons {
-                font-size: 1.4rem;
-                gap: 1.2rem;
-            }
-            .hero h2 {
-                font-size: 2.6rem;
-            }
-            .btn {
-                padding: 0.7rem 1.6rem;
-                font-size: 0.9rem;
-            }
+            .hero-card { padding: 2rem 1.5rem; }
+            .main-title { font-size: 2.8rem; }
+            .logo-icon { font-size: 3.2rem; }
+            .sub-title { font-size: 1rem; }
+            .desc { font-size: 1rem; }
+            .features-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .btn { padding: 0.8rem 1.8rem; font-size: 0.95rem; }
         }
 
-        @media (max-width: 450px) {
-            .features {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 460px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .main-title { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
+    <!-- ذرات پس‌زمینه (JS تولید می‌کنه) -->
+    <div class="particles" id="particlesContainer"></div>
 
-        <!-- HEADER -->
-        <div class="header">
-            <div class="logo">
-                <i class="fas fa-gamepad"></i>
-                <h1>Zerox <span>games</span></h1>
-                <span style="font-size:0.7rem; background:#ff4d4d20; padding:0.2rem 0.8rem; border-radius:30px; color:#ff7e7e;">original</span>
+    <!-- کارت اصلی -->
+    <div class="hero-card">
+
+        <!-- لوگو + نام -->
+        <div class="logo-wrapper">
+            <i class="fas fa-gamepad logo-icon"></i>
+            <h1 class="main-title">Zerox Games</h1>
+        </div>
+        <p class="sub-title">
+            <i class="fas fa-star"></i> original studio <i class="fas fa-star"></i>
+        </p>
+
+        <div class="divider"></div>
+
+        <!-- توضیح -->
+        <p class="desc">
+            <i class="fas fa-rocket"></i> استودیوی <strong>Zerox</strong> با ایده‌های تازه و 
+            بازیسازی حرفه‌ای، مرزهای سرگرمی رو جابه‌جا میکنه. 
+            <i class="fas fa-fire"></i>
+        </p>
+
+        <!-- ویژگی‌ها -->
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-cubes"></i>
+                <span>بازی‌سازی 3D</span>
             </div>
-            <div class="nav-icons">
-                <a href="#"><i class="fas fa-rocket"></i></a>
-                <a href="#"><i class="fas fa-users"></i></a>
-                <a href="#"><i class="fas fa-cog"></i></a>
-                <a href="#"><i class="fas fa-bolt"></i></a>
+            <div class="feature-item">
+                <i class="fas fa-paint-brush"></i>
+                <span>طراحی هنری</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-code"></i>
+                <span>کدنویسی پیشرفته</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-globe"></i>
+                <span>انتشار جهانی</span>
             </div>
         </div>
 
-        <!-- HERO -->
-        <div class="hero">
-            <div class="badge">
-                <i class="fas fa-bolt" style="margin-left:6px;"></i> استودیو بازیسازی حرفه‌ای
-            </div>
-            <h2>بازی‌هایی که<br />زندگی می‌کنند</h2>
-            <p>
-                از ایده تا اجرا — ما در <strong style="color:#fff; font-weight:700;">Zerox</strong> 
-                با تکنولوژی روز و داستان‌های عمیق، تجربه‌ای فراموش‌نشدنی می‌سازیم.
-            </p>
-            <div class="btn-group">
-                <a href="#" class="btn btn-primary"><i class="fas fa-play"></i> پروژه‌های ما</a>
-                <a href="#" class="btn btn-outline"><i class="fas fa-chevron-left"></i> همکاری</a>
-            </div>
+        <!-- دکمه‌ها -->
+        <div class="btn-group">
+            <a href="#" class="btn btn-primary">
+                <i class="fas fa-play"></i> پروژه‌ها
+            </a>
+            <a href="#" class="btn btn-outline">
+                <i class="fas fa-users"></i> همکاری
+            </a>
+            <a href="#" class="btn btn-outline">
+                <i class="fas fa-envelope"></i> تماس
+            </a>
         </div>
 
-        <!-- FEATURES -->
-        <div class="features">
-            <div class="feature-item">
-                <i class="fas fa-cube"></i>
-                <div class="info">
-                    <strong>موتور آنریل</strong>
-                    <small>گرافیک نسل نهم</small>
-                </div>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-headphones"></i>
-                <div class="info">
-                    <strong>صدای سه‌بعدی</strong>
-                    <small>تجربه فراگیر</small>
-                </div>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-code-branch"></i>
-                <div class="info">
-                    <strong>تیم ۲۰ نفره</strong>
-                    <small>متخصص در سبک‌های مختلف</small>
-                </div>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-trophy"></i>
-                <div class="info">
-                    <strong>۳ جایزه بین‌المللی</strong>
-                    <small>۲۰۲۴ – ۲۰۲۶</small>
-                </div>
-            </div>
+        <div class="footer-note">
+            <i class="fas fa-bolt"></i> Zerox Games · Since 2026 <i class="fas fa-bolt"></i>
         </div>
-
     </div>
+
+    <!-- اسکریپت تولید ذرات -->
+    <script>
+        (function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            const count = 45;
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 5 + 2;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (Math.random() * 20 + 12) + 's';
+                p.style.animationDelay = (Math.random() * 20) + 's';
+                p.style.opacity = Math.random() * 0.5 + 0.2;
+                const colors = ['#ffd700', '#ffaa00', '#ffdd44', '#ffb347'];
+                p.style.background = colors[Math.floor(Math.random() * colors.length)];
+                p.style.boxShadow = `0 0 ${size * 3}px ${p.style.background}`;
+                container.appendChild(p);
+            }
+        })();
+    </script>
 
 </body>
 </html>
