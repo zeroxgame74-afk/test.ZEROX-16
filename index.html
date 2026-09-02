@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ardakan:wght@300;400;700;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;700;900&display=swap" rel="stylesheet" />
     <style>
+        /* ===== RESET ===== */
         * {
             margin: 0;
             padding: 0;
@@ -15,16 +16,20 @@
         }
 
         body {
-            background: #0a0c10;
-            color: #e8ecf5;
+            background: #f5f7fc;
+            color: #1a1d24;
             font-family: 'Ardakan', sans-serif;
             line-height: 1.8;
             overflow-x: hidden;
         }
 
         /* ===== فونت‌ها ===== */
-        /* تیترها و عناوین: استعداد */
-        h1, h2, h3, h4, h5, h6,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
         .logo,
         .section-title,
         .slide-content h1,
@@ -41,27 +46,46 @@
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
         }
 
-        /* متن‌ها و بقیه: اردکان */
-        body, p, span, div, a, button, input, textarea, li,
-        .meta, .genre, .status, .card-info, .slide-content p,
-        .detail-section p, .feature-item p, .footer-copy,
-        .studio-bio p, .footer-nav a, .social-icons i {
+        body,
+        p,
+        span,
+        div,
+        a,
+        button,
+        input,
+        textarea,
+        li,
+        .meta,
+        .genre,
+        .status,
+        .card-info,
+        .slide-content p,
+        .detail-section p,
+        .feature-item p,
+        .footer-copy,
+        .studio-bio p,
+        .footer-nav a,
+        .social-icons i {
             font-family: 'Ardakan', sans-serif !important;
         }
 
-        /* ===== پالت رنگی ===== */
+        /* ===== رنگ‌بندی جدید ===== */
         :root {
-            --bg-deep: #0a0c10;
-            --bg-card: #13161d;
-            --bg-card-hover: #1a1f2a;
-            --border-subtle: rgba(180, 200, 230, 0.08);
-            --border-glow: rgba(180, 210, 255, 0.12);
-            --text-white: #f0f3fa;
-            --text-silver: #b8c4d8;
-            --text-muted: #6a7a90;
-            --glow-blue: rgba(160, 200, 255, 0.06);
-            --glow-white: rgba(255, 255, 255, 0.04);
-            --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.7);
+            --bg-light: #f5f7fc;
+            --bg-dark: #0a0c10;
+            --bg-card: rgba(255, 255, 255, 0.75);
+            --bg-card-dark: rgba(10, 12, 16, 0.85);
+            --border-glass: rgba(255, 255, 255, 0.25);
+            --border-dark: rgba(255, 255, 255, 0.08);
+            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.06);
+            --shadow-dark: 0 20px 60px rgba(0, 0, 0, 0.5);
+            --text-dark: #1a1d24;
+            --text-light: #f0f3fa;
+            --text-silver: #8a94a6;
+            --gold-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #f6d365 100%);
+            --silver-gradient: linear-gradient(135deg, #e8ecf1 0%, #b8c4d8 100%);
+            --glow-gold: 0 0 60px rgba(253, 160, 133, 0.15);
+            --glow-silver: 0 0 60px rgba(200, 210, 230, 0.08);
         }
 
         html {
@@ -74,34 +98,40 @@
             padding: 0 2rem;
         }
 
-        /* ===== هدر ===== */
+        /* ===== HEADER ===== */
         header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1rem 2rem;
-            background: rgba(10, 12, 16, 0.88);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border-subtle);
+            padding: 0.8rem 2.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: var(--shadow-glass);
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 900;
-            color: #fff;
             text-decoration: none;
             cursor: pointer;
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: 0.5px;
-            text-shadow: 0 0 40px rgba(255, 255, 255, 0.03);
         }
         .logo span {
             font-weight: 300;
-            color: var(--text-silver);
+            background: var(--silver-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-family: 'Ardakan', sans-serif !important;
         }
 
@@ -110,14 +140,14 @@
             gap: 2.5rem;
         }
         nav a {
-            color: var(--text-silver);
+            color: var(--text-dark);
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 400;
             transition: 0.3s ease;
             position: relative;
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            letter-spacing: 0.3px;
+            opacity: 0.7;
         }
         nav a::after {
             content: '';
@@ -125,13 +155,13 @@
             bottom: -4px;
             right: 0;
             width: 0;
-            height: 1.5px;
-            background: linear-gradient(90deg, rgba(200, 220, 255, 0.6), #fff);
+            height: 2px;
+            background: var(--gold-gradient);
             transition: 0.3s ease;
             border-radius: 2px;
         }
         nav a:hover {
-            color: #fff;
+            opacity: 1;
         }
         nav a:hover::after {
             width: 100%;
@@ -150,8 +180,8 @@
             font-family: 'Ardakan', sans-serif !important;
         }
         .header-icons i:hover {
-            color: #fff;
-            text-shadow: 0 0 30px rgba(200, 220, 255, 0.15);
+            color: var(--text-dark);
+            transform: scale(1.1);
         }
 
         .menu-toggle {
@@ -159,17 +189,18 @@
             font-size: 1.6rem;
             background: none;
             border: none;
-            color: #fff;
+            color: var(--text-dark);
             cursor: pointer;
         }
 
-        /* ===== اسلایدر (تک اسلاید) ===== */
+        /* ===== HERO ===== */
         .hero-slider {
             position: relative;
             width: 100%;
-            height: 88vh;
+            height: 92vh;
             overflow: hidden;
             margin-bottom: 4rem;
+            background: var(--bg-dark);
         }
 
         .slide {
@@ -186,52 +217,61 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.28) saturate(0.8) contrast(1.15);
+            filter: brightness(0.4) saturate(0.7) contrast(1.2);
         }
 
         .slide-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(10, 12, 16, 0.15) 0%, rgba(10, 12, 16, 0.88) 100%);
+            background: linear-gradient(135deg, rgba(10, 12, 16, 0.6) 0%, rgba(10, 12, 16, 0.9) 100%);
             z-index: 1;
+        }
+
+        /* افکت نورپردازی روی اسلایدر */
+        .slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 80%, rgba(253, 160, 133, 0.08) 0%, transparent 60%);
+            z-index: 1;
+            pointer-events: none;
         }
 
         .slide-content {
             position: absolute;
-            bottom: 18%;
+            bottom: 20%;
             right: 8%;
             z-index: 3;
             max-width: 650px;
-        }
-        .slide-content {
-            animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         @keyframes fadeUp {
             0% {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(60px) scale(0.96);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
         .slide-content h1 {
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 900;
             margin-bottom: 0.2rem;
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            background: linear-gradient(135deg, #ffffff 30%, #b8ccf0 100%);
+            background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: 0px;
+            letter-spacing: 1px;
+            text-shadow: var(--glow-gold);
         }
         .slide-content .genre {
-            font-size: 0.95rem;
-            color: var(--text-silver);
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
             margin-bottom: 0.6rem;
             display: flex;
             gap: 0.5rem;
@@ -240,67 +280,89 @@
         }
         .slide-content .genre i {
             margin-left: 0.3rem;
-            color: rgba(180, 210, 255, 0.7);
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .slide-content p {
-            font-size: 1.1rem;
-            color: #c8d2e0;
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 1.5rem;
             max-width: 500px;
             font-family: 'Ardakan', sans-serif !important;
-            opacity: 0.9;
         }
         .slide-content .status {
             display: inline-block;
-            background: rgba(200, 220, 255, 0.06);
-            border: 1px solid rgba(200, 220, 255, 0.1);
-            padding: 0.3rem 1.4rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.3rem 1.6rem;
             border-radius: 30px;
             font-size: 0.85rem;
-            color: var(--text-silver);
-            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 1.8rem;
             font-family: 'Ardakan', sans-serif !important;
+            backdrop-filter: blur(4px);
         }
 
         .btn {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             color: #fff;
-            padding: 0.85rem 3rem;
+            padding: 0.9rem 3.2rem;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
-            border-radius: 6px;
-            backdrop-filter: blur(4px);
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
             cursor: pointer;
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
             letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold-gradient);
+            opacity: 0;
+            transition: 0.5s ease;
+            border-radius: 8px;
+        }
+        .btn:hover::before {
+            opacity: 0.15;
         }
         .btn:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(200, 220, 255, 0.3);
-            transform: scale(1.04);
-            box-shadow: 0 0 60px rgba(200, 220, 255, 0.04);
+            border-color: rgba(253, 160, 133, 0.4);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: var(--glow-gold);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         /* ===== بخش‌ها ===== */
         .section-title {
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             font-weight: 700;
-            margin-bottom: 2.5rem;
-            border-right: 3px solid rgba(200, 220, 255, 0.15);
+            margin-bottom: 2.8rem;
+            border-right: 4px solid;
+            border-image: var(--gold-gradient) 1;
             padding-right: 1.2rem;
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            color: #f0f3fa;
+            color: var(--text-dark);
             letter-spacing: 0.5px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* ===== کارت‌های بازی ===== */
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem;
             margin: 3rem 0 4rem;
         }
@@ -308,39 +370,59 @@
         .game-card {
             position: relative;
             background: var(--bg-card);
-            border-radius: 10px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 14px;
             overflow: hidden;
-            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid var(--border-subtle);
+            transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid var(--border-glass);
+            box-shadow: var(--shadow-glass);
             cursor: pointer;
+            transform-style: preserve-3d;
+        }
+        .game-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold-gradient);
+            opacity: 0;
+            transition: 0.6s ease;
+            border-radius: 14px;
+            z-index: 0;
+        }
+        .game-card:hover::before {
+            opacity: 0.06;
         }
         .game-card:hover {
-            transform: translateY(-6px) scale(1.015);
-            border-color: rgba(200, 220, 255, 0.15);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(200, 220, 255, 0.03);
+            transform: translateY(-10px) scale(1.02) rotateX(2deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), var(--glow-gold);
+            border-color: rgba(253, 160, 133, 0.2);
         }
 
         .game-card img {
             width: 100%;
-            height: 240px;
+            height: 250px;
             object-fit: cover;
-            transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            z-index: 1;
         }
         .game-card:hover img {
-            transform: scale(1.06);
+            transform: scale(1.08);
         }
 
         .game-card .card-info {
             padding: 1.2rem 1.5rem 1.8rem;
             position: relative;
-            background: linear-gradient(0deg, var(--bg-card) 50%, transparent);
+            z-index: 1;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.95) 40%, transparent);
         }
         .game-card h3 {
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 0.3rem;
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            color: #f0f3fa;
+            color: var(--text-dark);
         }
         .game-card .meta {
             display: flex;
@@ -352,20 +434,24 @@
         }
         .game-card .meta i {
             margin-left: 0.3rem;
-            color: rgba(200, 220, 255, 0.4);
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .game-card .card-arrow {
             position: absolute;
             left: 1.5rem;
             bottom: 1.2rem;
             font-size: 1.4rem;
-            color: var(--text-muted);
-            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            color: var(--text-silver);
+            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 2;
         }
         .game-card:hover .card-arrow {
-            color: #fff;
-            transform: translateX(-8px);
-            text-shadow: 0 0 30px rgba(200, 220, 255, 0.1);
+            color: #fda085;
+            transform: translateX(-10px) scale(1.2);
+            text-shadow: var(--glow-gold);
         }
 
         /* ===== بازی ویژه ===== */
@@ -374,41 +460,48 @@
             gap: 3rem;
             align-items: center;
             background: var(--bg-card);
-            border-radius: 12px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
             padding: 0;
             overflow: hidden;
             margin: 3rem 0 4rem;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border-glass);
+            box-shadow: var(--shadow-glass);
             cursor: pointer;
-            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .featured-game:hover {
-            border-color: rgba(200, 220, 255, 0.12);
-            box-shadow: 0 0 50px rgba(200, 220, 255, 0.02);
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1), var(--glow-gold);
+            border-color: rgba(253, 160, 133, 0.15);
         }
         .featured-game .art {
             flex: 1.2;
-            min-height: 340px;
+            min-height: 360px;
             background-size: cover;
             background-position: center;
-            transition: 0.6s;
+            transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .featured-game:hover .art {
-            transform: scale(1.02);
+            transform: scale(1.04);
         }
         .featured-game .info {
             flex: 1;
-            padding: 2.5rem 3rem;
+            padding: 2.5rem 3.5rem;
         }
         .featured-game .info h2 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 0.3rem;
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            color: #f0f3fa;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .featured-game .info p {
-            color: #c8d2e0;
+            color: var(--text-silver);
             margin-bottom: 1rem;
             font-family: 'Ardakan', sans-serif !important;
         }
@@ -422,16 +515,19 @@
             font-family: 'Ardakan', sans-serif !important;
         }
         .featured-game .info .meta i {
-            color: rgba(200, 220, 255, 0.4);
             margin-left: 0.4rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .btn-outline {
             background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #fff;
-            padding: 0.6rem 2rem;
-            border-radius: 6px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            color: var(--text-dark);
+            padding: 0.7rem 2.2rem;
+            border-radius: 8px;
             transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: inline-block;
             text-decoration: none;
@@ -439,28 +535,56 @@
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
             font-weight: 400;
             letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold-gradient);
+            opacity: 0;
+            transition: 0.4s ease;
+            border-radius: 8px;
+        }
+        .btn-outline:hover::before {
+            opacity: 0.08;
         }
         .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(200, 220, 255, 0.25);
-            box-shadow: 0 0 40px rgba(200, 220, 255, 0.03);
-            transform: scale(1.02);
+            border-color: rgba(253, 160, 133, 0.3);
+            transform: scale(1.04);
+            box-shadow: var(--glow-gold);
         }
 
         /* ===== استودیو ===== */
         .studio-bio {
             background: var(--bg-card);
-            border-radius: 12px;
-            padding: 3.5rem 2.5rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 4rem 2.5rem;
             margin: 4rem 0 2rem;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border-glass);
+            box-shadow: var(--shadow-glass);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .studio-bio::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 30%, rgba(253, 160, 133, 0.05) 0%, transparent 70%);
+            pointer-events: none;
         }
         .studio-bio h2 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: 700;
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            color: #f0f3fa;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: 1px;
         }
         .studio-bio p {
@@ -468,12 +592,13 @@
             margin: 1.2rem auto;
             color: var(--text-silver);
             font-family: 'Ardakan', sans-serif !important;
+            font-size: 1.05rem;
         }
 
         /* ===== فوتر ===== */
         footer {
-            background: #080a0e;
-            border-top: 1px solid var(--border-subtle);
+            background: var(--bg-dark);
+            border-top: 1px solid var(--border-dark);
             padding: 3rem 2rem 1.5rem;
             margin-top: 4rem;
         }
@@ -491,7 +616,7 @@
             flex-wrap: wrap;
         }
         .footer-nav a {
-            color: var(--text-silver);
+            color: rgba(255, 255, 255, 0.4);
             text-decoration: none;
             font-size: 0.9rem;
             transition: 0.3s;
@@ -507,25 +632,26 @@
         }
         .social-icons i {
             font-size: 1.3rem;
-            color: #5a6a7e;
+            color: rgba(255, 255, 255, 0.2);
             transition: 0.3s;
             cursor: pointer;
             font-family: 'Ardakan', sans-serif !important;
         }
         .social-icons i:hover {
-            color: #fff;
-            text-shadow: 0 0 30px rgba(200, 220, 255, 0.1);
+            color: #fda085;
+            transform: translateY(-3px);
+            text-shadow: var(--glow-gold);
         }
         .footer-copy {
             text-align: center;
-            color: #4a5a6e;
+            color: rgba(255, 255, 255, 0.15);
             font-size: 0.8rem;
             margin-top: 2rem;
             letter-spacing: 0.5px;
             font-family: 'Ardakan', sans-serif !important;
         }
 
-        /* ===== صفحه اختصاصی بازی ===== */
+        /* ===== صفحه اختصاصی ===== */
         .game-detail-page {
             display: none;
             padding: 2rem 0 4rem;
@@ -539,14 +665,22 @@
             width: 100%;
             height: 70vh;
             overflow: hidden;
-            border-radius: 12px;
+            border-radius: 16px;
             margin-bottom: 3rem;
+            box-shadow: var(--shadow-dark);
         }
         .game-detail-hero img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.3);
+            filter: brightness(0.3) saturate(0.6);
+        }
+        .game-detail-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 60% 80%, rgba(253, 160, 133, 0.06) 0%, transparent 60%);
+            z-index: 1;
         }
         .game-detail-hero .hero-info {
             position: absolute;
@@ -556,34 +690,41 @@
             max-width: 700px;
         }
         .game-detail-hero .hero-info h1 {
-            font-size: 4.5rem;
-            font-weight: 700;
+            font-size: 5rem;
+            font-weight: 900;
             margin-bottom: 0.3rem;
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            color: #f0f3fa;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .game-detail-hero .hero-info .meta-detail {
             display: flex;
             gap: 2rem;
             flex-wrap: wrap;
-            color: var(--text-silver);
+            color: rgba(255, 255, 255, 0.5);
             font-size: 1rem;
             margin: 1rem 0 1.5rem;
             font-family: 'Ardakan', sans-serif !important;
         }
         .game-detail-hero .hero-info .meta-detail i {
             margin-left: 0.5rem;
-            color: rgba(200, 220, 255, 0.4);
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .game-detail-hero .hero-info .status-badge {
             display: inline-block;
-            background: rgba(200, 220, 255, 0.06);
-            border: 1px solid rgba(200, 220, 255, 0.1);
-            padding: 0.4rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 0.4rem 1.6rem;
             border-radius: 30px;
             font-size: 0.9rem;
-            color: var(--text-silver);
+            color: rgba(255, 255, 255, 0.4);
             font-family: 'Ardakan', sans-serif !important;
+            backdrop-filter: blur(4px);
         }
 
         .detail-section {
@@ -593,17 +734,22 @@
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            border-right: 3px solid rgba(200, 220, 255, 0.15);
+            border-right: 4px solid;
+            border-image: var(--gold-gradient) 1;
             padding-right: 1rem;
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            color: #f0f3fa;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .detail-section p {
-            color: #c8d2e0;
-            line-height: 2;
+            color: var(--text-silver);
+            line-height: 2.2;
             max-width: 800px;
             white-space: pre-line;
             font-family: 'Ardakan', sans-serif !important;
+            font-size: 1.05rem;
         }
 
         .detail-gallery {
@@ -616,15 +762,16 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid var(--border-subtle);
-            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 12px;
+            border: 1px solid var(--border-glass);
+            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
+            box-shadow: var(--shadow-glass);
         }
         .detail-gallery img:hover {
-            transform: scale(1.04);
-            border-color: rgba(200, 220, 255, 0.15);
-            box-shadow: 0 0 40px rgba(200, 220, 255, 0.03);
+            transform: scale(1.05);
+            border-color: rgba(253, 160, 133, 0.2);
+            box-shadow: var(--glow-gold);
         }
 
         .detail-features {
@@ -635,28 +782,35 @@
         }
         .detail-features .feature-item {
             background: var(--bg-card);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 1.8rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-glass);
+            box-shadow: var(--shadow-glass);
             text-align: center;
-            transition: 0.3s;
+            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .detail-features .feature-item:hover {
-            border-color: rgba(200, 220, 255, 0.12);
+            transform: translateY(-4px);
+            border-color: rgba(253, 160, 133, 0.15);
+            box-shadow: var(--glow-gold);
         }
         .detail-features .feature-item i {
-            font-size: 2rem;
-            color: var(--text-silver);
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
-            opacity: 0.6;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .detail-features .feature-item h4 {
             font-weight: 700;
-            color: #e8ecf5;
+            color: var(--text-dark);
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
         }
         .detail-features .feature-item p {
-            color: var(--text-muted);
+            color: var(--text-silver);
             font-size: 0.9rem;
             margin-top: 0.3rem;
             font-family: 'Ardakan', sans-serif !important;
@@ -669,9 +823,9 @@
             margin-top: 0.5rem;
         }
         .detail-tags span {
-            background: rgba(200, 220, 255, 0.05);
-            border: 1px solid var(--border-subtle);
-            padding: 0.3rem 1.2rem;
+            background: rgba(253, 160, 133, 0.06);
+            border: 1px solid rgba(253, 160, 133, 0.08);
+            padding: 0.3rem 1.4rem;
             border-radius: 20px;
             font-size: 0.8rem;
             color: var(--text-silver);
@@ -683,30 +837,34 @@
             color: var(--text-silver);
             text-decoration: none;
             margin-bottom: 2rem;
-            transition: 0.3s;
+            transition: 0.4s;
             cursor: pointer;
-            border: 1px solid var(--border-subtle);
-            padding: 0.5rem 1.5rem;
-            border-radius: 6px;
-            background: transparent;
+            border: 1px solid var(--border-glass);
+            padding: 0.5rem 1.8rem;
+            border-radius: 8px;
+            background: var(--bg-card);
+            backdrop-filter: blur(8px);
             font-family: 'Estedad', 'Ardakan', sans-serif !important;
+            box-shadow: var(--shadow-glass);
         }
         .back-home-btn:hover {
-            color: #fff;
-            border-color: rgba(200, 220, 255, 0.2);
+            color: var(--text-dark);
+            border-color: rgba(253, 160, 133, 0.2);
+            box-shadow: var(--glow-gold);
+            transform: translateX(-4px);
         }
 
         /* ===== ریسپانسیو ===== */
         @media (max-width: 992px) {
             .slide-content h1 {
-                font-size: 3.2rem;
+                font-size: 3.5rem;
             }
             .featured-game {
                 flex-direction: column;
             }
             .featured-game .art {
                 width: 100%;
-                min-height: 220px;
+                min-height: 240px;
             }
             .featured-game .info {
                 padding: 2rem;
@@ -715,7 +873,7 @@
                 height: 50vh;
             }
             .game-detail-hero .hero-info h1 {
-                font-size: 3.2rem;
+                font-size: 3.5rem;
             }
         }
 
@@ -723,13 +881,14 @@
             nav {
                 display: none;
                 flex-direction: column;
-                background: #0a0c10;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
                 position: absolute;
                 top: 70px;
                 right: 0;
                 width: 100%;
                 padding: 1.5rem;
-                border-bottom: 1px solid var(--border-subtle);
+                border-bottom: 1px solid var(--border-glass);
                 gap: 1rem;
             }
             nav.open {
@@ -750,14 +909,14 @@
                 max-width: 90%;
             }
             .slide-content h1 {
-                font-size: 2.4rem;
+                font-size: 2.6rem;
             }
             .games-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 1.2rem;
             }
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             .footer-content {
                 flex-direction: column;
@@ -765,7 +924,7 @@
                 align-items: center;
             }
             .game-detail-hero .hero-info h1 {
-                font-size: 2.4rem;
+                font-size: 2.6rem;
             }
             .game-detail-hero .hero-info {
                 right: 5%;
@@ -778,20 +937,23 @@
                 grid-template-columns: 1fr;
             }
             .slide-content h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             .btn {
-                padding: 0.6rem 1.8rem;
+                padding: 0.6rem 2rem;
             }
             .game-detail-hero {
                 height: 40vh;
+            }
+            .game-detail-hero .hero-info h1 {
+                font-size: 2.2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== هدر ===== -->
+    <!-- ===== HEADER ===== -->
     <header>
         <a class="logo" id="homeLogo">Zerox <span>games | original</span></a>
         <nav id="mainNav">
@@ -808,12 +970,12 @@
 
     <main>
 
-        <!-- ===== صفحه اصلی ===== -->
+        <!-- ===== HOME ===== -->
         <div id="page-home" class="page-content">
 
-            <!-- اسلایدر (تک اسلاید) -->
-            <section class="hero-slider" id="heroSlider">
-                <div class="slide active" data-index="0">
+            <!-- HERO -->
+            <section class="hero-slider">
+                <div class="slide active">
                     <img src="https://uploadkon.ir/uploads/dec602_26Negar-1788164380627.jpg" alt="SilentGears" class="slide-bg" />
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
@@ -826,13 +988,13 @@
                 </div>
             </section>
 
-            <!-- بازی‌های منتخب -->
+            <!-- GAMES -->
             <div class="container" id="games">
                 <h2 class="section-title">بازی‌های منتخب</h2>
                 <div class="games-grid" id="gamesGrid"></div>
             </div>
 
-            <!-- جدیدترین بازی -->
+            <!-- FEATURED -->
             <div class="container">
                 <h2 class="section-title">جدیدترین بازی</h2>
                 <div class="featured-game game-detail-btn" data-game="silent-gears" id="featuredGame">
@@ -850,7 +1012,7 @@
                 </div>
             </div>
 
-            <!-- معرفی استودیو -->
+            <!-- STUDIO -->
             <div class="container" id="about">
                 <div class="studio-bio">
                     <h2>Zerox games | original</h2>
@@ -860,12 +1022,12 @@
             </div>
         </div>
 
-        <!-- ===== صفحات اختصاصی بازی‌ها ===== -->
+        <!-- ===== GAME DETAIL ===== -->
         <div id="game-detail-container"></div>
 
     </main>
 
-    <!-- ===== فوتر ===== -->
+    <!-- ===== FOOTER ===== -->
     <footer>
         <div class="footer-content">
             <div class="logo" style="font-size:1.4rem;">Zerox <span>games | original</span></div>
@@ -888,10 +1050,9 @@
         </div>
     </footer>
 
-    <!-- ===== اسکریپت ===== -->
+    <!-- ===== SCRIPT ===== -->
     <script>
         (function() {
-            // ===== دیتا =====
             const gamesData = [{
                 id: 1,
                 title: "SilentGears | چرخ‌دنده‌ساکت",
@@ -916,7 +1077,6 @@
                 tags: ["اکشن-ماجرایی", "نقش‌آفرینی", "ریتم‌محور", "پساآخرالزمانی", "تکنفره"]
             }];
 
-            // ===== متغیرها =====
             const pageHome = document.getElementById('page-home');
             const detailContainer = document.getElementById('game-detail-container');
 
@@ -924,7 +1084,6 @@
                 return gamesData.find(g => g.slug === slug);
             }
 
-            // ===== رندر کارت‌ها =====
             function renderGameCards() {
                 const grid = document.getElementById('gamesGrid');
                 if (!grid) return;
@@ -937,7 +1096,7 @@
                         <img src="${game.cover}" alt="${game.persianName}" />
                         <div class="card-info">
                             <h3>${game.persianName}</h3>
-                            <div class="meta"><i class="fas fa-tag"></i> ${game.genre} <i class="fas fa-circle" style="font-size:0.3rem; color:#3a4a5e;"></i> <i class="fas fa-clock"></i> ${game.status}</div>
+                            <div class="meta"><i class="fas fa-tag"></i> ${game.genre} <i class="fas fa-circle" style="font-size:0.3rem; color:#d0d5e0;"></i> <i class="fas fa-clock"></i> ${game.status}</div>
                             <div class="meta"><i class="fas fa-gamepad"></i> ${game.platform}</div>
                             <i class="fas fa-arrow-left card-arrow"></i>
                         </div>
@@ -946,7 +1105,6 @@
                 });
             }
 
-            // ===== رندر صفحه اختصاصی =====
             function renderGameDetail(slug) {
                 const game = getGameBySlug(slug);
                 if (!game) return;
@@ -1061,7 +1219,6 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
-            // ===== مقداردهی =====
             function init() {
                 renderGameCards();
 
@@ -1121,9 +1278,9 @@
             }
 
             init();
-            console.log('Zerox games | original - فونت‌های استعداد + اردکان | اسلایدر تک');
+            console.log('🔥 Zerox games | original - نسخه لوکس با افکت‌های شیشه‌ای و رنگ‌بندی طلایی-نقره‌ای');
         })();
     </script>
 
 </body>
-            </html>
+                    </html>
