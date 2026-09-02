@@ -344,70 +344,49 @@
     /* ===== درباره ما ===== */
     .about-page {
       padding: 4rem 0;
-    }
-    .about-page .about-header {
-      margin-bottom: 3rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
     .about-page .about-header h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 900;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       letter-spacing: -2px;
+      margin-bottom: 2.5rem;
+      border-right: 3px solid #333;
+      padding-right: 1.2rem;
     }
-    .about-page .about-header .sub {
-      color: #666;
-      font-size: 1.2rem;
-      font-weight: 300;
-      margin-top: 0.5rem;
-    }
-    .about-page .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-    .about-page .about-grid .about-text p {
-      color: #999;
-      margin-bottom: 1.5rem;
+    .about-page .about-content p {
+      color: #aaa;
       font-size: 1.05rem;
-      line-height: 2;
-    }
-    .about-page .about-grid .about-text .highlight {
-      color: #fff;
-      font-weight: 700;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-    }
-    .about-page .about-grid .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .about-page .about-grid .about-stats .stat {
-      background: #0f0f0f;
-      border: 1px solid #181818;
-      border-radius: 8px;
-      padding: 2rem;
-      text-align: center;
-      transition: 0.3s;
-    }
-    .about-page .about-grid .about-stats .stat:hover {
-      border-color: #333;
-      transform: translateY(-4px);
-    }
-    .about-page .about-grid .about-stats .stat .number {
-      font-size: 2.8rem;
-      font-weight: 900;
-      color: #fff;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-    }
-    .about-page .about-grid .about-stats .stat .label {
-      color: #666;
-      font-size: 0.85rem;
-      margin-top: 0.3rem;
+      line-height: 2.2;
+      margin-bottom: 1.5rem;
       font-weight: 300;
+    }
+    .about-page .about-content p:last-of-type {
+      margin-bottom: 2.5rem;
+    }
+    .about-page .about-tagline {
+      font-size: 2rem;
+      font-weight: 900;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      color: #fff;
+      letter-spacing: -1px;
+      border-top: 1px solid #1a1a1a;
+      padding-top: 2rem;
+    }
+    .about-page .about-tagline span {
+      display: block;
+      font-size: 1rem;
+      font-weight: 300;
+      color: #555;
+      letter-spacing: 3px;
+      margin-top: 0.3rem;
+      font-family: 'Inter', 'Estedad', 'Ardakan', sans-serif;
     }
 
     /* ========================================== */
-    /* ===== صفحه اختصاصی (طراحی جدید خفن) ===== */
+    /* ===== صفحه اختصاصی (طراحی خفن) ===== */
     /* ========================================== */
     .detail-hero {
       position: relative;
@@ -636,12 +615,6 @@
     }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 992px) {
-      .about-page .about-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-    }
     @media (max-width: 768px) {
       .nav { display: none; }
       .menu-mobile { display: inline-block; }
@@ -657,13 +630,11 @@
       .footer { flex-direction: column; align-items: flex-start; }
       .search-overlay .search-box input { font-size: 1.2rem; padding: 1rem; }
       .about-page .about-header h1 { font-size: 2.5rem; }
-      .about-page .about-grid .about-stats { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: 1fr; }
       .detail-hero h1 { font-size: 2.2rem; }
-      .about-page .about-grid .about-stats { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -730,47 +701,31 @@
   <div class="page" id="pageAbout">
     <div class="container about-page">
       <div class="about-header">
-        <h1>درباره ZER0X</h1>
-        <div class="sub">استودیوی بازی‌سازی با چشم‌اندازی فراتر از مرزها</div>
+        <h1>درباره Zerox Game</h1>
       </div>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            <span class="highlight">ZER0X GAME</span> یک استودیوی مستقل بازی‌سازی است که در سال ۲۰۲۰ با هدف خلق تجربه‌های سینمایی و روایت‌های عمیق تأسیس شد.
-          </p>
-          <p>
-            ما معتقدیم بازی‌های ویدیویی فراتر از سرگرمی هستند — آنها پنجره‌ای به دنیاهای جدید، احساسات ناب و داستان‌هایی هستند که تا مدت‌ها در ذهن بازیکنان باقی می‌مانند.
-          </p>
-          <p>
-            تیم ما متشکل از طراحان، برنامه‌نویسان و هنرمندانی است که با عشق و اشتیاق، بازی‌هایی می‌سازند که نه تنها سرگرم‌کننده، بلکه به‌یادماندنی باشند.
-          </p>
-          <p style="color:#fff; font-weight:700; font-family: 'Estedad','Ardakan',sans-serif;">
-            «Create Beyond Limits.»
-          </p>
-        </div>
-        <div class="about-stats">
-          <div class="stat">
-            <div class="number">۵+</div>
-            <div class="label">پروژه فعال</div>
-          </div>
-          <div class="stat">
-            <div class="number">۱۲</div>
-            <div class="label">نفر تیم</div>
-          </div>
-          <div class="stat">
-            <div class="number">۴</div>
-            <div class="label">بازی منتشر شده</div>
-          </div>
-          <div class="stat">
-            <div class="number">۱۰K+</div>
-            <div class="label">بازیکن</div>
-          </div>
+      <div class="about-content">
+        <p>
+          Zerox Game بخش اختصاصی گیمینگ Zerox Studios است؛ جایی که ایده‌ها به تجربه‌های تعاملی تبدیل می‌شوند.
+        </p>
+        <p>
+          ما با تمرکز بر ساخت بازی‌های مستقل، تولید محتوای گیمینگ و معرفی آثار ویدیویی فعالیت می‌کنیم و تلاش داریم تجربه‌هایی متفاوت، خلاقانه و به‌یادماندنی خلق کنیم.
+        </p>
+        <p>
+          اولین پروژه‌ی بازی‌سازی Zerox Studios، Silent Gears، آغاز مسیر ما در دنیای توسعه‌ی بازی است؛ مسیری که با هدف یادگیری، نوآوری و ساخت آثار مستقل ادامه خواهد داشت.
+        </p>
+        <p>
+          در Zerox Game، فقط بازی نمی‌سازیم؛<br />
+          دنیایی می‌سازیم که بازیکن بتواند در آن تجربه کند، کشف کند و لذت ببرد.
+        </p>
+        <div class="about-tagline">
+          ZEROX GAME
+          <span>Play. Create. Beyond Limits.</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== صفحه اختصاصی بازی (طراحی جدید خفن) ===== -->
+  <!-- ===== صفحه اختصاصی بازی ===== -->
   <div class="page" id="pageDetail">
     <div class="detail-hero">
       <div class="detail-hero-bg"></div>
@@ -858,10 +813,8 @@
   <script>
     // ===== ناوبری =====
     function navigateTo(page) {
-      // مخفی کردن همه صفحات
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       
-      // نمایش صفحه مورد نظر
       if (page === 'home') {
         document.getElementById('pageHome').classList.add('active');
         document.getElementById('pageAbout').classList.remove('active');
@@ -876,12 +829,8 @@
         document.getElementById('pageDetail').classList.add('active');
       }
 
-      // آپدیت منو
       document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
-      const navMap = {
-        'home': 0,
-        'about': 2
-      };
+      const navMap = { 'home': 0, 'about': 2 };
       if (page === 'home' || page === 'about') {
         const idx = navMap[page];
         if (idx !== undefined) {
@@ -889,7 +838,6 @@
         }
       }
 
-      // اسکرول به بالا
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
