@@ -41,6 +41,28 @@
       overflow: hidden;
     }
 
+    /* ===== جلوگیری از دانلود عکس ===== */
+    img {
+      -webkit-user-drag: none;
+      user-drag: none;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    .card-img img,
+    .hero-bg,
+    .detail-hero-bg,
+    .gallery-grid img,
+    .result-card .card-img img,
+    .game-card .card-img img {
+      -webkit-user-drag: none;
+      user-drag: none;
+      -webkit-user-select: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
     /* ===== انیمیشن‌ها ===== */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
@@ -151,6 +173,7 @@
       filter: brightness(0.3) contrast(1.2) saturate(0.8);
       will-change: transform;
       z-index: 0;
+      pointer-events: none;
     }
     .hero-bg::after {
       content: '';
@@ -288,6 +311,7 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.7s ease;
+      pointer-events: none;
     }
     .game-card:hover .card-img img { transform: scale(1.15); }
     .game-card .card-overlay {
@@ -341,9 +365,7 @@
       letter-spacing: 1px;
     }
 
-    /* ========================================== */
-    /* ===== درباره ما (اصلاح شده) ===== */
-    /* ========================================== */
+    /* ===== درباره ما ===== */
     .about-page {
       padding: 4rem 0;
       max-width: 800px;
@@ -504,6 +526,7 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.7s ease;
+      pointer-events: none;
     }
     .search-page .result-card:hover .card-img img { transform: scale(1.1); }
     .search-page .result-card .card-body {
@@ -571,6 +594,7 @@
       filter: brightness(0.25) contrast(1.2) saturate(0.7);
       z-index: 0;
       transform: scale(1.05);
+      pointer-events: none;
     }
     .detail-hero-bg::after {
       content: '';
@@ -731,7 +755,8 @@
       transition: all 0.5s ease;
       aspect-ratio: 16/9;
       object-fit: cover;
-      cursor: pointer;
+      cursor: default;
+      pointer-events: none;
     }
     .gallery-grid img:hover {
       transform: scale(1.04);
@@ -857,7 +882,7 @@
       <div class="game-grid">
         <div class="game-card" onclick="navigateTo('detail')">
           <div class="card-img">
-            <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" />
+            <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" loading="lazy" decoding="async" />
             <div class="card-overlay"><i class="fas fa-arrow-left"></i></div>
           </div>
           <div class="card-body">
@@ -870,7 +895,7 @@
     </div>
   </div>
 
-  <!-- ===== صفحه درباره ما (اصلاح شده) ===== -->
+  <!-- ===== صفحه درباره ما ===== -->
   <div class="page" id="pageAbout">
     <div class="container">
       <div class="about-page">
@@ -984,8 +1009,8 @@
       <div class="gallery-section">
         <h3><i class="fas fa-images"></i> گالری تصاویر</h3>
         <div class="gallery-grid">
-          <img src="https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg" alt="Screenshot 1" />
-          <img src="https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg" alt="Screenshot 2" />
+          <img src="https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg" alt="Screenshot 1" loading="lazy" decoding="async" />
+          <img src="https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg" alt="Screenshot 2" loading="lazy" decoding="async" />
         </div>
       </div>
 
@@ -1012,6 +1037,34 @@
   </footer>
 
   <script>
+    // ===== جلوگیری از دانلود عکس =====
+    // غیرفعال کردن کلیک راست روی عکس‌ها
+    document.addEventListener('contextmenu', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // غیرفعال کردن درگ عکس
+    document.addEventListener('dragstart', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // غیرفعال کردن Save Image As (کیبورد)
+    document.addEventListener('keydown', function(e) {
+      // Ctrl+S یا Cmd+S
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        if (e.target.tagName === 'IMG') {
+          e.preventDefault();
+          return false;
+        }
+      }
+    });
+
     // ===== دیتابیس بازی‌ها =====
     const gamesDB = [
       { 
@@ -1092,7 +1145,7 @@
       grid.innerHTML = results.map(g => `
         <div class="result-card" onclick="navigateTo('${g.link}')">
           <div class="card-img">
-            <img src="${g.cover}" alt="${g.title}" />
+            <img src="${g.cover}" alt="${g.title}" loading="lazy" decoding="async" />
           </div>
           <div class="card-body">
             <h3>${g.title}</h3>
@@ -1162,4 +1215,4 @@
   </script>
 
 </body>
-  </html>
+</html>
