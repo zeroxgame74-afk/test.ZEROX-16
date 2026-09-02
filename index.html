@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ZER0X GAME | استودیوی بازی‌سازی</title>
+    <title>Zerox games | original</title>
     <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- ===== فونت‌های اردکان و استعداد از گوگل فونت ===== -->
@@ -27,13 +27,23 @@
 
         /* ===== فونت اردکان و استعداد ===== */
         .persian-font {
-            font-family: 'Ardakan', 'Segoe UI', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
 
         .persian-title {
-            font-family: 'Estedad', 'Ardakan', sans-serif;
+            font-family: 'Estedad', 'Ardakan', sans-serif !important;
             font-weight: 700;
             letter-spacing: 1px;
+        }
+
+        /* ===== همه چیز اردکان ===== */
+        body, p, span, div, a, button, input, textarea, li, h1, h2, h3, h4, h5, h6 {
+            font-family: 'Ardakan', sans-serif !important;
+        }
+
+        h1, h2, h3, h4, .logo, .section-title, .slide-content h1, .game-card h3, .featured-game .info h2, .studio-bio h2, .game-detail-hero .hero-info h1, .detail-section h2, .detail-features .feature-item h4 {
+            font-family: 'Estedad', 'Ardakan', sans-serif !important;
+            font-weight: 700;
         }
 
         /* ===== رنگ خاص (نقره‌ای متالیک با درخشش سفید) ===== */
@@ -79,12 +89,13 @@
             color: #fff;
             text-decoration: none;
             cursor: pointer;
-            font-family: 'Estedad', 'Ardakan', sans-serif;
+            font-family: 'Estedad', 'Ardakan', sans-serif !important;
             text-shadow: 0 0 20px rgba(255,255,255,0.05);
         }
         .logo span {
             font-weight: 300;
             color: var(--secondary-text);
+            font-family: 'Ardakan', sans-serif !important;
         }
 
         nav {
@@ -99,7 +110,7 @@
             transition: 0.3s;
             letter-spacing: 0.5px;
             position: relative;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
         nav a::after {
             content: '';
@@ -129,6 +140,7 @@
             color: var(--secondary-text);
             cursor: pointer;
             transition: 0.3s;
+            font-family: 'Ardakan', sans-serif !important;
         }
         .header-icons i:hover {
             color: #fff;
@@ -145,7 +157,7 @@
             cursor: pointer;
         }
 
-        /* ===== Hero Slider با درخشش ===== */
+        /* ===== Hero Slider بدون دکمه ===== */
         .hero-slider {
             position: relative;
             width: 100%;
@@ -161,13 +173,11 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
-            transform: scale(1.02);
-            will-change: transform;
+            transition: opacity 1.5s ease-in-out;
+            z-index: 1;
         }
         .slide.active {
             opacity: 1;
-            transform: scale(1);
             z-index: 2;
         }
 
@@ -191,17 +201,14 @@
             right: 8%;
             z-index: 3;
             max-width: 650px;
-            animation: fadeUp 1.2s ease forwards;
-            opacity: 0;
-            transform: translateY(30px);
         }
         .slide.active .slide-content {
-            opacity: 1;
-            transform: translateY(0);
+            animation: fadeUp 1.2s ease forwards;
         }
 
         @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .slide-content h1 {
@@ -209,7 +216,7 @@
             font-weight: 700;
             margin-bottom: 0.5rem;
             letter-spacing: 2px;
-            font-family: 'Estedad', 'Ardakan', sans-serif;
+            font-family: 'Estedad', 'Ardakan', sans-serif !important;
             text-shadow: 0 0 40px rgba(255,255,255,0.08);
         }
         .slide-content .genre {
@@ -219,7 +226,7 @@
             display: flex;
             gap: 0.5rem;
             align-items: center;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
         .slide-content .genre i {
             margin-left: 0.3rem;
@@ -229,7 +236,7 @@
             color: #ccc;
             margin-bottom: 1.5rem;
             max-width: 500px;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
         .slide-content .status {
             display: inline-block;
@@ -240,7 +247,7 @@
             font-size: 0.85rem;
             color: var(--secondary-text);
             margin-bottom: 1.5rem;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
         .btn {
             display: inline-block;
@@ -256,45 +263,13 @@
             border-radius: 4px;
             backdrop-filter: blur(2px);
             cursor: pointer;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
         .btn:hover {
             background: rgba(255,255,255,0.08);
             border-color: rgba(255,255,255,0.4);
             transform: scale(1.02);
             box-shadow: 0 0 40px rgba(255,255,255,0.05);
-        }
-
-        /* slider controls */
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--primary-border);
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.4rem;
-            cursor: pointer;
-            transition: 0.3s;
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .slider-arrow:hover {
-            background: rgba(255,255,255,0.12);
-            border-color: rgba(255,255,255,0.3);
-            box-shadow: 0 0 30px rgba(255,255,255,0.05);
-        }
-        .slider-arrow.prev {
-            right: 2rem;
-        }
-        .slider-arrow.next {
-            left: 2rem;
         }
 
         .slider-dots {
@@ -329,16 +304,8 @@
             margin-bottom: 2.5rem;
             border-right: 3px solid var(--primary-border);
             padding-right: 1.2rem;
-            font-family: 'Estedad', 'Ardakan', sans-serif;
+            font-family: 'Estedad', 'Ardakan', sans-serif !important;
             text-shadow: 0 0 30px rgba(255,255,255,0.03);
-        }
-
-        .section-sub {
-            color: var(--secondary-text);
-            font-size: 1rem;
-            margin-top: -1.5rem;
-            margin-bottom: 2rem;
-            font-family: 'Ardakan', sans-serif;
         }
 
         /* ===== بازی‌های منتخب ===== */
@@ -383,7 +350,7 @@
             font-size: 1.4rem;
             font-weight: 500;
             margin-bottom: 0.3rem;
-            font-family: 'Estedad', 'Ardakan', sans-serif;
+            font-family: 'Estedad', 'Ardakan', sans-serif !important;
         }
         .game-card .meta {
             display: flex;
@@ -391,7 +358,7 @@
             color: var(--secondary-text);
             font-size: 0.85rem;
             flex-wrap: wrap;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
         .game-card .meta i {
             margin-left: 0.3rem;
@@ -442,12 +409,12 @@
             font-size: 2.8rem;
             font-weight: 400;
             margin-bottom: 0.5rem;
-            font-family: 'Estedad', 'Ardakan', sans-serif;
+            font-family: 'Estedad', 'Ardakan', sans-serif !important;
         }
         .featured-game .info p {
             color: #bbb;
             margin-bottom: 1.2rem;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
         .featured-game .info .meta {
             color: var(--secondary-text);
@@ -456,105 +423,7 @@
             flex-wrap: wrap;
             gap: 1.2rem;
             margin-bottom: 1.8rem;
-            font-family: 'Ardakan', sans-serif;
-        }
-
-        /* ===== تریلر ===== */
-        .trailer-section {
-            background: #0e0e0e;
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 3rem 0 4rem;
-            border: 1px solid var(--primary-border);
-            text-align: center;
-        }
-        .trailer-thumb {
-            position: relative;
-            max-width: 800px;
-            margin: 1.5rem auto;
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .trailer-thumb img {
-            width: 100%;
-            display: block;
-            transition: 0.4s;
-        }
-        .trailer-thumb:hover img {
-            filter: brightness(0.6);
-        }
-        .play-btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4rem;
-            color: #fff;
-            text-shadow: 0 0 40px rgba(255,255,255,0.2);
-            transition: 0.3s;
-        }
-        .play-btn:hover {
-            transform: translate(-50%, -50%) scale(1.1);
-            color: #eee;
-            text-shadow: 0 0 60px rgba(255,255,255,0.3);
-        }
-
-        /* ===== اخبار ===== */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0 4rem;
-        }
-        .news-item {
-            background: #121212;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--primary-border);
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        .news-item:hover {
-            border-color: rgba(255,255,255,0.15);
-        }
-        .news-item img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        .news-item .news-body {
-            padding: 1rem 1.2rem 1.5rem;
-        }
-        .news-item .news-body h4 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            font-family: 'Estedad', 'Ardakan', sans-serif;
-        }
-        .news-item .news-body .date {
-            color: #888;
-            font-size: 0.8rem;
-            margin: 0.3rem 0 0.6rem;
-            font-family: 'Ardakan', sans-serif;
-        }
-        .news-item .news-body p {
-            color: #bbb;
-            font-size: 0.9rem;
-            font-family: 'Ardakan', sans-serif;
-        }
-        .news-item .news-body .read-more {
-            color: var(--secondary-text);
-            text-decoration: none;
-            font-size: 0.85rem;
-            display: inline-block;
-            margin-top: 0.6rem;
-            border-bottom: 1px solid var(--primary-border);
-            transition: 0.3s;
-            font-family: 'Ardakan', sans-serif;
-        }
-        .news-item .news-body .read-more:hover {
-            color: #fff;
-            border-color: rgba(255,255,255,0.3);
+            font-family: 'Ardakan', sans-serif !important;
         }
 
         /* ===== معرفی استودیو ===== */
@@ -570,14 +439,14 @@
             font-size: 3rem;
             font-weight: 300;
             letter-spacing: 4px;
-            font-family: 'Estedad', 'Ardakan', sans-serif;
+            font-family: 'Estedad', 'Ardakan', sans-serif !important;
             text-shadow: 0 0 30px rgba(255,255,255,0.03);
         }
         .studio-bio p {
             max-width: 700px;
             margin: 1.2rem auto;
             color: #bbb;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
 
         /* ===== فوتر ===== */
@@ -606,7 +475,7 @@
             font-size: 0.9rem;
             transition: 0.3s;
             cursor: pointer;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
         .footer-nav a:hover {
             color: #fff;
@@ -620,6 +489,7 @@
             color: #888;
             transition: 0.3s;
             cursor: pointer;
+            font-family: 'Ardakan', sans-serif !important;
         }
         .social-icons i:hover {
             color: #fff;
@@ -631,42 +501,7 @@
             font-size: 0.8rem;
             margin-top: 2rem;
             letter-spacing: 1px;
-            font-family: 'Ardakan', sans-serif;
-        }
-
-        /* ===== Modal ویدئو ===== */
-        .video-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.9);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            backdrop-filter: blur(6px);
-        }
-        .video-modal.active {
-            display: flex;
-        }
-        .video-modal iframe {
-            width: 80%;
-            max-width: 900px;
-            height: 70vh;
-            border: none;
-            border-radius: 12px;
-        }
-        .video-modal .close-modal {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            font-size: 2.5rem;
-            color: #fff;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .video-modal .close-modal:hover {
-            transform: rotate(90deg);
-            text-shadow: 0 0 30px rgba(255,255,255,0.1);
+            font-family: 'Ardakan', sans-serif !important;
         }
 
         /* ===== صفحه اختصاصی بازی ===== */
@@ -703,7 +538,7 @@
             font-size: 4.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            font-family: 'Estedad', 'Ardakan', sans-serif;
+            font-family: 'Estedad', 'Ardakan', sans-serif !important;
             text-shadow: 0 0 40px rgba(255,255,255,0.05);
         }
         .game-detail-hero .hero-info .meta-detail {
@@ -713,7 +548,7 @@
             color: #ccc;
             font-size: 1rem;
             margin: 1rem 0 1.5rem;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
         .game-detail-hero .hero-info .meta-detail i {
             margin-left: 0.5rem;
@@ -726,7 +561,7 @@
             border-radius: 30px;
             font-size: 0.9rem;
             color: var(--secondary-text);
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
 
         .detail-section {
@@ -738,14 +573,14 @@
             margin-bottom: 1.5rem;
             border-right: 3px solid var(--primary-border);
             padding-right: 1rem;
-            font-family: 'Estedad', 'Ardakan', sans-serif;
+            font-family: 'Estedad', 'Ardakan', sans-serif !important;
         }
         .detail-section p {
             color: #ccc;
             line-height: 1.9;
             max-width: 800px;
             white-space: pre-line;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
 
         .detail-gallery {
@@ -794,13 +629,13 @@
         .detail-features .feature-item h4 {
             font-weight: 400;
             color: #ddd;
-            font-family: 'Estedad', 'Ardakan', sans-serif;
+            font-family: 'Estedad', 'Ardakan', sans-serif !important;
         }
         .detail-features .feature-item p {
             color: #888;
             font-size: 0.9rem;
             margin-top: 0.3rem;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
 
         .detail-tags {
@@ -816,7 +651,7 @@
             border-radius: 20px;
             font-size: 0.8rem;
             color: var(--secondary-text);
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
 
         .back-home-btn {
@@ -830,14 +665,13 @@
             padding: 0.5rem 1.5rem;
             border-radius: 4px;
             background: transparent;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
         .back-home-btn:hover {
             color: #fff;
             border-color: rgba(255,255,255,0.3);
         }
 
-        /* ===== دکمه مشاهده بازی ===== */
         .btn-outline {
             background: transparent;
             border: 1px solid var(--primary-border);
@@ -848,7 +682,7 @@
             display: inline-block;
             text-decoration: none;
             cursor: pointer;
-            font-family: 'Ardakan', sans-serif;
+            font-family: 'Ardakan', sans-serif !important;
         }
         .btn-outline:hover {
             background: rgba(255,255,255,0.06);
@@ -874,13 +708,9 @@
             .hero-slider { height: 70vh; }
             .slide-content { bottom: 12%; right: 5%; max-width: 90%; }
             .slide-content h1 { font-size: 2.2rem; }
-            .slider-arrow { width: 36px; height: 36px; font-size: 1rem; }
-            .slider-arrow.prev { right: 0.5rem; }
-            .slider-arrow.next { left: 0.5rem; }
             .games-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
             .section-title { font-size: 1.8rem; }
             .footer-content { flex-direction: column; gap: 1.5rem; align-items: center; }
-            .video-modal iframe { width: 95%; height: 50vh; }
             .game-detail-hero .hero-info h1 { font-size: 2.2rem; }
             .game-detail-hero .hero-info { right: 5%; bottom: 10%; }
         }
@@ -897,12 +727,11 @@
 
 <!-- ===== هدر ===== -->
 <header>
-    <a class="logo" id="homeLogo">ZER0X <span>GAME</span></a>
+    <a class="logo" id="homeLogo">Zerox <span>games | original</span></a>
     <nav id="mainNav">
         <a class="nav-link" data-page="home">خانه</a>
         <a class="nav-link" data-page="games">بازی‌ها</a>
         <a class="nav-link" data-page="about">درباره ما</a>
-        <a class="nav-link" data-page="news">اخبار</a>
         <a class="nav-link" data-page="contact">تماس</a>
     </nav>
     <div class="header-icons">
@@ -915,9 +744,9 @@
 
     <!-- ===== صفحه اصلی (خانه) ===== -->
     <div id="page-home" class="page-content">
-        <!-- Hero Slider -->
+        <!-- Hero Slider (فقط خودکار) -->
         <section class="hero-slider" id="heroSlider">
-            <!-- اسلاید 1 با عکس جدید -->
+            <!-- اسلاید 1 -->
             <div class="slide active" data-index="0">
                 <img src="https://uploadkon.ir/uploads/dec602_26Negar-1788164380627.jpg" alt="SilentGears" class="slide-bg" />
                 <div class="slide-overlay"></div>
@@ -954,9 +783,7 @@
                 </div>
             </div>
 
-            <!-- کنترل‌ها -->
-            <button class="slider-arrow prev" id="prevSlide"><i class="fas fa-chevron-right"></i></button>
-            <button class="slider-arrow next" id="nextSlide"><i class="fas fa-chevron-left"></i></button>
+            <!-- فقط دات‌ها -->
             <div class="slider-dots" id="sliderDots">
                 <span class="active" data-index="0"></span>
                 <span data-index="1"></span>
@@ -990,56 +817,10 @@
             </div>
         </div>
 
-        <!-- تریلر منتخب -->
-        <div class="container">
-            <h2 class="section-title">تریلر منتخب</h2>
-            <div class="trailer-section">
-                <p class="section-sub">تماشای تریلر جدیدترین بازی Zerox</p>
-                <div class="trailer-thumb" id="trailerTrigger">
-                    <img src="https://picsum.photos/seed/trailer/800/450" alt="Trailer Thumbnail" />
-                    <div class="play-btn"><i class="fas fa-play-circle"></i></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- اخبار -->
-        <div class="container" id="news">
-            <h2 class="section-title">آخرین اخبار</h2>
-            <div class="news-grid">
-                <div class="news-item">
-                    <img src="https://picsum.photos/seed/n1/400/200" alt="خبر ۱" />
-                    <div class="news-body">
-                        <h4>رونمایی از بازی جدید Zerox</h4>
-                        <div class="date"><i class="fas fa-calendar"></i> ۱۲ فروردین ۱۴۰۵</div>
-                        <p>اولین تریلر بازی جدید استودیو منتشر شد.</p>
-                        <span class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></span>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <img src="https://picsum.photos/seed/n2/400/200" alt="خبر ۲" />
-                    <div class="news-body">
-                        <h4>آپدیت بزرگ Cyber Dusk</h4>
-                        <div class="date"><i class="fas fa-calendar"></i> ۵ اسفند ۱۴۰۴</div>
-                        <p>محتوای جدید و بهبودهای گرافیکی.</p>
-                        <span class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></span>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <img src="https://picsum.photos/seed/n3/400/200" alt="خبر ۳" />
-                    <div class="news-body">
-                        <h4>پشت صحنه Silent Gears</h4>
-                        <div class="date"><i class="fas fa-calendar"></i> ۲۲ بهمن ۱۴۰۴</div>
-                        <p>مصاحبه با تیم توسعه‌دهنده.</p>
-                        <span class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- معرفی استودیو -->
         <div class="container" id="about">
             <div class="studio-bio">
-                <h2>ZER0X GAME</h2>
+                <h2>Zerox games | original</h2>
                 <p>ما در Zerox، مرزهای خلاقیت را جابه‌جا می‌کنیم. با تکیه بر هنر، فناوری و داستان‌سرایی، تجربه‌هایی می‌سازیم که در ذهن بازیکنان می‌مانند.</p>
                 <button class="btn-outline" style="margin-top:1rem;">درباره Zerox <i class="fas fa-arrow-left"></i></button>
             </div>
@@ -1054,12 +835,11 @@
 <!-- ===== فوتر ===== -->
 <footer>
     <div class="footer-content">
-        <div class="logo" style="font-size:1.4rem;">ZER0X <span>GAME</span></div>
+        <div class="logo" style="font-size:1.4rem;">Zerox <span>games | original</span></div>
         <div class="footer-nav">
             <a class="nav-link" data-page="home">خانه</a>
             <a class="nav-link" data-page="games">بازی‌ها</a>
             <a class="nav-link" data-page="about">درباره ما</a>
-            <a class="nav-link" data-page="news">اخبار</a>
             <a class="nav-link" data-page="contact">تماس</a>
         </div>
         <div class="social-icons">
@@ -1071,15 +851,9 @@
         </div>
     </div>
     <div class="footer-copy">
-        Create Beyond Limits. <br /> © 2026 Zerox Game
+        Create Beyond Limits. <br /> © 2026 Zerox games | original
     </div>
 </footer>
-
-<!-- ===== ویدئو مودال ===== -->
-<div class="video-modal" id="videoModal">
-    <span class="close-modal" id="closeModal"><i class="fas fa-times"></i></span>
-    <iframe id="videoFrame" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" allowfullscreen></iframe>
-</div>
 
 <!-- ===== اسکریپت‌ها ===== -->
 <script>
@@ -1112,14 +886,12 @@
         // ===== متغیرها =====
         const pageHome = document.getElementById('page-home');
         const detailContainer = document.getElementById('game-detail-container');
-        let currentGameSlug = null;
 
-        // ===== توابع کمکی =====
         function getGameBySlug(slug) {
             return gamesData.find(g => g.slug === slug);
         }
 
-        // ===== رندر کردن کارت‌های بازی =====
+        // ===== رندر کارت‌ها =====
         function renderGameCards() {
             const grid = document.getElementById('gamesGrid');
             if (!grid) return;
@@ -1141,24 +913,18 @@
             });
         }
 
-        // ===== رندر صفحه اختصاصی بازی =====
+        // ===== رندر صفحه اختصاصی =====
         function renderGameDetail(slug) {
             const game = getGameBySlug(slug);
             if (!game) return;
 
-            currentGameSlug = slug;
-
-            // ساخت گالری
             let galleryHTML = '';
             if (game.gallery && game.gallery.length > 0) {
                 game.gallery.forEach(img => {
                     galleryHTML += `<img src="${img}" alt="Screenshot" />`;
                 });
-            } else {
-                galleryHTML = `<p style="color:#888;">تصویری موجود نیست</p>`;
             }
 
-            // ساخت تگ‌ها
             let tagsHTML = '';
             if (game.tags && game.tags.length > 0) {
                 game.tags.forEach(tag => {
@@ -1166,7 +932,6 @@
                 });
             }
 
-            // ساخت ویژگی‌ها
             const features = [
                 { icon: 'fa-clock', label: 'مدت زمان', value: game.duration },
                 { icon: 'fa-flag', label: 'پایان‌ها', value: game.endings },
@@ -1187,7 +952,6 @@
                 }
             });
 
-            // ساخت صفحه
             detailContainer.innerHTML = `
                 <div class="container">
                     <button class="back-home-btn" id="backHomeBtn"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
@@ -1244,24 +1008,19 @@
                 </div>
             `;
 
-            // نمایش صفحه جزئیات و مخفی کردن صفحه اصلی
             pageHome.style.display = 'none';
             detailContainer.style.display = 'block';
             detailContainer.scrollIntoView({ behavior: 'smooth' });
 
-            // اتصال رویدادها
             document.getElementById('backHomeBtn').addEventListener('click', showHome);
             document.querySelectorAll('#otherGamesGrid .game-detail-btn').forEach(el => {
                 el.addEventListener('click', function() {
                     const gameSlug = this.dataset.game;
-                    if (gameSlug) {
-                        renderGameDetail(gameSlug);
-                    }
+                    if (gameSlug) renderGameDetail(gameSlug);
                 });
             });
         }
 
-        // ===== نمایش صفحه خانه =====
         function showHome() {
             pageHome.style.display = 'block';
             detailContainer.style.display = 'none';
@@ -1269,83 +1028,10 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ===== مقداردهی اولیه =====
-        function init() {
-            renderGameCards();
-
-            // نمایش اولین بازی در بخش جدیدترین
-            if (gamesData.length > 0) {
-                const first = gamesData[0];
-                const featured = document.getElementById('featuredGame');
-                if (featured) {
-                    featured.dataset.game = first.slug;
-                }
-                const art = document.getElementById('featuredArt');
-                if (art) art.style.backgroundImage = `url('${first.cover}')`;
-                const title = document.getElementById('featuredTitle');
-                if (title) title.textContent = first.persianName;
-                const desc = document.getElementById('featuredDesc');
-                if (desc) desc.textContent = first.desc;
-                const genre = document.getElementById('featuredGenre');
-                if (genre) genre.textContent = first.genre;
-                const platform = document.getElementById('featuredPlatform');
-                if (platform) platform.textContent = first.platform;
-                const status = document.getElementById('featuredStatus');
-                if (status) status.textContent = first.status;
-            }
-
-            // رویدادهای کلیک روی کارت‌ها (داینامیک)
-            document.addEventListener('click', function(e) {
-                const target = e.target.closest('.game-detail-btn');
-                if (target && target.dataset.game) {
-                    e.preventDefault();
-                    renderGameDetail(target.dataset.game);
-                }
-            });
-
-            // رویدادهای منو
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', function() {
-                    const page = this.dataset.page;
-                    if (page === 'home') {
-                        showHome();
-                    } else if (page === 'games') {
-                        showHome();
-                        setTimeout(() => {
-                            document.getElementById('games').scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
-                    } else if (page === 'about') {
-                        showHome();
-                        setTimeout(() => {
-                            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
-                    } else if (page === 'news') {
-                        showHome();
-                        setTimeout(() => {
-                            document.getElementById('news').scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
-                    }
-                    document.getElementById('mainNav').classList.remove('open');
-                });
-            });
-
-            // لوگو
-            document.getElementById('homeLogo').addEventListener('click', showHome);
-
-            // منو موبایل
-            const toggle = document.getElementById('menuToggle');
-            const nav = document.getElementById('mainNav');
-            toggle.addEventListener('click', () => {
-                nav.classList.toggle('open');
-            });
-        }
-
-        // ===== اسلایدر =====
+        // ===== اسلایدر خودکار =====
         function initSlider() {
             const slides = document.querySelectorAll('.slide');
             const dots = document.querySelectorAll('.slider-dots span');
-            const prevBtn = document.getElementById('prevSlide');
-            const nextBtn = document.getElementById('nextSlide');
             let currentIndex = 0;
             let interval;
 
@@ -1364,26 +1050,12 @@
                 goToSlide(next);
             }
 
-            function prevSlide() {
-                const prev = (currentIndex - 1 + slides.length) % slides.length;
-                goToSlide(prev);
-            }
-
-            function resetInterval() {
-                clearInterval(interval);
-                interval = setInterval(nextSlide, 5000);
-            }
-
-            if (prevBtn && nextBtn) {
-                prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
-                nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
-            }
-
             dots.forEach(dot => {
                 dot.addEventListener('click', () => {
                     const idx = parseInt(dot.dataset.index);
                     goToSlide(idx);
-                    resetInterval();
+                    clearInterval(interval);
+                    interval = setInterval(nextSlide, 5000);
                 });
             });
 
@@ -1391,44 +1063,71 @@
             interval = setInterval(nextSlide, 5000);
         }
 
-        // ===== ویدئو مودال =====
-        function initVideoModal() {
-            const modal = document.getElementById('videoModal');
-            const trigger = document.getElementById('trailerTrigger');
-            const closeModal = document.getElementById('closeModal');
-            const iframe = document.getElementById('videoFrame');
+        // ===== مقداردهی اولیه =====
+        function init() {
+            renderGameCards();
 
-            if (trigger) {
-                trigger.addEventListener('click', () => {
-                    modal.classList.add('active');
-                });
+            if (gamesData.length > 0) {
+                const first = gamesData[0];
+                const featured = document.getElementById('featuredGame');
+                if (featured) featured.dataset.game = first.slug;
+                const art = document.getElementById('featuredArt');
+                if (art) art.style.backgroundImage = `url('${first.cover}')`;
+                const title = document.getElementById('featuredTitle');
+                if (title) title.textContent = first.persianName;
+                const desc = document.getElementById('featuredDesc');
+                if (desc) desc.textContent = first.desc;
+                const genre = document.getElementById('featuredGenre');
+                if (genre) genre.textContent = first.genre;
+                const platform = document.getElementById('featuredPlatform');
+                if (platform) platform.textContent = first.platform;
+                const status = document.getElementById('featuredStatus');
+                if (status) status.textContent = first.status;
             }
 
-            if (closeModal) {
-                closeModal.addEventListener('click', () => {
-                    modal.classList.remove('active');
-                    iframe.src = iframe.src;
-                });
-            }
+            document.addEventListener('click', function(e) {
+                const target = e.target.closest('.game-detail-btn');
+                if (target && target.dataset.game) {
+                    e.preventDefault();
+                    renderGameDetail(target.dataset.game);
+                }
+            });
 
-            if (modal) {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        modal.classList.remove('active');
-                        iframe.src = iframe.src;
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const page = this.dataset.page;
+                    if (page === 'home') {
+                        showHome();
+                    } else if (page === 'games') {
+                        showHome();
+                        setTimeout(() => {
+                            document.getElementById('games').scrollIntoView({ behavior: 'smooth' });
+                        }, 100);
+                    } else if (page === 'about') {
+                        showHome();
+                        setTimeout(() => {
+                            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+                        }, 100);
                     }
+                    document.getElementById('mainNav').classList.remove('open');
                 });
-            }
+            });
+
+            document.getElementById('homeLogo').addEventListener('click', showHome);
+
+            const toggle = document.getElementById('menuToggle');
+            const nav = document.getElementById('mainNav');
+            toggle.addEventListener('click', () => {
+                nav.classList.toggle('open');
+            });
         }
 
-        // ===== اجرا =====
         init();
         initSlider();
-        initVideoModal();
 
-        console.log('ZER0X GAME - با فونت اردکان و استعداد از گوگل فونت');
+        console.log('Zerox games | original - با فونت اردکان و استعداد');
     })();
 </script>
 
 </body>
-</html>
+    </html>
