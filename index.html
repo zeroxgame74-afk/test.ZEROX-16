@@ -38,38 +38,110 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 2rem;
-      background: rgba(10, 10, 10, 0.8);
-      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.05);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
     .logo {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 900;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       color: #fff;
       text-transform: uppercase;
+      cursor: pointer;
     }
-    .logo span { font-weight: 300; color: #666; }
+    .logo span { font-weight: 300; color: #555; }
     .nav {
       display: flex;
       gap: 2.5rem;
-      font-size: 0.95rem;
-      color: #888;
+      font-size: 0.9rem;
+      color: #666;
     }
-    .nav a:hover { color: #fff; transition: 0.3s; }
+    .nav a {
+      cursor: pointer;
+      transition: 0.3s;
+      position: relative;
+    }
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+      width: 0;
+      height: 1px;
+      background: #fff;
+      transition: 0.3s;
+    }
+    .nav a:hover { color: #fff; }
+    .nav a:hover::after { width: 100%; }
+    .nav a.active { color: #fff; }
+    .nav a.active::after { width: 100%; }
+
     .header-actions {
       display: flex;
       align-items: center;
       gap: 1.5rem;
-      color: #666;
+      color: #555;
     }
-    .header-actions i { font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+    .header-actions i {
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
     .header-actions i:hover { color: #fff; }
     .menu-mobile { display: none; }
+
+    /* ===== سرچ ===== */
+    .search-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      backdrop-filter: blur(20px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .search-overlay.active { display: flex; }
+    .search-overlay .search-box {
+      width: 100%;
+      max-width: 600px;
+      position: relative;
+    }
+    .search-overlay .search-box input {
+      width: 100%;
+      padding: 1.2rem 2rem;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #333;
+      color: #fff;
+      font-size: 1.5rem;
+      font-family: inherit;
+      outline: none;
+      transition: 0.3s;
+    }
+    .search-overlay .search-box input:focus {
+      border-color: #666;
+    }
+    .search-overlay .search-box input::placeholder {
+      color: #444;
+    }
+    .search-overlay .search-box .close-search {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #555;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .search-overlay .search-box .close-search:hover { color: #fff; }
 
     /* ===== صفحه اصلی ===== */
     .page-home { display: block; }
@@ -80,7 +152,7 @@
     /* ===== HERO ===== */
     .hero {
       position: relative;
-      min-height: 90vh;
+      min-height: 92vh;
       display: flex;
       align-items: flex-end;
       padding: 4rem 2rem 3rem;
@@ -91,7 +163,7 @@
       inset: 0;
       background: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg') center/cover no-repeat;
       transform: scale(1.02);
-      filter: brightness(0.4) contrast(1.2);
+      filter: brightness(0.35) contrast(1.2) saturate(0.8);
       will-change: transform;
       z-index: 0;
     }
@@ -99,7 +171,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.3) 70%, transparent 100%);
+      background: linear-gradient(0deg, rgba(0,0,0,0.95) 15%, rgba(0,0,0,0.2) 70%, transparent 100%);
     }
     .hero-content {
       position: relative;
@@ -109,44 +181,45 @@
       animation: fadeUp 1s ease forwards;
     }
     .hero-content .game-tag {
-      font-size: 0.8rem;
-      letter-spacing: 4px;
+      font-size: 0.75rem;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      color: #666;
+      color: #555;
       margin-bottom: 0.5rem;
     }
     .hero-content h1 {
-      font-size: 4.5rem;
+      font-size: 4.8rem;
       font-weight: 900;
-      line-height: 1.1;
+      line-height: 1.05;
       color: #fff;
       margin: 0.5rem 0 0.2rem;
+      letter-spacing: -2px;
     }
     .hero-content .sub-title {
       font-size: 1.3rem;
       font-weight: 300;
-      color: #999;
+      color: #888;
       margin-bottom: 0.6rem;
     }
     .hero-content .meta {
       display: flex;
       gap: 1.5rem;
-      font-size: 0.9rem;
-      color: #777;
+      font-size: 0.85rem;
+      color: #666;
       margin: 0.8rem 0 2rem;
       flex-wrap: wrap;
     }
-    .hero-content .meta i { margin-left: 0.4rem; color: #555; }
+    .hero-content .meta i { margin-left: 0.4rem; color: #444; }
     .btn-ghost {
       display: inline-block;
-      padding: 1rem 2.8rem;
-      border: 1px solid rgba(255,255,255,0.2);
+      padding: 1rem 3rem;
+      border: 1px solid rgba(255,255,255,0.15);
       color: #fff;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       letter-spacing: 2px;
       background: transparent;
-      transition: all 0.3s;
+      transition: all 0.4s;
       border-radius: 2px;
       cursor: pointer;
     }
@@ -154,19 +227,20 @@
       background: #fff;
       color: #0a0a0a;
       border-color: #fff;
+      box-shadow: 0 0 60px rgba(255,255,255,0.05);
     }
     @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(30px); }
+      0% { opacity: 0; transform: translateY(40px); }
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* ===== کارت بازی (جدید) ===== */
+    /* ===== کارت بازی ===== */
     .section-title {
       font-size: 2rem;
       font-weight: 800;
       margin: 4rem 0 2rem;
-      border-right: 3px solid #444;
-      padding-right: 1rem;
+      border-right: 3px solid #333;
+      padding-right: 1.2rem;
       color: #eee;
     }
     .game-grid {
@@ -176,18 +250,18 @@
       margin-bottom: 4rem;
     }
     .game-card {
-      background: #111;
-      border: 1px solid #1a1a1a;
-      border-radius: 6px;
+      background: #0f0f0f;
+      border: 1px solid #181818;
+      border-radius: 8px;
       overflow: hidden;
-      transition: all 0.4s ease;
+      transition: all 0.5s ease;
       cursor: pointer;
       position: relative;
     }
     .game-card:hover {
-      border-color: #444;
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      border-color: #333;
+      transform: translateY(-8px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.8);
     }
     .game-card .card-img {
       width: 100%;
@@ -200,31 +274,31 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
+      transition: transform 0.7s ease;
     }
     .game-card:hover .card-img img {
-      transform: scale(1.08);
+      transform: scale(1.1);
     }
     .game-card .card-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.75);
       opacity: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.4s ease;
-      backdrop-filter: blur(2px);
+      transition: opacity 0.5s ease;
+      backdrop-filter: blur(4px);
     }
     .game-card:hover .card-overlay {
       opacity: 1;
     }
     .game-card .card-overlay i {
-      font-size: 3rem;
+      font-size: 3.5rem;
       color: #fff;
       opacity: 0;
-      transform: translateY(20px) scale(0.8);
-      transition: all 0.4s ease;
+      transform: translateY(30px) scale(0.7);
+      transition: all 0.5s ease;
     }
     .game-card:hover .card-overlay i {
       opacity: 1;
@@ -232,34 +306,34 @@
     }
     .game-card .card-body {
       padding: 1.5rem;
-      background: #111;
+      background: #0f0f0f;
     }
     .game-card .card-body h3 {
       font-size: 1.4rem;
       font-weight: 800;
       color: #fff;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
     }
     .game-card .card-body .genre {
-      font-size: 0.85rem;
-      color: #666;
+      font-size: 0.8rem;
+      color: #555;
       font-weight: 300;
       letter-spacing: 1px;
     }
     .game-card .card-body .status {
       display: inline-block;
       margin-top: 0.8rem;
-      padding: 0.2rem 1rem;
-      border: 1px solid #333;
+      padding: 0.2rem 1.2rem;
+      border: 1px solid #222;
       border-radius: 20px;
       font-size: 0.7rem;
-      color: #888;
+      color: #666;
       letter-spacing: 1px;
     }
 
-    /* ===== INTRO ===== */
+    /* ===== درباره ما ===== */
     .intro-section {
-      border-top: 1px solid #151515;
+      border-top: 1px solid #111;
       padding: 3rem 0 4rem;
       margin-top: 1rem;
     }
@@ -270,161 +344,204 @@
     }
     .intro-section p {
       max-width: 600px;
-      color: #666;
+      color: #555;
       margin: 0.8rem 0 1.5rem;
       font-size: 1.05rem;
     }
     .intro-section a {
-      color: #888;
-      border-bottom: 1px solid #333;
-      padding-bottom: 2px;
+      color: #666;
+      border-bottom: 1px solid #222;
+      padding-bottom: 3px;
       transition: 0.3s;
+      cursor: pointer;
     }
     .intro-section a:hover { color: #fff; border-color: #fff; }
 
-    /* ===== صفحه اختصاصی (جدید و زیبا) ===== */
+    /* ============================================ */
+    /* ===== صفحه اختصاصی (طراحی خفن) ===== */
+    /* ============================================ */
     .detail-hero {
       position: relative;
-      min-height: 70vh;
+      min-height: 75vh;
       display: flex;
       align-items: flex-end;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem 4rem;
       margin-bottom: 3rem;
-      border-radius: 0;
       overflow: hidden;
+      border-radius: 0;
     }
     .detail-hero-bg {
       position: absolute;
       inset: 0;
       background: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg') center/cover no-repeat;
-      filter: brightness(0.35) contrast(1.1);
+      filter: brightness(0.3) contrast(1.2) saturate(0.7);
       z-index: 0;
+      transform: scale(1.05);
+      transition: transform 0.3s;
     }
     .detail-hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.2) 70%);
+      background: linear-gradient(0deg, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.1) 60%, transparent 100%);
     }
-    .detail-content {
+    .detail-hero .detail-content {
       position: relative;
       z-index: 2;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
       width: 100%;
     }
-    .detail-content .back-link {
-      display: inline-block;
-      color: #666;
+
+    .detail-hero .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: #555;
       margin-bottom: 2rem;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       transition: 0.3s;
       cursor: pointer;
-      border-bottom: 1px solid #333;
-      padding-bottom: 4px;
+      gap: 8px;
+      border-bottom: 1px solid #222;
+      padding-bottom: 6px;
     }
-    .detail-content .back-link:hover { color: #fff; border-color: #fff; }
-    .detail-content .back-link i { margin-left: 8px; }
+    .detail-hero .back-link:hover { color: #fff; border-color: #555; }
 
-    .detail-content h1 {
-      font-size: 4rem;
+    .detail-hero h1 {
+      font-size: 4.5rem;
       font-weight: 900;
       margin-bottom: 0.3rem;
-      letter-spacing: -1px;
+      letter-spacing: -2px;
+      line-height: 1.05;
     }
-    .detail-content .sub {
-      font-size: 1.3rem;
-      color: #999;
+    .detail-hero .sub {
+      font-size: 1.4rem;
+      color: #888;
       margin-bottom: 1.5rem;
+      font-weight: 300;
     }
 
-    .detail-content .info-grid {
+    /* اطلاعات باکس */
+    .detail-info-box {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0 2.5rem;
       background: rgba(255,255,255,0.02);
-      padding: 1.8rem;
-      border-radius: 8px;
-      border: 1px solid #1a1a1a;
+      padding: 2rem;
+      border-radius: 10px;
+      border: 1px solid #181818;
     }
-    .detail-content .info-grid .item {
-      color: #888;
+    .detail-info-box .item {
+      color: #666;
     }
-    .detail-content .info-grid .item strong {
+    .detail-info-box .item strong {
       color: #fff;
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-bottom: 0.3rem;
       font-weight: 700;
     }
-    .detail-content .info-grid .item span {
+    .detail-info-box .item span {
       font-size: 0.9rem;
       color: #aaa;
     }
 
-    .detail-content .full-desc {
-      background: rgba(255,255,255,0.02);
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid #1a1a1a;
+    /* بخش‌های پایین صفحه */
+    .detail-body {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 0 3rem;
+    }
+
+    .detail-body .full-desc {
+      background: rgba(255,255,255,0.015);
+      padding: 2rem 2.5rem;
+      border-radius: 10px;
+      border: 1px solid #161616;
       white-space: pre-line;
-      color: #bbb;
-      line-height: 2;
+      color: #aaa;
+      line-height: 2.2;
       margin: 2rem 0;
       font-size: 1rem;
     }
-
-    .detail-content .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.2rem;
-      margin: 2rem 0;
-    }
-    .detail-content .gallery img {
-      width: 100%;
-      border-radius: 6px;
-      border: 1px solid #1a1a1a;
-      transition: 0.4s;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-    }
-    .detail-content .gallery img:hover {
-      transform: scale(1.03);
-      border-color: #444;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    .detail-body .full-desc::first-letter {
+      font-size: 3rem;
+      color: #fff;
+      float: right;
+      margin-left: 8px;
+      line-height: 1;
     }
 
-    .detail-content .trailer-section {
-      margin: 2rem 0;
+    /* تریلر */
+    .trailer-section {
+      margin: 2.5rem 0;
       padding: 2rem;
-      border: 1px solid #1a1a1a;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.02);
+      border: 1px solid #161616;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.015);
     }
-    .detail-content .trailer-section h3 {
-      font-size: 1.2rem;
+    .trailer-section h3 {
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 1rem;
-      color: #eee;
+      margin-bottom: 1.2rem;
+      color: #ddd;
     }
-    .detail-content .trailer-section .trailer-placeholder {
+    .trailer-section h3 i { margin-left: 12px; color: #444; }
+    .trailer-placeholder {
       background: #0a0a0a;
       aspect-ratio: 16/9;
-      border-radius: 4px;
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid #222;
-      color: #444;
-      font-size: 3rem;
+      border: 1px solid #1a1a1a;
+      color: #333;
+      font-size: 4rem;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .trailer-placeholder:hover {
+      border-color: #444;
+      color: #666;
+    }
+
+    /* گالری */
+    .gallery-section {
+      margin: 2.5rem 0;
+    }
+    .gallery-section h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: #ddd;
+    }
+    .gallery-section h3 i { margin-left: 12px; color: #444; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #161616;
+      transition: all 0.5s ease;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.04);
+      border-color: #444;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.7);
     }
 
     /* ===== FOOTER ===== */
     .footer {
-      border-top: 1px solid #111;
+      border-top: 1px solid #0f0f0f;
       padding: 2.5rem 2rem;
       display: flex;
       flex-wrap: wrap;
@@ -438,24 +555,32 @@
     .footer-links {
       display: flex;
       gap: 2rem;
-      color: #555;
+      color: #444;
       font-size: 0.85rem;
+    }
+    .footer-links a {
+      cursor: pointer;
+      transition: 0.3s;
     }
     .footer-links a:hover { color: #fff; }
     .footer-social {
       display: flex;
       gap: 1.2rem;
-      color: #444;
+      color: #333;
       font-size: 1.2rem;
     }
-    .footer-social i:hover { color: #fff; transition: 0.3s; }
+    .footer-social i {
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .footer-social i:hover { color: #fff; }
     .footer-copy {
       width: 100%;
       text-align: center;
-      color: #333;
+      color: #222;
       font-size: 0.75rem;
       margin-top: 0.5rem;
-      border-top: 1px solid #111;
+      border-top: 1px solid #0f0f0f;
       padding-top: 1.2rem;
     }
 
@@ -468,27 +593,40 @@
       .hero { min-height: 70vh; padding: 2rem 1rem 2rem; }
       .game-grid { grid-template-columns: 1fr; }
       .section-title { font-size: 1.6rem; }
-      .detail-content h1 { font-size: 2.5rem; }
-      .detail-content .info-grid { grid-template-columns: 1fr 1fr; }
+      .detail-hero h1 { font-size: 2.8rem; }
+      .detail-hero { min-height: 60vh; padding: 3rem 1rem 2rem; }
+      .detail-info-box { grid-template-columns: 1fr 1fr; padding: 1.2rem; }
+      .detail-body .full-desc { padding: 1.2rem; font-size: 0.95rem; }
       .footer { flex-direction: column; align-items: flex-start; }
+      .search-overlay .search-box input { font-size: 1.2rem; padding: 1rem; }
     }
     @media (max-width: 480px) {
-      .detail-content .info-grid { grid-template-columns: 1fr; }
+      .detail-info-box { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .detail-hero h1 { font-size: 2.2rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- ===== سرچ اورلی ===== -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <input type="text" placeholder="جستجوی بازی..." />
+      <i class="fas fa-times close-search" onclick="closeSearch()"></i>
+    </div>
+  </div>
+
   <!-- ===== HEADER ===== -->
   <header class="header">
-    <div class="logo">ZER0X <span>GAME</span></div>
+    <div class="logo" onclick="showHome()">ZER0X <span>GAME</span></div>
     <nav class="nav">
-      <a href="#" onclick="showHome()">خانه</a>
-      <a href="#" onclick="showHome()">بازی‌ها</a>
-      <a href="#" onclick="showHome()">درباره ما</a>
+      <a class="active" onclick="showHome()">خانه</a>
+      <a onclick="showHome()">بازی‌ها</a>
+      <a onclick="showAbout()">درباره ما</a>
     </nav>
     <div class="header-actions">
-      <i class="fas fa-search"></i>
+      <i class="fas fa-search" onclick="openSearch()"></i>
       <i class="fas fa-bars menu-mobile"></i>
     </div>
   </header>
@@ -498,7 +636,7 @@
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-content">
-        <div class="game-tag"><i class="fas fa-star" style="color:#555; margin-left:6px;"></i> بازی منتخب</div>
+        <div class="game-tag"><i class="fas fa-star" style="color:#444; margin-left:6px;"></i> بازی منتخب</div>
         <h1>SilentGears</h1>
         <div class="sub-title">چرخ‌دنده‌ساکت</div>
         <div class="meta">
@@ -526,84 +664,99 @@
         </div>
       </div>
 
-      <div class="intro-section">
+      <div class="intro-section" id="aboutSection">
         <h2>ZER0X GAME</h2>
         <p>استودیوی بازی‌سازی با نگاه سینمایی و روایت‌های عمیق. خلق فراتر از مرزها.</p>
-        <a href="#" onclick="showHome()">درباره ما <i class="fas fa-arrow-left" style="margin-right:6px;"></i></a>
+        <a onclick="showAbout()">درباره ما <i class="fas fa-arrow-left" style="margin-right:6px;"></i></a>
       </div>
     </div>
   </div>
 
-  <!-- ===== صفحه اختصاصی (طراحی جدید) ===== -->
+  <!-- ========================================== -->
+  <!-- ===== صفحه اختصاصی (طراحی خفن جدید) ===== -->
+  <!-- ========================================== -->
   <div class="page-detail" id="pageDetail">
-    <div class="container">
-      <div class="detail-hero">
-        <div class="detail-hero-bg"></div>
-        <div class="detail-content">
-          <div class="back-link" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی</div>
-          <h1>SilentGears</h1>
-          <div class="sub">چرخ‌دنده‌ساکت</div>
-
-          <div class="info-grid">
-            <div class="item">
-              <strong>ژانر</strong>
-              <span>اکشن-ماجرایی • نقش‌آفرینی</span>
-            </div>
-            <div class="item">
-              <strong>پلتفرم</strong>
-              <span>اندروید • PC</span>
-            </div>
-            <div class="item">
-              <strong>وضعیت</strong>
-              <span>در دست توسعه</span>
-            </div>
-            <div class="item">
-              <strong>مدت زمان</strong>
-              <span>۱۲ تا ۱۶ ساعت</span>
-            </div>
-            <div class="item">
-              <strong>پایان‌ها</strong>
-              <span>۳ پایان مختلف</span>
-            </div>
-            <div class="item">
-              <strong>حالت بازی</strong>
-              <span>تکنفره، روایت خطی</span>
-            </div>
-          </div>
-
-          <div class="full-desc">
-            🎮 SilentGears | چرخ‌دنده‌ساکت یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط Zerox Studios ساخته شده.
-
-            داستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخ‌دنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از ۳ پایان مختلف ختم می‌شود.
-
-            بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌ساکت می‌برد.
-          </div>
-
-          <div class="trailer-section">
-            <h3><i class="fas fa-play" style="margin-left:10px; color:#666;"></i> تریلر بازی</h3>
-            <div class="trailer-placeholder">
-              <i class="fas fa-play-circle"></i>
-            </div>
-          </div>
-
-          <div class="gallery">
-            <img src="https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg" alt="Screenshot 1" />
-            <img src="https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg" alt="Screenshot 2" />
-          </div>
-
-          <div class="back-link" onclick="showHome()" style="margin-top:1rem;"><i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی</div>
+    <!-- هیرو بزرگ -->
+    <div class="detail-hero">
+      <div class="detail-hero-bg"></div>
+      <div class="detail-content">
+        <div class="back-link" onclick="showHome()">
+          <i class="fas fa-arrow-right"></i> بازگشت
         </div>
+        <h1>SilentGears</h1>
+        <div class="sub">چرخ‌دنده‌ساکت</div>
+
+        <div class="detail-info-box">
+          <div class="item">
+            <strong>ژانر</strong>
+            <span>اکشن-ماجرایی • نقش‌آفرینی</span>
+          </div>
+          <div class="item">
+            <strong>پلتفرم</strong>
+            <span>اندروید • PC</span>
+          </div>
+          <div class="item">
+            <strong>وضعیت</strong>
+            <span>در دست توسعه</span>
+          </div>
+          <div class="item">
+            <strong>مدت زمان</strong>
+            <span>۱۲ تا ۱۶ ساعت</span>
+          </div>
+          <div class="item">
+            <strong>پایان‌ها</strong>
+            <span>۳ پایان مختلف</span>
+          </div>
+          <div class="item">
+            <strong>حالت بازی</strong>
+            <span>تکنفره، روایت خطی</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- بدنه صفحه -->
+    <div class="detail-body container">
+      <!-- توضیحات -->
+      <div class="full-desc">
+        🎮 SilentGears | چرخ‌دنده‌ساکت یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط Zerox Studios ساخته شده.
+
+        داستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخ‌دنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از ۳ پایان مختلف ختم می‌شود.
+
+        بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌ساکت می‌برد.
+      </div>
+
+      <!-- تریلر -->
+      <div class="trailer-section">
+        <h3><i class="fas fa-play"></i> تریلر بازی</h3>
+        <div class="trailer-placeholder">
+          <i class="fas fa-play-circle"></i>
+        </div>
+      </div>
+
+      <!-- گالری -->
+      <div class="gallery-section">
+        <h3><i class="fas fa-images"></i> گالری تصاویر</h3>
+        <div class="gallery-grid">
+          <img src="https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg" alt="Screenshot 1" />
+          <img src="https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg" alt="Screenshot 2" />
+        </div>
+      </div>
+
+      <!-- بازگشت -->
+      <div class="back-link" onclick="showHome()" style="display:inline-flex; align-items:center; gap:8px; color:#555; border-bottom:1px solid #222; padding-bottom:6px; cursor:pointer; margin-top:1rem;">
+        <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
       </div>
     </div>
   </div>
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <div class="logo">ZER0X <span>GAME</span></div>
+    <div class="logo" onclick="showHome()" style="cursor:pointer;">ZER0X <span>GAME</span></div>
     <div class="footer-links">
-      <a href="#" onclick="showHome()">خانه</a>
-      <a href="#" onclick="showHome()">بازی‌ها</a>
-      <a href="#" onclick="showHome()">درباره ما</a>
+      <a onclick="showHome()">خانه</a>
+      <a onclick="showHome()">بازی‌ها</a>
+      <a onclick="showAbout()">درباره ما</a>
     </div>
     <div class="footer-social">
       <i class="fab fa-twitter"></i>
@@ -614,19 +767,44 @@
   </footer>
 
   <script>
+    // ===== توابع =====
     function showDetail() {
       document.getElementById('pageHome').classList.add('hidden');
       document.getElementById('pageDetail').classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      // آپدیت منو
+      document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
     }
 
     function showHome() {
       document.getElementById('pageHome').classList.remove('hidden');
       document.getElementById('pageDetail').classList.remove('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+      document.querySelector('.nav a:first-child').classList.add('active');
     }
 
-    // Parallax
+    function showAbout() {
+      showHome();
+      setTimeout(() => {
+        const about = document.getElementById('aboutSection');
+        if (about) about.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+
+    // ===== سرچ =====
+    function openSearch() {
+      document.getElementById('searchOverlay').classList.add('active');
+      document.querySelector('.search-overlay input').focus();
+    }
+    function closeSearch() {
+      document.getElementById('searchOverlay').classList.remove('active');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeSearch();
+    });
+
+    // ===== Parallax =====
     document.addEventListener('scroll', function() {
       const heroBg = document.querySelector('.hero-bg');
       const scrolled = window.scrollY;
