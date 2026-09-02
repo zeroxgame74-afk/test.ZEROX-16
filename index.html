@@ -66,6 +66,7 @@
             letter-spacing: 0.15rem;
             color: #fff;
             text-decoration: none;
+            cursor: pointer;
         }
         .logo span {
             font-weight: 300;
@@ -84,6 +85,7 @@
             transition: 0.3s;
             letter-spacing: 0.5px;
             position: relative;
+            cursor: pointer;
         }
         nav a::after {
             content: '';
@@ -232,6 +234,7 @@
             font-weight: 400;
             border-radius: 4px;
             backdrop-filter: blur(2px);
+            cursor: pointer;
         }
         .btn:hover {
             background: #fff;
@@ -388,6 +391,7 @@
             overflow: hidden;
             margin: 3rem 0 4rem;
             border: 1px solid #2a2a2a;
+            cursor: pointer;
         }
         .featured-game .art {
             flex: 1.2;
@@ -470,6 +474,7 @@
             overflow: hidden;
             border: 1px solid #222;
             transition: 0.3s;
+            cursor: pointer;
         }
         .news-item:hover {
             border-color: #444;
@@ -554,6 +559,7 @@
             text-decoration: none;
             font-size: 0.9rem;
             transition: 0.3s;
+            cursor: pointer;
         }
         .footer-nav a:hover {
             color: #fff;
@@ -613,35 +619,157 @@
             transform: rotate(90deg);
         }
 
-        /* ===== ریسپانسیو ===== */
-        @media (max-width: 992px) {
-            .slide-content h1 { font-size: 3rem; }
-            .featured-game { flex-direction: column; }
-            .featured-game .art { width: 100%; min-height: 220px; }
-            .featured-game .info { padding: 1.8rem; }
+        /* ===== صفحه اختصاصی بازی ===== */
+        .game-detail-page {
+            display: none;
+            padding: 2rem 0 4rem;
+        }
+        .game-detail-page.active {
+            display: block;
         }
 
-        @media (max-width: 768px) {
-            nav { display: none; flex-direction: column; background: #0a0a0a; position: absolute; top: 70px; right: 0; width: 100%; padding: 1.5rem; border-bottom: 1px solid #222; }
-            nav.open { display: flex; }
-            .menu-toggle { display: block; }
-            .header-icons .fa-search { display: none; }
-            .hero-slider { height: 70vh; }
-            .slide-content { bottom: 12%; right: 5%; max-width: 90%; }
-            .slide-content h1 { font-size: 2.2rem; }
-            .slider-arrow { width: 36px; height: 36px; font-size: 1rem; }
-            .slider-arrow.prev { right: 0.5rem; }
-            .slider-arrow.next { left: 0.5rem; }
-            .games-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-            .section-title { font-size: 1.8rem; }
-            .footer-content { flex-direction: column; gap: 1.5rem; align-items: center; }
-            .video-modal iframe { width: 95%; height: 50vh; }
+        .game-detail-hero {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+        }
+        .game-detail-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.35);
+        }
+        .game-detail-hero .hero-info {
+            position: absolute;
+            bottom: 15%;
+            right: 8%;
+            z-index: 2;
+            max-width: 700px;
+        }
+        .game-detail-hero .hero-info h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .game-detail-hero .hero-info .meta-detail {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            color: #ccc;
+            font-size: 1rem;
+            margin: 1rem 0 1.5rem;
+        }
+        .game-detail-hero .hero-info .meta-detail i {
+            margin-left: 0.5rem;
+        }
+        .game-detail-hero .hero-info .status-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid #555;
+            padding: 0.4rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #ddd;
         }
 
-        @media (max-width: 480px) {
-            .games-grid { grid-template-columns: 1fr; }
-            .slide-content h1 { font-size: 1.8rem; }
-            .btn { padding: 0.6rem 1.5rem; }
+        .detail-section {
+            margin-bottom: 3rem;
+        }
+        .detail-section h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            border-right: 3px solid #666;
+            padding-right: 1rem;
+        }
+        .detail-section p {
+            color: #ccc;
+            line-height: 1.9;
+            max-width: 800px;
+            white-space: pre-line;
+        }
+
+        .detail-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .detail-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .detail-gallery img:hover {
+            transform: scale(1.03);
+            border-color: #555;
+        }
+
+        .detail-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .detail-features .feature-item {
+            background: #141414;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #222;
+            text-align: center;
+        }
+        .detail-features .feature-item i {
+            font-size: 2rem;
+            color: #aaa;
+            margin-bottom: 0.5rem;
+        }
+        .detail-features .feature-item h4 {
+            font-weight: 400;
+            color: #ddd;
+        }
+        .detail-features .feature-item p {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        .detail-tags span {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 0.3rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        .back-home-btn {
+            display: inline-block;
+            color: #aaa;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: 0.3s;
+            cursor: pointer;
+            border: 1px solid #333;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            background: transparent;
+        }
+        .back-home-btn:hover {
+            color: #fff;
+            border-color: #666;
         }
 
         /* ===== لینک‌های کارت (بازی) ===== */
@@ -664,11 +792,53 @@
             transition: 0.3s;
             display: inline-block;
             text-decoration: none;
+            cursor: pointer;
         }
         .btn-outline:hover {
             background: #fff;
             color: #0a0a0a;
             border-color: #fff;
+        }
+
+        /* ===== صفحات مخفی ===== */
+        .page-hidden {
+            display: none !important;
+        }
+
+        /* ===== ریسپانسیو ===== */
+        @media (max-width: 992px) {
+            .slide-content h1 { font-size: 3rem; }
+            .featured-game { flex-direction: column; }
+            .featured-game .art { width: 100%; min-height: 220px; }
+            .featured-game .info { padding: 1.8rem; }
+            .game-detail-hero { height: 50vh; }
+            .game-detail-hero .hero-info h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            nav { display: none; flex-direction: column; background: #0a0a0a; position: absolute; top: 70px; right: 0; width: 100%; padding: 1.5rem; border-bottom: 1px solid #222; }
+            nav.open { display: flex; }
+            .menu-toggle { display: block; }
+            .header-icons .fa-search { display: none; }
+            .hero-slider { height: 70vh; }
+            .slide-content { bottom: 12%; right: 5%; max-width: 90%; }
+            .slide-content h1 { font-size: 2.2rem; }
+            .slider-arrow { width: 36px; height: 36px; font-size: 1rem; }
+            .slider-arrow.prev { right: 0.5rem; }
+            .slider-arrow.next { left: 0.5rem; }
+            .games-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+            .section-title { font-size: 1.8rem; }
+            .footer-content { flex-direction: column; gap: 1.5rem; align-items: center; }
+            .video-modal iframe { width: 95%; height: 50vh; }
+            .game-detail-hero .hero-info h1 { font-size: 2.2rem; }
+            .game-detail-hero .hero-info { right: 5%; bottom: 10%; }
+        }
+
+        @media (max-width: 480px) {
+            .games-grid { grid-template-columns: 1fr; }
+            .slide-content h1 { font-size: 1.8rem; }
+            .btn { padding: 0.6rem 1.5rem; }
+            .game-detail-hero { height: 40vh; }
         }
     </style>
 </head>
@@ -676,13 +846,13 @@
 
 <!-- ===== هدر ===== -->
 <header>
-    <a href="#" class="logo persian-font">ZER0X <span>GAME</span></a>
+    <a class="logo persian-font" id="homeLogo">ZER0X <span>GAME</span></a>
     <nav id="mainNav">
-        <a href="#" class="persian-font">خانه</a>
-        <a href="#games" class="persian-font">بازی‌ها</a>
-        <a href="#about" class="persian-font">درباره ما</a>
-        <a href="#news" class="persian-font">اخبار</a>
-        <a href="#contact" class="persian-font">تماس</a>
+        <a class="persian-font nav-link" data-page="home">خانه</a>
+        <a class="persian-font nav-link" data-page="games">بازی‌ها</a>
+        <a class="persian-font nav-link" data-page="about">درباره ما</a>
+        <a class="persian-font nav-link" data-page="news">اخبار</a>
+        <a class="persian-font nav-link" data-page="contact">تماس</a>
     </nav>
     <div class="header-icons">
         <i class="fas fa-search"></i>
@@ -692,134 +862,100 @@
 
 <main>
 
-    <!-- ===== Hero Slider ===== -->
-    <section class="hero-slider" id="heroSlider">
-        <!-- اسلاید 1 -->
-        <div class="slide active" data-index="0">
-            <img src="https://picsum.photos/seed/game1/1400/800" alt="Silent Gears" class="slide-bg" />
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-                <h1 class="persian-font">Silent Gears</h1>
-                <div class="genre"><i class="fas fa-tag"></i> اکشن - ماجراجویی</div>
-                <p>در دنیای پساآخرالزمانی، ماشین‌های خاموش بیدار می‌شوند.</p>
-                <span class="status"><i class="fas fa-clock"></i> به‌زودی</span>
-                <a href="#game-silentgears" class="btn">مشاهده بازی</a>
-            </div>
-        </div>
-        <!-- اسلاید 2 -->
-        <div class="slide" data-index="1">
-            <img src="https://picsum.photos/seed/game2/1400/800" alt="Cyber Dusk" class="slide-bg" />
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-                <h1 class="persian-font">Cyber Dusk</h1>
-                <div class="genre"><i class="fas fa-tag"></i> سایبرپانک - تیراندازی</div>
-                <p>شهر سایه‌ها، جایی که حقیقت در انعکاس داده‌ها گم می‌شود.</p>
-                <span class="status"><i class="fas fa-check-circle"></i> منتشر شده</span>
-                <a href="#game-cyberdusk" class="btn">مشاهده بازی</a>
-            </div>
-        </div>
-        <!-- اسلاید 3 -->
-        <div class="slide" data-index="2">
-            <img src="https://picsum.photos/seed/game3/1400/800" alt="Echoes of Void" class="slide-bg" />
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-                <h1 class="persian-font">Echoes of Void</h1>
-                <div class="genre"><i class="fas fa-tag"></i> وحشت - بقا</div>
-                <p>در اعماق خلأ، پژواک‌های فراموش‌شده منتظرند.</p>
-                <span class="status"><i class="fas fa-clock"></i> به‌زودی</span>
-                <a href="#game-echoesofvoid" class="btn">مشاهده بازی</a>
-            </div>
-        </div>
-
-        <!-- کنترل‌ها -->
-        <button class="slider-arrow prev" id="prevSlide"><i class="fas fa-chevron-right"></i></button>
-        <button class="slider-arrow next" id="nextSlide"><i class="fas fa-chevron-left"></i></button>
-        <div class="slider-dots" id="sliderDots">
-            <span class="active" data-index="0"></span>
-            <span data-index="1"></span>
-            <span data-index="2"></span>
-        </div>
-    </section>
-
-    <!-- ===== بازی‌های منتخب ===== -->
-    <div class="container" id="games">
-        <h2 class="section-title persian-font">بازی‌های منتخب</h2>
-        <div class="games-grid">
-            <!-- کارت 1 -->
-            <div class="game-card">
-                <a href="#game-silentgears">
-                    <img src="https://picsum.photos/seed/sg/400/300" alt="Silent Gears" />
-                    <div class="card-info">
-                        <h3 class="persian-font">Silent Gears</h3>
-                        <div class="meta"><i class="fas fa-tag"></i> اکشن <i class="fas fa-circle" style="font-size:0.3rem; color:#555;"></i> <i class="fas fa-clock"></i> به‌زودی</div>
-                        <div class="meta"><i class="fas fa-gamepad"></i> PC - PlayStation</div>
-                        <i class="fas fa-arrow-left card-arrow"></i>
-                    </div>
-                </a>
-            </div>
-            <!-- کارت 2 -->
-            <div class="game-card">
-                <a href="#game-cyberdusk">
-                    <img src="https://picsum.photos/seed/cd/400/300" alt="Cyber Dusk" />
-                    <div class="card-info">
-                        <h3 class="persian-font">Cyber Dusk</h3>
-                        <div class="meta"><i class="fas fa-tag"></i> سایبرپانک <i class="fas fa-circle" style="font-size:0.3rem; color:#555;"></i> <i class="fas fa-check-circle"></i> منتشر شده</div>
-                        <div class="meta"><i class="fas fa-gamepad"></i> PC - Xbox</div>
-                        <i class="fas fa-arrow-left card-arrow"></i>
-                    </div>
-                </a>
-            </div>
-            <!-- کارت 3 -->
-            <div class="game-card">
-                <a href="#game-echoesofvoid">
-                    <img src="https://picsum.photos/seed/ev/400/300" alt="Echoes of Void" />
-                    <div class="card-info">
-                        <h3 class="persian-font">Echoes of Void</h3>
-                        <div class="meta"><i class="fas fa-tag"></i> وحشت <i class="fas fa-circle" style="font-size:0.3rem; color:#555;"></i> <i class="fas fa-clock"></i> به‌زودی</div>
-                        <div class="meta"><i class="fas fa-gamepad"></i> PC - Mobile</div>
-                        <i class="fas fa-arrow-left card-arrow"></i>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== جدیدترین بازی ===== -->
-    <div class="container">
-        <h2 class="section-title persian-font">جدیدترین بازی</h2>
-        <div class="featured-game" id="featured">
-            <div class="art" style="background-image: url('https://picsum.photos/seed/featured/800/500');"></div>
-            <div class="info">
-                <h2 class="persian-font">Cyber Dusk</h2>
-                <p>سفر به اعماق شهر سایبری، جایی که هر داده می‌تواند آخرین نفس تو باشد.</p>
-                <div class="meta">
-                    <span><i class="fas fa-tag"></i> سایبرپانک</span>
-                    <span><i class="fas fa-gamepad"></i> PC, Xbox</span>
-                    <span><i class="fas fa-check-circle"></i> منتشر شده</span>
+    <!-- ===== صفحه اصلی (خانه) ===== -->
+    <div id="page-home" class="page-content">
+        <!-- Hero Slider -->
+        <section class="hero-slider" id="heroSlider">
+            <!-- اسلاید 1 -->
+            <div class="slide active" data-index="0">
+                <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" class="slide-bg" />
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="persian-font">چرخ‌دنده‌ساکت</h1>
+                    <div class="genre"><i class="fas fa-tag"></i> اکشن-ماجرایی • نقش‌آفرینی</div>
+                    <p>یک بازی پساآخرالزمانی با گیم‌پلی ریتم‌محور و داستانی عمیق...</p>
+                    <span class="status"><i class="fas fa-clock"></i> در دست توسعه</span>
+                    <button class="btn game-detail-btn" data-game="silent-gears">مشاهده بازی</button>
                 </div>
-                <a href="#game-cyberdusk" class="btn-outline">مشاهده بازی <i class="fas fa-arrow-left"></i></a>
+            </div>
+            <!-- اسلاید 2 (نمونه) -->
+            <div class="slide" data-index="1">
+                <img src="https://picsum.photos/seed/game2/1400/800" alt="Cyber Dusk" class="slide-bg" />
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="persian-font">Cyber Dusk</h1>
+                    <div class="genre"><i class="fas fa-tag"></i> سایبرپانک - تیراندازی</div>
+                    <p>شهر سایه‌ها، جایی که حقیقت در انعکاس داده‌ها گم می‌شود.</p>
+                    <span class="status"><i class="fas fa-check-circle"></i> منتشر شده</span>
+                    <button class="btn game-detail-btn" data-game="cyber-dusk">مشاهده بازی</button>
+                </div>
+            </div>
+            <!-- اسلاید 3 (نمونه) -->
+            <div class="slide" data-index="2">
+                <img src="https://picsum.photos/seed/game3/1400/800" alt="Echoes of Void" class="slide-bg" />
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="persian-font">Echoes of Void</h1>
+                    <div class="genre"><i class="fas fa-tag"></i> وحشت - بقا</div>
+                    <p>در اعماق خلأ، پژواک‌های فراموش‌شده منتظرند.</p>
+                    <span class="status"><i class="fas fa-clock"></i> به‌زودی</span>
+                    <button class="btn game-detail-btn" data-game="echoes-of-void">مشاهده بازی</button>
+                </div>
+            </div>
+
+            <!-- کنترل‌ها -->
+            <button class="slider-arrow prev" id="prevSlide"><i class="fas fa-chevron-right"></i></button>
+            <button class="slider-arrow next" id="nextSlide"><i class="fas fa-chevron-left"></i></button>
+            <div class="slider-dots" id="sliderDots">
+                <span class="active" data-index="0"></span>
+                <span data-index="1"></span>
+                <span data-index="2"></span>
+            </div>
+        </section>
+
+        <!-- بازی‌های منتخب -->
+        <div class="container" id="games">
+            <h2 class="section-title persian-font">بازی‌های منتخب</h2>
+            <div class="games-grid" id="gamesGrid">
+                <!-- توسط JS پر میشه -->
             </div>
         </div>
-    </div>
 
-    <!-- ===== تریلر منتخب ===== -->
-    <div class="container">
-        <h2 class="section-title persian-font">تریلر منتخب</h2>
-        <div class="trailer-section">
-            <p class="section-sub">تماشای تریلر جدیدترین بازی Zerox</p>
-            <div class="trailer-thumb" id="trailerTrigger">
-                <img src="https://picsum.photos/seed/trailer/800/450" alt="Trailer Thumbnail" />
-                <div class="play-btn"><i class="fas fa-play-circle"></i></div>
+        <!-- جدیدترین بازی -->
+        <div class="container">
+            <h2 class="section-title persian-font">جدیدترین بازی</h2>
+            <div class="featured-game game-detail-btn" data-game="silent-gears" id="featuredGame">
+                <div class="art" id="featuredArt" style="background-image: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg');"></div>
+                <div class="info" id="featuredInfo">
+                    <h2 class="persian-font" id="featuredTitle">چرخ‌دنده‌ساکت</h2>
+                    <p id="featuredDesc">یک بازی پساآخرالزمانی با گیم‌پلی ریتم‌محور و داستانی عمیق...</p>
+                    <div class="meta" id="featuredMeta">
+                        <span><i class="fas fa-tag"></i> <span id="featuredGenre">اکشن-ماجرایی • نقش‌آفرینی</span></span>
+                        <span><i class="fas fa-gamepad"></i> <span id="featuredPlatform">اندروید | PC</span></span>
+                        <span><i class="fas fa-clock"></i> <span id="featuredStatus">در دست توسعه</span></span>
+                    </div>
+                    <button class="btn-outline game-detail-btn" data-game="silent-gears">مشاهده بازی <i class="fas fa-arrow-left"></i></button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- ===== اخبار ===== -->
-    <div class="container" id="news">
-        <h2 class="section-title persian-font">آخرین اخبار</h2>
-        <div class="news-grid">
-            <div class="news-item">
-                <a href="#news1">
+        <!-- تریلر منتخب -->
+        <div class="container">
+            <h2 class="section-title persian-font">تریلر منتخب</h2>
+            <div class="trailer-section">
+                <p class="section-sub">تماشای تریلر جدیدترین بازی Zerox</p>
+                <div class="trailer-thumb" id="trailerTrigger">
+                    <img src="https://picsum.photos/seed/trailer/800/450" alt="Trailer Thumbnail" />
+                    <div class="play-btn"><i class="fas fa-play-circle"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- اخبار -->
+        <div class="container" id="news">
+            <h2 class="section-title persian-font">آخرین اخبار</h2>
+            <div class="news-grid">
+                <div class="news-item">
                     <img src="https://picsum.photos/seed/n1/400/200" alt="خبر ۱" />
                     <div class="news-body">
                         <h4 class="persian-font">رونمایی از بازی جدید Zerox</h4>
@@ -827,10 +963,8 @@
                         <p>اولین تریلر بازی جدید استودیو منتشر شد.</p>
                         <span class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></span>
                     </div>
-                </a>
-            </div>
-            <div class="news-item">
-                <a href="#news2">
+                </div>
+                <div class="news-item">
                     <img src="https://picsum.photos/seed/n2/400/200" alt="خبر ۲" />
                     <div class="news-body">
                         <h4 class="persian-font">آپدیت بزرگ Cyber Dusk</h4>
@@ -838,10 +972,8 @@
                         <p>محتوای جدید و بهبودهای گرافیکی.</p>
                         <span class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></span>
                     </div>
-                </a>
-            </div>
-            <div class="news-item">
-                <a href="#news3">
+                </div>
+                <div class="news-item">
                     <img src="https://picsum.photos/seed/n3/400/200" alt="خبر ۳" />
                     <div class="news-body">
                         <h4 class="persian-font">پشت صحنه Silent Gears</h4>
@@ -849,19 +981,22 @@
                         <p>مصاحبه با تیم توسعه‌دهنده.</p>
                         <span class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></span>
                     </div>
-                </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- معرفی استودیو -->
+        <div class="container" id="about">
+            <div class="studio-bio">
+                <h2 class="persian-font">ZER0X GAME</h2>
+                <p class="persian-font">ما در Zerox، مرزهای خلاقیت را جابه‌جا می‌کنیم. با تکیه بر هنر، فناوری و داستان‌سرایی، تجربه‌هایی می‌سازیم که در ذهن بازیکنان می‌مانند.</p>
+                <button class="btn-outline" style="margin-top:1rem;">درباره Zerox <i class="fas fa-arrow-left"></i></button>
             </div>
         </div>
     </div>
 
-    <!-- ===== معرفی استودیو ===== -->
-    <div class="container" id="about">
-        <div class="studio-bio">
-            <h2 class="persian-font">ZER0X GAME</h2>
-            <p class="persian-font">ما در Zerox، مرزهای خلاقیت را جابه‌جا می‌کنیم. با تکیه بر هنر، فناوری و داستان‌سرایی، تجربه‌هایی می‌سازیم که در ذهن بازیکنان می‌مانند.</p>
-            <a href="#about-page" class="btn-outline" style="margin-top:1rem;">درباره Zerox <i class="fas fa-arrow-left"></i></a>
-        </div>
-    </div>
+    <!-- ===== صفحات اختصاصی بازی‌ها (داینامیک با JS) ===== -->
+    <div id="game-detail-container"></div>
 
 </main>
 
@@ -870,11 +1005,11 @@
     <div class="footer-content">
         <div class="logo persian-font" style="font-size:1.4rem;">ZER0X <span>GAME</span></div>
         <div class="footer-nav">
-            <a href="#" class="persian-font">خانه</a>
-            <a href="#games" class="persian-font">بازی‌ها</a>
-            <a href="#about" class="persian-font">درباره ما</a>
-            <a href="#news" class="persian-font">اخبار</a>
-            <a href="#" class="persian-font">تماس</a>
+            <a class="nav-link" data-page="home">خانه</a>
+            <a class="nav-link" data-page="games">بازی‌ها</a>
+            <a class="nav-link" data-page="about">درباره ما</a>
+            <a class="nav-link" data-page="news">اخبار</a>
+            <a class="nav-link" data-page="contact">تماس</a>
         </div>
         <div class="social-icons">
             <i class="fab fa-instagram"></i>
@@ -898,86 +1033,351 @@
 <!-- ===== اسکریپت‌ها ===== -->
 <script>
     (function() {
-        // منو موبایل
-        const toggle = document.getElementById('menuToggle');
-        const nav = document.getElementById('mainNav');
-        toggle.addEventListener('click', () => {
-            nav.classList.toggle('open');
-        });
+        // ===== دیتا =====
+        const gamesData = [{
+            id: 1,
+            title: "SilentGears | چرخ‌دنده‌ساکت",
+            name: "SilentGears",
+            persianName: "چرخ‌دنده‌ساکت",
+            slug: "silent-gears",
+            status: "در دست توسعه",
+            genre: "اکشن-ماجرایی • نقش‌آفرینی",
+            desc: "یک بازی پساآخرالزمانی با گیم‌پلی ریتم‌محور و داستانی عمیق...",
+            platform: "اندروید | PC",
+            cover: "https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg",
+            gallery: [
+                "https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg",
+                "https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg"
+            ],
+            releaseDate: "در دست توسعه • تاریخ انتشار نامشخص",
+            duration: "۱۲ تا ۱۶ ساعت",
+            endings: "۳ پایان مختلف",
+            mode: "تکنفره، روایت خطی",
+            developer: "Zerox Studios",
+            fullDesc: "🎮 SilentGears | چرخ‌دنده‌ساکت یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط Zerox Studios ساخته شده.\n\nداستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخ‌دنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از ۳ پایان مختلف ختم می‌شود.\n\nبازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌ساکت می‌برد.",
+            tags: ["اکشن-ماجرایی", "نقش‌آفرینی", "ریتم‌محور", "پساآخرالزمانی", "تکنفره"]
+        }];
+
+        // ===== متغیرها =====
+        const pageHome = document.getElementById('page-home');
+        const detailContainer = document.getElementById('game-detail-container');
+        let currentGameSlug = null;
+
+        // ===== توابع کمکی =====
+        function getGameBySlug(slug) {
+            return gamesData.find(g => g.slug === slug);
+        }
+
+        // ===== رندر کردن کارت‌های بازی =====
+        function renderGameCards() {
+            const grid = document.getElementById('gamesGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            gamesData.forEach(game => {
+                const card = document.createElement('div');
+                card.className = 'game-card game-detail-btn';
+                card.dataset.game = game.slug;
+                card.innerHTML = `
+                    <img src="${game.cover}" alt="${game.persianName}" />
+                    <div class="card-info">
+                        <h3 class="persian-font">${game.persianName}</h3>
+                        <div class="meta"><i class="fas fa-tag"></i> ${game.genre} <i class="fas fa-circle" style="font-size:0.3rem; color:#555;"></i> <i class="fas fa-clock"></i> ${game.status}</div>
+                        <div class="meta"><i class="fas fa-gamepad"></i> ${game.platform}</div>
+                        <i class="fas fa-arrow-left card-arrow"></i>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ===== رندر صفحه اختصاصی بازی =====
+        function renderGameDetail(slug) {
+            const game = getGameBySlug(slug);
+            if (!game) return;
+
+            currentGameSlug = slug;
+
+            // ساخت گالری
+            let galleryHTML = '';
+            if (game.gallery && game.gallery.length > 0) {
+                game.gallery.forEach(img => {
+                    galleryHTML += `<img src="${img}" alt="Screenshot" />`;
+                });
+            } else {
+                galleryHTML = `<p style="color:#888;">تصویری موجود نیست</p>`;
+            }
+
+            // ساخت تگ‌ها
+            let tagsHTML = '';
+            if (game.tags && game.tags.length > 0) {
+                game.tags.forEach(tag => {
+                    tagsHTML += `<span>${tag}</span>`;
+                });
+            }
+
+            // ساخت ویژگی‌ها
+            const features = [
+                { icon: 'fa-clock', label: 'مدت زمان', value: game.duration },
+                { icon: 'fa-flag', label: 'پایان‌ها', value: game.endings },
+                { icon: 'fa-users', label: 'حالت بازی', value: game.mode },
+                { icon: 'fa-code', label: 'توسعه‌دهنده', value: game.developer }
+            ];
+
+            let featuresHTML = '';
+            features.forEach(f => {
+                if (f.value) {
+                    featuresHTML += `
+                        <div class="feature-item">
+                            <i class="fas ${f.icon}"></i>
+                            <h4>${f.label}</h4>
+                            <p>${f.value}</p>
+                        </div>
+                    `;
+                }
+            });
+
+            // ساخت صفحه
+            detailContainer.innerHTML = `
+                <div class="container">
+                    <button class="back-home-btn" id="backHomeBtn"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
+                    
+                    <div class="game-detail-hero">
+                        <img src="${game.cover}" alt="${game.persianName}" />
+                        <div class="hero-info">
+                            <span class="status-badge"><i class="fas fa-clock"></i> ${game.status}</span>
+                            <h1 class="persian-font">${game.persianName}</h1>
+                            <div class="meta-detail">
+                                <span><i class="fas fa-tag"></i> ${game.genre}</span>
+                                <span><i class="fas fa-gamepad"></i> ${game.platform}</span>
+                                <span><i class="fas fa-calendar"></i> ${game.releaseDate}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2 class="persian-font">درباره بازی</h2>
+                        <p>${game.fullDesc || game.desc}</p>
+                    </div>
+
+                    ${game.tags ? `
+                    <div class="detail-section">
+                        <h2 class="persian-font">برچسب‌ها</h2>
+                        <div class="detail-tags">${tagsHTML}</div>
+                    </div>
+                    ` : ''}
+
+                    <div class="detail-section">
+                        <h2 class="persian-font">ویژگی‌های بازی</h2>
+                        <div class="detail-features">${featuresHTML}</div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2 class="persian-font">گالری تصاویر</h2>
+                        <div class="detail-gallery">${galleryHTML}</div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2 class="persian-font">بازی‌های دیگر Zerox</h2>
+                        <div class="games-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));" id="otherGamesGrid">
+                            ${gamesData.filter(g => g.slug !== slug).map(g => `
+                                <div class="game-card game-detail-btn" data-game="${g.slug}">
+                                    <img src="${g.cover}" alt="${g.persianName}" />
+                                    <div class="card-info">
+                                        <h3>${g.persianName}</h3>
+                                        <i class="fas fa-arrow-left card-arrow"></i>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // نمایش صفحه جزئیات و مخفی کردن صفحه اصلی
+            pageHome.style.display = 'none';
+            detailContainer.style.display = 'block';
+            detailContainer.scrollIntoView({ behavior: 'smooth' });
+
+            // اتصال رویدادها
+            document.getElementById('backHomeBtn').addEventListener('click', showHome);
+            document.querySelectorAll('#otherGamesGrid .game-detail-btn').forEach(el => {
+                el.addEventListener('click', function() {
+                    const gameSlug = this.dataset.game;
+                    if (gameSlug) {
+                        renderGameDetail(gameSlug);
+                    }
+                });
+            });
+        }
+
+        // ===== نمایش صفحه خانه =====
+        function showHome() {
+            pageHome.style.display = 'block';
+            detailContainer.style.display = 'none';
+            detailContainer.innerHTML = '';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== مقداردهی اولیه =====
+        function init() {
+            renderGameCards();
+
+            // نمایش اولین بازی در بخش جدیدترین
+            if (gamesData.length > 0) {
+                const first = gamesData[0];
+                const featured = document.getElementById('featuredGame');
+                if (featured) {
+                    featured.dataset.game = first.slug;
+                }
+                const art = document.getElementById('featuredArt');
+                if (art) art.style.backgroundImage = `url('${first.cover}')`;
+                const title = document.getElementById('featuredTitle');
+                if (title) title.textContent = first.persianName;
+                const desc = document.getElementById('featuredDesc');
+                if (desc) desc.textContent = first.desc;
+                const genre = document.getElementById('featuredGenre');
+                if (genre) genre.textContent = first.genre;
+                const platform = document.getElementById('featuredPlatform');
+                if (platform) platform.textContent = first.platform;
+                const status = document.getElementById('featuredStatus');
+                if (status) status.textContent = first.status;
+            }
+
+            // رویدادهای کلیک روی کارت‌ها (داینامیک)
+            document.addEventListener('click', function(e) {
+                const target = e.target.closest('.game-detail-btn');
+                if (target && target.dataset.game) {
+                    e.preventDefault();
+                    renderGameDetail(target.dataset.game);
+                }
+            });
+
+            // رویدادهای منو
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const page = this.dataset.page;
+                    if (page === 'home') {
+                        showHome();
+                    } else if (page === 'games') {
+                        showHome();
+                        setTimeout(() => {
+                            document.getElementById('games').scrollIntoView({ behavior: 'smooth' });
+                        }, 100);
+                    } else if (page === 'about') {
+                        showHome();
+                        setTimeout(() => {
+                            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+                        }, 100);
+                    } else if (page === 'news') {
+                        showHome();
+                        setTimeout(() => {
+                            document.getElementById('news').scrollIntoView({ behavior: 'smooth' });
+                        }, 100);
+                    }
+                    document.getElementById('mainNav').classList.remove('open');
+                });
+            });
+
+            // لوگو
+            document.getElementById('homeLogo').addEventListener('click', showHome);
+
+            // منو موبایل
+            const toggle = document.getElementById('menuToggle');
+            const nav = document.getElementById('mainNav');
+            toggle.addEventListener('click', () => {
+                nav.classList.toggle('open');
+            });
+        }
 
         // ===== اسلایدر =====
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.slider-dots span');
-        const prevBtn = document.getElementById('prevSlide');
-        const nextBtn = document.getElementById('nextSlide');
-        let currentIndex = 0;
-        let interval;
+        function initSlider() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dots span');
+            const prevBtn = document.getElementById('prevSlide');
+            const nextBtn = document.getElementById('nextSlide');
+            let currentIndex = 0;
+            let interval;
 
-        function goToSlide(index) {
-            slides.forEach((s, i) => {
-                s.classList.toggle('active', i === index);
+            function goToSlide(index) {
+                slides.forEach((s, i) => {
+                    s.classList.toggle('active', i === index);
+                });
+                dots.forEach((d, i) => {
+                    d.classList.toggle('active', i === index);
+                });
+                currentIndex = index;
+            }
+
+            function nextSlide() {
+                const next = (currentIndex + 1) % slides.length;
+                goToSlide(next);
+            }
+
+            function prevSlide() {
+                const prev = (currentIndex - 1 + slides.length) % slides.length;
+                goToSlide(prev);
+            }
+
+            function resetInterval() {
+                clearInterval(interval);
+                interval = setInterval(nextSlide, 5000);
+            }
+
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
+                nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+            }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const idx = parseInt(dot.dataset.index);
+                    goToSlide(idx);
+                    resetInterval();
+                });
             });
-            dots.forEach((d, i) => {
-                d.classList.toggle('active', i === index);
-            });
-            currentIndex = index;
-        }
 
-        function nextSlide() {
-            const next = (currentIndex + 1) % slides.length;
-            goToSlide(next);
-        }
-
-        function prevSlide() {
-            const prev = (currentIndex - 1 + slides.length) % slides.length;
-            goToSlide(prev);
-        }
-
-        // رویدادها
-        prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
-        nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const idx = parseInt(dot.dataset.index);
-                goToSlide(idx);
-                resetInterval();
-            });
-        });
-
-        function resetInterval() {
-            clearInterval(interval);
+            goToSlide(0);
             interval = setInterval(nextSlide, 5000);
         }
 
-        // شروع
-        goToSlide(0);
-        interval = setInterval(nextSlide, 5000);
-
         // ===== ویدئو مودال =====
-        const modal = document.getElementById('videoModal');
-        const trigger = document.getElementById('trailerTrigger');
-        const closeModal = document.getElementById('closeModal');
-        const iframe = document.getElementById('videoFrame');
+        function initVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const trigger = document.getElementById('trailerTrigger');
+            const closeModal = document.getElementById('closeModal');
+            const iframe = document.getElementById('videoFrame');
 
-        trigger.addEventListener('click', () => {
-            modal.classList.add('active');
-        });
-
-        closeModal.addEventListener('click', () => {
-            modal.classList.remove('active');
-            iframe.src = iframe.src; // ریست
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-                iframe.src = iframe.src;
+            if (trigger) {
+                trigger.addEventListener('click', () => {
+                    modal.classList.add('active');
+                });
             }
-        });
 
-        console.log('ZER0X GAME - وب‌سایت حرفه‌ای');
+            if (closeModal) {
+                closeModal.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                    iframe.src = iframe.src;
+                });
+            }
+
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                        iframe.src = iframe.src;
+                    }
+                });
+            }
+        }
+
+        // ===== اجرا =====
+        init();
+        initSlider();
+        initVideoModal();
+
+        console.log('ZER0X GAME - وب‌سایت حرفه‌ای با دیتای واقعی');
     })();
 </script>
 
 </body>
-</html>
+    </html>
