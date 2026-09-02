@@ -1,587 +1,747 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Zerox games | original</title>
-  <!-- Font Awesome 6 (رایگان) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts: استعداد + اردکان -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;700;900&family=Ardakan:wght@300;400;700;900&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استودیو بازی‌سازی نکسوس</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font: Vazir (وزیر) -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      background-color: #000000;
-      color: #f0f0f0;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      position: relative;
-      overflow-x: hidden;
-    }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: #0b0e14;
+            color: #f0f4ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    /* پس‌زمینه‌ی پویا با دایره‌های محو */
-    body::before {
-      content: '';
-      position: fixed;
-      top: -30%;
-      left: -20%;
-      width: 80%;
-      height: 80%;
-      background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 70%);
-      border-radius: 50%;
-      z-index: 0;
-      pointer-events: none;
-      animation: floatGlow 18s infinite alternate ease-in-out;
-    }
+        /* اسکرول نرم */
+        html {
+            scroll-behavior: smooth;
+        }
 
-    body::after {
-      content: '';
-      position: fixed;
-      bottom: -20%;
-      right: -10%;
-      width: 70%;
-      height: 70%;
-      background: radial-gradient(circle, rgba(255,255,255,0.015) 0%, transparent 70%);
-      border-radius: 50%;
-      z-index: 0;
-      pointer-events: none;
-      animation: floatGlow 22s infinite alternate-reverse ease-in-out;
-    }
+        /* کانتینر اصلی */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
 
-    @keyframes floatGlow {
-      0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-      100% { transform: translate(40px, -30px) scale(1.2); opacity: 1; }
-    }
+        /* هدر / ناوبری */
+        header {
+            background: rgba(11, 14, 20, 0.9);
+            backdrop-filter: blur(12px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-    /* کادر اصلی سایت – سیاه‌و‌سفید با هاله‌ی سفید بسیار نرم */
-    .site-wrapper {
-      max-width: 1300px;
-      width: 100%;
-      background: rgba(10, 10, 10, 0.75);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
-      border-radius: 3.5rem 3.5rem 2.5rem 2.5rem;
-      padding: 2.5rem 2.8rem;
-      position: relative;
-      z-index: 2;
-      transition: all 0.3s ease;
-    }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-    /* هدر با لوگو و نام استودیو */
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      padding-bottom: 1.8rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-    }
+        .logo i {
+            font-size: 36px;
+            -webkit-text-fill-color: initial;
+            color: #ffd200;
+        }
 
-    .brand i {
-      font-size: 3.2rem;
-      color: #ffffff;
-      filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
-      transition: 0.25s;
-    }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            font-weight: 700;
+        }
 
-    .brand h1 {
-      font-family: 'Ardakan', 'Estedad', sans-serif;
-      font-weight: 900;
-      font-size: 2.2rem;
-      letter-spacing: 1px;
-      background: linear-gradient(180deg, #ffffff 60%, #aaaaaa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 2px 10px rgba(255,255,255,0.1);
-    }
+        .nav-links a {
+            color: #cdd9f4;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 18px;
+            position: relative;
+        }
 
-    .brand h1 small {
-      font-family: 'Estedad', sans-serif;
-      font-weight: 300;
-      font-size: 0.9rem;
-      color: #aaa;
-      background: none;
-      -webkit-background-clip: unset;
-      background-clip: unset;
-      text-shadow: none;
-      display: block;
-      margin-top: -4px;
-      letter-spacing: 2px;
-      opacity: 0.7;
-    }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: #f7971e;
+            bottom: -6px;
+            right: 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
 
-    .header-icons {
-      display: flex;
-      gap: 1.2rem;
-      font-size: 1.6rem;
-      color: #ccc;
-    }
+        .nav-links a:hover {
+            color: #fff;
+        }
 
-    .header-icons i {
-      transition: 0.2s;
-      cursor: default;
-      opacity: 0.7;
-    }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-    .header-icons i:hover {
-      color: #fff;
-      opacity: 1;
-      transform: scale(1.05);
-      text-shadow: 0 0 12px rgba(255,255,255,0.5);
-    }
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+        }
 
-    /* بخش اصلی – تیتر و توضیحات */
-    .hero {
-      margin: 3.2rem 0 2.8rem 0;
-      text-align: center;
-    }
+        /* بخش Hero */
+        .hero {
+            padding: 80px 0 100px;
+            background: radial-gradient(circle at 10% 30%, #1a1f2e, #0b0e14 70%);
+            position: relative;
+            overflow: hidden;
+        }
 
-    .hero h2 {
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-      font-weight: 900;
-      font-size: 3.8rem;
-      line-height: 1.15;
-      color: #fff;
-      letter-spacing: -1px;
-      text-shadow: 0 4px 30px rgba(255,255,255,0.08);
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(247, 151, 30, 0.08), transparent 70%);
+            top: -200px;
+            left: -200px;
+            border-radius: 50%;
+            z-index: 0;
+        }
 
-    .hero h2 span {
-      background: linear-gradient(135deg, #f0f0f0, #888);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      display: inline-block;
-    }
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
 
-    .hero p {
-      font-family: 'Ardakan', 'Estedad', sans-serif;
-      font-weight: 300;
-      font-size: 1.3rem;
-      max-width: 700px;
-      margin: 1.5rem auto 0;
-      color: #b0b0b0;
-      line-height: 1.8;
-      letter-spacing: 0.3px;
-    }
+        .hero-text {
+            flex: 1 1 500px;
+        }
 
-    .hero .tagline {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-      font-size: 1rem;
-      color: #777;
-      border-top: 1px solid rgba(255,255,255,0.03);
-      padding-top: 1.8rem;
-    }
+        .hero-text h1 {
+            font-size: 58px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
 
-    .hero .tagline i {
-      color: #aaa;
-      margin: 0 0.2rem;
-    }
+        .hero-text h1 span {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .hero .tagline .divider {
-      width: 6px;
-      height: 6px;
-      background: #555;
-      border-radius: 50%;
-      display: inline-block;
-    }
+        .hero-text p {
+            font-size: 20px;
+            color: #aab7d9;
+            max-width: 550px;
+            margin-bottom: 35px;
+        }
 
-    /* شبکه بازی‌ها / نمونه‌کارها */
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.8rem;
-      margin: 3.2rem 0 2.8rem;
-    }
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-    .game-card {
-      background: rgba(20, 20, 20, 0.7);
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      border-radius: 2.2rem;
-      padding: 1.8rem 1.2rem;
-      text-align: center;
-      transition: all 0.25s ease;
-      box-shadow: 0 10px 20px -10px rgba(0,0,0,0.8);
-    }
+        .btn {
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            background: #1e2638;
+            color: #fff;
+            border: 1px solid #2f3a52;
+        }
 
-    .game-card:hover {
-      transform: translateY(-6px);
-      background: rgba(30, 30, 30, 0.8);
-      border-color: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 20px 30px -10px #000000cc, 0 0 0 1px rgba(255,255,255,0.05) inset;
-    }
+        .btn-primary {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #0b0e14;
+            border: none;
+            box-shadow: 0 8px 30px rgba(247, 151, 30, 0.3);
+        }
 
-    .game-card i {
-      font-size: 2.8rem;
-      color: #ddd;
-      margin-bottom: 0.9rem;
-      display: inline-block;
-      filter: drop-shadow(0 0 6px rgba(255,255,255,0.1));
-    }
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(247, 151, 30, 0.5);
+        }
 
-    .game-card h3 {
-      font-family: 'Estedad', sans-serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: #f5f5f5;
-      margin-bottom: 0.4rem;
-    }
+        .btn-outline:hover {
+            background: #2f3a52;
+            border-color: #f7971e;
+        }
 
-    .game-card p {
-      font-family: 'Ardakan', sans-serif;
-      font-weight: 300;
-      font-size: 0.85rem;
-      color: #9a9a9a;
-    }
+        .hero-image {
+            flex: 1 1 400px;
+            text-align: center;
+            position: relative;
+        }
 
-    .game-card .badge {
-      display: inline-block;
-      margin-top: 0.8rem;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 0.25rem 1rem;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      color: #aaa;
-      border: 1px solid rgba(255,255,255,0.04);
-    }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            border: 1px solid #2a3450;
+        }
 
-    /* بخش تیم / استودیو */
-    .studio-section {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 3rem;
-      padding: 1.8rem 2.2rem;
-      margin: 2.5rem 0 2rem;
-      border: 1px solid rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(2px);
-    }
+        .floating-badge {
+            position: absolute;
+            background: rgba(20, 25, 40, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 12px 20px;
+            border-radius: 40px;
+            border: 1px solid #f7971e;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            bottom: 20px;
+            left: -10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
 
-    .studio-text {
-      flex: 2;
-      min-width: 200px;
-    }
+        .floating-badge i {
+            color: #ffd200;
+            font-size: 24px;
+        }
 
-    .studio-text h4 {
-      font-family: 'Ardakan', sans-serif;
-      font-weight: 700;
-      font-size: 1.6rem;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
+        /* بخش بازی‌ها (پروژه‌ها) */
+        .games {
+            padding: 80px 0;
+            background: #0f131b;
+        }
 
-    .studio-text h4 i {
-      font-size: 1.8rem;
-      color: #aaa;
-    }
+        .section-title {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-    .studio-text p {
-      font-family: 'Estedad', sans-serif;
-      font-weight: 300;
-      color: #b5b5b5;
-      margin-top: 0.3rem;
-      font-size: 1rem;
-    }
+        .section-title span {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .studio-stats {
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      margin-top: 0.7rem;
-    }
+        .section-sub {
+            text-align: center;
+            color: #8d9cc0;
+            margin-bottom: 60px;
+            font-size: 18px;
+        }
 
-    .stat-item {
-      display: flex;
-      align-items: baseline;
-      gap: 0.3rem;
-      color: #ccc;
-      font-size: 0.95rem;
-    }
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
 
-    .stat-item i {
-      color: #888;
-      font-size: 1rem;
-    }
+        .game-card {
+            background: #19202e;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: 0.4s ease;
+            border: 1px solid #26304a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
 
-    .stat-item strong {
-      font-family: 'Ardakan', sans-serif;
-      font-weight: 700;
-      color: #fff;
-      font-size: 1.1rem;
-    }
+        .game-card:hover {
+            transform: translateY(-15px);
+            border-color: #f7971e;
+            box-shadow: 0 25px 50px rgba(247, 151, 30, 0.15);
+        }
 
-    .studio-cta {
-      flex: 1;
-      min-width: 140px;
-      text-align: left;
-      display: flex;
-      justify-content: flex-end;
-    }
+        .game-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
 
-    .studio-cta a {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff;
-      padding: 0.7rem 1.8rem;
-      border-radius: 60px;
-      text-decoration: none;
-      font-family: 'Estedad', sans-serif;
-      font-weight: 400;
-      font-size: 0.95rem;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      backdrop-filter: blur(4px);
-      letter-spacing: 0.5px;
-    }
+        .game-info {
+            padding: 25px;
+        }
 
-    .studio-cta a i {
-      font-size: 1rem;
-      color: #ccc;
-    }
+        .game-info h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
 
-    .studio-cta a:hover {
-      background: #fff;
-      color: #000;
-      border-color: #fff;
-      box-shadow: 0 0 30px rgba(255,255,255,0.05);
-    }
+        .game-info p {
+            color: #aab7d9;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
 
-    .studio-cta a:hover i {
-      color: #000;
-    }
+        .game-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
 
-    /* فوتر – کپی رایت و شبکه‌های اجتماعی */
-    .footer {
-      margin-top: 2.5rem;
-      padding-top: 1.8rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.9rem;
-      color: #6a6a6a;
-    }
+        .tag {
+            background: #26304a;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #cdd9f4;
+        }
 
-    .footer .social {
-      display: flex;
-      gap: 1.5rem;
-      font-size: 1.3rem;
-    }
+        .tag i {
+            margin-left: 6px;
+            color: #ffd200;
+        }
 
-    .footer .social i {
-      color: #777;
-      transition: 0.2s;
-      cursor: default;
-    }
+        /* بخش تیم */
+        .team {
+            padding: 80px 0;
+            background: #0b0e14;
+        }
 
-    .footer .social i:hover {
-      color: #fff;
-      transform: scale(1.1);
-      text-shadow: 0 0 20px rgba(255,255,255,0.15);
-    }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
 
-    .footer .copy {
-      font-family: 'Ardakan', sans-serif;
-      font-weight: 300;
-      letter-spacing: 0.8px;
-    }
+        .team-member {
+            text-align: center;
+            background: #131a26;
+            padding: 30px 20px;
+            border-radius: 40px;
+            border: 1px solid #1f2a3f;
+            transition: 0.3s;
+        }
 
-    .footer .copy i {
-      margin: 0 4px;
-      color: #555;
-    }
+        .team-member:hover {
+            border-color: #f7971e;
+            transform: scale(1.02);
+        }
 
-    /* ریسپانسیو کامل */
-    @media (max-width: 800px) {
-      .site-wrapper {
-        padding: 1.8rem 1.5rem;
-        border-radius: 2.5rem;
-      }
-      .brand h1 {
-        font-size: 1.8rem;
-      }
-      .hero h2 {
-        font-size: 2.8rem;
-      }
-      .studio-section {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
-        padding: 1.8rem 1.5rem;
-      }
-      .studio-cta {
-        width: 100%;
-        justify-content: flex-start;
-      }
-      .footer {
-        flex-direction: column-reverse;
-        align-items: flex-start;
-      }
-    }
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 18px;
+            border: 4px solid #f7971e;
+            box-shadow: 0 10px 30px rgba(247, 151, 30, 0.2);
+        }
 
-    @media (max-width: 500px) {
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .brand i {
-        font-size: 2.6rem;
-      }
-      .hero h2 {
-        font-size: 2.2rem;
-      }
-      .games-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-      }
-      .game-card {
-        padding: 1.2rem 0.8rem;
-      }
-    }
-  </style>
+        .team-member h4 {
+            font-size: 22px;
+        }
+
+        .team-member p {
+            color: #8d9cc0;
+            font-size: 15px;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: #8d9cc0;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ffd200;
+        }
+
+        /* بخش آمار */
+        .stats {
+            background: #111824;
+            padding: 70px 0;
+            border-top: 1px solid #1f2a3f;
+            border-bottom: 1px solid #1f2a3f;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item i {
+            font-size: 48px;
+            color: #f7971e;
+            margin-bottom: 10px;
+        }
+
+        .stat-item h2 {
+            font-size: 48px;
+            font-weight: 900;
+        }
+
+        .stat-item p {
+            color: #8d9cc0;
+            font-size: 18px;
+        }
+
+        /* فوتر */
+        footer {
+            background: #06080c;
+            padding: 50px 0 20px;
+            border-top: 1px solid #1a2233;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul a {
+            color: #8d9cc0;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-col ul a:hover {
+            color: #ffd200;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1a2233;
+            color: #5a6a8a;
+            font-size: 15px;
+        }
+
+        .footer-bottom i {
+            color: #f7971e;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 38px;
+            }
+
+            .hero-text p {
+                font-size: 17px;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .stats-grid {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="site-wrapper">
+    <!-- هدر -->
+    <header>
+        <div class="container nav">
+            <div class="logo">
+                <i class="fas fa-gamepad"></i>
+                <span>نکسوس</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">خانه</a></li>
+                <li><a href="#games">بازی‌ها</a></li>
+                <li><a href="#team">تیم</a></li>
+                <li><a href="#stats">آمار</a></li>
+                <li><a href="#contact">تماس</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="brand">
-      <i class="fas fa-crown"></i>
-      <h1>
-        Zerox games 
-        <small>| original</small>
-      </h1>
-    </div>
-    <div class="header-icons">
-      <i class="fas fa-search"></i>
-      <i class="fas fa-sliders-h"></i>
-      <i class="fas fa-user-astronaut"></i>
-    </div>
-  </header>
+    <!-- بخش Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-text">
+                <h1>ساخت <span>بازی‌های</span> رویایی</h1>
+                <p>
+                    استودیو نکسوس با تیمی خلاق و حرفه‌ای، تجربه‌های نوین در دنیای بازی‌سازی خلق می‌کند.
+                    از ایده تا انتشار، همراه شما هستیم.
+                </p>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary"><i class="fas fa-rocket"></i> پروژه‌های ما</a>
+                    <a href="#" class="btn btn-outline"><i class="fas fa-phone-alt"></i> مشاوره رایگان</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- تصویر شاخص (میتوانید لینک دلخواه خود را بگذارید) -->
+                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=600&h=400&fit=crop&crop=center" alt="Game Studio">
+                <div class="floating-badge">
+                    <i class="fas fa-trophy"></i>
+                    <span>برنده ۱۲ جایزه جهانی</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h2>
-      <span>بازی‌سازی</span> با <span>روح</span> <br> 
-      <span>سیاه‌و‌سفید</span> 
-    </h2>
-    <p>
-      استودیو Zerox – جایی که ایده‌های خام به بازی‌های ماندگار تبدیل می‌شوند.
-      هویت بصری، روایت عمیق و تجربه‌ای فراتر از پیکسل.
-    </p>
-    <div class="tagline">
-      <i class="fas fa-gamepad"></i>
-      <span>بازی‌های مستقل</span>
-      <span class="divider"></span>
-      <i class="fas fa-paint-brush"></i>
-      <span>هنر مفهومی</span>
-      <span class="divider"></span>
-      <i class="fas fa-code"></i>
-      <span>توسعه بومی</span>
-    </div>
-  </section>
+    <!-- بخش بازی‌ها -->
+    <section class="games" id="games">
+        <div class="container">
+            <h2 class="section-title">آخرین <span>بازی‌ها</span></h2>
+            <p class="section-sub">عنوان‌هایی که با عشق ساخته شده‌اند</p>
+            <div class="game-grid">
+                <!-- کارت بازی 1 -->
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=400&fit=crop&crop=center" alt="Game 1">
+                    <div class="game-info">
+                        <h3>شوالیه‌های کهکشان</h3>
+                        <p>یک ماجراجویی فضایی با گرافیک فوق‌العاده و داستانی عمیق.</p>
+                        <div class="game-tags">
+                            <span class="tag"><i class="fas fa-star"></i> اکشن</span>
+                            <span class="tag"><i class="fas fa-globe"></i> ماجراجویی</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- کارت بازی 2 -->
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=600&h=400&fit=crop&crop=center" alt="Game 2">
+                    <div class="game-info">
+                        <h3>شهر در سایه</h3>
+                        <p>بازی معمایی و روانشناختی در شهری تاریک و رازآلود.</p>
+                        <div class="game-tags">
+                            <span class="tag"><i class="fas fa-brain"></i> معمایی</span>
+                            <span class="tag"><i class="fas fa-skull"></i> ترسناک</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- کارت بازی 3 -->
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=400&fit=crop&crop=center" alt="Game 3">
+                    <div class="game-info">
+                        <h3>مسابقه‌های آتشین</h3>
+                        <p>مسابقه‌های سرعتی در دنیای پست‌آپوکالیپسی.</p>
+                        <div class="game-tags">
+                            <span class="tag"><i class="fas fa-car"></i> مسابقه‌ای</span>
+                            <span class="tag"><i class="fas fa-fire"></i> هیجان‌انگیز</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- GRID GAMES (نمونه‌کار) -->
-  <div class="games-grid">
-    <div class="game-card">
-      <i class="fas fa-skull"></i>
-      <h3>DUSK ECHO</h3>
-      <p>اکشن-ماجرایی در دنیای محوشده</p>
-      <span class="badge"><i class="far fa-clock"></i> ۲۰۲۶</span>
-    </div>
-    <div class="game-card">
-      <i class="fas fa-robot"></i>
-      <h3>NEON GHOST</h3>
-      <p>داستانی سایبرپانک با هویت سیاه‌وسفید</p>
-      <span class="badge"><i class="fas fa-star"></i> در دست ساخت</span>
-    </div>
-    <div class="game-card">
-      <i class="fas fa-dice-d6"></i>
-      <h3>ZEROX ORIGIN</h3>
-      <p>بنیان‌گذار جهان‌های Zerox</p>
-      <span class="badge"><i class="fas fa-crown"></i> اورجینال</span>
-    </div>
-    <div class="game-card">
-      <i class="fas fa-mask"></i>
-      <h3>SHADOW PLAY</h3>
-      <p>معمایی روان‌شناختی در سایه‌ها</p>
-      <span class="badge"><i class="fas fa-video"></i> تریلر</span>
-    </div>
-  </div>
+    <!-- بخش تیم -->
+    <section class="team" id="team">
+        <div class="container">
+            <h2 class="section-title">تیم <span>نکسوس</span></h2>
+            <p class="section-sub">مغزهای خلاق پشت صحنه</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=center" alt="عضو تیم">
+                    <h4>آرمان رضایی</h4>
+                    <p>مدیر هنری</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=center" alt="عضو تیم">
+                    <h4>سارا کریمی</h4>
+                    <p>برنامه‌نویس ارشد</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=center" alt="عضو تیم">
+                    <h4>کیان احمدی</h4>
+                    <p>طراح گیم‌پلی</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=center" alt="عضو تیم">
+                    <h4>نگار فرهادی</h4>
+                    <p>تهیه‌کننده</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- STUDIO SECTION -->
-  <div class="studio-section">
-    <div class="studio-text">
-      <h4><i class="fas fa-flag"></i> استودیو Zerox</h4>
-      <p>تیمی از هنرمندان، برنامه‌نویسان و رویاپردازان که بازی را به زبان هنر سیاه‌وسفید ترجمه می‌کنند.</p>
-      <div class="studio-stats">
-        <span class="stat-item"><i class="fas fa-trophy"></i> <strong>۶</strong> جایزه</span>
-        <span class="stat-item"><i class="fas fa-users"></i> <strong>۱۴</strong> عضو تیم</span>
-        <span class="stat-item"><i class="fas fa-globe"></i> <strong>۲</strong> دفتر</span>
-      </div>
-    </div>
-    <div class="studio-cta">
-      <a href="#"><i class="fas fa-arrow-left"></i> پروژه‌ها</a>
-    </div>
-  </div>
+    <!-- بخش آمار -->
+    <section class="stats" id="stats">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <i class="fas fa-gamepad"></i>
+                <h2>۲۷</h2>
+                <p>بازی منتشر شده</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-users"></i>
+                <h2>۱۲۰+</h2>
+                <p>تیم حرفه‌ای</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-trophy"></i>
+                <h2>۳۴</h2>
+                <p>جایزه بین‌المللی</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-download"></i>
+                <h2>۵M+</h2>
+                <p>دانلود جهانی</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="copy">
-      <i class="far fa-copyright"></i> ۲۰۲۶ Zerox games | original 
-      <span style="margin:0 8px; color:#444;">—</span> 
-      سیاه‌و‌سفید همیشه رنگی‌ست
-    </div>
-    <div class="social">
-      <i class="fab fa-twitter"></i>
-      <i class="fab fa-youtube"></i>
-      <i class="fab fa-github"></i>
-      <i class="fab fa-discord"></i>
-    </div>
-  </footer>
+    <!-- فوتر -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>استودیو نکسوس</h4>
+                    <ul>
+                        <li><a href="#">درباره ما</a></li>
+                        <li><a href="#">فرصت‌های شغلی</a></li>
+                        <li><a href="#">وبلاگ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>بازی‌ها</h4>
+                    <ul>
+                        <li><a href="#">شوالیه‌های کهکشان</a></li>
+                        <li><a href="#">شهر در سایه</a></li>
+                        <li><a href="#">مسابقه‌های آتشین</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>ارتباط</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-envelope"></i> info@nexus.studio</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴-۵۶۷۸</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>شبکه‌های اجتماعی</h4>
+                    <div class="social-icons" style="justify-content: flex-start;">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© ۲۰۲۶ استودیو نکسوس · <i class="fas fa-heart"></i> ساخته شده با عشق برای گیمرها</p>
+            </div>
+        </div>
+    </footer>
 
-</div>
-<!-- پایان wrapper -->
+    <!-- جاوااسکریپت برای منوی همبرگری -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // بستن منو با کلیک روی هر لینک (بهبود UX)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
