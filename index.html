@@ -5,35 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZER0X GAME · Create Beyond Limits</title>
 
-  <!-- ===== فونت‌های مورد نظر از Google Fonts ===== -->
-  <!-- استعداد (Estedad) -->
+  <!-- فونت‌ها از Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;700;800&display=swap" rel="stylesheet" />
-  <!-- اردیبهشت (Ardakan) -->
   <link href="https://fonts.googleapis.com/css2?family=Ardakan:wght@400;700&display=swap" rel="stylesheet" />
-  <!-- فونت انگلیسی مدرن (Inter) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
   <style>
-    /* ===== استفاده از فونت‌ها ===== */
+    /* ===== فونت‌ها ===== */
     * {
       font-family: 'Estedad', 'Ardakan', 'Inter', sans-serif;
     }
-
-    /* تیترها با استعداد (ضخیم‌تر) */
     h1, h2, h3, .logo, .hero-content h1, .section-title {
       font-family: 'Estedad', 'Ardakan', sans-serif;
       font-weight: 800;
     }
-
-    /* متن‌های انگلیسی با Inter */
     .en, .meta, .game-card .genre, .btn-ghost, .game-tag {
       font-family: 'Inter', 'Estedad', 'Ardakan', sans-serif;
     }
 
-    /* بقیه استایل‌ها */
+    /* ===== RESET & BASE ===== */
     * {
       margin: 0;
       padding: 0;
@@ -51,7 +44,7 @@
     a { text-decoration: none; color: inherit; }
     .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
 
-    /* HEADER */
+    /* ===== HEADER ===== */
     .header {
       display: flex;
       justify-content: space-between;
@@ -89,7 +82,7 @@
     .header-actions i:hover { color: #fff; }
     .menu-mobile { display: none; }
 
-    /* HERO */
+    /* ===== HERO ===== */
     .hero {
       position: relative;
       min-height: 90vh;
@@ -162,6 +155,7 @@
       transition: all 0.25s;
       backdrop-filter: blur(2px);
       border-radius: 2px;
+      cursor: pointer;
     }
     .btn-ghost:hover {
       background: #fff;
@@ -174,7 +168,7 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* GAME GRID */
+    /* ===== GAME GRID ===== */
     .section-title {
       font-size: 2.2rem;
       font-weight: 800;
@@ -255,7 +249,7 @@
       font-weight: 300;
     }
 
-    /* INTRO ZER0X */
+    /* ===== INTRO ===== */
     .intro-section {
       border-top: 1px solid #222;
       padding: 3rem 0 4rem;
@@ -280,7 +274,7 @@
     }
     .intro-section a:hover { color: #fff; border-color: #fff; }
 
-    /* FOOTER */
+    /* ===== FOOTER ===== */
     .footer {
       border-top: 1px solid #1a1a1a;
       padding: 2.5rem 2rem;
@@ -316,7 +310,7 @@
       padding-top: 1.2rem;
     }
 
-    /* RESPONSIVE */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .nav { display: none; }
       .menu-mobile { display: inline-block; }
@@ -338,7 +332,7 @@
   <header class="header">
     <div class="logo">ZER0X <span>GAME</span></div>
     <nav class="nav">
-      <a href="#">خانه</a>
+      <a href="#home">خانه</a>
       <a href="#games">بازی‌ها</a>
       <a href="#about">درباره ما</a>
     </nav>
@@ -350,25 +344,27 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="home">
-    <div class="hero-bg" style="background-image: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg');"></div>
+    <div class="hero-bg"></div>
     <div class="hero-content">
       <div class="game-tag"><i class="fas fa-star" style="color:#888; margin-left:6px;"></i> بازی منتخب</div>
       <h1>SilentGears</h1>
       <div class="sub-title">چرخ‌دنده‌ساکت</div>
       <div class="meta">
-        <span><i class="fas fa-tag"></i> اکشن-ماجرایی</span>
-        <span><i class="fas fa-desktop"></i> PC • اندروید</span>
+        <span><i class="fas fa-tag"></i> اکشن-ماجرایی • نقش‌آفرینی</span>
+        <span><i class="fas fa-desktop"></i> اندروید • PC</span>
         <span><i class="fas fa-clock"></i> در دست توسعه</span>
       </div>
-      <a href="#" class="btn-ghost">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:8px;"></i></a>
+      <a href="#game-detail" class="btn-ghost">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:8px;"></i></a>
     </div>
   </section>
 
-  <!-- ===== GAME GRID ===== -->
+  <!-- ===== GAME GRID (با دیتای واقعی) ===== -->
   <div class="container" id="games">
     <h2 class="section-title">بازی‌های ما</h2>
     <div class="game-grid">
-      <a href="#" style="display:contents;">
+      
+      <!-- بازی ۱: SilentGears -->
+      <a href="#game-detail" style="display:contents;">
         <div class="game-card">
           <div class="card-img">
             <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" />
@@ -380,34 +376,39 @@
           </div>
         </div>
       </a>
-      <a href="#" style="display:contents;">
+
+      <!-- بازی ۲: (برای نمونه یک بازی دیگه اضافه می‌کنیم) -->
+      <a href="#game-detail" style="display:contents;">
         <div class="game-card">
           <div class="card-img">
-            <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" />
+            <img src="https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg" alt="Project X" />
             <div class="card-overlay"><i class="fas fa-arrow-left"></i></div>
           </div>
           <div class="card-body">
-            <h3>SilentGears</h3>
-            <div class="genre">اکشن-ماجرایی • در دست توسعه</div>
+            <h3>Project X</h3>
+            <div class="genre">علمی-تخیلی • در دست ساخت</div>
           </div>
         </div>
       </a>
-      <a href="#" style="display:contents;">
+
+      <!-- بازی ۳: (برای نمونه) -->
+      <a href="#game-detail" style="display:contents;">
         <div class="game-card">
           <div class="card-img">
-            <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" />
+            <img src="https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg" alt="Dark Echo" />
             <div class="card-overlay"><i class="fas fa-arrow-left"></i></div>
           </div>
           <div class="card-body">
-            <h3>SilentGears</h3>
-            <div class="genre">اکشن-ماجرایی • در دست توسعه</div>
+            <h3>Dark Echo</h3>
+            <div class="genre">ترسناک • ۲۰۲۶</div>
           </div>
         </div>
       </a>
+
     </div>
   </div>
 
-  <!-- ===== INTRO ZER0X ===== -->
+  <!-- ===== INTRO ===== -->
   <div class="container" id="about">
     <div class="intro-section">
       <h2>ZER0X GAME</h2>
@@ -420,7 +421,7 @@
   <footer class="footer">
     <div class="logo">ZER0X <span>GAME</span></div>
     <div class="footer-links">
-      <a href="#">خانه</a>
+      <a href="#home">خانه</a>
       <a href="#games">بازی‌ها</a>
       <a href="#about">درباره ما</a>
     </div>
