@@ -1,975 +1,990 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zerox games | original</title>
-
-  <!-- ===== Google Fonts (Estedad & Ardekan) ===== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;700;800;900&family=Ardekan:wght@300;400;500;700&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
-  <style>
-    /* ----- Reset & Base ----- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Estedad', 'Segoe UI', Tahoma, sans-serif;
-      background: #0a0a0a;
-      color: #f0f0f0;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    .logo,
-    .section-title,
-    .number {
-      font-family: 'Ardekan', 'Estedad', sans-serif;
-      font-weight: 800;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-      max-width: 1340px;
-      margin: 0 auto;
-      padding: 0 30px;
-    }
-
-    /* ----- Scrollbar ----- */
-    ::-webkit-scrollbar {
-      width: 7px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #121212;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #f0c040, #ff6b9d);
-      border-radius: 20px;
-    }
-
-    /* ----- Animations ----- */
-    @keyframes fadeUp {
-      0% {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes glowPulse {
-      0%,
-      100% {
-        box-shadow: 0 0 20px rgba(255, 215, 0, 0.05);
-      }
-      50% {
-        box-shadow: 0 0 60px rgba(255, 107, 157, 0.15), 0 0 120px rgba(255, 215, 0, 0.05);
-      }
-    }
-
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ----- Header / Navbar ----- */
-    header {
-      background: rgba(10, 10, 10, 0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255, 215, 0, 0.08);
-      padding: 16px 0;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
-    .header-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .logo {
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #f5f5f5 0%, #f0c040 50%, #ff6b9d 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .logo span {
-      background: linear-gradient(135deg, #f0c040, #ff6b9d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 300;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
-
-    nav ul li a {
-      font-size: 15px;
-      font-weight: 500;
-      color: #c0c0c0;
-      transition: 0.3s;
-      position: relative;
-      padding-bottom: 4px;
-      font-family: 'Estedad', sans-serif;
-    }
-
-    nav ul li a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      right: 0;
-      width: 0%;
-      height: 2.5px;
-      background: linear-gradient(90deg, #f0c040, #ff6b9d);
-      transition: 0.35s;
-    }
-
-    nav ul li a:hover {
-      color: #fff;
-    }
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    .header-cta {
-      background: linear-gradient(135deg, #f0c040, #ff6b9d);
-      padding: 10px 28px;
-      border-radius: 50px;
-      border: none;
-      font-weight: 700;
-      font-size: 14px;
-      transition: 0.4s;
-      color: #0a0a0a;
-      font-family: 'Estedad', sans-serif;
-      box-shadow: 0 0 30px rgba(255, 107, 157, 0.15);
-    }
-
-    .header-cta:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 60px rgba(255, 107, 157, 0.3);
-    }
-
-    /* ----- Hero ----- */
-    .hero {
-      padding: 100px 0 80px;
-      text-align: center;
-      position: relative;
-      background: radial-gradient(ellipse at 30% 20%, rgba(255, 215, 0, 0.03), transparent 60%),
-        radial-gradient(ellipse at 70% 80%, rgba(255, 107, 157, 0.04), transparent 60%);
-    }
-
-    .hero h1 {
-      font-size: 70px;
-      font-weight: 900;
-      line-height: 1.08;
-      background: linear-gradient(135deg, #ffffff 0%, #f0c040 40%, #ff6b9d 80%, #ffffff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 18px;
-      animation: fadeUp 1s ease;
-      font-family: 'Ardekan', sans-serif;
-      text-shadow: 0 0 80px rgba(255, 215, 0, 0.05);
-    }
-
-    .hero p {
-      font-size: 20px;
-      color: #ccc;
-      max-width: 720px;
-      margin: 0 auto 35px;
-      animation: fadeUp 1.2s ease;
-      font-family: 'Estedad', sans-serif;
-    }
-
-    .hero .typewriter {
-      display: inline-block;
-      font-size: 23px;
-      color: #f0c040;
-      border-left: 2.5px solid #ff6b9d;
-      padding-left: 14px;
-      animation: blink 0.9s step-end infinite;
-      font-weight: 400;
-    }
-
-    @keyframes blink {
-      0%,
-      100% {
-        border-color: #ff6b9d;
-      }
-      50% {
-        border-color: transparent;
-      }
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 22px;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 1.4s ease;
-      margin-top: 10px;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #f0c040, #ff6b9d);
-      color: #0a0a0a;
-      padding: 16px 48px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 16px;
-      transition: 0.35s;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 8px 40px rgba(255, 107, 157, 0.2);
-      font-family: 'Estedad', sans-serif;
-      display: inline-block;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 18px 60px rgba(255, 107, 157, 0.35);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 1.5px solid rgba(255, 215, 0, 0.2);
-      color: #eee;
-      padding: 16px 48px;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 16px;
-      transition: 0.35s;
-      font-family: 'Estedad', sans-serif;
-      display: inline-block;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 215, 0, 0.05);
-      border-color: #f0c040;
-      transform: translateY(-5px);
-      box-shadow: 0 0 40px rgba(255, 215, 0, 0.05);
-    }
-
-    .btn-small {
-      padding: 10px 26px;
-      font-size: 14px;
-      border-radius: 40px;
-      background: rgba(255, 215, 0, 0.06);
-      border: 1px solid rgba(255, 215, 0, 0.1);
-      color: #f0c040;
-      transition: 0.3s;
-      display: inline-block;
-      font-family: 'Estedad', sans-serif;
-    }
-
-    .btn-small:hover {
-      background: rgba(255, 215, 0, 0.12);
-      border-color: #f0c040;
-      color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.05);
-    }
-
-    /* ----- Section Title ----- */
-    .section-title {
-      font-size: 40px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      background: linear-gradient(135deg, #fff, #f0c040, #ff6b9d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: inline-block;
-      font-family: 'Ardekan', sans-serif;
-    }
-
-    .section-sub {
-      color: #999;
-      font-size: 18px;
-      margin-bottom: 50px;
-      display: block;
-      font-weight: 300;
-    }
-
-    /* ----- Games Cards (Insane Gradient & 3D Hover) ----- */
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      margin: 50px 0 30px;
-    }
-
-    .game-card {
-      background: radial-gradient(circle at top left, #1a1a1a, #0a0a0a);
-      border-radius: 30px;
-      padding: 34px 24px 28px;
-      border: 1px solid rgba(255, 215, 0, 0.06);
-      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 12px 45px rgba(0, 0, 0, 0.6);
-      text-align: center;
-      animation: glowPulse 3s infinite;
-      transform-style: preserve-3d;
-      perspective: 800px;
-      cursor: pointer;
-    }
-
-    /* Shine overlay on hover */
-    .game-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 0deg,
-          transparent,
-          rgba(255, 215, 0, 0.03),
-          transparent,
-          rgba(255, 107, 157, 0.05),
-          transparent,
-          rgba(255, 215, 0, 0.03),
-          transparent);
-      transition: 0.8s;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .game-card:hover::before {
-      opacity: 1;
-      transform: rotate(25deg);
-    }
-
-    /* Glow border on hover */
-    .game-card::after {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: 30px;
-      padding: 1.5px;
-      background: linear-gradient(135deg, #f0c040, #ff6b9d, #f0c040);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      opacity: 0;
-      transition: 0.5s;
-      pointer-events: none;
-    }
-
-    .game-card:hover::after {
-      opacity: 1;
-    }
-
-    .game-card:hover {
-      transform: translateY(-16px) scale(1.02) rotateX(2deg) rotateY(2deg);
-      border-color: transparent;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 80px rgba(255, 215, 0, 0.04);
-    }
-
-    .game-card .icon {
-      font-size: 52px;
-      margin-bottom: 16px;
-      display: inline-block;
-      background: linear-gradient(135deg, #f0c040, #ff6b9d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.1));
-    }
-
-    .game-card h3 {
-      font-size: 25px;
-      margin-bottom: 10px;
-      color: #f0f0f0;
-      font-family: 'Ardekan', sans-serif;
-    }
-
-    .game-card p {
-      color: #aaa;
-      font-size: 15px;
-      margin-bottom: 18px;
-      font-family: 'Estedad', sans-serif;
-    }
-
-    .game-card .badge {
-      display: inline-block;
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 107, 157, 0.05));
-      border: 1px solid rgba(255, 215, 0, 0.08);
-      padding: 4px 20px;
-      border-radius: 40px;
-      font-size: 13px;
-      color: #f0c040;
-      transition: 0.3s;
-      font-weight: 400;
-    }
-
-    .game-card:hover .badge {
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 107, 157, 0.08));
-      border-color: rgba(255, 215, 0, 0.2);
-    }
-
-    .game-card .card-footer {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    /* gradient variants with more pop */
-    .card-gradient-1 {
-      background: radial-gradient(circle at 20% 30%, #2a1f0a, #0a0a0a);
-    }
-    .card-gradient-2 {
-      background: radial-gradient(circle at 80% 20%, #1a0a15, #0a0a0a);
-    }
-    .card-gradient-3 {
-      background: radial-gradient(circle at 50% 80%, #1a150a, #0a0a0a);
-    }
-    .card-gradient-4 {
-      background: radial-gradient(circle at 10% 70%, #1a0a10, #0a0a0a);
-    }
-
-    /* ===== Game Detail Pages ===== */
-    .game-detail-page {
-      display: none;
-      padding: 80px 0 60px;
-      background: radial-gradient(circle at center, #151515, #050505);
-      border-bottom: 1px solid rgba(255, 215, 0, 0.04);
-      position: relative;
-    }
-
-    .game-detail-page:target {
-      display: block;
-      animation: fadeUp 0.6s ease;
-    }
-
-    .game-detail-page .back-link {
-      display: inline-block;
-      margin-bottom: 30px;
-      color: #f0c040;
-      transition: 0.3s;
-      font-size: 16px;
-    }
-
-    .game-detail-page .back-link:hover {
-      color: #fff;
-    }
-
-    .game-detail-page h2 {
-      font-size: 44px;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, #fff, #f0c040, #ff6b9d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-family: 'Ardekan', sans-serif;
-    }
-
-    .game-detail-page p {
-      color: #bbb;
-      font-size: 18px;
-      max-width: 750px;
-      line-height: 1.9;
-      font-family: 'Estedad', sans-serif;
-    }
-
-    .game-detail-page .detail-meta {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin: 25px 0;
-      color: #999;
-    }
-
-    .game-detail-page .detail-meta span {
-      background: rgba(255, 215, 0, 0.04);
-      padding: 6px 20px;
-      border-radius: 40px;
-      border: 1px solid rgba(255, 215, 0, 0.06);
-      color: #f0c040;
-    }
-
-    /* ----- Footer ----- */
-    footer {
-      border-top: 1px solid rgba(255, 215, 0, 0.04);
-      padding: 55px 0 30px;
-      margin-top: 20px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 45px;
-      margin-bottom: 40px;
-    }
-
-    .footer-col h5 {
-      font-size: 19px;
-      margin-bottom: 18px;
-      color: #eee;
-      font-family: 'Ardekan', sans-serif;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 10px;
-    }
-
-    .footer-col ul li a {
-      color: #999;
-      transition: 0.3s;
-      font-size: 15px;
-      font-family: 'Estedad', sans-serif;
-    }
-
-    .footer-col ul li a:hover {
-      color: #f0c040;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      color: #666;
-      font-size: 14px;
-      border-top: 1px solid rgba(255, 215, 0, 0.04);
-      padding-top: 28px;
-      font-family: 'Estedad', sans-serif;
-    }
-
-    .footer-bottom span {
-      background: linear-gradient(135deg, #f0c040, #ff6b9d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* ----- Responsive ----- */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 40px;
-      }
-      nav ul {
-        gap: 14px;
-        justify-content: center;
-      }
-      .header-wrapper {
-        flex-direction: column;
-        gap: 14px;
-      }
-      .container {
-        padding: 0 18px;
-      }
-      .section-title {
-        font-size: 30px;
-      }
-      .game-card {
-        padding: 26px 16px;
-      }
-      .game-detail-page h2 {
-        font-size: 30px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zerox games | original</title>
+
+    <!-- ===== Google Fonts ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;700;800;900&family=Ardekan:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Estedad', 'Segoe UI', Tahoma, sans-serif;
+            background: #0a0a0a;
+            color: #f0f0f0;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .logo,
+        .section-title {
+            font-family: 'Ardekan', 'Estedad', sans-serif;
+            font-weight: 800;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ddd, #555);
+            border-radius: 20px;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .header-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #aaaaaa 50%, #555555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            background: linear-gradient(135deg, #bbb, #555);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 300;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            font-size: 15px;
+            font-weight: 500;
+            color: #c8c8c8;
+            transition: 0.3s;
+            position: relative;
+            padding-bottom: 4px;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 0%;
+            height: 2.5px;
+            background: linear-gradient(90deg, #fff, #888);
+            transition: 0.35s;
+            border-radius: 10px;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .header-cta {
+            background: linear-gradient(135deg, #2a2a2a, #111);
+            padding: 10px 30px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.4s;
+            color: #eee;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        .header-cta:hover {
+            background: linear-gradient(135deg, #3d3d3d, #1a1a1a);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: scale(1.04);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.03);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 100px 0 70px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.08;
+            background: linear-gradient(135deg, #ffffff 0%, #bbbbbb 40%, #666666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            animation: fadeUp 1s ease;
+            font-family: 'Ardekan', sans-serif;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #aaa;
+            max-width: 720px;
+            margin: 0 auto 30px;
+            animation: fadeUp 1.2s ease;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        .hero .typewriter {
+            display: inline-block;
+            font-size: 22px;
+            color: #d0d0d0;
+            border-left: 2.5px solid #999;
+            padding-left: 14px;
+            animation: blink 0.9s step-end infinite;
+            font-weight: 400;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        @keyframes blink {
+            0%,
+            100% {
+                border-color: #999;
+            }
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeUp 1.4s ease;
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f0f0f0, #a0a0a0);
+            color: #111;
+            padding: 16px 48px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: 0.35s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 35px rgba(255, 255, 255, 0.04);
+            font-family: 'Estedad', sans-serif;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 18px 55px rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            color: #eee;
+            padding: 16px 48px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.35s;
+            font-family: 'Estedad', sans-serif;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        /* ===== SECTION TITLE ===== */
+        .section-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #eee, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            font-family: 'Ardekan', sans-serif;
+        }
+
+        .section-sub {
+            color: #888;
+            font-size: 18px;
+            margin-bottom: 50px;
+            display: block;
+            font-weight: 300;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        /* ===== GAME CARDS (🔥 خفن‌ترین ورژن) ===== */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 50px 0 30px;
+        }
+
+        .game-card {
+            position: relative;
+            border-radius: 32px;
+            padding: 38px 28px 30px;
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        /* ===== افکت شیشه‌ای روی کارت ===== */
+        .game-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 32px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.08));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* ===== افکت نور متحرک ===== */
+        .game-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.03), transparent, rgba(255, 255, 255, 0.06), transparent);
+            transition: 0.8s;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .game-card:hover::after {
+            opacity: 1;
+            transform: rotate(25deg);
+        }
+
+        .game-card:hover {
+            transform: translateY(-16px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(255, 255, 255, 0.02);
+        }
+
+        /* ===== آیکون با افکت شناور ===== */
+        .game-card .icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+            display: inline-block;
+            background: linear-gradient(135deg, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: float 3.5s ease-in-out infinite;
+            transition: 0.3s;
+        }
+
+        .game-card:hover .icon {
+            animation: float 2s ease-in-out infinite;
+            transform: scale(1.05);
+        }
+
+        .game-card h3 {
+            font-size: 26px;
+            margin-bottom: 10px;
+            color: #f0f0f0;
+            font-family: 'Ardekan', sans-serif;
+            transition: 0.3s;
+        }
+
+        .game-card:hover h3 {
+            background: linear-gradient(135deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .game-card p {
+            color: #aaa;
+            font-size: 15px;
+            margin-bottom: 18px;
+            font-family: 'Estedad', sans-serif;
+            line-height: 1.8;
+        }
+
+        .game-card .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 5px 22px;
+            border-radius: 40px;
+            font-size: 13px;
+            color: #bbb;
+            transition: 0.3s;
+            font-weight: 400;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        .game-card:hover .badge {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+
+        .game-card .card-footer {
+            margin-top: 22px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-detail {
+            padding: 12px 32px;
+            border-radius: 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #ddd;
+            transition: 0.35s;
+            display: inline-block;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-detail:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.04);
+        }
+
+        /* ===== گرادیانت‌های مختلف برای کارت‌ها ===== */
+        .card-grad-1 {
+            background: radial-gradient(circle at 20% 30%, #2a2a2a, #0d0d0d);
+        }
+        .card-grad-2 {
+            background: radial-gradient(circle at 80% 20%, #242424, #080808);
+        }
+        .card-grad-3 {
+            background: radial-gradient(circle at 50% 80%, #202020, #050505);
+        }
+        .card-grad-4 {
+            background: radial-gradient(circle at 10% 70%, #282828, #0a0a0a);
+        }
+        .card-grad-5 {
+            background: radial-gradient(circle at 70% 60%, #262626, #0c0c0c);
+        }
+        .card-grad-6 {
+            background: radial-gradient(circle at 30% 80%, #2c2c2c, #0e0e0e);
+        }
+
+        /* ===== GAME DETAIL PAGES ===== */
+        .game-detail-page {
+            display: none;
+            padding: 80px 0 60px;
+            background: radial-gradient(circle at center, #151515, #050505);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            scroll-margin-top: 80px;
+        }
+
+        .game-detail-page:target {
+            display: block;
+            animation: fadeUp 0.6s ease;
+        }
+
+        .game-detail-page .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #aaa;
+            transition: 0.3s;
+            font-size: 16px;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        .game-detail-page .back-link:hover {
+            color: #fff;
+            transform: translateX(-6px);
+        }
+
+        .game-detail-page h2 {
+            font-size: 46px;
+            margin-bottom: 14px;
+            background: linear-gradient(135deg, #fff, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Ardekan', sans-serif;
+        }
+
+        .game-detail-page p {
+            color: #bbb;
+            font-size: 18px;
+            max-width: 750px;
+            line-height: 2;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        .game-detail-page .detail-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 25px 0 30px;
+            color: #999;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        .game-detail-page .detail-meta span {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 6px 22px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 14px;
+        }
+
+        .game-detail-page .detail-actions {
+            margin-top: 30px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 50px 0 28px;
+            margin-top: 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+            margin-bottom: 35px;
+        }
+
+        .footer-col h5 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: #eee;
+            font-family: 'Ardekan', sans-serif;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #999;
+            transition: 0.3s;
+            font-size: 15px;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 25px;
+            font-family: 'Estedad', sans-serif;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 38px;
+            }
+            nav ul {
+                gap: 14px;
+                justify-content: center;
+            }
+            .header-wrapper {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .container {
+                padding: 0 18px;
+            }
+            .section-title {
+                font-size: 30px;
+            }
+            .game-card {
+                padding: 28px 18px;
+            }
+            .game-detail-page h2 {
+                font-size: 30px;
+            }
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 30px;
+            }
+            .hero .typewriter {
+                font-size: 17px;
+            }
+            .btn-primary,
+            .btn-secondary {
+                padding: 14px 30px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header>
-    <div class="container header-wrapper">
-      <div class="logo">Zerox <span>games</span></div>
-      <nav>
-        <ul>
-          <li><a href="#home">خانه</a></li>
-          <li><a href="#games-section">بازی‌ها</a></li>
-          <li><a href="#about">درباره</a></li>
-        </ul>
-      </nav>
-      <a href="#signup" class="header-cta"><i class="fas fa-rocket" style="margin-left: 8px;"></i> ورود / ثبت‌نام</a>
-    </div>
-  </header>
-
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="home">
-    <div class="container">
-      <h1>بازی‌های نسل جدید<br />با اصالت Zerox</h1>
-      <p>Zerox games | original — جایی که خلاقیت با تکنولوژی پیوند می‌خوره و هر بازی یه دنیای تازه‌ست.</p>
-      <div class="typewriter" id="typewriter"></div>
-      <div class="hero-buttons" style="margin-top: 35px;">
-        <a href="#games-section" class="btn-primary"><i class="fas fa-play" style="margin-left: 10px;"></i> شروع ماجراجویی</a>
-        <a href="#about" class="btn-secondary">درباره Zerox</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GAMES CARDS ===== -->
-  <section class="container" id="games-section">
-    <span class="section-title">🎮 بازی‌های برتر</span>
-    <span class="section-sub">عنوان‌هایی که دنیای شما رو تغییر میدن — هر بازی داستان خودش رو داره</span>
-
-    <div class="games-grid">
-      <!-- card 1 -->
-      <div class="game-card card-gradient-1 animate-on-scroll" id="game-shadow">
-        <div class="icon"><i class="fas fa-ghost"></i></div>
-        <h3>Shadow Ops</h3>
-        <p>تیراندازی تاکتیکی در دنیای سایبری با گرافیک خیره‌کننده.</p>
-        <span class="badge"><i class="far fa-clock"></i> جدید</span>
-        <div class="card-footer">
-          <a href="#game-shadow-ops" class="btn-small"><i class="fas fa-eye"></i> مشاهده بیشتر</a>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-wrapper">
+            <div class="logo">Zerox <span>games</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">خانه</a></li>
+                    <li><a href="#games-section">بازی‌ها</a></li>
+                </ul>
+            </nav>
+            <a href="#signup" class="header-cta"><i class="fas fa-rocket" style="margin-left: 8px;"></i> ورود</a>
         </div>
-      </div>
-      <!-- card 2 -->
-      <div class="game-card card-gradient-2 animate-on-scroll" id="game-dragon">
-        <div class="icon"><i class="fas fa-dragon"></i></div>
-        <h3>Dragon's Rise</h3>
-        <p>در سرزمین اژدهایان حماسی، قدرت بگیر و قلمرو رو فتح کن.</p>
-        <span class="badge"><i class="fas fa-fire"></i> داغ</span>
-        <div class="card-footer">
-          <a href="#game-dragon-rise" class="btn-small"><i class="fas fa-eye"></i> مشاهده بیشتر</a>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>بازی‌های نسل جدید<br />با اصالت Zerox</h1>
+            <p>Zerox games | original — جایی که خلاقیت با تکنولوژی پیوند می‌خوره</p>
+            <div class="typewriter" id="typewriter"></div>
+            <div class="hero-buttons" style="margin-top: 35px;">
+                <a href="#games-section" class="btn-primary"><i class="fas fa-play" style="margin-left: 10px;"></i> دیدن بازی‌ها</a>
+                <a href="#about" class="btn-secondary">درباره Zerox</a>
+            </div>
         </div>
-      </div>
-      <!-- card 3 -->
-      <div class="game-card card-gradient-3 animate-on-scroll" id="game-mech">
-        <div class="icon"><i class="fas fa-robot"></i></div>
-        <h3>Mech Arena</h3>
-        <p>مسابقات ربات‌های جنگی با ترکیب استراتژی و سرعت بالا.</p>
-        <span class="badge"><i class="fas fa-trophy"></i> رقابتی</span>
-        <div class="card-footer">
-          <a href="#game-mech-arena" class="btn-small"><i class="fas fa-eye"></i> مشاهده بیشتر</a>
+    </section>
+
+    <!-- ===== GAMES CARDS ===== -->
+    <section class="container" id="games-section">
+        <span class="section-title">🎮 بازی‌های برتر</span>
+        <span class="section-sub">هر بازی یک دنیای تازه — کلیک کن و وارد ماجراجویی شو</span>
+
+        <div class="games-grid">
+            <!-- card 1 -->
+            <div class="game-card card-grad-1 animate-on-scroll">
+                <div class="icon"><i class="fas fa-ghost"></i></div>
+                <h3>Shadow Ops</h3>
+                <p>تیراندازی تاکتیکی در دنیای سایبری با گرافیک خیره‌کننده و گیم‌پلی نفس‌گیر.</p>
+                <span class="badge"><i class="far fa-clock"></i> جدید</span>
+                <div class="card-footer">
+                    <a href="#game-shadow-ops" class="btn-detail"><i class="fas fa-eye"></i> مشاهده بازی</a>
+                </div>
+            </div>
+            <!-- card 2 -->
+            <div class="game-card card-grad-2 animate-on-scroll">
+                <div class="icon"><i class="fas fa-dragon"></i></div>
+                <h3>Dragon's Rise</h3>
+                <p>در سرزمین اژدهایان حماسی، قدرت بگیر و قلمرو رو فتح کن. داستانی عمیق و حماسی.</p>
+                <span class="badge"><i class="fas fa-fire"></i> داغ</span>
+                <div class="card-footer">
+                    <a href="#game-dragon-rise" class="btn-detail"><i class="fas fa-eye"></i> مشاهده بازی</a>
+                </div>
+            </div>
+            <!-- card 3 -->
+            <div class="game-card card-grad-3 animate-on-scroll">
+                <div class="icon"><i class="fas fa-robot"></i></div>
+                <h3>Mech Arena</h3>
+                <p>مسابقات ربات‌های جنگی با ترکیب استراتژی، سرعت بالا و مبارزات آنلاین.</p>
+                <span class="badge"><i class="fas fa-trophy"></i> رقابتی</span>
+                <div class="card-footer">
+                    <a href="#game-mech-arena" class="btn-detail"><i class="fas fa-eye"></i> مشاهده بازی</a>
+                </div>
+            </div>
+            <!-- card 4 -->
+            <div class="game-card card-grad-4 animate-on-scroll">
+                <div class="icon"><i class="fas fa-skull"></i></div>
+                <h3>Dark Age</h3>
+                <p>بازی بقا در دوران تاریک با فضایی ترسناک، معماهای پیچیده و داستانی چندلایه.</p>
+                <span class="badge"><i class="fas fa-star"></i> محبوب</span>
+                <div class="card-footer">
+                    <a href="#game-dark-age" class="btn-detail"><i class="fas fa-eye"></i> مشاهده بازی</a>
+                </div>
+            </div>
+            <!-- card 5 -->
+            <div class="game-card card-grad-5 animate-on-scroll">
+                <div class="icon"><i class="fas fa-car"></i></div>
+                <h3>Turbo Drift</h3>
+                <p>مسابقات خیابانی با ماشین‌های فوق‌سریع، گرافیک واقع‌گرا و شخصی‌سازی کامل.</p>
+                <span class="badge"><i class="fas fa-bolt"></i> سریع</span>
+                <div class="card-footer">
+                    <a href="#game-turbo-drift" class="btn-detail"><i class="fas fa-eye"></i> مشاهده بازی</a>
+                </div>
+            </div>
+            <!-- card 6 -->
+            <div class="game-card card-grad-6 animate-on-scroll">
+                <div class="icon"><i class="fas fa-crown"></i></div>
+                <h3>Royal Clash</h3>
+                <p>نبرد سلطنتی آنلاین با قهرمان‌های افسانه‌ای، توانایی‌های خاص و مودهای متنوع.</p>
+                <span class="badge"><i class="fas fa-users"></i> چندنفره</span>
+                <div class="card-footer">
+                    <a href="#game-royal-clash" class="btn-detail"><i class="fas fa-eye"></i> مشاهده بازی</a>
+                </div>
+            </div>
         </div>
-      </div>
-      <!-- card 4 -->
-      <div class="game-card card-gradient-4 animate-on-scroll" id="game-dark">
-        <div class="icon"><i class="fas fa-skull"></i></div>
-        <h3>Dark Age</h3>
-        <p>بازی بقا در دوران تاریک با فضایی ترسناک و ماجراجویی محور.</p>
-        <span class="badge"><i class="fas fa-star"></i> محبوب</span>
-        <div class="card-footer">
-          <a href="#game-dark-age" class="btn-small"><i class="fas fa-eye"></i> مشاهده بیشتر</a>
+    </section>
+
+    <!-- ===== GAME DETAIL PAGES ===== -->
+
+    <!-- Shadow Ops Detail -->
+    <div class="game-detail-page" id="game-shadow-ops">
+        <div class="container">
+            <a href="#games-section" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</a>
+            <h2><i class="fas fa-ghost" style="margin-left: 14px;"></i> Shadow Ops</h2>
+            <div class="detail-meta">
+                <span><i class="far fa-calendar"></i> انتشار: ۲۰۲۶</span>
+                <span><i class="fas fa-tag"></i> سبک: تیراندازی تاکتیکی</span>
+                <span><i class="fas fa-user"></i> تک‌نفره / چندنفره</span>
+            </div>
+            <p>Shadow Ops شما رو به دل یک دنیای سایبری-نظامی می‌بره که در اون هر تصمیم می‌تونه سرنوشت یه ماموریت رو تغییر بده. با گرافیک نسل‌نهم و فیزیک پیشرفته، هر شلیک و حرکت حس واقعی داره.</p>
+            <p style="margin-top: 16px;">ویژگی‌ها: سیستم مخفی‌کاری پیشرفته، سلاح‌های قابل شخصی‌سازی، حالت داستانی ۱۲ ساعته و مودهای آنلاین رقابتی.</p>
+            <div class="detail-actions">
+                <a href="#download" class="btn-primary" style="padding: 14px 42px; font-size:15px;"><i class="fas fa-download"></i> دانلود / خرید</a>
+                <a href="#games-section" class="btn-secondary" style="padding: 14px 42px; font-size:15px;">بازگشت</a>
+            </div>
         </div>
-      </div>
-      <!-- card 5 -->
-      <div class="game-card card-gradient-1 animate-on-scroll" id="game-turbo">
-        <div class="icon"><i class="fas fa-car"></i></div>
-        <h3>Turbo Drift</h3>
-        <p>مسابقات خیابانی با ماشین‌های فوق‌سریع و گرافیک واقع‌گرا.</p>
-        <span class="badge"><i class="fas fa-bolt"></i> سریع</span>
-        <div class="card-footer">
-          <a href="#game-turbo-drift" class="btn-small"><i class="fas fa-eye"></i> مشاهده بیشتر</a>
+    </div>
+
+    <!-- Dragon's Rise Detail -->
+    <div class="game-detail-page" id="game-dragon-rise">
+        <div class="container">
+            <a href="#games-section" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</a>
+            <h2><i class="fas fa-dragon" style="margin-left: 14px;"></i> Dragon's Rise</h2>
+            <div class="detail-meta">
+                <span><i class="far fa-calendar"></i> انتشار: ۲۰۲۵</span>
+                <span><i class="fas fa-tag"></i> سبک: اکشن-ماجراجویی</span>
+                <span><i class="fas fa-user"></i> تک‌نفره</span>
+            </div>
+            <p>در دنیای خیالی «آرتاریا»، اژدهایان باستانی بیدار شدن و شما به عنوان آخرین بازمانده از خاندان دراکو، باید متحدان رو جمع کنید و پادشاهی رو از تاریکی نجات بدید.</p>
+            <p style="margin-top: 16px;">سیستم مبارزه با اژدها، اکتشاف در دنیای باز، معماهای پیچیده و گرافیک خیره‌کننده با نورپردازی پویا.</p>
+            <div class="detail-actions">
+                <a href="#download" class="btn-primary" style="padding: 14px 42px; font-size:15px;"><i class="fas fa-download"></i> دانلود / خرید</a>
+                <a href="#games-section" class="btn-secondary" style="padding: 14px 42px; font-size:15px;">بازگشت</a>
+            </div>
         </div>
-      </div>
-      <!-- card 6 -->
-      <div class="game-card card-gradient-2 animate-on-scroll" id="game-royal">
-        <div class="icon"><i class="fas fa-crown"></i></div>
-        <h3>Royal Clash</h3>
-        <p>نبرد سلطنتی آنلاین با قهرمان‌های افسانه‌ای و توانایی‌های خاص.</p>
-        <span class="badge"><i class="fas fa-users"></i> چندنفره</span>
-        <div class="card-footer">
-          <a href="#game-royal-clash" class="btn-small"><i class="fas fa-eye"></i> مشاهده بیشتر</a>
+    </div>
+
+    <!-- Mech Arena Detail -->
+    <div class="game-detail-page" id="game-mech-arena">
+        <div class="container">
+            <a href="#games-section" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</a>
+            <h2><i class="fas fa-robot" style="margin-left: 14px;"></i> Mech Arena</h2>
+            <div class="detail-meta">
+                <span><i class="far fa-calendar"></i> انتشار: ۲۰۲۶</span>
+                <span><i class="fas fa-tag"></i> سبک: ورزشی-مبارزه‌ای</span>
+                <span><i class="fas fa-user"></i> چندنفره</span>
+            </div>
+            <p>Mech Arena میدان نبرد ربات‌های غول‌پیکره که توی اون استراتژی و سرعت واکنش حرف اول رو می‌زنن. تیم‌های ۳ نفره با ربات‌های قابل سفارشی‌سازی در محیط‌های پویا به رقابت می‌پردازن.</p>
+            <p style="margin-top: 16px;">بیش از ۵۰ ربات مختلف، سیستم ارتقا و تعویض قطعات، مودهای تیمی و انفرادی، و رنکینگ جهانی.</p>
+            <div class="detail-actions">
+                <a href="#download" class="btn-primary" style="padding: 14px 42px; font-size:15px;"><i class="fas fa-download"></i> دانلود / خرید</a>
+                <a href="#games-section" class="btn-secondary" style="padding: 14px 42px; font-size:15px;">بازگشت</a>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
 
-  <!-- ===== GAME DETAIL PAGES ===== -->
-
-  <!-- Shadow Ops Detail -->
-  <div class="game-detail-page" id="game-shadow-ops">
-    <div class="container">
-      <a href="#games-section" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</a>
-      <h2><i class="fas fa-ghost" style="margin-left: 14px;"></i> Shadow Ops</h2>
-      <div class="detail-meta">
-        <span><i class="far fa-calendar"></i> انتشار: ۲۰۲۶</span>
-        <span><i class="fas fa-tag"></i> سبک: تیراندازی تاکتیکی</span>
-        <span><i class="fas fa-user"></i> تک‌نفره / چندنفره</span>
-      </div>
-      <p>Shadow Ops شما رو به دل یک دنیای سایبری-نظامی می‌بره که در اون هر تصمیم می‌تونه سرنوشت یه ماموریت رو تغییر بده. با گرافیک نسل‌نهم و فیزیک پیشرفته، هر شلیک و حرکت حس واقعی داره.</p>
-      <p style="margin-top: 16px;">ویژگی‌های کلیدی: سیستم پیشرفته مخفی‌کاری، سلاح‌های قابل شخصی‌سازی، حالت داستانی ۱۲ ساعته و مودهای آنلاین رقابتی.</p>
-      <div style="margin-top: 25px;">
-        <a href="#signup" class="btn-primary" style="padding: 14px 40px; font-size:15px;"><i class="fas fa-download"></i> دانلود / خرید</a>
-        <a href="#games-section" class="btn-secondary" style="padding: 14px 40px; font-size:15px; margin-right:12px;">بازگشت</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Dragon's Rise Detail -->
-  <div class="game-detail-page" id="game-dragon-rise">
-    <div class="container">
-      <a href="#games-section" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</a>
-      <h2><i class="fas fa-dragon" style="margin-left: 14px;"></i> Dragon's Rise</h2>
-      <div class="detail-meta">
-        <span><i class="far fa-calendar"></i> انتشار: ۲۰۲۵</span>
-        <span><i class="fas fa-tag"></i> سبک: اکشن-ماجراجویی</span>
-        <span><i class="fas fa-user"></i> تک‌نفره</span>
-      </div>
-      <p>در دنیای خیالی «آرتاریا»، اژدهایان باستانی بیدار شدن و شما به عنوان آخرین بازمانده از خاندان دراکو، باید متحدان رو جمع کنید و پادشاهی رو از تاریکی نجات بدید.</p>
-      <p style="margin-top: 16px;">سیستم مبارزه با اژدها، اکتشاف در دنیای باز، معماهای پیچیده و گرافیک خیره‌کننده با نورپردازی پویا از نقاط قوت این بازی هستن.</p>
-      <div style="margin-top: 25px;">
-        <a href="#signup" class="btn-primary" style="padding: 14px 40px; font-size:15px;"><i class="fas fa-download"></i> دانلود / خرید</a>
-        <a href="#games-section" class="btn-secondary" style="padding: 14px 40px; font-size:15px; margin-right:12px;">بازگشت</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mech Arena Detail -->
-  <div class="game-detail-page" id="game-mech-arena">
-    <div class="container">
-      <a href="#games-section" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</a>
-      <h2><i class="fas fa-robot" style="margin-left: 14px;"></i> Mech Arena</h2>
-      <div class="detail-meta">
-        <span><i class="far fa-calendar"></i> انتشار: ۲۰۲۶</span>
-        <span><i class="fas fa-tag"></i> سبک: ورزشی-مبارزه‌ای</span>
-        <span><i class="fas fa-user"></i> چندنفره</span>
-      </div>
-      <p>Mech Arena میدان نبرد ربات‌های غول‌پیکره که توی اون استراتژی و سرعت واکنش حرف اول رو می‌زنن. تیم‌های ۳ نفره با ربات‌های قابل سفارشی‌سازی در محیط‌های پویا به رقابت می‌پردازن.</p>
-      <p style="margin-top: 16px;">بیش از ۵۰ ربات مختلف، سیستم ارتقا و تعویض قطعات، مودهای تیمی و انفرادی، و رنکینگ جهانی از ویژگی‌های اصلی این بازی هستن.</p>
-      <div style="margin-top: 25px;">
-        <a href="#signup" class="btn-primary" style="padding: 14px 40px; font-size:15px;"><i class="fas fa-download"></i> دانلود / خرید</a>
-        <a href="#games-section" class="btn-secondary" style="padding: 14px 40px; font-size:15px; margin-right:12px;">بازگشت</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Dark Age Detail -->
-  <div class="game-detail-page" id="game-dark-age">
-    <div class="container">
-      <a href="#games-section" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</a>
-      <h2><i class="fas fa-skull" style="margin-left: 14px;"></i> Dark Age</h2>
-      <div class="detail-meta">
-        <span><i class="far fa-calendar"></i> انتشار: ۲۰۲۵</span>
-        <span><i class="fas fa-tag"></i> سبک: ترس و بقا</span>
-        <span><i class="fas fa-user"></i> تک‌نفره</span>
-      </div>
-      <p>Dark Age در دنیایی پساآخرالزمانی جریان داره که در اون نور خورشید ناپدید شده و موجودات مرموز در تاریکی کمین کردن. شما باید با مدیریت منابع، ساخت ابزار و کشف رازهای این دنیای متروک، زنده بمونید.</p>
-      <p style="margin-top: 16px;">سیستم روز و شب پویا، محیط‌های ترسناک با طراحی صوتی فراگیر، و داستانی چندلایه از نقاط قوت این بازی محسوب میشن.</p>
-      <div style="margin-top: 25px;">
-        <a href="#signup" class="btn-primary" style="padding: 14px 40px; font-size:15px;"><i class="fas fa-download"></i> دانلود / خرید</a>
-        <a href="#games-section" class="btn-secondary" style="padding: 14px 40px; font-size:15px; margin-right:12px;">بازگشت</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Turbo Drift Detail -->
-  <div class="game-detail-page" id="game-turbo-drift">
-    <div class="container">
-      <a href="#games-section" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</a>
-      <h2><i class="fas fa-car" style="margin-left: 14px;"></i> Turbo Drift</h2>
-      <div class="detail-meta">
-        <span><i class="far fa-calendar"></i> انتشار: ۲۰۲۶</span>
-        <span><i class="fas fa-tag"></i> سبک: مسابقه‌ای</span>
-        <span><i class="fas fa-user"></i> تک‌نفره / چندنفره</span>
-      </div>
-      <p>Turbo Drift مسابقات خیابانی غیرقانونی در شهرهای بزرگ با گرافیک فوق‌واقع‌گرا و فیزیک دقیق ماشین‌هاست. هر مسیر چالش‌های خاص خودش رو داره و شما می‌تونید ماشین‌تون رو از نظر ظاهری و فنی به طور کامل شخصی‌سازی کنید.</p>
-      <p style="margin-top: 16px;">حالت داستانی با شخصیت‌های متنوع، مسابقات آنلاین با دوستان، و سیستم آب‌وهوای پویا از ویژگی‌های منحصربه‌فرد این بازی هستن.</p>
-      <div style="margin-top: 25px;">
-        <a href="#signup" class="btn-primary" style="padding: 14px 40px; font-size:15px;"><i class="fas fa-download"></i> دانلود / خرید</a>
-        <a href="#games-section" class="btn-secondary" style="padding: 14px 40px; font-size:15px; margin-right:12px;">بازگشت</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Royal Clash Detail -->
-  <div class="game-detail-page" id="game-royal-clash">
-    <div class="container">
-      <a href="#games-section" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</a>
-      <h2><i class="fas fa-crown" style="margin-left: 14px;"></i> Royal Clash</h2>
-      <div class="detail-meta">
-        <span><i class="far fa-calendar"></i> انتشار: ۲۰۲۵</span>
-        <span><i class="fas fa-tag"></i> سبک: بتل رویال</span>
-        <span><i class="fas fa-user"></i> چندنفره آنلاین</span>
-      </div>
-      <p>Royal Clash یک بتل رویال سریع با قهرمان‌های افسانه‌ای و توانایی‌های خاصه. هر قهرمان سبک مبارزه و تاکتیک مخصوص خودش رو داره و شما باید در نقشه‌های پویا و با جابجایی‌های سریع، برنده میدان بشید.</p>
-      <p style="margin-top: 16px;">بیش از ۲۰ قهرمان قابل بازی، سیستم پیشرفت و آنلاک کردن اسکین‌ها، مودهای تیمی و انفرادی، و رویدادهای فصلی از جذابیت‌های این بازی هستن.</p>
-      <div style="margin-top: 25px;">
-        <a href="#signup" class="btn-primary" style="padding: 14px 40px; font-size:15px;"><i class="fas fa-download"></i> دانلود / خرید</a>
-        <a href="#games-section" class="btn-secondary" style="padding: 14px 40px; font-size:15px; margin-right:12px;">بازگشت</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== ABOUT / minimal footer replacement ===== -->
-  <section class="container" id="about" style="padding: 60px 0 40px;">
-    <span class="section-title">🔥 درباره Zerox</span>
-    <span class="section-sub">ما عاشق بازی‌سازی‌ایم</span>
-    <div style="max-width: 800px; margin: 0 auto; text-align: center; color: #aaa; font-size: 17px; line-height: 2;">
-      <p>Zerox games | original در سال ۲۰۲۰ با هدف خلق تجربه‌های تازه و اصیل در دنیای بازی‌های ویدیویی متولد شد. تیم ما متشکل از توسعه‌دهندگان، طراحان و هنرمندانی هست که عاشق داستان‌گویی و نوآوری‌اند.</p>
-      <p style="margin-top: 16px;">ما معتقدیم هر بازی می‌تونه یک دنیای جدید باشه. از اکشن و ماجراجویی تا مسابقه و استراتژی — همه‌چیز با کیفیت و اصالت Zerox.</p>
-      <div style="margin-top: 30px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-        <a href="#games-section" class="btn-primary" style="padding: 14px 36px; font-size:15px;">مشاهده بازی‌ها</a>
-        <a href="#signup" class="btn-secondary" style="padding: 14px 36px; font-size:15px;">عضویت در خبرنامه</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h5>Zerox games</h5>
-          <ul>
-            <li><a href="#about">درباره ما</a></li>
-            <li><a href="#contact">تماس با ما</a></li>
-            <li><a href="#careers">فرصت‌های شغلی</a></li>
-          </ul>
+    <!-- Dark Age Detail -->
+    <div class="game-detail-page" id="game-dark-age">
+        <div class="container">
+            <a href="#games-section" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</a>
+            <h2><i class="fas fa-skull" style="margin-left: 14px;"></i> Dark Age</h2>
+            <div class="detail-meta">
+                <span><i class="far fa-calendar"></i> انتشار: ۲۰۲۵</span>
+                <span><i class="fas fa-tag"></i> سبک: ترس و بقا</span>
+                <span><i class="fas fa-user"></i> تک‌نفره</span>
+            </div>
+            <p>Dark Age در دنیایی پساآخرالزمانی جریان داره که در اون نور خورشید ناپدید شده و موجودات مرموز در تاریکی کمین کردن. شما باید با مدیریت منابع، ساخت ابزار و کشف رازهای این دنیای متروک، زنده بمونید.</p>
+            <p style="margin-top: 16px;">سیستم روز و شب پویا، محیط‌های ترسناک با طراحی صوتی فراگیر، و داستانی چندلایه.</p>
+            <div class="detail-actions">
+                <a href="#download" class="btn-primary" style="padding: 14px 42px; font-size:15px;"><i class="fas fa-download"></i> دانلود / خرید</a>
+                <a href="#games-section" class="btn-secondary" style="padding: 14px 42px; font-size:15px;">بازگشت</a>
+            </div>
         </div>
-        <div class="footer-col">
-          <h5>بازی‌ها</h5>
-          <ul>
-            <li><a href="#game-shadow-ops">Shadow Ops</a></li>
-            <li><a href="#game-dragon-rise">Dragon's Rise</a></li>
-            <li><a href="#game-mech-arena">Mech Arena</a></li>
-            <li><a href="#game-royal-clash">Royal Clash</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>پشتیبانی</h5>
-          <ul>
-            <li><a href="#faq">سوالات متداول</a></li>
-            <li><a href="#guide">راهنما</a></li>
-            <li><a href="#ticket">ارسال تیکت</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>شبکه‌های اجتماعی</h5>
-          <ul>
-            <li><a href="#instagram"><i class="fab fa-instagram"></i> اینستاگرام</a></li>
-            <li><a href="#youtube"><i class="fab fa-youtube"></i> یوتیوب</a></li>
-            <li><a href="#twitter"><i class="fab fa-twitter"></i> توییتر</a></li>
-            <li><a href="#discord"><i class="fab fa-discord"></i> دیسکورد</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        &copy; 2026 <span>Zerox games | original</span> — تمامی حقوق محفوظ است.
-      </div>
     </div>
-  </footer>
 
-  <!-- ===== SCRIPTS ===== -->
-  <script>
-    // ---- Typewriter Effect ----
-    const words = ['بازی رو شروع کن...', 'ماجراجویی در انتظارته!', 'Zerox games | original'];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typewriterEl = document.getElementById('typewriter');
+    <!-- Turbo Drift Detail -->
+    <div class="game-detail-page" id="game-turbo-drift">
+        <div class="container">
+            <a href="#games-section" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</a>
+            <h2><i class="fas fa-car" style="margin-left: 14px;"></i> Turbo Drift</h2>
+            <div class="detail-meta">
+                <span><i class="far fa-calendar"></i> انتشار: ۲۰۲۶</span>
+                <span><i class="fas fa-tag"></i> سبک: مسابقه‌ای</span>
+                <span><i class="fas fa-user"></i> تک‌نفره / چندنفره</span>
+            </div>
+            <p>Turbo Drift مسابقات خیابانی غیرقانونی در شهرهای بزرگ با گرافیک فوق‌واقع‌گرا و فیزیک دقیق ماشین‌هاست. هر مسیر چالش‌های خاص خودش رو داره.</p>
+            <p style="margin-top: 16px;">حالت داستانی با شخصیت‌های متنوع، مسابقات آنلاین با دوستان، و سیستم آب‌وهوای پویا.</p>
+            <div class="detail-actions">
+                <a href="#download" class="btn-primary" style="padding: 14px 42px; font-size:15px;"><i class="fas fa-download"></i> دانلود / خرید</a>
+                <a href="#games-section" class="btn-secondary" style="padding: 14px 42px; font-size:15px;">بازگشت</a>
+            </div>
+        </div>
+    </div>
 
-    function typeEffect() {
-      const currentWord = words[wordIndex];
-      if (!isDeleting) {
-        typewriterEl.textContent = currentWord.slice(0, charIndex++);
-        if (charIndex > currentWord.length) {
-          isDeleting = true;
-          setTimeout(typeEffect, 2000);
-          return;
+    <!-- Royal Clash Detail -->
+    <div class="game-detail-page" id="game-royal-clash">
+        <div class="container">
+            <a href="#games-section" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به بازی‌ها</a>
+            <h2><i class="fas fa-crown" style="margin-left: 14px;"></i> Royal Clash</h2>
+            <div class="detail-meta">
+                <span><i class="far fa-calendar"></i> انتشار: ۲۰۲۵</span>
+                <span><i class="fas fa-tag"></i> سبک: بتل رویال</span>
+                <span><i class="fas fa-user"></i> چندنفره آنلاین</span>
+            </div>
+            <p>Royal Clash یک بتل رویال سریع با قهرمان‌های افسانه‌ای و توانایی‌های خاصه. هر قهرمان سبک مبارزه و تاکتیک مخصوص خودش رو داره.</p>
+            <p style="margin-top: 16px;">بیش از ۲۰ قهرمان قابل بازی، سیستم پیشرفت و آنلاک کردن اسکین‌ها، مودهای تیمی و انفرادی، و رویدادهای فصلی.</p>
+            <div class="detail-actions">
+                <a href="#download" class="btn-primary" style="padding: 14px 42px; font-size:15px;"><i class="fas fa-download"></i> دانلود / خرید</a>
+                <a href="#games-section" class="btn-secondary" style="padding: 14px 42px; font-size:15px;">بازگشت</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>Zerox games</h5>
+                    <ul>
+                        <li><a href="#about">درباره ما</a></li>
+                        <li><a href="#contact">تماس با ما</a></li>
+                        <li><a href="#careers">فرصت‌های شغلی</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>بازی‌ها</h5>
+                    <ul>
+                        <li><a href="#game-shadow-ops">Shadow Ops</a></li>
+                        <li><a href="#game-dragon-rise">Dragon's Rise</a></li>
+                        <li><a href="#game-mech-arena">Mech Arena</a></li>
+                        <li><a href="#game-royal-clash">Royal Clash</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>پشتیبانی</h5>
+                    <ul>
+                        <li><a href="#faq">سوالات متداول</a></li>
+                        <li><a href="#guide">راهنما</a></li>
+                        <li><a href="#ticket">ارسال تیکت</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>شبکه‌های اجتماعی</h5>
+                    <ul>
+                        <li><a href="#instagram"><i class="fab fa-instagram"></i> اینستاگرام</a></li>
+                        <li><a href="#youtube"><i class="fab fa-youtube"></i> یوتیوب</a></li>
+                        <li><a href="#twitter"><i class="fab fa-twitter"></i> توییتر</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Zerox games | original — تمامی حقوق محفوظ است.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // ===== Typewriter =====
+        const words = ['بازی رو شروع کن...', 'ماجراجویی در انتظارته!', 'Zerox games | original'];
+        let wordIdx = 0,
+            charIdx = 0,
+            isDel = false;
+        const tw = document.getElementById('typewriter');
+
+        function typeEffect() {
+            const current = words[wordIdx];
+            if (!isDel) {
+                tw.textContent = current.slice(0, charIdx++);
+                if (charIdx > current.length) { isDel = true;
+                    setTimeout(typeEffect, 2000); return; }
+                setTimeout(typeEffect, 110);
+            } else {
+                tw.textContent = current.slice(0, charIdx--);
+                if (charIdx < 0) { isDel = false;
+                    wordIdx = (wordIdx + 1) % words.length;
+                    setTimeout(typeEffect, 400); return; }
+                setTimeout(typeEffect, 50);
+            }
         }
-        setTimeout(typeEffect, 110);
-      } else {
-        typewriterEl.textContent = currentWord.slice(0, charIndex--);
-        if (charIndex < 0) {
-          isDeleting = false;
-          wordIndex = (wordIndex + 1) % words.length;
-          setTimeout(typeEffect, 400);
-          return;
-        }
-        setTimeout(typeEffect, 50);
-      }
-    }
-    typeEffect();
+        typeEffect();
 
-    // ---- Scroll Animation ----
-    const animElements = document.querySelectorAll('.animate-on-scroll');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -30px 0px'
-    });
-    animElements.forEach(el => observer.observe(el));
+        // ===== Scroll Animation =====
+        const animEls = document.querySelectorAll('.animate-on-scroll');
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('visible');
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+        animEls.forEach(el => obs.observe(el));
 
-    // ---- 3D tilt on game cards (insane effect) ----
-    document.querySelectorAll('.game-card').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform =
-          `translateY(-16px) scale(1.02) rotateX(${y * 4}deg) rotateY(${x * 4}deg)`;
-        // dynamic shine following mouse
-        const shine = card.querySelector('::before');
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(-16px) scale(1.02)';
-      });
-    });
+        // ===== 3D Tilt on Cards =====
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform =
+                    `translateY(-16px) scale(1.02) rotateX(${y * 3}deg) rotateY(${x * 3}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(-16px) scale(1.02)';
+            });
+        });
 
-    // ---- smooth hash scroll ----
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        const targetEl = document.querySelector(targetId);
-        if (targetEl) {
-          e.preventDefault();
-          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          history.pushState(null, null, targetId);
-        }
-      });
-    });
+        // ===== Smooth Scroll for Hash Links =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
 
-    // ---- auto-open game detail if hash matches ----
-    window.addEventListener('load', () => {
-      const hash = window.location.hash;
-      if (hash && document.querySelector(hash)) {
-        setTimeout(() => {
-          document.querySelector(hash).scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 300);
-      }
-    });
-  </script>
+        // ===== Auto-open detail if hash on load =====
+        window.addEventListener('load', () => {
+            const hash = window.location.hash;
+            if (hash && document.querySelector(hash)) {
+                setTimeout(() => {
+                    document.querySelector(hash).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 400);
+            }
+        });
+    </script>
 </body>
-                             </html>
+</html>
