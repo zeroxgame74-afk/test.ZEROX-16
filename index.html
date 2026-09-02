@@ -1,546 +1,587 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Zerox games | original</title>
-    <!-- Font Awesome 6 (رایگان) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: استعداد + اردکان -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;700;900&family=Ardakan:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        /* reset & base - سیاه و سفید مطلق با کمی سایه‌های ظریف */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Zerox games | original</title>
+  <!-- Font Awesome 6 (رایگان) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: استعداد + اردکان -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;700;900&family=Ardakan:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            background-color: #000000;
-            color: #f0f0f0;
-            font-family: 'Estedad', 'Ardakan', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            line-height: 1.6;
-            background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.02) 0%, transparent 30%),
-                              radial-gradient(circle at 80% 70%, rgba(255,255,255,0.015) 0%, transparent 40%);
-        }
+    body {
+      background-color: #000000;
+      color: #f0f0f0;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
 
-        /* کانتینر اصلی با حاشیه‌های درخشان و حس استودیویی */
-        .site-wrapper {
-            max-width: 1300px;
-            width: 100%;
-            background: #0b0b0b;
-            border: 1px solid #2a2a2a;
-            border-radius: 3.5rem 3.5rem 2rem 2rem;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 25px 50px -8px rgba(0,0,0,0.9), 0 0 0 1px #222 inset, 0 0 40px rgba(255,255,255,0.02);
-            backdrop-filter: blur(2px);
-            transition: all 0.2s ease;
-        }
+    /* پس‌زمینه‌ی پویا با دایره‌های محو */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -30%;
+      left: -20%;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
+      animation: floatGlow 18s infinite alternate ease-in-out;
+    }
 
-        /* هدر استودیو */
-        .studio-header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #282828;
-            padding-bottom: 1.8rem;
-            margin-bottom: 2.8rem;
-            position: relative;
-        }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -20%;
+      right: -10%;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(circle, rgba(255,255,255,0.015) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
+      animation: floatGlow 22s infinite alternate-reverse ease-in-out;
+    }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
+    @keyframes floatGlow {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      100% { transform: translate(40px, -30px) scale(1.2); opacity: 1; }
+    }
 
-        .logo-icon {
-            font-size: 3.2rem;
-            color: #ffffff;
-            background: #1a1a1a;
-            width: 4.5rem;
-            height: 4.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            border: 1px solid #3a3a3a;
-            box-shadow: 0 0 20px rgba(255,255,255,0.02);
-            transform: rotate(-2deg);
-        }
+    /* کادر اصلی سایت – سیاه‌و‌سفید با هاله‌ی سفید بسیار نرم */
+    .site-wrapper {
+      max-width: 1300px;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+      border-radius: 3.5rem 3.5rem 2.5rem 2.5rem;
+      padding: 2.5rem 2.8rem;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
 
-        .logo-text h1 {
-            font-family: 'Ardakan', 'Estedad', sans-serif;
-            font-weight: 900;
-            font-size: 2.8rem;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #ffffff 40%, #aaaaaa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(255,255,255,0.05);
-            line-height: 1;
-        }
+    /* هدر با لوگو و نام استودیو */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
 
-        .logo-text .sub {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 400;
-            font-size: 0.9rem;
-            color: #9a9a9a;
-            letter-spacing: 0.3em;
-            margin-top: 0.2rem;
-            display: block;
-            -webkit-text-fill-color: #9a9a9a;
-            background: none;
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
 
-        .header-tag {
-            font-family: 'Ardakan', sans-serif;
-            background: #161616;
-            padding: 0.5rem 1.8rem;
-            border-radius: 60px;
-            border: 1px solid #333;
-            color: #ddd;
-            font-weight: 400;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 0 15px rgba(255,255,255,0.01);
-        }
+    .brand i {
+      font-size: 3.2rem;
+      color: #ffffff;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+      transition: 0.25s;
+    }
 
-        .header-tag i {
-            color: #fff;
-            font-size: 1rem;
-        }
+    .brand h1 {
+      font-family: 'Ardakan', 'Estedad', sans-serif;
+      font-weight: 900;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      background: linear-gradient(180deg, #ffffff 60%, #aaaaaa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 10px rgba(255,255,255,0.1);
+    }
 
-        /* بخش شعار و معرفی */
-        .hero-section {
-            padding: 2rem 0 3rem 0;
-            text-align: center;
-            border-bottom: 1px dashed #252525;
-            margin-bottom: 2.8rem;
-        }
+    .brand h1 small {
+      font-family: 'Estedad', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: #aaa;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      text-shadow: none;
+      display: block;
+      margin-top: -4px;
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
 
-        .hero-section h2 {
-            font-family: 'Ardakan', 'Estedad', sans-serif;
-            font-weight: 900;
-            font-size: 4.2rem;
-            letter-spacing: -0.03em;
-            color: #ffffff;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.8);
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
-        }
+    .header-icons {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 1.6rem;
+      color: #ccc;
+    }
 
-        .hero-section h2 span {
-            background: #1f1f1f;
-            padding: 0.1rem 1rem;
-            border-radius: 80px;
-            display: inline-block;
-            border: 1px solid #3a3a3a;
-            font-size: 4rem;
-            line-height: 1.3;
-            box-shadow: 0 0 40px rgba(255,255,255,0.02);
-        }
+    .header-icons i {
+      transition: 0.2s;
+      cursor: default;
+      opacity: 0.7;
+    }
 
-        .hero-section p {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 400;
-            font-size: 1.4rem;
-            color: #b0b0b0;
-            max-width: 700px;
-            margin: 1.5rem auto 0;
-            background: #0d0d0d;
-            padding: 1.2rem 2.5rem;
-            border-radius: 100px;
-            border: 1px solid #252525;
-            display: inline-block;
-            backdrop-filter: blur(4px);
-        }
+    .header-icons i:hover {
+      color: #fff;
+      opacity: 1;
+      transform: scale(1.05);
+      text-shadow: 0 0 12px rgba(255,255,255,0.5);
+    }
 
-        .hero-section p i {
-            margin: 0 0.4rem;
-            color: #ccc;
-        }
+    /* بخش اصلی – تیتر و توضیحات */
+    .hero {
+      margin: 3.2rem 0 2.8rem 0;
+      text-align: center;
+    }
 
-        /* شبکه بازی‌ها / نمونه‌کارها */
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            margin: 2.8rem 0 3rem;
-        }
+    .hero h2 {
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      font-weight: 900;
+      font-size: 3.8rem;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -1px;
+      text-shadow: 0 4px 30px rgba(255,255,255,0.08);
+    }
 
-        .game-card {
-            background: #101010;
-            border-radius: 2.5rem 2.5rem 2rem 2rem;
-            padding: 1.8rem 1.2rem 1.8rem;
-            text-align: center;
-            border: 1px solid #272727;
-            transition: 0.25s ease;
-            box-shadow: 0 10px 20px -10px rgba(0,0,0,0.8);
-            backdrop-filter: blur(2px);
-            position: relative;
-            overflow: hidden;
-        }
+    .hero h2 span {
+      background: linear-gradient(135deg, #f0f0f0, #888);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
 
-        .game-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.02) 0%, transparent 60%);
-            pointer-events: none;
-        }
+    .hero p {
+      font-family: 'Ardakan', 'Estedad', sans-serif;
+      font-weight: 300;
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 1.5rem auto 0;
+      color: #b0b0b0;
+      line-height: 1.8;
+      letter-spacing: 0.3px;
+    }
 
-        .game-card:hover {
-            border-color: #4f4f4f;
-            background: #181818;
-            transform: scale(1.02);
-            box-shadow: 0 0 35px rgba(255,255,255,0.02);
-        }
+    .hero .tagline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: #777;
+      border-top: 1px solid rgba(255,255,255,0.03);
+      padding-top: 1.8rem;
+    }
 
-        .game-card i {
-            font-size: 3.8rem;
-            color: #e0e0e0;
-            background: #1a1a1a;
-            padding: 0.8rem;
-            border-radius: 50%;
-            width: 5.5rem;
-            height: 5.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            border: 1px solid #3a3a3a;
-            box-shadow: 0 0 20px rgba(255,255,255,0.01);
-        }
+    .hero .tagline i {
+      color: #aaa;
+      margin: 0 0.2rem;
+    }
 
-        .game-card h3 {
-            font-family: 'Ardakan', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #f5f5f5;
-            margin-bottom: 0.2rem;
-        }
+    .hero .tagline .divider {
+      width: 6px;
+      height: 6px;
+      background: #555;
+      border-radius: 50%;
+      display: inline-block;
+    }
 
-        .game-card p {
-            font-family: 'Estedad', sans-serif;
-            font-size: 0.85rem;
-            color: #9f9f9f;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-        }
+    /* شبکه بازی‌ها / نمونه‌کارها */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.8rem;
+      margin: 3.2rem 0 2.8rem;
+    }
 
-        .game-card .badge {
-            display: inline-block;
-            margin-top: 0.8rem;
-            background: #222;
-            color: #ddd;
-            font-size: 0.7rem;
-            padding: 0.25rem 1rem;
-            border-radius: 40px;
-            border: 1px solid #3b3b3b;
-            font-weight: 400;
-        }
+    .game-card {
+      background: rgba(20, 20, 20, 0.7);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 2.2rem;
+      padding: 1.8rem 1.2rem;
+      text-align: center;
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 20px -10px rgba(0,0,0,0.8);
+    }
 
-        /* بخش تیم / استودیو */
-        .studio-team {
-            background: #0a0a0a;
-            border-radius: 3rem;
-            padding: 2.5rem 2rem;
-            border: 1px solid #262626;
-            margin: 2rem 0 2.8rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-        }
+    .game-card:hover {
+      transform: translateY(-6px);
+      background: rgba(30, 30, 30, 0.8);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 30px -10px #000000cc, 0 0 0 1px rgba(255,255,255,0.05) inset;
+    }
 
-        .team-info {
-            flex: 1 1 200px;
-        }
+    .game-card i {
+      font-size: 2.8rem;
+      color: #ddd;
+      margin-bottom: 0.9rem;
+      display: inline-block;
+      filter: drop-shadow(0 0 6px rgba(255,255,255,0.1));
+    }
 
-        .team-info h4 {
-            font-family: 'Ardakan', sans-serif;
-            font-weight: 900;
-            font-size: 1.8rem;
-            color: #fff;
-            letter-spacing: -0.02em;
-        }
+    .game-card h3 {
+      font-family: 'Estedad', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #f5f5f5;
+      margin-bottom: 0.4rem;
+    }
 
-        .team-info p {
-            color: #a8a8a8;
-            font-size: 1rem;
-            margin-top: 0.3rem;
-            font-weight: 300;
-        }
+    .game-card p {
+      font-family: 'Ardakan', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: #9a9a9a;
+    }
 
-        .team-social {
-            display: flex;
-            gap: 1.2rem;
-        }
+    .game-card .badge {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: #aaa;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
 
-        .team-social a {
-            color: #ccc;
-            background: #181818;
-            width: 3.2rem;
-            height: 3.2rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            border: 1px solid #333;
-            transition: 0.2s;
-            text-decoration: none;
-        }
+    /* بخش تیم / استودیو */
+    .studio-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 3rem;
+      padding: 1.8rem 2.2rem;
+      margin: 2.5rem 0 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(2px);
+    }
 
-        .team-social a:hover {
-            background: #2a2a2a;
-            color: #fff;
-            border-color: #666;
-            transform: translateY(-3px);
-        }
+    .studio-text {
+      flex: 2;
+      min-width: 200px;
+    }
 
-        /* فوتر */
-        .footer-area {
-            border-top: 1px solid #202020;
-            padding-top: 2rem;
-            margin-top: 1.8rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            color: #6a6a6a;
-            font-size: 0.9rem;
-        }
+    .studio-text h4 {
+      font-family: 'Ardakan', sans-serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
 
-        .footer-area .copy {
-            font-family: 'Estedad', sans-serif;
-            font-weight: 300;
-        }
+    .studio-text h4 i {
+      font-size: 1.8rem;
+      color: #aaa;
+    }
 
-        .footer-area .copy i {
-            color: #888;
-            margin: 0 0.2rem;
-        }
+    .studio-text p {
+      font-family: 'Estedad', sans-serif;
+      font-weight: 300;
+      color: #b5b5b5;
+      margin-top: 0.3rem;
+      font-size: 1rem;
+    }
 
-        .footer-links a {
-            color: #9a9a9a;
-            margin-right: 1.5rem;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: 0.15s;
-            font-weight: 400;
-        }
+    .studio-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.7rem;
+    }
 
-        .footer-links a:hover {
-            color: #fff;
-            border-bottom-color: #555;
-        }
+    .stat-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
 
-        /* دکمه و المان‌های اضافه */
-        .btn-outline-light {
-            background: transparent;
-            border: 1px solid #3d3d3d;
-            color: #ddd;
-            padding: 0.6rem 2rem;
-            border-radius: 60px;
-            font-family: 'Estedad', sans-serif;
-            font-weight: 400;
-            font-size: 0.9rem;
-            cursor: default;
-            transition: 0.15s;
-        }
+    .stat-item i {
+      color: #888;
+      font-size: 1rem;
+    }
 
-        .btn-outline-light i {
-            margin-left: 0.5rem;
-        }
+    .stat-item strong {
+      font-family: 'Ardakan', sans-serif;
+      font-weight: 700;
+      color: #fff;
+      font-size: 1.1rem;
+    }
 
-        /* ریسپانسیو */
-        @media (max-width: 700px) {
-            .site-wrapper {
-                padding: 1.5rem 1rem;
-                border-radius: 2rem;
-            }
-            .logo-text h1 {
-                font-size: 2rem;
-            }
-            .logo-icon {
-                width: 3.5rem;
-                height: 3.5rem;
-                font-size: 2.4rem;
-            }
-            .hero-section h2 {
-                font-size: 2.8rem;
-            }
-            .hero-section h2 span {
-                font-size: 2.8rem;
-            }
-            .hero-section p {
-                font-size: 1rem;
-                padding: 0.8rem 1.5rem;
-            }
-            .header-tag {
-                font-size: 0.7rem;
-                padding: 0.3rem 1rem;
-                margin-top: 0.5rem;
-            }
-            .studio-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            .games-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-            }
-            .studio-team {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1.5rem;
-            }
-            .footer-area {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: flex-start;
-            }
-            .footer-links a {
-                margin-right: 0.8rem;
-            }
-        }
+    .studio-cta {
+      flex: 1;
+      min-width: 140px;
+      text-align: left;
+      display: flex;
+      justify-content: flex-end;
+    }
 
-        @media (max-width: 460px) {
-            .games-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero-section h2 {
-                font-size: 2.2rem;
-            }
-            .hero-section h2 span {
-                font-size: 2rem;
-                padding: 0 0.8rem;
-            }
-        }
+    .studio-cta a {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      padding: 0.7rem 1.8rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-family: 'Estedad', sans-serif;
+      font-weight: 400;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      backdrop-filter: blur(4px);
+      letter-spacing: 0.5px;
+    }
 
-        /* micro-interactions */
-        .glow-pulse {
-            animation: pulseGlow 4s infinite alternate;
-        }
-        @keyframes pulseGlow {
-            0% { opacity: 0.6; }
-            100% { opacity: 1; }
-        }
-    </style>
+    .studio-cta a i {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .studio-cta a:hover {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+      box-shadow: 0 0 30px rgba(255,255,255,0.05);
+    }
+
+    .studio-cta a:hover i {
+      color: #000;
+    }
+
+    /* فوتر – کپی رایت و شبکه‌های اجتماعی */
+    .footer {
+      margin-top: 2.5rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.9rem;
+      color: #6a6a6a;
+    }
+
+    .footer .social {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .footer .social i {
+      color: #777;
+      transition: 0.2s;
+      cursor: default;
+    }
+
+    .footer .social i:hover {
+      color: #fff;
+      transform: scale(1.1);
+      text-shadow: 0 0 20px rgba(255,255,255,0.15);
+    }
+
+    .footer .copy {
+      font-family: 'Ardakan', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.8px;
+    }
+
+    .footer .copy i {
+      margin: 0 4px;
+      color: #555;
+    }
+
+    /* ریسپانسیو کامل */
+    @media (max-width: 800px) {
+      .site-wrapper {
+        padding: 1.8rem 1.5rem;
+        border-radius: 2.5rem;
+      }
+      .brand h1 {
+        font-size: 1.8rem;
+      }
+      .hero h2 {
+        font-size: 2.8rem;
+      }
+      .studio-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 1.8rem 1.5rem;
+      }
+      .studio-cta {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .footer {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .brand i {
+        font-size: 2.6rem;
+      }
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      .games-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .game-card {
+        padding: 1.2rem 0.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="site-wrapper">
 
-        <!-- هدر -->
-        <header class="studio-header">
-            <div class="logo-area">
-                <div class="logo-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <div class="logo-text">
-                    <h1>Zerox games</h1>
-                    <span class="sub">| original</span>
-                </div>
-            </div>
-            <div class="header-tag">
-                <i class="fas fa-gamepad"></i>
-                استودیو بازی‌سازی
-                <i class="fas fa-chevron-left" style="margin-right: 0.3rem; font-size: 0.6rem;"></i>
-            </div>
-        </header>
+<div class="site-wrapper">
 
-        <!-- بخش قهرمان (معرفی) -->
-        <section class="hero-section">
-            <h2>
-                <span>ساخت</span> بازی‌های <br class="hide-on-mobile"> <span>بی‌مرز</span>
-            </h2>
-            <p>
-                <i class="fas fa-code"></i> 
-                ایده تا اجرا 
-                <i class="fas fa-arrow-left" style="margin: 0 0.2rem;"></i> 
-                <i class="fas fa-rocket"></i>
-            </p>
-        </section>
-
-        <!-- شبکه بازی‌ها / نمونه پروژه‌ها (استودیو) -->
-        <div class="games-grid">
-            <div class="game-card">
-                <i class="fas fa-dice-d6"></i>
-                <h3>پروژه X</h3>
-                <p>بازی ماجراجویی تاریک</p>
-                <span class="badge"><i class="far fa-clock"></i> ۲۰۲۶</span>
-            </div>
-            <div class="game-card">
-                <i class="fas fa-chess-queen"></i>
-                <h3>شطرنج سایه</h3>
-                <p>استراتژی نوبتی</p>
-                <span class="badge"><i class="fas fa-trophy"></i>  در حال توسعه</span>
-            </div>
-            <div class="game-card">
-                <i class="fas fa-robot"></i>
-                <h3>سایبرنتیک</h3>
-                <p>اکشن علمی-تخیلی</p>
-                <span class="badge"><i class="fas fa-bolt"></i>  دی‌ام‌ای</span>
-            </div>
-            <div class="game-card">
-                <i class="fas fa-skull"></i>
-                <h3>آخرین ایست</h3>
-                <p>بازی بقا</p>
-                <span class="badge"><i class="fas fa-fire"></i>  به‌زودی</span>
-            </div>
-        </div>
-
-        <!-- بخش تیم & شبکه‌های اجتماعی -->
-        <div class="studio-team">
-            <div class="team-info">
-                <h4><i class="fas fa-users" style="margin-left: 0.5rem; color: #aaa;"></i> تیم Zerox</h4>
-                <p>توسعه‌دهندگان، طراحان، رویاپردازان</p>
-                <div style="margin-top: 0.8rem;">
-                    <span class="btn-outline-light"><i class="fas fa-arrow-right"></i>  همکاری</span>
-                </div>
-            </div>
-            <div class="team-social">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-discord"></i></a>
-            </div>
-        </div>
-
-        <!-- فوتر -->
-        <footer class="footer-area">
-            <div class="copy">
-                <i class="fas fa-copyright"></i> ۲۰۲۶ · Zerox games | original 
-                <i class="fas fa-circle" style="font-size: 0.3rem; vertical-align: middle; margin: 0 0.5rem; color: #444;"></i>
-                استودیو بازی‌سازی
-            </div>
-            <div class="footer-links">
-                <a href="#"><i class="fas fa-info-circle"></i>  درباره</a>
-                <a href="#"><i class="fas fa-gamepad"></i>  بازی‌ها</a>
-                <a href="#"><i class="fas fa-envelope"></i>  تماس</a>
-            </div>
-        </footer>
-
+  <!-- HEADER -->
+  <header class="header">
+    <div class="brand">
+      <i class="fas fa-crown"></i>
+      <h1>
+        Zerox games 
+        <small>| original</small>
+      </h1>
     </div>
-    <!-- پایان wrapper -->
+    <div class="header-icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-sliders-h"></i>
+      <i class="fas fa-user-astronaut"></i>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>
+      <span>بازی‌سازی</span> با <span>روح</span> <br> 
+      <span>سیاه‌و‌سفید</span> 
+    </h2>
+    <p>
+      استودیو Zerox – جایی که ایده‌های خام به بازی‌های ماندگار تبدیل می‌شوند.
+      هویت بصری، روایت عمیق و تجربه‌ای فراتر از پیکسل.
+    </p>
+    <div class="tagline">
+      <i class="fas fa-gamepad"></i>
+      <span>بازی‌های مستقل</span>
+      <span class="divider"></span>
+      <i class="fas fa-paint-brush"></i>
+      <span>هنر مفهومی</span>
+      <span class="divider"></span>
+      <i class="fas fa-code"></i>
+      <span>توسعه بومی</span>
+    </div>
+  </section>
+
+  <!-- GRID GAMES (نمونه‌کار) -->
+  <div class="games-grid">
+    <div class="game-card">
+      <i class="fas fa-skull"></i>
+      <h3>DUSK ECHO</h3>
+      <p>اکشن-ماجرایی در دنیای محوشده</p>
+      <span class="badge"><i class="far fa-clock"></i> ۲۰۲۶</span>
+    </div>
+    <div class="game-card">
+      <i class="fas fa-robot"></i>
+      <h3>NEON GHOST</h3>
+      <p>داستانی سایبرپانک با هویت سیاه‌وسفید</p>
+      <span class="badge"><i class="fas fa-star"></i> در دست ساخت</span>
+    </div>
+    <div class="game-card">
+      <i class="fas fa-dice-d6"></i>
+      <h3>ZEROX ORIGIN</h3>
+      <p>بنیان‌گذار جهان‌های Zerox</p>
+      <span class="badge"><i class="fas fa-crown"></i> اورجینال</span>
+    </div>
+    <div class="game-card">
+      <i class="fas fa-mask"></i>
+      <h3>SHADOW PLAY</h3>
+      <p>معمایی روان‌شناختی در سایه‌ها</p>
+      <span class="badge"><i class="fas fa-video"></i> تریلر</span>
+    </div>
+  </div>
+
+  <!-- STUDIO SECTION -->
+  <div class="studio-section">
+    <div class="studio-text">
+      <h4><i class="fas fa-flag"></i> استودیو Zerox</h4>
+      <p>تیمی از هنرمندان، برنامه‌نویسان و رویاپردازان که بازی را به زبان هنر سیاه‌وسفید ترجمه می‌کنند.</p>
+      <div class="studio-stats">
+        <span class="stat-item"><i class="fas fa-trophy"></i> <strong>۶</strong> جایزه</span>
+        <span class="stat-item"><i class="fas fa-users"></i> <strong>۱۴</strong> عضو تیم</span>
+        <span class="stat-item"><i class="fas fa-globe"></i> <strong>۲</strong> دفتر</span>
+      </div>
+    </div>
+    <div class="studio-cta">
+      <a href="#"><i class="fas fa-arrow-left"></i> پروژه‌ها</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="copy">
+      <i class="far fa-copyright"></i> ۲۰۲۶ Zerox games | original 
+      <span style="margin:0 8px; color:#444;">—</span> 
+      سیاه‌و‌سفید همیشه رنگی‌ست
+    </div>
+    <div class="social">
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-youtube"></i>
+      <i class="fab fa-github"></i>
+      <i class="fab fa-discord"></i>
+    </div>
+  </footer>
+
+</div>
+<!-- پایان wrapper -->
+
 </body>
 </html>
