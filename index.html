@@ -1,465 +1,591 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zerox games | original</title>
-    <!-- فونت‌های گوگل: استعداد و اردکان -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;700;900&family=Ardakan:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (آیکون‌ها) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Font Awesome 6 (رایگان) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Google Fonts: استعداد + اردکان -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;700;900&family=Ardakan:wght@400;700&display=swap" rel="stylesheet" />
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
         }
 
         body {
             background: #0b0b0b;
             color: #f0f0f0;
-            font-family: 'Estedad', sans-serif;
-            line-height: 1.6;
-            padding: 20px;
+            font-family: 'Estedad', 'Ardakan', sans-serif;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* تایپوگرافی خاص با فونت اردکان برای عناوین */
-        h1, h2, h3, .logo {
-            font-family: 'Ardakan', sans-serif;
-            letter-spacing: 1px;
+        /* اسکرول نرم */
+        html {
+            scroll-behavior: smooth;
         }
 
+        /* کانتینر اصلی */
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
+            max-width: 1300px;
+            width: 100%;
         }
 
-        /* گرادیانت‌های خفن سیاه و سفید با اکسن‌های نقرهای و دودی */
-        .gradient-border {
-            border: 2px solid transparent;
-            background-image: linear-gradient(#0b0b0b, #0b0b0b), 
-                              linear-gradient(135deg, #ffffff, #6b6b6b, #1a1a1a, #aaaaaa);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-        }
-
-        /* HEADER با گرادیانت خاص */
+        /* هدر */
         header {
-            background: linear-gradient(145deg, #111111, #222222);
-            padding: 20px 30px;
-            border-radius: 40px;
-            margin-bottom: 50px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 1px 2px rgba(255,255,255,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             flex-wrap: wrap;
-            border-bottom: 2px solid #3a3a3a;
+            gap: 1rem;
         }
 
-        .logo {
+        .logo h1 {
             font-size: 2.2rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #f5f5f5, #9e9e9e);
+            background: linear-gradient(135deg, #ffffff, #aaaaaa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(255,255,255,0.1);
+            letter-spacing: 2px;
         }
-        .logo i {
-            -webkit-text-fill-color: initial;
-            color: #ccc;
-            margin-left: 10px;
+        .logo span {
+            font-weight: 400;
+            font-size: 1rem;
+            background: none;
+            -webkit-text-fill-color: #888;
+            margin-right: 6px;
         }
 
-        nav a {
-            color: #ddd;
+        .nav-links a {
+            color: #ccc;
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            padding: 8px 14px;
+            margin: 0 12px;
+            font-weight: 400;
+            font-size: 1rem;
+            transition: 0.3s;
+            padding: 6px 10px;
             border-radius: 30px;
-            background: rgba(255,255,255,0.02);
-            backdrop-filter: blur(4px);
         }
-        nav a i {
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+        .nav-links a i {
             margin-left: 6px;
         }
-        nav a:hover {
-            background: #2a2a2a;
+
+        /* بخش جستجو */
+        .search-section {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+        .search-box {
+            background: #1a1a1a;
+            padding: 0.5rem 1rem;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .search-box:focus-within {
+            border-color: #888;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.03);
+        }
+        .search-box input {
+            background: transparent;
+            border: none;
+            padding: 12px 10px;
+            width: 100%;
             color: #fff;
-            box-shadow: 0 0 20px rgba(200,200,200,0.2);
-            transform: scale(1.05);
+            font-family: 'Estedad', sans-serif;
+            font-size: 1rem;
+            outline: none;
+        }
+        .search-box input::placeholder {
+            color: #666;
+        }
+        .search-box button {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0 8px;
+            transition: 0.3s;
+        }
+        .search-box button:hover {
+            color: #fff;
         }
 
-        /* بخش هیرو (همون اول سایت) */
-        .hero {
-            background: radial-gradient(circle at 30% 10%, #1e1e1e, #050505);
-            padding: 70px 30px;
-            border-radius: 60px;
-            margin-bottom: 60px;
-            text-align: center;
-            border: 1px solid #3a3a3a;
-            box-shadow: 0 30px 50px rgba(0,0,0,0.7);
+        /* گرید کارت‌ها */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        /* کارت خفن با گرادیانت و هولو */
+        .card {
+            background: #141414;
+            border-radius: 30px;
+            padding: 1.8rem 1.2rem;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+            border: 1px solid #2a2a2a;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(2px);
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.8);
         }
-        .hero::before {
+
+        /* گرادیانت‌های متنوع برای هر کارت */
+        .card:nth-child(1) { background: linear-gradient(145deg, #1b1b1b, #0d0d0d); border-color: #3a3a3a; }
+        .card:nth-child(2) { background: linear-gradient(145deg, #202020, #0a0a0a); border-color: #4a4a4a; }
+        .card:nth-child(3) { background: linear-gradient(145deg, #181818, #111111); border-color: #555; }
+        .card:nth-child(4) { background: linear-gradient(145deg, #1e1e1e, #0c0c0c); border-color: #3f3f3f; }
+        .card:nth-child(5) { background: linear-gradient(145deg, #222, #0e0e0e); border-color: #4d4d4d; }
+        .card:nth-child(6) { background: linear-gradient(145deg, #161616, #0b0b0b); border-color: #444; }
+        .card:nth-child(7) { background: linear-gradient(145deg, #1c1c1c, #0f0f0f); border-color: #5a5a5a; }
+        .card:nth-child(8) { background: linear-gradient(145deg, #242424, #121212); border-color: #616161; }
+
+        /* افکت شیشه‌ای روی کارت */
+        .card::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(from 0deg, transparent, #2b2b2b10, transparent, #44444420, transparent);
-            animation: rotateGlow 20s linear infinite;
-        }
-        @keyframes rotateGlow {
-            100% { transform: rotate(360deg); }
-        }
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #f0f0f0, #888888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-            z-index: 2;
-        }
-        .hero p {
-            font-size: 1.4rem;
-            color: #b0b0b0;
-            max-width: 700px;
-            margin: 20px auto;
-            position: relative;
-            z-index: 2;
-        }
-        .hero .btn {
-            background: linear-gradient(145deg, #2a2a2a, #0f0f0f);
-            border: 1px solid #5a5a5a;
-            padding: 16px 44px;
-            border-radius: 60px;
-            color: #fff;
-            font-size: 1.3rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            display: inline-block;
-            text-decoration: none;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
-            position: relative;
-            z-index: 2;
-        }
-        .hero .btn i {
-            margin-left: 10px;
-        }
-        .hero .btn:hover {
-            background: #333;
-            box-shadow: 0 0 40px rgba(200,200,200,0.2);
-            transform: translateY(-5px);
+            background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.02), transparent 70%);
+            pointer-events: none;
         }
 
-        /* بخش کارت‌ها */
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 900;
-            margin: 50px 0 30px;
-            border-right: 8px solid #6b6b6b;
-            padding-right: 20px;
-            background: linear-gradient(135deg, #ececec, #5e5e5e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-        }
-
-        /* کارت خفن با گرادیانت و افکت */
-        .card {
-            background: linear-gradient(145deg, #161616, #232323);
-            border-radius: 40px;
-            padding: 30px 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.05);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: 1px solid #353535;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-            backdrop-filter: blur(8px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -80%;
-            left: -80%;
-            width: 250%;
-            height: 250%;
-            background: radial-gradient(circle at 30% 30%, #ffffff08, transparent 70%);
-            transition: 0.6s;
-        }
-        .card:hover::before {
-            top: -40%;
-            left: -40%;
-        }
         .card:hover {
-            transform: translateY(-20px) scale(1.02);
-            border-color: #9e9e9e;
-            box-shadow: 0 40px 70px rgba(255,255,255,0.08), 0 0 30px #2a2a2a;
+            transform: translateY(-12px) scale(1.01);
+            border-color: #aaa;
+            box-shadow: 0 20px 40px -10px rgba(255,255,255,0.06);
         }
 
-        .card i {
-            font-size: 3.8rem;
-            background: linear-gradient(135deg, #e0e0e0, #6b6b6b);
+        .card-icon {
+            font-size: 2.6rem;
+            color: #ddd;
+            background: rgba(255,255,255,0.02);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+
+        .card h3 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #f0f0f0, #b0b0b0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            transition: 0.3s;
-        }
-        .card:hover i {
-            transform: scale(1.2) rotate(4deg);
-        }
-        .card h3 {
-            font-size: 1.9rem;
-            font-weight: 900;
-            color: #efefef;
-            margin-bottom: 10px;
-        }
-        .card p {
-            color: #afafaf;
-            font-size: 1rem;
-            margin-bottom: 20px;
         }
 
-        .card .btn-card {
+        .card p {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .card .btn {
+            margin-top: 0.6rem;
             background: transparent;
-            border: 2px solid #5a5a5a;
-            padding: 12px 30px;
-            border-radius: 50px;
-            color: #ddd;
-            font-weight: 700;
+            border: 1px solid #444;
+            padding: 10px 18px;
+            border-radius: 40px;
+            color: #eee;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 400;
             cursor: pointer;
             transition: 0.3s;
-            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
             text-decoration: none;
-            display: inline-block;
-            backdrop-filter: blur(2px);
+            font-size: 0.9rem;
         }
-        .card .btn-card i {
-            font-size: 1rem;
-            margin-left: 8px;
-            -webkit-text-fill-color: initial;
-            color: #ccc;
+        .card .btn i {
+            font-size: 0.9rem;
         }
-        .card .btn-card:hover {
-            background: #2b2b2b;
-            border-color: #b0b0b0;
-            color: #fff;
-            box-shadow: 0 0 30px rgba(255,255,255,0.1);
+        .card .btn:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+            box-shadow: 0 0 30px rgba(255,255,255,0.05);
         }
 
-        /* کارت مخصوص با گرادیانت دوگانه */
-        .card-special {
-            background: linear-gradient(145deg, #1f1f1f, #0a0a0a);
-            border-image: linear-gradient(135deg, #5f5f5f, #b1b1b1, #222) 1;
-            border: 2px solid;
+        /* هشتگ‌ها */
+        .hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 0.5rem 0;
+        }
+        .hashtags span {
+            background: rgba(255,255,255,0.03);
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: #aaa;
+            border: 1px solid #2a2a2a;
+            letter-spacing: 0.3px;
         }
 
-        /* بخش صفحات اختصاصی با هشتگ */
+        /* بخش‌های اختصاصی (صفحات) با هشتک */
         .page-section {
-            margin-top: 70px;
-            padding: 40px 30px;
-            background: radial-gradient(circle at 20% 30%, #181818, #030303);
-            border-radius: 60px;
-            border: 1px solid #3a3a3a;
-            box-shadow: inset 0 0 80px rgba(0,0,0,0.8);
-            scroll-margin-top: 100px;
+            margin: 4rem 0;
+            padding: 2rem 1rem;
+            border-top: 1px solid #252525;
+            border-bottom: 1px solid #252525;
         }
         .page-section h2 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #f0f0f0, #7a7a7a);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #eee, #888);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
         }
-        .page-section p {
-            color: #bdbdbd;
-            font-size: 1.2rem;
+        .page-section .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .page-section .text {
+            flex: 1;
+            min-width: 220px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+        .page-section .text i {
+            margin-left: 8px;
+            color: #aaa;
+        }
+        .page-tag {
+            background: #1f1f1f;
+            padding: 6px 18px;
+            border-radius: 40px;
+            color: #bbb;
+            border: 1px solid #3a3a3a;
+            font-size: 0.9rem;
         }
 
-        .footer {
-            margin-top: 80px;
-            padding: 30px;
-            border-top: 1px solid #333;
+        /* فوتر */
+        footer {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            border-top: 1px solid #1f1f1f;
+            width: 100%;
             text-align: center;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        footer i {
             color: #777;
+            margin: 0 4px;
         }
 
         /* ریسپانسیو */
-        @media (max-width: 768px) {
+        @media (max-width: 700px) {
             header {
                 flex-direction: column;
-                gap: 20px;
+                align-items: flex-start;
             }
-            .hero h1 {
-                font-size: 2.8rem;
+            .nav-links a {
+                margin: 0 6px 0 0;
+                font-size: 0.9rem;
             }
-            .section-title {
-                font-size: 2rem;
+            .logo h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-<div class="container">
 
-    <!-- HEADER -->
-    <header>
-        <div class="logo">
-            <i class="fas fa-skull"></i> Zerox <span style="font-weight: 400;">games</span> <i class="fas fa-crown" style="font-size: 1.6rem;"></i>
-        </div>
-        <nav>
-            <a href="#home"><i class="fas fa-house"></i> خانه</a>
-            <a href="#games"><i class="fas fa-gamepad"></i> بازی‌ها</a>
-            <a href="#community"><i class="fas fa-users"></i> جامعه</a>
-            <a href="#shop"><i class="fas fa-store"></i> فروشگاه</a>
-            <a href="#about"><i class="fas fa-circle-info"></i> درباره</a>
-        </nav>
-    </header>
+    <div class="container">
 
-    <!-- هیرو (همون اول سایت با جستجو) -->
-    <section class="hero" id="home">
-        <h1><i class="fas fa-bolt" style="margin-left: 15px;"></i> Zerox games <span style="font-weight: 400;">original</span></h1>
-        <p>محلی برای گیمرهای واقعی، با کارت‌های خفن، گرادیانت‌های سیاه و سفید و انرژی ناب</p>
-        <div style="margin: 30px 0; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2;">
-            <input type="text" placeholder="🔍 هر چی دوست داری سرچ کن..." style="padding: 16px 24px; border-radius: 60px; border: 1px solid #4a4a4a; background: #141414; color: #fff; width: 320px; font-family: 'Estedad', sans-serif; font-size: 1rem; outline: none; transition: 0.3s;">
-            <button style="padding: 16px 30px; border-radius: 60px; border: none; background: #2a2a2a; color: #fff; font-weight: 700; cursor: pointer; transition: 0.3s;"><i class="fas fa-search"></i> جستجو</button>
-        </div>
-        <a href="#games" class="btn"><i class="fas fa-arrow-down"></i> دیدن کارت‌ها</a>
-    </section>
+        <!-- هدر -->
+        <header>
+            <div class="logo">
+                <h1>Zerox <span>games | original</span></h1>
+            </div>
+            <div class="nav-links">
+                <a href="#home"><i class="fas fa-home"></i> خانه</a>
+                <a href="#games"><i class="fas fa-gamepad"></i> بازی‌ها</a>
+                <a href="#about"><i class="fas fa-info-circle"></i> درباره</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> تماس</a>
+            </div>
+        </header>
 
-    <!-- کارت‌ها (بخش اصلی) -->
-    <h2 class="section-title" id="games"><i class="fas fa-cards"></i> کارت‌های ویژه</h2>
-    <div class="card-grid">
-
-        <div class="card">
-            <i class="fas fa-dragon"></i>
-            <h3>شکارچی اژدها</h3>
-            <p>بازی استراتژیک با گرادیانت‌های دودآلود</p>
-            <a href="#dragon" class="btn-card"><i class="fas fa-play"></i> بازی کن</a>
+        <!-- جستجو -->
+        <div class="search-section" id="home">
+            <div class="search-box">
+                <input type="text" placeholder="هر چی تو ذهنت هست رو جستجو کن ..." />
+                <button><i class="fas fa-search"></i></button>
+            </div>
         </div>
 
-        <div class="card card-special">
-            <i class="fas fa-ghost"></i>
-            <h3>شبح تاریک</h3>
-            <p>داستانی ترسناک در دل شب‌های بی‌نور</p>
-            <a href="#ghost" class="btn-card"><i class="fas fa-play"></i> بازی کن</a>
+        <!-- کارت‌های خفن -->
+        <div class="cards-grid" id="games">
+
+            <!-- کارت ۱ -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-robot"></i></div>
+                <h3>Zerox AI</h3>
+                <p>هوش مصنوعی نسل جدید برای تجربه‌ای بی‌نظیر در بازی‌های استراتژیک.</p>
+                <div class="hashtags">
+                    <span>#AI</span>
+                    <span>#Strategy</span>
+                    <span>#NextGen</span>
+                </div>
+                <a href="#page-ai" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
+            </div>
+
+            <!-- کارت ۲ -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-skull"></i></div>
+                <h3>Dark Arena</h3>
+                <p>مبارزات خونین در میدان تاریک با گرافیک خیره‌کننده و صداهای فراگیر.</p>
+                <div class="hashtags">
+                    <span>#Fight</span>
+                    <span>#Dark</span>
+                    <span>#PvP</span>
+                </div>
+                <a href="#page-dark" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
+            </div>
+
+            <!-- کارت ۳ -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-crown"></i></div>
+                <h3>Royal Clash</h3>
+                <p>پادشاهی خود را بساز و در نبردهای سلطنتی به اوج برس.</p>
+                <div class="hashtags">
+                    <span>#Kingdom</span>
+                    <span>#Clash</span>
+                    <span>#Royal</span>
+                </div>
+                <a href="#page-royal" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
+            </div>
+
+            <!-- کارت ۴ -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-ghost"></i></div>
+                <h3>Phantom Ops</h3>
+                <p>ماموریت‌های مخفیانه در دنیای ارواح و فناوری‌های پنهان.</p>
+                <div class="hashtags">
+                    <span>#Stealth</span>
+                    <span>#Ghost</span>
+                    <span>#Ops</span>
+                </div>
+                <a href="#page-phantom" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
+            </div>
+
+            <!-- کارت ۵ -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Star Racer</h3>
+                <p>مسابقات کهکشانی با سرعت نور و ماشین‌های آینده‌نگر.</p>
+                <div class="hashtags">
+                    <span>#Racing</span>
+                    <span>#Space</span>
+                    <span>#Turbo</span>
+                </div>
+                <a href="#page-star" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
+            </div>
+
+            <!-- کارت ۶ -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-dragon"></i></div>
+                <h3>Dragon Saga</h3>
+                <p>حماسه‌ای افسانه‌ای با اژدهایان باستانی و جادوی ناب.</p>
+                <div class="hashtags">
+                    <span>#Fantasy</span>
+                    <span>#Dragon</span>
+                    <span>#Epic</span>
+                </div>
+                <a href="#page-dragon" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
+            </div>
+
+            <!-- کارت ۷ -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chess-queen"></i></div>
+                <h3>Cyber Chess</h3>
+                <p>شطرنج سایبری با هوش مصنوعی و تخته‌های سه‌بعدی.</p>
+                <div class="hashtags">
+                    <span>#Chess</span>
+                    <span>#Cyber</span>
+                    <span>#Mind</span>
+                </div>
+                <a href="#page-chess" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
+            </div>
+
+            <!-- کارت ۸ -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-meteor"></i></div>
+                <h3>Meteor Storm</h3>
+                <p>نجات زمین از بارش شهاب‌سنگ‌ها در یک اکشن نفس‌گیر.</p>
+                <div class="hashtags">
+                    <span>#Action</span>
+                    <span>#Meteor</span>
+                    <span>#Survive</span>
+                </div>
+                <a href="#page-meteor" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
+            </div>
+
         </div>
 
-        <div class="card">
-            <i class="fas fa-robot"></i>
-            <h3>سایبر وان</h3>
-            <p>مسابقه در دنیای سایبری با جلوه‌های نئونی</p>
-            <a href="#cyber" class="btn-card"><i class="fas fa-play"></i> بازی کن</a>
-        </div>
+        <!-- ================== صفحات اختصاصی با هشتک ================== -->
 
-        <div class="card card-special">
-            <i class="fas fa-crown"></i>
-            <h3>پادشاه آهن</h3>
-            <p>جنگ‌های قرون وسطایی با گرادیانت نقره‌ای</p>
-            <a href="#iron" class="btn-card"><i class="fas fa-play"></i> بازی کن</a>
-        </div>
+        <!-- صفحه ۱: AI -->
+        <section class="page-section" id="page-ai">
+            <h2><i class="fas fa-robot"></i> Zerox AI <span class="page-tag">#AI</span></h2>
+            <div class="content">
+                <div class="text">
+                    <p><i class="fas fa-microchip"></i> پیشرفته‌ترین هوش مصنوعی برای شبیه‌سازی استراتژی‌های پیچیده. <br />
+                    <i class="fas fa-brain"></i> یادگیری عمیق و تطبیق با سبک بازی شما.</p>
+                    <a href="#games" class="btn" style="margin-top:1rem;"><i class="fas fa-arrow-right"></i> بازگشت</a>
+                </div>
+            </div>
+        </section>
 
-        <div class="card">
-            <i class="fas fa-skull-crossbones"></i>
-            <h3>دزدان دریایی</h3>
-            <p>ماجراجویی در دریاهای کارائیب</p>
-            <a href="#pirate" class="btn-card"><i class="fas fa-play"></i> بازی کن</a>
-        </div>
+        <!-- صفحه ۲: Dark Arena -->
+        <section class="page-section" id="page-dark">
+            <h2><i class="fas fa-skull"></i> Dark Arena <span class="page-tag">#Fight</span></h2>
+            <div class="content">
+                <div class="text">
+                    <p><i class="fas fa-sword"></i> میدان نبرد تاریک با بیش از ۵۰ کاراکتر منحصر‌به‌فرد. <br />
+                    <i class="fas fa-trophy"></i> رنکینگ جهانی و جوایز هفتگی.</p>
+                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
+                </div>
+            </div>
+        </section>
 
-        <div class="card card-special">
-            <i class="fas fa-meteor"></i>
-            <h3>برخورد شهاب</h3>
-            <p>بقا در برابر بارش شهاب‌های آتشین</p>
-            <a href="#meteor" class="btn-card"><i class="fas fa-play"></i> بازی کن</a>
-        </div>
+        <!-- صفحه ۳: Royal Clash -->
+        <section class="page-section" id="page-royal">
+            <h2><i class="fas fa-crown"></i> Royal Clash <span class="page-tag">#Kingdom</span></h2>
+            <div class="content">
+                <div class="text">
+                    <p><i class="fas fa-chess-king"></i> قلمرو خود را گسترش دهید و با سایر پادشاهان رقابت کنید. <br />
+                    <i class="fas fa-users"></i> اتحادیه‌ها و جنگ‌های بزرگ.</p>
+                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحه ۴: Phantom Ops -->
+        <section class="page-section" id="page-phantom">
+            <h2><i class="fas fa-ghost"></i> Phantom Ops <span class="page-tag">#Stealth</span></h2>
+            <div class="content">
+                <div class="text">
+                    <p><i class="fas fa-user-secret"></i> ماموریت‌های مخفی با فناوری نامرئی و ابزارهای پیشرفته. <br />
+                    <i class="fas fa-map"></i> ۲۰ نقشه جدید و حالات مختلف بازی.</p>
+                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحه ۵: Star Racer -->
+        <section class="page-section" id="page-star">
+            <h2><i class="fas fa-rocket"></i> Star Racer <span class="page-tag">#Racing</span></h2>
+            <div class="content">
+                <div class="text">
+                    <p><i class="fas fa-car"></i> مسابقات کهکشانی با سرعت‌های فراطبیعی و پیست‌های سیاره‌ای. <br />
+                    <i class="fas fa-star"></i> سفارشی‌سازی کامل خودروها.</p>
+                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحه ۶: Dragon Saga -->
+        <section class="page-section" id="page-dragon">
+            <h2><i class="fas fa-dragon"></i> Dragon Saga <span class="page-tag">#Fantasy</span></h2>
+            <div class="content">
+                <div class="text">
+                    <p><i class="fas fa-fire"></i> سوار بر اژدهایان و نبرد با موجودات افسانه‌ای. <br />
+                    <i class="fas fa-magic"></i> سیستم جادویی منحصربه‌فرد با ۱۰۰ طلسم.</p>
+                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحه ۷: Cyber Chess -->
+        <section class="page-section" id="page-chess">
+            <h2><i class="fas fa-chess-queen"></i> Cyber Chess <span class="page-tag">#Chess</span></h2>
+            <div class="content">
+                <div class="text">
+                    <p><i class="fas fa-globe"></i> شطرنج آنلاین با هوش مصنوعی فوق‌پیشرفته و گرافیک سه‌بعدی. <br />
+                    <i class="fas fa-robot"></i> چالش با استادان بزرگ مجازی.</p>
+                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحه ۸: Meteor Storm -->
+        <section class="page-section" id="page-meteor">
+            <h2><i class="fas fa-meteor"></i> Meteor Storm <span class="page-tag">#Action</span></h2>
+            <div class="content">
+                <div class="text">
+                    <p><i class="fas fa-shield-alt"></i> از زمین در برابر سقوط شهاب‌سنگ‌ها محافظت کنید. <br />
+                    <i class="fas fa-bolt"></i> قدرت‌های ویژه و امتیازات هیجان‌انگیز.</p>
+                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- فوتر -->
+        <footer>
+            <p><i class="fas fa-crown"></i> Zerox games | original — 2026 <i class="fas fa-circle" style="font-size: 4px; vertical-align: middle; margin: 0 8px;"></i> تمامی حقوق محفوظ است.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;">
+                <i class="fas fa-hashtag"></i> #Zerox #GameOn #BlackAndWhite
+            </p>
+        </footer>
 
     </div>
 
-    <!-- صفحات اختصاصی با هشتک (هر بخش) -->
-    <section class="page-section" id="dragon">
-        <h2>#شکارچی_اژدها</h2>
-        <p><i class="fas fa-fire" style="color: #b0b0b0;"></i> صفحه اختصاصی بازی شکارچی اژدها. اینجا می‌تونی اطلاعات کامل، راهنما و تریلر رو ببینی.</p>
-        <a href="#games" class="btn-card" style="margin-top: 20px; display: inline-block;"><i class="fas fa-arrow-left"></i> بازگشت به کارت‌ها</a>
-    </section>
+    <!-- (اختیاری) یک اسکریپت کوچک برای جستجوی ساده -->
+    <script>
+        // جستجوی ساده (فقط برای نمایش)
+        document.querySelector('.search-box button').addEventListener('click', function() {
+            const input = document.querySelector('.search-box input');
+            if (input.value.trim() !== '') {
+                alert('جستجو برای: "' + input.value + '" \n(این یک نسخه نمایشی است)');
+            } else {
+                alert('لطفاً عبارت جستجو را وارد کنید.');
+            }
+        });
+    </script>
 
-    <section class="page-section" id="ghost">
-        <h2>#شبح_تاریک</h2>
-        <p><i class="fas fa-moon" style="color: #b0b0b0;"></i> صفحه اختصاصی شبح تاریک. داستان، کاراکترها و رازهای پنهان.</p>
-        <a href="#games" class="btn-card" style="margin-top: 20px; display: inline-block;"><i class="fas fa-arrow-left"></i> بازگشت به کارت‌ها</a>
-    </section>
-
-    <section class="page-section" id="cyber">
-        <h2>#سایبر_وان</h2>
-        <p><i class="fas fa-microchip" style="color: #b0b0b0;"></i> صفحه اختصاصی سایبر وان. مسابقات، آپدیت‌ها و جامعه.</p>
-        <a href="#games" class="btn-card" style="margin-top: 20px; display: inline-block;"><i class="fas fa-arrow-left"></i> بازگشت به کارت‌ها</a>
-    </section>
-
-    <section class="page-section" id="iron">
-        <h2>#پادشاه_آهن</h2>
-        <p><i class="fas fa-shield-halved" style="color: #b0b0b0;"></i> صفحه اختصاصی پادشاه آهن. استراتژی‌ها، سلاح‌ها و نقشه.</p>
-        <a href="#games" class="btn-card" style="margin-top: 20px; display: inline-block;"><i class="fas fa-arrow-left"></i> بازگشت به کارت‌ها</a>
-    </section>
-
-    <section class="page-section" id="pirate">
-        <h2>#دزدان_دریایی</h2>
-        <p><i class="fas fa-ship" style="color: #b0b0b0;"></i> صفحه اختصاصی دزدان دریایی. گنج‌ها، نبردها و کشتی‌ها.</p>
-        <a href="#games" class="btn-card" style="margin-top: 20px; display: inline-block;"><i class="fas fa-arrow-left"></i> بازگشت به کارت‌ها</a>
-    </section>
-
-    <section class="page-section" id="meteor">
-        <h2>#برخورد_شهاب</h2>
-        <p><i class="fas fa-rocket" style="color: #b0b0b0;"></i> صفحه اختصاصی برخورد شهاب. نکات بقا و امتیازات.</p>
-        <a href="#games" class="btn-card" style="margin-top: 20px; display: inline-block;"><i class="fas fa-arrow-left"></i> بازگشت به کارت‌ها</a>
-    </section>
-
-    <!-- بخش‌های دیگر (community, shop, about) با هشتک -->
-    <section class="page-section" id="community">
-        <h2>#جامعه_Zerox</h2>
-        <p><i class="fas fa-users"></i> به جامعه بزرگ Zerox خوش آمدید. تورنمنت‌ها، چت زنده و دوستان جدید.</p>
-        <a href="#" class="btn-card" style="margin-top: 20px; display: inline-block;"><i class="fas fa-arrow-left"></i> بازگشت</a>
-    </section>
-
-    <section class="page-section" id="shop">
-        <h2>#فروشگاه_Zerox</h2>
-        <p><i class="fas fa-cart-shopping"></i> آیتم‌های اکسکلوژیو، اسکین‌ها و پکیج‌های ویژه.</p>
-        <a href="#" class="btn-card" style="margin-top: 20px; display: inline-block;"><i class="fas fa-arrow-left"></i> بازگشت</a>
-    </section>
-
-    <section class="page-section" id="about">
-        <h2>#درباره_Zerox</h2>
-        <p><i class="fas fa-circle-info"></i> Zerox games یک استودیوی مستقل با عشق به بازی‌های خلاقانه و گرادیانت‌های سیاه و سفید.</p>
-        <a href="#" class="btn-card" style="margin-top: 20px; display: inline-block;"><i class="fas fa-arrow-left"></i> بازگشت</a>
-    </section>
-
-    <!-- فوتر -->
-    <div class="footer">
-        <p>© 2026 Zerox games | original — طراحی شده با <i class="fas fa-heart" style="color: #888;"></i> و گرادیانت‌های خفن</p>
-        <p style="font-size: 0.9rem; color: #555;">
-            <i class="fab fa-google"></i> فونت‌های استعداد و اردکان · <i class="fab fa-font-awesome"></i> آیکون‌های Awesome
-        </p>
-    </div>
-
-</div>
 </body>
-</html>
+                                                                                </html>
