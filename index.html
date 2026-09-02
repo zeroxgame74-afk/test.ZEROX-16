@@ -1,591 +1,573 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zerox games | original</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zerox games | original</title>
+  <!-- فونت‌های گوگل: استعداد و اردکان -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;700;900&family=Ardakan:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (رایگان) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #0b0b0b;
+      color: #f0f0f0;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* اسکرول نرم و ظاهر */
+    html {
+      scroll-behavior: smooth;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: 10px;
+    }
 
-    <!-- Font Awesome 6 (رایگان) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    .container {
+      max-width: 1400px;
+      width: 100%;
+    }
 
-    <!-- Google Fonts: استعداد + اردکان -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;700;900&family=Ardakan:wght@400;700&display=swap" rel="stylesheet" />
+    /* هدر خفن */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: rgba(20, 20, 20, 0.7);
+      backdrop-filter: blur(6px);
+      border-radius: 60px;
+      margin-bottom: 3rem;
+      border: 1px solid #333;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 2.2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff, #aaaaaa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+    }
+    .logo i {
+      margin-left: 10px;
+      color: #fff;
+      background: #222;
+      padding: 8px 12px;
+      border-radius: 40px;
+      font-size: 1.8rem;
+      -webkit-text-fill-color: #fff;
+      background: linear-gradient(145deg, #2a2a2a, #111);
+    }
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: 0.3s;
+      padding: 8px 12px;
+      border-radius: 30px;
+    }
+    .nav-links a:hover {
+      background: #fff;
+      color: #000;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+    .nav-links a i {
+      margin-left: 8px;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* بخش جستجو */
+    .search-section {
+      margin: 2rem 0 3rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .search-box {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      background: #1c1c1c;
+      border-radius: 60px;
+      padding: 5px 5px 5px 20px;
+      border: 1px solid #3a3a3a;
+      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+      transition: 0.4s;
+    }
+    .search-box:focus-within {
+      border-color: #aaa;
+      box-shadow: 0 0 40px rgba(255,255,255,0.1);
+    }
+    .search-box input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #eee;
+      font-size: 1.1rem;
+      padding: 14px 0;
+      font-family: 'Estedad', sans-serif;
+      outline: none;
+    }
+    .search-box input::placeholder {
+      color: #777;
+      font-weight: 300;
+    }
+    .search-box button {
+      background: linear-gradient(145deg, #2a2a2a, #0a0a0a);
+      border: none;
+      color: #fff;
+      padding: 10px 28px;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: 'Ardakan', sans-serif;
+      font-weight: 700;
+      border: 1px solid #444;
+    }
+    .search-box button:hover {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+    }
+    .search-box button i {
+      margin-left: 8px;
+    }
 
-        body {
-            background: #0b0b0b;
-            color: #f0f0f0;
-            font-family: 'Estedad', 'Ardakan', sans-serif;
-            padding: 2rem 1rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    /* شبکه کارت‌ها با گرادیانت خفن */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 3rem 0;
+    }
 
-        /* اسکرول نرم */
-        html {
-            scroll-behavior: smooth;
-        }
+    .card {
+      background: #141414;
+      border-radius: 30px;
+      padding: 2rem 1.5rem;
+      border: 1px solid #2a2a2a;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.03), transparent 60%);
+      pointer-events: none;
+    }
+    .card:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: #888;
+      box-shadow: 0 20px 40px rgba(255,255,255,0.08);
+    }
 
-        /* کانتینر اصلی */
-        .container {
-            max-width: 1300px;
-            width: 100%;
-        }
+    /* گرادیانت‌های مختلف برای کارت‌ها (سیاه و سفید و خاکستری) */
+    .card:nth-child(1) { background: linear-gradient(145deg, #1e1e1e, #0a0a0a); }
+    .card:nth-child(2) { background: linear-gradient(145deg, #222, #0f0f0f); }
+    .card:nth-child(3) { background: linear-gradient(145deg, #1a1a1a, #050505); }
+    .card:nth-child(4) { background: linear-gradient(145deg, #242424, #101010); }
+    .card:nth-child(5) { background: linear-gradient(145deg, #1c1c1c, #080808); }
+    .card:nth-child(6) { background: linear-gradient(145deg, #2a2a2a, #121212); }
+    .card:nth-child(7) { background: linear-gradient(145deg, #1f1f1f, #0c0c0c); }
+    .card:nth-child(8) { background: linear-gradient(145deg, #181818, #030303); }
 
-        /* هدر */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #ddd;
+      background: rgba(255,255,255,0.03);
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 30px;
+      border: 1px solid #333;
+      backdrop-filter: blur(4px);
+    }
+    .card h3 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin: 0.5rem 0;
+      background: linear-gradient(135deg, #f0f0f0, #a0a0a0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p {
+      color: #bcbcbc;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin: 0.5rem 0 1.5rem;
+      font-weight: 400;
+    }
+    .card .btn {
+      background: transparent;
+      border: 1px solid #555;
+      color: #eee;
+      padding: 12px 20px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-family: 'Ardakan', sans-serif;
+      cursor: pointer;
+      transition: 0.3s;
+      text-align: center;
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .card .btn:hover {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+      box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    }
+    .card .btn i {
+      font-size: 1rem;
+    }
 
-        .logo h1 {
-            font-size: 2.2rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffffff, #aaaaaa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
-        }
-        .logo span {
-            font-weight: 400;
-            font-size: 1rem;
-            background: none;
-            -webkit-text-fill-color: #888;
-            margin-right: 6px;
-        }
+    /* صفحات اختصاصی (هر کارت یک صفحه) */
+    .page-container {
+      display: none; /* همه صفحات مخفی */
+      background: #0e0e0e;
+      border-radius: 40px;
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+      border: 1px solid #2a2a2a;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+    }
+    .page-container.active {
+      display: block;
+    }
+    .page-container h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff, #aaa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+    }
+    .page-container p {
+      font-size: 1.3rem;
+      color: #ccc;
+      line-height: 2;
+      max-width: 800px;
+    }
+    .page-container .back-btn {
+      background: #222;
+      border: none;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 60px;
+      font-family: 'Estedad', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 2rem;
+      border: 1px solid #444;
+      transition: 0.3s;
+    }
+    .page-container .back-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+    .page-container .back-btn i {
+      margin-left: 10px;
+    }
 
-        .nav-links a {
-            color: #ccc;
-            text-decoration: none;
-            margin: 0 12px;
-            font-weight: 400;
-            font-size: 1rem;
-            transition: 0.3s;
-            padding: 6px 10px;
-            border-radius: 30px;
-        }
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-        }
-        .nav-links a i {
-            margin-left: 6px;
-        }
+    /* فوتر */
+    .footer {
+      margin-top: 4rem;
+      padding: 2rem;
+      border-top: 1px solid #222;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      width: 100%;
+    }
+    .footer i {
+      margin: 0 6px;
+      color: #aaa;
+    }
 
-        /* بخش جستجو */
-        .search-section {
-            margin: 2rem 0;
-            display: flex;
-            justify-content: center;
-        }
-        .search-box {
-            background: #1a1a1a;
-            padding: 0.5rem 1rem;
-            border-radius: 60px;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 500px;
-            border: 1px solid #333;
-            transition: 0.3s;
-        }
-        .search-box:focus-within {
-            border-color: #888;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.03);
-        }
-        .search-box input {
-            background: transparent;
-            border: none;
-            padding: 12px 10px;
-            width: 100%;
-            color: #fff;
-            font-family: 'Estedad', sans-serif;
-            font-size: 1rem;
-            outline: none;
-        }
-        .search-box input::placeholder {
-            color: #666;
-        }
-        .search-box button {
-            background: none;
-            border: none;
-            color: #aaa;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0 8px;
-            transition: 0.3s;
-        }
-        .search-box button:hover {
-            color: #fff;
-        }
-
-        /* گرید کارت‌ها */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        /* کارت خفن با گرادیانت و هولو */
-        .card {
-            background: #141414;
-            border-radius: 30px;
-            padding: 1.8rem 1.2rem;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
-            border: 1px solid #2a2a2a;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(2px);
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.8);
-        }
-
-        /* گرادیانت‌های متنوع برای هر کارت */
-        .card:nth-child(1) { background: linear-gradient(145deg, #1b1b1b, #0d0d0d); border-color: #3a3a3a; }
-        .card:nth-child(2) { background: linear-gradient(145deg, #202020, #0a0a0a); border-color: #4a4a4a; }
-        .card:nth-child(3) { background: linear-gradient(145deg, #181818, #111111); border-color: #555; }
-        .card:nth-child(4) { background: linear-gradient(145deg, #1e1e1e, #0c0c0c); border-color: #3f3f3f; }
-        .card:nth-child(5) { background: linear-gradient(145deg, #222, #0e0e0e); border-color: #4d4d4d; }
-        .card:nth-child(6) { background: linear-gradient(145deg, #161616, #0b0b0b); border-color: #444; }
-        .card:nth-child(7) { background: linear-gradient(145deg, #1c1c1c, #0f0f0f); border-color: #5a5a5a; }
-        .card:nth-child(8) { background: linear-gradient(145deg, #242424, #121212); border-color: #616161; }
-
-        /* افکت شیشه‌ای روی کارت */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.02), transparent 70%);
-            pointer-events: none;
-        }
-
-        .card:hover {
-            transform: translateY(-12px) scale(1.01);
-            border-color: #aaa;
-            box-shadow: 0 20px 40px -10px rgba(255,255,255,0.06);
-        }
-
-        .card-icon {
-            font-size: 2.6rem;
-            color: #ddd;
-            background: rgba(255,255,255,0.02);
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20px;
-            border: 1px solid #333;
-        }
-
-        .card h3 {
-            font-size: 1.7rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #f0f0f0, #b0b0b0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card p {
-            color: #aaa;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-
-        .card .btn {
-            margin-top: 0.6rem;
-            background: transparent;
-            border: 1px solid #444;
-            padding: 10px 18px;
-            border-radius: 40px;
-            color: #eee;
-            font-family: 'Estedad', sans-serif;
-            font-weight: 400;
-            cursor: pointer;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            width: fit-content;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        .card .btn i {
-            font-size: 0.9rem;
-        }
-        .card .btn:hover {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-            box-shadow: 0 0 30px rgba(255,255,255,0.05);
-        }
-
-        /* هشتگ‌ها */
-        .hashtags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 0.5rem 0;
-        }
-        .hashtags span {
-            background: rgba(255,255,255,0.03);
-            padding: 4px 14px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            color: #aaa;
-            border: 1px solid #2a2a2a;
-            letter-spacing: 0.3px;
-        }
-
-        /* بخش‌های اختصاصی (صفحات) با هشتک */
-        .page-section {
-            margin: 4rem 0;
-            padding: 2rem 1rem;
-            border-top: 1px solid #252525;
-            border-bottom: 1px solid #252525;
-        }
-        .page-section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #eee, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .page-section .content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .page-section .text {
-            flex: 1;
-            min-width: 220px;
-            color: #ccc;
-            line-height: 1.8;
-        }
-        .page-section .text i {
-            margin-left: 8px;
-            color: #aaa;
-        }
-        .page-tag {
-            background: #1f1f1f;
-            padding: 6px 18px;
-            border-radius: 40px;
-            color: #bbb;
-            border: 1px solid #3a3a3a;
-            font-size: 0.9rem;
-        }
-
-        /* فوتر */
-        footer {
-            margin-top: 4rem;
-            padding: 2rem 0;
-            border-top: 1px solid #1f1f1f;
-            width: 100%;
-            text-align: center;
-            color: #555;
-            font-size: 0.9rem;
-        }
-        footer i {
-            color: #777;
-            margin: 0 4px;
-        }
-
-        /* ریسپانسیو */
-        @media (max-width: 700px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .nav-links a {
-                margin: 0 6px 0 0;
-                font-size: 0.9rem;
-            }
-            .logo h1 {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+    /* ریسپانسیو */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        gap: 15px;
+        border-radius: 30px;
+        padding: 1.5rem;
+      }
+      .nav-links a {
+        display: inline-block;
+        margin: 5px 8px;
+        font-size: 0.95rem;
+      }
+      .search-box {
+        flex-wrap: wrap;
+        background: #111;
+        padding: 8px;
+        border-radius: 40px;
+      }
+      .search-box input {
+        width: 100%;
+        padding: 12px;
+        text-align: center;
+      }
+      .search-box button {
+        width: 100%;
+        margin-top: 6px;
+        border-radius: 40px;
+      }
+      .card h3 {
+        font-size: 1.8rem;
+      }
+      .page-container h2 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
+<div class="container">
 
-    <div class="container">
-
-        <!-- هدر -->
-        <header>
-            <div class="logo">
-                <h1>Zerox <span>games | original</span></h1>
-            </div>
-            <div class="nav-links">
-                <a href="#home"><i class="fas fa-home"></i> خانه</a>
-                <a href="#games"><i class="fas fa-gamepad"></i> بازی‌ها</a>
-                <a href="#about"><i class="fas fa-info-circle"></i> درباره</a>
-                <a href="#contact"><i class="fas fa-envelope"></i> تماس</a>
-            </div>
-        </header>
-
-        <!-- جستجو -->
-        <div class="search-section" id="home">
-            <div class="search-box">
-                <input type="text" placeholder="هر چی تو ذهنت هست رو جستجو کن ..." />
-                <button><i class="fas fa-search"></i></button>
-            </div>
-        </div>
-
-        <!-- کارت‌های خفن -->
-        <div class="cards-grid" id="games">
-
-            <!-- کارت ۱ -->
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-robot"></i></div>
-                <h3>Zerox AI</h3>
-                <p>هوش مصنوعی نسل جدید برای تجربه‌ای بی‌نظیر در بازی‌های استراتژیک.</p>
-                <div class="hashtags">
-                    <span>#AI</span>
-                    <span>#Strategy</span>
-                    <span>#NextGen</span>
-                </div>
-                <a href="#page-ai" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
-            </div>
-
-            <!-- کارت ۲ -->
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-skull"></i></div>
-                <h3>Dark Arena</h3>
-                <p>مبارزات خونین در میدان تاریک با گرافیک خیره‌کننده و صداهای فراگیر.</p>
-                <div class="hashtags">
-                    <span>#Fight</span>
-                    <span>#Dark</span>
-                    <span>#PvP</span>
-                </div>
-                <a href="#page-dark" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
-            </div>
-
-            <!-- کارت ۳ -->
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-crown"></i></div>
-                <h3>Royal Clash</h3>
-                <p>پادشاهی خود را بساز و در نبردهای سلطنتی به اوج برس.</p>
-                <div class="hashtags">
-                    <span>#Kingdom</span>
-                    <span>#Clash</span>
-                    <span>#Royal</span>
-                </div>
-                <a href="#page-royal" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
-            </div>
-
-            <!-- کارت ۴ -->
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-ghost"></i></div>
-                <h3>Phantom Ops</h3>
-                <p>ماموریت‌های مخفیانه در دنیای ارواح و فناوری‌های پنهان.</p>
-                <div class="hashtags">
-                    <span>#Stealth</span>
-                    <span>#Ghost</span>
-                    <span>#Ops</span>
-                </div>
-                <a href="#page-phantom" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
-            </div>
-
-            <!-- کارت ۵ -->
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-rocket"></i></div>
-                <h3>Star Racer</h3>
-                <p>مسابقات کهکشانی با سرعت نور و ماشین‌های آینده‌نگر.</p>
-                <div class="hashtags">
-                    <span>#Racing</span>
-                    <span>#Space</span>
-                    <span>#Turbo</span>
-                </div>
-                <a href="#page-star" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
-            </div>
-
-            <!-- کارت ۶ -->
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-dragon"></i></div>
-                <h3>Dragon Saga</h3>
-                <p>حماسه‌ای افسانه‌ای با اژدهایان باستانی و جادوی ناب.</p>
-                <div class="hashtags">
-                    <span>#Fantasy</span>
-                    <span>#Dragon</span>
-                    <span>#Epic</span>
-                </div>
-                <a href="#page-dragon" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
-            </div>
-
-            <!-- کارت ۷ -->
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-chess-queen"></i></div>
-                <h3>Cyber Chess</h3>
-                <p>شطرنج سایبری با هوش مصنوعی و تخته‌های سه‌بعدی.</p>
-                <div class="hashtags">
-                    <span>#Chess</span>
-                    <span>#Cyber</span>
-                    <span>#Mind</span>
-                </div>
-                <a href="#page-chess" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
-            </div>
-
-            <!-- کارت ۸ -->
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-meteor"></i></div>
-                <h3>Meteor Storm</h3>
-                <p>نجات زمین از بارش شهاب‌سنگ‌ها در یک اکشن نفس‌گیر.</p>
-                <div class="hashtags">
-                    <span>#Action</span>
-                    <span>#Meteor</span>
-                    <span>#Survive</span>
-                </div>
-                <a href="#page-meteor" class="btn"><i class="fas fa-arrow-left"></i> مشاهده</a>
-            </div>
-
-        </div>
-
-        <!-- ================== صفحات اختصاصی با هشتک ================== -->
-
-        <!-- صفحه ۱: AI -->
-        <section class="page-section" id="page-ai">
-            <h2><i class="fas fa-robot"></i> Zerox AI <span class="page-tag">#AI</span></h2>
-            <div class="content">
-                <div class="text">
-                    <p><i class="fas fa-microchip"></i> پیشرفته‌ترین هوش مصنوعی برای شبیه‌سازی استراتژی‌های پیچیده. <br />
-                    <i class="fas fa-brain"></i> یادگیری عمیق و تطبیق با سبک بازی شما.</p>
-                    <a href="#games" class="btn" style="margin-top:1rem;"><i class="fas fa-arrow-right"></i> بازگشت</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- صفحه ۲: Dark Arena -->
-        <section class="page-section" id="page-dark">
-            <h2><i class="fas fa-skull"></i> Dark Arena <span class="page-tag">#Fight</span></h2>
-            <div class="content">
-                <div class="text">
-                    <p><i class="fas fa-sword"></i> میدان نبرد تاریک با بیش از ۵۰ کاراکتر منحصر‌به‌فرد. <br />
-                    <i class="fas fa-trophy"></i> رنکینگ جهانی و جوایز هفتگی.</p>
-                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- صفحه ۳: Royal Clash -->
-        <section class="page-section" id="page-royal">
-            <h2><i class="fas fa-crown"></i> Royal Clash <span class="page-tag">#Kingdom</span></h2>
-            <div class="content">
-                <div class="text">
-                    <p><i class="fas fa-chess-king"></i> قلمرو خود را گسترش دهید و با سایر پادشاهان رقابت کنید. <br />
-                    <i class="fas fa-users"></i> اتحادیه‌ها و جنگ‌های بزرگ.</p>
-                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- صفحه ۴: Phantom Ops -->
-        <section class="page-section" id="page-phantom">
-            <h2><i class="fas fa-ghost"></i> Phantom Ops <span class="page-tag">#Stealth</span></h2>
-            <div class="content">
-                <div class="text">
-                    <p><i class="fas fa-user-secret"></i> ماموریت‌های مخفی با فناوری نامرئی و ابزارهای پیشرفته. <br />
-                    <i class="fas fa-map"></i> ۲۰ نقشه جدید و حالات مختلف بازی.</p>
-                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- صفحه ۵: Star Racer -->
-        <section class="page-section" id="page-star">
-            <h2><i class="fas fa-rocket"></i> Star Racer <span class="page-tag">#Racing</span></h2>
-            <div class="content">
-                <div class="text">
-                    <p><i class="fas fa-car"></i> مسابقات کهکشانی با سرعت‌های فراطبیعی و پیست‌های سیاره‌ای. <br />
-                    <i class="fas fa-star"></i> سفارشی‌سازی کامل خودروها.</p>
-                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- صفحه ۶: Dragon Saga -->
-        <section class="page-section" id="page-dragon">
-            <h2><i class="fas fa-dragon"></i> Dragon Saga <span class="page-tag">#Fantasy</span></h2>
-            <div class="content">
-                <div class="text">
-                    <p><i class="fas fa-fire"></i> سوار بر اژدهایان و نبرد با موجودات افسانه‌ای. <br />
-                    <i class="fas fa-magic"></i> سیستم جادویی منحصربه‌فرد با ۱۰۰ طلسم.</p>
-                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- صفحه ۷: Cyber Chess -->
-        <section class="page-section" id="page-chess">
-            <h2><i class="fas fa-chess-queen"></i> Cyber Chess <span class="page-tag">#Chess</span></h2>
-            <div class="content">
-                <div class="text">
-                    <p><i class="fas fa-globe"></i> شطرنج آنلاین با هوش مصنوعی فوق‌پیشرفته و گرافیک سه‌بعدی. <br />
-                    <i class="fas fa-robot"></i> چالش با استادان بزرگ مجازی.</p>
-                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- صفحه ۸: Meteor Storm -->
-        <section class="page-section" id="page-meteor">
-            <h2><i class="fas fa-meteor"></i> Meteor Storm <span class="page-tag">#Action</span></h2>
-            <div class="content">
-                <div class="text">
-                    <p><i class="fas fa-shield-alt"></i> از زمین در برابر سقوط شهاب‌سنگ‌ها محافظت کنید. <br />
-                    <i class="fas fa-bolt"></i> قدرت‌های ویژه و امتیازات هیجان‌انگیز.</p>
-                    <a href="#games" class="btn"><i class="fas fa-arrow-right"></i> بازگشت</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- فوتر -->
-        <footer>
-            <p><i class="fas fa-crown"></i> Zerox games | original — 2026 <i class="fas fa-circle" style="font-size: 4px; vertical-align: middle; margin: 0 8px;"></i> تمامی حقوق محفوظ است.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.8rem;">
-                <i class="fas fa-hashtag"></i> #Zerox #GameOn #BlackAndWhite
-            </p>
-        </footer>
-
+  <!-- HEADER خفن -->
+  <header class="header">
+    <div class="logo">
+      <i class="fas fa-crown"></i> Zerox games <span style="font-weight:300; background:linear-gradient(135deg,#888,#fff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">| original</span>
     </div>
+    <div class="nav-links">
+      <a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> خانه</a>
+      <a href="#" onclick="showPage('games')"><i class="fas fa-gamepad"></i> بازی‌ها</a>
+      <a href="#" onclick="showPage('studio')"><i class="fas fa-video"></i> استودیو</a>
+      <a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> تماس</a>
+    </div>
+  </header>
 
-    <!-- (اختیاری) یک اسکریپت کوچک برای جستجوی ساده -->
-    <script>
-        // جستجوی ساده (فقط برای نمایش)
-        document.querySelector('.search-box button').addEventListener('click', function() {
-            const input = document.querySelector('.search-box input');
-            if (input.value.trim() !== '') {
-                alert('جستجو برای: "' + input.value + '" \n(این یک نسخه نمایشی است)');
-            } else {
-                alert('لطفاً عبارت جستجو را وارد کنید.');
-            }
-        });
-    </script>
+  <!-- بخش جستجو (همه چیز رو هیت کن سرچ) -->
+  <div class="search-section">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="جستجوی بازی، مقاله، استودیو، تیم ...">
+      <button onclick="searchEverything()"><i class="fas fa-search"></i> جستجو</button>
+    </div>
+  </div>
 
+  <!-- صفحه اصلی (همیشه نمایش داده می‌شه) -->
+  <div id="page-home" class="page-container active">
+    <h2><i class="fas fa-rocket" style="margin-left:15px;"></i> به Zerox games خوش آمدید</h2>
+    <p>اینجا خانه‌ی بازی‌های خفن، تیم خلاق و استودیوی رویایی‌مونه. هر کارت یک دنیاست، هر دکمه یک ماجرا.</p>
+    <p style="color:#aaa; font-size:1rem;">از کارت‌های زیر دیدن کن، هرکدوم یه صفحه اختصاصی دارن.</p>
+    <button class="back-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i> برو بالا</button>
+  </div>
+
+  <!-- صفحات اختصاصی برای هر کارت -->
+  <div id="page-card1" class="page-container">
+    <h2><i class="fas fa-paint-brush"></i> طراحی کاراکتر</h2>
+    <p>تیم طراحی ما با الهام از سبک سیاه و سفید و گرادیانت‌های خاص، شخصیت‌های به یاد موندنی می‌سازه. از ایده تا اجرا، همه چیز حرفه‌ای.</p>
+    <button class="back-btn" onclick="hideAllPages(); document.getElementById('page-home').classList.add('active');"><i class="fas fa-arrow-left"></i> بازگشت</button>
+  </div>
+  <div id="page-card2" class="page-container">
+    <h2><i class="fas fa-code"></i> توسعه بازی</h2>
+    <p>با موتورهای روز دنیا و تیم برنامه‌نویسی فوق‌حرفه‌ای، بازی‌هایی با گرافیک بالا و گیم‌پلی روان می‌سازیم. کدنویسی تمیز، قلب بازی‌های ماست.</p>
+    <button class="back-btn" onclick="hideAllPages(); document.getElementById('page-home').classList.add('active');"><i class="fas fa-arrow-left"></i> بازگشت</button>
+  </div>
+  <div id="page-card3" class="page-container">
+    <h2><i class="fas fa-music"></i> صدا و موسیقی</h2>
+    <p>موسیقی متن و افکت‌های صوتی که حس بازی رو دوچندان می‌کنه. همکاری با آهنگسازان بین‌المللی و طراحی صدای سه‌بعدی.</p>
+    <button class="back-btn" onclick="hideAllPages(); document.getElementById('page-home').classList.add('active');"><i class="fas fa-arrow-left"></i> بازگشت</button>
+  </div>
+  <div id="page-card4" class="page-container">
+    <h2><i class="fas fa-users"></i> تیم ما</h2>
+    <p>گروهی از هنرمندان، برنامه‌نویسان و طراحان با استعداد که عاشق بازی‌سازی‌اند. فرهنگ همکاری و نوآوری، رمز موفقیت ماست.</p>
+    <button class="back-btn" onclick="hideAllPages(); document.getElementById('page-home').classList.add('active');"><i class="fas fa-arrow-left"></i> بازگشت</button>
+  </div>
+  <div id="page-card5" class="page-container">
+    <h2><i class="fas fa-trophy"></i> جوایز</h2>
+    <p>برنده‌ی چندین جایزه‌ی معتبر در زمینه‌ی طراحی و گیم‌پلی. افتخار ما، رضایت گیمرها و کیفیت بی‌نظیر است.</p>
+    <button class="back-btn" onclick="hideAllPages(); document.getElementById('page-home').classList.add('active');"><i class="fas fa-arrow-left"></i> بازگشت</button>
+  </div>
+  <div id="page-card6" class="page-container">
+    <h2><i class="fas fa-vr-cardboard"></i> واقعیت مجازی</h2>
+    <p>تجربه‌ی فراگیر با تکنولوژی VR. بازی‌هایی که شما رو به دنیای دیگه می‌برن و حس واقعی بودن رو منتقل می‌کنن.</p>
+    <button class="back-btn" onclick="hideAllPages(); document.getElementById('page-home').classList.add('active');"><i class="fas fa-arrow-left"></i> بازگشت</button>
+  </div>
+  <div id="page-card7" class="page-container">
+    <h2><i class="fas fa-newspaper"></i> اخبار و رویدادها</h2>
+    <p>آخرین اخبار از استودیو، تاریخ انتشار بازی‌ها و رویدادهای پیش‌رو. همیشه به‌روز باش!</p>
+    <button class="back-btn" onclick="hideAllPages(); document.getElementById('page-home').classList.add('active');"><i class="fas fa-arrow-left"></i> بازگشت</button>
+  </div>
+  <div id="page-card8" class="page-container">
+    <h2><i class="fas fa-handshake"></i> همکاری با ما</h2>
+    <p>اگر ایده‌ی بزرگی داری یا می‌خوای با ما همکاری کنی، خوشحال می‌شیم بشنویم. با هم می‌تونیم بازی‌های موندگار بسازیم.</p>
+    <button class="back-btn" onclick="hideAllPages(); document.getElementById('page-home').classList.add('active');"><i class="fas fa-arrow-left"></i> بازگشت</button>
+  </div>
+
+  <!-- کارت‌های خفن با گرادیانت و آیکون -->
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
+      <h3>طراحی</h3>
+      <p>طراحی کاراکتر و محیط با سبک منحصر‌به‌فرد سیاه و سفید.</p>
+      <button class="btn" onclick="showPage('card1')"><i class="fas fa-arrow-left"></i> مشاهده صفحه</button>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-code"></i></div>
+      <h3>توسعه</h3>
+      <p>برنامه‌نویسی پیشرفته با موتورهای Unity و Unreal.</p>
+      <button class="btn" onclick="showPage('card2')"><i class="fas fa-arrow-left"></i> مشاهده صفحه</button>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-music"></i></div>
+      <h3>صدا</h3>
+      <p>موسیقی متن و افکت‌های صوتی حرفه‌ای.</p>
+      <button class="btn" onclick="showPage('card3')"><i class="fas fa-arrow-left"></i> مشاهده صفحه</button>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-users"></i></div>
+      <h3>تیم</h3>
+      <p>متخصصین با تجربه در حوزه‌های مختلف.</p>
+      <button class="btn" onclick="showPage('card4')"><i class="fas fa-arrow-left"></i> مشاهده صفحه</button>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-trophy"></i></div>
+      <h3>جوایز</h3>
+      <p>افتخارات بین‌المللی و کیفیت بی‌نظیر.</p>
+      <button class="btn" onclick="showPage('card5')"><i class="fas fa-arrow-left"></i> مشاهده صفحه</button>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-vr-cardboard"></i></div>
+      <h3>VR</h3>
+      <p>تجربه‌ی واقعیت مجازی فراگیر.</p>
+      <button class="btn" onclick="showPage('card6')"><i class="fas fa-arrow-left"></i> مشاهده صفحه</button>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-newspaper"></i></div>
+      <h3>اخبار</h3>
+      <p>به‌روزترین اخبار استودیو و بازی‌ها.</p>
+      <button class="btn" onclick="showPage('card7')"><i class="fas fa-arrow-left"></i> مشاهده صفحه</button>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-handshake"></i></div>
+      <h3>همکاری</h3>
+      <p>فرصت‌های همکاری و سرمایه‌گذاری.</p>
+      <button class="btn" onclick="showPage('card8')"><i class="fas fa-arrow-left"></i> مشاهده صفحه</button>
+    </div>
+  </div>
+
+  <!-- فوتر -->
+  <footer class="footer">
+    <i class="fas fa-crown"></i> Zerox games | original <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle;"></i> 2026 تمامی حقوق محفوظ است.
+    <br><span style="color:#444;">طراحی شده با <i class="fas fa-heart" style="color:#777;"></i> و گرادیانت‌های سیاه و سفید</span>
+  </footer>
+</div>
+
+<script>
+  // تابع نمایش صفحه اختصاصی
+  function showPage(pageId) {
+    // مخفی کردن همه صفحات
+    const pages = document.querySelectorAll('.page-container');
+    pages.forEach(p => p.classList.remove('active'));
+    // نمایش صفحه مورد نظر
+    const target = document.getElementById('page-' + pageId);
+    if (target) {
+      target.classList.add('active');
+      // اسکرول به بالای صفحه
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      // اگر صفحه پیدا نشد، صفحه خانه رو نشون بده
+      document.getElementById('page-home').classList.add('active');
+    }
+  }
+
+  // مخفی کردن همه صفحات (برای دکمه برگشت)
+  function hideAllPages() {
+    const pages = document.querySelectorAll('.page-container');
+    pages.forEach(p => p.classList.remove('active'));
+  }
+
+  // تابع جستجو (همه چیز رو هیت کن)
+  function searchEverything() {
+    const query = document.getElementById('searchInput').value.trim().toLowerCase();
+    if (query === '') {
+      alert('لطفاً چیزی برای جستجو وارد کن.');
+      return;
+    }
+
+    // لیست صفحات و محتوای اونها برای جستجو
+    const pagesData = [
+      { id: 'home', keywords: ['خانه', 'صفحه اصلی', 'خوش آمدید', 'استودیو', 'بازی'] },
+      { id: 'card1', keywords: ['طراحی', 'کاراکتر', 'محیط', 'هنر', 'پیکسل'] },
+      { id: 'card2', keywords: ['توسعه', 'برنامه نویسی', 'کد', 'یونیتی', 'آنریل'] },
+      { id: 'card3', keywords: ['صدا', 'موسیقی', 'افکت', 'آهنگ', 'سمپل'] },
+      { id: 'card4', keywords: ['تیم', 'همکار', 'متخصص', 'برنامه نویس', 'طراح'] },
+      { id: 'card5', keywords: ['جایزه', 'برنده', 'افتخار', 'کیفیت', 'تندیس'] },
+      { id: 'card6', keywords: ['واقعیت مجازی', 'vr', 'هولوگرام', 'immersive', 'گوشی'] },
+      { id: 'card7', keywords: ['اخبار', 'رویداد', 'تاریخ انتشار', 'بروزرسانی', 'نمایشگاه'] },
+      { id: 'card8', keywords: ['همکاری', 'سرمایه گذاری', 'پارتنر', 'حمایت', 'اسپانسر'] }
+    ];
+
+    let found = false;
+    for (let item of pagesData) {
+      // اگر کلمه جستجو در کلمات کلیدی یا خود id باشد
+      if (item.keywords.some(k => k.includes(query)) || item.id.includes(query)) {
+        showPage(item.id);
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      // اگر چیزی پیدا نشد، صفحه اصلی رو نشون بده و پیام بده
+      hideAllPages();
+      document.getElementById('page-home').classList.add('active');
+      alert('نتیجه‌ای برای "' + query + '" پیدا نشد. اما صفحه اصلی نمایش داده شد.');
+    }
+  }
+
+  // اضافه کردن قابلیت جستجو با دکمه Enter
+  document.getElementById('searchInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      searchEverything();
+    }
+  });
+
+  // برای لینک‌های بالای هدر هم از showPage استفاده میشه
+  // (لینک‌ها در html خودشون با onclick کار می‌کنن)
+</script>
 </body>
-                                                                                </html>
+                                                              </html>
