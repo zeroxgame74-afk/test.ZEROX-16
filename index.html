@@ -6,9 +6,9 @@
   <title>ZER0X GAME · SilentGears</title>
 
   <!-- فونت‌ها از Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;700;800;900&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Ardakan:wght@400;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Ardakan:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -20,16 +20,21 @@
       padding: 0;
       box-sizing: border-box;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       background-color: #0a0a0a;
-      color: #f0f0f0;
+      color: #e8e8e8;
       font-family: 'Estedad', 'Ardakan', 'Inter', sans-serif;
-      line-height: 1.6;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #111; }
-    ::-webkit-scrollbar-thumb { background: #444; border-radius: 8px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #555; }
     a { text-decoration: none; color: inherit; }
     .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
 
@@ -39,40 +44,48 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      position: sticky;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
+      transition: 0.3s;
     }
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 900;
       letter-spacing: 3px;
       color: #fff;
       text-transform: uppercase;
       cursor: pointer;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .logo span { font-weight: 300; color: #555; }
     .nav {
       display: flex;
-      gap: 2.5rem;
+      gap: 2.2rem;
       font-size: 0.9rem;
-      color: #666;
     }
     .nav a {
       cursor: pointer;
       transition: 0.3s;
       position: relative;
+      color: #777;
+      font-weight: 400;
+      padding: 4px 0;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .nav a::after {
       content: '';
       position: absolute;
-      bottom: -4px;
+      bottom: -2px;
       right: 0;
       width: 0;
-      height: 1px;
+      height: 1.5px;
       background: #fff;
       transition: 0.3s;
     }
@@ -99,8 +112,9 @@
     .search-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.95);
-      backdrop-filter: blur(20px);
+      background: rgba(0,0,0,0.96);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       z-index: 2000;
       display: none;
       align-items: center;
@@ -121,16 +135,12 @@
       border-bottom: 2px solid #333;
       color: #fff;
       font-size: 1.5rem;
-      font-family: inherit;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
       outline: none;
       transition: 0.3s;
     }
-    .search-overlay .search-box input:focus {
-      border-color: #666;
-    }
-    .search-overlay .search-box input::placeholder {
-      color: #444;
-    }
+    .search-overlay .search-box input:focus { border-color: #666; }
+    .search-overlay .search-box input::placeholder { color: #444; }
     .search-overlay .search-box .close-search {
       position: absolute;
       left: 0;
@@ -143,16 +153,14 @@
     }
     .search-overlay .search-box .close-search:hover { color: #fff; }
 
-    /* ===== صفحه اصلی ===== */
-    .page-home { display: block; }
-    .page-home.hidden { display: none; }
-    .page-detail { display: none; }
-    .page-detail.active { display: block; }
+    /* ===== صفحات ===== */
+    .page { display: none; padding-top: 70px; }
+    .page.active { display: block; }
 
     /* ===== HERO ===== */
     .hero {
       position: relative;
-      min-height: 92vh;
+      min-height: 88vh;
       display: flex;
       align-items: flex-end;
       padding: 4rem 2rem 3rem;
@@ -163,7 +171,7 @@
       inset: 0;
       background: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg') center/cover no-repeat;
       transform: scale(1.02);
-      filter: brightness(0.35) contrast(1.2) saturate(0.8);
+      filter: brightness(0.3) contrast(1.2) saturate(0.8);
       will-change: transform;
       z-index: 0;
     }
@@ -181,11 +189,12 @@
       animation: fadeUp 1s ease forwards;
     }
     .hero-content .game-tag {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 5px;
       text-transform: uppercase;
       color: #555;
       margin-bottom: 0.5rem;
+      font-weight: 300;
     }
     .hero-content h1 {
       font-size: 4.8rem;
@@ -194,6 +203,7 @@
       color: #fff;
       margin: 0.5rem 0 0.2rem;
       letter-spacing: -2px;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .hero-content .sub-title {
       font-size: 1.3rem;
@@ -208,6 +218,7 @@
       color: #666;
       margin: 0.8rem 0 2rem;
       flex-wrap: wrap;
+      font-weight: 300;
     }
     .hero-content .meta i { margin-left: 0.4rem; color: #444; }
     .btn-ghost {
@@ -222,6 +233,7 @@
       transition: all 0.4s;
       border-radius: 2px;
       cursor: pointer;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .btn-ghost:hover {
       background: #fff;
@@ -234,7 +246,7 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* ===== کارت بازی ===== */
+    /* ===== بازی‌ها ===== */
     .section-title {
       font-size: 2rem;
       font-weight: 800;
@@ -242,6 +254,7 @@
       border-right: 3px solid #333;
       padding-right: 1.2rem;
       color: #eee;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .game-grid {
       display: grid;
@@ -276,9 +289,7 @@
       object-fit: cover;
       transition: transform 0.7s ease;
     }
-    .game-card:hover .card-img img {
-      transform: scale(1.1);
-    }
+    .game-card:hover .card-img img { transform: scale(1.1); }
     .game-card .card-overlay {
       position: absolute;
       inset: 0;
@@ -290,9 +301,7 @@
       transition: opacity 0.5s ease;
       backdrop-filter: blur(4px);
     }
-    .game-card:hover .card-overlay {
-      opacity: 1;
-    }
+    .game-card:hover .card-overlay { opacity: 1; }
     .game-card .card-overlay i {
       font-size: 3.5rem;
       color: #fff;
@@ -313,6 +322,7 @@
       font-weight: 800;
       color: #fff;
       margin-bottom: 0.2rem;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .game-card .card-body .genre {
       font-size: 0.8rem;
@@ -332,34 +342,73 @@
     }
 
     /* ===== درباره ما ===== */
-    .intro-section {
-      border-top: 1px solid #111;
-      padding: 3rem 0 4rem;
-      margin-top: 1rem;
+    .about-page {
+      padding: 4rem 0;
     }
-    .intro-section h2 {
+    .about-page .about-header {
+      margin-bottom: 3rem;
+    }
+    .about-page .about-header h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      letter-spacing: -2px;
+    }
+    .about-page .about-header .sub {
+      color: #666;
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin-top: 0.5rem;
+    }
+    .about-page .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .about-page .about-grid .about-text p {
+      color: #999;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 2;
+    }
+    .about-page .about-grid .about-text .highlight {
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .about-page .about-grid .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .about-page .about-grid .about-stats .stat {
+      background: #0f0f0f;
+      border: 1px solid #181818;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .about-page .about-grid .about-stats .stat:hover {
+      border-color: #333;
+      transform: translateY(-4px);
+    }
+    .about-page .about-grid .about-stats .stat .number {
       font-size: 2.8rem;
       font-weight: 900;
-      letter-spacing: -1px;
+      color: #fff;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
-    .intro-section p {
-      max-width: 600px;
-      color: #555;
-      margin: 0.8rem 0 1.5rem;
-      font-size: 1.05rem;
-    }
-    .intro-section a {
+    .about-page .about-grid .about-stats .stat .label {
       color: #666;
-      border-bottom: 1px solid #222;
-      padding-bottom: 3px;
-      transition: 0.3s;
-      cursor: pointer;
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+      font-weight: 300;
     }
-    .intro-section a:hover { color: #fff; border-color: #fff; }
 
-    /* ============================================ */
-    /* ===== صفحه اختصاصی (طراحی خفن) ===== */
-    /* ============================================ */
+    /* ========================================== */
+    /* ===== صفحه اختصاصی (طراحی جدید خفن) ===== */
+    /* ========================================== */
     .detail-hero {
       position: relative;
       min-height: 75vh;
@@ -374,10 +423,9 @@
       position: absolute;
       inset: 0;
       background: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg') center/cover no-repeat;
-      filter: brightness(0.3) contrast(1.2) saturate(0.7);
+      filter: brightness(0.25) contrast(1.2) saturate(0.7);
       z-index: 0;
       transform: scale(1.05);
-      transition: transform 0.3s;
     }
     .detail-hero-bg::after {
       content: '';
@@ -392,7 +440,6 @@
       margin: 0 auto;
       width: 100%;
     }
-
     .detail-hero .back-link {
       display: inline-flex;
       align-items: center;
@@ -404,15 +451,16 @@
       gap: 8px;
       border-bottom: 1px solid #222;
       padding-bottom: 6px;
+      font-weight: 300;
     }
     .detail-hero .back-link:hover { color: #fff; border-color: #555; }
-
     .detail-hero h1 {
       font-size: 4.5rem;
       font-weight: 900;
       margin-bottom: 0.3rem;
       letter-spacing: -2px;
       line-height: 1.05;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .detail-hero .sub {
       font-size: 1.4rem;
@@ -420,8 +468,6 @@
       margin-bottom: 1.5rem;
       font-weight: 300;
     }
-
-    /* اطلاعات باکس */
     .detail-info-box {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -443,22 +489,22 @@
       letter-spacing: 2px;
       margin-bottom: 0.3rem;
       font-weight: 700;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .detail-info-box .item span {
       font-size: 0.9rem;
       color: #aaa;
+      font-weight: 300;
     }
 
-    /* بخش‌های پایین صفحه */
     .detail-body {
       max-width: 1000px;
       margin: 0 auto;
       padding: 0 0 3rem;
     }
-
     .detail-body .full-desc {
       background: rgba(255,255,255,0.015);
-      padding: 2rem 2.5rem;
+      padding: 2.5rem;
       border-radius: 10px;
       border: 1px solid #161616;
       white-space: pre-line;
@@ -466,16 +512,18 @@
       line-height: 2.2;
       margin: 2rem 0;
       font-size: 1rem;
+      font-weight: 300;
     }
     .detail-body .full-desc::first-letter {
-      font-size: 3rem;
+      font-size: 3.5rem;
       color: #fff;
       float: right;
-      margin-left: 8px;
+      margin-left: 10px;
       line-height: 1;
+      font-weight: 900;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
 
-    /* تریلر */
     .trailer-section {
       margin: 2.5rem 0;
       padding: 2rem;
@@ -488,6 +536,7 @@
       font-weight: 700;
       margin-bottom: 1.2rem;
       color: #ddd;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .trailer-section h3 i { margin-left: 12px; color: #444; }
     .trailer-placeholder {
@@ -503,12 +552,8 @@
       transition: 0.3s;
       cursor: pointer;
     }
-    .trailer-placeholder:hover {
-      border-color: #444;
-      color: #666;
-    }
+    .trailer-placeholder:hover { border-color: #444; color: #666; }
 
-    /* گالری */
     .gallery-section {
       margin: 2.5rem 0;
     }
@@ -517,6 +562,7 @@
       font-weight: 700;
       margin-bottom: 1.2rem;
       color: #ddd;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .gallery-section h3 i { margin-left: 12px; color: #444; }
     .gallery-grid {
@@ -551,7 +597,10 @@
       background: #0a0a0a;
       margin-top: 2rem;
     }
-    .footer .logo { font-size: 1.2rem; }
+    .footer .logo {
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
     .footer-links {
       display: flex;
       gap: 2rem;
@@ -561,6 +610,7 @@
     .footer-links a {
       cursor: pointer;
       transition: 0.3s;
+      font-weight: 300;
     }
     .footer-links a:hover { color: #fff; }
     .footer-social {
@@ -582,9 +632,16 @@
       margin-top: 0.5rem;
       border-top: 1px solid #0f0f0f;
       padding-top: 1.2rem;
+      font-weight: 300;
     }
 
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+      .about-page .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
     @media (max-width: 768px) {
       .nav { display: none; }
       .menu-mobile { display: inline-block; }
@@ -599,17 +656,20 @@
       .detail-body .full-desc { padding: 1.2rem; font-size: 0.95rem; }
       .footer { flex-direction: column; align-items: flex-start; }
       .search-overlay .search-box input { font-size: 1.2rem; padding: 1rem; }
+      .about-page .about-header h1 { font-size: 2.5rem; }
+      .about-page .about-grid .about-stats { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: 1fr; }
       .detail-hero h1 { font-size: 2.2rem; }
+      .about-page .about-grid .about-stats { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== سرچ اورلی ===== -->
+  <!-- ===== سرچ ===== -->
   <div class="search-overlay" id="searchOverlay">
     <div class="search-box">
       <input type="text" placeholder="جستجوی بازی..." />
@@ -619,20 +679,20 @@
 
   <!-- ===== HEADER ===== -->
   <header class="header">
-    <div class="logo" onclick="showHome()">ZER0X <span>GAME</span></div>
-    <nav class="nav">
-      <a class="active" onclick="showHome()">خانه</a>
-      <a onclick="showHome()">بازی‌ها</a>
-      <a onclick="showAbout()">درباره ما</a>
+    <div class="logo" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
+    <nav class="nav" id="mainNav">
+      <a class="active" data-page="home" onclick="navigateTo('home')">خانه</a>
+      <a data-page="games" onclick="navigateTo('home')">بازی‌ها</a>
+      <a data-page="about" onclick="navigateTo('about')">درباره ما</a>
     </nav>
     <div class="header-actions">
       <i class="fas fa-search" onclick="openSearch()"></i>
-      <i class="fas fa-bars menu-mobile"></i>
+      <i class="fas fa-bars menu-mobile" onclick="toggleMobileMenu()"></i>
     </div>
   </header>
 
-  <!-- ===== صفحه اصلی ===== -->
-  <div class="page-home" id="pageHome">
+  <!-- ===== صفحه خانه ===== -->
+  <div class="page active" id="pageHome">
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-content">
@@ -644,14 +704,14 @@
           <span><i class="fas fa-desktop"></i> PC • اندروید</span>
           <span><i class="fas fa-clock"></i> در دست توسعه</span>
         </div>
-        <button class="btn-ghost" onclick="showDetail()">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></button>
+        <button class="btn-ghost" onclick="navigateTo('detail')">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></button>
       </div>
     </section>
 
     <div class="container">
       <h2 class="section-title">بازی‌های ما</h2>
       <div class="game-grid">
-        <div class="game-card" onclick="showDetail()">
+        <div class="game-card" onclick="navigateTo('detail')">
           <div class="card-img">
             <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" />
             <div class="card-overlay"><i class="fas fa-arrow-left"></i></div>
@@ -663,29 +723,63 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="intro-section" id="aboutSection">
-        <h2>ZER0X GAME</h2>
-        <p>استودیوی بازی‌سازی با نگاه سینمایی و روایت‌های عمیق. خلق فراتر از مرزها.</p>
-        <a onclick="showAbout()">درباره ما <i class="fas fa-arrow-left" style="margin-right:6px;"></i></a>
+  <!-- ===== صفحه درباره ما ===== -->
+  <div class="page" id="pageAbout">
+    <div class="container about-page">
+      <div class="about-header">
+        <h1>درباره ZER0X</h1>
+        <div class="sub">استودیوی بازی‌سازی با چشم‌اندازی فراتر از مرزها</div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            <span class="highlight">ZER0X GAME</span> یک استودیوی مستقل بازی‌سازی است که در سال ۲۰۲۰ با هدف خلق تجربه‌های سینمایی و روایت‌های عمیق تأسیس شد.
+          </p>
+          <p>
+            ما معتقدیم بازی‌های ویدیویی فراتر از سرگرمی هستند — آنها پنجره‌ای به دنیاهای جدید، احساسات ناب و داستان‌هایی هستند که تا مدت‌ها در ذهن بازیکنان باقی می‌مانند.
+          </p>
+          <p>
+            تیم ما متشکل از طراحان، برنامه‌نویسان و هنرمندانی است که با عشق و اشتیاق، بازی‌هایی می‌سازند که نه تنها سرگرم‌کننده، بلکه به‌یادماندنی باشند.
+          </p>
+          <p style="color:#fff; font-weight:700; font-family: 'Estedad','Ardakan',sans-serif;">
+            «Create Beyond Limits.»
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="number">۵+</div>
+            <div class="label">پروژه فعال</div>
+          </div>
+          <div class="stat">
+            <div class="number">۱۲</div>
+            <div class="label">نفر تیم</div>
+          </div>
+          <div class="stat">
+            <div class="number">۴</div>
+            <div class="label">بازی منتشر شده</div>
+          </div>
+          <div class="stat">
+            <div class="number">۱۰K+</div>
+            <div class="label">بازیکن</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ========================================== -->
-  <!-- ===== صفحه اختصاصی (طراحی خفن جدید) ===== -->
-  <!-- ========================================== -->
-  <div class="page-detail" id="pageDetail">
-    <!-- هیرو بزرگ -->
+  <!-- ===== صفحه اختصاصی بازی (طراحی جدید خفن) ===== -->
+  <div class="page" id="pageDetail">
     <div class="detail-hero">
       <div class="detail-hero-bg"></div>
       <div class="detail-content">
-        <div class="back-link" onclick="showHome()">
+        <div class="back-link" onclick="navigateTo('home')">
           <i class="fas fa-arrow-right"></i> بازگشت
         </div>
         <h1>SilentGears</h1>
         <div class="sub">چرخ‌دنده‌ساکت</div>
-
         <div class="detail-info-box">
           <div class="item">
             <strong>ژانر</strong>
@@ -715,9 +809,7 @@
       </div>
     </div>
 
-    <!-- بدنه صفحه -->
     <div class="detail-body container">
-      <!-- توضیحات -->
       <div class="full-desc">
         🎮 SilentGears | چرخ‌دنده‌ساکت یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط Zerox Studios ساخته شده.
 
@@ -726,7 +818,6 @@
         بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌ساکت می‌برد.
       </div>
 
-      <!-- تریلر -->
       <div class="trailer-section">
         <h3><i class="fas fa-play"></i> تریلر بازی</h3>
         <div class="trailer-placeholder">
@@ -734,7 +825,6 @@
         </div>
       </div>
 
-      <!-- گالری -->
       <div class="gallery-section">
         <h3><i class="fas fa-images"></i> گالری تصاویر</h3>
         <div class="gallery-grid">
@@ -743,8 +833,7 @@
         </div>
       </div>
 
-      <!-- بازگشت -->
-      <div class="back-link" onclick="showHome()" style="display:inline-flex; align-items:center; gap:8px; color:#555; border-bottom:1px solid #222; padding-bottom:6px; cursor:pointer; margin-top:1rem;">
+      <div class="back-link" onclick="navigateTo('home')" style="display:inline-flex; align-items:center; gap:8px; color:#555; border-bottom:1px solid #222; padding-bottom:6px; cursor:pointer; margin-top:1rem;">
         <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
       </div>
     </div>
@@ -752,11 +841,11 @@
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <div class="logo" onclick="showHome()" style="cursor:pointer;">ZER0X <span>GAME</span></div>
+    <div class="logo" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
     <div class="footer-links">
-      <a onclick="showHome()">خانه</a>
-      <a onclick="showHome()">بازی‌ها</a>
-      <a onclick="showAbout()">درباره ما</a>
+      <a onclick="navigateTo('home')">خانه</a>
+      <a onclick="navigateTo('home')">بازی‌ها</a>
+      <a onclick="navigateTo('about')">درباره ما</a>
     </div>
     <div class="footer-social">
       <i class="fab fa-twitter"></i>
@@ -767,29 +856,41 @@
   </footer>
 
   <script>
-    // ===== توابع =====
-    function showDetail() {
-      document.getElementById('pageHome').classList.add('hidden');
-      document.getElementById('pageDetail').classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // ===== ناوبری =====
+    function navigateTo(page) {
+      // مخفی کردن همه صفحات
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      
+      // نمایش صفحه مورد نظر
+      if (page === 'home') {
+        document.getElementById('pageHome').classList.add('active');
+        document.getElementById('pageAbout').classList.remove('active');
+        document.getElementById('pageDetail').classList.remove('active');
+      } else if (page === 'about') {
+        document.getElementById('pageHome').classList.remove('active');
+        document.getElementById('pageAbout').classList.add('active');
+        document.getElementById('pageDetail').classList.remove('active');
+      } else if (page === 'detail') {
+        document.getElementById('pageHome').classList.remove('active');
+        document.getElementById('pageAbout').classList.remove('active');
+        document.getElementById('pageDetail').classList.add('active');
+      }
+
       // آپدیت منو
       document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
-    }
+      const navMap = {
+        'home': 0,
+        'about': 2
+      };
+      if (page === 'home' || page === 'about') {
+        const idx = navMap[page];
+        if (idx !== undefined) {
+          document.querySelectorAll('.nav a')[idx].classList.add('active');
+        }
+      }
 
-    function showHome() {
-      document.getElementById('pageHome').classList.remove('hidden');
-      document.getElementById('pageDetail').classList.remove('active');
+      // اسکرول به بالا
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
-      document.querySelector('.nav a:first-child').classList.add('active');
-    }
-
-    function showAbout() {
-      showHome();
-      setTimeout(() => {
-        const about = document.getElementById('aboutSection');
-        if (about) about.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
     }
 
     // ===== سرچ =====
@@ -804,12 +905,50 @@
       if (e.key === 'Escape') closeSearch();
     });
 
+    // ===== منو موبایل =====
+    function toggleMobileMenu() {
+      const nav = document.getElementById('mainNav');
+      if (nav.style.display === 'flex') {
+        nav.style.display = 'none';
+      } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.position = 'absolute';
+        nav.style.top = '100%';
+        nav.style.right = '0';
+        nav.style.left = '0';
+        nav.style.background = 'rgba(10,10,10,0.98)';
+        nav.style.padding = '2rem';
+        nav.style.gap = '1.5rem';
+        nav.style.borderBottom = '1px solid #1a1a1a';
+      }
+    }
+
     // ===== Parallax =====
     document.addEventListener('scroll', function() {
       const heroBg = document.querySelector('.hero-bg');
       const scrolled = window.scrollY;
       if (heroBg) {
         heroBg.style.transform = `scale(1.02) translateY(${scrolled * 0.04}px)`;
+      }
+    });
+
+    // ===== ریسپانسیو منو =====
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        const nav = document.getElementById('mainNav');
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'row';
+        nav.style.position = 'static';
+        nav.style.background = 'transparent';
+        nav.style.padding = '0';
+        nav.style.gap = '2.2rem';
+        nav.style.borderBottom = 'none';
+      } else {
+        const nav = document.getElementById('mainNav');
+        if (!nav.style.display || nav.style.display === 'flex') {
+          nav.style.display = 'none';
+        }
       }
     });
   </script>
