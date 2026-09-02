@@ -3,11 +3,45 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zerox games | original</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Ardakan:wght@300;400;700;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;700;900&display=swap" rel="stylesheet" />
+    <title>ZER0X GAME | Create Beyond Limits</title>
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
     <style>
+        /* ===== فونت‌ها ===== */
+        @font-face {
+            font-family: 'Estedad';
+            src: url('https://cdn.fontiran.com/fonts/estedad/Estedad-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Estedad';
+            src: url('https://cdn.fontiran.com/fonts/estedad/Estedad-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Estedad';
+            src: url('https://cdn.fontiran.com/fonts/estedad/Estedad-ExtraBold.woff2') format('woff2');
+            font-weight: 800;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Ardakan';
+            src: url('https://cdn.fontiran.com/fonts/ardakan/Ardakan-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Ardakan';
+            src: url('https://cdn.fontiran.com/fonts/ardakan/Ardakan-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+
         /* ===== RESET ===== */
         * {
             margin: 0;
@@ -15,938 +49,577 @@
             box-sizing: border-box;
         }
 
-        body {
-            background: #f5f7fc;
-            color: #1a1d24;
-            font-family: 'Ardakan', sans-serif;
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        /* ===== فونت‌ها ===== */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        .logo,
-        .section-title,
-        .slide-content h1,
-        .game-card h3,
-        .featured-game .info h2,
-        .studio-bio h2,
-        .game-detail-hero .hero-info h1,
-        .detail-section h2,
-        .detail-features .feature-item h4,
-        .nav-link,
-        .btn,
-        .btn-outline,
-        .back-home-btn {
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-        }
-
-        body,
-        p,
-        span,
-        div,
-        a,
-        button,
-        input,
-        textarea,
-        li,
-        .meta,
-        .genre,
-        .status,
-        .card-info,
-        .slide-content p,
-        .detail-section p,
-        .feature-item p,
-        .footer-copy,
-        .studio-bio p,
-        .footer-nav a,
-        .social-icons i {
-            font-family: 'Ardakan', sans-serif !important;
-        }
-
-        /* ===== رنگ‌بندی جدید ===== */
         :root {
-            --bg-light: #f5f7fc;
-            --bg-dark: #0a0c10;
-            --bg-card: rgba(255, 255, 255, 0.75);
-            --bg-card-dark: rgba(10, 12, 16, 0.85);
-            --border-glass: rgba(255, 255, 255, 0.25);
-            --border-dark: rgba(255, 255, 255, 0.08);
-            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.06);
-            --shadow-dark: 0 20px 60px rgba(0, 0, 0, 0.5);
-            --text-dark: #1a1d24;
-            --text-light: #f0f3fa;
-            --text-silver: #8a94a6;
-            --gold-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #f6d365 100%);
-            --silver-gradient: linear-gradient(135deg, #e8ecf1 0%, #b8c4d8 100%);
-            --glow-gold: 0 0 60px rgba(253, 160, 133, 0.15);
-            --glow-silver: 0 0 60px rgba(200, 210, 230, 0.08);
+            --black: #0A0A0A;
+            --dark: #111111;
+            --dark-gray: #1A1A1A;
+            --gray: #2A2A2A;
+            --gray-light: #888888;
+            --gray-lighter: #B0B0B0;
+            --white: #FFFFFF;
+            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         html {
             scroll-behavior: smooth;
         }
 
+        body {
+            font-family: 'Estedad', 'Ardakan', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== اسکرول ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--black);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray);
+            border-radius: 3px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
         /* ===== HEADER ===== */
-        header {
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray);
+            padding: 0 2rem;
+            height: 68px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.8rem 2.5rem;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-glass);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow-glass);
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            text-decoration: none;
-            cursor: pointer;
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 0.5px;
+        .header-logo {
+            font-family: 'Ardakan', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
-        .logo span {
-            font-weight: 300;
-            background: var(--silver-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-family: 'Ardakan', sans-serif !important;
+        .header-logo span {
+            color: var(--gray-lighter);
         }
 
-        nav {
+        .header-nav {
             display: flex;
+            align-items: center;
             gap: 2.5rem;
+            list-style: none;
         }
-        nav a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 0.95rem;
+        .header-nav a {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.9rem;
             font-weight: 400;
-            transition: 0.3s ease;
+            color: var(--gray-lighter);
+            transition: var(--transition);
             position: relative;
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            opacity: 0.7;
         }
-        nav a::after {
+        .header-nav a::after {
             content: '';
             position: absolute;
             bottom: -4px;
             right: 0;
             width: 0;
             height: 2px;
-            background: var(--gold-gradient);
-            transition: 0.3s ease;
-            border-radius: 2px;
+            background: var(--white);
+            transition: var(--transition);
         }
-        nav a:hover {
-            opacity: 1;
+        .header-nav a:hover {
+            color: var(--white);
         }
-        nav a:hover::after {
+        .header-nav a:hover::after {
             width: 100%;
         }
 
-        .header-icons {
+        .header-actions {
             display: flex;
-            gap: 1.5rem;
             align-items: center;
+            gap: 1.5rem;
         }
-        .header-icons i {
-            font-size: 1.2rem;
-            color: var(--text-silver);
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Ardakan', sans-serif !important;
+        .header-actions a {
+            color: var(--gray-lighter);
+            transition: var(--transition);
+            font-size: 1rem;
         }
-        .header-icons i:hover {
-            color: var(--text-dark);
-            transform: scale(1.1);
+        .header-actions a:hover {
+            color: var(--white);
         }
 
         .menu-toggle {
             display: none;
-            font-size: 1.6rem;
             background: none;
             border: none;
-            color: var(--text-dark);
+            color: var(--white);
+            font-size: 1.5rem;
             cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 68px;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(12px);
+            padding: 2rem;
+            border-bottom: 1px solid var(--gray);
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 999;
+            transform: translateY(-120%);
+            transition: transform 0.4s ease;
+        }
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+        .mobile-menu a {
+            font-family: 'Estedad', sans-serif;
+            font-size: 1.1rem;
+            color: var(--gray-lighter);
+            transition: var(--transition);
+        }
+        .mobile-menu a:hover {
+            color: var(--white);
         }
 
         /* ===== HERO ===== */
-        .hero-slider {
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
-            width: 100%;
-            height: 92vh;
             overflow: hidden;
-            margin-bottom: 4rem;
-            background: var(--bg-dark);
+            margin-top: 68px;
         }
 
-        .slide {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 1;
-            z-index: 1;
-        }
-
-        .slide-bg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.4) saturate(0.7) contrast(1.2);
-        }
-
-        .slide-overlay {
+        .hero-bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(10, 12, 16, 0.6) 0%, rgba(10, 12, 16, 0.9) 100%);
-            z-index: 1;
+            background:
+                linear-gradient(180deg, rgba(10, 10, 10, 0.2) 0%, rgba(10, 10, 10, 0.9) 100%),
+                radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.03) 0%, transparent 60%),
+                url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"%3E%3Crect fill="%23111111" width="1200" height="800"/%3E%3Ccircle cx="400" cy="400" r="350" fill="%23222222" opacity="0.4"/%3E%3C/svg%3E') center/cover;
+            background-blend-mode: overlay;
+            transform: scale(1.03);
+            transition: transform 10s ease;
+        }
+        .hero:hover .hero-bg {
+            transform: scale(1);
         }
 
-        /* افکت نورپردازی روی اسلایدر */
-        .slide::after {
-            content: '';
+        .hero-glow {
             position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 70% 80%, rgba(253, 160, 133, 0.08) 0%, transparent 60%);
-            z-index: 1;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             pointer-events: none;
         }
 
-        .slide-content {
-            position: absolute;
-            bottom: 20%;
-            right: 8%;
-            z-index: 3;
-            max-width: 650px;
-            animation: fadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(60px) scale(0.96);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .slide-content h1 {
-            font-size: 5rem;
-            font-weight: 900;
-            margin-bottom: 0.2rem;
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 1px;
-            text-shadow: var(--glow-gold);
-        }
-        .slide-content .genre {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 0.6rem;
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            font-family: 'Ardakan', sans-serif !important;
-        }
-        .slide-content .genre i {
-            margin-left: 0.3rem;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .slide-content p {
-            font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1.5rem;
-            max-width: 500px;
-            font-family: 'Ardakan', sans-serif !important;
-        }
-        .slide-content .status {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 0.3rem 1.6rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 1.8rem;
-            font-family: 'Ardakan', sans-serif !important;
-            backdrop-filter: blur(4px);
-        }
-
-        .btn {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: #fff;
-            padding: 0.9rem 3.2rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            text-decoration: none;
-            border-radius: 8px;
-            backdrop-filter: blur(8px);
-            cursor: pointer;
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            letter-spacing: 0.5px;
+        .hero-content {
             position: relative;
-            overflow: hidden;
-        }
-        .btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gold-gradient);
-            opacity: 0;
-            transition: 0.5s ease;
-            border-radius: 8px;
-        }
-        .btn:hover::before {
-            opacity: 0.15;
-        }
-        .btn:hover {
-            border-color: rgba(253, 160, 133, 0.4);
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: var(--glow-gold);
-            background: rgba(255, 255, 255, 0.1);
+            z-index: 2;
+            text-align: center;
+            max-width: 820px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease 0.4s both;
         }
 
-        /* ===== بخش‌ها ===== */
-        .section-title {
-            font-size: 2.6rem;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-tag {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.8rem;
+            color: var(--gray-lighter);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+        }
+
+        .hero-title {
+            font-family: 'Ardakan', sans-serif;
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
             font-weight: 700;
-            margin-bottom: 2.8rem;
-            border-right: 4px solid;
-            border-image: var(--gold-gradient) 1;
-            padding-right: 1.2rem;
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            color: var(--text-dark);
-            letter-spacing: 0.5px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            line-height: 1.08;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
         }
 
-        /* ===== کارت‌های بازی ===== */
+        .hero-title span {
+            color: var(--gray-lighter);
+        }
+
+        .hero-desc {
+            font-family: 'Estedad', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--gray-lighter);
+            max-width: 500px;
+            margin: 0 auto 1.2rem;
+            line-height: 1.9;
+        }
+
+        .hero-meta {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--gray-light);
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+        .hero-meta span {
+            margin: 0 0.5rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 48px;
+            border: 1.5px solid var(--white);
+            border-radius: 4px;
+            font-family: 'Estedad', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            background: transparent;
+            color: var(--white);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(255, 255, 255, 0.06);
+        }
+
+        /* ===== GAMES ===== */
+        .games-section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Ardakan', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .section-title span {
+            color: var(--gray-lighter);
+        }
+
+        .section-sub {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--gray-light);
+        }
+
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin: 3rem 0 4rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
         }
 
         .game-card {
             position: relative;
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 14px;
+            border-radius: 8px;
             overflow: hidden;
-            transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid var(--border-glass);
-            box-shadow: var(--shadow-glass);
+            background: var(--dark-gray);
             cursor: pointer;
-            transform-style: preserve-3d;
-        }
-        .game-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gold-gradient);
-            opacity: 0;
-            transition: 0.6s ease;
-            border-radius: 14px;
-            z-index: 0;
-        }
-        .game-card:hover::before {
-            opacity: 0.06;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            border: 1px solid transparent;
         }
         .game-card:hover {
-            transform: translateY(-10px) scale(1.02) rotateX(2deg);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), var(--glow-gold);
-            border-color: rgba(253, 160, 133, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            border-color: var(--gray);
         }
 
-        .game-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        .game-card-image {
             position: relative;
-            z-index: 1;
-        }
-        .game-card:hover img {
-            transform: scale(1.08);
-        }
-
-        .game-card .card-info {
-            padding: 1.2rem 1.5rem 1.8rem;
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(0deg, rgba(255, 255, 255, 0.95) 40%, transparent);
-        }
-        .game-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            color: var(--text-dark);
-        }
-        .game-card .meta {
-            display: flex;
-            gap: 0.8rem;
-            color: var(--text-silver);
-            font-size: 0.85rem;
-            flex-wrap: wrap;
-            font-family: 'Ardakan', sans-serif !important;
-        }
-        .game-card .meta i {
-            margin-left: 0.3rem;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .game-card .card-arrow {
-            position: absolute;
-            left: 1.5rem;
-            bottom: 1.2rem;
-            font-size: 1.4rem;
-            color: var(--text-silver);
-            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 2;
-        }
-        .game-card:hover .card-arrow {
-            color: #fda085;
-            transform: translateX(-10px) scale(1.2);
-            text-shadow: var(--glow-gold);
-        }
-
-        /* ===== بازی ویژه ===== */
-        .featured-game {
-            display: flex;
-            gap: 3rem;
-            align-items: center;
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 0;
             overflow: hidden;
-            margin: 3rem 0 4rem;
-            border: 1px solid var(--border-glass);
-            box-shadow: var(--shadow-glass);
-            cursor: pointer;
-            transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            aspect-ratio: 16/9;
+            background: var(--dark);
         }
-        .featured-game:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1), var(--glow-gold);
-            border-color: rgba(253, 160, 133, 0.15);
-        }
-        .featured-game .art {
-            flex: 1.2;
-            min-height: 360px;
-            background-size: cover;
-            background-position: center;
-            transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .featured-game:hover .art {
-            transform: scale(1.04);
-        }
-        .featured-game .info {
-            flex: 1;
-            padding: 2.5rem 3.5rem;
-        }
-        .featured-game .info h2 {
+
+        .game-card-image .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--dark-gray), var(--dark));
+            color: var(--gray-light);
+            font-family: 'Ardakan', sans-serif;
             font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 0.3rem;
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            transition: transform 0.6s ease;
         }
-        .featured-game .info p {
-            color: var(--text-silver);
-            margin-bottom: 1rem;
-            font-family: 'Ardakan', sans-serif !important;
-        }
-        .featured-game .info .meta {
-            color: var(--text-silver);
-            font-size: 0.9rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            margin-bottom: 1.8rem;
-            font-family: 'Ardakan', sans-serif !important;
-        }
-        .featured-game .info .meta i {
-            margin-left: 0.4rem;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .game-card:hover .placeholder {
+            transform: scale(1.05);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            color: var(--text-dark);
-            padding: 0.7rem 2.2rem;
-            border-radius: 8px;
-            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            display: inline-block;
-            text-decoration: none;
-            cursor: pointer;
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            font-weight: 400;
-            letter-spacing: 0.3px;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-outline::before {
-            content: '';
+        .game-card-overlay {
             position: absolute;
             inset: 0;
-            background: var(--gold-gradient);
+            background: rgba(0, 0, 0, 0.6);
             opacity: 0;
-            transition: 0.4s ease;
-            border-radius: 8px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .btn-outline:hover::before {
-            opacity: 0.08;
-        }
-        .btn-outline:hover {
-            border-color: rgba(253, 160, 133, 0.3);
-            transform: scale(1.04);
-            box-shadow: var(--glow-gold);
+        .game-card:hover .game-card-overlay {
+            opacity: 1;
         }
 
-        /* ===== استودیو ===== */
-        .studio-bio {
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 4rem 2.5rem;
-            margin: 4rem 0 2rem;
-            border: 1px solid var(--border-glass);
-            box-shadow: var(--shadow-glass);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        .game-card-overlay i {
+            font-size: 2.5rem;
+            color: var(--white);
+            transform: translateY(20px) scale(0.8);
+            transition: var(--transition);
         }
-        .studio-bio::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 50% 30%, rgba(253, 160, 133, 0.05) 0%, transparent 70%);
-            pointer-events: none;
+        .game-card:hover .game-card-overlay i {
+            transform: translateY(0) scale(1);
         }
-        .studio-bio h2 {
-            font-size: 3.2rem;
+
+        .game-card-info {
+            padding: 1.2rem 1.2rem 1.5rem;
+        }
+
+        .game-card-name {
+            font-family: 'Ardakan', sans-serif;
+            font-size: 1.15rem;
             font-weight: 700;
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 1px;
-        }
-        .studio-bio p {
-            max-width: 700px;
-            margin: 1.2rem auto;
-            color: var(--text-silver);
-            font-family: 'Ardakan', sans-serif !important;
-            font-size: 1.05rem;
+            margin-bottom: 0.2rem;
         }
 
-        /* ===== فوتر ===== */
-        footer {
-            background: var(--bg-dark);
-            border-top: 1px solid var(--border-dark);
-            padding: 3rem 2rem 1.5rem;
-            margin-top: 4rem;
+        .game-card-genre {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--gray-light);
         }
+
+        /* ===== ABOUT ===== */
+        .about-section {
+            padding: 60px 0 80px;
+            border-top: 1px solid var(--gray);
+        }
+
+        .about-content {
+            max-width: 700px;
+        }
+
+        .about-title {
+            font-family: 'Ardakan', sans-serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .about-text {
+            font-family: 'Estedad', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--gray-lighter);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-link {
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--gray-lighter);
+            border-bottom: 1px solid var(--gray);
+            padding-bottom: 4px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .about-link:hover {
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid var(--gray);
+            padding: 40px 0 30px;
+            background: var(--black);
+        }
+
         .footer-content {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 1.5rem;
         }
+
+        .footer-logo {
+            font-family: 'Ardakan', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .footer-logo span {
+            color: var(--gray-lighter);
+        }
+
         .footer-nav {
             display: flex;
             gap: 2rem;
-            flex-wrap: wrap;
+            list-style: none;
         }
         .footer-nav a {
-            color: rgba(255, 255, 255, 0.4);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            cursor: pointer;
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
+            font-family: 'Estedad', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--gray-lighter);
+            transition: var(--transition);
         }
         .footer-nav a:hover {
-            color: #fff;
+            color: var(--white);
         }
-        .social-icons {
+
+        .footer-social {
             display: flex;
             gap: 1.2rem;
         }
-        .social-icons i {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.2);
-            transition: 0.3s;
-            cursor: pointer;
-            font-family: 'Ardakan', sans-serif !important;
+        .footer-social a {
+            color: var(--gray-light);
+            font-size: 1.2rem;
+            transition: var(--transition);
         }
-        .social-icons i:hover {
-            color: #fda085;
-            transform: translateY(-3px);
-            text-shadow: var(--glow-gold);
+        .footer-social a:hover {
+            color: var(--white);
+            transform: translateY(-2px);
         }
-        .footer-copy {
+
+        .footer-bottom {
             text-align: center;
-            color: rgba(255, 255, 255, 0.15);
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray);
+            font-family: 'Estedad', sans-serif;
             font-size: 0.8rem;
-            margin-top: 2rem;
-            letter-spacing: 0.5px;
-            font-family: 'Ardakan', sans-serif !important;
+            font-weight: 400;
+            color: var(--gray-light);
         }
 
-        /* ===== صفحه اختصاصی ===== */
-        .game-detail-page {
-            display: none;
-            padding: 2rem 0 4rem;
-        }
-        .game-detail-page.active {
-            display: block;
-        }
-
-        .game-detail-hero {
-            position: relative;
-            width: 100%;
-            height: 70vh;
-            overflow: hidden;
-            border-radius: 16px;
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow-dark);
-        }
-        .game-detail-hero img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.3) saturate(0.6);
-        }
-        .game-detail-hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 60% 80%, rgba(253, 160, 133, 0.06) 0%, transparent 60%);
-            z-index: 1;
-        }
-        .game-detail-hero .hero-info {
-            position: absolute;
-            bottom: 15%;
-            right: 8%;
-            z-index: 2;
-            max-width: 700px;
-        }
-        .game-detail-hero .hero-info h1 {
-            font-size: 5rem;
-            font-weight: 900;
-            margin-bottom: 0.3rem;
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .game-detail-hero .hero-info .meta-detail {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 1rem;
-            margin: 1rem 0 1.5rem;
-            font-family: 'Ardakan', sans-serif !important;
-        }
-        .game-detail-hero .hero-info .meta-detail i {
-            margin-left: 0.5rem;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .game-detail-hero .hero-info .status-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 0.4rem 1.6rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.4);
-            font-family: 'Ardakan', sans-serif !important;
-            backdrop-filter: blur(4px);
-        }
-
-        .detail-section {
-            margin-bottom: 3rem;
-        }
-        .detail-section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            border-right: 4px solid;
-            border-image: var(--gold-gradient) 1;
-            padding-right: 1rem;
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .detail-section p {
-            color: var(--text-silver);
-            line-height: 2.2;
-            max-width: 800px;
-            white-space: pre-line;
-            font-family: 'Ardakan', sans-serif !important;
-            font-size: 1.05rem;
-        }
-
-        .detail-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        .detail-gallery img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid var(--border-glass);
-            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
-            box-shadow: var(--shadow-glass);
-        }
-        .detail-gallery img:hover {
-            transform: scale(1.05);
-            border-color: rgba(253, 160, 133, 0.2);
-            box-shadow: var(--glow-gold);
-        }
-
-        .detail-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        .detail-features .feature-item {
-            background: var(--bg-card);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 1.8rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-glass);
-            box-shadow: var(--shadow-glass);
-            text-align: center;
-            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .detail-features .feature-item:hover {
-            transform: translateY(-4px);
-            border-color: rgba(253, 160, 133, 0.15);
-            box-shadow: var(--glow-gold);
-        }
-        .detail-features .feature-item i {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .detail-features .feature-item h4 {
-            font-weight: 700;
-            color: var(--text-dark);
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-        }
-        .detail-features .feature-item p {
-            color: var(--text-silver);
-            font-size: 0.9rem;
-            margin-top: 0.3rem;
-            font-family: 'Ardakan', sans-serif !important;
-        }
-
-        .detail-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 0.5rem;
-        }
-        .detail-tags span {
-            background: rgba(253, 160, 133, 0.06);
-            border: 1px solid rgba(253, 160, 133, 0.08);
-            padding: 0.3rem 1.4rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--text-silver);
-            font-family: 'Ardakan', sans-serif !important;
-        }
-
-        .back-home-btn {
-            display: inline-block;
-            color: var(--text-silver);
-            text-decoration: none;
-            margin-bottom: 2rem;
-            transition: 0.4s;
-            cursor: pointer;
-            border: 1px solid var(--border-glass);
-            padding: 0.5rem 1.8rem;
-            border-radius: 8px;
-            background: var(--bg-card);
-            backdrop-filter: blur(8px);
-            font-family: 'Estedad', 'Ardakan', sans-serif !important;
-            box-shadow: var(--shadow-glass);
-        }
-        .back-home-btn:hover {
-            color: var(--text-dark);
-            border-color: rgba(253, 160, 133, 0.2);
-            box-shadow: var(--glow-gold);
-            transform: translateX(-4px);
-        }
-
-        /* ===== ریسپانسیو ===== */
-        @media (max-width: 992px) {
-            .slide-content h1 {
-                font-size: 3.5rem;
-            }
-            .featured-game {
-                flex-direction: column;
-            }
-            .featured-game .art {
-                width: 100%;
-                min-height: 240px;
-            }
-            .featured-game .info {
-                padding: 2rem;
-            }
-            .game-detail-hero {
-                height: 50vh;
-            }
-            .game-detail-hero .hero-info h1 {
-                font-size: 3.5rem;
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .games-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            nav {
+            .header-nav {
                 display: none;
-                flex-direction: column;
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(20px);
-                position: absolute;
-                top: 70px;
-                right: 0;
-                width: 100%;
-                padding: 1.5rem;
-                border-bottom: 1px solid var(--border-glass);
-                gap: 1rem;
-            }
-            nav.open {
-                display: flex;
             }
             .menu-toggle {
                 display: block;
             }
-            .header-icons .fa-search {
-                display: none;
+            .mobile-menu {
+                display: flex;
             }
-            .hero-slider {
-                height: 70vh;
+
+            .hero-title {
+                font-size: clamp(2.2rem, 10vw, 3.5rem);
             }
-            .slide-content {
-                bottom: 12%;
-                right: 5%;
-                max-width: 90%;
+            .hero-desc {
+                font-size: 0.95rem;
             }
-            .slide-content h1 {
-                font-size: 2.6rem;
-            }
+
             .games-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 1.2rem;
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
-            .section-title {
-                font-size: 2rem;
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
+
             .footer-content {
                 flex-direction: column;
-                gap: 1.5rem;
-                align-items: center;
+                text-align: center;
             }
-            .game-detail-hero .hero-info h1 {
-                font-size: 2.6rem;
-            }
-            .game-detail-hero .hero-info {
-                right: 5%;
-                bottom: 10%;
+            .footer-nav {
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
 
         @media (max-width: 480px) {
-            .games-grid {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 0 1.2rem;
             }
-            .slide-content h1 {
-                font-size: 2.2rem;
+            .header {
+                padding: 0 1.2rem;
             }
-            .btn {
-                padding: 0.6rem 2rem;
+            .btn-primary {
+                padding: 12px 32px;
+                font-size: 0.85rem;
             }
-            .game-detail-hero {
-                height: 40vh;
-            }
-            .game-detail-hero .hero-info h1 {
-                font-size: 2.2rem;
+            .hero-meta {
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -954,333 +627,234 @@
 <body>
 
     <!-- ===== HEADER ===== -->
-    <header>
-        <a class="logo" id="homeLogo">Zerox <span>games | original</span></a>
-        <nav id="mainNav">
-            <a class="nav-link" data-page="home">خانه</a>
-            <a class="nav-link" data-page="games">بازی‌ها</a>
-            <a class="nav-link" data-page="about">درباره ما</a>
-            <a class="nav-link" data-page="contact">تماس</a>
-        </nav>
-        <div class="header-icons">
-            <i class="fas fa-search"></i>
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <header class="header">
+        <div class="header-logo">
+            ZER0X <span>GAME</span>
+        </div>
+
+        <ul class="header-nav">
+            <li><a href="#home">خانه</a></li>
+            <li><a href="#games">بازی‌ها</a></li>
+            <li><a href="#about">درباره ما</a></li>
+        </ul>
+
+        <div class="header-actions">
+            <a href="#"><i class="fa-solid fa-search"></i></a>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <main>
+    <!-- ===== MOBILE MENU ===== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home">خانه</a>
+        <a href="#games">بازی‌ها</a>
+        <a href="#about">درباره ما</a>
+    </div>
 
-        <!-- ===== HOME ===== -->
-        <div id="page-home" class="page-content">
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-glow"></div>
 
-            <!-- HERO -->
-            <section class="hero-slider">
-                <div class="slide active">
-                    <img src="https://uploadkon.ir/uploads/dec602_26Negar-1788164380627.jpg" alt="SilentGears" class="slide-bg" />
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content">
-                        <h1>چرخ‌دنده‌ساکت</h1>
-                        <div class="genre"><i class="fas fa-tag"></i> اکشن-ماجرایی • نقش‌آفرینی</div>
-                        <p>یک بازی پساآخرالزمانی با گیم‌پلی ریتم‌محور و داستانی عمیق...</p>
-                        <span class="status"><i class="fas fa-clock"></i> در دست توسعه</span>
-                        <button class="btn game-detail-btn" data-game="silent-gears">مشاهده بازی</button>
-                    </div>
-                </div>
-            </section>
+        <div class="hero-content">
+            <p class="hero-tag">بازی منتخب</p>
+            <h1 class="hero-title">
+                NEBULA <span>ZERO</span>
+            </h1>
+            <p class="hero-desc">
+                یک تجربه سینمایی از دنیای تاریک و بی‌نهایت
+            </p>
+            <p class="hero-meta">
+                Action <span>•</span> PC <span>•</span> Coming Soon
+            </p>
+            <a href="#" class="btn-primary">
+                مشاهده بازی
+            </a>
+        </div>
+    </section>
 
-            <!-- GAMES -->
-            <div class="container" id="games">
-                <h2 class="section-title">بازی‌های منتخب</h2>
-                <div class="games-grid" id="gamesGrid"></div>
+    <!-- ===== GAMES ===== -->
+    <section class="games-section" id="games">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    بازی‌های <span>ما</span>
+                </h2>
+                <span class="section-sub">همه بازی‌های ZER0X</span>
             </div>
 
-            <!-- FEATURED -->
-            <div class="container">
-                <h2 class="section-title">جدیدترین بازی</h2>
-                <div class="featured-game game-detail-btn" data-game="silent-gears" id="featuredGame">
-                    <div class="art" id="featuredArt" style="background-image: url('https://uploadkon.ir/uploads/dec602_26Negar-1788164380627.jpg');"></div>
-                    <div class="info" id="featuredInfo">
-                        <h2 id="featuredTitle">چرخ‌دنده‌ساکت</h2>
-                        <p id="featuredDesc">یک بازی پساآخرالزمانی با گیم‌پلی ریتم‌محور و داستانی عمیق...</p>
-                        <div class="meta" id="featuredMeta">
-                            <span><i class="fas fa-tag"></i> <span id="featuredGenre">اکشن-ماجرایی • نقش‌آفرینی</span></span>
-                            <span><i class="fas fa-gamepad"></i> <span id="featuredPlatform">اندروید | PC</span></span>
-                            <span><i class="fas fa-clock"></i> <span id="featuredStatus">در دست توسعه</span></span>
+            <div class="games-grid">
+
+                <!-- Game 1 -->
+                <div class="game-card">
+                    <div class="game-card-image">
+                        <div class="placeholder">N</div>
+                        <div class="game-card-overlay">
+                            <i class="fa-solid fa-arrow-right"></i>
                         </div>
-                        <button class="btn-outline game-detail-btn" data-game="silent-gears">مشاهده بازی <i class="fas fa-arrow-left"></i></button>
+                    </div>
+                    <div class="game-card-info">
+                        <div class="game-card-name">NEBULA ZERO</div>
+                        <div class="game-card-genre">Action • Coming Soon</div>
                     </div>
                 </div>
-            </div>
 
-            <!-- STUDIO -->
-            <div class="container" id="about">
-                <div class="studio-bio">
-                    <h2>Zerox games | original</h2>
-                    <p>ما در Zerox، مرزهای خلاقیت را جابه‌جا می‌کنیم. با تکیه بر هنر، فناوری و داستان‌سرایی، تجربه‌هایی می‌سازیم که در ذهن بازیکنان می‌مانند.</p>
-                    <button class="btn-outline" style="margin-top:1rem;">درباره Zerox <i class="fas fa-arrow-left"></i></button>
+                <!-- Game 2 -->
+                <div class="game-card">
+                    <div class="game-card-image">
+                        <div class="placeholder">R</div>
+                        <div class="game-card-overlay">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="game-card-info">
+                        <div class="game-card-name">RELIC HUNTER</div>
+                        <div class="game-card-genre">Adventure • 2025</div>
+                    </div>
                 </div>
+
+                <!-- Game 3 -->
+                <div class="game-card">
+                    <div class="game-card-image">
+                        <div class="placeholder">C</div>
+                        <div class="game-card-overlay">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="game-card-info">
+                        <div class="game-card-name">CYBER STRIKE</div>
+                        <div class="game-card-genre">Shooter • 2026</div>
+                    </div>
+                </div>
+
+                <!-- Game 4 -->
+                <div class="game-card">
+                    <div class="game-card-image">
+                        <div class="placeholder">F</div>
+                        <div class="game-card-overlay">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="game-card-info">
+                        <div class="game-card-name">FROSTBOUND</div>
+                        <div class="game-card-genre">Survival • 2025</div>
+                    </div>
+                </div>
+
+                <!-- Game 5 -->
+                <div class="game-card">
+                    <div class="game-card-image">
+                        <div class="placeholder">E</div>
+                        <div class="game-card-overlay">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="game-card-info">
+                        <div class="game-card-name">ECHOES OF TIME</div>
+                        <div class="game-card-genre">RPG • 2026</div>
+                    </div>
+                </div>
+
+                <!-- Game 6 -->
+                <div class="game-card">
+                    <div class="game-card-image">
+                        <div class="placeholder">V</div>
+                        <div class="game-card-overlay">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="game-card-info">
+                        <div class="game-card-name">VOID RUNNER</div>
+                        <div class="game-card-genre">Platformer • 2025</div>
+                    </div>
+                </div>
+
             </div>
         </div>
+    </section>
 
-        <!-- ===== GAME DETAIL ===== -->
-        <div id="game-detail-container"></div>
-
-    </main>
+    <!-- ===== ABOUT ===== -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="about-title">
+                    ZER0X <span style="color:var(--gray-lighter);">GAME</span>
+                </h2>
+                <p class="about-text">
+                    ما در ZER0X، مرزهای خلاقیت را جابه‌جا می‌کنیم و تجربه‌های
+                    سینمایی و غوطه‌وری را برای گیمرها خلق می‌کنیم.
+                </p>
+                <a href="#" class="about-link">
+                    درباره ما <i class="fa-solid fa-arrow-left"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="footer-content">
-            <div class="logo" style="font-size:1.4rem;">Zerox <span>games | original</span></div>
-            <div class="footer-nav">
-                <a class="nav-link" data-page="home">خانه</a>
-                <a class="nav-link" data-page="games">بازی‌ها</a>
-                <a class="nav-link" data-page="about">درباره ما</a>
-                <a class="nav-link" data-page="contact">تماس</a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    ZER0X <span>GAME</span>
+                </div>
+
+                <ul class="footer-nav">
+                    <li><a href="#home">خانه</a></li>
+                    <li><a href="#games">بازی‌ها</a></li>
+                    <li><a href="#about">درباره ما</a></li>
+                </ul>
+
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitch"></i></a>
+                    <a href="#"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
             </div>
-            <div class="social-icons">
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-telegram"></i>
-                <i class="fab fa-youtube"></i>
-                <i class="fab fa-discord"></i>
-                <i class="fab fa-x-twitter"></i>
+
+            <div class="footer-bottom">
+                © 2026 ZER0X GAME · Create Beyond Limits
             </div>
-        </div>
-        <div class="footer-copy">
-            Create Beyond Limits. <br /> © 2026 Zerox games | original
         </div>
     </footer>
 
     <!-- ===== SCRIPT ===== -->
     <script>
-        (function() {
-            const gamesData = [{
-                id: 1,
-                title: "SilentGears | چرخ‌دنده‌ساکت",
-                name: "SilentGears",
-                persianName: "چرخ‌دنده‌ساکت",
-                slug: "silent-gears",
-                status: "در دست توسعه",
-                genre: "اکشن-ماجرایی • نقش‌آفرینی",
-                desc: "یک بازی پساآخرالزمانی با گیم‌پلی ریتم‌محور و داستانی عمیق...",
-                platform: "اندروید | PC",
-                cover: "https://uploadkon.ir/uploads/dec602_26Negar-1788164380627.jpg",
-                gallery: [
-                    "https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg",
-                    "https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg"
-                ],
-                releaseDate: "در دست توسعه • تاریخ انتشار نامشخص",
-                duration: "۱۲ تا ۱۶ ساعت",
-                endings: "۳ پایان مختلف",
-                mode: "تکنفره، روایت خطی",
-                developer: "Zerox Studios",
-                fullDesc: "🎮 SilentGears | چرخ‌دنده‌ساکت یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط Zerox Studios ساخته شده.\n\nداستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخ‌دنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از ۳ پایان مختلف ختم می‌شود.\n\nبازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌ساکت می‌برد.",
-                tags: ["اکشن-ماجرایی", "نقش‌آفرینی", "ریتم‌محور", "پساآخرالزمانی", "تکنفره"]
-            }];
+        // منوی موبایل
+        const toggle = document.getElementById('menuToggle');
+        const mobile = document.getElementById('mobileMenu');
 
-            const pageHome = document.getElementById('page-home');
-            const detailContainer = document.getElementById('game-detail-container');
+        toggle.addEventListener('click', () => {
+            mobile.classList.toggle('active');
+            const icon = toggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
 
-            function getGameBySlug(slug) {
-                return gamesData.find(g => g.slug === slug);
-            }
+        // بستن منو با کلیک روی لینک
+        mobile.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobile.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-xmark');
+            });
+        });
 
-            function renderGameCards() {
-                const grid = document.getElementById('gamesGrid');
-                if (!grid) return;
-                grid.innerHTML = '';
-                gamesData.forEach(game => {
-                    const card = document.createElement('div');
-                    card.className = 'game-card game-detail-btn';
-                    card.dataset.game = game.slug;
-                    card.innerHTML = `
-                        <img src="${game.cover}" alt="${game.persianName}" />
-                        <div class="card-info">
-                            <h3>${game.persianName}</h3>
-                            <div class="meta"><i class="fas fa-tag"></i> ${game.genre} <i class="fas fa-circle" style="font-size:0.3rem; color:#d0d5e0;"></i> <i class="fas fa-clock"></i> ${game.status}</div>
-                            <div class="meta"><i class="fas fa-gamepad"></i> ${game.platform}</div>
-                            <i class="fas fa-arrow-left card-arrow"></i>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
-            }
-
-            function renderGameDetail(slug) {
-                const game = getGameBySlug(slug);
-                if (!game) return;
-
-                let galleryHTML = '';
-                if (game.gallery && game.gallery.length > 0) {
-                    game.gallery.forEach(img => {
-                        galleryHTML += `<img src="${img}" alt="Screenshot" />`;
-                    });
+        // اسکرول نرم
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
-
-                let tagsHTML = '';
-                if (game.tags && game.tags.length > 0) {
-                    game.tags.forEach(tag => {
-                        tagsHTML += `<span>${tag}</span>`;
-                    });
-                }
-
-                const features = [
-                    { icon: 'fa-clock', label: 'مدت زمان', value: game.duration },
-                    { icon: 'fa-flag', label: 'پایان‌ها', value: game.endings },
-                    { icon: 'fa-users', label: 'حالت بازی', value: game.mode },
-                    { icon: 'fa-code', label: 'توسعه‌دهنده', value: game.developer }
-                ];
-
-                let featuresHTML = '';
-                features.forEach(f => {
-                    if (f.value) {
-                        featuresHTML += `
-                            <div class="feature-item">
-                                <i class="fas ${f.icon}"></i>
-                                <h4>${f.label}</h4>
-                                <p>${f.value}</p>
-                            </div>
-                        `;
-                    }
-                });
-
-                detailContainer.innerHTML = `
-                    <div class="container">
-                        <button class="back-home-btn" id="backHomeBtn"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
-                        
-                        <div class="game-detail-hero">
-                            <img src="${game.cover}" alt="${game.persianName}" />
-                            <div class="hero-info">
-                                <span class="status-badge"><i class="fas fa-clock"></i> ${game.status}</span>
-                                <h1>${game.persianName}</h1>
-                                <div class="meta-detail">
-                                    <span><i class="fas fa-tag"></i> ${game.genre}</span>
-                                    <span><i class="fas fa-gamepad"></i> ${game.platform}</span>
-                                    <span><i class="fas fa-calendar"></i> ${game.releaseDate}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="detail-section">
-                            <h2>درباره بازی</h2>
-                            <p>${game.fullDesc || game.desc}</p>
-                        </div>
-
-                        ${game.tags ? `
-                        <div class="detail-section">
-                            <h2>برچسب‌ها</h2>
-                            <div class="detail-tags">${tagsHTML}</div>
-                        </div>
-                        ` : ''}
-
-                        <div class="detail-section">
-                            <h2>ویژگی‌های بازی</h2>
-                            <div class="detail-features">${featuresHTML}</div>
-                        </div>
-
-                        <div class="detail-section">
-                            <h2>گالری تصاویر</h2>
-                            <div class="detail-gallery">${galleryHTML}</div>
-                        </div>
-
-                        <div class="detail-section">
-                            <h2>بازی‌های دیگر Zerox</h2>
-                            <div class="games-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));" id="otherGamesGrid">
-                                ${gamesData.filter(g => g.slug !== slug).map(g => `
-                                    <div class="game-card game-detail-btn" data-game="${g.slug}">
-                                        <img src="${g.cover}" alt="${g.persianName}" />
-                                        <div class="card-info">
-                                            <h3>${g.persianName}</h3>
-                                            <i class="fas fa-arrow-left card-arrow"></i>
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    </div>
-                `;
-
-                pageHome.style.display = 'none';
-                detailContainer.style.display = 'block';
-                detailContainer.scrollIntoView({ behavior: 'smooth' });
-
-                document.getElementById('backHomeBtn').addEventListener('click', showHome);
-                document.querySelectorAll('#otherGamesGrid .game-detail-btn').forEach(el => {
-                    el.addEventListener('click', function() {
-                        const gameSlug = this.dataset.game;
-                        if (gameSlug) renderGameDetail(gameSlug);
-                    });
-                });
-            }
-
-            function showHome() {
-                pageHome.style.display = 'block';
-                detailContainer.style.display = 'none';
-                detailContainer.innerHTML = '';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-
-            function init() {
-                renderGameCards();
-
-                if (gamesData.length > 0) {
-                    const first = gamesData[0];
-                    const featured = document.getElementById('featuredGame');
-                    if (featured) featured.dataset.game = first.slug;
-                    const art = document.getElementById('featuredArt');
-                    if (art) art.style.backgroundImage = `url('${first.cover}')`;
-                    const title = document.getElementById('featuredTitle');
-                    if (title) title.textContent = first.persianName;
-                    const desc = document.getElementById('featuredDesc');
-                    if (desc) desc.textContent = first.desc;
-                    const genre = document.getElementById('featuredGenre');
-                    if (genre) genre.textContent = first.genre;
-                    const platform = document.getElementById('featuredPlatform');
-                    if (platform) platform.textContent = first.platform;
-                    const status = document.getElementById('featuredStatus');
-                    if (status) status.textContent = first.status;
-                }
-
-                document.addEventListener('click', function(e) {
-                    const target = e.target.closest('.game-detail-btn');
-                    if (target && target.dataset.game) {
-                        e.preventDefault();
-                        renderGameDetail(target.dataset.game);
-                    }
-                });
-
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', function() {
-                        const page = this.dataset.page;
-                        if (page === 'home') {
-                            showHome();
-                        } else if (page === 'games') {
-                            showHome();
-                            setTimeout(() => {
-                                document.getElementById('games').scrollIntoView({ behavior: 'smooth' });
-                            }, 100);
-                        } else if (page === 'about') {
-                            showHome();
-                            setTimeout(() => {
-                                document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-                            }, 100);
-                        }
-                        document.getElementById('mainNav').classList.remove('open');
-                    });
-                });
-
-                document.getElementById('homeLogo').addEventListener('click', showHome);
-
-                const toggle = document.getElementById('menuToggle');
-                const nav = document.getElementById('mainNav');
-                toggle.addEventListener('click', () => {
-                    nav.classList.toggle('open');
-                });
-            }
-
-            init();
-            console.log('🔥 Zerox games | original - نسخه لوکس با افکت‌های شیشه‌ای و رنگ‌بندی طلایی-نقره‌ای');
-        })();
+            });
+        });
     </script>
 
 </body>
-                    </html>
+</html>
