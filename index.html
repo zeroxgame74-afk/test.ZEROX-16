@@ -92,26 +92,9 @@
       0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
       50% { transform: translate(-50%, -50%) translateY(-15px); }
     }
-    @keyframes spinSlow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
     @keyframes shimmer {
       0% { background-position: -200% center; }
       100% { background-position: 200% center; }
-    }
-    @keyframes btnRipple {
-      0% { transform: scale(0); opacity: 1; }
-      100% { transform: scale(4); opacity: 0; }
-    }
-    @keyframes borderGlow {
-      0%, 100% { border-color: #222; }
-      50% { border-color: #555; }
-    }
-    @keyframes textGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
 
     /* کلاس‌های انیمیشن */
@@ -595,7 +578,7 @@
     }
 
     /* ========================================== */
-    /* ===== صفحه جستجو (آیکون بزرگ و ثابت) ===== */
+    /* ===== صفحه جستجو (ترتیب درست) ===== */
     /* ========================================== */
     .search-page {
       padding: 3rem 0 5rem;
@@ -607,7 +590,7 @@
       position: relative;
     }
 
-    /* آیکون بزرگ و ثابت */
+    /* 1. آیکون بزرگ و ثابت */
     .search-icon-wrapper {
       position: fixed;
       top: 50%;
@@ -630,7 +613,7 @@
       border: none;
     }
 
-    /* عنوان */
+    /* 2. عنوان + 3. زیرعنوان */
     .search-page .search-header {
       margin-bottom: 2.5rem;
       position: relative;
@@ -650,7 +633,7 @@
       margin-top: 0.3rem;
     }
 
-    /* باکس جستجو */
+    /* 4. باکس جستجو */
     .search-page .search-box {
       position: relative;
       width: 100%;
@@ -695,7 +678,7 @@
       color: #888;
     }
 
-    /* تعداد نتایج */
+    /* 5. تعداد نتایج */
     .search-page .results-count {
       color: #555;
       font-size: 0.85rem;
@@ -708,7 +691,7 @@
       font-weight: 700;
     }
 
-    /* پلیس هولدر */
+    /* 6. پیام پیش‌فرض */
     .search-page .search-placeholder {
       grid-column: 1/-1;
       text-align: center;
@@ -1266,11 +1249,12 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- ===== صفحه جستجو (آیکون بزرگ و ثابت) ===== -->
+  <!-- ===== صفحه جستجو (ترتیب درست) ===== -->
   <!-- ========================================== -->
   <div class="page" id="pageSearch">
     <div class="container search-page">
-      <!-- آیکون بزرگ و ثابت -->
+      
+      <!-- 1. آیکون بزرگ و ثابت -->
       <div class="search-icon-wrapper">
         <img 
           src="https://uploadkon.ir/uploads/025e02_261788393401374.png" 
@@ -1281,13 +1265,14 @@
         />
       </div>
 
-      <!-- عنوان -->
+      <!-- 2. عنوان -->
       <div class="search-header">
         <h1>جستجوی بازی</h1>
+        <!-- 3. زیرعنوان -->
         <div class="sub">نام بازی مورد نظر را پیدا کن</div>
       </div>
 
-      <!-- باکس جستجو -->
+      <!-- 4. باکس جستجو -->
       <div class="search-box">
         <input 
           type="text" 
@@ -1298,18 +1283,19 @@
         <i class="fas fa-search search-icon"></i>
       </div>
 
-      <!-- تعداد نتایج -->
+      <!-- 5. تعداد نتایج -->
       <div class="results-count">
         <span id="countNum">۰</span> نتیجه پیدا شد
       </div>
 
-      <!-- نتایج -->
+      <!-- 6. پیام پیش‌فرض -->
       <div class="results-grid" id="resultsGrid">
         <div class="search-placeholder">
           <i class="fas fa-gamepad"></i>
           <p>برای شروع جستجو، نام بازی را وارد کن...</p>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -1580,4 +1566,4 @@
   </script>
 
 </body>
-</html>
+  </html>
