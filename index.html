@@ -80,57 +80,10 @@
       from { opacity: 0; transform: translateX(40px); }
       to { opacity: 1; transform: translateX(0); }
     }
-    @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-40px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.02); }
-      50% { box-shadow: 0 0 40px rgba(255,255,255,0.08); }
-    }
-    @keyframes float {
-      0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
-      50% { transform: translate(-50%, -50%) translateY(-15px); }
-    }
     @keyframes shimmer {
       0% { background-position: -200% center; }
       100% { background-position: 200% center; }
     }
-
-    /* کلاس‌های انیمیشن */
-    .animate-fade-up {
-      animation: fadeUp 0.8s ease forwards;
-      opacity: 0;
-    }
-    .animate-fade-down {
-      animation: fadeDown 0.6s ease forwards;
-      opacity: 0;
-    }
-    .animate-scale-in {
-      animation: scaleIn 0.6s ease forwards;
-      opacity: 0;
-    }
-    .animate-slide-right {
-      animation: slideInRight 0.8s ease forwards;
-      opacity: 0;
-    }
-    .animate-slide-left {
-      animation: slideInLeft 0.8s ease forwards;
-      opacity: 0;
-    }
-    .animate-float {
-      animation: float 3s ease-in-out infinite;
-    }
-    .animate-pulse-glow {
-      animation: pulseGlow 2s ease-in-out infinite;
-    }
-
-    /* تاخیرها */
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-    .delay-4 { animation-delay: 0.4s; }
-    .delay-5 { animation-delay: 0.5s; }
 
     /* ========================================== */
     /* ===== HEADER ===== */
@@ -164,19 +117,9 @@
       cursor: pointer;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       transition: 0.3s;
-      position: relative;
     }
-    .logo:hover { 
-      transform: scale(1.05) rotate(-2deg); 
-    }
-    .logo span { 
-      font-weight: 300; 
-      color: #555; 
-      transition: 0.3s;
-    }
-    .logo:hover span {
-      color: #888;
-    }
+    .logo:hover { transform: scale(1.05) rotate(-2deg); }
+    .logo span { font-weight: 300; color: #555; }
 
     .nav {
       display: flex;
@@ -207,16 +150,9 @@
       width: 100%;
       animation: shimmer 1.5s linear infinite;
     }
-    .nav a:hover { 
-      color: #fff; 
-      transform: translateY(-2px);
-    }
-    .nav a.active { 
-      color: #fff; 
-    }
-    .nav a.active::after { 
-      width: 100%;
-    }
+    .nav a:hover { color: #fff; transform: translateY(-2px); }
+    .nav a.active { color: #fff; }
+    .nav a.active::after { width: 100%; }
 
     .header-actions {
       display: flex;
@@ -259,7 +195,6 @@
       will-change: transform;
       z-index: 0;
       pointer-events: none;
-      transition: transform 0.1s;
     }
     .hero-bg::after {
       content: '';
@@ -319,9 +254,6 @@
       opacity: 0;
     }
 
-    /* ========================================== */
-    /* ===== دکمه ===== */
-    /* ========================================== */
     .btn-ghost {
       display: inline-block;
       padding: 1rem 3rem;
@@ -346,29 +278,11 @@
       transform: translateX(-100%);
       transition: 0.6s;
     }
-    .btn-ghost:hover::before {
-      transform: translateX(100%);
-    }
-    .btn-ghost::after {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      border: 1px solid transparent;
-      border-radius: 2px;
-      transition: 0.5s;
-    }
-    .btn-ghost:hover::after {
-      border-color: rgba(255,255,255,0.3);
-      box-shadow: 0 0 40px rgba(255,255,255,0.05);
-    }
+    .btn-ghost:hover::before { transform: translateX(100%); }
     .btn-ghost:hover {
       background: rgba(255,255,255,0.05);
       border-color: rgba(255,255,255,0.3);
       transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 10px 40px rgba(255,255,255,0.03);
-    }
-    .btn-ghost:active {
-      transform: scale(0.97);
     }
 
     /* ========================================== */
@@ -395,36 +309,18 @@
       border: 1px solid #181818;
       border-radius: 8px;
       overflow: hidden;
-      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: all 0.5s ease;
       cursor: pointer;
-      position: relative;
       animation: scaleIn 0.6s ease forwards;
       opacity: 0;
-      perspective: 800px;
     }
     .game-card:nth-child(1) { animation-delay: 0.1s; }
     .game-card:nth-child(2) { animation-delay: 0.2s; }
     .game-card:nth-child(3) { animation-delay: 0.3s; }
-    
-    .game-card::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: 8px;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.03), transparent);
-      opacity: 0;
-      transition: 0.6s;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .game-card:hover::before {
-      opacity: 1;
-    }
-    
     .game-card:hover {
       border-color: #444;
-      transform: translateY(-12px) scale(1.02) rotateX(2deg);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 40px rgba(255,255,255,0.02);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.8);
     }
     .game-card .card-img {
       width: 100%;
@@ -437,44 +333,36 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: transform 0.7s ease;
       pointer-events: none;
     }
-    .game-card:hover .card-img img { 
-      transform: scale(1.15); 
-    }
+    .game-card:hover .card-img img { transform: scale(1.15); }
     .game-card .card-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.75);
       opacity: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.6s ease;
-      backdrop-filter: blur(6px);
+      transition: opacity 0.5s ease;
+      backdrop-filter: blur(4px);
     }
-    .game-card:hover .card-overlay { 
-      opacity: 1; 
-    }
+    .game-card:hover .card-overlay { opacity: 1; }
     .game-card .card-overlay i {
       font-size: 3.5rem;
       color: #fff;
       opacity: 0;
-      transform: translateY(30px) scale(0.7) rotate(-20deg);
-      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: translateY(30px) scale(0.7);
+      transition: all 0.5s ease;
     }
     .game-card:hover .card-overlay i {
       opacity: 1;
-      transform: translateY(0) scale(1) rotate(0deg);
+      transform: translateY(0) scale(1);
     }
     .game-card .card-body {
       padding: 1.5rem;
       background: #0f0f0f;
-      transition: 0.3s;
-    }
-    .game-card:hover .card-body {
-      background: #121212;
     }
     .game-card .card-body h3 {
       font-size: 1.4rem;
@@ -482,10 +370,6 @@
       color: #fff;
       margin-bottom: 0.2rem;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      transition: 0.3s;
-    }
-    .game-card:hover .card-body h3 {
-      color: #eee;
     }
     .game-card .card-body .genre {
       font-size: 0.8rem;
@@ -502,11 +386,6 @@
       font-size: 0.7rem;
       color: #666;
       letter-spacing: 1px;
-      transition: 0.3s;
-    }
-    .game-card:hover .card-body .status {
-      border-color: #444;
-      color: #888;
     }
 
     /* ========================================== */
@@ -531,9 +410,6 @@
       word-wrap: break-word;
       animation: slideInRight 0.8s ease;
     }
-    .about-page .about-content {
-      width: 100%;
-    }
     .about-page .about-content p {
       color: #aaa;
       font-size: 1.05rem;
@@ -551,9 +427,7 @@
     .about-page .about-content p:nth-child(2) { animation-delay: 0.2s; }
     .about-page .about-content p:nth-child(3) { animation-delay: 0.3s; }
     .about-page .about-content p:nth-child(4) { animation-delay: 0.4s; }
-    .about-page .about-content p:last-of-type {
-      margin-bottom: 2.5rem;
-    }
+    .about-page .about-content p:last-of-type { margin-bottom: 2.5rem; }
     .about-page .about-tagline {
       font-size: 2rem;
       font-weight: 900;
@@ -578,7 +452,7 @@
     }
 
     /* ========================================== */
-    /* ===== صفحه جستجو (نسخه درست) ===== */
+    /* ===== صفحه جستجو (عکس بزرگ بالای عنوان) ===== */
     /* ========================================== */
     .search-page {
       padding: 3rem 0 5rem;
@@ -587,35 +461,31 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      position: relative;
     }
 
-    /* آیکون بزرگ و ثابت - وسط صفحه */
+    /* عکس بزرگ (بالای عنوان) */
     .search-icon-wrapper {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-      opacity: 0.1;
-      pointer-events: none;
+      margin-bottom: 2rem;
     }
     .search-logo-icon {
-      width: 200px;
-      height: 200px;
+      width: 180px;
+      height: 180px;
       object-fit: contain;
-      filter: grayscale(1) brightness(0.4);
+      filter: grayscale(1) brightness(0.6);
+      transition: 0.4s;
       border-radius: 0;
       background: transparent;
       padding: 0;
       border: none;
     }
+    .search-logo-icon:hover {
+      filter: grayscale(0) brightness(1);
+      transform: scale(1.05) rotate(-3deg);
+    }
 
-    /* عنوان و زیرعنوان */
+    /* عنوان */
     .search-page .search-header {
       margin-bottom: 2.5rem;
-      position: relative;
-      z-index: 1;
     }
     .search-page .search-header h1 {
       font-size: 2.8rem;
@@ -637,7 +507,6 @@
       width: 100%;
       max-width: 600px;
       margin: 0 auto 2rem;
-      z-index: 1;
     }
     .search-page .search-box input {
       width: 100%;
@@ -682,7 +551,6 @@
       font-size: 0.85rem;
       font-weight: 300;
       margin-bottom: 1.5rem;
-      z-index: 1;
     }
     .search-page .results-count span {
       color: #888;
@@ -715,8 +583,6 @@
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
     }
     .search-page .result-card {
       background: #0f0f0f;
@@ -786,7 +652,6 @@
       color: #222;
       display: block;
       margin-bottom: 1rem;
-      animation: float 3s ease-in-out infinite;
     }
     .search-page .not-found h2 {
       font-size: 1.6rem;
@@ -854,12 +719,6 @@
       border-color: #555;
       transform: translateX(-5px);
     }
-    .detail-hero .back-link i {
-      transition: 0.3s;
-    }
-    .detail-hero .back-link:hover i {
-      transform: translateX(-5px);
-    }
     .detail-hero h1 {
       font-size: 4.5rem;
       font-weight: 900;
@@ -890,11 +749,6 @@
     }
     .detail-info-box .item {
       color: #666;
-      transition: 0.3s;
-    }
-    .detail-info-box .item:hover {
-      color: #aaa;
-      transform: translateY(-3px);
     }
     .detail-info-box .item strong {
       color: #fff;
@@ -1026,9 +880,7 @@
       cursor: pointer;
       transition: 0.3s;
     }
-    .footer .logo:hover {
-      transform: scale(1.05);
-    }
+    .footer .logo:hover { transform: scale(1.05); }
     .footer-links {
       display: flex;
       gap: 2rem;
@@ -1051,12 +903,8 @@
       background: #fff;
       transition: 0.3s;
     }
-    .footer-links a:hover { 
-      color: #fff; 
-    }
-    .footer-links a:hover::after {
-      width: 100%;
-    }
+    .footer-links a:hover { color: #fff; }
+    .footer-links a:hover::after { width: 100%; }
 
     .footer-social {
       display: flex;
@@ -1085,9 +933,7 @@
       font-size: 1.2rem;
       transition: 0.3s;
     }
-    .footer-social a:hover i {
-      transform: rotate(10deg);
-    }
+    .footer-social a:hover i { transform: rotate(10deg); }
 
     .footer-copy {
       width: 100%;
@@ -1119,11 +965,11 @@
       .about-page .about-header h1 { font-size: 2.2rem; }
       .about-page .about-content p { font-size: 0.95rem; }
       .about-page .about-tagline { font-size: 1.5rem; }
-      
+
       /* جستجو موبایل */
       .search-logo-icon {
-        width: 140px;
-        height: 140px;
+        width: 130px;
+        height: 130px;
       }
       .search-page .search-header h1 {
         font-size: 2rem;
@@ -1146,11 +992,9 @@
       .about-page .about-tagline { font-size: 1.3rem; }
       .footer-social { gap: 0.8rem; }
       .footer-social a { width: 35px; height: 35px; }
-      
+
       /* جستجو موبایل کوچک */
-      .search-page .results-grid {
-        grid-template-columns: 1fr;
-      }
+      .search-page .results-grid { grid-template-columns: 1fr; }
       .search-logo-icon {
         width: 100px;
         height: 100px;
@@ -1224,19 +1068,10 @@
           <h1>درباره Zerox Game</h1>
         </div>
         <div class="about-content">
-          <p>
-            Zerox Game بخش اختصاصی گیمینگ Zerox Studios است؛ جایی که ایده‌ها به تجربه‌های تعاملی تبدیل می‌شوند.
-          </p>
-          <p>
-            ما با تمرکز بر ساخت بازی‌های مستقل، تولید محتوای گیمینگ و معرفی آثار ویدیویی فعالیت می‌کنیم و تلاش داریم تجربه‌هایی متفاوت، خلاقانه و به‌یادماندنی خلق کنیم.
-          </p>
-          <p>
-            اولین پروژه‌ی بازی‌سازی Zerox Studios، Silent Gears، آغاز مسیر ما در دنیای توسعه‌ی بازی است؛ مسیری که با هدف یادگیری، نوآوری و ساخت آثار مستقل ادامه خواهد داشت.
-          </p>
-          <p>
-            در Zerox Game، فقط بازی نمی‌سازیم؛<br />
-            دنیایی می‌سازیم که بازیکن بتواند در آن تجربه کند، کشف کند و لذت ببرد.
-          </p>
+          <p>Zerox Game بخش اختصاصی گیمینگ Zerox Studios است؛ جایی که ایده‌ها به تجربه‌های تعاملی تبدیل می‌شوند.</p>
+          <p>ما با تمرکز بر ساخت بازی‌های مستقل، تولید محتوای گیمینگ و معرفی آثار ویدیویی فعالیت می‌کنیم و تلاش داریم تجربه‌هایی متفاوت، خلاقانه و به‌یادماندنی خلق کنیم.</p>
+          <p>اولین پروژه‌ی بازی‌سازی Zerox Studios، Silent Gears، آغاز مسیر ما در دنیای توسعه‌ی بازی است؛ مسیری که با هدف یادگیری، نوآوری و ساخت آثار مستقل ادامه خواهد داشت.</p>
+          <p>در Zerox Game، فقط بازی نمی‌سازیم؛<br />دنیایی می‌سازیم که بازیکن بتواند در آن تجربه کند، کشف کند و لذت ببرد.</p>
           <div class="about-tagline">
             ZEROX GAME
             <span>Play. Create. Beyond Limits.</span>
@@ -1247,12 +1082,12 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- ===== صفحه جستجو (نسخه درست) ===== -->
+  <!-- ===== صفحه جستجو (عکس بزرگ بالای عنوان) ===== -->
   <!-- ========================================== -->
   <div class="page" id="pageSearch">
     <div class="container search-page">
-      
-      <!-- آیکون (بزرگ، وسط، ثابت) -->
+
+      <!-- عکس بزرگ (بالای عنوان) -->
       <div class="search-icon-wrapper">
         <img 
           src="https://uploadkon.ir/uploads/025e02_261788393401374.png" 
@@ -1285,7 +1120,7 @@
         <span id="countNum">۰</span> نتیجه پیدا شد
       </div>
 
-      <!-- نتایج یا پیام پیش‌فرض -->
+      <!-- نتایج -->
       <div class="results-grid" id="resultsGrid">
         <div class="search-placeholder">
           <i class="fas fa-gamepad"></i>
@@ -1307,30 +1142,12 @@
         <h1>SilentGears</h1>
         <div class="sub">چرخ‌دنده‌ساکت</div>
         <div class="detail-info-box">
-          <div class="item">
-            <strong>ژانر</strong>
-            <span>اکشن-ماجرایی • نقش‌آفرینی</span>
-          </div>
-          <div class="item">
-            <strong>پلتفرم</strong>
-            <span>اندروید • PC</span>
-          </div>
-          <div class="item">
-            <strong>وضعیت</strong>
-            <span>در دست توسعه</span>
-          </div>
-          <div class="item">
-            <strong>مدت زمان</strong>
-            <span>۱۲ تا ۱۶ ساعت</span>
-          </div>
-          <div class="item">
-            <strong>پایان‌ها</strong>
-            <span>۳ پایان مختلف</span>
-          </div>
-          <div class="item">
-            <strong>حالت بازی</strong>
-            <span>تکنفره، روایت خطی</span>
-          </div>
+          <div class="item"><strong>ژانر</strong><span>اکشن-ماجرایی • نقش‌آفرینی</span></div>
+          <div class="item"><strong>پلتفرم</strong><span>اندروید • PC</span></div>
+          <div class="item"><strong>وضعیت</strong><span>در دست توسعه</span></div>
+          <div class="item"><strong>مدت زمان</strong><span>۱۲ تا ۱۶ ساعت</span></div>
+          <div class="item"><strong>پایان‌ها</strong><span>۳ پایان مختلف</span></div>
+          <div class="item"><strong>حالت بازی</strong><span>تکنفره، روایت خطی</span></div>
         </div>
       </div>
     </div>
@@ -1346,9 +1163,7 @@
 
       <div class="trailer-section">
         <h3><i class="fas fa-play"></i> تریلر بازی</h3>
-        <div class="trailer-placeholder">
-          <i class="fas fa-play-circle"></i>
-        </div>
+        <div class="trailer-placeholder"><i class="fas fa-play-circle"></i></div>
       </div>
 
       <div class="gallery-section">
@@ -1402,14 +1217,6 @@
       if (e.target.tagName === 'IMG') {
         e.preventDefault();
         return false;
-      }
-    });
-    document.addEventListener('keydown', function(e) {
-      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-        if (e.target.tagName === 'IMG') {
-          e.preventDefault();
-          return false;
-        }
       }
     });
 
@@ -1563,4 +1370,4 @@
   </script>
 
 </body>
-  </html>
+</html>
