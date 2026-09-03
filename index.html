@@ -89,8 +89,8 @@
       50% { box-shadow: 0 0 40px rgba(255,255,255,0.08); }
     }
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+      50% { transform: translate(-50%, -50%) translateY(-15px); }
     }
     @keyframes spinSlow {
       from { transform: rotate(0deg); }
@@ -595,7 +595,7 @@
     }
 
     /* ========================================== */
-    /* ===== صفحه جستجو (طراحی جدید خفن) ===== */
+    /* ===== صفحه جستجو (آیکون بزرگ و ثابت) ===== */
     /* ========================================== */
     .search-page {
       padding: 3rem 0 5rem;
@@ -604,33 +604,37 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      position: relative;
     }
 
-    /* آیکون بزرگ */
+    /* آیکون بزرگ و ثابت */
     .search-icon-wrapper {
-      margin-bottom: 2rem;
-      animation: float 3s ease-in-out infinite;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      opacity: 0.12;
+      pointer-events: none;
+      animation: float 4s ease-in-out infinite;
     }
     .search-logo-icon {
-      width: 120px;
-      height: 120px;
+      width: 200px;
+      height: 200px;
       object-fit: contain;
-      filter: grayscale(1) brightness(0.8);
+      filter: grayscale(1) brightness(0.5);
       transition: 0.5s;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.02);
-      padding: 10px;
-      border: 1px solid #1a1a1a;
-    }
-    .search-logo-icon:hover {
-      filter: grayscale(0) brightness(1);
-      transform: scale(1.05) rotate(-5deg);
-      border-color: #444;
+      border-radius: 0;
+      background: transparent;
+      padding: 0;
+      border: none;
     }
 
     /* عنوان */
     .search-page .search-header {
       margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
     }
     .search-page .search-header h1 {
       font-size: 2.8rem;
@@ -652,6 +656,7 @@
       width: 100%;
       max-width: 600px;
       margin: 0 auto 2rem;
+      z-index: 1;
     }
     .search-page .search-box input {
       width: 100%;
@@ -696,6 +701,7 @@
       font-size: 0.85rem;
       font-weight: 300;
       margin-bottom: 1.5rem;
+      z-index: 1;
     }
     .search-page .results-count span {
       color: #888;
@@ -728,6 +734,8 @@
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
     .search-page .result-card {
       background: #0f0f0f;
@@ -1133,8 +1141,8 @@
       
       /* جستجو موبایل */
       .search-logo-icon {
-        width: 80px;
-        height: 80px;
+        width: 140px;
+        height: 140px;
       }
       .search-page .search-header h1 {
         font-size: 2rem;
@@ -1163,8 +1171,8 @@
         grid-template-columns: 1fr;
       }
       .search-logo-icon {
-        width: 60px;
-        height: 60px;
+        width: 100px;
+        height: 100px;
       }
       .search-page .search-header h1 {
         font-size: 1.6rem;
@@ -1258,11 +1266,11 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- ===== صفحه جستجو (طراحی جدید) ===== -->
+  <!-- ===== صفحه جستجو (آیکون بزرگ و ثابت) ===== -->
   <!-- ========================================== -->
   <div class="page" id="pageSearch">
     <div class="container search-page">
-      <!-- آیکون بزرگ -->
+      <!-- آیکون بزرگ و ثابت -->
       <div class="search-icon-wrapper">
         <img 
           src="https://uploadkon.ir/uploads/025e02_261788393401374.png" 
@@ -1572,4 +1580,4 @@
   </script>
 
 </body>
-  </html>
+</html>
