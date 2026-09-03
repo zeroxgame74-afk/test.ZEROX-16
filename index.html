@@ -286,8 +286,11 @@
     }
 
     /* ========================================== */
-    /* ===== کارت‌های بازی ===== */
+    /* ===== بخش بازی‌ها ===== */
     /* ========================================== */
+    #games-section {
+      scroll-margin-top: 80px;
+    }
     .section-title {
       font-size: 2rem;
       font-weight: 800;
@@ -452,10 +455,10 @@
     }
 
     /* ========================================== */
-    /* ===== صفحه جستجو (عکس جدید) ===== */
+    /* ===== صفحه جستجو (بدون عکس) ===== */
     /* ========================================== */
     .search-page {
-      padding: 2rem 0 5rem;
+      padding: 4rem 0 5rem;
       min-height: 80vh;
       display: flex;
       flex-direction: column;
@@ -463,28 +466,6 @@
       text-align: center;
     }
 
-    /* عکس بزرگ */
-    .search-icon-wrapper {
-      margin-bottom: 2rem;
-    }
-    .search-logo-icon {
-      width: 502px;
-      height: 502px;
-      object-fit: contain;
-      filter: grayscale(1) brightness(0.6);
-      transition: 0.4s;
-      border-radius: 0;
-      background: transparent;
-      padding: 0;
-      border: none;
-      max-width: 100%;
-    }
-    .search-logo-icon:hover {
-      filter: grayscale(0) brightness(1);
-      transform: scale(1.05) rotate(-3deg);
-    }
-
-    /* عنوان */
     .search-page .search-header {
       margin-bottom: 2.5rem;
     }
@@ -502,7 +483,6 @@
       margin-top: 0.3rem;
     }
 
-    /* باکس جستجو */
     .search-page .search-box {
       position: relative;
       width: 100%;
@@ -546,7 +526,6 @@
       color: #888;
     }
 
-    /* تعداد نتایج */
     .search-page .results-count {
       color: #555;
       font-size: 0.85rem;
@@ -558,7 +537,6 @@
       font-weight: 700;
     }
 
-    /* پیام پیش‌فرض */
     .search-page .search-placeholder {
       grid-column: 1/-1;
       text-align: center;
@@ -576,7 +554,6 @@
       font-size: 1rem;
     }
 
-    /* نتایج */
     .search-page .results-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -641,7 +618,6 @@
       color: #666;
     }
 
-    /* حالت پیدا نشد */
     .search-page .not-found {
       grid-column: 1/-1;
       text-align: center;
@@ -966,24 +942,9 @@
       .about-page .about-header h1 { font-size: 2.2rem; }
       .about-page .about-content p { font-size: 0.95rem; }
       .about-page .about-tagline { font-size: 1.5rem; }
-
-      /* جستجو موبایل */
-      .search-logo-icon {
-        width: 300px;
-        height: 300px;
-      }
-      .search-page .search-header h1 {
-        font-size: 2rem;
-      }
-      .search-page .search-box input {
-        font-size: 1rem;
-        padding: 1rem 1.5rem 1rem 3rem;
-        border-radius: 40px;
-      }
-      .search-page .results-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-      }
+      .search-page .search-header h1 { font-size: 2rem; }
+      .search-page .search-box input { font-size: 1rem; padding: 1rem 1.5rem 1rem 3rem; }
+      .search-page .results-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
@@ -993,20 +954,9 @@
       .about-page .about-tagline { font-size: 1.3rem; }
       .footer-social { gap: 0.8rem; }
       .footer-social a { width: 35px; height: 35px; }
-
-      /* جستجو موبایل کوچک */
       .search-page .results-grid { grid-template-columns: 1fr; }
-      .search-logo-icon {
-        width: 200px;
-        height: 200px;
-      }
-      .search-page .search-header h1 {
-        font-size: 1.6rem;
-      }
-      .search-page .search-box input {
-        font-size: 0.9rem;
-        padding: 0.8rem 1.2rem 0.8rem 2.5rem;
-      }
+      .search-page .search-header h1 { font-size: 1.6rem; }
+      .search-page .search-box input { font-size: 0.9rem; padding: 0.8rem 1.2rem 0.8rem 2.5rem; }
     }
   </style>
 </head>
@@ -1014,10 +964,10 @@
 
   <!-- ===== HEADER ===== -->
   <header class="header" id="header">
-    <div class="logo animate-fade-down">ZER0X <span>GAME</span></div>
+    <div class="logo animate-fade-down" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
     <nav class="nav" id="mainNav">
       <a class="active" data-page="home" onclick="navigateTo('home')">خانه</a>
-      <a data-page="games" onclick="navigateTo('home')">بازی‌ها</a>
+      <a data-page="games" onclick="scrollToGames()">بازی‌ها</a>
       <a data-page="about" onclick="navigateTo('about')">درباره ما</a>
     </nav>
     <div class="header-actions">
@@ -1043,7 +993,8 @@
       </div>
     </section>
 
-    <div class="container">
+    <!-- ===== بخش بازی‌های ما ===== -->
+    <div class="container" id="games-section">
       <h2 class="section-title">بازی‌های ما</h2>
       <div class="game-grid">
         <div class="game-card" onclick="navigateTo('detail')">
@@ -1057,6 +1008,15 @@
             <div class="status"><i class="far fa-clock" style="margin-left:6px;"></i> در دست توسعه</div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- ===== درباره ما در صفحه اصلی ===== -->
+    <div class="container" id="about-section">
+      <div class="intro-section" style="border-top:1px solid #1a1a1a; padding:3rem 0 4rem; margin-top:1rem;">
+        <h2 style="font-size:2.8rem; font-weight:900; font-family:'Estedad','Ardakan',sans-serif; letter-spacing:-1px;">ZER0X GAME</h2>
+        <p style="max-width:600px; color:#555; margin:0.8rem 0 1.5rem; font-size:1.05rem; font-weight:300;">استودیوی بازی‌سازی با نگاه سینمایی و روایت‌های عمیق. خلق فراتر از مرزها.</p>
+        <a onclick="navigateTo('about')" style="color:#666; border-bottom:1px solid #222; padding-bottom:3px; transition:0.3s; cursor:pointer;">درباره ما <i class="fas fa-arrow-left" style="margin-right:6px;"></i></a>
       </div>
     </div>
   </div>
@@ -1083,29 +1043,16 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- ===== صفحه جستجو (عکس جدید) ===== -->
+  <!-- ===== صفحه جستجو (بدون عکس) ===== -->
   <!-- ========================================== -->
   <div class="page" id="pageSearch">
     <div class="container search-page">
 
-      <!-- عکس جدید -->
-      <div class="search-icon-wrapper">
-        <img 
-          src="https://cdn.imgurl.ir/uploads/u318771_1788396790017.png" 
-          alt="ZER0X Search" 
-          class="search-logo-icon"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-
-      <!-- عنوان -->
       <div class="search-header">
         <h1>جستجوی بازی</h1>
         <div class="sub">نام بازی مورد نظر را پیدا کن</div>
       </div>
 
-      <!-- باکس جستجو -->
       <div class="search-box">
         <input 
           type="text" 
@@ -1116,12 +1063,10 @@
         <i class="fas fa-search search-icon"></i>
       </div>
 
-      <!-- تعداد نتایج -->
       <div class="results-count">
         <span id="countNum">۰</span> نتیجه پیدا شد
       </div>
 
-      <!-- نتایج -->
       <div class="results-grid" id="resultsGrid">
         <div class="search-placeholder">
           <i class="fas fa-gamepad"></i>
@@ -1186,7 +1131,7 @@
     <div class="logo" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
     <div class="footer-links">
       <a onclick="navigateTo('home')">خانه</a>
-      <a onclick="navigateTo('home')">بازی‌ها</a>
+      <a onclick="scrollToGames()">بازی‌ها</a>
       <a onclick="navigateTo('about')">درباره ما</a>
     </div>
     <div class="footer-social">
@@ -1233,6 +1178,26 @@
         link: 'detail'
       }
     ];
+
+    // ===== تابع اسکرول به بخش بازی‌ها =====
+    function scrollToGames() {
+      // اول مطمئن میشیم صفحه خانه فعاله
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('pageHome').classList.add('active');
+      
+      // آپدیت منو
+      document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+      document.querySelectorAll('.nav a')[0].classList.add('active'); // خانه
+      document.querySelectorAll('.nav a')[1].classList.remove('active'); // بازی‌ها
+      
+      // اسکرول به بخش بازی‌ها
+      setTimeout(() => {
+        const gamesSection = document.getElementById('games-section');
+        if (gamesSection) {
+          gamesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
 
     // ===== ناوبری =====
     function navigateTo(page) {
@@ -1371,4 +1336,4 @@
   </script>
 
 </body>
-                                                                            </html>
+</html>
