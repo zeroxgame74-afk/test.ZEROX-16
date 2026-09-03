@@ -40,8 +40,29 @@
       overflow: hidden;
     }
 
+    /* ===== جلوگیری از دانلود عکس ===== */
+    img {
+      -webkit-user-drag: none;
+      user-drag: none;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+    .card-img img,
+    .hero-bg,
+    .detail-hero-bg,
+    .gallery-grid img,
+    .result-card .card-img img,
+    .game-card .card-img img {
+      -webkit-user-drag: none;
+      user-drag: none;
+      -webkit-user-select: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
     /* ========================================== */
-    /* ===== انیمیشن‌های خفن ===== */
+    /* ===== انیمیشن‌ها ===== */
     /* ========================================== */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(40px); }
@@ -128,29 +149,8 @@
     .delay-4 { animation-delay: 0.4s; }
     .delay-5 { animation-delay: 0.5s; }
 
-    /* ===== جلوگیری از دانلود عکس ===== */
-    img {
-      -webkit-user-drag: none;
-      user-drag: none;
-      -webkit-user-select: none;
-      user-select: none;
-      -webkit-touch-callout: none;
-    }
-    .card-img img,
-    .hero-bg,
-    .detail-hero-bg,
-    .gallery-grid img,
-    .result-card .card-img img,
-    .game-card .card-img img {
-      -webkit-user-drag: none;
-      user-drag: none;
-      -webkit-user-select: none;
-      user-select: none;
-      pointer-events: none;
-    }
-
     /* ========================================== */
-    /* ===== HEADER با انیمیشن ===== */
+    /* ===== HEADER ===== */
     /* ========================================== */
     .header {
       display: flex;
@@ -337,7 +337,7 @@
     }
 
     /* ========================================== */
-    /* ===== دکمه خفن با انیمیشن ===== */
+    /* ===== دکمه ===== */
     /* ========================================== */
     .btn-ghost {
       display: inline-block;
@@ -389,7 +389,7 @@
     }
 
     /* ========================================== */
-    /* ===== کارت‌های بازی با انیمیشن ۳D ===== */
+    /* ===== کارت‌های بازی ===== */
     /* ========================================== */
     .section-title {
       font-size: 2rem;
@@ -595,58 +595,83 @@
     }
 
     /* ========================================== */
-    /* ===== صفحه جستجو ===== */
+    /* ===== صفحه جستجو (طراحی جدید خفن) ===== */
     /* ========================================== */
     .search-page {
-      padding: 4rem 0;
+      padding: 3rem 0 5rem;
       min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
+
+    /* آیکون بزرگ */
+    .search-icon-wrapper {
+      margin-bottom: 2rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    .search-logo-icon {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      filter: grayscale(1) brightness(0.8);
+      transition: 0.5s;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.02);
+      padding: 10px;
+      border: 1px solid #1a1a1a;
+    }
+    .search-logo-icon:hover {
+      filter: grayscale(0) brightness(1);
+      transform: scale(1.05) rotate(-5deg);
+      border-color: #444;
+    }
+
+    /* عنوان */
     .search-page .search-header {
-      margin-bottom: 3rem;
-      animation: fadeUp 0.8s ease;
+      margin-bottom: 2.5rem;
     }
     .search-page .search-header h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: 900;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       letter-spacing: -2px;
-      border-right: 3px solid #333;
-      padding-right: 1.2rem;
-    }
-    .search-page .search-header h1 i {
-      color: #444;
-      margin-left: 1rem;
+      color: #fff;
     }
     .search-page .search-header .sub {
       color: #666;
       font-size: 1rem;
       font-weight: 300;
-      margin-top: 0.5rem;
-      padding-right: 1.5rem;
+      margin-top: 0.3rem;
     }
+
+    /* باکس جستجو */
     .search-page .search-box {
       position: relative;
-      margin-bottom: 3rem;
-      animation: slideInRight 0.8s ease;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 2rem;
     }
     .search-page .search-box input {
       width: 100%;
-      padding: 1.5rem 2rem;
+      padding: 1.3rem 2rem 1.3rem 3.5rem;
       background: rgba(255,255,255,0.03);
       border: 1px solid #222;
-      border-radius: 12px;
+      border-radius: 50px;
       color: #fff;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       outline: none;
       transition: 0.4s;
       font-weight: 300;
+      text-align: center;
     }
     .search-page .search-box input:focus {
       border-color: #555;
       background: rgba(255,255,255,0.05);
-      box-shadow: 0 0 40px rgba(255,255,255,0.02);
-      transform: scale(1.01);
+      box-shadow: 0 0 50px rgba(255,255,255,0.02);
+      transform: scale(1.02);
     }
     .search-page .search-box input::placeholder {
       color: #333;
@@ -654,103 +679,128 @@
     }
     .search-page .search-box .search-icon {
       position: absolute;
-      left: 1.5rem;
+      right: 1.5rem;
       top: 50%;
       transform: translateY(-50%);
       color: #444;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       transition: 0.3s;
     }
     .search-page .search-box input:focus ~ .search-icon {
       color: #888;
     }
+
+    /* تعداد نتایج */
     .search-page .results-count {
       color: #555;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 300;
       margin-bottom: 1.5rem;
-      padding-right: 0.5rem;
     }
     .search-page .results-count span {
       color: #888;
       font-weight: 700;
     }
+
+    /* پلیس هولدر */
+    .search-page .search-placeholder {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 3rem 0;
+      color: #444;
+    }
+    .search-page .search-placeholder i {
+      font-size: 3.5rem;
+      color: #222;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .search-page .search-placeholder p {
+      font-weight: 300;
+      font-size: 1rem;
+    }
+
+    /* نتایج */
     .search-page .results-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 2rem;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     .search-page .result-card {
       background: #0f0f0f;
       border: 1px solid #181818;
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
-      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: all 0.5s ease;
       cursor: pointer;
-      animation: scaleIn 0.6s ease forwards;
+      animation: scaleIn 0.5s ease forwards;
       opacity: 0;
     }
-    .search-page .result-card:nth-child(1) { animation-delay: 0.1s; }
-    .search-page .result-card:nth-child(2) { animation-delay: 0.2s; }
-    .search-page .result-card:nth-child(3) { animation-delay: 0.3s; }
+    .search-page .result-card:nth-child(1) { animation-delay: 0.05s; }
+    .search-page .result-card:nth-child(2) { animation-delay: 0.1s; }
+    .search-page .result-card:nth-child(3) { animation-delay: 0.15s; }
     .search-page .result-card:hover {
       border-color: #444;
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
     }
     .search-page .result-card .card-img {
       width: 100%;
       aspect-ratio: 16/9;
       overflow: hidden;
-      position: relative;
       background: #0a0a0a;
     }
     .search-page .result-card .card-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.7s ease;
+      transition: transform 0.6s ease;
       pointer-events: none;
     }
-    .search-page .result-card:hover .card-img img { transform: scale(1.1); }
+    .search-page .result-card:hover .card-img img { transform: scale(1.08); }
     .search-page .result-card .card-body {
-      padding: 1.5rem;
+      padding: 1.2rem 1.5rem 1.5rem;
     }
     .search-page .result-card .card-body h3 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: #fff;
       font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .search-page .result-card .card-body .genre {
       color: #555;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 300;
     }
     .search-page .result-card .card-body .status {
       display: inline-block;
-      margin-top: 0.6rem;
-      padding: 0.15rem 1rem;
+      margin-top: 0.5rem;
+      padding: 0.1rem 1rem;
       border: 1px solid #222;
       border-radius: 20px;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       color: #666;
     }
+
+    /* حالت پیدا نشد */
     .search-page .not-found {
-      text-align: center;
-      padding: 4rem 2rem;
-      animation: fadeUp 0.8s ease;
       grid-column: 1/-1;
+      text-align: center;
+      padding: 3rem 0;
+      animation: fadeUp 0.6s ease;
     }
     .search-page .not-found i {
-      font-size: 5rem;
+      font-size: 4.5rem;
       color: #222;
       display: block;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       animation: float 3s ease-in-out infinite;
     }
     .search-page .not-found h2 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: #666;
       font-family: 'Estedad', 'Ardakan', sans-serif;
@@ -758,7 +808,8 @@
     .search-page .not-found p {
       color: #444;
       font-weight: 300;
-      margin-top: 0.5rem;
+      margin-top: 0.3rem;
+      font-size: 0.95rem;
     }
 
     /* ========================================== */
@@ -967,7 +1018,7 @@
     }
 
     /* ========================================== */
-    /* ===== FOOTER با انیمیشن ===== */
+    /* ===== FOOTER ===== */
     /* ========================================== */
     .footer {
       border-top: 1px solid #0f0f0f;
@@ -1079,9 +1130,24 @@
       .about-page .about-header h1 { font-size: 2.2rem; }
       .about-page .about-content p { font-size: 0.95rem; }
       .about-page .about-tagline { font-size: 1.5rem; }
-      .search-page .search-header h1 { font-size: 2.2rem; }
-      .search-page .search-box input { font-size: 1.2rem; padding: 1.2rem; }
-      .search-page .results-grid { grid-template-columns: 1fr; }
+      
+      /* جستجو موبایل */
+      .search-logo-icon {
+        width: 80px;
+        height: 80px;
+      }
+      .search-page .search-header h1 {
+        font-size: 2rem;
+      }
+      .search-page .search-box input {
+        font-size: 1rem;
+        padding: 1rem 1.5rem 1rem 3rem;
+        border-radius: 40px;
+      }
+      .search-page .results-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
@@ -1091,6 +1157,22 @@
       .about-page .about-tagline { font-size: 1.3rem; }
       .footer-social { gap: 0.8rem; }
       .footer-social a { width: 35px; height: 35px; }
+      
+      /* جستجو موبایل کوچک */
+      .search-page .results-grid {
+        grid-template-columns: 1fr;
+      }
+      .search-logo-icon {
+        width: 60px;
+        height: 60px;
+      }
+      .search-page .search-header h1 {
+        font-size: 1.6rem;
+      }
+      .search-page .search-box input {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.2rem 0.8rem 2.5rem;
+      }
     }
   </style>
 </head>
@@ -1175,27 +1257,49 @@
     </div>
   </div>
 
-  <!-- ===== صفحه جستجو ===== -->
+  <!-- ========================================== -->
+  <!-- ===== صفحه جستجو (طراحی جدید) ===== -->
+  <!-- ========================================== -->
   <div class="page" id="pageSearch">
     <div class="container search-page">
-      <div class="search-header">
-        <h1><i class="fas fa-search"></i> جستجوی بازی</h1>
-        <div class="sub">بازی مورد نظر خود را پیدا کنید</div>
+      <!-- آیکون بزرگ -->
+      <div class="search-icon-wrapper">
+        <img 
+          src="https://uploadkon.ir/uploads/025e02_261788393401374.png" 
+          alt="ZER0X Search" 
+          class="search-logo-icon"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
 
+      <!-- عنوان -->
+      <div class="search-header">
+        <h1>جستجوی بازی</h1>
+        <div class="sub">نام بازی مورد نظر را پیدا کن</div>
+      </div>
+
+      <!-- باکس جستجو -->
       <div class="search-box">
-        <input type="text" placeholder="نام بازی را وارد کنید..." id="searchInput" oninput="searchGames()" />
+        <input 
+          type="text" 
+          placeholder="مثل: SilentGears ..." 
+          id="searchInput" 
+          oninput="searchGames()" 
+        />
         <i class="fas fa-search search-icon"></i>
       </div>
 
+      <!-- تعداد نتایج -->
       <div class="results-count">
         <span id="countNum">۰</span> نتیجه پیدا شد
       </div>
 
+      <!-- نتایج -->
       <div class="results-grid" id="resultsGrid">
-        <div style="grid-column:1/-1; text-align:center; padding:3rem 0; color:#444; font-weight:300;">
-          <i class="fas fa-search" style="font-size:3rem; display:block; margin-bottom:1rem; color:#222;"></i>
-          برای جستجو نام بازی را وارد کنید...
+        <div class="search-placeholder">
+          <i class="fas fa-gamepad"></i>
+          <p>برای شروع جستجو، نام بازی را وارد کن...</p>
         </div>
       </div>
     </div>
@@ -1368,9 +1472,9 @@
 
       if (query.length === 0) {
         grid.innerHTML = `
-          <div style="grid-column:1/-1; text-align:center; padding:3rem 0; color:#444; font-weight:300;">
-            <i class="fas fa-search" style="font-size:3rem; display:block; margin-bottom:1rem; color:#222;"></i>
-            برای جستجو نام بازی را وارد کنید...
+          <div class="search-placeholder">
+            <i class="fas fa-gamepad"></i>
+            <p>برای شروع جستجو، نام بازی را وارد کن...</p>
           </div>
         `;
         countEl.textContent = '۰';
@@ -1468,4 +1572,4 @@
   </script>
 
 </body>
-</html>
+  </html>
