@@ -782,7 +782,7 @@
     }
 
     /* ========================================== */
-    /* ===== صفحه اختصاصی بازی ===== */
+    /* ===== صفحه اختصاصی بازی (ریسپانسیو) ===== */
     /* ========================================== */
     .detail-hero {
       position: relative;
@@ -976,6 +976,157 @@
     }
 
     /* ========================================== */
+    /* ===== ریسپانسیو صفحه اختصاصی بازی ===== */
+    /* ========================================== */
+
+    /* تبلت و موبایل بزرگ */
+    @media (max-width: 992px) {
+      .detail-hero {
+        min-height: 50vh;
+        padding: 3rem 1.5rem 2.5rem;
+      }
+      .detail-hero h1 {
+        font-size: 3.2rem;
+      }
+      .detail-hero .sub {
+        font-size: 1.1rem;
+      }
+      .detail-info-box {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        padding: 1.2rem;
+      }
+      .detail-body .full-desc {
+        padding: 1.5rem;
+        font-size: 0.95rem;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+      }
+    }
+
+    /* موبایل کوچک */
+    @media (max-width: 768px) {
+      .detail-hero {
+        min-height: 40vh;
+        padding: 2.5rem 1rem 2rem;
+        margin-bottom: 1.5rem;
+      }
+      .detail-hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.2rem;
+      }
+      .detail-hero .sub {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+      .detail-hero .back-link {
+        font-size: 0.75rem;
+        margin-bottom: 1.2rem;
+      }
+      
+      .detail-info-box {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        padding: 1rem;
+        margin: 1rem 0 1.5rem;
+      }
+      .detail-info-box .item strong {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+      }
+      .detail-info-box .item span {
+        font-size: 0.75rem;
+      }
+      
+      .detail-body .full-desc {
+        padding: 1rem;
+        font-size: 0.9rem;
+        line-height: 2;
+        margin: 1rem 0;
+      }
+      .detail-body .full-desc::first-letter {
+        font-size: 2.5rem;
+        margin-left: 6px;
+      }
+      
+      .trailer-section {
+        padding: 1rem;
+        margin: 1.5rem 0;
+      }
+      .trailer-section h3 {
+        font-size: 0.95rem;
+      }
+      .trailer-placeholder {
+        font-size: 3rem;
+      }
+      
+      .gallery-section {
+        margin: 1.5rem 0;
+      }
+      .gallery-section h3 {
+        font-size: 0.95rem;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+      }
+      .gallery-grid img {
+        border-radius: 6px;
+      }
+      
+      .detail-body .back-link {
+        font-size: 0.8rem;
+        margin-top: 0.8rem;
+      }
+    }
+
+    /* موبایل خیلی کوچک */
+    @media (max-width: 480px) {
+      .detail-hero {
+        min-height: 35vh;
+        padding: 2rem 0.8rem 1.5rem;
+      }
+      .detail-hero h1 {
+        font-size: 2rem;
+      }
+      .detail-hero .sub {
+        font-size: 0.85rem;
+      }
+      
+      .detail-info-box {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        padding: 0.8rem;
+      }
+      .detail-info-box .item strong {
+        font-size: 0.55rem;
+      }
+      .detail-info-box .item span {
+        font-size: 0.7rem;
+      }
+      
+      .detail-body .full-desc {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+        line-height: 1.8;
+      }
+      .detail-body .full-desc::first-letter {
+        font-size: 2rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+      }
+      
+      .trailer-placeholder {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* ========================================== */
     /* ===== FOOTER ===== */
     /* ========================================== */
     .footer {
@@ -1062,7 +1213,7 @@
     }
 
     /* ========================================== */
-    /* ===== RESPONSIVE ===== */
+    /* ===== RESPONSIVE عمومی ===== */
     /* ========================================== */
     @media (max-width: 768px) {
       .nav { display: none; }
@@ -1072,10 +1223,6 @@
       .hero { min-height: 70vh; padding: 2rem 1rem 2rem; }
       .game-grid { grid-template-columns: 1fr; }
       .section-title { font-size: 1.6rem; }
-      .detail-hero h1 { font-size: 2.8rem; }
-      .detail-hero { min-height: 60vh; padding: 3rem 1rem 2rem; }
-      .detail-info-box { grid-template-columns: 1fr 1fr; padding: 1.2rem; }
-      .detail-body .full-desc { padding: 1.2rem; font-size: 0.95rem; }
       .footer { flex-direction: column; align-items: flex-start; }
       .about-page .about-header h1 { font-size: 2.2rem; }
       .about-page .about-content p { font-size: 0.95rem; }
@@ -1085,9 +1232,6 @@
       .search-page .results-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
     }
     @media (max-width: 480px) {
-      .detail-info-box { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .detail-hero h1 { font-size: 2.2rem; }
       .about-page .about-header h1 { font-size: 1.8rem; }
       .about-page .about-tagline { font-size: 1.3rem; }
       .footer-social { gap: 0.8rem; }
@@ -1243,7 +1387,7 @@
     </div>
   </div>
 
-  <!-- ===== صفحه اختصاصی بازی ===== -->
+  <!-- ===== صفحه اختصاصی بازی (ریسپانسیو) ===== -->
   <div class="page" id="pageDetail">
     <div class="detail-hero">
       <div class="detail-hero-bg"></div>
@@ -1359,10 +1503,8 @@
 
     // ===== ناوبری با تغییر هش =====
     function navigateTo(page) {
-      // مخفی کردن همه صفحات
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       
-      // نمایش صفحه مورد نظر
       if (page === 'home') {
         document.getElementById('pageHome').classList.add('active');
         window.location.hash = 'home';
@@ -1379,7 +1521,6 @@
         window.location.hash = 'game-silentgears';
       }
 
-      // آپدیت منو
       document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
       const navMap = { 'home': 0, 'about': 2 };
       if (page === 'home' || page === 'about') {
@@ -1395,7 +1536,6 @@
     // ===== لود شدن با هش =====
     window.addEventListener('load', function() {
       const hash = window.location.hash.replace('#', '');
-      
       if (hash === 'home' || hash === '') {
         navigateTo('home');
       } else if (hash === 'about') {
@@ -1526,4 +1666,4 @@
     });
   </script>
 </body>
-        </html>
+  </html>
