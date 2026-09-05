@@ -787,7 +787,7 @@
     }
 
     /* ========================================== */
-    /* ===== کارت خرید استیم-استایل ===== */
+    /* ===== کارت خرید استیم-استایل (به‌زودی) ===== */
     /* ========================================== */
     .purchase-card {
       background: #0f0f0f;
@@ -881,24 +881,46 @@
       color: #444;
     }
 
-    .purchase-price {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      margin-bottom: 1.2rem;
+    /* وضعیت به‌زودی */
+    .purchase-status {
+      margin: 1rem 0 1.2rem;
+      padding: 1rem 1.2rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid #1a1a1a;
+      border-radius: 8px;
+      transition: 0.4s;
     }
-    .purchase-price .price {
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
+    .purchase-status:hover {
+      border-color: #333;
+      background: rgba(255, 255, 255, 0.03);
     }
-    .purchase-price .currency {
-      font-size: 0.8rem;
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.3rem 1.2rem;
+      border: 1px solid #333;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: #aaa;
+      letter-spacing: 1px;
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(4px);
+      margin-bottom: 0.5rem;
+    }
+    .status-badge i {
+      color: #555;
+      font-size: 0.9rem;
+    }
+    .status-desc {
       color: #666;
+      font-size: 0.8rem;
       font-weight: 300;
+      margin: 0;
+      padding-right: 0.5rem;
     }
 
+    /* دکمه غیرفعال */
     .purchase-btn {
       display: inline-flex;
       align-items: center;
@@ -922,6 +944,22 @@
     }
     .purchase-btn i {
       font-size: 1rem;
+    }
+    .purchase-btn.disabled {
+      background: transparent;
+      color: #666;
+      border: 1px solid #222;
+      cursor: not-allowed;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    .purchase-btn.disabled i {
+      color: #444;
+    }
+    .purchase-btn.disabled:hover {
+      background: transparent;
+      transform: none;
+      box-shadow: none;
     }
 
     /* ========================================== */
@@ -1418,7 +1456,7 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- ===== صفحه اختصاصی (با کارت خرید) ===== -->
+  <!-- ===== صفحه اختصاصی بازی (با کارت به‌زودی) ===== -->
   <!-- ========================================== -->
   <div class="page" id="pageDetail">
     <div class="detail-hero">
@@ -1449,11 +1487,11 @@
         بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌ساکت می‌برد.
       </div>
 
-      <!-- ===== کارت خرید استیم-استایل ===== -->
+      <!-- ===== کارت خرید (به‌زودی) ===== -->
       <div class="purchase-card">
         <div class="purchase-header">
           <div class="purchase-logo">ZER0X <span>GAME</span></div>
-          <div class="purchase-badge">بازی دیجیتال</div>
+          <div class="purchase-badge">به‌زودی</div>
         </div>
         
         <div class="purchase-body">
@@ -1470,14 +1508,17 @@
               <span><i class="fas fa-mobile-alt"></i> اندروید</span>
             </div>
             
-            <div class="purchase-price">
-              <span class="price">۲۹۹,۰۰۰</span>
-              <span class="currency">تومان</span>
+            <div class="purchase-status">
+              <div class="status-badge">
+                <i class="fas fa-clock"></i>
+                <span>به‌زودی</span>
+              </div>
+              <p class="status-desc">این بازی در حال توسعه است و به‌زودی منتشر می‌شود.</p>
             </div>
             
-            <button class="purchase-btn">
-              <i class="fas fa-shopping-cart"></i>
-              خرید بازی
+            <button class="purchase-btn disabled">
+              <i class="fas fa-hourglass-half"></i>
+              به‌زودی
             </button>
           </div>
         </div>
