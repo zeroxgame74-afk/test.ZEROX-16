@@ -185,7 +185,7 @@
     .menu-mobile { display: none; }
 
     /* ========================================== */
-    /* ===== منو موبایل (طراحی خفن) ===== */
+    /* ===== منو موبایل ===== */
     /* ========================================== */
     .mobile-menu-overlay {
       position: fixed;
@@ -593,7 +593,7 @@
     }
 
     /* ========================================== */
-    /* ===== صفحه جستجو (بدون عکس) ===== */
+    /* ===== صفحه جستجو ===== */
     /* ========================================== */
     .search-page {
       padding: 4rem 0 5rem;
@@ -1110,13 +1110,13 @@
       <div class="mobile-logo">ZER0X <span>GAME</span></div>
       
       <nav class="mobile-nav">
-        <a href="#" onclick="navigateTo('home'); closeMobileMenu();">
+        <a href="#home" onclick="navigateTo('home'); closeMobileMenu();">
           <i class="fas fa-home"></i> خانه
         </a>
-        <a href="#" onclick="scrollToGames(); closeMobileMenu();">
+        <a href="#games" onclick="scrollToGames(); closeMobileMenu();">
           <i class="fas fa-gamepad"></i> بازی‌ها
         </a>
-        <a href="#" onclick="navigateTo('about'); closeMobileMenu();">
+        <a href="#about" onclick="navigateTo('about'); closeMobileMenu();">
           <i class="fas fa-info-circle"></i> درباره ما
         </a>
       </nav>
@@ -1134,9 +1134,9 @@
   <header class="header" id="header">
     <div class="logo animate-fade-down" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
     <nav class="nav" id="mainNav">
-      <a class="active" data-page="home" onclick="navigateTo('home')">خانه</a>
-      <a data-page="games" onclick="scrollToGames()">بازی‌ها</a>
-      <a data-page="about" onclick="navigateTo('about')">درباره ما</a>
+      <a class="active" data-page="home" href="#home" onclick="navigateTo('home')">خانه</a>
+      <a data-page="games" href="#games" onclick="scrollToGames()">بازی‌ها</a>
+      <a data-page="about" href="#about" onclick="navigateTo('about')">درباره ما</a>
     </nav>
     <div class="header-actions">
       <i class="fas fa-search" onclick="navigateTo('search')"></i>
@@ -1184,7 +1184,7 @@
       <div class="intro-section" style="border-top:1px solid #1a1a1a; padding:3rem 0 4rem; margin-top:1rem;">
         <h2 style="font-size:2.8rem; font-weight:900; font-family:'Estedad','Ardakan',sans-serif; letter-spacing:-1px;">ZER0X GAME</h2>
         <p style="max-width:600px; color:#555; margin:0.8rem 0 1.5rem; font-size:1.05rem; font-weight:300;">استودیوی بازی‌سازی با نگاه سینمایی و روایت‌های عمیق. خلق فراتر از مرزها.</p>
-        <a onclick="navigateTo('about')" style="color:#666; border-bottom:1px solid #222; padding-bottom:3px; transition:0.3s; cursor:pointer;">درباره ما <i class="fas fa-arrow-left" style="margin-right:6px;"></i></a>
+        <a href="#about" onclick="navigateTo('about')" style="color:#666; border-bottom:1px solid #222; padding-bottom:3px; transition:0.3s; cursor:pointer;">درباره ما <i class="fas fa-arrow-left" style="margin-right:6px;"></i></a>
       </div>
     </div>
   </div>
@@ -1296,9 +1296,9 @@
   <footer class="footer">
     <div class="logo" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
     <div class="footer-links">
-      <a onclick="navigateTo('home')">خانه</a>
-      <a onclick="scrollToGames()">بازی‌ها</a>
-      <a onclick="navigateTo('about')">درباره ما</a>
+      <a href="#home" onclick="navigateTo('home')">خانه</a>
+      <a href="#games" onclick="scrollToGames()">بازی‌ها</a>
+      <a href="#about" onclick="navigateTo('about')">درباره ما</a>
     </div>
     <div class="footer-social">
       <a href="https://t.me/ZEROX_STUDIOS" target="_blank" rel="noopener noreferrer" aria-label="تلگرام">
@@ -1347,6 +1347,7 @@
 
     // ===== تابع اسکرول به بخش بازی‌ها =====
     function scrollToGames() {
+      window.location.hash = 'games';
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('pageHome').classList.add('active');
       
@@ -1364,6 +1365,10 @@
 
     // ===== ناوبری =====
     function navigateTo(page) {
+      // تغییر هش در URL
+      window.location.hash = page;
+      
+      // نمایش صفحه مورد نظر
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       
       if (page === 'home') {
@@ -1378,6 +1383,7 @@
         document.getElementById('pageDetail').classList.add('active');
       }
 
+      // آپدیت منو
       document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
       const navMap = { 'home': 0, 'about': 2 };
       if (page === 'home' || page === 'about') {
@@ -1389,6 +1395,23 @@
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // ===== مدیریت لینک‌ها هنگام لود صفحه =====
+    function handleHash() {
+      const hash = window.location.hash.replace('#', '') || 'home';
+      // اگر هش games باشه، اسکرول به بخش بازی‌ها
+      if (hash === 'games') {
+        scrollToGames();
+      } else {
+        navigateTo(hash);
+      }
+    }
+
+    // هنگام لود صفحه
+    window.addEventListener('load', handleHash);
+
+    // هنگام تغییر هش (کلیک روی دکمه بازگشت/جلو)
+    window.addEventListener('hashchange', handleHash);
 
     // ===== جستجو =====
     function searchGames() {
@@ -1499,4 +1522,4 @@
   </script>
 
 </body>
-                              </html>
+</html>
