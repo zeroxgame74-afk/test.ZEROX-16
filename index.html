@@ -1113,13 +1113,13 @@
       <div class="mobile-logo">ZER0X <span>GAME</span></div>
       
       <nav class="mobile-nav">
-        <a href="#" onclick="navigateTo('home'); closeMobileMenu();">
+        <a href="?page=home" onclick="navigateTo('home'); closeMobileMenu();">
           <i class="fas fa-home"></i> خانه
         </a>
-        <a href="#" onclick="scrollToGames(); closeMobileMenu();">
+        <a href="#games-section" onclick="scrollToGames(); closeMobileMenu();">
           <i class="fas fa-gamepad"></i> بازی‌ها
         </a>
-        <a href="#" onclick="navigateTo('about'); closeMobileMenu();">
+        <a href="?page=about" onclick="navigateTo('about'); closeMobileMenu();">
           <i class="fas fa-info-circle"></i> درباره ما
         </a>
       </nav>
@@ -1137,12 +1137,12 @@
   <header class="header" id="header">
     <div class="logo animate-fade-down" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
     <nav class="nav" id="mainNav">
-      <a class="active" data-page="home" onclick="navigateTo('home')">خانه</a>
-      <a data-page="games" onclick="scrollToGames()">بازی‌ها</a>
-      <a data-page="about" onclick="navigateTo('about')">درباره ما</a>
+      <a class="active" data-page="home" href="?page=home">خانه</a>
+      <a data-page="games" href="#games-section" onclick="scrollToGames()">بازی‌ها</a>
+      <a data-page="about" href="?page=about">درباره ما</a>
     </nav>
     <div class="header-actions">
-      <i class="fas fa-search" onclick="navigateTo('search')"></i>
+      <a href="?page=search" style="color:inherit;"><i class="fas fa-search"></i></a>
       <i class="fas fa-bars menu-mobile" onclick="toggleMobileMenu()"></i>
     </div>
   </header>
@@ -1191,7 +1191,7 @@
       <div class="intro-section" style="border-top:1px solid #1a1a1a; padding:3rem 0 4rem; margin-top:1rem;">
         <h2 style="font-size:2.8rem; font-weight:900; font-family:'Estedad','Ardakan',sans-serif; letter-spacing:-1px;">ZER0X GAME</h2>
         <p style="max-width:600px; color:#555; margin:0.8rem 0 1.5rem; font-size:1.05rem; font-weight:300;">استودیوی بازی‌سازی با نگاه سینمایی و روایت‌های عمیق. خلق فراتر از مرزها.</p>
-        <a onclick="navigateTo('about')" style="color:#666; border-bottom:1px solid #222; padding-bottom:3px; transition:0.3s; cursor:pointer;">درباره ما <i class="fas fa-arrow-left" style="margin-right:6px;"></i></a>
+        <a href="?page=about" style="color:#666; border-bottom:1px solid #222; padding-bottom:3px; transition:0.3s; cursor:pointer;">درباره ما <i class="fas fa-arrow-left" style="margin-right:6px;"></i></a>
       </div>
     </div>
   </div>
@@ -1255,7 +1255,7 @@
     <div class="detail-hero">
       <div class="detail-hero-bg"></div>
       <div class="detail-content">
-        <a href="?game=silentgears" class="back-link" onclick="navigateTo('home')">
+        <a href="?page=home" class="back-link">
           <i class="fas fa-arrow-right"></i> بازگشت
         </a>
         <h1>SilentGears</h1>
@@ -1293,7 +1293,7 @@
         </div>
       </div>
 
-      <a href="?game=silentgears" class="back-link" onclick="navigateTo('home')" style="display:inline-flex; align-items:center; gap:8px; color:#555; border-bottom:1px solid #222; padding-bottom:6px; cursor:pointer; margin-top:1rem;">
+      <a href="?page=home" class="back-link" style="display:inline-flex; align-items:center; gap:8px; color:#555; border-bottom:1px solid #222; padding-bottom:6px; cursor:pointer; margin-top:1rem;">
         <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
       </a>
     </div>
@@ -1303,9 +1303,9 @@
   <footer class="footer">
     <div class="logo" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
     <div class="footer-links">
-      <a onclick="navigateTo('home')">خانه</a>
-      <a onclick="scrollToGames()">بازی‌ها</a>
-      <a onclick="navigateTo('about')">درباره ما</a>
+      <a href="?page=home">خانه</a>
+      <a href="#games-section" onclick="scrollToGames()">بازی‌ها</a>
+      <a href="?page=about">درباره ما</a>
     </div>
     <div class="footer-social">
       <a href="https://t.me/ZEROX_STUDIOS" target="_blank" rel="noopener noreferrer" aria-label="تلگرام">
@@ -1354,14 +1354,36 @@
     ];
 
     // ===== تشخیص لینک یکتا =====
-    function checkGameLink() {
+    function checkPageLink() {
       const urlParams = new URLSearchParams(window.location.search);
       const game = urlParams.get('game');
-      
+      const page = urlParams.get('page');
+
+      // مخفی کردن همه صفحات
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+      // بررسی بازی
       if (game === 'silentgears') {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById('pageDetail').classList.add('active');
         document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+        return;
+      }
+
+      // بررسی صفحات
+      if (page === 'about') {
+        document.getElementById('pageAbout').classList.add('active');
+        document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+        document.querySelectorAll('.nav a')[2].classList.add('active');
+      } else if (page === 'search') {
+        document.getElementById('pageSearch').classList.add('active');
+        document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+        document.getElementById('searchInput').focus();
+        searchGames();
+      } else {
+        // صفحه خانه (پیش‌فرض)
+        document.getElementById('pageHome').classList.add('active');
+        document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+        document.querySelectorAll('.nav a')[0].classList.add('active');
       }
     }
 
@@ -1388,18 +1410,26 @@
       
       if (page === 'home') {
         document.getElementById('pageHome').classList.add('active');
-        // حذف پارامتر از URL
         if (window.history && window.history.pushState) {
-          window.history.pushState({}, '', window.location.pathname);
+          window.history.pushState({}, '', '?page=home');
         }
       } else if (page === 'about') {
         document.getElementById('pageAbout').classList.add('active');
+        if (window.history && window.history.pushState) {
+          window.history.pushState({}, '', '?page=about');
+        }
       } else if (page === 'search') {
         document.getElementById('pageSearch').classList.add('active');
         document.getElementById('searchInput').focus();
         searchGames();
+        if (window.history && window.history.pushState) {
+          window.history.pushState({}, '', '?page=search');
+        }
       } else if (page === 'detail') {
         document.getElementById('pageDetail').classList.add('active');
+        if (window.history && window.history.pushState) {
+          window.history.pushState({}, '', '?game=silentgears');
+        }
       }
 
       document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
@@ -1523,10 +1553,10 @@
       }
     });
 
-    // ===== اجرا هنگام لود صفحه =====
-    window.addEventListener('DOMContentLoaded', checkGameLink);
-    window.addEventListener('popstate', checkGameLink);
+    // ===== اجرا هنگام لود و تغییر تاریخچه =====
+    window.addEventListener('DOMContentLoaded', checkPageLink);
+    window.addEventListener('popstate', checkPageLink);
   </script>
 
 </body>
-    </html>
+  </html>
