@@ -344,7 +344,7 @@
     .page.active { display: block; }
 
     /* ========================================== */
-    /* ===== HERO ===== */
+    /* ===== HERO با فارسی‌ساز ===== */
     /* ========================================== */
     .hero {
       position: relative;
@@ -420,6 +420,74 @@
     .hero-content .btn-ghost {
       animation: fadeUp 1.8s ease forwards;
       opacity: 0;
+    }
+
+    /* ===== فارسی‌ساز در هیرو ===== */
+    .hero-persianizer {
+      position: absolute;
+      bottom: 3rem;
+      left: 2rem;
+      z-index: 2;
+      animation: fadeUp 2s ease forwards;
+      opacity: 0;
+      animation-delay: 0.5s;
+    }
+    .persianizer-card {
+      background: rgba(15, 15, 15, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: 0.4s;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+    .persianizer-card:hover {
+      border-color: #444;
+      background: rgba(25, 25, 25, 0.9);
+      transform: scale(1.03);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+    }
+    .persianizer-card i {
+      font-size: 1.5rem;
+      color: #555;
+      animation: spinSlow 8s linear infinite;
+    }
+    .persianizer-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .persianizer-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .persianizer-badge {
+      font-size: 0.55rem;
+      color: #666;
+      border: 1px solid #222;
+      padding: 0.05rem 0.6rem;
+      border-radius: 12px;
+      margin-top: 2px;
+    }
+    .persianizer-link {
+      color: #555;
+      font-size: 1rem;
+      transition: 0.3s;
+      padding-right: 0.5rem;
+      border-right: 1px solid #222;
+      display: flex;
+      align-items: center;
+    }
+    .persianizer-link:hover {
+      color: #fff;
+      transform: translateX(-4px);
     }
 
     .btn-ghost {
@@ -1358,6 +1426,21 @@
       .persianizer-page .icon {
         font-size: 3rem;
       }
+
+      .hero-persianizer {
+        bottom: 1.5rem;
+        left: 1rem;
+      }
+      .persianizer-card {
+        padding: 0.6rem 1rem;
+        gap: 0.7rem;
+      }
+      .persianizer-card i {
+        font-size: 1.2rem;
+      }
+      .persianizer-title {
+        font-size: 0.75rem;
+      }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
@@ -1392,6 +1475,30 @@
       }
       .persianizer-page p {
         font-size: 0.95rem;
+      }
+
+      .hero-persianizer {
+        bottom: 1rem;
+        left: 0.5rem;
+      }
+      .persianizer-card {
+        padding: 0.4rem 0.8rem;
+        gap: 0.5rem;
+        border-radius: 8px;
+      }
+      .persianizer-card i {
+        font-size: 1rem;
+      }
+      .persianizer-title {
+        font-size: 0.65rem;
+      }
+      .persianizer-badge {
+        font-size: 0.45rem;
+        padding: 0.05rem 0.4rem;
+      }
+      .persianizer-link {
+        font-size: 0.8rem;
+        padding-right: 0.3rem;
       }
     }
   </style>
@@ -1450,7 +1557,7 @@
     </div>
   </header>
 
-  <!-- ===== صفحه خانه ===== -->
+  <!-- ===== صفحه خانه (با فارسی‌ساز در هیرو) ===== -->
   <div class="page active" id="pageHome">
     <section class="hero">
       <div class="hero-bg"></div>
@@ -1464,6 +1571,20 @@
           <span><i class="fas fa-clock"></i> در دست توسعه</span>
         </div>
         <a href="#game-silentgears" class="btn-ghost" onclick="navigateTo('detail')">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
+      </div>
+
+      <!-- ===== فارسی‌ساز در اسلایدر ===== -->
+      <div class="hero-persianizer">
+        <div class="persianizer-card" onclick="navigateTo('persianizer')">
+          <i class="fas fa-cog"></i>
+          <div class="persianizer-info">
+            <span class="persianizer-title">فارسی‌ساز</span>
+            <span class="persianizer-badge">به‌زودی</span>
+          </div>
+          <a href="#persianizer" onclick="navigateTo('persianizer'); event.stopPropagation();" class="persianizer-link">
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -1892,4 +2013,4 @@
   </script>
 
 </body>
-</html>
+                                            </html>
