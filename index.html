@@ -54,7 +54,7 @@
       -webkit-touch-callout: none;
     }
     .card-img img,
-    .slide-bg,
+    .hero-bg,
     .detail-hero-bg,
     .gallery-grid img,
     .result-card .card-img img,
@@ -102,6 +102,31 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
+
+    /* کلاس‌های انیمیشن */
+    .animate-fade-up {
+      animation: fadeUp 0.8s ease forwards;
+      opacity: 0;
+    }
+    .animate-fade-down {
+      animation: fadeDown 0.6s ease forwards;
+      opacity: 0;
+    }
+    .animate-scale-in {
+      animation: scaleIn 0.6s ease forwards;
+      opacity: 0;
+    }
+    .animate-slide-right {
+      animation: slideInRight 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    /* تاخیرها */
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
 
     /* ========================================== */
     /* ===== HEADER ===== */
@@ -344,69 +369,49 @@
     .page.active { display: block; }
 
     /* ========================================== */
-    /* ===== HERO اسلایدر ===== */
+    /* ===== HERO ===== */
     /* ========================================== */
-    .hero-slider {
+    .hero {
       position: relative;
       min-height: 88vh;
-      overflow: hidden;
-    }
-
-    .slides {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    .slide {
-      position: absolute;
-      inset: 0;
       display: flex;
       align-items: flex-end;
       padding: 4rem 2rem 3rem;
-      opacity: 0;
-      transition: opacity 0.8s ease;
-      z-index: 0;
+      overflow: hidden;
     }
-    .slide.active {
-      opacity: 1;
-      z-index: 1;
-    }
-
-    .slide-bg {
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background-size: cover;
-      background-position: center;
+      background: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg') center/cover no-repeat;
       transform: scale(1.02);
       filter: brightness(0.3) contrast(1.2) saturate(0.8);
       will-change: transform;
-      z-index: -1;
+      z-index: 0;
+      pointer-events: none;
     }
-    .slide-bg::after {
+    .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
       background: linear-gradient(0deg, rgba(0,0,0,0.95) 15%, rgba(0,0,0,0.2) 70%, transparent 100%);
     }
-
-    .slide .hero-content {
+    .hero-content {
       position: relative;
       z-index: 2;
       max-width: 720px;
       padding-bottom: 2rem;
     }
-    .slide .hero-content .game-tag {
+    .hero-content .game-tag {
       font-size: 0.7rem;
       letter-spacing: 5px;
       text-transform: uppercase;
       color: #555;
       margin-bottom: 0.5rem;
       font-weight: 300;
-      animation: fadeUp 0.8s ease forwards;
+      animation: fadeUp 1s ease forwards;
       opacity: 0;
     }
-    .slide .hero-content h1 {
+    .hero-content h1 {
       font-size: 4.8rem;
       font-weight: 900;
       line-height: 1.05;
@@ -414,18 +419,18 @@
       margin: 0.5rem 0 0.2rem;
       letter-spacing: -2px;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      animation: fadeUp 1s ease forwards;
+      animation: fadeUp 1.2s ease forwards;
       opacity: 0;
     }
-    .slide .hero-content .sub-title {
+    .hero-content .sub-title {
       font-size: 1.3rem;
       font-weight: 300;
       color: #888;
       margin-bottom: 0.6rem;
-      animation: fadeUp 1.2s ease forwards;
+      animation: fadeUp 1.4s ease forwards;
       opacity: 0;
     }
-    .slide .hero-content .meta {
+    .hero-content .meta {
       display: flex;
       gap: 1.5rem;
       font-size: 0.85rem;
@@ -433,47 +438,44 @@
       margin: 0.8rem 0 2rem;
       flex-wrap: wrap;
       font-weight: 300;
-      animation: fadeUp 1.4s ease forwards;
-      opacity: 0;
-    }
-    .slide .hero-content .btn-ghost {
       animation: fadeUp 1.6s ease forwards;
       opacity: 0;
     }
-    .slide.active .game-tag,
-    .slide.active h1,
-    .slide.active .sub-title,
-    .slide.active .meta,
-    .slide.active .btn-ghost {
-      opacity: 1;
+    .hero-content .meta i { margin-left: 0.4rem; color: #444; }
+    .hero-content .btn-ghost {
+      animation: fadeUp 1.8s ease forwards;
+      opacity: 0;
     }
 
-    /* دکمه‌های ناوبری */
-    .slider-dots {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 1rem;
-      z-index: 10;
-    }
-    .slider-dots .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
+    .btn-ghost {
+      display: inline-block;
+      padding: 1rem 3rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      background: transparent;
+      transition: all 0.5s;
+      border-radius: 2px;
       cursor: pointer;
-      transition: 0.3s;
-      border: none;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      position: relative;
+      overflow: hidden;
     }
-    .slider-dots .dot.active {
-      background: #fff;
-      width: 30px;
-      border-radius: 10px;
+    .btn-ghost::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: translateX(-100%);
+      transition: 0.6s;
     }
-    .slider-dots .dot:hover {
-      background: rgba(255,255,255,0.5);
+    .btn-ghost:hover::before { transform: translateX(100%); }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.3);
+      transform: translateY(-3px) scale(1.02);
     }
 
     /* ========================================== */
@@ -1012,7 +1014,7 @@
     }
 
     /* ========================================== */
-    /* ===== صفحه فارسی‌ساز ===== */
+    /* ===== صفحه فارسی‌ساز (با انیمیشن) ===== */
     /* ========================================== */
     .persianizer-page {
       display: flex;
@@ -1368,9 +1370,8 @@
       .nav { display: none; }
       .menu-mobile { display: inline-block; }
       .header { padding: 0.8rem 1.2rem; }
-      .slide .hero-content h1 { font-size: 2.8rem; }
-      .hero-slider { min-height: 70vh; }
-      .slide { padding: 2rem 1rem 2rem; }
+      .hero-content h1 { font-size: 2.8rem; }
+      .hero { min-height: 70vh; padding: 2rem 1rem 2rem; }
       .game-grid { grid-template-columns: 1fr; }
       .section-title { font-size: 1.6rem; }
       .detail-hero h1 { font-size: 2.8rem; }
@@ -1499,51 +1500,20 @@
     </div>
   </header>
 
-  <!-- ========================================== -->
-  <!-- ===== صفحه خانه (با اسلایدر) ===== -->
-  <!-- ========================================== -->
+  <!-- ===== صفحه خانه ===== -->
   <div class="page active" id="pageHome">
-    
-    <!-- ===== HERO اسلایدر ===== -->
-    <section class="hero-slider">
-      <div class="slides">
-        <!-- اسلاید ۱: SilentGears -->
-        <div class="slide active" data-slide="0">
-          <div class="slide-bg" style="background-image: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg');"></div>
-          <div class="hero-content">
-            <div class="game-tag"><i class="fas fa-star" style="color:#444; margin-left:6px;"></i> بازی منتخب</div>
-            <h1>SilentGears</h1>
-            <div class="sub-title">چرخ‌دنده‌ساکت</div>
-            <div class="meta">
-              <span><i class="fas fa-tag"></i> اکشن-ماجرایی</span>
-              <span><i class="fas fa-desktop"></i> PC • اندروید</span>
-              <span><i class="fas fa-clock"></i> در دست توسعه</span>
-            </div>
-            <a href="#game-silentgears" class="btn-ghost" onclick="navigateTo('detail')">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
-          </div>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="game-tag"><i class="fas fa-star" style="color:#444; margin-left:6px;"></i> بازی منتخب</div>
+        <h1>SilentGears</h1>
+        <div class="sub-title">چرخ‌دنده‌ساکت</div>
+        <div class="meta">
+          <span><i class="fas fa-tag"></i> اکشن-ماجرایی</span>
+          <span><i class="fas fa-desktop"></i> PC • اندروید</span>
+          <span><i class="fas fa-clock"></i> در دست توسعه</span>
         </div>
-
-        <!-- اسلاید ۲: فارسی‌ساز -->
-        <div class="slide" data-slide="1">
-          <div class="slide-bg" style="background-image: url('https://cdn.imgurl.ir/uploads/i799534_Negar_1788735668527.webp');"></div>
-          <div class="hero-content">
-            <div class="game-tag"><i class="fas fa-cog" style="color:#444; margin-left:6px;"></i> ابزار جدید</div>
-            <h1>فارسی‌ساز</h1>
-            <div class="sub-title">بازی‌های خود را فارسی کنید</div>
-            <div class="meta">
-              <span><i class="fas fa-tag"></i> ابزار</span>
-              <span><i class="fas fa-globe"></i> فارسی‌سازی</span>
-              <span><i class="fas fa-clock"></i> در دست توسعه</span>
-            </div>
-            <a href="#persianizer" class="btn-ghost" onclick="navigateTo('persianizer')">ورود به فارسی‌ساز <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- دکمه‌های ناوبری -->
-      <div class="slider-dots">
-        <span class="dot active" data-slide="0"></span>
-        <span class="dot" data-slide="1"></span>
+        <a href="#game-silentgears" class="btn-ghost" onclick="navigateTo('detail')">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
       </div>
     </section>
 
@@ -1630,11 +1600,11 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- ===== صفحه فارسی‌ساز ===== -->
+  <!-- ===== صفحه فارسی‌ساز (با انیمیشن) ===== -->
   <!-- ========================================== -->
   <div class="page" id="pagePersianizer">
     <div class="container">
-      <div class="persianizer-page">
+      <div class="persianizer-page animate-fade-up">
         <a href="#home" class="back-link" onclick="navigateTo('home')">
           <i class="fas fa-arrow-right"></i> بازگشت
         </a>
@@ -1790,56 +1760,6 @@
       }
     ];
 
-    // ===== اسلایدر =====
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    let slideInterval;
-
-    function goToSlide(index) {
-      slides.forEach(s => s.classList.remove('active'));
-      dots.forEach(d => d.classList.remove('active'));
-      
-      slides[index].classList.add('active');
-      dots[index].classList.add('active');
-      currentSlide = index;
-    }
-
-    function nextSlide() {
-      const next = (currentSlide + 1) % slides.length;
-      goToSlide(next);
-    }
-
-    // کلیک روی دکمه‌ها
-    dots.forEach(dot => {
-      dot.addEventListener('click', function() {
-        const index = parseInt(this.dataset.slide);
-        goToSlide(index);
-        resetInterval();
-      });
-    });
-
-    // پخش خودکار
-    function startSlider() {
-      slideInterval = setInterval(nextSlide, 5000);
-    }
-
-    function resetInterval() {
-      clearInterval(slideInterval);
-      startSlider();
-    }
-
-    startSlider();
-
-    // توقف هنگام هاور
-    const slider = document.querySelector('.hero-slider');
-    if (slider) {
-      slider.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-      });
-      slider.addEventListener('mouseleave', startSlider);
-    }
-
     // ===== تابع اسکرول به بخش بازی‌ها =====
     function scrollToGames() {
       navigateTo('home');
@@ -1985,6 +1905,15 @@
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
+      }
+    });
+
+    // ===== Parallax =====
+    document.addEventListener('scroll', function() {
+      const heroBg = document.querySelector('.hero-bg');
+      const scrolled = window.scrollY;
+      if (heroBg) {
+        heroBg.style.transform = `scale(1.02) translateY(${scrolled * 0.04}px)`;
       }
     });
 
