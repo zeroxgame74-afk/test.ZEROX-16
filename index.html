@@ -54,7 +54,7 @@
       -webkit-touch-callout: none;
     }
     .card-img img,
-    .hero-slide .hero-bg,
+    .hero-bg,
     .detail-hero-bg,
     .gallery-grid img,
     .result-card .card-img img,
@@ -364,12 +364,8 @@
       transform: translateY(-4px) scale(1.1);
     }
 
-    /* ===== صفحات ===== */
-    .page { display: none; padding-top: 70px; }
-    .page.active { display: block; }
-
     /* ========================================== */
-    /* ===== اسلایدر هیرو ===== */
+    /* ===== هیرو اسلایدر ===== */
     /* ========================================== */
     .hero-slider {
       position: relative;
@@ -394,6 +390,7 @@
       background-position: center;
       transform: scale(1.02);
       filter: brightness(0.3) contrast(1.2) saturate(0.8);
+      will-change: transform;
       z-index: 0;
       transition: transform 0.1s;
     }
@@ -459,8 +456,8 @@
     .slider-nav {
       position: absolute;
       bottom: 2rem;
-      right: 50%;
-      transform: translateX(50%);
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       gap: 1rem;
       z-index: 5;
@@ -469,20 +466,19 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: #333;
+      border: 1px solid #555;
       cursor: pointer;
       transition: 0.3s;
     }
     .slider-dot.active {
       background: #fff;
       border-color: #fff;
-      box-shadow: 0 0 20px rgba(255,255,255,0.1);
-    }
-    .slider-dot:hover {
-      background: rgba(255,255,255,0.4);
     }
 
+    /* ========================================== */
+    /* ===== دکمه ===== */
+    /* ========================================== */
     .btn-ghost {
       display: inline-block;
       padding: 1rem 3rem;
@@ -513,6 +509,12 @@
       border-color: rgba(255,255,255,0.3);
       transform: translateY(-3px) scale(1.02);
     }
+
+    /* ========================================== */
+    /* ===== صفحات ===== */
+    /* ========================================== */
+    .page { display: none; padding-top: 70px; }
+    .page.active { display: block; }
 
     /* ========================================== */
     /* ===== بخش بازی‌ها ===== */
@@ -1444,14 +1446,6 @@
       .persianizer-page .icon {
         font-size: 3rem;
       }
-      .slider-nav {
-        bottom: 1rem;
-        gap: 0.7rem;
-      }
-      .slider-dot {
-        width: 8px;
-        height: 8px;
-      }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
@@ -1486,9 +1480,6 @@
       }
       .persianizer-page p {
         font-size: 0.95rem;
-      }
-      .hero-slide .hero-content h1 {
-        font-size: 2.2rem;
       }
     }
   </style>
@@ -1547,10 +1538,13 @@
     </div>
   </header>
 
-  <!-- ===== صفحه خانه ===== -->
+  <!-- ========================================== -->
+  <!-- ===== صفحه خانه با اسلایدر ===== -->
+  <!-- ========================================== -->
   <div class="page active" id="pageHome">
-    <!-- ===== اسلایدر هیرو ===== -->
+    <!-- ===== هیرو اسلایدر ===== -->
     <div class="hero-slider" id="heroSlider">
+      
       <!-- اسلاید ۱: SilentGears -->
       <div class="hero-slide active" data-slide="1">
         <div class="hero-bg" style="background-image: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg');"></div>
@@ -1567,7 +1561,7 @@
         </div>
       </div>
 
-      <!-- اسلاید ۳: فارسی‌ساز (اسلاید دوم) -->
+      <!-- اسلاید ۲: فارسی‌ساز -->
       <div class="hero-slide" data-slide="2">
         <div class="hero-bg" style="background-image: url('https://cdn.imgurl.ir/uploads/i799534_Negar_1788735668527.webp');"></div>
         <div class="hero-content">
@@ -1591,8 +1585,8 @@
 
       <!-- دکمه‌های ناوبری اسلایدر -->
       <div class="slider-nav">
-        <div class="slider-dot active" data-slide="1"></div>
-        <div class="slider-dot" data-slide="2"></div>
+        <span class="slider-dot active" data-slide="1"></span>
+        <span class="slider-dot" data-slide="2"></span>
       </div>
     </div>
 
@@ -1624,6 +1618,10 @@
     </div>
   </div>
 
+  <!-- ========================================== -->
+  <!-- ===== سایر صفحات ===== -->
+  <!-- ========================================== -->
+
   <!-- ===== صفحه درباره ما ===== -->
   <div class="page" id="pageAbout">
     <div class="container">
@@ -1648,39 +1646,27 @@
   <!-- ===== صفحه جستجو ===== -->
   <div class="page" id="pageSearch">
     <div class="container search-page">
-
       <div class="search-header">
         <h1>جستجوی بازی</h1>
         <div class="sub">نام بازی مورد نظر را پیدا کن</div>
       </div>
-
       <div class="search-box">
-        <input 
-          type="text" 
-          placeholder="مثل: SilentGears ..." 
-          id="searchInput" 
-          oninput="searchGames()" 
-        />
+        <input type="text" placeholder="مثل: SilentGears ..." id="searchInput" oninput="searchGames()" />
         <i class="fas fa-search search-icon"></i>
       </div>
-
       <div class="results-count">
         <span id="countNum">۰</span> نتیجه پیدا شد
       </div>
-
       <div class="results-grid" id="resultsGrid">
         <div class="search-placeholder">
           <i class="fas fa-gamepad"></i>
           <p>برای شروع جستجو، نام بازی را وارد کن...</p>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- ========================================== -->
   <!-- ===== صفحه فارسی‌ساز ===== -->
-  <!-- ========================================== -->
   <div class="page" id="pagePersianizer">
     <div class="container">
       <div class="persianizer-page animate-fade-up">
@@ -1697,9 +1683,7 @@
     </div>
   </div>
 
-  <!-- ========================================== -->
   <!-- ===== صفحه اختصاصی بازی ===== -->
-  <!-- ========================================== -->
   <div class="page" id="pageDetail">
     <div class="detail-hero">
       <div class="detail-hero-bg"></div>
@@ -1723,19 +1707,15 @@
     <div class="detail-body container">
       <div class="full-desc">
         🎮 SilentGears | چرخ‌دنده‌ساکت یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط Zerox Studios ساخته شده.
-
         داستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخ‌دنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از ۳ پایان مختلف ختم می‌شود.
-
         بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌ساکت می‌برد.
       </div>
 
-      <!-- ===== کارت خرید ===== -->
       <div class="purchase-card">
         <div class="purchase-header">
           <div class="purchase-logo">ZER0X <span>GAME</span></div>
           <div class="purchase-badge">به‌زودی</div>
         </div>
-        
         <div class="purchase-body">
           <div class="purchase-cover">
             <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="SilentGears" />
@@ -1743,13 +1723,11 @@
           <div class="purchase-info">
             <h3>SilentGears</h3>
             <p class="purchase-desc">یک بازی اکشن-ماجرایی ریتم‌محور در دنیای پساآخرالزمانی</p>
-            
             <div class="purchase-meta">
               <span><i class="fas fa-tag"></i> اکشن-ماجرایی</span>
               <span><i class="fas fa-desktop"></i> PC</span>
               <span><i class="fas fa-mobile-alt"></i> اندروید</span>
             </div>
-            
             <div class="purchase-status">
               <div class="status-badge">
                 <i class="fas fa-clock"></i>
@@ -1757,7 +1735,6 @@
               </div>
               <p class="status-desc">این بازی در حال توسعه است و به‌زودی منتشر می‌شود.</p>
             </div>
-            
             <button class="purchase-btn disabled">
               <i class="fas fa-hourglass-half"></i>
               به‌زودی
@@ -1785,7 +1762,9 @@
     </div>
   </div>
 
+  <!-- ========================================== -->
   <!-- ===== FOOTER ===== -->
+  <!-- ========================================== -->
   <footer class="footer">
     <div class="logo" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
     <div class="footer-links">
@@ -1849,14 +1828,14 @@
     }
 
     // تغییر خودکار هر ۶ ثانیه
-    let sliderInterval = setInterval(nextSlide, 6000);
+    let slideInterval = setInterval(nextSlide, 6000);
 
     // کلیک روی دات‌ها
     document.querySelectorAll('.slider-dot').forEach(dot => {
       dot.addEventListener('click', function() {
-        clearInterval(sliderInterval);
+        clearInterval(slideInterval);
         showSlide(parseInt(this.dataset.slide));
-        sliderInterval = setInterval(nextSlide, 6000);
+        slideInterval = setInterval(nextSlide, 6000);
       });
     });
 
@@ -2012,6 +1991,15 @@
       document.body.style.overflow = '';
     }
 
+    // ===== Parallax برای اسلایدها =====
+    document.addEventListener('scroll', function() {
+      const heroSlides = document.querySelectorAll('.hero-slide.active .hero-bg');
+      const scrolled = window.scrollY;
+      heroSlides.forEach(bg => {
+        bg.style.transform = `scale(1.02) translateY(${scrolled * 0.04}px)`;
+      });
+    });
+
     // ===== هدر اسکرول =====
     window.addEventListener('scroll', function() {
       const header = document.getElementById('header');
@@ -2019,15 +2007,6 @@
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
-      }
-    });
-
-    // ===== Parallax =====
-    document.addEventListener('scroll', function() {
-      const heroBg = document.querySelector('.hero-slide.active .hero-bg');
-      const scrolled = window.scrollY;
-      if (heroBg) {
-        heroBg.style.transform = `scale(1.02) translateY(${scrolled * 0.04}px)`;
       }
     });
 
@@ -2059,4 +2038,4 @@
   </script>
 
 </body>
-  </html>
+        </html>
