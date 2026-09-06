@@ -436,7 +436,6 @@
       animation: fadeUp 1.4s ease forwards;
       opacity: 0;
     }
-    .slide .hero-content .meta i { margin-left: 0.4rem; color: #444; }
     .slide .hero-content .btn-ghost {
       animation: fadeUp 1.6s ease forwards;
       opacity: 0;
@@ -449,38 +448,7 @@
       opacity: 1;
     }
 
-    .btn-ghost {
-      display: inline-block;
-      padding: 1rem 3rem;
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-      background: transparent;
-      transition: all 0.5s;
-      border-radius: 2px;
-      cursor: pointer;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-ghost::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-      transform: translateX(-100%);
-      transition: 0.6s;
-    }
-    .btn-ghost:hover::before { transform: translateX(100%); }
-    .btn-ghost:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.3);
-      transform: translateY(-3px) scale(1.02);
-    }
-
-    /* دکمه‌های ناوبری اسلایدر */
+    /* دکمه‌های ناوبری */
     .slider-dots {
       position: absolute;
       bottom: 2rem;
@@ -1400,9 +1368,9 @@
       .nav { display: none; }
       .menu-mobile { display: inline-block; }
       .header { padding: 0.8rem 1.2rem; }
+      .slide .hero-content h1 { font-size: 2.8rem; }
       .hero-slider { min-height: 70vh; }
       .slide { padding: 2rem 1rem 2rem; }
-      .slide .hero-content h1 { font-size: 2.8rem; }
       .game-grid { grid-template-columns: 1fr; }
       .section-title { font-size: 1.6rem; }
       .detail-hero h1 { font-size: 2.8rem; }
@@ -1474,13 +1442,6 @@
       .persianizer-page p {
         font-size: 0.95rem;
       }
-      .slider-dots .dot {
-        width: 8px;
-        height: 8px;
-      }
-      .slider-dots .dot.active {
-        width: 20px;
-      }
     }
   </style>
 </head>
@@ -1538,7 +1499,9 @@
     </div>
   </header>
 
+  <!-- ========================================== -->
   <!-- ===== صفحه خانه (با اسلایدر) ===== -->
+  <!-- ========================================== -->
   <div class="page active" id="pageHome">
     
     <!-- ===== HERO اسلایدر ===== -->
@@ -1813,6 +1776,20 @@
       }
     });
 
+    // ===== دیتابیس بازی‌ها =====
+    const gamesDB = [
+      { 
+        id: 1,
+        title: 'SilentGears', 
+        persianTitle: 'چرخ‌دنده‌ساکت',
+        slug: 'silentgears',
+        genre: 'اکشن-ماجرایی • نقش‌آفرینی',
+        status: 'در دست توسعه',
+        cover: 'https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg',
+        link: 'detail'
+      }
+    ];
+
     // ===== اسلایدر =====
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
@@ -1842,6 +1819,7 @@
       });
     });
 
+    // پخش خودکار
     function startSlider() {
       slideInterval = setInterval(nextSlide, 5000);
     }
@@ -1861,20 +1839,6 @@
       });
       slider.addEventListener('mouseleave', startSlider);
     }
-
-    // ===== دیتابیس بازی‌ها =====
-    const gamesDB = [
-      { 
-        id: 1,
-        title: 'SilentGears', 
-        persianTitle: 'چرخ‌دنده‌ساکت',
-        slug: 'silentgears',
-        genre: 'اکشن-ماجرایی • نقش‌آفرینی',
-        status: 'در دست توسعه',
-        cover: 'https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg',
-        link: 'detail'
-      }
-    ];
 
     // ===== تابع اسکرول به بخش بازی‌ها =====
     function scrollToGames() {
