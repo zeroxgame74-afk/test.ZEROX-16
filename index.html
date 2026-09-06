@@ -98,9 +98,9 @@
       from { opacity: 0; transform: translateX(50px); }
       to { opacity: 1; transform: translateX(0); }
     }
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.02); }
-      50% { box-shadow: 0 0 40px rgba(255,255,255,0.06); }
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     /* ========================================== */
@@ -143,6 +143,7 @@
       display: flex;
       gap: 2.2rem;
       font-size: 0.9rem;
+      align-items: center;
     }
     .nav a {
       cursor: pointer;
@@ -152,6 +153,9 @@
       font-weight: 400;
       padding: 4px 0;
       font-family: 'Estedad', 'Ardakan', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
     .nav a::after {
       content: '';
@@ -171,6 +175,18 @@
     .nav a:hover { color: #fff; transform: translateY(-2px); }
     .nav a.active { color: #fff; }
     .nav a.active::after { width: 100%; }
+    
+    .nav a .dev-badge {
+      font-size: 0.5rem;
+      background: #1a1a1a;
+      color: #555;
+      padding: 0.1rem 0.5rem;
+      border-radius: 12px;
+      margin-right: 4px;
+      letter-spacing: 0.3px;
+      border: 1px solid #222;
+      font-weight: 300;
+    }
 
     .header-actions {
       display: flex;
@@ -270,6 +286,7 @@
     .mobile-menu-content .mobile-nav a:nth-child(1) { animation-delay: 0.05s; }
     .mobile-menu-content .mobile-nav a:nth-child(2) { animation-delay: 0.1s; }
     .mobile-menu-content .mobile-nav a:nth-child(3) { animation-delay: 0.15s; }
+    .mobile-menu-content .mobile-nav a:nth-child(4) { animation-delay: 0.2s; }
 
     .mobile-menu-content .mobile-nav a i {
       font-size: 1.2rem;
@@ -291,6 +308,14 @@
     }
     .mobile-menu-content .mobile-nav a.active i {
       color: #888;
+    }
+    .mobile-menu-content .mobile-nav a .dev-badge-mobile {
+      font-size: 0.55rem;
+      background: #1a1a1a;
+      color: #555;
+      padding: 0.1rem 0.6rem;
+      border-radius: 12px;
+      border: 1px solid #222;
     }
 
     .mobile-menu-content .mobile-social {
@@ -446,7 +471,7 @@
     }
     .game-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 2rem;
       margin-bottom: 4rem;
     }
@@ -787,32 +812,32 @@
     }
 
     /* ========================================== */
-    /* ===== کارت خرید استیم-استایل (به‌زودی) ===== */
+    /* ===== کارت خرید استیم-استایل (فونت فارسی) ===== */
     /* ========================================== */
     .purchase-card {
-      background: #0f0f0f;
+      background: #0d0d0d;
       border: 1px solid #1a1a1a;
-      border-radius: 12px;
-      padding: 2rem;
+      border-radius: 8px;
+      padding: 1.5rem;
       margin: 2rem 0;
-      transition: 0.4s;
-      animation: scaleIn 0.8s ease;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     .purchase-card:hover {
       border-color: #333;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.8);
     }
 
     .purchase-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
       border-bottom: 1px solid #181818;
     }
     .purchase-logo {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 900;
       letter-spacing: 2px;
       color: #fff;
@@ -823,134 +848,136 @@
       font-weight: 300;
     }
     .purchase-badge {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: #666;
       border: 1px solid #222;
-      padding: 0.2rem 1rem;
+      padding: 0.2rem 0.8rem;
       border-radius: 20px;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
 
     .purchase-body {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 2rem;
-      align-items: start;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
     }
     .purchase-cover {
-      width: 100%;
+      flex: 0 0 140px;
+      width: 140px;
       aspect-ratio: 16/9;
-      border-radius: 8px;
+      border-radius: 4px;
       overflow: hidden;
       border: 1px solid #1a1a1a;
+      background: #0a0a0a;
     }
     .purchase-cover img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
+    .purchase-info {
+      flex: 1;
+      min-width: 0;
+    }
     .purchase-info h3 {
-      font-size: 1.6rem;
+      font-size: 1.3rem;
       font-weight: 800;
       color: #fff;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
+      letter-spacing: -0.5px;
     }
     .purchase-desc {
       color: #888;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 300;
-      margin-bottom: 1.2rem;
-      line-height: 1.8;
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
 
     .purchase-meta {
       display: flex;
-      gap: 1.2rem;
+      gap: 1rem;
       flex-wrap: wrap;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     .purchase-meta span {
       color: #666;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 300;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .purchase-meta i {
       margin-left: 4px;
       color: #444;
+      font-size: 0.7rem;
     }
 
-    /* وضعیت به‌زودی */
     .purchase-status {
-      margin: 1rem 0 1.2rem;
-      padding: 1rem 1.2rem;
-      background: rgba(255, 255, 255, 0.02);
+      margin: 0.8rem 0 1rem;
+      padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.02);
       border: 1px solid #1a1a1a;
-      border-radius: 8px;
-      transition: 0.4s;
-    }
-    .purchase-status:hover {
-      border-color: #333;
-      background: rgba(255, 255, 255, 0.03);
+      border-radius: 6px;
     }
     .status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 0.3rem 1.2rem;
+      gap: 8px;
+      padding: 0.2rem 1rem;
       border: 1px solid #333;
       border-radius: 30px;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: #aaa;
-      letter-spacing: 1px;
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(4px);
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+      background: rgba(255,255,255,0.02);
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .status-badge i {
       color: #555;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
     .status-desc {
       color: #666;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 300;
-      margin: 0;
-      padding-right: 0.5rem;
+      margin: 0.3rem 0 0;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
 
-    /* دکمه غیرفعال */
     .purchase-btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 0.9rem 2.5rem;
+      gap: 8px;
+      padding: 0.7rem 2rem;
       background: #fff;
       color: #0a0a0a;
       border: none;
       border-radius: 4px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 700;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       cursor: pointer;
-      transition: 0.4s;
-      letter-spacing: 1px;
+      transition: 0.2s;
+      letter-spacing: 0.5px;
     }
     .purchase-btn:hover {
       background: #ddd;
       transform: scale(1.02);
-      box-shadow: 0 0 40px rgba(255,255,255,0.05);
     }
     .purchase-btn i {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
     .purchase-btn.disabled {
       background: transparent;
       color: #666;
       border: 1px solid #222;
       cursor: not-allowed;
-      opacity: 0.7;
+      opacity: 0.6;
       pointer-events: none;
     }
     .purchase-btn.disabled i {
@@ -959,7 +986,51 @@
     .purchase-btn.disabled:hover {
       background: transparent;
       transform: none;
-      box-shadow: none;
+    }
+
+    /* ========================================== */
+    /* ===== صفحه فارسی‌ساز ===== */
+    /* ========================================== */
+    .persianizer-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    .persianizer-page .icon {
+      font-size: 4rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+      animation: spinSlow 6s linear infinite;
+    }
+    .persianizer-page h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .persianizer-page p {
+      color: #666;
+      font-size: 1.1rem;
+      font-weight: 300;
+      max-width: 500px;
+      line-height: 1.8;
+    }
+    .persianizer-page .coming-badge {
+      margin-top: 2rem;
+      padding: 0.5rem 1.8rem;
+      border: 1px solid #222;
+      border-radius: 30px;
+      color: #555;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+    .persianizer-page .coming-badge i {
+      margin-left: 8px;
     }
 
     /* ========================================== */
@@ -1266,18 +1337,26 @@
       .search-page .results-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
       
       .purchase-body {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
+        flex-direction: column;
+        align-items: center;
       }
       .purchase-cover {
+        flex: 0 0 auto;
+        width: 100%;
         max-width: 280px;
-        margin: 0 auto;
+      }
+      .purchase-info {
+        width: 100%;
       }
       .purchase-info h3 {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
       }
-      .purchase-price .price {
-        font-size: 1.5rem;
+
+      .persianizer-page h1 {
+        font-size: 2.2rem;
+      }
+      .persianizer-page .icon {
+        font-size: 3rem;
       }
     }
     @media (max-width: 480px) {
@@ -1293,10 +1372,7 @@
       .search-page .search-box input { font-size: 0.9rem; padding: 0.8rem 1.2rem 0.8rem 2.5rem; }
       
       .purchase-card {
-        padding: 1.2rem;
-      }
-      .purchase-cover {
-        max-width: 100%;
+        padding: 1rem;
       }
       .purchase-header {
         flex-direction: column;
@@ -1306,6 +1382,16 @@
       .purchase-btn {
         width: 100%;
         justify-content: center;
+      }
+
+      .persianizer-page h1 {
+        font-size: 1.8rem;
+      }
+      .persianizer-page .icon {
+        font-size: 2.5rem;
+      }
+      .persianizer-page p {
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -1331,10 +1417,14 @@
         <a href="#about" onclick="navigateTo('about'); closeMobileMenu();">
           <i class="fas fa-info-circle"></i> درباره ما
         </a>
+        <a href="#persianizer" onclick="navigateTo('persianizer'); closeMobileMenu();">
+          <i class="fas fa-cog"></i> فارسی‌ساز
+          <span class="dev-badge-mobile">در دست توسعه</span>
+        </a>
       </nav>
       
       <div class="mobile-social">
-        <a href="https://t.me/ZEROX_STUDIOS" target="_blank"><i class="fab fa-telegram"></i></a>
+        <a href="https://t.me/ZEROX_GAME_STUDIOS" target="_blank"><i class="fab fa-telegram"></i></a>
         <a href="https://www.youtube.com/@Zerox_game_studios" target="_blank"><i class="fab fa-youtube"></i></a>
         <a href="https://www.instagram.com/zerox_game_studios" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1349,6 +1439,10 @@
       <a class="active" data-page="home" href="#home" onclick="navigateTo('home')">خانه</a>
       <a data-page="games" href="#games" onclick="scrollToGames()">بازی‌ها</a>
       <a data-page="about" href="#about" onclick="navigateTo('about')">درباره ما</a>
+      <a data-page="persianizer" href="#persianizer" onclick="navigateTo('persianizer')">
+        <i class="fas fa-cog"></i> فارسی‌ساز
+        <span class="dev-badge">در دست توسعه</span>
+      </a>
     </nav>
     <div class="header-actions">
       <i class="fas fa-search" onclick="navigateTo('search')"></i>
@@ -1456,7 +1550,23 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- ===== صفحه اختصاصی بازی (با کارت به‌زودی) ===== -->
+  <!-- ===== صفحه فارسی‌ساز ===== -->
+  <!-- ========================================== -->
+  <div class="page" id="pagePersianizer">
+    <div class="container">
+      <div class="persianizer-page">
+        <i class="fas fa-cog icon"></i>
+        <h1>فارسی‌ساز</h1>
+        <p>این بخش در دست توسعه است و به‌زودی امکانات فارسی‌سازی برای بازی‌ها اضافه می‌شود.</p>
+        <div class="coming-badge">
+          <i class="fas fa-clock"></i> به‌زودی
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- ===== صفحه اختصاصی بازی ===== -->
   <!-- ========================================== -->
   <div class="page" id="pageDetail">
     <div class="detail-hero">
@@ -1471,7 +1581,7 @@
           <div class="item"><strong>ژانر</strong><span>اکشن-ماجرایی • نقش‌آفرینی</span></div>
           <div class="item"><strong>پلتفرم</strong><span>اندروید • PC</span></div>
           <div class="item"><strong>وضعیت</strong><span>در دست توسعه</span></div>
-          <div class="item"><strong>مدت زمان</strong><span>۱۲ تا ۱۶ ساعت</span></div>
+          <div class="item"><strong>مدت زمان</strong><span>۳ تا ۴ ساعت</span></div>
           <div class="item"><strong>پایان‌ها</strong><span>۳ پایان مختلف</span></div>
           <div class="item"><strong>حالت بازی</strong><span>تکنفره، روایت خطی</span></div>
         </div>
@@ -1487,7 +1597,7 @@
         بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌ساکت می‌برد.
       </div>
 
-      <!-- ===== کارت خرید (به‌زودی) ===== -->
+      <!-- ===== کارت خرید ===== -->
       <div class="purchase-card">
         <div class="purchase-header">
           <div class="purchase-logo">ZER0X <span>GAME</span></div>
@@ -1552,7 +1662,7 @@
       <a href="#about" onclick="navigateTo('about')">درباره ما</a>
     </div>
     <div class="footer-social">
-      <a href="https://t.me/ZEROX_STUDIOS" target="_blank" rel="noopener noreferrer" aria-label="تلگرام">
+      <a href="https://t.me/ZEROX_GAME_STUDIOS" target="_blank" rel="noopener noreferrer" aria-label="تلگرام">
         <i class="fab fa-telegram"></i>
       </a>
       <a href="https://www.youtube.com/@Zerox_game_studios" target="_blank" rel="noopener noreferrer" aria-label="یوتیوب">
@@ -1626,11 +1736,15 @@
       } else if (page === 'detail') {
         document.getElementById('pageDetail').classList.add('active');
         window.location.hash = 'game-silentgears';
+      } else if (page === 'persianizer') {
+        document.getElementById('pagePersianizer').classList.add('active');
+        window.location.hash = 'persianizer';
       }
 
+      // آپدیت منو
       document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
-      const navMap = { 'home': 0, 'about': 2 };
-      if (page === 'home' || page === 'about') {
+      const navMap = { 'home': 0, 'about': 2, 'persianizer': 3 };
+      if (page === 'home' || page === 'about' || page === 'persianizer') {
         const idx = navMap[page];
         if (idx !== undefined) {
           document.querySelectorAll('.nav a')[idx].classList.add('active');
@@ -1652,6 +1766,8 @@
         navigateTo('search');
       } else if (hash === 'game-silentgears') {
         navigateTo('detail');
+      } else if (hash === 'persianizer') {
+        navigateTo('persianizer');
       } else {
         navigateTo('home');
       }
@@ -1664,6 +1780,7 @@
       else if (hash === 'about') navigateTo('about');
       else if (hash === 'search') navigateTo('search');
       else if (hash === 'game-silentgears') navigateTo('detail');
+      else if (hash === 'persianizer') navigateTo('persianizer');
     });
 
     // ===== جستجو =====
@@ -1775,4 +1892,4 @@
   </script>
 
 </body>
-  </html>
+</html>
