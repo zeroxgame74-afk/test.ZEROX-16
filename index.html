@@ -369,7 +369,7 @@
     .page.active { display: block; }
 
     /* ========================================== */
-    /* ===== اسلایدر هیرو ===== */
+    /* ===== اسلایدر هیرو (دو اسلاید) ===== */
     /* ========================================== */
     .hero-slider {
       position: relative;
@@ -1095,7 +1095,7 @@
     }
 
     /* ========================================== */
-    /* ===== صفحه فارسی‌ساز ===== */
+    /* ===== صفحه فارسی‌ساز (با انیمیشن) ===== */
     /* ========================================== */
     .persianizer-page {
       display: flex;
@@ -1454,14 +1454,6 @@
       .slide-content h1 { font-size: 2.8rem; }
       .hero-slider { min-height: 70vh; }
       .slide { padding: 2rem 1rem 2rem; }
-      .slider-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 0.9rem;
-      }
-      .slider-btn.prev { right: 1rem; }
-      .slider-btn.next { left: 1rem; }
-      
       .game-grid { grid-template-columns: 1fr; }
       .section-title { font-size: 1.6rem; }
       .detail-hero h1 { font-size: 2.8rem; }
@@ -1498,6 +1490,18 @@
       .persianizer-page .icon {
         font-size: 3rem;
       }
+
+      .slider-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+      }
+      .slider-btn.prev {
+        right: 1rem;
+      }
+      .slider-btn.next {
+        left: 1rem;
+      }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
@@ -1524,17 +1528,6 @@
         justify-content: center;
       }
 
-      .slide-content h1 { font-size: 2.2rem; }
-      .slider-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 0.7rem;
-      }
-      .slider-dots .dot {
-        width: 8px;
-        height: 8px;
-      }
-
       .persianizer-page h1 {
         font-size: 1.8rem;
       }
@@ -1543,6 +1536,9 @@
       }
       .persianizer-page p {
         font-size: 0.95rem;
+      }
+      .slide-content h1 {
+        font-size: 2.2rem;
       }
     }
   </style>
@@ -1606,6 +1602,7 @@
   <!-- ========================================== -->
   <section class="hero-slider" id="home">
     <div class="slider-container">
+      
       <!-- اسلاید ۱: SilentGears -->
       <div class="slide active" data-index="0">
         <div class="slide-bg" style="background-image: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg');"></div>
@@ -1650,9 +1647,7 @@
     </div>
   </section>
 
-  <!-- ========================================== -->
-  <!-- ===== صفحه خانه (بازی‌ها و درباره ما) ===== -->
-  <!-- ========================================== -->
+  <!-- ===== صفحه خانه (بقیه محتوا) ===== -->
   <div class="page active" id="pageHome">
     <!-- ===== بخش بازی‌های ما ===== -->
     <div class="container" id="games-section">
@@ -1883,7 +1878,9 @@
       }
     });
 
-    // ===== اسلایدر =====
+    // ========================================== */
+    // ===== اسلایدر ===== */
+    // ========================================== */
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
@@ -2081,11 +2078,11 @@
 
     // ===== Parallax =====
     document.addEventListener('scroll', function() {
-      const slideBgs = document.querySelectorAll('.slide-bg');
+      const heroBg = document.querySelector('.slide-bg');
       const scrolled = window.scrollY;
-      slideBgs.forEach(bg => {
-        bg.style.transform = `scale(1.02) translateY(${scrolled * 0.04}px)`;
-      });
+      if (heroBg) {
+        heroBg.style.transform = `scale(1.02) translateY(${scrolled * 0.04}px)`;
+      }
     });
 
     // ===== ریسپانسیو منو =====
@@ -2116,4 +2113,4 @@
   </script>
 
 </body>
-          </html>
+  </html>
