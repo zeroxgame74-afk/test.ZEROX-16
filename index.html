@@ -352,13 +352,16 @@
     .page.active { display: block; }
 
     /* ==================================================
-       HERO SLIDER (صفحه اصلی)
+       HERO SLIDER (صفحه اصلی + صفحه فارسی‌ساز)
     ================================================== */
     .hero-slider {
       position: relative;
       min-height: 88vh;
       overflow: hidden;
       background: #0a0a0a;
+    }
+    .hero-slider.persianizer-hero {
+      min-height: 70vh;
     }
     .hero-slide {
       position: absolute;
@@ -371,6 +374,9 @@
       visibility: hidden;
       transition: opacity 0.8s ease, visibility 0.8s ease;
       overflow: hidden;
+    }
+    .hero-slider.persianizer-hero .hero-slide {
+      min-height: 70vh;
     }
     .hero-slide.active {
       opacity: 1;
@@ -1063,95 +1069,6 @@
     .persianizer-page .coming-badge i { margin-left: 8px; }
 
     /* ==================================================
-       اسلایدر فارسی‌ساز
-    ================================================== */
-    .persianizer-slider {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto 3rem;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #1a1a1a;
-      background: #0a0a0a;
-    }
-    .persianizer-slide {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16/9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-    }
-    .persianizer-slide.active {
-      opacity: 1;
-      visibility: visible;
-      z-index: 2;
-    }
-    .persianizer-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .persianizer-slide .slide-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .persianizer-slide .slide-text {
-      position: absolute;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 3;
-      color: #fff;
-      text-align: right;
-    }
-    .persianizer-slide .slide-text h3 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-      margin-bottom: 0.3rem;
-    }
-    .persianizer-slide .slide-text p {
-      font-size: 0.9rem;
-      color: #aaa;
-      font-weight: 300;
-    }
-    .persianizer-slider-controls {
-      position: absolute;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    .persianizer-slider-controls .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      border: none;
-      outline: none;
-      padding: 0;
-      background: rgba(255,255,255,0.3);
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .persianizer-slider-controls .dot.active {
-      background: #fff;
-      transform: scale(1.3);
-    }
-    .persianizer-slider-controls .dot:hover {
-      background: rgba(255,255,255,0.6);
-    }
-
-    /* ==================================================
        صفحه اختصاصی
     ================================================== */
     .detail-hero {
@@ -1434,7 +1351,9 @@
       .menu-mobile { display: inline-block; }
       .header { padding: 0.8rem 1.2rem; }
       .hero-slider { min-height: 70vh; }
+      .hero-slider.persianizer-hero { min-height: 60vh; }
       .hero-slide { min-height: 70vh; padding: 2rem 1rem 2rem; }
+      .hero-slider.persianizer-hero .hero-slide { min-height: 60vh; }
       .hero-content h1 { font-size: 2.8rem; }
       .game-grid { grid-template-columns: 1fr; }
       .section-title { font-size: 1.6rem; }
@@ -1455,8 +1374,6 @@
       .purchase-info h3 { font-size: 1.1rem; }
       .persianizer-page h1 { font-size: 2.2rem; }
       .persianizer-page .icon { font-size: 3rem; }
-      .persianizer-slide .slide-text h3 { font-size: 1.2rem; }
-      .persianizer-slide .slide-text p { font-size: 0.75rem; }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
@@ -1481,9 +1398,6 @@
       .hero-slider-controls { bottom: 20px; }
       .hero-slider-dot { width: 20px; }
       .hero-slider-dot.active { width: 38px; }
-      .persianizer-slide .slide-text { bottom: 1rem; right: 1rem; }
-      .persianizer-slide .slide-text h3 { font-size: 1rem; }
-      .persianizer-slide .slide-text p { font-size: 0.65rem; }
     }
   </style>
 </head>
@@ -1547,10 +1461,10 @@
   ================================================== -->
   <div class="page active" id="pageHome">
 
-    <!-- ===== اسلایدر اصلی (ترتیب جدید) ===== -->
+    <!-- ===== اسلایدر اصلی (ترتیب: SilentGears اول، فارسی‌ساز دوم) ===== -->
     <section class="hero-slider" id="heroSlider">
 
-      <!-- اسلاید ۱: SilentGears (اول) -->
+      <!-- اسلاید ۱: SilentGears -->
       <div class="hero-slide active">
         <div class="hero-slide-bg" style="background-image: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg');"></div>
         <div class="hero-content">
@@ -1566,7 +1480,7 @@
         </div>
       </div>
 
-      <!-- اسلاید ۲: فارسی‌ساز (دوم) -->
+      <!-- اسلاید ۲: فارسی‌ساز -->
       <div class="hero-slide">
         <div class="hero-slide-bg" style="background-image: url('https://cdn.imgurl.ir/uploads/i799534_Negar_1788735668527.webp');"></div>
         <div class="hero-content">
@@ -1659,39 +1573,58 @@
   </div>
 
   <!-- ==================================================
-       صفحه فارسی‌ساز (با اسلایدر اختصاصی)
+       صفحه فارسی‌ساز (با اسلایدر دقیقاً مثل صفحه اصلی)
   ================================================== -->
   <div class="page" id="pagePersianizer">
     <div class="container">
+
+      <!-- اسلایدر فارسی‌ساز (دقیقاً مثل صفحه اصلی) -->
+      <section class="hero-slider persianizer-hero" id="persianizerHeroSlider">
+
+        <!-- اسلاید ۱: فارسی‌ساز -->
+        <div class="hero-slide active">
+          <div class="hero-slide-bg" style="background-image: url('https://cdn.imgurl.ir/uploads/i799534_Negar_1788735668527.webp');"></div>
+          <div class="hero-content">
+            <div class="game-tag"><i class="fas fa-language" style="color:#444; margin-left:6px;"></i> فارسی‌ساز</div>
+            <h1>فارسی‌ساز</h1>
+            <div class="sub-title">ترجمه هوشمند بازی‌ها به فارسی</div>
+            <div class="meta">
+              <span><i class="fas fa-gamepad"></i> فارسی‌سازی بازی‌ها</span>
+              <span><i class="fas fa-language"></i> زبان فارسی</span>
+              <span><i class="fas fa-clock"></i> در دست توسعه</span>
+            </div>
+            <a href="#persianizer" class="btn-ghost" onclick="navigateTo('persianizer')">مشاهده فارسی‌ساز <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
+          </div>
+        </div>
+
+        <!-- اسلاید ۲: SilentGears -->
+        <div class="hero-slide">
+          <div class="hero-slide-bg" style="background-image: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg');"></div>
+          <div class="hero-content">
+            <div class="game-tag"><i class="fas fa-star" style="color:#444; margin-left:6px;"></i> بازی منتخب</div>
+            <h1>SilentGears</h1>
+            <div class="sub-title">چرخ‌دنده‌ساکت</div>
+            <div class="meta">
+              <span><i class="fas fa-tag"></i> اکشن-ماجرایی</span>
+              <span><i class="fas fa-desktop"></i> PC • اندروید</span>
+              <span><i class="fas fa-clock"></i> در دست توسعه</span>
+            </div>
+            <a href="#game-silentgears" class="btn-ghost" onclick="navigateTo('detail')">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
+          </div>
+        </div>
+
+        <!-- کنترل اسلایدر -->
+        <div class="hero-slider-controls">
+          <button class="hero-slider-dot active" onclick="goToPersianizerHeroSlide(0)"></button>
+          <button class="hero-slider-dot" onclick="goToPersianizerHeroSlide(1)"></button>
+        </div>
+      </section>
+
+      <!-- محتوای فارسی‌ساز -->
       <div class="persianizer-page animate-fade-up">
         <a href="#home" class="back-link" onclick="navigateTo('home')">
           <i class="fas fa-arrow-right"></i> بازگشت
         </a>
-
-        <!-- ===== اسلایدر فارسی‌ساز ===== -->
-        <div class="persianizer-slider" id="persianizerSlider">
-          <div class="persianizer-slide active">
-            <img src="https://cdn.imgurl.ir/uploads/i799534_Negar_1788735668527.webp" alt="فارسی‌ساز ۱" loading="lazy" decoding="async" />
-            <div class="slide-overlay"></div>
-            <div class="slide-text">
-              <h3>فارسی‌ساز</h3>
-              <p>ترجمه هوشمند بازی‌ها به فارسی</p>
-            </div>
-          </div>
-          <div class="persianizer-slide">
-            <img src="https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg" alt="فارسی‌ساز ۲" loading="lazy" decoding="async" />
-            <div class="slide-overlay"></div>
-            <div class="slide-text">
-              <h3>تجربه فارسی</h3>
-              <p>بازی‌ها را به زبان مادری تجربه کن</p>
-            </div>
-          </div>
-          <div class="persianizer-slider-controls">
-            <button class="dot active" onclick="goToPersianizerSlide(0)"></button>
-            <button class="dot" onclick="goToPersianizerSlide(1)"></button>
-          </div>
-        </div>
-
         <i class="fas fa-cog icon"></i>
         <h1>فارسی‌ساز</h1>
         <p>این بخش در دست توسعه است و به‌زودی امکانات فارسی‌سازی بازی‌ها به آن اضافه می‌شود.</p>
@@ -1820,8 +1753,8 @@
     const HERO_SLIDE_TIME = 6000;
 
     function goToHeroSlide(index) {
-      const slides = document.querySelectorAll('.hero-slide');
-      const dots = document.querySelectorAll('.hero-slider-dot');
+      const slides = document.querySelectorAll('#heroSlider .hero-slide');
+      const dots = document.querySelectorAll('#heroSlider .hero-slider-dot');
       if (!slides.length) return;
       if (index < 0) index = slides.length - 1;
       if (index >= slides.length) index = 0;
@@ -1834,7 +1767,7 @@
     }
 
     function nextHeroSlide() {
-      const slides = document.querySelectorAll('.hero-slide');
+      const slides = document.querySelectorAll('#heroSlider .hero-slide');
       if (!slides.length) return;
       goToHeroSlide((currentHeroSlide + 1) % slides.length);
     }
@@ -1844,48 +1777,48 @@
       heroSliderTimer = setInterval(function() { nextHeroSlide(); }, HERO_SLIDE_TIME);
     }
 
-    /* ===== شروع اسلایدر اصلی ===== */
-    document.addEventListener('DOMContentLoaded', function() {
-      currentHeroSlide = 0;
-      goToHeroSlide(0);
-    });
-
     /* ==================================================
-       PERSIANIZER SLIDER (داخل صفحه فارسی‌ساز)
+       HERO SLIDER (صفحه فارسی‌ساز) - دقیقاً مثل صفحه اصلی
     ================================================== */
-    let currentPersianizerSlide = 0;
-    let persianizerSliderTimer = null;
-    const PERSIANIZER_SLIDE_TIME = 5000;
+    let currentPersianizerHeroSlide = 0;
+    let persianizerHeroTimer = null;
+    const PERSIANIZER_HERO_TIME = 6000;
 
-    function goToPersianizerSlide(index) {
-      const slides = document.querySelectorAll('.persianizer-slide');
-      const dots = document.querySelectorAll('.persianizer-slider-controls .dot');
+    function goToPersianizerHeroSlide(index) {
+      const slides = document.querySelectorAll('#persianizerHeroSlider .hero-slide');
+      const dots = document.querySelectorAll('#persianizerHeroSlider .hero-slider-dot');
       if (!slides.length) return;
       if (index < 0) index = slides.length - 1;
       if (index >= slides.length) index = 0;
       slides.forEach(function(slide) { slide.classList.remove('active'); });
       dots.forEach(function(dot) { dot.classList.remove('active'); });
-      currentPersianizerSlide = index;
-      slides[currentPersianizerSlide].classList.add('active');
-      if (dots[currentPersianizerSlide]) dots[currentPersianizerSlide].classList.add('active');
-      resetPersianizerSliderTimer();
+      currentPersianizerHeroSlide = index;
+      slides[currentPersianizerHeroSlide].classList.add('active');
+      if (dots[currentPersianizerHeroSlide]) dots[currentPersianizerHeroSlide].classList.add('active');
+      resetPersianizerHeroTimer();
     }
 
-    function nextPersianizerSlide() {
-      const slides = document.querySelectorAll('.persianizer-slide');
+    function nextPersianizerHeroSlide() {
+      const slides = document.querySelectorAll('#persianizerHeroSlider .hero-slide');
       if (!slides.length) return;
-      goToPersianizerSlide((currentPersianizerSlide + 1) % slides.length);
+      goToPersianizerHeroSlide((currentPersianizerHeroSlide + 1) % slides.length);
     }
 
-    function resetPersianizerSliderTimer() {
-      if (persianizerSliderTimer) clearInterval(persianizerSliderTimer);
-      persianizerSliderTimer = setInterval(function() { nextPersianizerSlide(); }, PERSIANIZER_SLIDE_TIME);
+    function resetPersianizerHeroTimer() {
+      if (persianizerHeroTimer) clearInterval(persianizerHeroTimer);
+      persianizerHeroTimer = setInterval(function() { nextPersianizerHeroSlide(); }, PERSIANIZER_HERO_TIME);
     }
 
-    /* ===== شروع اسلایدر فارسی‌ساز ===== */
+    /* ==================================================
+       شروع اسلایدرها
+    ================================================== */
     document.addEventListener('DOMContentLoaded', function() {
-      currentPersianizerSlide = 0;
-      goToPersianizerSlide(0);
+      // اسلایدر اصلی
+      currentHeroSlide = 0;
+      goToHeroSlide(0);
+      // اسلایدر فارسی‌ساز
+      currentPersianizerHeroSlide = 0;
+      goToPersianizerHeroSlide(0);
     });
 
     /* ==================================================
@@ -1922,7 +1855,7 @@
       } else if (page === 'persianizer') {
         document.getElementById('pagePersianizer').classList.add('active');
         window.location.hash = 'persianizer';
-        setTimeout(function() { goToPersianizerSlide(0); }, 100);
+        setTimeout(function() { goToPersianizerHeroSlide(0); }, 100);
       }
       document.querySelectorAll('.nav a').forEach(function(a) { a.classList.remove('active'); });
       const navMap = { home: 0, about: 2, persianizer: 3 };
@@ -2020,7 +1953,17 @@
        پارالاکس برای اسلایدر اصلی
     ================================================== */
     document.addEventListener('scroll', function() {
-      const heroBg = document.querySelector('.hero-slide.active .hero-slide-bg');
+      const heroBg = document.querySelector('#heroSlider .hero-slide.active .hero-slide-bg');
+      if (heroBg) {
+        heroBg.style.transform = 'scale(1.02) translateY(' + (window.scrollY * 0.04) + 'px)';
+      }
+    });
+
+    /* ==================================================
+       پارالاکس برای اسلایدر فارسی‌ساز
+    ================================================== */
+    document.addEventListener('scroll', function() {
+      const heroBg = document.querySelector('#persianizerHeroSlider .hero-slide.active .hero-slide-bg');
       if (heroBg) {
         heroBg.style.transform = 'scale(1.02) translateY(' + (window.scrollY * 0.04) + 'px)';
       }
@@ -2047,4 +1990,4 @@
   </script>
 
 </body>
-  </html>
+</html>
