@@ -352,7 +352,7 @@
     .page.active { display: block; }
 
     /* ==================================================
-       HERO SLIDER (صفحه اصلی + صفحه فارسی‌ساز)
+       HERO SLIDER
     ================================================== */
     .hero-slider {
       position: relative;
@@ -1573,12 +1573,12 @@
   </div>
 
   <!-- ==================================================
-       صفحه فارسی‌ساز (با اسلایدر دقیقاً مثل صفحه اصلی)
+       صفحه فارسی‌ساز (با اسلایدر تک‌اسلایدی)
   ================================================== -->
   <div class="page" id="pagePersianizer">
     <div class="container">
 
-      <!-- اسلایدر فارسی‌ساز (دقیقاً مثل صفحه اصلی) -->
+      <!-- اسلایدر فارسی‌ساز (تک‌اسلایدی) -->
       <section class="hero-slider persianizer-hero" id="persianizerHeroSlider">
 
         <!-- اسلاید ۱: فارسی‌ساز -->
@@ -1597,26 +1597,9 @@
           </div>
         </div>
 
-        <!-- اسلاید ۲: SilentGears -->
-        <div class="hero-slide">
-          <div class="hero-slide-bg" style="background-image: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg');"></div>
-          <div class="hero-content">
-            <div class="game-tag"><i class="fas fa-star" style="color:#444; margin-left:6px;"></i> بازی منتخب</div>
-            <h1>SilentGears</h1>
-            <div class="sub-title">چرخ‌دنده‌ساکت</div>
-            <div class="meta">
-              <span><i class="fas fa-tag"></i> اکشن-ماجرایی</span>
-              <span><i class="fas fa-desktop"></i> PC • اندروید</span>
-              <span><i class="fas fa-clock"></i> در دست توسعه</span>
-            </div>
-            <a href="#game-silentgears" class="btn-ghost" onclick="navigateTo('detail')">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
-          </div>
-        </div>
-
-        <!-- کنترل اسلایدر -->
+        <!-- کنترل اسلایدر (فقط یک دات) -->
         <div class="hero-slider-controls">
           <button class="hero-slider-dot active" onclick="goToPersianizerHeroSlide(0)"></button>
-          <button class="hero-slider-dot" onclick="goToPersianizerHeroSlide(1)"></button>
         </div>
       </section>
 
@@ -1778,11 +1761,9 @@
     }
 
     /* ==================================================
-       HERO SLIDER (صفحه فارسی‌ساز) - دقیقاً مثل صفحه اصلی
+       HERO SLIDER (صفحه فارسی‌ساز) - تک‌اسلایدی
     ================================================== */
     let currentPersianizerHeroSlide = 0;
-    let persianizerHeroTimer = null;
-    const PERSIANIZER_HERO_TIME = 6000;
 
     function goToPersianizerHeroSlide(index) {
       const slides = document.querySelectorAll('#persianizerHeroSlider .hero-slide');
@@ -1795,18 +1776,6 @@
       currentPersianizerHeroSlide = index;
       slides[currentPersianizerHeroSlide].classList.add('active');
       if (dots[currentPersianizerHeroSlide]) dots[currentPersianizerHeroSlide].classList.add('active');
-      resetPersianizerHeroTimer();
-    }
-
-    function nextPersianizerHeroSlide() {
-      const slides = document.querySelectorAll('#persianizerHeroSlider .hero-slide');
-      if (!slides.length) return;
-      goToPersianizerHeroSlide((currentPersianizerHeroSlide + 1) % slides.length);
-    }
-
-    function resetPersianizerHeroTimer() {
-      if (persianizerHeroTimer) clearInterval(persianizerHeroTimer);
-      persianizerHeroTimer = setInterval(function() { nextPersianizerHeroSlide(); }, PERSIANIZER_HERO_TIME);
     }
 
     /* ==================================================
@@ -1990,4 +1959,4 @@
   </script>
 
 </body>
-</html>
+  </html>
