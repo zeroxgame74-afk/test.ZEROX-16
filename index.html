@@ -105,6 +105,10 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
+    @keyframes modalFade {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
 
     .animate-fade-up {
       animation: fadeUp 0.8s ease forwards;
@@ -909,9 +913,18 @@
       color: #888;
       font-size: 0.85rem;
       font-weight: 300;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
       line-height: 1.6;
       font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .undertale-info-simple .sub-dev {
+      color: #666;
+      font-size: 0.7rem;
+      font-weight: 300;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      margin-bottom: 0.8rem;
+      border-top: 1px solid #1a1a1a;
+      padding-top: 0.6rem;
     }
     .undertale-info-simple .btn-view {
       display: inline-flex;
@@ -1066,7 +1079,7 @@
       font-size: 1.5rem;
       font-weight: 900;
       color: #fff;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .undertale-price .currency {
       font-size: 0.8rem;
@@ -1096,6 +1109,69 @@
       box-shadow: 0 0 30px rgba(255,255,255,0.04);
     }
     .undertale-btn i { font-size: 1rem; }
+
+    /* ==================================================
+       مودال
+    ================================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #0f0f0f;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      animation: modalFade 0.3s ease;
+    }
+    .modal-box .modal-icon {
+      font-size: 3.5rem;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+    .modal-box h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      margin-bottom: 0.5rem;
+    }
+    .modal-box p {
+      color: #888;
+      font-size: 0.95rem;
+      font-weight: 300;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+    .modal-box .modal-close {
+      padding: 0.6rem 2rem;
+      background: transparent;
+      border: 1px solid #333;
+      color: #aaa;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .modal-box .modal-close:hover {
+      border-color: #666;
+      color: #fff;
+      background: rgba(255,255,255,0.03);
+    }
 
     /* ==================================================
        کارت خرید (استیم-استایل) - SilentGears
@@ -1298,16 +1374,6 @@
       max-width: 500px;
       line-height: 1.8;
     }
-    .persianizer-page .coming-badge {
-      margin-top: 2rem;
-      padding: 0.5rem 1.8rem;
-      border: 1px solid #222;
-      border-radius: 30px;
-      color: #555;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-    }
-    .persianizer-page .coming-badge i { margin-left: 8px; }
 
     /* ==================================================
        صفحه اختصاصی Undertale
@@ -1724,6 +1790,7 @@
       .undertale-cover { flex: 0 0 auto; width: 100%; max-width: 260px; }
       .undertale-info { width: 100%; }
       .undertale-info h3 { font-size: 1.3rem; }
+      .modal-box { padding: 2rem; }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
@@ -1759,10 +1826,25 @@
       .undertale-btn { width: 100%; justify-content: center; }
       .undertale-cover { max-width: 100%; }
       .undertale-price .price { font-size: 1.2rem; }
+      .modal-box { padding: 1.5rem; }
+      .modal-box h2 { font-size: 1.2rem; }
+      .modal-box .modal-icon { font-size: 2.5rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- ==================================================
+       مودال
+  ================================================== -->
+  <div class="modal-overlay" id="notReadyModal">
+    <div class="modal-box">
+      <div class="modal-icon"><i class="fas fa-hourglass-half"></i></div>
+      <h2>هنوز آماده نیست!</h2>
+      <p>این بازی در حال فارسی‌سازی است و به‌زودی در Zerox Game Studios منتشر می‌شود.</p>
+      <button class="modal-close" onclick="closeModal()">متوجه شدم</button>
+    </div>
+  </div>
 
   <!-- ==================================================
        منوی موبایل
@@ -1818,14 +1900,10 @@
   </header>
 
   <!-- ==================================================
-       صفحه خانه (با اسلایدر اصلی)
+       صفحه خانه
   ================================================== -->
   <div class="page active" id="pageHome">
-
-    <!-- ===== اسلایدر اصلی ===== -->
     <section class="hero-slider" id="heroSlider">
-
-      <!-- اسلاید ۱: SilentGears -->
       <div class="hero-slide active">
         <div class="hero-slide-bg" style="background-image: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg');"></div>
         <div class="hero-content">
@@ -1840,8 +1918,6 @@
           <a href="#game-silentgears" class="btn-ghost" onclick="navigateTo('detail')">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
         </div>
       </div>
-
-      <!-- اسلاید ۲: فارسی‌ساز -->
       <div class="hero-slide">
         <div class="hero-slide-bg" style="background-image: url('https://cdn.imgurl.ir/uploads/i799534_Negar_1788735668527.webp');"></div>
         <div class="hero-content">
@@ -1856,15 +1932,12 @@
           <a href="#persianizer" class="btn-ghost" onclick="navigateTo('persianizer')">مشاهده فارسی‌ساز <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
         </div>
       </div>
-
-      <!-- کنترل اسلایدر -->
       <div class="hero-slider-controls">
         <button class="hero-slider-dot active" aria-label="اسلاید SilentGears" onclick="goToHeroSlide(0)"></button>
         <button class="hero-slider-dot" aria-label="اسلاید فارسی‌ساز" onclick="goToHeroSlide(1)"></button>
       </div>
     </section>
 
-    <!-- ===== بازی‌های ما ===== -->
     <div class="container" id="games-section">
       <h2 class="section-title">بازی‌های ما</h2>
       <div class="game-grid">
@@ -1882,7 +1955,6 @@
       </div>
     </div>
 
-    <!-- ===== درباره ما ===== -->
     <div class="container" id="about-section">
       <div class="intro-section" style="border-top:1px solid #1a1a1a; padding:3rem 0 4rem; margin-top:1rem;">
         <h2 style="font-size:2.8rem; font-weight:900; font-family:'Estedad','Ardakan',sans-serif; letter-spacing:-1px;">ZER0X GAME</h2>
@@ -1934,14 +2006,13 @@
   </div>
 
   <!-- ==================================================
-       صفحه فارسی‌ساز (با کارت Undertale جدید)
+       صفحه فارسی‌ساز (با کارت Undertale)
   ================================================== -->
   <div class="page" id="pagePersianizer">
     <div class="container">
 
       <!-- اسلایدر فارسی‌ساز -->
       <section class="hero-slider persianizer-hero" id="persianizerHeroSlider">
-        <!-- اسلاید ۱: فارسی‌ساز -->
         <div class="hero-slide active">
           <div class="hero-slide-bg" style="background-image: url('https://cdn.imgurl.ir/uploads/i799534_Negar_1788735668527.webp');"></div>
           <div class="hero-content">
@@ -1956,7 +2027,6 @@
             <a href="#persianizer" class="btn-ghost" onclick="navigateTo('persianizer')">مشاهده فارسی‌ساز <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
           </div>
         </div>
-        <!-- اسلاید ۲: Undertale -->
         <div class="hero-slide">
           <div class="hero-slide-bg" style="background-image: url('https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp');"></div>
           <div class="hero-content">
@@ -1971,14 +2041,13 @@
             <a href="#undertale" class="btn-ghost" onclick="navigateTo('undertale')">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
           </div>
         </div>
-        <!-- کنترل اسلایدر -->
         <div class="hero-slider-controls">
           <button class="hero-slider-dot active" onclick="goToPersianizerHeroSlide(0)"></button>
           <button class="hero-slider-dot" onclick="goToPersianizerHeroSlide(1)"></button>
         </div>
       </section>
 
-      <!-- ===== کارت Undertale (با عکس، عنوان، توضیحات و دکمه) ===== -->
+      <!-- کارت Undertale -->
       <div class="undertale-card-simple" onclick="navigateTo('undertale')">
         <div class="undertale-cover-simple">
           <img src="https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp" alt="Undertale" />
@@ -1986,11 +2055,12 @@
         <div class="undertale-info-simple">
           <h3>Undertale</h3>
           <p>یک نقش‌آفرینی مستقل با داستانی احساسی و تأثیرگذار</p>
+          <div class="sub-dev">فارسی‌سازی توسط Zerox Game Studios</div>
           <span class="btn-view">مشاهده بازی <i class="fas fa-arrow-left"></i></span>
         </div>
       </div>
 
-      <!-- محتوای فارسی‌ساز -->
+      <!-- محتوای فارسی‌ساز (بدون به‌زودی) -->
       <div class="persianizer-page animate-fade-up">
         <a href="#home" class="back-link" onclick="navigateTo('home')">
           <i class="fas fa-arrow-right"></i> بازگشت
@@ -1998,14 +2068,13 @@
         <i class="fas fa-cog icon"></i>
         <h1>فارسی‌ساز</h1>
         <p>این بخش در دست توسعه است و به‌زودی امکانات فارسی‌سازی بازی‌ها به آن اضافه می‌شود.</p>
-        <div class="coming-badge"><i class="fas fa-clock"></i> به‌زودی</div>
       </div>
 
     </div>
   </div>
 
   <!-- ==================================================
-       صفحه اختصاصی Undertale (با کارت خرید کامل)
+       صفحه اختصاصی Undertale
   ================================================== -->
   <div class="page" id="pageUndertale">
     <div class="undertale-detail-hero">
@@ -2034,7 +2103,7 @@
         انتخاب‌های شما در Undertale واقعاً مهم هستند و هر تصمیم، مسیر داستان را تغییر می‌دهد. بازی شامل چندین پایان مختلف است و هر بار که آن را تجربه می‌کنید، چیز جدیدی کشف خواهید کرد.
       </div>
 
-      <!-- ===== کارت خرید Undertale (کامل) ===== -->
+      <!-- کارت خرید Undertale -->
       <div class="undertale-card">
         <div class="undertale-header">
           <div class="undertale-logo">ZER0X <span>GAME</span></div>
@@ -2067,7 +2136,7 @@
               <span class="price">رایگان</span>
               <span class="currency">با فارسی‌ساز</span>
             </div>
-            <button class="undertale-btn" onclick="alert('به زودی در Zerox Game')">
+            <button class="undertale-btn" onclick="openModal()">
               <i class="fas fa-download"></i>
               دریافت بازی
             </button>
@@ -2109,7 +2178,6 @@
         بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌ساکت می‌برد.
       </div>
 
-      <!-- کارت خرید SilentGears -->
       <div class="purchase-card">
         <div class="purchase-header">
           <div class="purchase-logo">ZER0X <span>GAME</span></div>
@@ -2193,6 +2261,24 @@
       }
     });
 
+    /* ===== مودال ===== */
+    function openModal() {
+      document.getElementById('notReadyModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('notReadyModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+        closeMobileMenu();
+      }
+    });
+
     /* ==================================================
        HERO SLIDER (صفحه اصلی)
     ================================================== */
@@ -2226,7 +2312,7 @@
     }
 
     /* ==================================================
-       HERO SLIDER (صفحه فارسی‌ساز) - دو اسلایدی
+       HERO SLIDER (صفحه فارسی‌ساز)
     ================================================== */
     let currentPersianizerHeroSlide = 0;
     let persianizerHeroTimer = null;
@@ -2261,10 +2347,8 @@
        شروع اسلایدرها
     ================================================== */
     document.addEventListener('DOMContentLoaded', function() {
-      // اسلایدر اصلی
       currentHeroSlide = 0;
       goToHeroSlide(0);
-      // اسلایدر فارسی‌ساز
       currentPersianizerHeroSlide = 0;
       goToPersianizerHeroSlide(0);
     });
@@ -2389,10 +2473,6 @@
       document.body.style.overflow = '';
     }
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeMobileMenu();
-    });
-
     /* ==================================================
        هدر اسکرول
     ================================================== */
@@ -2403,7 +2483,8 @@
     });
 
     /* ==================================================
-       پارالاکس برای اسلایدر اصلی    ================================================== */
+       پارالاکس
+    ================================================== */
     document.addEventListener('scroll', function() {
       const heroBg = document.querySelector('#heroSlider .hero-slide.active .hero-slide-bg');
       if (heroBg) {
@@ -2411,9 +2492,6 @@
       }
     });
 
-    /* ==================================================
-       پارالاکس برای اسلایدر فارسی‌ساز
-    ================================================== */
     document.addEventListener('scroll', function() {
       const heroBg = document.querySelector('#persianizerHeroSlider .hero-slide.active .hero-slide-bg');
       if (heroBg) {
