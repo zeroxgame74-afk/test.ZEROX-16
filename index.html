@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZER0X GAME · Undertale</title>
+  <title>ZER0X GAME · SilentGears</title>
 
   <!-- ===== فاویکون ===== -->
   <link rel="icon" type="image/png" sizes="32x32" href="https://uploadkon.ir/uploads/464903_26Negar-1788437644174.png" />
@@ -60,7 +60,8 @@
     .gallery-grid img,
     .result-card .card-img img,
     .game-card .card-img img,
-    .purchase-cover img {
+    .purchase-cover img,
+    .undertale-cover img {
       -webkit-user-drag: none;
       user-drag: none;
       -webkit-user-select: none;
@@ -352,13 +353,16 @@
     .page.active { display: block; }
 
     /* ==================================================
-       HERO SLIDER (صفحه اصلی)
+       HERO SLIDER
     ================================================== */
     .hero-slider {
       position: relative;
       min-height: 88vh;
       overflow: hidden;
       background: #0a0a0a;
+    }
+    .hero-slider.persianizer-hero {
+      min-height: 70vh;
     }
     .hero-slide {
       position: absolute;
@@ -371,6 +375,9 @@
       visibility: hidden;
       transition: opacity 0.8s ease, visibility 0.8s ease;
       overflow: hidden;
+    }
+    .hero-slider.persianizer-hero .hero-slide {
+      min-height: 70vh;
     }
     .hero-slide.active {
       opacity: 1;
@@ -851,7 +858,7 @@
     }
 
     /* ==================================================
-       کارت خرید (صفحه اصلی)
+       کارت خرید (استیم-استایل)
     ================================================== */
     .purchase-card {
       background: #0d0d0d;
@@ -999,6 +1006,173 @@
     .purchase-btn.disabled:hover { background: transparent; transform: none; }
 
     /* ==================================================
+       کارت Undertale (عمودی)
+    ================================================== */
+    .undertale-card {
+      background: #0d0d0d;
+      border: 1px solid #1a1a1a;
+      border-radius: 12px;
+      padding: 1.8rem;
+      margin: 2rem 0;
+      transition: 0.4s ease;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    }
+    .undertale-card:hover {
+      border-color: #333;
+      box-shadow: 0 12px 50px rgba(0, 0, 0, 0.9);
+    }
+    .undertale-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid #181818;
+    }
+    .undertale-logo {
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .undertale-logo span { color: #555; font-weight: 300; }
+    .undertale-badge {
+      font-size: 0.65rem;
+      color: #888;
+      border: 1px solid #333;
+      padding: 0.2rem 1rem;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      background: rgba(255,255,255,0.03);
+    }
+    .undertale-body {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .undertale-cover {
+      flex: 0 0 160px;
+      width: 160px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #1a1a1a;
+      background: #0a0a0a;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+    .undertale-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 1011 / 1520;
+    }
+    .undertale-info { flex: 1; min-width: 0; }
+    .undertale-info h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      margin-bottom: 0.2rem;
+      letter-spacing: -0.5px;
+    }
+    .undertale-desc {
+      color: #aaa;
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+      line-height: 1.8;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .undertale-meta {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+    .undertale-meta span {
+      color: #777;
+      font-size: 0.8rem;
+      font-weight: 300;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .undertale-meta i { margin-left: 5px; color: #555; font-size: 0.75rem; }
+    .undertale-status {
+      margin: 0.8rem 0 1.2rem;
+      padding: 0.8rem 1.2rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid #1a1a1a;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .undertale-status:hover {
+      border-color: #333;
+      background: rgba(255,255,255,0.03);
+    }
+    .undertale-status .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.2rem 1rem;
+      border: 1px solid #2a2a2a;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      color: #aaa;
+      letter-spacing: 0.5px;
+      background: rgba(255,255,255,0.02);
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .undertale-status .status-badge i { color: #4caf50; font-size: 0.8rem; }
+    .undertale-status .status-desc {
+      color: #777;
+      font-size: 0.75rem;
+      font-weight: 300;
+      margin: 0.3rem 0 0;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .undertale-price {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 1.2rem;
+    }
+    .undertale-price .price {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+    }
+    .undertale-price .currency {
+      font-size: 0.8rem;
+      color: #888;
+      font-weight: 300;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .undertale-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.8rem 2.2rem;
+      background: #fff;
+      color: #0a0a0a;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      cursor: pointer;
+      transition: 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+    .undertale-btn:hover {
+      background: #e0e0e0;
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(255,255,255,0.04);
+    }
+    .undertale-btn i { font-size: 1rem; }
+
+    /* ==================================================
        صفحه فارسی‌ساز
     ================================================== */
     .persianizer-page {
@@ -1063,7 +1237,7 @@
     .persianizer-page .coming-badge i { margin-left: 8px; }
 
     /* ==================================================
-       صفحه اختصاصی Undertale
+       صفحه اختصاصی
     ================================================== */
     .detail-hero {
       position: relative;
@@ -1078,7 +1252,7 @@
     .detail-hero-bg {
       position: absolute;
       inset: 0;
-      background: url('https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp') center/cover no-repeat;
+      background: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg') center/cover no-repeat;
       filter: brightness(0.25) contrast(1.2) saturate(0.7);
       z-index: 0;
       transform: scale(1.05);
@@ -1159,7 +1333,6 @@
       color: #aaa;
       font-weight: 300;
     }
-
     .detail-body {
       max-width: 1000px;
       margin: 0 auto;
@@ -1346,7 +1519,9 @@
       .menu-mobile { display: inline-block; }
       .header { padding: 0.8rem 1.2rem; }
       .hero-slider { min-height: 70vh; }
+      .hero-slider.persianizer-hero { min-height: 60vh; }
       .hero-slide { min-height: 70vh; padding: 2rem 1rem 2rem; }
+      .hero-slider.persianizer-hero .hero-slide { min-height: 60vh; }
       .hero-content h1 { font-size: 2.8rem; }
       .game-grid { grid-template-columns: 1fr; }
       .section-title { font-size: 1.6rem; }
@@ -1365,6 +1540,10 @@
       .purchase-cover { flex: 0 0 auto; width: 100%; max-width: 280px; }
       .purchase-info { width: 100%; }
       .purchase-info h3 { font-size: 1.1rem; }
+      .undertale-body { flex-direction: column; align-items: center; }
+      .undertale-cover { flex: 0 0 auto; width: 100%; max-width: 260px; }
+      .undertale-info { width: 100%; }
+      .undertale-info h3 { font-size: 1.3rem; }
       .persianizer-page h1 { font-size: 2.2rem; }
       .persianizer-page .icon { font-size: 3rem; }
     }
@@ -1382,6 +1561,11 @@
       .purchase-card { padding: 1rem; }
       .purchase-header { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
       .purchase-btn { width: 100%; justify-content: center; }
+      .undertale-card { padding: 1.2rem; }
+      .undertale-header { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+      .undertale-btn { width: 100%; justify-content: center; }
+      .undertale-cover { max-width: 100%; }
+      .undertale-price .price { font-size: 1.2rem; }
       .persianizer-page h1 { font-size: 1.8rem; }
       .persianizer-page .icon { font-size: 2.5rem; }
       .persianizer-page p { font-size: 0.95rem; }
@@ -1454,7 +1638,7 @@
   ================================================== -->
   <div class="page active" id="pageHome">
 
-    <!-- ===== اسلایدر اصلی (ترتیب: SilentGears اول، فارسی‌ساز دوم) ===== -->
+    <!-- ===== اسلایدر اصلی ===== -->
     <section class="hero-slider" id="heroSlider">
 
       <!-- اسلاید ۱: SilentGears -->
@@ -1496,7 +1680,7 @@
       </div>
     </section>
 
-    <!-- ===== بازی‌های ما (با Undertale) ===== -->
+    <!-- ===== بازی‌های ما ===== -->
     <div class="container" id="games-section">
       <h2 class="section-title">بازی‌های ما</h2>
       <div class="game-grid">
@@ -1509,18 +1693,6 @@
             <h3>SilentGears</h3>
             <div class="genre">اکشن-ماجرایی • نقش‌آفرینی</div>
             <div class="status"><i class="far fa-clock" style="margin-left:6px;"></i> در دست توسعه</div>
-          </div>
-        </a>
-        <!-- ===== کارت Undertale ===== -->
-        <a href="#game-undertale" class="game-card" onclick="navigateTo('undertale')" style="display:block; text-decoration:none;">
-          <div class="card-img">
-            <img src="https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp" alt="Undertale" loading="lazy" decoding="async" />
-            <div class="card-overlay"><i class="fas fa-arrow-left"></i></div>
-          </div>
-          <div class="card-body">
-            <h3>Undertale</h3>
-            <div class="genre">نقش‌آفرینی • مستقل</div>
-            <div class="status"><i class="fas fa-check" style="margin-left:6px; color:#666;"></i> منتشر شده</div>
           </div>
         </a>
       </div>
@@ -1564,7 +1736,7 @@
         <div class="sub">نام بازی مورد نظر را پیدا کن</div>
       </div>
       <div class="search-box">
-        <input type="text" placeholder="مثل: Undertale ..." id="searchInput" oninput="searchGames()" />
+        <input type="text" placeholder="مثل: SilentGears ..." id="searchInput" oninput="searchGames()" />
         <i class="fas fa-search search-icon"></i>
       </div>
       <div class="results-count"><span id="countNum">۰</span> نتیجه پیدا شد</div>
@@ -1578,11 +1750,15 @@
   </div>
 
   <!-- ==================================================
-       صفحه فارسی‌ساز
+       صفحه فارسی‌ساز (با اسلایدر دو اسلایدی و کارت Undertale)
   ================================================== -->
   <div class="page" id="pagePersianizer">
     <div class="container">
+
+      <!-- اسلایدر فارسی‌ساز (دو اسلایدی) -->
       <section class="hero-slider persianizer-hero" id="persianizerHeroSlider">
+
+        <!-- اسلاید ۱: فارسی‌ساز -->
         <div class="hero-slide active">
           <div class="hero-slide-bg" style="background-image: url('https://cdn.imgurl.ir/uploads/i799534_Negar_1788735668527.webp');"></div>
           <div class="hero-content">
@@ -1597,10 +1773,72 @@
             <a href="#persianizer" class="btn-ghost" onclick="navigateTo('persianizer')">مشاهده فارسی‌ساز <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
           </div>
         </div>
+
+        <!-- اسلاید ۲: Undertale -->
+        <div class="hero-slide">
+          <div class="hero-slide-bg" style="background-image: url('https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp');"></div>
+          <div class="hero-content">
+            <div class="game-tag"><i class="fas fa-star" style="color:#444; margin-left:6px;"></i> بازی منتخب</div>
+            <h1>Undertale</h1>
+            <div class="sub-title">سفری در دنیای زیرزمین</div>
+            <div class="meta">
+              <span><i class="fas fa-tag"></i> نقش‌آفرینی</span>
+              <span><i class="fas fa-desktop"></i> PC</span>
+              <span><i class="fas fa-clock"></i> ۲۰۱۵</span>
+            </div>
+            <a href="#undertale" class="btn-ghost" onclick="alert('به زودی در Zerox Game')">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
+          </div>
+        </div>
+
+        <!-- کنترل اسلایدر -->
         <div class="hero-slider-controls">
           <button class="hero-slider-dot active" onclick="goToPersianizerHeroSlide(0)"></button>
+          <button class="hero-slider-dot" onclick="goToPersianizerHeroSlide(1)"></button>
         </div>
       </section>
+
+      <!-- کارت Undertale -->
+      <div class="undertale-card">
+        <div class="undertale-header">
+          <div class="undertale-logo">ZER0X <span>GAME</span></div>
+          <div class="undertale-badge">بازی مستقل</div>
+        </div>
+        <div class="undertale-body">
+          <div class="undertale-cover">
+            <img src="https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp" alt="Undertale Cover" />
+          </div>
+          <div class="undertale-info">
+            <h3>Undertale</h3>
+            <p class="undertale-desc">
+              یک نقش‌آفرینی مستقل که در آن شما به جای جنگ، با موجودات زیرزمین گفتگو و دوستی می‌کنید.
+            </p>
+            <div class="undertale-meta">
+              <span><i class="fas fa-tag"></i> نقش‌آفرینی</span>
+              <span><i class="fas fa-desktop"></i> PC</span>
+              <span><i class="fas fa-clock"></i> ۲۰۱۵</span>
+            </div>
+            <div class="undertale-status">
+              <div class="status-badge">
+                <i class="fas fa-check-circle"></i>
+                <span>موجود در فروشگاه</span>
+              </div>
+              <p class="status-desc">
+                این بازی مستقل، یکی از تأثیرگذارترین عناوین تاریخ است.
+              </p>
+            </div>
+            <div class="undertale-price">
+              <span class="price">رایگان</span>
+              <span class="currency">با فارسی‌ساز</span>
+            </div>
+            <button class="undertale-btn" onclick="alert('به زودی در Zerox Game')">
+              <i class="fas fa-download"></i>
+              دریافت بازی
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- محتوای فارسی‌ساز -->
       <div class="persianizer-page animate-fade-up">
         <a href="#home" class="back-link" onclick="navigateTo('home')">
           <i class="fas fa-arrow-right"></i> بازگشت
@@ -1610,6 +1848,7 @@
         <p>این بخش در دست توسعه است و به‌زودی امکانات فارسی‌سازی بازی‌ها به آن اضافه می‌شود.</p>
         <div class="coming-badge"><i class="fas fa-clock"></i> به‌زودی</div>
       </div>
+
     </div>
   </div>
 
@@ -1618,7 +1857,7 @@
   ================================================== -->
   <div class="page" id="pageDetail">
     <div class="detail-hero">
-      <div class="detail-hero-bg" style="background-image: url('https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg');"></div>
+      <div class="detail-hero-bg"></div>
       <div class="detail-content">
         <a href="#home" class="back-link" onclick="navigateTo('home')"><i class="fas fa-arrow-right"></i> بازگشت</a>
         <h1>SilentGears</h1>
@@ -1633,12 +1872,15 @@
         </div>
       </div>
     </div>
+
     <div class="detail-body container">
       <div class="full-desc">
         🎮 SilentGears | چرخ‌دنده‌ساکت یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط Zerox Studios ساخته شده.
         داستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخ‌دنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از ۳ پایان مختلف ختم می‌شود.
         بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌ساکت می‌برد.
       </div>
+
+      <!-- کارت خرید SilentGears -->
       <div class="purchase-card">
         <div class="purchase-header">
           <div class="purchase-logo">ZER0X <span>GAME</span></div>
@@ -1664,10 +1906,12 @@
           </div>
         </div>
       </div>
+
       <div class="trailer-section">
         <h3><i class="fas fa-play"></i> تریلر بازی</h3>
         <div class="trailer-placeholder"><i class="fas fa-play-circle"></i></div>
       </div>
+
       <div class="gallery-section">
         <h3><i class="fas fa-images"></i> گالری تصاویر</h3>
         <div class="gallery-grid">
@@ -1675,65 +1919,7 @@
           <img src="https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg" alt="Screenshot 2" loading="lazy" decoding="async" />
         </div>
       </div>
-      <a href="#home" class="back-link" onclick="navigateTo('home')" style="display:inline-flex; align-items:center; gap:8px; color:#555; border-bottom:1px solid #222; padding-bottom:6px; cursor:pointer; margin-top:1rem;">
-        <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
-      </a>
-    </div>
-  </div>
 
-  <!-- ==================================================
-       صفحه اختصاصی Undertale
-  ================================================== -->
-  <div class="page" id="pageUndertale">
-    <div class="detail-hero">
-      <div class="detail-hero-bg" style="background-image: url('https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp');"></div>
-      <div class="detail-content">
-        <a href="#home" class="back-link" onclick="navigateTo('home')"><i class="fas fa-arrow-right"></i> بازگشت</a>
-        <h1>Undertale</h1>
-        <div class="sub">زیرداستان</div>
-        <div class="detail-info-box">
-          <div class="item"><strong>ژانر</strong><span>نقش‌آفرینی • مستقل</span></div>
-          <div class="item"><strong>پلتفرم</strong><span>PC • PS4 • Switch • PS Vita</span></div>
-          <div class="item"><strong>وضعیت</strong><span>منتشر شده</span></div>
-          <div class="item"><strong>مدت زمان</strong><span>۶ تا ۱۲ ساعت</span></div>
-          <div class="item"><strong>توسعه‌دهنده</strong><span>Toby Fox</span></div>
-          <div class="item"><strong>تاریخ انتشار</strong><span>۱۵ سپتامبر ۲۰۱۵</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="detail-body container">
-      <div class="full-desc">
-        🎮 Undertale یک بازی نقش‌آفرینی مستقل است که توسط Toby Fox ساخته شده‌است. داستان دربارهٔ کودکی است که به دنیای زیرزمینی پر از هیولا سقوط می‌کند و باید راهی برای بازگشت به سطح زمین پیدا کند. [citation:9][citation:11]
-
-        در این بازی، شما مجبور نیستید همهٔ دشمنان را بکشید. با سیستم مبارزهٔ منحصربه‌فرد، می‌توانید با هیولاها صحبت کنید، به آنها تعارف کنید یا حتی با آنها دوست شوید. [citation:1][citation:11] هر تصمیم شما تأثیر مستقیمی بر داستان و پایان بازی دارد. [citation:10][citation:13]
-
-        Undertale با شخصیت‌های به‌یادماندنی مانند Sans، Papyrus، Toriel و Undyne، ترکیبی از طنز، احساسات عمیق و چالش‌های اخلاقی را ارائه می‌دهد. [citation:9][citation:13] این بازی به خاطر موسیقی متن، داستان تأثیرگذار و رویکرد نوآورانه‌اش به انتخاب‌های بازیکن، به یکی از تحسین‌شده‌ترین بازی‌های مستقل تمام دوران تبدیل شده است. [citation:11][citation:13][citation:15]
-      </div>
-      <div class="purchase-card">
-        <div class="purchase-header">
-          <div class="purchase-logo">ZER0X <span>GAME</span></div>
-          <div class="purchase-badge">در دسترس</div>
-        </div>
-        <div class="purchase-body">
-          <div class="purchase-cover">
-            <img src="https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp" alt="Undertale" />
-          </div>
-          <div class="purchase-info">
-            <h3>Undertale</h3>
-            <p class="purchase-desc">یک RPG بی‌نظیر که در آن با هر تصمیم، دنیای زیرزمین را تغییر می‌دهی.</p>
-            <div class="purchase-meta">
-              <span><i class="fas fa-tag"></i> نقش‌آفرینی</span>
-              <span><i class="fas fa-desktop"></i> PC</span>
-              <span><i class="fas fa-globe"></i> چند پلتفرم</span>
-            </div>
-            <div class="purchase-status" style="border-color:#333;">
-              <div class="status-badge" style="border-color:#555; color:#ccc;"><i class="fas fa-check-circle" style="color:#888;"></i> <span>موجود</span></div>
-              <p class="status-desc">این بازی در حال حاضر در دسترس است.</p>
-            </div>
-            <button class="purchase-btn" style="opacity:0.8; cursor:default;">خرید بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></button>
-          </div>
-        </div>
-      </div>
       <a href="#home" class="back-link" onclick="navigateTo('home')" style="display:inline-flex; align-items:center; gap:8px; color:#555; border-bottom:1px solid #222; padding-bottom:6px; cursor:pointer; margin-top:1rem;">
         <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
       </a>
@@ -1811,9 +1997,11 @@
     }
 
     /* ==================================================
-       HERO SLIDER (صفحه فارسی‌ساز)
+       HERO SLIDER (صفحه فارسی‌ساز) - دو اسلایدی
     ================================================== */
     let currentPersianizerHeroSlide = 0;
+    let persianizerHeroTimer = null;
+    const PERSIANIZER_HERO_TIME = 6000;
 
     function goToPersianizerHeroSlide(index) {
       const slides = document.querySelectorAll('#persianizerHeroSlider .hero-slide');
@@ -1826,14 +2014,28 @@
       currentPersianizerHeroSlide = index;
       slides[currentPersianizerHeroSlide].classList.add('active');
       if (dots[currentPersianizerHeroSlide]) dots[currentPersianizerHeroSlide].classList.add('active');
+      resetPersianizerHeroTimer();
+    }
+
+    function nextPersianizerHeroSlide() {
+      const slides = document.querySelectorAll('#persianizerHeroSlider .hero-slide');
+      if (!slides.length) return;
+      goToPersianizerHeroSlide((currentPersianizerHeroSlide + 1) % slides.length);
+    }
+
+    function resetPersianizerHeroTimer() {
+      if (persianizerHeroTimer) clearInterval(persianizerHeroTimer);
+      persianizerHeroTimer = setInterval(function() { nextPersianizerHeroSlide(); }, PERSIANIZER_HERO_TIME);
     }
 
     /* ==================================================
        شروع اسلایدرها
     ================================================== */
     document.addEventListener('DOMContentLoaded', function() {
+      // اسلایدر اصلی
       currentHeroSlide = 0;
       goToHeroSlide(0);
+      // اسلایدر فارسی‌ساز
       currentPersianizerHeroSlide = 0;
       goToPersianizerHeroSlide(0);
     });
@@ -1873,9 +2075,6 @@
         document.getElementById('pagePersianizer').classList.add('active');
         window.location.hash = 'persianizer';
         setTimeout(function() { goToPersianizerHeroSlide(0); }, 100);
-      } else if (page === 'undertale') {
-        document.getElementById('pageUndertale').classList.add('active');
-        window.location.hash = 'game-undertale';
       }
       document.querySelectorAll('.nav a').forEach(function(a) { a.classList.remove('active'); });
       const navMap = { home: 0, about: 2, persianizer: 3 };
@@ -1897,7 +2096,6 @@
       else if (hash === 'search') navigateTo('search');
       else if (hash === 'game-silentgears') navigateTo('detail');
       else if (hash === 'persianizer') navigateTo('persianizer');
-      else if (hash === 'game-undertale') navigateTo('undertale');
       else navigateTo('home');
     });
 
@@ -1908,15 +2106,13 @@
       else if (hash === 'search') navigateTo('search');
       else if (hash === 'game-silentgears') navigateTo('detail');
       else if (hash === 'persianizer') navigateTo('persianizer');
-      else if (hash === 'game-undertale') navigateTo('undertale');
     });
 
     /* ==================================================
        جستجو
     ================================================== */
     const gamesDB = [
-      { id: 1, title: 'SilentGears', persianTitle: 'چرخ‌دنده‌ساکت', slug: 'silentgears', genre: 'اکشن-ماجرایی • نقش‌آفرینی', status: 'در دست توسعه', cover: 'https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg', link: 'detail' },
-      { id: 2, title: 'Undertale', persianTitle: 'زیرداستان', slug: 'undertale', genre: 'نقش‌آفرینی • مستقل', status: 'منتشر شده', cover: 'https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp', link: 'undertale' }
+      { id: 1, title: 'SilentGears', persianTitle: 'چرخ‌دنده‌ساکت', slug: 'silentgears', genre: 'اکشن-ماجرایی • نقش‌آفرینی', status: 'در دست توسعه', cover: 'https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg', link: 'detail' }
     ];
 
     function searchGames() {
@@ -2013,4 +2209,4 @@
   </script>
 
 </body>
-      </html>
+  </html>
