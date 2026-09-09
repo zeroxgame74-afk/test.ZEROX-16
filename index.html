@@ -61,7 +61,7 @@
     .result-card .card-img img,
     .game-card .card-img img,
     .purchase-cover img,
-    .undertale-cover img {
+    .undertale-cover-simple img {
       -webkit-user-drag: none;
       user-drag: none;
       -webkit-user-select: none;
@@ -1006,171 +1006,79 @@
     .purchase-btn.disabled:hover { background: transparent; transform: none; }
 
     /* ==================================================
-       کارت Undertale (عمودی)
+       کارت Undertale (ساده - مینیمال)
     ================================================== */
-    .undertale-card {
-      background: #0d0d0d;
-      border: 1px solid #1a1a1a;
+    .undertale-card-simple {
+      width: 100%;
+      max-width: 260px;
+      margin: 0 auto;
       border-radius: 12px;
-      padding: 1.8rem;
-      margin: 2rem 0;
-      transition: 0.4s ease;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-    }
-    .undertale-card:hover {
-      border-color: #333;
-      box-shadow: 0 12px 50px rgba(0, 0, 0, 0.9);
-    }
-    .undertale-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.8rem;
-      border-bottom: 1px solid #181818;
-    }
-    .undertale-logo {
-      font-size: 1rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      color: #fff;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-    }
-    .undertale-logo span { color: #555; font-weight: 300; }
-    .undertale-badge {
-      font-size: 0.65rem;
-      color: #888;
-      border: 1px solid #333;
-      padding: 0.2rem 1rem;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-      background: rgba(255,255,255,0.03);
-    }
-    .undertale-body {
-      display: flex;
-      gap: 2rem;
-      align-items: flex-start;
-    }
-    .undertale-cover {
-      flex: 0 0 160px;
-      width: 160px;
-      border-radius: 8px;
       overflow: hidden;
+      cursor: pointer;
+      transition: 0.4s ease;
       border: 1px solid #1a1a1a;
-      background: #0a0a0a;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      background: #0f0f0f;
     }
-    .undertale-cover img {
+    .undertale-card-simple:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: #444;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    }
+
+    .undertale-cover-simple {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1011 / 1520;
+      overflow: hidden;
+    }
+    .undertale-cover-simple img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      aspect-ratio: 1011 / 1520;
+      transition: transform 0.6s ease;
     }
-    .undertale-info { flex: 1; min-width: 0; }
-    .undertale-info h3 {
-      font-size: 1.6rem;
+    .undertale-card-simple:hover .undertale-cover-simple img {
+      transform: scale(1.08);
+    }
+
+    .undertale-overlay-simple {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .undertale-card-simple:hover .undertale-overlay-simple {
+      opacity: 1;
+    }
+
+    .undertale-overlay-simple h3 {
+      font-size: 1.3rem;
       font-weight: 800;
       color: #fff;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      margin-bottom: 0.2rem;
-      letter-spacing: -0.5px;
+      margin-bottom: 0.3rem;
     }
-    .undertale-desc {
+    .undertale-overlay-simple .btn-view {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       color: #aaa;
-      font-size: 0.9rem;
-      font-weight: 300;
-      margin-bottom: 1rem;
-      line-height: 1.8;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-    }
-    .undertale-meta {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.2rem;
-    }
-    .undertale-meta span {
-      color: #777;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 300;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-    }
-    .undertale-meta i { margin-left: 5px; color: #555; font-size: 0.75rem; }
-    .undertale-status {
-      margin: 0.8rem 0 1.2rem;
-      padding: 0.8rem 1.2rem;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid #1a1a1a;
-      border-radius: 8px;
       transition: 0.3s;
+      border-bottom: 1px solid transparent;
     }
-    .undertale-status:hover {
-      border-color: #333;
-      background: rgba(255,255,255,0.03);
-    }
-    .undertale-status .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0.2rem 1rem;
-      border: 1px solid #2a2a2a;
-      border-radius: 30px;
-      font-size: 0.75rem;
-      color: #aaa;
-      letter-spacing: 0.5px;
-      background: rgba(255,255,255,0.02);
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-    }
-    .undertale-status .status-badge i { color: #4caf50; font-size: 0.8rem; }
-    .undertale-status .status-desc {
-      color: #777;
-      font-size: 0.75rem;
-      font-weight: 300;
-      margin: 0.3rem 0 0;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-    }
-    .undertale-price {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 1.2rem;
-    }
-    .undertale-price .price {
-      font-size: 1.5rem;
-      font-weight: 900;
+    .undertale-card-simple:hover .btn-view {
       color: #fff;
-      font-family: 'Inter', sans-serif;
+      border-bottom-color: #666;
     }
-    .undertale-price .currency {
-      font-size: 0.8rem;
-      color: #888;
-      font-weight: 300;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-    }
-    .undertale-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0.8rem 2.2rem;
-      background: #fff;
-      color: #0a0a0a;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      font-family: 'Estedad', 'Ardakan', sans-serif;
-      cursor: pointer;
-      transition: 0.3s ease;
-      letter-spacing: 0.5px;
-    }
-    .undertale-btn:hover {
-      background: #e0e0e0;
-      transform: scale(1.02);
-      box-shadow: 0 0 30px rgba(255,255,255,0.04);
-    }
-    .undertale-btn i { font-size: 1rem; }
 
     /* ==================================================
        صفحه فارسی‌ساز
@@ -1641,15 +1549,12 @@
       .purchase-cover { flex: 0 0 auto; width: 100%; max-width: 280px; }
       .purchase-info { width: 100%; }
       .purchase-info h3 { font-size: 1.1rem; }
-      .undertale-body { flex-direction: column; align-items: center; }
-      .undertale-cover { flex: 0 0 auto; width: 100%; max-width: 260px; }
-      .undertale-info { width: 100%; }
-      .undertale-info h3 { font-size: 1.3rem; }
       .undertale-detail-hero h1 { font-size: 2.8rem; }
       .undertale-detail-hero { min-height: 60vh; padding: 3rem 1rem 2rem; }
       .undertale-detail-hero .detail-info-box { grid-template-columns: 1fr 1fr; padding: 1.2rem; }
       .persianizer-page h1 { font-size: 2.2rem; }
       .persianizer-page .icon { font-size: 3rem; }
+      .undertale-card-simple { max-width: 200px; }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
@@ -1665,11 +1570,6 @@
       .purchase-card { padding: 1rem; }
       .purchase-header { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
       .purchase-btn { width: 100%; justify-content: center; }
-      .undertale-card { padding: 1.2rem; }
-      .undertale-header { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
-      .undertale-btn { width: 100%; justify-content: center; }
-      .undertale-cover { max-width: 100%; }
-      .undertale-price .price { font-size: 1.2rem; }
       .undertale-detail-hero h1 { font-size: 2.2rem; }
       .undertale-detail-hero .detail-info-box { grid-template-columns: 1fr; }
       .persianizer-page h1 { font-size: 1.8rem; }
@@ -1681,6 +1581,10 @@
       .hero-slider-controls { bottom: 20px; }
       .hero-slider-dot { width: 20px; }
       .hero-slider-dot.active { width: 38px; }
+      .undertale-card-simple { max-width: 100%; }
+      .undertale-overlay-simple { padding: 1rem; }
+      .undertale-overlay-simple h3 { font-size: 1rem; }
+      .undertale-overlay-simple .btn-view { font-size: 0.75rem; }
     }
   </style>
 </head>
@@ -1856,7 +1760,7 @@
   </div>
 
   <!-- ==================================================
-       صفحه فارسی‌ساز (با اسلایدر دو اسلایدی و کارت Undertale)
+       صفحه فارسی‌ساز (با کارت ساده Undertale)
   ================================================== -->
   <div class="page" id="pagePersianizer">
     <div class="container">
@@ -1903,43 +1807,13 @@
         </div>
       </section>
 
-      <!-- کارت Undertale -->
-      <div class="undertale-card">
-        <div class="undertale-header">
-          <div class="undertale-logo">ZER0X <span>GAME</span></div>
-          <div class="undertale-badge">بازی مستقل</div>
-        </div>
-        <div class="undertale-body">
-          <div class="undertale-cover">
-            <img src="https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp" alt="Undertale Cover" />
-          </div>
-          <div class="undertale-info">
+      <!-- ===== کارت Undertale (ساده) ===== -->
+      <div class="undertale-card-simple" onclick="navigateTo('undertale')">
+        <div class="undertale-cover-simple">
+          <img src="https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp" alt="Undertale" />
+          <div class="undertale-overlay-simple">
             <h3>Undertale</h3>
-            <p class="undertale-desc">
-              یک نقش‌آفرینی مستقل که در آن شما به جای جنگ، با موجودات زیرزمین گفتگو و دوستی می‌کنید.
-            </p>
-            <div class="undertale-meta">
-              <span><i class="fas fa-tag"></i> نقش‌آفرینی</span>
-              <span><i class="fas fa-desktop"></i> PC</span>
-              <span><i class="fas fa-clock"></i> ۲۰۱۵</span>
-            </div>
-            <div class="undertale-status">
-              <div class="status-badge">
-                <i class="fas fa-check-circle"></i>
-                <span>موجود در فروشگاه</span>
-              </div>
-              <p class="status-desc">
-                این بازی مستقل، یکی از تأثیرگذارترین عناوین تاریخ است.
-              </p>
-            </div>
-            <div class="undertale-price">
-              <span class="price">رایگان</span>
-              <span class="currency">با فارسی‌ساز</span>
-            </div>
-            <button class="undertale-btn" onclick="navigateTo('undertale')">
-              <i class="fas fa-download"></i>
-              دریافت بازی
-            </button>
+            <span class="btn-view">مشاهده بازی <i class="fas fa-arrow-left"></i></span>
           </div>
         </div>
       </div>
@@ -1986,47 +1860,6 @@
         Undertale یک بازی نقش‌آفرینی مستقل است که در آن شما به جای جنگیدن با موجودات زیرزمین، می‌توانید با آنها گفتگو کنید، دوست شوید و حتی دشمنان را ببخشید. این بازی با سیستم مبارزه‌ای نوآورانه، داستانی احساسی و شخصیت‌های به‌یادماندنی، یکی از تأثیرگذارترین عناوین تاریخ بازی‌های ویدیویی محسوب می‌شود.
 
         انتخاب‌های شما در Undertale واقعاً مهم هستند و هر تصمیم، مسیر داستان را تغییر می‌دهد. بازی شامل چندین پایان مختلف است و هر بار که آن را تجربه می‌کنید، چیز جدیدی کشف خواهید کرد.
-      </div>
-
-      <!-- کارت Undertale در صفحه اختصاصی -->
-      <div class="undertale-card">
-        <div class="undertale-header">
-          <div class="undertale-logo">ZER0X <span>GAME</span></div>
-          <div class="undertale-badge">بازی مستقل</div>
-        </div>
-        <div class="undertale-body">
-          <div class="undertale-cover">
-            <img src="https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp" alt="Undertale Cover" />
-          </div>
-          <div class="undertale-info">
-            <h3>Undertale</h3>
-            <p class="undertale-desc">
-              یک نقش‌آفرینی مستقل که در آن شما به جای جنگ، با موجودات زیرزمین گفتگو و دوستی می‌کنید.
-            </p>
-            <div class="undertale-meta">
-              <span><i class="fas fa-tag"></i> نقش‌آفرینی</span>
-              <span><i class="fas fa-desktop"></i> PC</span>
-              <span><i class="fas fa-clock"></i> ۲۰۱۵</span>
-            </div>
-            <div class="undertale-status">
-              <div class="status-badge">
-                <i class="fas fa-check-circle"></i>
-                <span>موجود در فروشگاه</span>
-              </div>
-              <p class="status-desc">
-                این بازی مستقل، یکی از تأثیرگذارترین عناوین تاریخ است.
-              </p>
-            </div>
-            <div class="undertale-price">
-              <span class="price">رایگان</span>
-              <span class="currency">با فارسی‌ساز</span>
-            </div>
-            <button class="undertale-btn" onclick="navigateTo('undertale')">
-              <i class="fas fa-download"></i>
-              دریافت بازی
-            </button>
-          </div>
-        </div>
       </div>
 
       <a href="#persianizer" class="back-link" onclick="navigateTo('persianizer')" style="display:inline-flex; align-items:center; gap:8px; color:#555; border-bottom:1px solid #222; padding-bottom:6px; cursor:pointer; margin-top:1rem;">
