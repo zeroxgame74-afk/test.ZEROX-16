@@ -25,11 +25,13 @@
       box-sizing: border-box;
     }
     :root {
-      --orange: #ff6b00;
-      --orange-dark: #cc5500;
-      --orange-glow: rgba(255, 107, 0, 0.3);
-      --orange-soft: rgba(255, 107, 0, 0.08);
-      --orange-border: rgba(255, 107, 0, 0.35);
+      --accent: #facc15;
+      --accent-dark: #ca8a04;
+      --accent-glow: rgba(250, 204, 21, 0.4);
+      --accent-glow-soft: rgba(250, 204, 21, 0.15);
+      --bg-dark: #0a0a0a;
+      --bg-card: #0f0f0f;
+      --border-soft: #1a1a1a;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -42,8 +44,8 @@
     }
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #0a0a0a; }
-    ::-webkit-scrollbar-thumb { background: var(--orange-dark); border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
     a { text-decoration: none; color: inherit; }
     .container {
       max-width: 1400px;
@@ -112,9 +114,9 @@
       from { opacity: 0; transform: scale(0.9); }
       to { opacity: 1; transform: scale(1); }
     }
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 0 0 var(--orange-glow); }
-      50% { box-shadow: 0 0 20px 4px var(--orange-glow); }
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 20px var(--accent-glow-soft); }
+      50% { box-shadow: 0 0 40px var(--accent-glow); }
     }
 
     .animate-fade-up {
@@ -149,7 +151,7 @@
       padding: 1rem 2rem;
       background: rgba(10, 10, 10, 0.92);
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 107, 0, 0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
       position: fixed;
       top: 0;
       left: 0;
@@ -160,20 +162,20 @@
     }
     .header.scrolled {
       background: rgba(10, 10, 10, 0.98);
-      border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+      border-bottom: 1px solid rgba(250, 204, 21, 0.1);
     }
     .logo {
       font-size: 1.4rem;
       font-weight: 900;
       letter-spacing: 3px;
-      color: var(--orange);
+      color: #fff;
       text-transform: uppercase;
       cursor: pointer;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       transition: 0.3s;
     }
-    .logo:hover { transform: scale(1.05) rotate(-2deg); filter: drop-shadow(0 0 8px var(--orange-glow)); }
-    .logo span { font-weight: 300; color: #fff; }
+    .logo:hover { transform: scale(1.05) rotate(-2deg); }
+    .logo span { font-weight: 300; color: var(--accent); }
 
     .nav {
       display: flex;
@@ -185,7 +187,7 @@
       cursor: pointer;
       transition: 0.4s;
       position: relative;
-      color: #888;
+      color: #777;
       font-weight: 400;
       padding: 4px 0;
       font-family: 'Estedad', 'Ardakan', sans-serif;
@@ -200,7 +202,7 @@
       right: 0;
       width: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--orange), #ffaa55, var(--orange));
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark), var(--accent));
       background-size: 200% auto;
       transition: 0.4s;
     }
@@ -208,15 +210,15 @@
       width: 100%;
       animation: shimmer 1.5s linear infinite;
     }
-    .nav a:hover { color: var(--orange); transform: translateY(-2px); }
-    .nav a.active { color: var(--orange); }
+    .nav a:hover { color: var(--accent); transform: translateY(-2px); }
+    .nav a.active { color: var(--accent); }
     .nav a.active::after { width: 100%; }
 
     .header-actions {
       display: flex;
       align-items: center;
       gap: 1.5rem;
-      color: #666;
+      color: #555;
     }
     .header-actions i {
       font-size: 1.2rem;
@@ -224,9 +226,8 @@
       transition: 0.4s;
     }
     .header-actions i:hover {
-      color: var(--orange);
+      color: var(--accent);
       transform: scale(1.2) rotate(15deg);
-      filter: drop-shadow(0 0 6px var(--orange-glow));
     }
     .menu-mobile { display: none; }
 
@@ -268,19 +269,18 @@
       font-family: inherit;
     }
     .mobile-menu-content .close-menu:hover {
-      color: var(--orange);
+      color: var(--accent);
       transform: rotate(90deg);
     }
     .mobile-menu-content .mobile-logo {
       font-size: 2.2rem;
       font-weight: 900;
-      color: var(--orange);
+      color: #fff;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       letter-spacing: 3px;
       margin-bottom: 3rem;
-      filter: drop-shadow(0 0 12px var(--orange-glow));
     }
-    .mobile-menu-content .mobile-logo span { color: #fff; font-weight: 300; }
+    .mobile-menu-content .mobile-logo span { color: var(--accent); font-weight: 300; }
     .mobile-menu-content .mobile-nav {
       display: flex;
       flex-direction: column;
@@ -293,7 +293,7 @@
       font-family: 'Estedad', 'Ardakan', sans-serif;
       transition: 0.4s;
       padding: 0.8rem 0;
-      border-bottom: 1px solid rgba(255, 107, 0, 0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -307,41 +307,40 @@
     .mobile-menu-content .mobile-nav a:nth-child(4) { animation-delay: 0.2s; }
     .mobile-menu-content .mobile-nav a i {
       font-size: 1.2rem;
-      color: #555;
+      color: #444;
       transition: 0.3s;
       width: 30px;
     }
     .mobile-menu-content .mobile-nav a:hover {
-      color: var(--orange);
+      color: var(--accent);
       transform: translateX(-6px);
-      border-bottom-color: var(--orange-border);
+      border-bottom-color: rgba(250, 204, 21, 0.2);
     }
     .mobile-menu-content .mobile-nav a:hover i {
-      color: var(--orange);
+      color: var(--accent);
       transform: scale(1.2);
     }
-    .mobile-menu-content .mobile-nav a.active { color: var(--orange); }
-    .mobile-menu-content .mobile-nav a.active i { color: var(--orange); }
+    .mobile-menu-content .mobile-nav a.active { color: var(--accent); }
+    .mobile-menu-content .mobile-nav a.active i { color: var(--accent); }
     .mobile-menu-content .mobile-social {
       margin-top: 3rem;
       display: flex;
       gap: 1.5rem;
       justify-content: center;
-      border-top: 1px solid rgba(255, 107, 0, 0.1);
+      border-top: 1px solid rgba(255,255,255,0.05);
       padding-top: 2rem;
       opacity: 0;
       animation: fadeIn 0.5s ease forwards;
       animation-delay: 0.2s;
     }
     .mobile-menu-content .mobile-social a {
-      color: #555;
+      color: #444;
       font-size: 1.5rem;
       transition: 0.3s;
     }
     .mobile-menu-content .mobile-social a:hover {
-      color: var(--orange);
+      color: var(--accent);
       transform: translateY(-4px) scale(1.1);
-      filter: drop-shadow(0 0 8px var(--orange-glow));
     }
 
     /* ===== صفحات ===== */
@@ -390,7 +389,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.95) 15%, rgba(0,0,0,0.3) 70%, rgba(255, 107, 0, 0.05) 100%);
+      background: linear-gradient(0deg, rgba(0,0,0,0.95) 15%, rgba(0,0,0,0.2) 70%, transparent 100%);
     }
     .hero-content {
       position: relative;
@@ -402,15 +401,19 @@
       font-size: 0.7rem;
       letter-spacing: 5px;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--accent);
       margin-bottom: 0.5rem;
-      font-weight: 600;
+      font-weight: 400;
       opacity: 0;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
+      padding: 0.3rem 1rem;
+      border: 1px solid rgba(250, 204, 21, 0.3);
+      border-radius: 30px;
+      background: rgba(250, 204, 21, 0.05);
+      backdrop-filter: blur(8px);
     }
-    .hero-content .game-tag i { color: var(--orange) !important; }
     .hero-slide.active .hero-content .game-tag {
       animation: fadeUp 1s ease 0.1s forwards;
     }
@@ -423,7 +426,7 @@
       letter-spacing: -2px;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       opacity: 0;
-      text-shadow: 0 0 30px rgba(255, 107, 0, 0.15);
+      text-shadow: 0 0 60px rgba(250, 204, 21, 0.15);
     }
     .hero-slide.active .hero-content h1 {
       animation: fadeUp 1.2s ease 0.2s forwards;
@@ -431,7 +434,7 @@
     .hero-content .sub-title {
       font-size: 1.3rem;
       font-weight: 300;
-      color: #aaa;
+      color: #888;
       margin-bottom: 0.6rem;
       opacity: 0;
     }
@@ -442,7 +445,7 @@
       display: flex;
       gap: 1.5rem;
       font-size: 0.85rem;
-      color: #888;
+      color: #666;
       margin: 0.8rem 0 2rem;
       flex-wrap: wrap;
       font-weight: 300;
@@ -451,7 +454,7 @@
     .hero-slide.active .hero-content .meta {
       animation: fadeUp 1.6s ease 0.4s forwards;
     }
-    .hero-content .meta i { margin-left: 0.4rem; color: var(--orange); }
+    .hero-content .meta i { margin-left: 0.4rem; color: var(--accent); }
     .hero-content .btn-ghost { opacity: 0; }
     .hero-slide.active .hero-content .btn-ghost {
       animation: fadeUp 1.8s ease 0.5s forwards;
@@ -460,12 +463,12 @@
     .btn-ghost {
       display: inline-block;
       padding: 1rem 3rem;
-      border: 1px solid var(--orange-border);
-      color: var(--orange);
+      border: 1px solid var(--accent);
+      color: var(--accent);
       font-weight: 700;
       font-size: 0.9rem;
       letter-spacing: 2px;
-      background: transparent;
+      background: rgba(250, 204, 21, 0.05);
       transition: all 0.5s;
       border-radius: 2px;
       cursor: pointer;
@@ -477,17 +480,17 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, transparent, var(--orange-glow), transparent);
+      background: linear-gradient(90deg, transparent, rgba(250, 204, 21, 0.2), transparent);
       transform: translateX(-100%);
       transition: 0.6s;
     }
     .btn-ghost:hover::before { transform: translateX(100%); }
     .btn-ghost:hover {
-      background: var(--orange);
+      background: var(--accent);
       color: #0a0a0a;
-      border-color: var(--orange);
+      border-color: var(--accent);
       transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 30px var(--orange-glow);
+      box-shadow: 0 10px 40px var(--accent-glow);
     }
 
     /* ===== کنترل اسلایدر ===== */
@@ -511,11 +514,197 @@
       cursor: pointer;
       transition: 0.4s;
     }
-    .hero-slider-dot:hover { background: var(--orange-dark); }
+    .hero-slider-dot:hover { background: #666; }
     .hero-slider-dot.active {
       width: 50px;
-      background: var(--orange);
-      box-shadow: 0 0 10px var(--orange-glow);
+      background: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    /* ==================================================
+       بخش آمار
+    ================================================== */
+    .stats-section {
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
+      border-top: 1px solid #141414;
+      border-bottom: 1px solid #141414;
+    }
+    .stats-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-item {
+      padding: 1.5rem 1rem;
+      transition: 0.4s;
+    }
+    .stat-item:hover { transform: translateY(-5px); }
+    .stat-item .stat-num {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--accent);
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 40px var(--accent-glow-soft);
+    }
+    .stat-item .stat-label {
+      font-size: 0.9rem;
+      color: #777;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    /* ==================================================
+       بخش چرا Zerox Game
+    ================================================== */
+    .why-section {
+      padding: 5rem 2rem;
+      background: #0a0a0a;
+    }
+    .why-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .why-card {
+      padding: 2rem 1.5rem;
+      background: #0d0d0d;
+      border: 1px solid #161616;
+      border-radius: 12px;
+      transition: 0.5s;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: 0.5s;
+    }
+    .why-card:hover::before { transform: scaleX(1); }
+    .why-card:hover {
+      border-color: rgba(250, 204, 21, 0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 30px var(--accent-glow-soft);
+    }
+    .why-card .why-icon {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: rgba(250, 204, 21, 0.08);
+      border: 1px solid rgba(250, 204, 21, 0.15);
+      transition: 0.4s;
+    }
+    .why-card:hover .why-icon {
+      background: var(--accent);
+      color: #0a0a0a;
+      transform: rotate(-8deg) scale(1.05);
+    }
+    .why-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .why-card p {
+      color: #777;
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    /* ==================================================
+       بخش به‌زودی (Coming Soon)
+    ================================================== */
+    .coming-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(180deg, #0d0d0d 0%, #0a0a0a 100%);
+      border-top: 1px solid #141414;
+    }
+    .coming-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .coming-card {
+      padding: 2rem;
+      background: #0d0d0d;
+      border: 1px solid #161616;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: 0.5s;
+      cursor: pointer;
+    }
+    .coming-card:hover {
+      border-color: rgba(250, 204, 21, 0.3);
+      transform: translateX(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    }
+    .coming-card .coming-icon {
+      flex: 0 0 55px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(250, 204, 21, 0.08);
+      border: 1px solid rgba(250, 204, 21, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.4rem;
+      transition: 0.4s;
+    }
+    .coming-card:hover .coming-icon {
+      background: var(--accent);
+      color: #0a0a0a;
+      animation: glowPulse 2s infinite;
+    }
+    .coming-card .coming-info { flex: 1; }
+    .coming-card .coming-info h4 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      margin-bottom: 0.2rem;
+    }
+    .coming-card .coming-info p {
+      font-size: 0.8rem;
+      color: #666;
+      font-weight: 300;
+    }
+    .coming-card .coming-badge {
+      font-size: 0.65rem;
+      color: var(--accent);
+      border: 1px solid rgba(250, 204, 21, 0.3);
+      padding: 0.25rem 0.8rem;
+      border-radius: 20px;
+      background: rgba(250, 204, 21, 0.05);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
     }
 
     /* ==================================================
@@ -526,11 +715,20 @@
       font-size: 2rem;
       font-weight: 800;
       margin: 4rem 0 2rem;
-      border-right: 3px solid var(--orange);
+      border-right: 3px solid var(--accent);
       padding-right: 1.2rem;
       color: #eee;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       animation: slideInRight 0.8s ease;
+    }
+    .section-title .title-sub {
+      display: block;
+      font-size: 0.8rem;
+      color: #555;
+      font-weight: 300;
+      letter-spacing: 3px;
+      margin-top: 0.3rem;
+      text-transform: uppercase;
     }
     .game-grid {
       display: grid;
@@ -552,9 +750,9 @@
     .game-card:nth-child(2) { animation-delay: 0.2s; }
     .game-card:nth-child(3) { animation-delay: 0.3s; }
     .game-card:hover {
-      border-color: var(--orange);
+      border-color: var(--accent);
       transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 40px var(--orange-glow);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 40px var(--accent-glow-soft);
     }
     .game-card .card-img {
       width: 100%;
@@ -585,11 +783,10 @@
     .game-card:hover .card-overlay { opacity: 1; }
     .game-card .card-overlay i {
       font-size: 3.5rem;
-      color: var(--orange);
+      color: var(--accent);
       opacity: 0;
       transform: translateY(30px) scale(0.7);
       transition: all 0.5s ease;
-      filter: drop-shadow(0 0 12px var(--orange-glow));
     }
     .game-card:hover .card-overlay i {
       opacity: 1;
@@ -605,12 +802,10 @@
       color: #fff;
       margin-bottom: 0.2rem;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      transition: 0.3s;
     }
-    .game-card:hover .card-body h3 { color: var(--orange); }
     .game-card .card-body .genre {
       font-size: 0.8rem;
-      color: #666;
+      color: #555;
       font-weight: 300;
       letter-spacing: 1px;
     }
@@ -618,12 +813,12 @@
       display: inline-block;
       margin-top: 0.8rem;
       padding: 0.2rem 1.2rem;
-      border: 1px solid var(--orange-border);
+      border: 1px solid rgba(250, 204, 21, 0.3);
       border-radius: 20px;
       font-size: 0.7rem;
-      color: var(--orange);
+      color: var(--accent);
       letter-spacing: 1px;
-      background: var(--orange-soft);
+      background: rgba(250, 204, 21, 0.05);
     }
 
     /* ==================================================
@@ -642,7 +837,7 @@
       font-family: 'Estedad', 'Ardakan', sans-serif;
       letter-spacing: -1px;
       margin-bottom: 2.5rem;
-      border-right: 3px solid var(--orange);
+      border-right: 3px solid var(--accent);
       padding-right: 1.2rem;
       color: #fff;
       word-wrap: break-word;
@@ -670,7 +865,7 @@
       font-size: 2rem;
       font-weight: 900;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      color: var(--orange);
+      color: #fff;
       letter-spacing: -1px;
       border-top: 1px solid #1a1a1a;
       padding-top: 2rem;
@@ -678,17 +873,15 @@
       animation: fadeUp 0.8s ease forwards;
       opacity: 0;
       animation-delay: 0.5s;
-      text-shadow: 0 0 20px var(--orange-glow);
     }
     .about-page .about-tagline span {
       display: block;
       font-size: 1rem;
       font-weight: 300;
-      color: #666;
+      color: var(--accent);
       letter-spacing: 2px;
       margin-top: 0.3rem;
       font-family: 'Inter', 'Estedad', 'Ardakan', sans-serif;
-      text-shadow: none;
     }
 
     /* ==================================================
@@ -710,7 +903,6 @@
       letter-spacing: -2px;
       color: #fff;
     }
-    .search-page .search-header h1 span { color: var(--orange); }
     .search-page .search-header .sub {
       color: #666;
       font-size: 1rem;
@@ -738,29 +930,29 @@
       text-align: center;
     }
     .search-page .search-box input:focus {
-      border-color: var(--orange);
-      background: rgba(255, 107, 0, 0.03);
-      box-shadow: 0 0 50px var(--orange-glow);
+      border-color: var(--accent);
+      background: rgba(250, 204, 21, 0.03);
+      box-shadow: 0 0 50px var(--accent-glow-soft);
       transform: scale(1.02);
     }
-    .search-page .search-box input::placeholder { color: #444; font-weight: 300; }
+    .search-page .search-box input::placeholder { color: #333; font-weight: 300; }
     .search-page .search-box .search-icon {
       position: absolute;
       right: 1.5rem;
       top: 50%;
       transform: translateY(-50%);
-      color: #555;
+      color: #444;
       font-size: 1.2rem;
       transition: 0.3s;
     }
-    .search-page .search-box input:focus ~ .search-icon { color: var(--orange); }
+    .search-page .search-box input:focus ~ .search-icon { color: var(--accent); }
     .search-page .results-count {
-      color: #666;
+      color: #555;
       font-size: 0.85rem;
       font-weight: 300;
       margin-bottom: 1.5rem;
     }
-    .search-page .results-count span { color: var(--orange); font-weight: 700; }
+    .search-page .results-count span { color: var(--accent); font-weight: 700; }
     .search-page .search-placeholder {
       grid-column: 1/-1;
       text-align: center;
@@ -769,10 +961,9 @@
     }
     .search-page .search-placeholder i {
       font-size: 3.5rem;
-      color: var(--orange-dark);
+      color: #222;
       display: block;
       margin-bottom: 1rem;
-      opacity: 0.5;
     }
     .search-page .search-placeholder p { font-weight: 300; font-size: 1rem; }
     .search-page .results-grid {
@@ -797,9 +988,9 @@
     .search-page .result-card:nth-child(2) { animation-delay: 0.1s; }
     .search-page .result-card:nth-child(3) { animation-delay: 0.15s; }
     .search-page .result-card:hover {
-      border-color: var(--orange);
+      border-color: var(--accent);
       transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 30px var(--orange-glow);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 30px var(--accent-glow-soft);
     }
     .search-page .result-card .card-img {
       width: 100%;
@@ -823,11 +1014,9 @@
       font-weight: 800;
       color: #fff;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      transition: 0.3s;
     }
-    .search-page .result-card:hover .card-body h3 { color: var(--orange); }
     .search-page .result-card .card-body .genre {
-      color: #666;
+      color: #555;
       font-size: 0.75rem;
       font-weight: 300;
     }
@@ -835,11 +1024,10 @@
       display: inline-block;
       margin-top: 0.5rem;
       padding: 0.1rem 1rem;
-      border: 1px solid var(--orange-border);
+      border: 1px solid rgba(250, 204, 21, 0.3);
       border-radius: 20px;
       font-size: 0.6rem;
-      color: var(--orange);
-      background: var(--orange-soft);
+      color: var(--accent);
     }
     .search-page .not-found {
       grid-column: 1/-1;
@@ -849,19 +1037,18 @@
     }
     .search-page .not-found i {
       font-size: 4.5rem;
-      color: var(--orange-dark);
+      color: #222;
       display: block;
       margin-bottom: 1rem;
-      opacity: 0.5;
     }
     .search-page .not-found h2 {
       font-size: 1.6rem;
       font-weight: 700;
-      color: #777;
+      color: #666;
       font-family: 'Estedad', 'Ardakan', sans-serif;
     }
     .search-page .not-found p {
-      color: #555;
+      color: #444;
       font-weight: 300;
       margin-top: 0.3rem;
       font-size: 0.95rem;
@@ -883,8 +1070,8 @@
     }
     .undertale-card-simple:hover {
       transform: translateY(-8px);
-      border-color: var(--orange);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px var(--orange-glow);
+      border-color: var(--accent);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px var(--accent-glow-soft);
     }
 
     .undertale-cover-simple {
@@ -913,9 +1100,7 @@
       color: #fff;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       margin-bottom: 0.3rem;
-      transition: 0.3s;
     }
-    .undertale-card-simple:hover .undertale-info-simple h3 { color: var(--orange); }
     .undertale-info-simple p {
       color: #888;
       font-size: 0.85rem;
@@ -937,17 +1122,17 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--orange);
+      color: var(--accent);
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 400;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       transition: 0.3s;
-      border-bottom: 1px solid var(--orange-border);
+      border-bottom: 1px solid rgba(250, 204, 21, 0.3);
       padding-bottom: 4px;
     }
     .undertale-card-simple:hover .btn-view {
-      color: #fff;
-      border-bottom-color: var(--orange);
+      color: var(--accent);
+      border-bottom-color: var(--accent);
     }
 
     /* ==================================================
@@ -963,8 +1148,8 @@
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
     }
     .undertale-card:hover {
-      border-color: var(--orange-border);
-      box-shadow: 0 12px 50px rgba(0, 0, 0, 0.9), 0 0 30px var(--orange-glow);
+      border-color: rgba(250, 204, 21, 0.3);
+      box-shadow: 0 12px 50px rgba(0, 0, 0, 0.9), 0 0 30px var(--accent-glow-soft);
     }
     .undertale-header {
       display: flex;
@@ -978,19 +1163,19 @@
       font-size: 1rem;
       font-weight: 900;
       letter-spacing: 2px;
-      color: var(--orange);
+      color: #fff;
       font-family: 'Estedad', 'Ardakan', sans-serif;
     }
-    .undertale-logo span { color: #fff; font-weight: 300; }
+    .undertale-logo span { color: var(--accent); font-weight: 300; }
     .undertale-badge {
       font-size: 0.65rem;
-      color: var(--orange);
-      border: 1px solid var(--orange-border);
+      color: var(--accent);
+      border: 1px solid rgba(250, 204, 21, 0.3);
       padding: 0.2rem 1rem;
       border-radius: 20px;
       letter-spacing: 0.5px;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      background: var(--orange-soft);
+      background: rgba(250, 204, 21, 0.05);
     }
     .undertale-body {
       display: flex;
@@ -1037,40 +1222,40 @@
       margin-bottom: 1.2rem;
     }
     .undertale-meta span {
-      color: #888;
+      color: #777;
       font-size: 0.8rem;
       font-weight: 300;
       font-family: 'Estedad', 'Ardakan', sans-serif;
     }
-    .undertale-meta i { margin-left: 5px; color: var(--orange); font-size: 0.75rem; }
+    .undertale-meta i { margin-left: 5px; color: var(--accent); font-size: 0.75rem; }
     .undertale-status {
       margin: 0.8rem 0 1.2rem;
       padding: 0.8rem 1.2rem;
-      background: var(--orange-soft);
-      border: 1px solid var(--orange-border);
+      background: rgba(250, 204, 21, 0.03);
+      border: 1px solid rgba(250, 204, 21, 0.15);
       border-radius: 8px;
       transition: 0.3s;
     }
     .undertale-status:hover {
-      border-color: var(--orange);
-      background: rgba(255, 107, 0, 0.12);
+      border-color: rgba(250, 204, 21, 0.3);
+      background: rgba(250, 204, 21, 0.05);
     }
     .undertale-status .status-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 0.2rem 1rem;
-      border: 1px solid var(--orange-border);
+      border: 1px solid rgba(250, 204, 21, 0.3);
       border-radius: 30px;
       font-size: 0.75rem;
-      color: var(--orange);
+      color: var(--accent);
       letter-spacing: 0.5px;
-      background: rgba(255, 107, 0, 0.06);
+      background: rgba(250, 204, 21, 0.05);
       font-family: 'Estedad', 'Ardakan', sans-serif;
     }
-    .undertale-status .status-badge i { color: #4caf50; font-size: 0.8rem; }
+    .undertale-status .status-badge i { color: var(--accent); font-size: 0.8rem; }
     .undertale-status .status-desc {
-      color: #999;
+      color: #777;
       font-size: 0.75rem;
       font-weight: 300;
       margin: 0.3rem 0 0;
@@ -1085,9 +1270,9 @@
     .undertale-price .price {
       font-size: 1.5rem;
       font-weight: 900;
-      color: var(--orange);
+      color: var(--accent);
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      text-shadow: 0 0 20px var(--orange-glow);
+      text-shadow: 0 0 30px var(--accent-glow-soft);
     }
     .undertale-price .currency {
       font-size: 0.8rem;
@@ -1100,7 +1285,7 @@
       align-items: center;
       gap: 10px;
       padding: 0.8rem 2.2rem;
-      background: var(--orange);
+      background: var(--accent);
       color: #0a0a0a;
       border: none;
       border-radius: 6px;
@@ -1110,12 +1295,11 @@
       cursor: pointer;
       transition: 0.3s ease;
       letter-spacing: 0.5px;
-      box-shadow: 0 4px 15px rgba(255, 107, 0, 0.2);
     }
     .undertale-btn:hover {
-      background: #ff8533;
-      transform: scale(1.03);
-      box-shadow: 0 6px 25px rgba(255, 107, 0, 0.5);
+      background: #fff;
+      transform: scale(1.02);
+      box-shadow: 0 0 40px var(--accent-glow);
     }
     .undertale-btn i { font-size: 1rem; }
 
@@ -1136,20 +1320,20 @@
     .modal-overlay.active { display: flex; }
     .modal-box {
       background: #0f0f0f;
-      border: 1px solid var(--orange-border);
+      border: 1px solid rgba(250, 204, 21, 0.2);
       border-radius: 16px;
       padding: 2.5rem;
       max-width: 450px;
       width: 100%;
       text-align: center;
       animation: modalFade 0.3s ease;
-      box-shadow: 0 0 60px var(--orange-glow);
+      box-shadow: 0 0 60px var(--accent-glow-soft);
     }
     .modal-box .modal-icon {
       font-size: 3.5rem;
-      color: var(--orange);
+      color: var(--accent);
       margin-bottom: 1rem;
-      filter: drop-shadow(0 0 12px var(--orange-glow));
+      text-shadow: 0 0 30px var(--accent-glow);
     }
     .modal-box h2 {
       font-size: 1.5rem;
@@ -1168,8 +1352,8 @@
     }
     .modal-box .modal-close {
       padding: 0.6rem 2rem;
-      background: var(--orange);
-      border: 1px solid var(--orange);
+      background: var(--accent);
+      border: none;
       color: #0a0a0a;
       border-radius: 6px;
       font-size: 0.85rem;
@@ -1179,9 +1363,8 @@
       transition: 0.3s;
     }
     .modal-box .modal-close:hover {
-      background: #ff8533;
-      border-color: #ff8533;
-      box-shadow: 0 0 20px var(--orange-glow);
+      background: #fff;
+      box-shadow: 0 0 30px var(--accent-glow);
     }
 
     /* ==================================================
@@ -1197,8 +1380,8 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     .purchase-card:hover {
-      border-color: var(--orange-border);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.8), 0 0 30px var(--orange-glow);
+      border-color: rgba(250, 204, 21, 0.3);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.8), 0 0 30px var(--accent-glow-soft);
     }
     .purchase-header {
       display: flex;
@@ -1212,19 +1395,19 @@
       font-size: 0.95rem;
       font-weight: 900;
       letter-spacing: 2px;
-      color: var(--orange);
+      color: #fff;
       font-family: 'Estedad', 'Ardakan', sans-serif;
     }
-    .purchase-logo span { color: #fff; font-weight: 300; }
+    .purchase-logo span { color: var(--accent); font-weight: 300; }
     .purchase-badge {
       font-size: 0.65rem;
-      color: var(--orange);
-      border: 1px solid var(--orange-border);
+      color: var(--accent);
+      border: 1px solid rgba(250, 204, 21, 0.3);
       padding: 0.2rem 0.8rem;
       border-radius: 20px;
       letter-spacing: 0.5px;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      background: var(--orange-soft);
+      background: rgba(250, 204, 21, 0.05);
     }
     .purchase-body {
       display: flex;
@@ -1270,17 +1453,17 @@
       margin-bottom: 1rem;
     }
     .purchase-meta span {
-      color: #777;
+      color: #666;
       font-size: 0.75rem;
       font-weight: 300;
       font-family: 'Estedad', 'Ardakan', sans-serif;
     }
-    .purchase-meta i { margin-left: 4px; color: var(--orange); font-size: 0.7rem; }
+    .purchase-meta i { margin-left: 4px; color: var(--accent); font-size: 0.7rem; }
     .purchase-status {
       margin: 0.8rem 0 1rem;
       padding: 0.8rem 1rem;
-      background: var(--orange-soft);
-      border: 1px solid var(--orange-border);
+      background: rgba(250, 204, 21, 0.03);
+      border: 1px solid rgba(250, 204, 21, 0.15);
       border-radius: 6px;
     }
     .status-badge {
@@ -1288,17 +1471,17 @@
       align-items: center;
       gap: 8px;
       padding: 0.2rem 1rem;
-      border: 1px solid var(--orange-border);
+      border: 1px solid rgba(250, 204, 21, 0.3);
       border-radius: 30px;
       font-size: 0.75rem;
-      color: var(--orange);
+      color: var(--accent);
       letter-spacing: 0.5px;
-      background: rgba(255, 107, 0, 0.06);
+      background: rgba(250, 204, 21, 0.05);
       font-family: 'Estedad', 'Ardakan', sans-serif;
     }
-    .status-badge i { color: var(--orange); font-size: 0.8rem; }
+    .status-badge i { color: var(--accent); font-size: 0.8rem; }
     .status-desc {
-      color: #888;
+      color: #666;
       font-size: 0.75rem;
       font-weight: 300;
       margin: 0.3rem 0 0;
@@ -1309,30 +1492,28 @@
       align-items: center;
       gap: 8px;
       padding: 0.7rem 2rem;
-      background: var(--orange);
+      background: var(--accent);
       color: #0a0a0a;
       border: none;
       border-radius: 4px;
       font-size: 0.85rem;
-      font-weight: 800;
+      font-weight: 700;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       cursor: pointer;
       transition: 0.2s;
       letter-spacing: 0.5px;
-      box-shadow: 0 4px 15px rgba(255, 107, 0, 0.2);
     }
-    .purchase-btn:hover { background: #ff8533; transform: scale(1.02); box-shadow: 0 6px 25px rgba(255, 107, 0, 0.5); }
+    .purchase-btn:hover { background: #fff; transform: scale(1.02); box-shadow: 0 0 30px var(--accent-glow); }
     .purchase-btn i { font-size: 0.9rem; }
     .purchase-btn.disabled {
       background: transparent;
       color: #666;
-      border: 1px solid var(--orange-border);
+      border: 1px solid #222;
       cursor: not-allowed;
-      opacity: 0.7;
+      opacity: 0.6;
       pointer-events: none;
-      box-shadow: none;
     }
-    .purchase-btn.disabled i { color: var(--orange); }
+    .purchase-btn.disabled i { color: #444; }
     .purchase-btn.disabled:hover { background: transparent; transform: none; }
 
     /* ==================================================
@@ -1363,7 +1544,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.15) 60%, rgba(255, 107, 0, 0.03) 100%);
+      background: linear-gradient(0deg, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.1) 60%, transparent 100%);
     }
     .undertale-detail-hero .detail-content {
       position: relative;
@@ -1375,19 +1556,19 @@
     .undertale-detail-hero .back-link {
       display: inline-flex;
       align-items: center;
-      color: #666;
+      color: #555;
       margin-bottom: 2rem;
       font-size: 0.85rem;
       transition: 0.4s;
       cursor: pointer;
       gap: 8px;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid #222;
       padding-bottom: 6px;
       font-weight: 300;
     }
     .undertale-detail-hero .back-link:hover {
-      color: var(--orange);
-      border-color: var(--orange);
+      color: var(--accent);
+      border-color: var(--accent);
       transform: translateX(-5px);
     }
     .undertale-detail-hero h1 {
@@ -1398,14 +1579,13 @@
       line-height: 1.05;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       animation: fadeUp 0.8s ease;
-      color: #fff;
-      text-shadow: 0 0 40px rgba(255, 107, 0, 0.2);
+      text-shadow: 0 0 60px rgba(250, 204, 21, 0.15);
     }
     .undertale-detail-hero .sub {
       font-size: 1.4rem;
-      color: var(--orange);
+      color: #888;
       margin-bottom: 1.5rem;
-      font-weight: 400;
+      font-weight: 300;
       animation: fadeUp 1s ease forwards;
       opacity: 0;
     }
@@ -1414,15 +1594,15 @@
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0 2.5rem;
-      background: rgba(255, 107, 0, 0.02);
+      background: rgba(255,255,255,0.02);
       padding: 2rem;
       border-radius: 10px;
-      border: 1px solid var(--orange-border);
+      border: 1px solid #181818;
       animation: scaleIn 0.8s ease;
     }
-    .undertale-detail-hero .detail-info-box .item { color: #888; }
+    .undertale-detail-hero .detail-info-box .item { color: #666; }
     .undertale-detail-hero .detail-info-box .item strong {
-      color: var(--orange);
+      color: var(--accent);
       display: block;
       font-size: 0.7rem;
       text-transform: uppercase;
@@ -1433,7 +1613,7 @@
     }
     .undertale-detail-hero .detail-info-box .item span {
       font-size: 0.9rem;
-      color: #ddd;
+      color: #aaa;
       font-weight: 300;
     }
 
@@ -1463,7 +1643,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.15) 60%, rgba(255, 107, 0, 0.03) 100%);
+      background: linear-gradient(0deg, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.1) 60%, transparent 100%);
     }
     .detail-hero .detail-content {
       position: relative;
@@ -1475,19 +1655,19 @@
     .detail-hero .back-link {
       display: inline-flex;
       align-items: center;
-      color: #666;
+      color: #555;
       margin-bottom: 2rem;
       font-size: 0.85rem;
       transition: 0.4s;
       cursor: pointer;
       gap: 8px;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid #222;
       padding-bottom: 6px;
       font-weight: 300;
     }
     .detail-hero .back-link:hover {
-      color: var(--orange);
-      border-color: var(--orange);
+      color: var(--accent);
+      border-color: var(--accent);
       transform: translateX(-5px);
     }
     .detail-hero h1 {
@@ -1498,14 +1678,13 @@
       line-height: 1.05;
       font-family: 'Estedad', 'Ardakan', sans-serif;
       animation: fadeUp 0.8s ease;
-      color: #fff;
-      text-shadow: 0 0 40px rgba(255, 107, 0, 0.2);
+      text-shadow: 0 0 60px rgba(250, 204, 21, 0.15);
     }
     .detail-hero .sub {
       font-size: 1.4rem;
-      color: var(--orange);
+      color: #888;
       margin-bottom: 1.5rem;
-      font-weight: 400;
+      font-weight: 300;
       animation: fadeUp 1s ease forwards;
       opacity: 0;
     }
@@ -1514,15 +1693,15 @@
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0 2.5rem;
-      background: rgba(255, 107, 0, 0.02);
+      background: rgba(255,255,255,0.02);
       padding: 2rem;
       border-radius: 10px;
-      border: 1px solid var(--orange-border);
+      border: 1px solid #181818;
       animation: scaleIn 0.8s ease;
     }
-    .detail-info-box .item { color: #888; }
+    .detail-info-box .item { color: #666; }
     .detail-info-box .item strong {
-      color: var(--orange);
+      color: var(--accent);
       display: block;
       font-size: 0.7rem;
       text-transform: uppercase;
@@ -1533,7 +1712,7 @@
     }
     .detail-info-box .item span {
       font-size: 0.9rem;
-      color: #ddd;
+      color: #aaa;
       font-weight: 300;
     }
 
@@ -1543,12 +1722,12 @@
       padding: 0 0 3rem;
     }
     .detail-body .full-desc {
-      background: rgba(255, 107, 0, 0.02);
+      background: rgba(255,255,255,0.015);
       padding: 2.5rem;
       border-radius: 10px;
-      border: 1px solid #1a1a1a;
+      border: 1px solid #161616;
       white-space: pre-line;
-      color: #bbb;
+      color: #aaa;
       line-height: 2.2;
       margin: 2rem 0;
       font-size: 1rem;
@@ -1557,20 +1736,19 @@
     }
     .detail-body .full-desc::first-letter {
       font-size: 3.5rem;
-      color: var(--orange);
+      color: var(--accent);
       float: right;
       margin-left: 10px;
       line-height: 1;
       font-weight: 900;
       font-family: 'Estedad', 'Ardakan', sans-serif;
-      text-shadow: 0 0 20px var(--orange-glow);
     }
     .trailer-section {
       margin: 2.5rem 0;
       padding: 2rem;
-      border: 1px solid #1a1a1a;
+      border: 1px solid #161616;
       border-radius: 10px;
-      background: rgba(255, 107, 0, 0.02);
+      background: rgba(255,255,255,0.015);
       animation: scaleIn 0.8s ease;
     }
     .trailer-section h3 {
@@ -1580,7 +1758,7 @@
       color: #ddd;
       font-family: 'Estedad', 'Ardakan', sans-serif;
     }
-    .trailer-section h3 i { margin-left: 12px; color: var(--orange); }
+    .trailer-section h3 i { margin-left: 12px; color: var(--accent); }
     .trailer-placeholder {
       background: #0a0a0a;
       aspect-ratio: 16/9;
@@ -1588,19 +1766,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid var(--orange-border);
-      color: var(--orange);
+      border: 1px solid #1a1a1a;
+      color: #333;
       font-size: 4rem;
       transition: 0.4s;
       cursor: pointer;
-      opacity: 0.6;
     }
     .trailer-placeholder:hover {
-      border-color: var(--orange);
-      color: var(--orange);
+      border-color: var(--accent);
+      color: var(--accent);
       transform: scale(1.02) rotate(2deg);
-      opacity: 1;
-      box-shadow: 0 0 30px var(--orange-glow);
+      box-shadow: 0 0 40px var(--accent-glow-soft);
     }
     .gallery-section {
       margin: 2.5rem 0;
@@ -1613,7 +1789,7 @@
       color: #ddd;
       font-family: 'Estedad', 'Ardakan', sans-serif;
     }
-    .gallery-section h3 i { margin-left: 12px; color: var(--orange); }
+    .gallery-section h3 i { margin-left: 12px; color: var(--accent); }
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1622,7 +1798,7 @@
     .gallery-grid img {
       width: 100%;
       border-radius: 8px;
-      border: 1px solid #1a1a1a;
+      border: 1px solid #161616;
       transition: all 0.5s ease;
       aspect-ratio: 16/9;
       object-fit: cover;
@@ -1631,15 +1807,15 @@
     }
     .gallery-grid img:hover {
       transform: scale(1.04);
-      border-color: var(--orange);
-      box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 25px var(--orange-glow);
+      border-color: var(--accent);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 30px var(--accent-glow-soft);
     }
 
     /* ==================================================
        FOOTER
     ================================================== */
     .footer {
-      border-top: 1px solid rgba(255, 107, 0, 0.15);
+      border-top: 1px solid #0f0f0f;
       padding: 2.5rem 2rem;
       display: flex;
       flex-wrap: wrap;
@@ -1659,7 +1835,7 @@
     .footer-links {
       display: flex;
       gap: 2rem;
-      color: #666;
+      color: #444;
       font-size: 0.85rem;
     }
     .footer-links a {
@@ -1675,10 +1851,10 @@
       right: 0;
       width: 0;
       height: 1px;
-      background: var(--orange);
+      background: var(--accent);
       transition: 0.3s;
     }
-    .footer-links a:hover { color: var(--orange); }
+    .footer-links a:hover { color: var(--accent); }
     .footer-links a:hover::after { width: 100%; }
     .footer-social {
       display: flex;
@@ -1687,7 +1863,7 @@
       font-size: 1.2rem;
     }
     .footer-social a {
-      color: #555;
+      color: #444;
       transition: 0.4s;
       display: inline-flex;
       align-items: center;
@@ -1698,11 +1874,10 @@
       border: 1px solid transparent;
     }
     .footer-social a:hover {
-      color: var(--orange);
+      color: var(--accent);
       transform: translateY(-5px) scale(1.1);
-      border-color: var(--orange-border);
-      background: var(--orange-soft);
-      filter: drop-shadow(0 0 8px var(--orange-glow));
+      border-color: rgba(250, 204, 21, 0.2);
+      background: rgba(250, 204, 21, 0.05);
     }
     .footer-social a i {
       font-size: 1.2rem;
@@ -1712,14 +1887,50 @@
     .footer-copy {
       width: 100%;
       text-align: center;
-      color: #444;
+      color: #222;
       font-size: 0.75rem;
       margin-top: 0.5rem;
-      border-top: 1px solid rgba(255, 107, 0, 0.08);
+      border-top: 1px solid #0f0f0f;
       padding-top: 1.2rem;
       font-weight: 300;
     }
-    .footer-copy span { color: var(--orange); }
+    .footer-copy span { color: var(--accent); }
+
+    /* ==================================================
+       دکمه Scroll to Top
+    ================================================== */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .scroll-top.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .scroll-top:hover {
+      background: #fff;
+      box-shadow: 0 0 40px var(--accent-glow);
+      transform: translateY(-4px) scale(1.05);
+    }
 
     /* ==================================================
        RESPONSIVE
@@ -1757,6 +1968,9 @@
       .undertale-info { width: 100%; }
       .undertale-info h3 { font-size: 1.3rem; }
       .modal-box { padding: 2rem; }
+      .stat-item .stat-num { font-size: 2.2rem; }
+      .coming-card { flex-direction: column; text-align: center; }
+      .scroll-top { bottom: 20px; left: 20px; width: 44px; height: 44px; }
     }
     @media (max-width: 480px) {
       .detail-info-box { grid-template-columns: 1fr; }
@@ -1792,10 +2006,20 @@
       .modal-box { padding: 1.5rem; }
       .modal-box h2 { font-size: 1.2rem; }
       .modal-box .modal-icon { font-size: 2.5rem; }
+      .why-grid { grid-template-columns: 1fr; }
+      .coming-grid { grid-template-columns: 1fr; }
+      .stat-item .stat-num { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- ==================================================
+       دکمه Scroll to Top
+  ================================================== -->
+  <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()" aria-label="بازگشت به بالا">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <!-- ==================================================
        مودال
@@ -1899,8 +2123,92 @@
       </div>
     </section>
 
+    <!-- ===== بخش آمار ===== -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">۰۱</div>
+          <div class="stat-label">بازی در دست توسعه</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">۰۱</div>
+          <div class="stat-label">فارسی‌ساز اختصاصی</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">۲۰۲۶</div>
+          <div class="stat-label">سال تأسیس استودیو</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">خلاقیت بی‌پایان</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== بخش چرا Zerox Game ===== -->
+    <section class="why-section">
+      <div style="max-width: 1400px; margin: 0 auto;">
+        <h2 class="section-title">چرا Zerox Game؟<span class="title-sub">Why Choose Us</span></h2>
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon"><i class="fas fa-language"></i></div>
+            <h3>فارسی‌سازی حرفه‌ای</h3>
+            <p>ترجمه دقیق و روان بازی‌های مستقل به زبان فارسی، با حفظ حس اصلی بازی.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><i class="fas fa-gamepad"></i></div>
+            <h3>بازی‌های مستقل</h3>
+            <p>ساخت بازی‌های خلاقانه با داستان‌های عمیق و گیم‌پلی منحصربه‌فرد.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><i class="fas fa-bolt"></i></div>
+            <h3>کیفیت بالا</h3>
+            <p>توجه به جزئیات، از طراحی تا صداگذاری و تجربه‌ی کاربری.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><i class="fas fa-heart"></i></div>
+            <h3>با عشق ساخته شده</h3>
+            <p>هر پروژه با علاقه و وسواس ساخته می‌شود، نه فقط برای بازار.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== بخش به‌زودی ===== -->
+    <section class="coming-section">
+      <div style="max-width: 1400px; margin: 0 auto;">
+        <h2 class="section-title">به‌زودی...<span class="title-sub">Coming Soon</span></h2>
+        <div class="coming-grid">
+          <div class="coming-card" onclick="openModal()">
+            <div class="coming-icon"><i class="fas fa-rocket"></i></div>
+            <div class="coming-info">
+              <h4>فارسی‌ساز Deltarune</h4>
+              <p>فارسی‌سازی بازی محبوب Deltarune</p>
+            </div>
+            <div class="coming-badge">به‌زودی</div>
+          </div>
+          <div class="coming-card" onclick="openModal()">
+            <div class="coming-icon"><i class="fas fa-ghost"></i></div>
+            <div class="coming-info">
+              <h4>SilentGears - نسخه نهایی</h4>
+              <p>انتشار نسخه کامل بازی SilentGears</p>
+            </div>
+            <div class="coming-badge">به‌زودی</div>
+          </div>
+          <div class="coming-card" onclick="openModal()">
+            <div class="coming-icon"><i class="fas fa-star"></i></div>
+            <div class="coming-info">
+              <h4>پروژه مخفی جدید</h4>
+              <p>یه سورپرایز ویژه برای شما...</p>
+            </div>
+            <div class="coming-badge">به‌زودی</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="container" id="games-section">
-      <h2 class="section-title">بازی‌های ما</h2>
+      <h2 class="section-title">بازی‌های ما<span class="title-sub">Our Games</span></h2>
       <div class="game-grid">
         <a href="#game-silentgears" class="game-card" onclick="navigateTo('detail')" style="display:block; text-decoration:none;">
           <div class="card-img">
@@ -1917,10 +2225,10 @@
     </div>
 
     <div class="container" id="about-section">
-      <div class="intro-section" style="border-top:1px solid rgba(255, 107, 0, 0.15); padding:3rem 0 4rem; margin-top:1rem;">
-        <h2 style="font-size:2.8rem; font-weight:900; font-family:'Estedad','Ardakan',sans-serif; letter-spacing:-1px; color:#ff6b00;">ZER0X GAME</h2>
-        <p style="max-width:600px; color:#666; margin:0.8rem 0 1.5rem; font-size:1.05rem; font-weight:300;">استودیوی بازی‌سازی با نگاه سینمایی و روایت‌های عمیق. خلق فراتر از مرزها.</p>
-        <a href="#about" onclick="navigateTo('about')" style="color:#ff6b00; border-bottom:1px solid rgba(255, 107, 0, 0.35); padding-bottom:3px; transition:0.3s; cursor:pointer;">درباره ما <i class="fas fa-arrow-left" style="margin-right:6px;"></i></a>
+      <div class="intro-section" style="border-top:1px solid #1a1a1a; padding:3rem 0 4rem; margin-top:1rem;">
+        <h2 style="font-size:2.8rem; font-weight:900; font-family:'Estedad','Ardakan',sans-serif; letter-spacing:-1px;">ZER0X <span style="color:var(--accent);">GAME</span></h2>
+        <p style="max-width:600px; color:#555; margin:0.8rem 0 1.5rem; font-size:1.05rem; font-weight:300;">استودیوی بازی‌سازی با نگاه سینمایی و روایت‌های عمیق. خلق فراتر از مرزها.</p>
+        <a href="#about" onclick="navigateTo('about')" style="color:var(--accent); border-bottom:1px solid rgba(250,204,21,0.3); padding-bottom:3px; transition:0.3s; cursor:pointer;">درباره ما <i class="fas fa-arrow-left" style="margin-right:6px;"></i></a>
       </div>
     </div>
   </div>
@@ -1949,7 +2257,7 @@
   <div class="page" id="pageSearch">
     <div class="container search-page">
       <div class="search-header">
-        <h1>جستجوی <span>بازی</span></h1>
+        <h1>جستجوی بازی</h1>
         <div class="sub">نام بازی مورد نظر را پیدا کن</div>
       </div>
       <div class="search-box">
@@ -2009,15 +2317,18 @@
     </section>
 
     <div class="container">
-      <div class="undertale-card-simple" onclick="navigateTo('undertale')">
-        <div class="undertale-cover-simple">
-          <img src="https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp" alt="Undertale" />
-        </div>
-        <div class="undertale-info-simple">
-          <h3>Undertale</h3>
-          <p>یک نقش‌آفرینی مستقل با داستانی احساسی و تأثیرگذار</p>
-          <div class="sub-dev">ساخته Toby Fox · فارسی‌سازی Zerox Game</div>
-          <span class="btn-view">مشاهده <i class="fas fa-arrow-left"></i></span>
+      <h2 class="section-title">فارسی‌سازهای موجود<span class="title-sub">Available Persianizers</span></h2>
+      <div class="game-grid">
+        <div class="undertale-card-simple" onclick="navigateTo('undertale')" style="margin: 0 auto 4rem;">
+          <div class="undertale-cover-simple">
+            <img src="https://cdn.imgurl.ir/uploads/o698207_Negar_1788963395805.webp" alt="Undertale" />
+          </div>
+          <div class="undertale-info-simple">
+            <h3>Undertale</h3>
+            <p>یک نقش‌آفرینی مستقل با داستانی احساسی و تأثیرگذار</p>
+            <div class="sub-dev">ساخته Toby Fox · فارسی‌سازی Zerox Game</div>
+            <span class="btn-view">مشاهده <i class="fas fa-arrow-left"></i></span>
+          </div>
         </div>
       </div>
     </div>
@@ -2090,14 +2401,14 @@
               <i class="fas fa-download"></i>
               دریافت نسخه فارسی
             </button>
-            <div style="margin-top: 0.8rem; border-top: 1px solid rgba(255, 107, 0, 0.15); padding-top: 0.6rem; color: #777; font-size: 0.7rem; text-align: center;">
+            <div style="margin-top: 0.8rem; border-top: 1px solid #1a1a1a; padding-top: 0.6rem; color: #555; font-size: 0.7rem; text-align: center;">
               ساخته Toby Fox · فارسی‌سازی Zerox Game
             </div>
           </div>
         </div>
       </div>
 
-      <a href="#persianizer" class="back-link" onclick="navigateTo('persianizer')" style="display:inline-flex; align-items:center; gap:8px; color:#666; border-bottom:1px solid #333; padding-bottom:6px; cursor:pointer; margin-top:1rem;">
+      <a href="#persianizer" class="back-link" onclick="navigateTo('persianizer')" style="display:inline-flex; align-items:center; gap:8px; color:var(--accent); border-bottom:1px solid rgba(250,204,21,0.3); padding-bottom:6px; cursor:pointer; margin-top:1rem;">
         <i class="fas fa-arrow-right"></i> بازگشت به فارسی‌ساز
       </a>
     </div>
@@ -2170,7 +2481,7 @@
         </div>
       </div>
 
-      <a href="#home" class="back-link" onclick="navigateTo('home')" style="display:inline-flex; align-items:center; gap:8px; color:#666; border-bottom:1px solid #333; padding-bottom:6px; cursor:pointer; margin-top:1rem;">
+      <a href="#home" class="back-link" onclick="navigateTo('home')" style="display:inline-flex; align-items:center; gap:8px; color:var(--accent); border-bottom:1px solid rgba(250,204,21,0.3); padding-bottom:6px; cursor:pointer; margin-top:1rem;">
         <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
       </a>
     </div>
@@ -2192,7 +2503,7 @@
       <a href="https://www.instagram.com/zerox_game_studios" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
       <a href="#" aria-label="توییتر"><i class="fab fa-twitter"></i></a>
     </div>
-    <div class="footer-copy">© 2026 <span>ZER0X GAME</span> · Create Beyond Limits.</div>
+    <div class="footer-copy">© 2026 ZER0X <span>GAME</span> · Create Beyond Limits.</div>
   </footer>
 
   <!-- ==================================================
@@ -2296,9 +2607,6 @@
       persianizerHeroTimer = setInterval(function() { nextPersianizerHeroSlide(); }, PERSIANIZER_HERO_TIME);
     }
 
-    /* ==================================================
-       شروع اسلایدرها
-    ================================================== */
     document.addEventListener('DOMContentLoaded', function() {
       currentHeroSlide = 0;
       goToHeroSlide(0);
@@ -2355,9 +2663,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    /* ==================================================
-       لود شدن با HASH
-    ================================================== */
     window.addEventListener('load', function() {
       const hash = window.location.hash.replace('#', '');
       if (hash === 'home' || hash === '') navigateTo('home');
@@ -2427,13 +2732,20 @@
     }
 
     /* ==================================================
-       هدر اسکرول
+       هدر اسکرول + Scroll to Top
     ================================================== */
     window.addEventListener('scroll', function() {
       const header = document.getElementById('header');
+      const scrollBtn = document.getElementById('scrollTopBtn');
       if (window.scrollY > 50) header.classList.add('scrolled');
       else header.classList.remove('scrolled');
+      if (window.scrollY > 400) scrollBtn.classList.add('active');
+      else scrollBtn.classList.remove('active');
     });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
     /* ==================================================
        پارالاکس
@@ -2452,9 +2764,6 @@
       }
     });
 
-    /* ==================================================
-       ریسپانسیو منو
-    ================================================== */
     window.addEventListener('resize', function() {
       const nav = document.getElementById('mainNav');
       if (window.innerWidth > 768) {
