@@ -1,514 +1,1578 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>GTA Mobile 3D - Police & Shooting Edition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>هیئت نور | رسانهٔ اسلامی</title>
+    <!-- Vazirmatn Font (Persian) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons (6 free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
-            box-sizing: border-box;
-            user-select: none;
-            -webkit-user-select: none;
             margin: 0;
             padding: 0;
-        }
-        body, html {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #000;
-            font-family: Arial, sans-serif;
-        }
-        #game-container {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        /* HUD & UI */
-        #hud {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            color: #fff;
-            text-align: right;
-            text-shadow: 2px 2px 4px #000;
-            pointer-events: none;
-            font-weight: bold;
-            font-size: 18px;
-            z-index: 10;
-        }
-        #money { color: #55ff55; font-size: 22px; }
-        #wanted { color: #ff3333; font-size: 20px; letter-spacing: 2px; }
-        #health-bar-bg {
-            width: 120px;
-            height: 12px;
-            background: rgba(0,0,0,0.6);
-            border: 1px solid #fff;
-            margin-top: 5px;
-            display: inline-block;
-        }
-        #health-bar {
-            width: 100%;
-            height: 100%;
-            background: #22ff22;
+            box-sizing: border-box;
         }
 
-        /* Touch Controls */
-        #joystick-zone {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
-            width: 120px;
-            height: 120px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            touch-action: none;
-            z-index: 10;
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #0D0D0D;
+            --gold: #D4AF5A;
+            --gold-light: #F0D98A;
+            --gold-dark: #8F6B2E;
+            --cream: #E8DCC2;
+            --white: #F7F4EC;
+            --burgundy: #4A1115;
+            --glass-bg: rgba(20, 20, 20, 0.6);
+            --glass-border: rgba(212, 175, 90, 0.2);
+            --shadow-sm: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+            --shadow-gold: 0 0 20px rgba(212, 175, 90, 0.15);
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --font-persian: 'Vazirmatn', sans-serif;
         }
-        #joystick-knob {
-            position: absolute;
-            top: 35px;
-            left: 35px;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+        body {
+            font-family: var(--font-persian);
+            background-color: var(--bg-primary);
+            color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        
-        /* Action Buttons Container */
-        .btn-group {
+
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        h1 { font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: 600; }
+        h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 0.5rem; position: relative; display: inline-block; }
+        h2:after {
+            content: '';
             position: absolute;
-            bottom: 30px;
-            right: 20px;
+            bottom: -12px;
+            right: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+        h3 { font-size: 1.5rem; color: var(--gold-light); }
+        p { font-weight: 300; color: var(--cream); opacity: 0.9; }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        /* Decorative Pattern */
+        .pattern-divider {
+            width: 100%;
+            height: 30px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M0,10 Q20,0 40,10 T80,10 T120,10 T160,10 T200,10" stroke="%23D4AF5A" stroke-width="0.8" fill="none" opacity="0.5"/><circle cx="40" cy="10" r="1.5" fill="%23D4AF5A" opacity="0.7"/><circle cx="120" cy="10" r="1.5" fill="%23D4AF5A" opacity="0.7"/></svg>');
+            background-repeat: repeat-x;
+            background-size: 200px 20px;
+            opacity: 0.5;
+            margin: 40px 0;
+        }
+
+        /* ----- NAVIGATION (sticky) ----- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 90, 0.2);
+            padding: 12px 0;
+        }
+
+        .nav-container {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            justify-content: space-between;
             align-items: center;
-            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
-        .action-btn {
-            width: 65px;
-            height: 65px;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            color: #fff;
-            font-size: 12px;
-            font-weight: bold;
+
+        .logo-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-nav img {
+            height: 48px;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 90, 0.3));
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            position: relative;
+            padding-bottom: 6px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--gold);
+            transition: width 0.25s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .btn:hover {
+            background: var(--gold);
+            color: #050505;
+            box-shadow: 0 0 24px rgba(212, 175, 90, 0.4);
+            border-color: var(--gold-light);
+        }
+
+        .btn-outline-gold {
+            background: transparent;
+            border: 1px solid var(--gold-dark);
+            color: var(--gold-light);
+        }
+
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+        }
+
+        /* ----- HERO SECTION ----- */
+        .hero {
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-            touch-action: none;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 70% 30%, rgba(212, 175, 90, 0.05) 0%, transparent 60%);
         }
-        #enter-btn { background: rgba(255, 170, 0, 0.8); }
-        #fire-btn { background: rgba(255, 30, 30, 0.85); font-size: 14px; }
-        .action-btn:active { transform: scale(0.92); }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" opacity="0.08"><path d="M200,50 L240,120 L320,120 L260,170 L290,250 L200,200 L110,250 L140,170 L80,120 L160,120 Z" fill="%23D4AF5A"/><circle cx="200" cy="200" r="150" stroke="%23D4AF5A" stroke-width="1" fill="none" stroke-dasharray="8 8"/></svg>');
+            background-size: 800px 800px;
+            background-repeat: repeat;
+            animation: slowRotate 120s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes slowRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-logo {
+            width: 220px;
+            height: auto;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 30px rgba(212, 175, 90, 0.4));
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            text-shadow: 0 0 30px rgba(212, 175, 90, 0.3);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .hero-sub {
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 20% 40%, rgba(212, 175, 90, 0.08) 0%, transparent 30%),
+                        radial-gradient(circle at 80% 70%, rgba(212, 175, 90, 0.06) 0%, transparent 40%);
+            animation: glowPulse 8s infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ----- AUDIO SECTION ----- */
+        .section-header {
+            text-align: right;
+            margin-bottom: 48px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            margin-top: 8px;
+        }
+
+        .audio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .audio-card {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(212, 175, 90, 0.15);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all 0.35s ease;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .audio-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212, 175, 90, 0.5);
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.9), 0 0 0 1px rgba(212, 175, 90, 0.2);
+        }
+
+        .audio-cover {
+            height: 180px;
+            background-color: #1A1A1A;
+            background-image: linear-gradient(135deg, #2a1f0e 0%, #0D0D0D 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid rgba(212, 175, 90, 0.2);
+        }
+
+        .audio-cover i {
+            font-size: 3.5rem;
+            color: var(--gold);
+            opacity: 0.7;
+            text-shadow: 0 0 20px rgba(212, 175, 90, 0.5);
+        }
+
+        .audio-info {
+            padding: 20px;
+        }
+
+        .audio-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+
+        .audio-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            opacity: 0.8;
+            margin-bottom: 16px;
+        }
+
+        .audio-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 45%;
+            height: 100%;
+            background: var(--gold);
+            border-radius: 4px;
+            box-shadow: 0 0 8px var(--gold);
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: none;
+            color: var(--cream);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+            padding: 6px;
+        }
+
+        .icon-btn:hover {
+            color: var(--gold);
+            transform: scale(1.1);
+        }
+
+        .icon-btn.active {
+            color: var(--gold);
+        }
+
+        .audio-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(74, 17, 21, 0.8);
+            backdrop-filter: blur(4px);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 175, 90, 0.3);
+        }
+
+        /* ----- STICKY MINI PLAYER ----- */
+        .mini-player {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            right: 24px;
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 90, 0.4);
+            border-radius: 60px;
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.9), 0 0 30px rgba(212, 175, 90, 0.15);
+            z-index: 1100;
+            transition: transform 0.3s ease;
+        }
+
+        .mini-player.hidden {
+            transform: translateY(150%);
+        }
+
+        .mini-cover {
+            width: 48px;
+            height: 48px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gold);
+        }
+
+        .mini-cover i {
+            color: var(--gold);
+            font-size: 1.4rem;
+        }
+
+        .mini-info {
+            flex: 1;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .mini-info strong {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .mini-info span {
+            color: var(--gold-light);
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+
+        .mini-progress {
+            width: 100px;
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+        }
+
+        .mini-progress-fill {
+            width: 60%;
+            height: 100%;
+            background: var(--gold);
+            border-radius: 3px;
+        }
+
+        /* ----- LATEST CONTENT ----- */
+        .latest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .latest-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 90, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .latest-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .latest-img {
+            height: 140px;
+            background: linear-gradient(135deg, #1a1308, #0a0a0a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 90, 0.2);
+        }
+
+        .latest-body {
+            padding: 16px;
+        }
+
+        .latest-body h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: var(--white);
+        }
+
+        .latest-body p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* ----- SCHEDULE ----- */
+        .schedule-wrapper {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .schedule-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .event-item {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 20px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            border-right: 4px solid var(--gold);
+            border-top: 1px solid rgba(212, 175, 90, 0.1);
+            border-left: 1px solid rgba(212, 175, 90, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 90, 0.1);
+            transition: all 0.2s;
+        }
+
+        .event-item:hover {
+            background: #111;
+            border-color: var(--gold);
+        }
+
+        .event-date {
+            text-align: center;
+            color: var(--gold);
+        }
+
+        .event-day {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .event-month {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .event-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+            color: var(--white);
+        }
+
+        .event-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+
+        .event-badge {
+            background: var(--burgundy);
+            color: var(--gold-light);
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-right: 12px;
+            border: 1px solid rgba(212, 175, 90, 0.3);
+        }
+
+        .calendar-mini {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid rgba(212, 175, 90, 0.2);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .calendar-grid span {
+            padding: 8px 0;
+            border-radius: 8px;
+            color: var(--cream);
+            opacity: 0.7;
+        }
+
+        .calendar-grid .active-day {
+            background: var(--gold);
+            color: #050505;
+            font-weight: 600;
+            opacity: 1;
+        }
+
+        /* ----- LIVE SECTION ----- */
+        .live-section {
+            background: #080808;
+            border-radius: var(--radius-md);
+            padding: 40px;
+            border: 1px solid rgba(212, 175, 90, 0.2);
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 32px;
+        }
+
+        .live-player {
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(212, 175, 90, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .live-player i {
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.5;
+        }
+
+        .live-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #4A1115;
+            color: var(--gold-light);
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid var(--gold);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #f00;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+
+        .viewers {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            background: rgba(0,0,0,0.7);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--gold-light);
+        }
+
+        .live-info h3 {
+            margin-bottom: 12px;
+        }
+
+        .live-info p {
+            margin-bottom: 20px;
+        }
+
+        /* ----- GALLERY ----- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-auto-rows: 200px;
+            gap: 16px;
+        }
+
+        .gallery-item {
+            background: #111;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(212, 175, 90, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 2rem;
+            transition: all 0.3s;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--gold);
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(212, 175, 90, 0.2);
+        }
+
+        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        .gallery-item:nth-child(4) { grid-row: span 2; }
+
+        /* ----- SPEAKERS ----- */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+        }
+
+        .speaker-card {
+            text-align: center;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 24px 16px;
+            border: 1px solid rgba(212, 175, 90, 0.15);
+            transition: all 0.3s;
+        }
+
+        .speaker-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .speaker-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            background: #1a1a1a;
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .speaker-card h4 {
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .speaker-card p {
+            font-size: 0.8rem;
+            color: var(--gold-light);
+            opacity: 0.7;
+        }
+
+        /* ----- ABOUT ----- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            margin-bottom: 16px;
+        }
+
+        .about-text p {
+            margin-bottom: 24px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 24px;
+        }
+
+        .stat-item h4 {
+            font-size: 2.2rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ----- DONATION ----- */
+        .donation-box {
+            background: linear-gradient(145deg, #0D0D0D, #050505);
+            border: 1px solid var(--gold-dark);
+            border-radius: var(--radius-md);
+            padding: 48px;
+            text-align: center;
+            box-shadow: var(--shadow-gold);
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donation-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 90, 0.05) 0%, transparent 60%);
+            animation: slowRotate 80s linear infinite;
+        }
+
+        .donation-box h3 {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 16px;
+        }
+
+        .donation-box p {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 32px;
+        }
+
+        /* ----- CONTACT ----- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-info i {
+            color: var(--gold);
+            width: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(212, 175, 90, 0.2);
+            border-radius: var(--radius-sm);
+            color: var(--cream);
+            font-family: var(--font-persian);
+            margin-bottom: 16px;
+            transition: border 0.2s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        /* ----- FOOTER ----- */
+        footer {
+            background: #030303;
+            border-top: 1px solid rgba(212, 175, 90, 0.15);
+            padding: 60px 0 30px;
+            position: relative;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .footer-social a {
+            color: var(--gold);
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+
+        .footer-social a:hover {
+            color: var(--gold-light);
+        }
+
+        .footer-links h4 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.2s, color 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--gold-light);
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .schedule-wrapper,
+            .live-section,
+            .about-content,
+            .contact-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+
+            .hero-sub {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .mini-player {
+                left: 16px;
+                right: 16px;
+                padding: 8px 16px;
+            }
+
+            .mini-progress {
+                display: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-auto-rows: 150px;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+        }
+
+        /* Utility */
+        .text-gold { color: var(--gold); }
+        .mt-4 { margin-top: 24px; }
+        .mb-4 { margin-bottom: 24px; }
+        .text-center { text-align: center; }
+        .flex-center { display: flex; align-items: center; justify-content: center; }
     </style>
-    <!-- Three.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
-    <div id="game-container"></div>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-nav">
+                <!-- Logo placeholder: using abstract gold ornament representing calligraphy -->
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M24 4L29 14L40 15L32 23L34 34L24 28L14 34L16 23L8 15L19 14L24 4Z" stroke="#D4AF5A" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+                    <circle cx="24" cy="24" r="10" stroke="#D4AF5A" stroke-width="1" opacity="0.6"/>
+                    <path d="M24 14V34M14 24H34" stroke="#D4AF5A" stroke-width="0.8" opacity="0.5"/>
+                </svg>
+                <span class="logo-text">هیئت نور</span>
+            </div>
+            <div class="nav-links">
+                <a href="#audio">صوت‌ها</a>
+                <a href="#schedule">برنامه</a>
+                <a href="#live">پخش زنده</a>
+                <a href="#gallery">گالری</a>
+                <a href="#about">درباره</a>
+                <a href="#contact">تماس</a>
+            </div>
+            <a href="#donation" class="btn btn-small">مشارکت</a>
+        </div>
+    </nav>
 
-    <div id="hud">
-        <div id="money">$1,250,000</div>
-        <div id="wanted">★☆☆☆☆</div>
-        <div>HEALTH</div>
-        <div id="health-bar-bg"><div id="health-bar"></div></div>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-particles"></div>
+        <div class="hero-content">
+            <!-- Logo main display: elegant gold calligraphy inspired -->
+            <svg class="hero-logo" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 20L120 60L170 70L135 105L145 155L100 130L55 155L65 105L30 70L80 60L100 20Z" stroke="#D4AF5A" stroke-width="2" fill="none" stroke-linejoin="round"/>
+                <circle cx="100" cy="100" r="50" stroke="#F0D98A" stroke-width="1" opacity="0.5"/>
+                <path d="M100 50V150M50 100H150" stroke="#D4AF5A" stroke-width="1" opacity="0.4"/>
+                <path d="M70 70L130 130M130 70L70 130" stroke="#D4AF5A" stroke-width="0.8" opacity="0.3"/>
+            </svg>
+            <h1>هیئت نور</h1>
+            <p class="hero-sub">با یاد خدا و اهلبیت (ع)</p>
+            <div class="hero-buttons">
+                <a href="#audio" class="btn">آخرین صوت‌ها</a>
+                <a href="#schedule" class="btn btn-outline-gold">برنامه هیئت</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== AUDIO SECTION ===== -->
+    <section id="audio" class="container">
+        <div class="section-header">
+            <h2>کتابخانه صوتی</h2>
+            <p>سخنرانی، مداحی، روضه، مناجات، نوحه و قرآن</p>
+        </div>
+
+        <div class="audio-grid">
+            <!-- Card 1 -->
+            <div class="audio-card">
+                <div class="audio-cover">
+                    <i class="fas fa-microphone-alt"></i>
+                    <span class="audio-tag">سخنرانی</span>
+                </div>
+                <div class="audio-info">
+                    <div class="audio-title">تفسیر سوره حمد</div>
+                    <div class="audio-meta">
+                        <span>حجت‌الاسلام رضایی</span>
+                        <span>۱۴۰۳/۰۵/۱۲</span>
+                        <span>۴۵:۲۰</span>
+                    </div>
+                    <div class="audio-actions">
+                        <button class="icon-btn"><i class="fas fa-play"></i></button>
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <button class="icon-btn"><i class="fas fa-download"></i></button>
+                        <button class="icon-btn"><i class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="audio-card">
+                <div class="audio-cover">
+                    <i class="fas fa-drum"></i>
+                    <span class="audio-tag">مداحی</span>
+                </div>
+                <div class="audio-info">
+                    <div class="audio-title">ماه بنی‌هاشم</div>
+                    <div class="audio-meta">
+                        <span>حاج محمود کریمی</span>
+                        <span>۱۴۰۳/۰۵/۱۰</span>
+                        <span>۳۲:۱۵</span>
+                    </div>
+                    <div class="audio-actions">
+                        <button class="icon-btn"><i class="fas fa-play"></i></button>
+                        <div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div>
+                        <button class="icon-btn"><i class="fas fa-download"></i></button>
+                        <button class="icon-btn active"><i class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="audio-card">
+                <div class="audio-cover">
+                    <i class="fas fa-book-open"></i>
+                    <span class="audio-tag">روضه</span>
+                </div>
+                <div class="audio-info">
+                    <div class="audio-title">روضه هفتگی</div>
+                    <div class="audio-meta">
+                        <span>حاج مهدی سماواتی</span>
+                        <span>۱۴۰۳/۰۵/۰۸</span>
+                        <span>۵۸:۴۰</span>
+                    </div>
+                    <div class="audio-actions">
+                        <button class="icon-btn"><i class="fas fa-play"></i></button>
+                        <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+                        <button class="icon-btn"><i class="fas fa-download"></i></button>
+                        <button class="icon-btn"><i class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="audio-card">
+                <div class="audio-cover">
+                    <i class="fas fa-pray"></i>
+                    <span class="audio-tag">مناجات</span>
+                </div>
+                <div class="audio-info">
+                    <div class="audio-title">مناجات کمیل</div>
+                    <div class="audio-meta">
+                        <span>حاج منصور ارضی</span>
+                        <span>۱۴۰۳/۰۵/۰۵</span>
+                        <span>۲۸:۱۰</span>
+                    </div>
+                    <div class="audio-actions">
+                        <button class="icon-btn"><i class="fas fa-play"></i></button>
+                        <div class="progress-bar"><div class="progress-fill" style="width:10%"></div></div>
+                        <button class="icon-btn"><i class="fas fa-download"></i></button>
+                        <button class="icon-btn"><i class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="audio-card">
+                <div class="audio-cover">
+                    <i class="fas fa-music"></i>
+                    <span class="audio-tag">نوحه</span>
+                </div>
+                <div class="audio-info">
+                    <div class="audio-title">نوحه شام غریبان</div>
+                    <div class="audio-meta">
+                        <span>حاج سعید حدادیان</span>
+                        <span>۱۴۰۳/۰۵/۰۳</span>
+                        <span>۴۲:۳۰</span>
+                    </div>
+                    <div class="audio-actions">
+                        <button class="icon-btn"><i class="fas fa-play"></i></button>
+                        <div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
+                        <button class="icon-btn"><i class="fas fa-download"></i></button>
+                        <button class="icon-btn"><i class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="audio-card">
+                <div class="audio-cover">
+                    <i class="fas fa-quran"></i>
+                    <span class="audio-tag">قرآن</span>
+                </div>
+                <div class="audio-info">
+                    <div class="audio-title">تلاوت سوره الرحمن</div>
+                    <div class="audio-meta">
+                        <span>قاری عبدالباسط</span>
+                        <span>۱۴۰۳/۰۵/۰۱</span>
+                        <span>۲۲:۴۵</span>
+                    </div>
+                    <div class="audio-actions">
+                        <button class="icon-btn"><i class="fas fa-play"></i></button>
+                        <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+                        <button class="icon-btn"><i class="fas fa-download"></i></button>
+                        <button class="icon-btn"><i class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STICKY MINI PLAYER ===== -->
+    <div class="mini-player">
+        <div class="mini-cover">
+            <i class="fas fa-music"></i>
+        </div>
+        <div class="mini-info">
+            <strong>ماه بنی‌هاشم</strong>
+            <span>حاج محمود کریمی</span>
+        </div>
+        <div class="mini-progress">
+            <div class="mini-progress-fill"></div>
+        </div>
+        <button class="icon-btn"><i class="fas fa-play"></i></button>
+        <button class="icon-btn"><i class="fas fa-forward"></i></button>
     </div>
 
-    <!-- Joystick for Movement -->
-    <div id="joystick-zone">
-        <div id="joystick-knob"></div>
-    </div>
+    <!-- ===== LATEST CONTENT ===== -->
+    <section class="container">
+        <div class="section-header">
+            <h2>آخرین محتواها</h2>
+            <p>جدیدترین صوت‌ها، ویدیوها، تصاویر و سخنرانی‌ها</p>
+        </div>
+        <div class="latest-grid">
+            <div class="latest-card">
+                <div class="latest-img"><i class="fas fa-headphones"></i></div>
+                <div class="latest-body">
+                    <h4>سخنرانی شب جمعه</h4>
+                    <p>حجت‌الاسلام رضایی | ۱۴۰۳/۰۵/۱۲</p>
+                </div>
+            </div>
+            <div class="latest-card">
+                <div class="latest-img"><i class="fas fa-video"></i></div>
+                <div class="latest-body">
+                    <h4>مداحی دهه اول محرم</h4>
+                    <p>حاج محمود کریمی | ۱۴۰۳/۰۵/۱۰</p>
+                </div>
+            </div>
+            <div class="latest-card">
+                <div class="latest-img"><i class="fas fa-camera"></i></div>
+                <div class="latest-body">
+                    <h4>تصاویر مراسم هفتگی</h4>
+                    <p>گالری | ۱۴۰۳/۰۵/۰۸</p>
+                </div>
+            </div>
+            <div class="latest-card">
+                <div class="latest-img"><i class="fas fa-microphone"></i></div>
+                <div class="latest-body">
+                    <h4>روضه حضرت ابوالفضل</h4>
+                    <p>حاج مهدی سماواتی | ۱۴۰۳/۰۵/۰۵</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Action Buttons -->
-    <div class="btn-group">
-        <div id="fire-btn" class="action-btn">شلیک 🔥</div>
-        <div id="enter-btn" class="action-btn">ورود/خروج</div>
-    </div>
+    <!-- ===== SCHEDULE ===== -->
+    <section id="schedule" class="container">
+        <div class="section-header">
+            <h2>برنامه هیئت</h2>
+            <p>مراسم هفتگی و مناسبتی</p>
+        </div>
+        <div class="schedule-wrapper">
+            <div class="schedule-list">
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">۱۵</div>
+                        <div class="event-month">مرداد</div>
+                    </div>
+                    <div class="event-info">
+                        <h4>مراسم هفتگی <span class="event-badge">ویژه</span></h4>
+                        <div class="event-meta">
+                            <span><i class="fas fa-clock"></i> ۱۹:۰۰</span>
+                            <span><i class="fas fa-user"></i> حجت‌الاسلام رضایی</span>
+                            <span><i class="fas fa-microphone"></i> حاج محمود کریمی</span>
+                            <span><i class="fas fa-map-pin"></i> حسینیه نور</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">۲۲</div>
+                        <div class="event-month">مرداد</div>
+                    </div>
+                    <div class="event-info">
+                        <h4>شب شهادت امام سجاد (ع)</h4>
+                        <div class="event-meta">
+                            <span><i class="fas fa-clock"></i> ۲۰:۳۰</span>
+                            <span><i class="fas fa-user"></i> حجت‌الاسلام صادقی</span>
+                            <span><i class="fas fa-microphone"></i> حاج سعید حدادیان</span>
+                            <span><i class="fas fa-map-pin"></i> حسینیه نور</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">۰۵</div>
+                        <div class="event-month">شهریور</div>
+                    </div>
+                    <div class="event-info">
+                        <h4>مراسم هفتگی</h4>
+                        <div class="event-meta">
+                            <span><i class="fas fa-clock"></i> ۱۹:۰۰</span>
+                            <span><i class="fas fa-user"></i> حجت‌الاسلام رضایی</span>
+                            <span><i class="fas fa-microphone"></i> حاج مهدی سماواتی</span>
+                            <span><i class="fas fa-map-pin"></i> حسینیه نور</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="calendar-mini">
+                <div class="calendar-header">
+                    <span>مرداد ۱۴۰۳</span>
+                    <span><i class="fas fa-chevron-right"></i> <i class="fas fa-chevron-left"></i></span>
+                </div>
+                <div class="calendar-grid">
+                    <span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span>ج</span>
+                    <span>۱</span><span>۲</span><span>۳</span><span>۴</span><span>۵</span><span>۶</span><span>۷</span>
+                    <span>۸</span><span>۹</span><span>۱۰</span><span>۱۱</span><span>۱۲</span><span>۱۳</span><span>۱۴</span>
+                    <span class="active-day">۱۵</span><span>۱۶</span><span>۱۷</span><span>۱۸</span><span>۱۹</span><span>۲۰</span><span>۲۱</span>
+                    <span>۲۲</span><span>۲۳</span><span>۲۴</span><span>۲۵</span><span>۲۶</span><span>۲۷</span><span>۲۸</span>
+                    <span>۲۹</span><span>۳۰</span><span>۳۱</span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- ===== LIVE ===== -->
+    <section id="live" class="container">
+        <div class="section-header">
+            <h2>پخش زنده هیئت</h2>
+            <p>هم‌اکنون در حال پخش</p>
+        </div>
+        <div class="live-section">
+            <div class="live-player">
+                <i class="fas fa-play-circle"></i>
+                <div class="live-badge"><span class="live-dot"></span> زنده</div>
+                <div class="viewers"><i class="fas fa-eye"></i> ۱,۲۳۴ بیننده</div>
+            </div>
+            <div class="live-info">
+                <h3>مراسم شب جمعه</h3>
+                <p>سخنرانی: حجت‌الاسلام رضایی<br>مداحی: حاج محمود کریمی</p>
+                <a href="#" class="btn btn-outline-gold btn-small">پخش صوتی</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section id="gallery" class="container">
+        <div class="section-header">
+            <h2>گالری رسانه</h2>
+            <p>تصاویر، ویدیوها و پوسترهای مراسم</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><i class="fas fa-image"></i></div>
+            <div class="gallery-item"><i class="fas fa-video"></i></div>
+            <div class="gallery-item"><i class="fas fa-image"></i></div>
+            <div class="gallery-item"><i class="fas fa-poster"></i></div>
+            <div class="gallery-item"><i class="fas fa-camera"></i></div>
+            <div class="gallery-item"><i class="fas fa-film"></i></div>
+        </div>
+    </section>
+
+    <!-- ===== SPEAKERS ===== -->
+    <section class="container">
+        <div class="section-header">
+            <h2>سخنرانان و مداحان</h2>
+            <p>خادمان اهلبیت (ع)</p>
+        </div>
+        <div class="speakers-grid">
+            <div class="speaker-card">
+                <div class="speaker-img"><i class="fas fa-user"></i></div>
+                <h4>حجت‌الاسلام رضایی</h4>
+                <p>سخنران</p>
+            </div>
+            <div class="speaker-card">
+                <div class="speaker-img"><i class="fas fa-user"></i></div>
+                <h4>حاج محمود کریمی</h4>
+                <p>مداح</p>
+            </div>
+            <div class="speaker-card">
+                <div class="speaker-img"><i class="fas fa-user"></i></div>
+                <h4>حاج مهدی سماواتی</h4>
+                <p>ذاکر</p>
+            </div>
+            <div class="speaker-card">
+                <div class="speaker-img"><i class="fas fa-user"></i></div>
+                <h4>حاج سعید حدادیان</h4>
+                <p>مداح</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="container">
+        <div class="section-header">
+            <h2>درباره هیئت</h2>
+            <p>تاریخچه، اهداف و فعالیت‌ها</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>تاریخچه</h3>
+                <p>هیئت نور از سال ۱۳۸۵ با هدف ترویج معارف اهلبیت (ع) و ایجاد فضایی معنوی برای جوانان تأسیس شده است. این هیئت با برگزاری مراسم هفتگی، مناسبتی و برنامه‌های فرهنگی، خدمتگزار عاشقان اهلبیت است.</p>
+                <h3>اهداف</h3>
+                <p>تربیت نسل جوان با معارف اسلامی، ایجاد اتحاد بین مسلمانان، و ارائه محتوای معنوی اصیل.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h4>+۱۵</h4>
+                        <p>سال فعالیت</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>+۵۰۰</h4>
+                        <p>مراسم برگزار شده</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>+۱۰۰</h4>
+                        <p>خادم افتخاری</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <!-- Decorative ornament -->
+                <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:400px; margin:0 auto; display:block;">
+                    <circle cx="150" cy="150" r="120" stroke="#D4AF5A" stroke-width="1.5" opacity="0.6"/>
+                    <circle cx="150" cy="150" r="80" stroke="#D4AF5A" stroke-width="1" opacity="0.4"/>
+                    <path d="M150 30 L170 70 L210 80 L180 110 L190 150 L150 130 L110 150 L120 110 L90 80 L130 70 Z" fill="#D4AF5A" opacity="0.2"/>
+                    <path d="M150 70 L165 100 L195 107 L173 128 L180 158 L150 143 L120 158 L127 128 L105 107 L135 100 Z" fill="#D4AF5A" opacity="0.3"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DONATION ===== -->
+    <section id="donation" class="container">
+        <div class="donation-box">
+            <h3>مشارکت در برگزاری مراسم</h3>
+            <p>با مشارکت مالی خود در برگزاری مراسم اهلبیت (ع) سهیم شوید. هر مبلغی، هر چقدر هم کوچک، باعث برکت و تداوم این مسیر نورانی است.</p>
+            <a href="#" class="btn">مشارکت می‌کنم</a>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="container">
+        <div class="section-header">
+            <h2>تماس با ما</h2>
+            <p>راه‌های ارتباطی</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر، کوچه نور، حسینیه نور</p>
+                <p><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</p>
+                <p><i class="fab fa-telegram"></i> @heyat_noor</p>
+                <p><i class="fab fa-instagram"></i> @heyat_noor</p>
+                <p><i class="fab fa-youtube"></i> Heyat Noor</p>
+                <div style="margin-top:24px; background:#111; border-radius:12px; height:150px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(212,175,90,0.2); color:var(--gold);">
+                    <i class="fas fa-map" style="font-size:2rem;"></i> موقعیت مکانی
+                </div>
+            </div>
+            <div class="contact-form">
+                <input type="text" placeholder="نام و نام خانوادگی">
+                <input type="email" placeholder="ایمیل">
+                <textarea rows="4" placeholder="پیام شما"></textarea>
+                <button class="btn" style="width:100%;">ارسال پیام</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 4L29 14L40 15L32 23L34 34L24 28L14 34L16 23L8 15L19 14L24 4Z" stroke="#D4AF5A" stroke-width="1.5" fill="none"/>
+                        </svg>
+                        <span class="logo-text" style="font-size:1.2rem;">هیئت نور</span>
+                    </div>
+                    <p style="font-size:0.9rem; opacity:0.7;">هیئت نور، خانه‌ای برای عاشقان اهلبیت (ع).</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>دسترسی سریع</h4>
+                    <ul>
+                        <li><a href="#audio">صوت‌ها</a></li>
+                        <li><a href="#schedule">برنامه</a></li>
+                        <li><a href="#live">پخش زنده</a></li>
+                        <li><a href="#gallery">گالری</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>بخش‌ها</h4>
+                    <ul>
+                        <li><a href="#about">درباره</a></li>
+                        <li><a href="#donation">مشارکت</a></li>
+                        <li><a href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>ارتباط</h4>
+                    <ul>
+                        <li>۰۲۱-۱۲۳۴۵۶۷۸</li>
+                        <li>@heyat_noor</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <span>© ۱۴۰۳ هیئت نور. تمامی حقوق محفوظ است.</span>
+            </div>
+        </div>
+        <!-- Islamic ornament pattern line -->
+        <div class="pattern-divider" style="margin-bottom:0;"></div>
+    </footer>
+
+    <!-- Simple script for active states (demo) -->
     <script>
-        // --- 1. SETUP THREE.JS SCENE ---
-        const container = document.getElementById('game-container');
-        const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x87ceeb);
-        scene.fog = new THREE.FogExp2(0x87ceeb, 0.012);
-
-        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        container.appendChild(renderer.domElement);
-
-        // --- 2. LIGHTS ---
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-        scene.add(ambientLight);
-
-        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
-        dirLight.position.set(50, 80, 30);
-        dirLight.castShadow = true;
-        dirLight.shadow.mapSize.width = 1024;
-        dirLight.shadow.mapSize.height = 1024;
-        scene.add(dirLight);
-
-        // --- 3. ENVIRONMENT & CITY ---
-        const gridCanvas = document.createElement('canvas');
-        gridCanvas.width = 512;
-        gridCanvas.height = 512;
-        const ctx = gridCanvas.getContext('2d');
-        ctx.fillStyle = '#333333';
-        ctx.fillRect(0, 0, 512, 512);
-        ctx.fillStyle = '#e6b800';
-        ctx.fillRect(250, 0, 12, 512);
-        
-        const roadTexture = new THREE.CanvasTexture(gridCanvas);
-        roadTexture.wrapS = THREE.RepeatWrapping;
-        roadTexture.wrapT = THREE.RepeatWrapping;
-        roadTexture.repeat.set(25, 25);
-
-        const planeGeo = new THREE.PlaneGeometry(400, 400);
-        const planeMat = new THREE.MeshStandardMaterial({ map: roadTexture, roughness: 0.8 });
-        const ground = new THREE.Mesh(planeGeo, planeMat);
-        ground.rotation.x = -Math.PI / 2;
-        ground.receiveShadow = true;
-        scene.add(ground);
-
-        // Buildings Generator
-        const buildingMat = new THREE.MeshStandardMaterial({ color: 0x888888, roughness: 0.5 });
-        for (let i = 0; i < 45; i++) {
-            const h = 12 + Math.random() * 35;
-            const w = 10 + Math.random() * 8;
-            const d = 10 + Math.random() * 8;
-
-            const bGeo = new THREE.BoxGeometry(w, h, d);
-            const building = new THREE.Mesh(bGeo, buildingMat);
-            
-            let x = (Math.random() - 0.5) * 320;
-            let z = (Math.random() - 0.5) * 320;
-            if (Math.abs(x) < 20) x += 40;
-            if (Math.abs(z) < 20) z += 40;
-
-            building.position.set(x, h / 2, z);
-            building.castShadow = true;
-            building.receiveShadow = true;
-            scene.add(building);
-        }
-
-        // --- 4. PLAYER & VEHICLES ---
-        // Player
-        const playerGroup = new THREE.Group();
-        const bodyGeo = new THREE.CylinderGeometry(0.4, 0.4, 1.8, 16);
-        const bodyMat = new THREE.MeshStandardMaterial({ color: 0x0055ff });
-        const body = new THREE.Mesh(bodyGeo, bodyMat);
-        body.position.y = 0.9;
-        body.castShadow = true;
-        playerGroup.add(body);
-
-        const headGeo = new THREE.SphereGeometry(0.3, 16, 16);
-        const headMat = new THREE.MeshStandardMaterial({ color: 0xffccaa });
-        const head = new THREE.Mesh(headGeo, headMat);
-        head.position.y = 1.9;
-        playerGroup.add(head);
-
-        // Gun model
-        const gunGeo = new THREE.BoxGeometry(0.15, 0.15, 0.6);
-        const gunMat = new THREE.MeshStandardMaterial({ color: 0x111111 });
-        const gun = new THREE.Mesh(gunGeo, gunMat);
-        gun.position.set(0.4, 1.2, 0.3);
-        playerGroup.add(gun);
-
-        playerGroup.position.set(0, 0, 10);
-        scene.add(playerGroup);
-
-        // Civil Vehicle
-        const carGroup = createCarMesh(0xcc0000);
-        carGroup.position.set(8, 0, 0);
-        scene.add(carGroup);
-
-        function createCarMesh(colorHex, isPolice = false) {
-            const car = new THREE.Group();
-            const carBodyGeo = new THREE.BoxGeometry(2.2, 1, 4.2);
-            const carMat = new THREE.MeshStandardMaterial({ color: colorHex, metalness: 0.3, roughness: 0.3 });
-            const carBody = new THREE.Mesh(carBodyGeo, carMat);
-            carBody.position.y = 0.7;
-            carBody.castShadow = true;
-            car.add(carBody);
-
-            const cabinGeo = new THREE.BoxGeometry(1.8, 0.8, 2);
-            const cabinMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.1 });
-            const cabin = new THREE.Mesh(cabinGeo, cabinMat);
-            cabin.position.set(0, 1.4, -0.2);
-            car.add(cabin);
-
-            if (isPolice) {
-                // Siren light
-                const sirenGeo = new THREE.BoxGeometry(0.8, 0.2, 0.3);
-                const sirenMat = new THREE.MeshStandardMaterial({ color: 0xff0000 });
-                const siren = new THREE.Mesh(sirenGeo, sirenMat);
-                siren.position.set(0, 1.9, -0.2);
-                siren.name = "siren";
-                car.add(siren);
-            }
-
-            return car;
-        }
-
-        // --- 5. GAME STATE & VARIABLES ---
-        let playerHealth = 100;
-        let wantedStars = 0;
-        let isDriving = false;
-        let bullets = [];
-        let policeCars = [];
-
-        // --- 6. CONTROLS LOGIC ---
-        let moveVector = { x: 0, y: 0 };
-        const joystickZone = document.getElementById('joystick-zone');
-        const joystickKnob = document.getElementById('joystick-knob');
-        let touchId = null;
-        let center = { x: 0, y: 0 };
-
-        joystickZone.addEventListener('touchstart', (e) => {
-            const touch = e.changedTouches[0];
-            touchId = touch.identifier;
-            const rect = joystickZone.getBoundingClientRect();
-            center = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
-            updateJoystick(touch);
-        }, { passive: false });
-
-        window.addEventListener('touchmove', (e) => {
-            if (touchId === null) return;
-            for (let i = 0; i < e.changedTouches.length; i++) {
-                if (e.changedTouches[i].identifier === touchId) {
-                    updateJoystick(e.changedTouches[i]);
-                    break;
-                }
-            }
-        }, { passive: false });
-
-        const resetJoystick = () => {
-            touchId = null;
-            moveVector = { x: 0, y: 0 };
-            joystickKnob.style.transform = `translate(0px, 0px)`;
-        };
-
-        window.addEventListener('touchend', resetJoystick);
-        window.addEventListener('touchcancel', resetJoystick);
-
-        function updateJoystick(touch) {
-            const dx = touch.clientX - center.x;
-            const dy = touch.clientY - center.y;
-            const dist = Math.min(Math.hypot(dx, dy), 40);
-            const angle = Math.atan2(dy, dx);
-            
-            const knX = Math.cos(angle) * dist;
-            const knY = Math.sin(angle) * dist;
-            
-            joystickKnob.style.transform = `translate(${knX}px, ${knY}px)`;
-            
-            moveVector.x = knX / 40;
-            moveVector.y = knY / 40;
-        }
-
-        // Camera Touch Drag
-        let camYaw = 0;
-        let camPitch = 0.3;
-        let rightTouchId = null;
-        let lastTouchPos = { x: 0, y: 0 };
-
-        window.addEventListener('touchstart', (e) => {
-            for (let i = 0; i < e.changedTouches.length; i++) {
-                const t = e.changedTouches[i];
-                if (t.clientX > window.innerWidth / 2 && rightTouchId === null) {
-                    rightTouchId = t.identifier;
-                    lastTouchPos = { x: t.clientX, y: t.clientY };
-                }
-            }
-        });
-
-        window.addEventListener('touchmove', (e) => {
-            for (let i = 0; i < e.changedTouches.length; i++) {
-                const t = e.changedTouches[i];
-                if (t.identifier === rightTouchId) {
-                    const dx = t.clientX - lastTouchPos.x;
-                    const dy = t.clientY - lastTouchPos.y;
-                    
-                    camYaw -= dx * 0.008;
-                    camPitch = Math.max(0.1, Math.min(Math.PI / 2.5, camPitch + dy * 0.008));
-                    
-                    lastTouchPos = { x: t.clientX, y: t.clientY };
-                }
-            }
-        });
-
-        const clearRightTouch = (e) => {
-            for (let i = 0; i < e.changedTouches.length; i++) {
-                if (e.changedTouches[i].identifier === rightTouchId) {
-                    rightTouchId = null;
-                }
-            }
-        };
-        window.addEventListener('touchend', clearRightTouch);
-        window.addEventListener('touchcancel', clearRightTouch);
-
-        // Enter/Exit Vehicle Button
-        document.getElementById('enter-btn').addEventListener('click', () => {
-            if (!isDriving) {
-                const dist = playerGroup.position.distanceTo(carGroup.position);
-                if (dist < 4) {
-                    isDriving = true;
-                    playerGroup.visible = false;
-                }
-            } else {
-                isDriving = false;
-                playerGroup.position.copy(carGroup.position).add(new THREE.Vector3(2, 0, 0));
-                playerGroup.visible = true;
-            }
-        });
-
-        // Shooting Button Logic
-        document.getElementById('fire-btn').addEventListener('click', () => {
-            if (isDriving) return; // Cannot shoot inside vehicle in basic mode
-
-            // Increase Wanted Level on Shoot
-            increaseWanted();
-
-            // Create Bullet Mesh
-            const bulletGeo = new THREE.SphereGeometry(0.15, 8, 8);
-            const bulletMat = new THREE.MeshBasicMaterial({ color: 0xffff00 });
-            const bullet = new THREE.Mesh(bulletGeo, bulletMat);
-            
-            bullet.position.copy(playerGroup.position).add(new THREE.Vector3(0, 1.2, 0));
-            
-            // Calculate Dir from player rotation
-            const dir = new THREE.Vector3(0, 0, 1).applyAxisAngle(new THREE.Vector3(0, 1, 0), playerGroup.rotation.y);
-            bullet.userData = { dir: dir, speed: 60, life: 2.0 };
-            
-            bullets.push(bullet);
-            scene.add(bullet);
-        });
-
-        function increaseWanted() {
-            if (wantedStars < 5) {
-                wantedStars++;
-                let starsText = "★".repeat(wantedStars) + "☆".repeat(5 - wantedStars);
-                document.getElementById('wanted').innerText = starsText;
-                spawnPoliceCar();
-            }
-        }
-
-        function spawnPoliceCar() {
-            const police = createCarMesh(0x111111, true);
-            // Spawn around player at distance
-            const angle = Math.random() * Math.PI * 2;
-            police.position.set(
-                playerGroup.position.x + Math.cos(angle) * 80,
-                0,
-                playerGroup.position.z + Math.sin(angle) * 80
-            );
-            scene.add(police);
-            policeCars.push(police);
-        }
-
-        // --- 7. MAIN GAME LOOP ---
-        const clock = new THREE.Clock();
-
-        function animate() {
-            requestAnimationFrame(animate);
-            const delta = clock.getDelta();
-
-            const targetObj = isDriving ? carGroup : playerGroup;
-            const speed = isDriving ? 22 : 8;
-
-            // Movement logic
-            if (Math.abs(moveVector.x) > 0.1 || Math.abs(moveVector.y) > 0.1) {
-                const forward = new THREE.Vector3(-Math.sin(camYaw), 0, -Math.cos(camYaw)).normalize();
-                const right = new THREE.Vector3().crossVectors(forward, new THREE.Vector3(0, 1, 0)).negate();
-
-                const moveDir = new THREE.Vector3()
-                    .addScaledVector(right, moveVector.x)
-                    .addScaledVector(forward, -moveVector.y)
-                    .normalize();
-
-                targetObj.position.addScaledVector(moveDir, speed * delta);
-                targetObj.rotation.y = Math.atan2(moveDir.x, moveDir.z);
-            }
-
-            // Bullet Physics & Hit Detection
-            for (let i = bullets.length - 1; i >= 0; i--) {
-                const b = bullets[i];
-                b.position.addScaledVector(b.userData.dir, b.userData.speed * delta);
-                b.userData.life -= delta;
-
-                // Hit police car check
-                for (let j = policeCars.length - 1; j >= 0; j--) {
-                    const p = policeCars[j];
-                    if (b.position.distanceTo(p.position) < 2.5) {
-                        scene.remove(p);
-                        policeCars.splice(j, 1);
-                        scene.remove(b);
-                        bullets.splice(i, 1);
-                        break;
-                    }
-                }
-
-                if (b.userData.life <= 0) {
-                    scene.remove(b);
-                    bullets.splice(i, 1);
-                }
-            }
-
-            // Police AI Movement
-            policeCars.forEach((police) => {
-                const pDir = new THREE.Vector3().subVectors(targetObj.position, police.position).normalize();
-                police.position.addScaledVector(pDir, 12 * delta);
-                police.rotation.y = Math.atan2(pDir.x, pDir.z);
-
-                // Siren Light animation
-                const siren = police.getObjectByName("siren");
-                if (siren) {
-                    siren.material.color.setHex(Math.floor(Date.now() / 200) % 2 === 0 ? 0xff0000 : 0x0000ff);
-                }
-
-                // Damage player if close
-                if (police.position.distanceTo(targetObj.position) < 2.2) {
-                    playerHealth = Math.max(0, playerHealth - 15 * delta);
-                    document.getElementById('health-bar').style.width = playerHealth + '%';
-                    if (playerHealth <= 0) {
-                        alert("دستگیر یا نابود شدید! (WASTED)");
-                        location.reload();
-                    }
+        // Toggle play button demo
+        document.querySelectorAll('.audio-actions .icon-btn:first-child').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-play')) {
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                } else {
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
                 }
             });
-
-            // Camera Follow System
-            const camDistance = isDriving ? 10 : 6;
-            const targetPos = targetObj.position.clone();
-            
-            const camX = targetPos.x + camDistance * Math.sin(camYaw) * Math.cos(camPitch);
-            const camY = targetPos.y + camDistance * Math.sin(camPitch) + (isDriving ? 1 : 1.5);
-            const camZ = targetPos.z + camDistance * Math.cos(camYaw) * Math.cos(camPitch);
-
-            camera.position.set(camX, camY, camZ);
-            camera.lookAt(targetPos.x, targetPos.y + 1, targetPos.z);
-
-            renderer.render(scene, camera);
-        }
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        animate();
+        // Toggle favorite demo
+        document.querySelectorAll('.audio-actions .icon-btn:last-child').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-heart')) {
+                    icon.classList.toggle('far');
+                    icon.classList.toggle('fas');
+                }
+                this.classList.toggle('active');
+            });
+        });
     </script>
 </body>
-</html>
+                    </html>
