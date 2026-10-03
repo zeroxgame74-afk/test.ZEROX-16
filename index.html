@@ -1511,6 +1511,36 @@
     .dev-links a span{margin-right:auto;font-size:.72rem;color:#555;direction:ltr}
     .dev-links a:hover{border-color:#555;color:#fff;transform:translateY(-2px)}.dev-links a:hover i:first-child{color:#fff}
     #devModal .sx-md-act button{flex:1}
+
+    /* ===== جستجوی جدید ===== */
+    .sq-hero{position:relative;text-align:center;padding:2.4rem 0 1.6rem;overflow:hidden}
+    .sq-hero h1{position:relative;font-size:clamp(2rem,6vw,3.4rem);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1.2}
+    .sq-sub{position:relative;color:#555;font-weight:300;margin-top:.4rem}
+    .sq-orb{position:absolute;top:-60px;left:50%;width:380px;height:220px;margin-left:-190px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.1),transparent);filter:blur(10px);animation:sqDrift 9s ease-in-out infinite alternate;pointer-events:none}
+    @keyframes sqDrift{from{transform:translateX(-60px) scale(.9)}to{transform:translateX(60px) scale(1.1)}}
+    .sq-box{display:flex;align-items:center;gap:.9rem;max-width:680px;margin:0 auto;padding:0 1.2rem;height:64px;border:1px solid #222;border-radius:16px;background:#0d0d0d;transition:.3s;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+    .sq-box:focus-within{border-color:#666;box-shadow:0 0 0 4px rgba(255,255,255,.04),0 20px 60px rgba(0,0,0,.7)}
+    .sq-ic{color:#555;transition:.3s}.sq-box:focus-within .sq-ic{color:#fff}
+    .sq-box input{flex:1;min-width:0;height:100%;background:none;border:none;outline:none;color:#fff;font:inherit;font-size:1.05rem}
+    .sq-box input::placeholder{color:#3a3a3a;font-weight:300}
+    .sq-clear{display:none;width:28px;height:28px;border-radius:50%;border:none;background:#1a1a1a;color:#888;cursor:pointer;align-items:center;justify-content:center;font-size:.7rem;transition:.2s}
+    .sq-clear:hover{background:#fff;color:#0a0a0a}
+    .sq-kbd{font:inherit;font-size:.72rem;color:#555;border:1px solid #262626;border-bottom-width:2px;border-radius:5px;padding:0 .5rem;line-height:1.6}
+    .sq-chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;max-width:680px;margin:1rem auto 0}
+    .sq-chip{font:inherit;font-size:.78rem;color:#888;background:transparent;border:1px solid #1f1f1f;border-radius:30px;padding:.3rem 1rem;cursor:pointer;transition:.25s}
+    .sq-chip:hover{color:#fff;border-color:#555}.sq-chip.on{background:#fff;color:#0a0a0a;border-color:#fff}
+    .sq-meta{max-width:680px;margin:2rem auto .8rem;font-size:.8rem;color:#555}.sq-meta span:first-child{color:#aaa;font-weight:700}
+    .sq-list{max-width:680px;margin:0 auto 4rem;display:flex;flex-direction:column;gap:.7rem}
+    .sq-row{display:flex;align-items:center;gap:1rem;padding:.7rem;border:1px solid #181818;border-radius:12px;background:rgba(255,255,255,.015);cursor:pointer;transition:.25s;animation:fadeUp .45s ease both}
+    .sq-row:hover,.sq-row.sel{border-color:#4a4a4a;background:rgba(255,255,255,.04);transform:translateX(-4px)}
+    .sq-row img{width:132px;aspect-ratio:16/9;object-fit:cover;border-radius:7px;border:1px solid #1c1c1c;flex:none;pointer-events:none}
+    .sq-info{flex:1;min-width:0}.sq-info h3{font-size:1.1rem;font-weight:800;color:#fff}.sq-info h3 small{font-size:.75rem;color:#666;font-weight:300;margin-right:.5rem}
+    .sq-info mark{background:#fff;color:#0a0a0a;border-radius:3px;padding:0 2px}
+    .sq-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem}.sq-tags span{font-size:.68rem;color:#888;background:#161616;border-radius:3px;padding:.1rem .55rem}
+    .sq-st{font-size:.7rem;color:#aaa;border:1px solid #2a2a2a;border-radius:30px;padding:.15rem .8rem;white-space:nowrap}
+    .sq-row>i{color:#444;transition:.3s}.sq-row:hover>i,.sq-row.sel>i{color:#fff;transform:translateX(-4px)}
+    .sq-none{text-align:center;padding:2.5rem 0;color:#555}.sq-none i{font-size:2.4rem;color:#2a2a2a;display:block;margin-bottom:.8rem}.sq-none h2{color:#aaa;font-size:1.1rem;font-weight:700}
+    @media(max-width:600px){.sq-kbd{display:none}.sq-row{flex-wrap:wrap}.sq-row img{width:96px}.sq-st{display:none}.sq-box{height:56px}}
   </style>
 </head>
 <body>
@@ -1641,21 +1671,20 @@
   ================================================== -->
   <div class="page" id="pageSearch">
     <div class="container search-page">
-      <div class="search-header">
-        <h1>جستجوی بازی</h1>
-        <div class="sub">نام بازی مورد نظر را پیدا کن</div>
+      <div class="sq-hero">
+        <div class="sq-orb"></div>
+        <h1>چی بازی می‌کنیم؟</h1>
+        <div class="sq-sub">اسم بازی، ژانر یا برچسب رو بنویس</div>
       </div>
-      <div class="search-box">
-        <input type="text" placeholder="مثل: SilentGears ..." id="searchInput" oninput="searchGames()" />
-        <i class="fas fa-search search-icon"></i>
+      <div class="sq-box">
+        <i class="fas fa-search sq-ic"></i>
+        <input type="text" id="searchInput" placeholder="مثل: SilentGears ..." autocomplete="off" oninput="searchGames()" />
+        <button type="button" class="sq-clear" id="sqClear" aria-label="پاک کردن"><i class="fas fa-times"></i></button>
+        <kbd class="sq-kbd">/</kbd>
       </div>
-      <div class="results-count"><span id="countNum">۰</span> نتیجه پیدا شد</div>
-      <div class="results-grid" id="resultsGrid">
-        <div class="search-placeholder">
-          <i class="fas fa-gamepad"></i>
-          <p>برای شروع جستجو، نام بازی را وارد کن...</p>
-        </div>
-      </div>
+      <div class="sq-chips" id="sqChips"></div>
+      <div class="sq-meta"><span id="countNum">۰</span> <span id="countLabel">بازی در استودیو</span></div>
+      <div class="sq-list" id="resultsGrid"></div>
     </div>
   </div>
 
@@ -1884,34 +1913,59 @@
        جستجو
     ================================================== */
     const gamesDB = [
-      { id: 1, title: 'SilentGears', persianTitle: 'چرخ‌دنده‌ساکت', slug: 'silentgears', genre: 'اکشن-ماجرایی • نقش‌آفرینی', status: 'در دست توسعه', cover: 'https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg', link: 'detail' }
+      { id: 1, title: 'SilentGears', persianTitle: 'چرخ‌دنده‌ساکت', slug: 'silentgears', genre: 'اکشن-ماجرایی • نقش‌آفرینی', status: 'در دست توسعه', platform: 'ویندوز', tags: ['ریتم‌محور', 'پساآخرالزمانی', 'اکشن-ماجرایی', 'نقش‌آفرینی', 'تک‌نفره', 'ویندوز'], cover: 'https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg', link: 'detail' }
     ];
 
+    function sqNorm(t) { return String(t || '').toLowerCase().replace(/[\u200c\s]+/g, '').replace(/\u064a/g, '\u06cc').replace(/\u0643/g, '\u06a9').replace(/[\u06f0-\u06f9]/g, function (d) { return '\u06f0\u06f1\u06f2\u06f3\u06f4\u06f5\u06f6\u06f7\u06f8\u06f9'.indexOf(d); }); }
+    let sqSel = 0;
+    function sqHi(text, q) { const i = q ? text.toLowerCase().indexOf(q.toLowerCase()) : -1; return i < 0 ? text : text.slice(0, i) + '<mark>' + text.slice(i, i + q.length) + '</mark>' + text.slice(i + q.length); }
+    function sqPaint() { document.querySelectorAll('.sq-row').forEach(function (r, i) { r.classList.toggle('sel', i === sqSel); }); }
     function searchGames() {
-      const input = document.getElementById('searchInput');
-      const query = input.value.trim().toLowerCase();
+      const input = document.getElementById('searchInput'), raw = input.value.trim(), q = sqNorm(raw);
       const grid = document.getElementById('resultsGrid');
-      const countEl = document.getElementById('countNum');
-      if (query.length === 0) {
-        grid.innerHTML = '<div class="search-placeholder"><i class="fas fa-gamepad"></i><p>برای شروع جستجو، نام بازی را وارد کن...</p></div>';
-        countEl.textContent = '۰';
-        return;
-      }
-      const results = gamesDB.filter(function(g) {
-        return g.title.toLowerCase().includes(query) || g.persianTitle.includes(query);
-      });
-      countEl.textContent = results.length;
-      if (results.length === 0) {
-        grid.innerHTML = '<div class="not-found"><i class="fas fa-gamepad"></i><h2>هیچ بازی‌ای با این نام پیدا نشد!</h2><p>کلمه دیگری رو امتحان کن...</p></div>';
-        return;
-      }
-      grid.innerHTML = results.map(function(g) {
-        return '<div class="result-card" onclick="navigateTo(\'' + g.link + '\')">' +
-          '<div class="card-img"><img src="' + g.cover + '" alt="' + g.title + '" loading="lazy" decoding="async" /></div>' +
-          '<div class="card-body"><h3>' + g.title + '</h3><div class="genre">' + g.genre + '</div><div class="status"><i class="far fa-clock" style="margin-left:6px;"></i> ' + g.status + '</div></div>' +
-          '</div>';
+      document.getElementById('sqClear').style.display = raw ? 'flex' : 'none';
+      document.querySelectorAll('.sq-chip').forEach(function (c) { c.classList.toggle('on', !!raw && sqNorm(c.dataset.t) === q); });
+      const list = gamesDB.map(function (g) {
+        let sc = 0;
+        if (!q) sc = 1;
+        else {
+          if (sqNorm(g.title).includes(q) || sqNorm(g.persianTitle).includes(q)) sc += 3;
+          if (g.tags.some(function (t) { return sqNorm(t).includes(q); }) || sqNorm(g.genre).includes(q)) sc += 2;
+          if (sqNorm(g.status + g.platform).includes(q)) sc += 1;
+        }
+        return { g: g, sc: sc };
+      }).filter(function (x) { return x.sc > 0; }).sort(function (a, b) { return b.sc - a.sc; }).map(function (x) { return x.g; });
+      document.getElementById('countNum').textContent = list.length.toLocaleString('fa-IR');
+      document.getElementById('countLabel').textContent = q ? 'نتیجه پیدا شد' : 'بازی در استودیو';
+      sqSel = 0;
+      if (!list.length) { grid.innerHTML = '<div class="sq-none"><i class="fas fa-ghost"></i><h2>چیزی پیدا نشد</h2><p>یه کلمه‌ی دیگه یا یکی از برچسب‌های بالا رو امتحان کن.</p></div>'; return; }
+      grid.innerHTML = list.map(function (g, i) {
+        return '<div class="sq-row" style="animation-delay:' + (i * 0.06) + 's" onclick="navigateTo(\'' + g.link + '\')">' +
+          '<img src="' + g.cover + '" alt="' + g.title + '" loading="lazy" decoding="async" />' +
+          '<div class="sq-info"><h3>' + sqHi(g.title, raw) + '<small>' + sqHi(g.persianTitle, raw) + '</small></h3><div class="sq-tags">' + g.tags.slice(0, 3).map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div></div>' +
+          '<span class="sq-st">' + g.status + '</span><i class="fas fa-arrow-left"></i></div>';
       }).join('');
+      sqPaint();
     }
+    (function () {
+      const input = document.getElementById('searchInput'), page = document.getElementById('pageSearch');
+      const tags = []; gamesDB.forEach(function (g) { g.tags.forEach(function (t) { if (tags.indexOf(t) < 0) tags.push(t); }); });
+      const chips = document.getElementById('sqChips');
+      chips.innerHTML = tags.map(function (t) { return '<button type="button" class="sq-chip" data-t="' + t + '">' + t + '</button>'; }).join('');
+      chips.onclick = function (e) { const c = e.target.closest('.sq-chip'); if (!c) return; input.value = input.value.trim() === c.dataset.t ? '' : c.dataset.t; searchGames(); input.focus(); };
+      document.getElementById('sqClear').onclick = function () { input.value = ''; searchGames(); input.focus(); };
+      input.addEventListener('keydown', function (e) {
+        const rows = document.querySelectorAll('.sq-row');
+        if (e.key === 'ArrowDown') { e.preventDefault(); sqSel = Math.min(sqSel + 1, rows.length - 1); sqPaint(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); sqSel = Math.max(sqSel - 1, 0); sqPaint(); }
+        else if (e.key === 'Enter' && rows[sqSel]) rows[sqSel].click();
+        else if (e.key === 'Escape') { input.value = ''; searchGames(); }
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === '/' && page.classList.contains('active') && document.activeElement !== input) { e.preventDefault(); input.focus(); } });
+      const hints = gamesDB.map(function (g) { return g.title; }).concat(tags); let k = 0;
+      setInterval(function () { if (!input.value && page.classList.contains('active')) input.placeholder = 'مثل: ' + hints[k++ % hints.length] + ' ...'; }, 2400);
+      searchGames();
+    })();
 
     /* ==================================================
        منوی موبایل
