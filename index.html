@@ -1499,6 +1499,18 @@
     .mm-feat span{display:block;font-size:.68rem;color:#666}.mm-feat b{display:block;color:#fff;font-size:1.05rem;font-weight:800}.mm-feat small{font-size:.72rem;color:#777}
     .mm-social{display:flex;gap:1.6rem;justify-content:center;margin-top:auto;padding-top:2rem}
     .mm-social a{color:#444;font-size:1.4rem;transition:.3s}.mm-social a:hover{color:#fff;transform:translateY(-4px)}
+
+    .dev-credit{display:block;margin:2.2rem auto 0;font:inherit;font-size:.82rem;font-weight:300;color:#555;background:none;border:none;border-top:1px solid #151515;padding:1.2rem 1.5rem 0;cursor:pointer;transition:.3s}
+    .dev-credit b{color:#888;font-weight:700;direction:ltr;unicode-bidi:embed;transition:.3s}.dev-credit i{font-size:.65rem;margin-right:4px}
+    .dev-credit:hover,.dev-credit:hover b{color:#fff}
+    .dev-av{width:84px;height:84px;margin:0 auto 1rem;border-radius:50%;overflow:hidden;border:1px solid #2a2a2a;background:#0d0d0d;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.5rem;color:#fff;letter-spacing:1px;box-shadow:0 0 40px rgba(255,255,255,.06)}
+    .dev-av img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+    .dev-links{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.3rem}
+    .dev-links a{display:flex;align-items:center;gap:.8rem;padding:.75rem 1rem;border:1px solid #1f1f1f;border-radius:8px;background:rgba(255,255,255,.02);color:#aaa;font-size:.85rem;transition:.25s}
+    .dev-links a i:first-child{font-size:1.15rem;color:#666;width:22px;text-align:center;transition:.25s}
+    .dev-links a span{margin-right:auto;font-size:.72rem;color:#555;direction:ltr}
+    .dev-links a:hover{border-color:#555;color:#fff;transform:translateY(-2px)}.dev-links a:hover i:first-child{color:#fff}
+    #devModal .sx-md-act button{flex:1}
   </style>
 </head>
 <body>
@@ -1618,6 +1630,7 @@
           <p>اولین پروژه‌ی بازی‌سازی Zerox Studios، Silent Gears، آغاز مسیر ما در دنیای توسعه‌ی بازی است؛ مسیری که با هدف یادگیری، نوآوری و ساخت آثار مستقل ادامه خواهد داشت.</p>
           <p>در Zerox Game، فقط بازی نمی‌سازیم؛<br />دنیایی می‌سازیم که بازیکن بتواند در آن تجربه کند، کشف کند و لذت ببرد.</p>
           <div class="about-tagline">ZEROX GAME <span>Play. Create. Beyond Limits.</span></div>
+          <button type="button" class="dev-credit" onclick="openDevModal()">سازنده سایت: <b>mohamad hossein ev18</b> <i class="fas fa-arrow-up-right-from-square"></i></button>
         </div>
       </div>
     </div>
@@ -2085,6 +2098,22 @@
       window.addEventListener('load', function () { to(cur()); });
       window.addEventListener('resize', function () { to(cur()); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMobileMenu(); });
+    })();
+  
+    /* ===== مودال سازنده سایت ===== */
+    (function () {
+      const m = document.createElement('div'); m.className = 'sx-md'; m.id = 'devModal';
+      m.innerHTML = '<div class="sx-md-box"><span class="sx-chip">سازنده سایت</span><div class="dev-av"><img src="https://cdn.imgurl.ir/uploads/l68511_mohamad_hossein_ev_158888868676767.webp" alt="mohamad hossein ev18" /></div><h4 dir="ltr">mohamad hossein ev18</h4><p>طراح و سازنده‌ی این سایت. از اینجا می‌تونی دنبالم کنی:</p>' +
+        '<div class="dev-links">' +
+        '<a href="https://www.youtube.com/@mohamad_hossein_ev18" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i>یوتیوب<span>@mohamad_hossein_ev18</span></a>' +
+        '<a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i>اینستاگرام<span>@mohamad_hossein_ev18</span></a>' +
+        '<a href="https://t.me/MOHAMAD_HOSSEIN_EV188" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i>تلگرام<span>@MOHAMAD_HOSSEIN_EV188</span></a></div>' +
+        '<div class="sx-md-act"><button type="button">بستن</button></div></div>';
+      document.body.appendChild(m);
+      const close = function () { m.classList.remove('on'); };
+      m.onclick = function (e) { if (e.target === m || e.target.tagName === 'BUTTON') close(); };
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+      window.openDevModal = function () { m.classList.add('on'); };
     })();
   </script>
 
