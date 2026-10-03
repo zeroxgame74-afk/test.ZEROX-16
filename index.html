@@ -1465,6 +1465,40 @@
     .sx-md-act button{background:#fff;color:#0a0a0a;border:1px solid #fff}.sx-md-act button:hover{background:#ddd}
     .sx-md-act a{background:transparent;color:#aaa;border:1px solid #2a2a2a}.sx-md-act a:hover{border-color:#777;color:#fff}
     @keyframes sxPop{from{opacity:0;transform:translateY(24px) scale(.92)}to{opacity:1;transform:none}}
+
+    /* ===== منوی جدید ===== */
+    .nav{position:relative;gap:0;padding:4px;background:rgba(255,255,255,.03);border:1px solid #1a1a1a;border-radius:40px}
+    .nav a{padding:.45rem 1.4rem;border-radius:30px;position:relative;z-index:1;color:#777}
+    .nav a::after{display:none}
+    .nav a:hover{transform:none;color:#fff}
+    .nav-ind{position:absolute;top:4px;bottom:4px;left:0;width:0;opacity:0;border-radius:30px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);box-shadow:0 0 24px rgba(255,255,255,.05);transition:transform .45s cubic-bezier(.3,1.2,.4,1),width .45s cubic-bezier(.3,1.2,.4,1),opacity .3s;pointer-events:none}
+    .header-actions i{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #1a1a1a;border-radius:50%;font-size:.95rem;transition:.3s}
+    .header-actions i:hover{border-color:#555;background:rgba(255,255,255,.05)}
+    .mobile-menu-overlay{display:flex;animation:none;align-items:stretch;justify-content:center;padding:0;background:radial-gradient(120% 60% at 50% 0%,#151515,#050505 70%);backdrop-filter:none;visibility:hidden;pointer-events:none;clip-path:circle(0 at 8% 4%);transition:clip-path .7s cubic-bezier(.7,0,.2,1),visibility 0s .7s;overflow-y:auto}
+    .mobile-menu-overlay.active{visibility:visible;pointer-events:auto;clip-path:circle(150% at 8% 4%);transition:clip-path .7s cubic-bezier(.7,0,.2,1),visibility 0s}
+    .mm-wrap{width:100%;max-width:520px;margin:auto;padding:1.4rem 1.6rem 2rem;display:flex;flex-direction:column;min-height:100%}
+    .mm-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
+    .mm-top .mobile-logo{font-size:1.1rem;font-weight:900;letter-spacing:3px;color:#fff;margin:0}.mm-top .mobile-logo span{color:#555;font-weight:300}
+    .mm-top .close-menu{position:static;width:40px;height:40px;border-radius:50%;border:1px solid #222;background:none;color:#888;font-size:1rem;cursor:pointer;transition:.4s}
+    .mm-top .close-menu:hover{color:#fff;border-color:#555;transform:rotate(90deg)}
+    .mm-nav a,.mm-feat,.mm-social{opacity:0;transform:translateY(28px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.9,.3,1),color .3s,padding .3s}
+    .mobile-menu-overlay.active .mm-nav a,.mobile-menu-overlay.active .mm-feat,.mobile-menu-overlay.active .mm-social{opacity:1;transform:none}
+    .mm-nav a:nth-child(1){transition-delay:.25s}.mm-nav a:nth-child(2){transition-delay:.32s}.mm-nav a:nth-child(3){transition-delay:.39s}.mm-nav a:nth-child(4){transition-delay:.46s}
+    .mm-feat{transition-delay:.55s}.mm-social{transition-delay:.65s}
+    .mm-nav a{display:flex;align-items:baseline;gap:.9rem;padding:1.1rem 0;border-bottom:1px solid #151515;color:#555;position:relative}
+    .mm-nav a b{font-size:clamp(2rem,9vw,2.8rem);font-weight:900;letter-spacing:-1px;line-height:1.2}
+    .mm-nav a small{font-size:.75rem;color:#3d3d3d;font-weight:300;transition:.3s}
+    .mm-nav a i{margin-right:auto;font-size:1rem;color:#333;transform:translateX(10px);opacity:0;transition:.35s}
+    .mm-nav a:hover,.mm-nav a.on{color:#fff;padding-right:.8rem}
+    .mm-nav a:hover small,.mm-nav a.on small{color:#888}
+    .mm-nav a:hover i,.mm-nav a.on i{opacity:1;transform:none;color:#fff}
+    .mm-nav a.on::before{content:'';position:absolute;right:-1px;top:28%;bottom:28%;width:3px;border-radius:3px;background:#fff}
+    .mm-feat{display:flex;align-items:center;gap:1rem;margin-top:2rem;padding:.7rem;border:1px solid #1d1d1d;border-radius:12px;background:rgba(255,255,255,.02)}
+    .mm-feat:hover{border-color:#444}
+    .mm-feat img{width:112px;aspect-ratio:16/9;object-fit:cover;border-radius:7px;border:1px solid #222;pointer-events:none}
+    .mm-feat span{display:block;font-size:.68rem;color:#666}.mm-feat b{display:block;color:#fff;font-size:1.05rem;font-weight:800}.mm-feat small{font-size:.72rem;color:#777}
+    .mm-social{display:flex;gap:1.6rem;justify-content:center;margin-top:auto;padding-top:2rem}
+    .mm-social a{color:#444;font-size:1.4rem;transition:.3s}.mm-social a:hover{color:#fff;transform:translateY(-4px)}
   </style>
 </head>
 <body>
@@ -1485,27 +1519,25 @@
        منوی موبایل
   ================================================== -->
   <div class="mobile-menu-overlay" id="mobileMenu">
-    <div class="mobile-menu-content">
-      <button class="close-menu" onclick="closeMobileMenu()">
-        <i class="fas fa-times"></i>
-      </button>
-      <div class="mobile-logo">ZER0X <span>GAME</span></div>
-      <nav class="mobile-nav">
-        <a href="#home" onclick="navigateTo('home'); closeMobileMenu();">
-          <i class="fas fa-home"></i> خانه
-        </a>
-        <a href="#games" onclick="scrollToGames(); closeMobileMenu();">
-          <i class="fas fa-gamepad"></i> بازی‌ها
-        </a>
-        <a href="#about" onclick="navigateTo('about'); closeMobileMenu();">
-          <i class="fas fa-info-circle"></i> درباره ما
-        </a>
+    <div class="mm-wrap">
+      <div class="mm-top">
+        <div class="mobile-logo">ZER0X <span>GAME</span></div>
+        <button class="close-menu" aria-label="بستن" onclick="closeMobileMenu()"><i class="fas fa-times"></i></button>
+      </div>
+      <nav class="mm-nav">
+        <a href="#home" onclick="navigateTo('home'); closeMobileMenu();"><b>خانه</b><small>صفحه‌ی اصلی</small><i class="fas fa-arrow-left"></i></a>
+        <a href="#games" onclick="scrollToGames(); closeMobileMenu();"><b>بازی‌ها</b><small>پروژه‌های ما</small><i class="fas fa-arrow-left"></i></a>
+        <a href="#about" onclick="navigateTo('about'); closeMobileMenu();"><b>درباره ما</b><small>داستان استودیو</small><i class="fas fa-arrow-left"></i></a>
+        <a href="#search" onclick="navigateTo('search'); closeMobileMenu();"><b>جستجو</b><small>پیدا کردن بازی</small><i class="fas fa-arrow-left"></i></a>
       </nav>
-      <div class="mobile-social">
-        <a href="https://t.me/ZEROX_GAME_STUDIOS" target="_blank"><i class="fab fa-telegram"></i></a>
-        <a href="https://www.youtube.com/@Zerox_game_studios" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.instagram.com/zerox_game_studios" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
+      <a class="mm-feat" href="#game-silentgears" onclick="navigateTo('detail'); closeMobileMenu();">
+        <img src="https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg" alt="" />
+        <div><span>بازی منتخب</span><b>SilentGears</b><small>چرخ‌دنده‌ساکت · به‌زودی</small></div>
+      </a>
+      <div class="mm-social">
+        <a href="https://t.me/ZEROX_GAME_STUDIOS" target="_blank" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.youtube.com/@Zerox_game_studios" target="_blank" aria-label="یوتیوب"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/zerox_game_studios" target="_blank" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </div>
@@ -1873,6 +1905,9 @@
     ================================================== */
     function toggleMobileMenu() {
       const menu = document.getElementById('mobileMenu');
+      const map = { pageHome: 0, pageAbout: 2, pageSearch: 3 };
+      const cur = document.querySelector('.page.active');
+      menu.querySelectorAll('.mm-nav a').forEach(function(a, k) { a.classList.toggle('on', !!cur && map[cur.id] === k); });
       menu.classList.toggle('active');
       document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
     }
@@ -2036,6 +2071,20 @@
           '<div class="sx-empty">هنوز نظری ثبت نشده.</div>';
         el.querySelector('form').onsubmit = function (e) { e.preventDefault(); m.classList.add('on'); };
       });
+    })();
+  
+    /* ===== نشانگر متحرک منوی دسکتاپ + بستن منو با Esc ===== */
+    (function () {
+      const nav = document.getElementById('mainNav'); if (!nav) return;
+      const ind = document.createElement('span'); ind.className = 'nav-ind'; nav.appendChild(ind);
+      const cur = function () { return nav.querySelector('a.active'); };
+      const to = function (a) { if (!a) { ind.style.opacity = 0; return; } ind.style.opacity = 1; ind.style.width = a.offsetWidth + 'px'; ind.style.transform = 'translateX(' + a.offsetLeft + 'px)'; };
+      nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('mouseenter', function () { to(a); }); });
+      nav.addEventListener('mouseleave', function () { to(cur()); });
+      new MutationObserver(function () { to(cur()); }).observe(nav, { subtree: true, attributes: true, attributeFilter: ['class'] });
+      window.addEventListener('load', function () { to(cur()); });
+      window.addEventListener('resize', function () { to(cur()); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMobileMenu(); });
     })();
   </script>
 
