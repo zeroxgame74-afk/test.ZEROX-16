@@ -1451,12 +1451,24 @@
     .sx-c p{color:#999;font-size:.85rem;line-height:1.9;white-space:pre-line;word-break:break-word}
     .sx-empty{color:#555;font-size:.82rem;text-align:center;padding:1rem 0}
 
-    .sx-md{position:fixed;inset:0;z-index:3500;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:1rem}
-    .sx-md.on{display:flex}
-    .sx-md-box{background:#0d0d0d;border:1px solid #222;border-radius:10px;padding:2rem;max-width:380px;width:100%;text-align:center;animation:scaleIn .3s ease}
-    .sx-md-box i{font-size:2rem;color:#555;margin-bottom:.8rem}.sx-md-box h4{color:#fff;font-size:1.05rem;margin-bottom:.4rem}
-    .sx-md-box p{color:#777;font-size:.85rem;margin-bottom:1.2rem}
-    .sx-md-box button{font:inherit;font-size:.85rem;font-weight:700;padding:.6rem 2rem;background:#fff;color:#0a0a0a;border:none;border-radius:4px;cursor:pointer}
+
+    .sx-md{position:fixed;inset:0;z-index:3500;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:1rem}
+    .sx-md.on{display:flex;animation:fadeIn .25s ease}
+    .sx-md-box{position:relative;overflow:hidden;max-width:400px;width:100%;text-align:center;padding:2.4rem 2rem 1.8rem;border-radius:16px;border:1px solid #262626;background:linear-gradient(165deg,#141414,#0a0a0a);box-shadow:0 30px 80px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.06)}
+    .sx-md.on .sx-md-box{animation:sxPop .5s cubic-bezier(.2,.9,.3,1.25)}
+    .sx-md-box::before{content:'';position:absolute;top:-70px;left:50%;width:260px;height:140px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,255,255,.12),transparent);pointer-events:none}
+    .sx-gear{position:relative;width:78px;height:78px;margin:0 auto 1.3rem;border-radius:50%;border:1px solid #2a2a2a;background:#0d0d0d;display:flex;align-items:center;justify-content:center}
+    .sx-gear i{font-size:1.9rem;color:#ddd;animation:spinSlow 7s linear infinite}
+    .sx-gear::after{content:'';position:absolute;inset:-9px;border-radius:50%;border:1px solid #fff;opacity:0;animation:sxRing 2.6s ease-out infinite}
+    .sx-chip{display:inline-block;font-size:.68rem;color:#888;border:1px solid #2a2a2a;border-radius:30px;padding:.15rem .9rem;margin-bottom:.8rem;letter-spacing:.5px}
+    .sx-md-box h4{color:#fff;font-size:1.2rem;font-weight:800;margin-bottom:.5rem}
+    .sx-md-box p{color:#777;font-size:.85rem;line-height:1.9;margin-bottom:1.5rem}
+    .sx-md-act{display:flex;gap:.6rem}
+    .sx-md-act button,.sx-md-act a{flex:1;font:inherit;font-size:.82rem;font-weight:700;padding:.7rem .5rem;border-radius:6px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:6px}
+    .sx-md-act button{background:#fff;color:#0a0a0a;border:1px solid #fff}.sx-md-act button:hover{background:#ddd}
+    .sx-md-act a{background:transparent;color:#aaa;border:1px solid #2a2a2a}.sx-md-act a:hover{border-color:#777;color:#fff}
+    @keyframes sxPop{from{opacity:0;transform:translateY(24px) scale(.92)}to{opacity:1;transform:none}}
+    @keyframes sxRing{0%{transform:scale(.85);opacity:.3}100%{transform:scale(1.3);opacity:0}}
   </style>
 </head>
 <body>
@@ -1531,7 +1543,7 @@
           <div class="sub-title">چرخ‌دنده‌ساکت</div>
           <div class="meta">
             <span><i class="fas fa-tag"></i> اکشن-ماجرایی</span>
-            <span><i class="fas fa-desktop"></i> PC • اندروید</span>
+            <span><i class="fas fa-desktop"></i> ویندوز</span>
             <span><i class="fas fa-clock"></i> در دست توسعه</span>
           </div>
           <a href="#game-silentgears" class="btn-ghost" onclick="navigateTo('detail')">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
@@ -1618,7 +1630,7 @@
         <div class="sub">چرخ‌دنده‌ساکت</div>
         <div class="detail-info-box">
           <div class="item"><strong>ژانر</strong><span>اکشن-ماجرایی • نقش‌آفرینی</span></div>
-          <div class="item"><strong>پلتفرم</strong><span>اندروید • PC</span></div>
+          <div class="item"><strong>پلتفرم</strong><span>ویندوز (PC)</span></div>
           <div class="item"><strong>وضعیت</strong><span>در دست توسعه</span></div>
           <div class="item"><strong>مدت زمان</strong><span>۳ تا ۴ ساعت</span></div>
           <div class="item"><strong>پایان‌ها</strong><span>۳ پایان مختلف</span></div>
@@ -1648,8 +1660,7 @@
             <p class="purchase-desc">یک بازی اکشن-ماجرایی ریتم‌محور در دنیای پساآخرالزمانی</p>
             <div class="purchase-meta">
               <span><i class="fas fa-tag"></i> اکشن-ماجرایی</span>
-              <span><i class="fas fa-desktop"></i> PC</span>
-              <span><i class="fas fa-mobile-alt"></i> اندروید</span>
+              <span><i class="fas fa-desktop"></i> ویندوز</span>
             </div>
             <div class="purchase-status">
               <div class="status-badge"><i class="fas fa-clock"></i> <span>به‌زودی</span></div>
@@ -1923,14 +1934,14 @@
         cover: 'https://uploadkon.ir/uploads/713431_26Negar-1788164380627.jpg',
         media: [ {video:1}, {src:'https://uploadkon.ir/uploads/5db631_26Negar-1788157838729.jpg'}, {src:'https://uploadkon.ir/uploads/6d9131_26Negar-1788163302729.jpg'} ],
         short: 'اکشن-ماجرایی ریتم‌محور در دنیایی پس از سقوط تمدن؛ راز چرخ‌دنده‌های خاموش رو کشف کن.',
-        info: [['تاریخ انتشار','به‌زودی'],['سازنده','Zerox Studios'],['ناشر','Zerox Game'],['پلتفرم','اندروید • PC']],
+        info: [['تاریخ انتشار','به‌زودی'],['سازنده','Zerox Studios'],['ناشر','Zerox Game'],['پلتفرم','ویندوز (PC)']],
         tags: ['ریتم‌محور','پساآخرالزمانی','اکشن-ماجرایی','نقش‌آفرینی','تک‌نفره','چند پایانی'],
-        features: [['user','تک‌نفره'],['music','گیم‌پلی ریتم‌محور'],['code-branch','۳ پایان مختلف'],['mobile-alt','اندروید و PC']],
+        features: [['user','تک‌نفره'],['music','گیم‌پلی ریتم‌محور'],['code-branch','۳ پایان مختلف'],['windows','فقط ویندوز']],
         langs: [['فارسی',1,0,1]],
         endings: [['پایان اول','با انتخاب‌های تو باز می‌شود'],['پایان دوم','با انتخاب‌های تو باز می‌شود'],['پایان سوم','با انتخاب‌های تو باز می‌شود']],
         hours: [3,4],
-        req: { min:{os:'Windows 7 / Android 8',cpu:'دو هسته‌ای ۲ گیگاهرتز',ram:2,gpu:'کارت گرافیک ساده',storage:'۵۰۰ مگابایت',tier:0},
-               rec:{os:'Windows 10 / Android 11',cpu:'چهار هسته‌ای ۲٫۵ گیگاهرتز',ram:4,gpu:'کارت گرافیک متوسط',storage:'۱ گیگابایت',tier:1} },
+        req: { min:{os:'Windows 7',cpu:'دو هسته‌ای ۲ گیگاهرتز',ram:2,gpu:'کارت گرافیک ساده',storage:'۵۰۰ مگابایت',tier:0},
+               rec:{os:'Windows 10',cpu:'چهار هسته‌ای ۲٫۵ گیگاهرتز',ram:4,gpu:'کارت گرافیک متوسط',storage:'۱ گیگابایت',tier:1} },
         news: []
       }
     };
@@ -2018,7 +2029,7 @@
     /* ===== نظرات: فعلاً فقط باکس؛ ثبت نظر پیام «در دسترس نیست» نشون می‌ده ===== */
     (function () {
       const m = document.createElement('div'); m.className = 'sx-md';
-      m.innerHTML = '<div class="sx-md-box"><i class="fas fa-comment-slash"></i><h4>سیستم نظردهی در دسترس نیست</h4><p>فعلاً امکان ثبت نظر وجود نداره. به‌زودی فعال می‌شه.</p><button type="button">باشه</button></div>';
+      m.innerHTML = '<div class="sx-md-box"><div class="sx-gear"><i class="fas fa-cog"></i></div><span class="sx-chip">به‌زودی</span><h4>سیستم نظردهی در دسترس نیست</h4><p>چرخ‌دنده‌های بخش نظرات هنوز در حال سوار شدن‌اند.<br />به‌زودی فعال می‌شه.</p><div class="sx-md-act"><button type="button">باشه</button><a href="https://t.me/ZEROX_GAME_STUDIOS" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> خبرها در تلگرام</a></div></div>';
       document.body.appendChild(m);
       const close = function () { m.classList.remove('on'); };
       m.onclick = function (e) { if (e.target === m || e.target.tagName === 'BUTTON') close(); };
