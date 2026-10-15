@@ -1558,6 +1558,40 @@
     .header.scrolled{top:0;left:0;right:0;padding:.7rem 2rem;border-radius:0;background:#000;
       backdrop-filter:none;-webkit-backdrop-filter:none;border:0;border-bottom:1px solid #1c1c1c;box-shadow:none}
     @media(max-width:768px){.header.scrolled{top:0;left:0;right:0;padding:.6rem 1.2rem;border-radius:0}}
+
+    /* ===== منوی همبرگری: تمام‌صفحه، مشکی مات، لغزش از بالا (الهام‌گرفته، نه کپی) ===== */
+    .mobile-menu-overlay{background:#000;backdrop-filter:none;-webkit-backdrop-filter:none;clip-path:none;transform:translateY(-100%);
+      transition:transform .55s cubic-bezier(.77,0,.18,1),visibility 0s .55s}
+    .mobile-menu-overlay.active{clip-path:none;transform:none;transition:transform .55s cubic-bezier(.77,0,.18,1),visibility 0s}
+    .mm-wrap{padding:0 0 2rem;max-width:none}
+    .mm-top{margin:0;padding:.9rem 1.2rem;border-bottom:1px solid #1c1c1c}
+    .mm-nav{counter-reset:mm;padding:1rem 1.2rem 0;max-width:560px;width:100%;margin:0 auto}
+    .mm-nav a{align-items:center;padding:1.25rem 0;border-bottom:1px solid #161616;color:#6a6a6a}
+    .mm-nav a b{display:flex;align-items:center;gap:1rem;font-size:clamp(1.8rem,8vw,2.4rem);letter-spacing:-.5px}
+    .mm-nav a b::before{counter-increment:mm;content:"۰" counter(mm,persian);font-size:.75rem;font-weight:400;color:#3a3a3a;letter-spacing:1px;min-width:1.6rem;transition:.3s}
+    .mm-nav a.on::before{display:none}
+    .mm-nav a:hover,.mm-nav a.on{color:#fff;padding-right:0}
+    .mm-nav a:hover b::before,.mm-nav a.on b::before{color:#fff}
+    .mm-nav a.on b::after{content:'';width:7px;height:7px;border-radius:50%;background:#fff;margin-right:.2rem}
+    .mm-feat{margin:2rem auto 0;max-width:520px;width:calc(100% - 2.4rem);border-radius:4px;background:#0a0a0a;border-color:#1c1c1c}
+    .mm-feat img{border-radius:2px}
+    .mm-social{padding-top:2rem}
+
+    /* ===== هدر شیشه‌ای بدون شکل با لبه‌ی پایین نرم (محو شدن تدریجی، بدون خط/برش تیز) ===== */
+    .header,.header.scrolled{top:0 !important;left:0 !important;right:0 !important;border:0 !important;border-radius:0 !important;box-shadow:none !important;animation:none;
+      background:transparent !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important}
+    .header.scrolled{padding:.7rem 2rem}
+    .header::before{content:'';position:absolute;z-index:-1;left:0;right:0;top:0;bottom:-34px;pointer-events:none;opacity:0;transition:opacity .4s ease;
+      background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.38) 55%,rgba(0,0,0,0) 100%);
+      backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+      -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,#000 55%,transparent 100%)}
+    .header.scrolled::before{opacity:1}
+    .nav{background:transparent;border:0;border-radius:0;padding:0}
+    .nav a{border-radius:0}
+    .nav-ind{top:auto;bottom:-6px;height:2px;border-radius:0;background:#fff;border:0;box-shadow:none}
+    .header-actions i{border:0;background:transparent;border-radius:0}
+    .header-actions i:hover{background:transparent;color:#fff}
+    @media(max-width:768px){.header.scrolled{padding:.6rem 1.2rem}}
   </style>
 </head>
 <body>
@@ -2191,28 +2225,4 @@
           '<div class="sc-media"><div class="sc-cap"><img alt="" /></div>' +
           (imgs.length > 1 ? '<div class="sc-thumbs">' + imgs.map(function (u) { return '<div class="sc-th"><img src="' + u + '" alt="" loading="lazy" /></div>'; }).join('') + '</div>' : '') + '</div>' +
           '<div class="sc-info"><div class="sc-title"></div><p class="sc-desc"></p>' +
-          '<div class="sc-meta">' + row('تاریخ انتشار', info('تاریخ انتشار')) + row('سازنده', info('سازنده')) + row('پلتفرم', info('پلتفرم'), '<i class="fab fa-windows"></i>') + '</div>' +
-          '<div class="sc-tags">' + g.tags.slice(0, 5).map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div>' +
-          '<div class="sc-buy"><span class="sc-state"><i class="far fa-clock"></i></span><span class="sc-go">مشاهده بازی <i class="fas fa-arrow-left"></i></span></div></div>';
-        card.querySelector('.sc-title').textContent = card.dataset.title;
-        card.querySelector('.sc-desc').textContent = g.short;
-        card.querySelector('.sc-state').appendChild(document.createTextNode(card.dataset.state));
-        const cap = card.querySelector('.sc-cap img'), ths = card.querySelectorAll('.sc-th'); let cur = 0, t = null;
-        function show(k) {
-          cur = (k + imgs.length) % imgs.length; cap.style.opacity = 0;
-          setTimeout(function () { cap.src = imgs[cur]; cap.style.opacity = 1; }, 180);
-          ths.forEach(function (x, j) { x.classList.toggle('on', j === cur); });
-        }
-        cap.src = imgs[0]; if (ths[0]) ths[0].classList.add('on');
-        card.addEventListener('mouseenter', function () { if (imgs.length > 1) t = setInterval(function () { show(cur + 1); }, 1300); });
-        card.addEventListener('mouseleave', function () { clearInterval(t); if (cur !== 0) show(0); });
-        ths.forEach(function (th, j) {
-          th.addEventListener('mouseenter', function () { clearInterval(t); show(j); });
-          th.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); clearInterval(t); show(j); });
-        });
-      });
-    })();
-    </script>
-
-</body>
-  </html>
+          '<div class="sc-meta"
