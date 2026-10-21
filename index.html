@@ -546,11 +546,33 @@
     .cart-checkout-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; padding: 1rem; margin-top: 1.5rem; background: #fff; color: #0a0a0a; border: none; border-radius: 6px; font-size: 1rem; font-weight: 800; font-family: 'Estedad', 'Ardakan', sans-serif; cursor: pointer; transition: 0.3s; }
     .cart-checkout-btn:hover { background: #ddd; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
 
-    .cart-empty { text-align: center; padding: 4rem 0; animation: fadeUp 0.5s ease; }
-    .cart-empty i { font-size: 4rem; color: #222; margin-bottom: 1rem; display: block; }
-    .cart-empty h2 { font-size: 1.5rem; color: #fff; font-weight: 800; font-family: 'Estedad', 'Ardakan', sans-serif; margin-bottom: 0.5rem; }
-    .cart-empty p { color: #666; font-size: 0.9rem; font-weight: 300; margin-bottom: 2rem; }
+    .cart-empty { text-align: center; padding: 3rem 2rem; background: #0f0f0f; border: 1px dashed #222; border-radius: 12px; animation: fadeUp 0.6s ease; margin-bottom: 2rem; }
+    .cart-empty i { font-size: 4.5rem; color: #1a1a1a; margin-bottom: 1.5rem; display: block; }
+    .cart-empty h2 { font-size: 1.6rem; color: #fff; font-weight: 800; font-family: 'Estedad', 'Ardakan', sans-serif; margin-bottom: 0.5rem; }
+    .cart-empty p { color: #777; font-size: 0.95rem; font-weight: 300; margin-bottom: 2rem; }
     .cart-empty .btn-ghost { border-color: #333; padding: 0.7rem 2rem; }
+
+    /* ===== دکمه افزودن به سبد ===== */
+    .add-to-cart-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 1rem; padding: 0.6rem 1.4rem; background: transparent;
+      border: 1px solid #333; color: #fff; border-radius: 4px;
+      font-size: 0.8rem; font-weight: 700; font-family: 'Estedad', 'Ardakan', sans-serif;
+      cursor: pointer; transition: 0.3s; width: 100%;
+    }
+    .add-to-cart-btn:hover { background: #fff; color: #0a0a0a; border-color: #fff; transform: translateY(-2px); }
+    .add-to-cart-btn i { font-size: 0.85rem; }
+
+    /* ===== badge سبد در هدر ===== */
+    .cart-icon-wrap { position: relative; display: inline-flex; }
+    .cart-badge {
+      position: absolute; top: -4px; right: -4px;
+      background: #fff; color: #0a0a0a;
+      font-size: 0.6rem; font-weight: 900;
+      width: 16px; height: 16px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
 
     @media (max-width: 900px) {
       .cart-layout { grid-template-columns: 1fr; }
@@ -618,7 +640,10 @@
     </nav>
     <div class="header-actions">
       <i class="fas fa-search" onclick="navigateTo('search')"></i>
-      <i class="fas fa-shopping-cart" onclick="navigateTo('cart')" title="سبد خرید" style="cursor:pointer;"></i>
+      <span class="cart-icon-wrap">
+        <i class="fas fa-shopping-cart" onclick="navigateTo('cart')" title="سبد خرید" style="cursor:pointer;"></i>
+        <span class="cart-badge" id="cartBadgeHeader" style="display:none;">۰</span>
+      </span>
       <i class="fas fa-bars menu-mobile" onclick="toggleMobileMenu()"></i>
     </div>
   </header>
@@ -647,10 +672,16 @@
     <div class="container" id="games-section">
       <h2 class="section-title">بازی‌های ما</h2>
       <div class="steam-list">
-        <a href="#game-silentgears" class="steam-card" data-game="silentgears" data-title="SilentGears" data-state="در دست توسعه" onclick="navigateTo('detail')">
+        <div class="steam-card" data-game="silentgears" data-title="SilentGears" data-state="در دست توسعه" onclick="navigateTo('detail')">
           <div class="sc-media"><div class="sc-cap"><img src="https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg" alt="SilentGears" /></div></div>
-          <div class="sc-info"><div class="sc-title">SilentGears</div><div class="sc-state">در دست توسعه</div></div>
-        </a>
+          <div class="sc-info">
+            <div class="sc-title">SilentGears</div>
+            <div class="sc-state">در دست توسعه</div>
+            <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(1);">
+              <i class="fas fa-cart-plus"></i> افزودن به سبد
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -713,7 +744,7 @@
       </div>
 
       <div class="cart-art">
-        <img src="https://www.picofile.com/f/kALYrVblCc/file-000000007d18820c8985112c2a1d2081.png" alt="Cart Art" />
+        <img src="https://up.20script.ir/file/923d-file-000000007d18820c8985112c2a1d2081.png" alt="Cart Art" />
       </div>
 
       <div class="cart-layout">
@@ -1209,7 +1240,8 @@
           '<div class="sc-info"><div class="sc-title"></div><p class="sc-desc"></p>' +
           '<div class="sc-meta">' + row('تاریخ انتشار', info('تاریخ انتشار')) + row('سازنده', info('سازنده')) + row('پلتفرم', info('پلتفرم'), '<i class="fab fa-windows"></i>') + '</div>' +
           '<div class="sc-tags">' + g.tags.slice(0, 5).map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div>' +
-          '<div class="sc-buy"><span class="sc-state"><i class="far fa-clock"></i></span><span class="sc-go">مشاهده بازی <i class="fas fa-arrow-left"></i></span></div></div>';
+          '<div class="sc-buy"><span class="sc-state"><i class="far fa-clock"></i></span><span class="sc-go">مشاهده بازی <i class="fas fa-arrow-left"></i></span></div>' +
+          '<button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(1);"><i class="fas fa-cart-plus"></i> افزودن به سبد</button></div>';
         card.querySelector('.sc-title').textContent = card.dataset.title;
         card.querySelector('.sc-desc').textContent = g.short;
         card.querySelector('.sc-state').appendChild(document.createTextNode(card.dataset.state));
@@ -1230,26 +1262,63 @@
     })();
 
     /* ==================================================
-       سبد خرید (Cart)
+       سبد خرید (Cart) - کاملاً خالی و داینامیک
     ================================================== */
-    let cartData = [
-      { id: 1, title: 'SilentGears', genre: 'اکشن-ماجرایی', price: 250000, cover: 'https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg', qty: 1 },
-      { id: 2, title: 'Project X', genre: 'معمایی', price: 180000, cover: 'https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg', qty: 1 }
+    const storeItems = [
+      { id: 1, title: 'SilentGears', genre: 'اکشن-ماجرایی • ریتم‌محور', price: 250000, cover: 'https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg' }
     ];
+
+    let cartData = [];
+    try { cartData = JSON.parse(localStorage.getItem('zerox_cart')) || []; } catch (e) { cartData = []; }
+
+    function saveCart() {
+      try { localStorage.setItem('zerox_cart', JSON.stringify(cartData)); } catch (e) {}
+      updateCartBadge();
+    }
+
+    function updateCartBadge() {
+      const badge = document.getElementById('cartBadgeHeader');
+      if (!badge) return;
+      const totalQty = cartData.reduce(function (s, i) { return s + i.qty; }, 0);
+      if (totalQty > 0) {
+        badge.textContent = totalQty.toLocaleString('fa-IR');
+        badge.style.display = 'flex';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
+    window.addToCart = function(id) {
+      const item = storeItems.find(function (x) { return x.id === id; });
+      if (!item) return;
+      const existing = cartData.find(function (x) { return x.id === id; });
+      if (existing) existing.qty++;
+      else cartData.push({ id: item.id, title: item.title, genre: item.genre, price: item.price, cover: item.cover, qty: 1 });
+      saveCart();
+      if (document.getElementById('pageCart').classList.contains('active')) renderCart();
+    };
 
     function renderCart() {
       const container = document.getElementById('cartItemsContainer');
       const sidebar = document.getElementById('cartSidebar');
-      
+      if (!container) return;
+
       if (cartData.length === 0) {
-        container.innerHTML = '<div class="cart-empty"><i class="fas fa-shopping-basket"></i><h2>سبد خرید شما خالی است</h2><p>هنوز هیچ بازی به سبد اضافه نکرده‌اید.</p><button class="btn-ghost" onclick="navigateTo(\'home\')">مشاهده بازی‌ها</button></div>';
-        sidebar.style.display = 'none';
+        container.innerHTML =
+          '<div class="cart-empty">' +
+            '<i class="fas fa-shopping-basket"></i>' +
+            '<h2>سبد خرید شما خالی است</h2>' +
+            '<p>هنوز هیچ بازی به سبد اضافه نکرده‌اید.</p>' +
+            '<button class="btn-ghost" onclick="navigateTo(\'home\')">مشاهده بازی‌ها <i class="fas fa-arrow-left" style="margin-right:6px;"></i></button>' +
+          '</div>';
+        if (sidebar) sidebar.style.display = 'none';
+        updateCartBadge();
         return;
       }
 
-      sidebar.style.display = 'block';
-      
-      container.innerHTML = cartData.map(function(item, index) {
+      if (sidebar) sidebar.style.display = 'block';
+
+      container.innerHTML = cartData.map(function (item, index) {
         return '<div class="cart-item" style="animation-delay:' + (index * 0.1) + 's">' +
           '<div class="cart-item-img"><img src="' + item.cover + '" alt="' + item.title + '" /></div>' +
           '<div class="cart-item-info"><h3>' + item.title + '</h3><p>' + item.genre + '</p><div class="cart-item-price">' + item.price.toLocaleString('fa-IR') + ' تومان</div></div>' +
@@ -1261,34 +1330,33 @@
       }).join('');
 
       let totalQty = 0, totalPrice = 0;
-      cartData.forEach(function(item) { totalQty += item.qty; totalPrice += item.price * item.qty; });
-      
+      cartData.forEach(function (item) { totalQty += item.qty; totalPrice += item.price * item.qty; });
       document.getElementById('cartCount').innerText = totalQty.toLocaleString('fa-IR');
       document.getElementById('cartTotal').innerText = totalPrice.toLocaleString('fa-IR') + ' تومان';
+      updateCartBadge();
     }
 
-    function updateQty(id, change) {
-      const item = cartData.find(function(x) { return x.id === id; });
-      if (item) {
-        item.qty += change;
-        if (item.qty <= 0) removeCartItem(id);
-        else renderCart();
-      }
-    }
-
-    function removeCartItem(id) {
-      cartData = cartData.filter(function(x) { return x.id !== id; });
+    window.updateQty = function(id, change) {
+      const item = cartData.find(function (x) { return x.id === id; });
+      if (!item) return;
+      item.qty += change;
+      if (item.qty <= 0) cartData = cartData.filter(function (x) { return x.id !== id; });
+      saveCart();
       renderCart();
-    }
+    };
 
-    window.addEventListener('load', function() {
-      if(window.location.hash === '#cart') renderCart();
+    window.removeCartItem = function(id) {
+      cartData = cartData.filter(function (x) { return x.id !== id; });
+      saveCart();
+      renderCart();
+    };
+
+    window.addEventListener('load', function () {
+      updateCartBadge();
+      if (window.location.hash === '#cart') renderCart();
     });
-
-    /* ===== انتخاب اولیه سبد در بارگذاری ===== */
-    setTimeout(function(){ if(document.getElementById('pageCart').classList.contains('active')) renderCart(); }, 300);
 
   </script>
 
 </body>
-  </html>
+          </html>
