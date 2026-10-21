@@ -1,162 +1,2229 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ZER0X GAME | فروشگاه و کیف پول</title>
-<link rel="icon" href="https://cdn.imgurl.ir/uploads/t7016_Negar_1792428099739.png">
-<style>
-@font-face{font-family:Peyda;font-weight:400;src:url(fonts/Peyda-Regular.ttf) format("truetype");font-display:swap}
-@font-face{font-family:Peyda;font-weight:700;src:url(fonts/Peyda-Bold.ttf) format("truetype");font-display:swap}
-@font-face{font-family:Peyda;font-weight:900;src:url(fonts/Peyda-Black.ttf) format("truetype");font-display:swap}
-:root{--bg:#0f0a05;--s1:#191109;--s2:#241810;--ln:#3a2a1b;--tx:#fff5eb;--mu:#b9a58e;--ac:#ff8a00;--ac2:#ffb04d}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--tx);font-family:Peyda,Tahoma,sans-serif;line-height:1.8}
-.w{max-width:1000px;margin:auto;padding:0 16px}
-header{position:sticky;top:0;z-index:9;background:#0f0a05ee;backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;color:var(--tx);text-decoration:none}
-.logo img{height:38px;width:auto}
-nav{display:flex;gap:4px;overflow-x:auto}
-nav a{color:var(--mu);text-decoration:none;padding:6px 14px;border-radius:10px;white-space:nowrap}
-nav a.on{background:var(--ac);color:#1a0f04;font-weight:700}
-.pill{background:var(--s2);border:1px solid var(--ln);border-radius:99px;padding:4px 14px;font-size:14px;white-space:nowrap}
-.demo{background:var(--ac);color:#1a0f04;text-align:center;font-size:13px;font-weight:700;padding:4px 10px}
-.sec{display:none;padding:26px 0 60px}.sec.on{display:block}
-h1{font-size:clamp(34px,7vw,64px);line-height:1.15;margin:0 0 12px;font-weight:900}
-h2{font-size:24px;margin:0 0 14px;font-weight:900}
-p{color:var(--mu);margin:0 0 14px}
-.btn{font:inherit;display:inline-block;border:1px solid var(--ln);background:var(--s2);color:var(--tx);padding:10px 20px;border-radius:12px;cursor:pointer;text-decoration:none}
-.btn.p{background:var(--ac);border-color:var(--ac);color:#1a0f04;font-weight:900}
-.btn:disabled{opacity:.4;cursor:not-allowed}
-.btn:focus-visible,input:focus-visible,nav a:focus-visible,.opt:focus-visible{outline:3px solid var(--ac2);outline-offset:2px}
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;min-height:56vh}
-.hero .art{background:var(--ac);border-radius:28px;aspect-ratio:1;display:grid;place-items:center;overflow:hidden}
-.hero .art img{width:58%;filter:brightness(0) invert(.96) sepia(.1)}
-.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
-.box{background:var(--s1);border:1px solid var(--ln);border-radius:18px;padding:18px}
-.tag{font-size:13px;color:var(--mu)}
-.steps{display:flex;gap:8px;margin-bottom:20px}
-.steps div{flex:1;text-align:center;padding:8px;border-bottom:3px solid var(--ln);color:var(--mu);font-size:14px}
-.steps div.on{border-color:var(--ac);color:var(--tx);font-weight:700}
-.shop{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
-.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
-.opt{font:inherit;color:var(--tx);background:var(--s1);border:2px solid var(--ln);border-radius:14px;padding:12px;cursor:pointer;text-align:center}
-.opt[aria-pressed=true]{border-color:var(--ac);background:var(--s2)}
-.sw{height:34px;border-radius:8px;margin-bottom:6px}
-label{display:block;margin:10px 0 4px;font-size:14px;color:var(--mu)}
-input{font:inherit;width:100%;padding:12px;border-radius:12px;border:1px solid var(--ln);background:var(--s1);color:var(--tx)}
-/* the card */
-.stage{perspective:900px;position:sticky;top:80px}
-.gc{--c1:#ff8a00;--c2:#b84300;--fg:#fff5eb;direction:ltr;text-align:left;position:relative;aspect-ratio:1.586;border-radius:22px;padding:20px;color:var(--fg);background:linear-gradient(135deg,var(--c1),var(--c2));overflow:hidden;transition:transform .15s;box-shadow:0 24px 50px #0008;display:flex;flex-direction:column;justify-content:space-between}
-.gc::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,#fff1 0 2px,transparent 2px 14px);pointer-events:none}
-.gc::after{content:"";position:absolute;width:62%;aspect-ratio:1;right:-14%;bottom:-30%;border-radius:50%;border:26px dashed #ffffff22}
-.gc .top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
-.gc .top img{height:36px}
-.gc .chip{width:42px;height:30px;border-radius:7px;background:linear-gradient(135deg,#f6d98d,#b98a2e);position:relative;z-index:1}
-.gc .amt{font-size:30px;font-weight:900;direction:rtl;text-align:left;position:relative;z-index:1}
-.gc .num{letter-spacing:3px;font-weight:700;position:relative;z-index:1}
-.gc .nm{font-size:13px;opacity:.9;position:relative;z-index:1}
-.t-black{--c1:#2b2118;--c2:#0b0704;--fg:#ffb04d}
-.t-cream{--c1:#fff5eb;--c2:#ffd9ad;--fg:#2a1604}.t-cream .top img{filter:brightness(0)}
-.t-rust{--c1:#7a2b0e;--c2:#2d0f05;--fg:#ffd9ad}
-.row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--ln);font-size:14px}
-.code{direction:ltr;display:inline-block;font-family:monospace;background:var(--s2);border-radius:8px;padding:2px 10px;letter-spacing:1px}
-.bal{font-size:36px;font-weight:900}
-.ok{border-color:var(--ac)}
-footer{border-top:1px solid var(--ln);padding:22px 0;text-align:center;color:var(--mu);font-size:14px}
-footer a{color:var(--ac2);margin:0 8px}
-@media(max-width:720px){.hero,.shop{grid-template-columns:1fr}.stage{position:static;order:-1}.hero .art{max-height:260px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-</style></head><body>
-<div class="demo">نسخهٔ آزمایشی · پرداخت‌ها و کدها واقعی نیستند</div>
-<header><div class="w bar">
-<a class="logo" href="#home"><img src="https://cdn.imgurl.ir/uploads/t7016_Negar_1792428099739.png" alt="" onerror="this.style.display='none'">ZER0X GAME</a>
-<nav id="nav"><a href="#home">خانه</a><a href="#shop">فروشگاه</a><a href="#wallet">کیف پول</a><a href="#search">جستجو</a></nav>
-<div class="pill" id="hb"></div></div></header>
-<main class="w">
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZER0X GAME</title>
 
-<section class="sec" id="home">
-<div class="hero"><div>
-<h1>بازی می‌سازیم.<br>بدون مرز.</h1>
-<p>Zerox Game بخش بازی‌سازی Zerox Studios است. اولین پروژه: SilentGears (چرخ‌دنده‌ساکت)، اکشن-ماجرایی ریتم‌محور در دنیای پساآخرالزمانی.</p>
-<a class="btn p" href="#shop">خرید گیفت‌کارت</a> <a class="btn" href="#search">جستجوی بازی</a></div>
-<div class="art"><img src="https://cdn.imgurl.ir/uploads/t7016_Negar_1792428099739.png" alt="لوگوی Zerox"></div></div>
-<h2 style="margin-top:30px">بازی‌های ما</h2>
-<div class="g"><div class="box"><b>SilentGears</b><div class="tag">اکشن-ماجرایی · ویندوز · ۳ پایان · ۳ تا ۴ ساعت</div><p style="margin:10px 0 0">در دست توسعه. به‌زودی.</p></div></div>
-</section>
+  <!-- ===== فاویکون ===== -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.imgurl.ir/uploads/b18142_Negar_1789379626960.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.imgurl.ir/uploads/b18142_Negar_1789379626960.png" />
+  <link rel="apple-touch-icon" href="https://cdn.imgurl.ir/uploads/b18142_Negar_1789379626960.png" />
 
-<section class="sec" id="shop">
-<h2>خرید گیفت‌کارت</h2>
-<div class="steps" id="steps"><div>۱. انتخاب کارت</div><div>۲. اطلاعات</div><div>۳. پرداخت</div></div>
-<div class="shop"><div id="pane"></div>
-<div class="stage"><div class="gc" id="gc"><div class="top"><img src="https://cdn.imgurl.ir/uploads/t7016_Negar_1792428099739.png" alt=""><span>GIFT CARD</span></div><div class="chip"></div>
-<div><div class="amt" id="ga"></div><div class="num" id="gn">ZX•• - •••• - ••••</div><div class="nm" id="gm">ZER0X GAME STUDIOS</div></div></div></div></div>
-</section>
+  <!-- ===== فونت‌ها ===== -->
+  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Ardakan:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-<section class="sec" id="wallet">
-<h2>کیف پول</h2>
-<div class="shop"><div class="stage" style="position:static"><div class="gc t-black"><div class="top"><img src="https://cdn.imgurl.ir/uploads/t7016_Negar_1792428099739.png" alt=""><span>ZER0X PAY</span></div><div class="chip"></div><div><div class="amt" id="wb"></div><div class="num">6037 •••• •••• 0074</div><div class="nm">موجودی آزمایشی</div></div></div></div>
-<div><div class="box"><b>شارژ آزمایشی</b><p class="tag">پولی کم یا زیاد نمی‌شود؛ فقط برای تست خرید است.</p>
-<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" data-top="100000">+۱۰۰ هزار</button><button class="btn" data-top="500000">+۵۰۰ هزار</button><button class="btn" data-top="1000000">+۱ میلیون</button></div></div>
-<div class="box" style="margin-top:12px"><b>تراکنش‌ها</b><div id="tx" class="tag">هنوز تراکنشی نیست.</div></div></div></div>
-</section>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-<section class="sec" id="search">
-<h2>جستجو</h2>
-<input id="q" placeholder="اسم بازی، ژانر یا گیفت‌کارت..." aria-label="جستجو">
-<div class="g" id="res" style="margin-top:14px"></div><p class="tag" id="cnt"></p>
-</section>
-</main>
-<footer><div class="w">© 2026 ZER0X GAME · Create Beyond Limits.<br>
-<a href="https://t.me/ZEROX_GAME_STUDIOS">تلگرام</a><a href="https://www.youtube.com/@Zerox_game_studios">یوتیوب</a><a href="https://www.instagram.com/zerox_game_studios">اینستاگرام</a></div></footer>
-<script>
-const $=s=>document.querySelector(s),f=n=>n.toLocaleString("fa-IR")+" تومان";
-const AM=[50000,100000,200000,500000];
-const TH=[{k:"",n:"نارنجی چرخ‌دنده",c:"linear-gradient(135deg,#ff8a00,#b84300)"},{k:"t-black",n:"سیاه ساکت",c:"linear-gradient(135deg,#2b2118,#0b0704)"},{k:"t-cream",n:"کرم",c:"linear-gradient(135deg,#fff5eb,#ffd9ad)"},{k:"t-rust",n:"زنگاری",c:"linear-gradient(135deg,#7a2b0e,#2d0f05)"}];
-const ITEMS=[{n:"SilentGears",s:"بازی · اکشن-ماجرایی · ویندوز",k:"چرخ‌دنده‌ساکت ریتم پساآخرالزمانی",soon:1},{n:"گیفت‌کارت Zerox",s:"مبلغ ۵۰ تا ۵۰۰ هزار تومان",k:"گیفت کارت هدیه خرید",go:1}];
-let S={bal:0,tx:[]},O={th:0,am:100000,to:"",ct:"",msg:"",step:1};
-try{const r=localStorage.getItem("zx2");if(r)S=JSON.parse(r)}catch(e){}
-const save=()=>{try{localStorage.setItem("zx2",JSON.stringify(S))}catch(e){}};
-const esc=s=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-function route(){const h=(location.hash||"#home").slice(1);const id=["home","shop","wallet","search"].includes(h)?h:"home";
- document.querySelectorAll(".sec").forEach(s=>s.classList.toggle("on",s.id===id));
- document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+id));scrollTo(0,0)}
-function prev(){const g=$("#gc");g.className="gc "+TH[O.th].k;$("#ga").textContent=f(O.am);$("#gm").textContent=O.to?"برای: "+O.to:"ZER0X GAME STUDIOS"}
-function pane(){
- document.querySelectorAll("#steps div").forEach((d,i)=>d.classList.toggle("on",i+1===O.step));
- let h="";
- if(O.step===1){h=`<b>طرح کارت</b><div class="opts" style="margin-top:8px">${TH.map((t,i)=>`<button class="opt" aria-pressed="${i===O.th}" data-th="${i}"><div class="sw" style="background:${t.c}"></div>${t.n}</button>`).join("")}</div>
- <b>مبلغ</b><div class="opts" style="margin-top:8px">${AM.map(a=>`<button class="opt" aria-pressed="${a===O.am}" data-am="${a}">${f(a)}</button>`).join("")}</div>
- <button class="btn p" data-next>ادامه</button>`}
- if(O.step===2){h=`<label for="to">نام گیرنده</label><input id="to" value="${esc(O.to)}" maxlength="30">
- <label for="ct">تلگرام یا ایمیل برای دریافت کد</label><input id="ct" value="${esc(O.ct)}" dir="ltr" maxlength="60">
- <label for="ms">پیام روی کارت (اختیاری)</label><input id="ms" value="${esc(O.msg)}" maxlength="60">
- <p id="er" class="tag" style="color:var(--ac2);margin-top:8px"></p>
- <button class="btn" data-back>بازگشت</button> <button class="btn p" data-next>ادامه</button>`}
- if(O.step===3){h=`<div class="box"><div class="row"><span>طرح</span><b>${TH[O.th].n}</b></div><div class="row"><span>گیرنده</span><b>${esc(O.to)}</b></div><div class="row"><span>مبلغ</span><b>${f(O.am)}</b></div><div class="row"><span>موجودی کیف پول</span><b>${f(S.bal)}</b></div></div>
- <p class="tag" style="margin-top:10px">پرداخت از کیف پول آزمایشی. درگاه بانکی واقعی بعداً وصل می‌شود.</p>
- <button class="btn" data-back>بازگشت</button> <button class="btn p" data-pay>${S.bal>=O.am?"پرداخت و دریافت کد":"موجودی کافی نیست"}</button>`;}
- if(O.step===4){h=`<div class="box ok"><b>خرید انجام شد</b><p style="margin:6px 0">کد گیفت‌کارت:</p><span class="code" id="cd">${O.code}</span> <button class="btn" data-copy>کپی</button></div><p style="margin-top:12px"><button class="btn p" data-new>خرید کارت جدید</button></p>`}
- $("#pane").innerHTML=h;prev()}
-const rc=()=>"ZX-"+Array.from({length:2},()=>Math.random().toString(36).slice(2,6).toUpperCase()).join("-");
-function draw(){
- $("#hb").textContent=f(S.bal);$("#wb").textContent=f(S.bal);
- $("#tx").innerHTML=S.tx.length?S.tx.map(t=>`<div class="row"><span>${esc(t.t)}${t.c?`<br><span class="code">${t.c}</span>`:""}</span><b>${t.a>0?"+":""}${f(t.a)}</b></div>`).join(""):"هنوز تراکنشی نیست.";find()}
-function find(){const q=$("#q").value.trim().toLowerCase(),r=ITEMS.filter(i=>(i.n+i.s+i.k).toLowerCase().includes(q));
- $("#res").innerHTML=r.map(i=>`<div class="box"><b>${i.n}</b><div class="tag">${i.s}</div>${i.soon?'<p style="margin:8px 0 0">به‌زودی</p>':'<a class="btn p" style="margin-top:10px" href="#shop">خرید</a>'}</div>`).join("");
- $("#cnt").textContent=r.length.toLocaleString("fa-IR")+" مورد"}
-document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t)return;const d=t.dataset;
- if(d.th!==undefined){O.th=+d.th;pane()}
- if(d.am){O.am=+d.am;pane()}
- if(d.top){S.bal+=+d.top;S.tx.unshift({t:"شارژ آزمایشی",a:+d.top});save();draw();pane()}
- if(d.next!==undefined){if(O.step===2){O.to=$("#to").value.trim();O.ct=$("#ct").value.trim();O.msg=$("#ms").value.trim();
-   if(!O.to||!O.ct){$("#er").textContent="نام گیرنده و راه دریافت کد را وارد کنید.";return}}O.step++;pane()}
- if(d.back!==undefined){O.step--;pane()}
- if(d.pay!==undefined){if(S.bal<O.am){location.hash="#wallet";return}O.code=rc();S.bal-=O.am;S.tx.unshift({t:"گیفت‌کارت برای "+O.to,a:-O.am,c:O.code});save();$("#gn").textContent=O.code;O.step=4;draw();pane();$("#gn").textContent=O.code}
- if(d.copy!==undefined){try{navigator.clipboard.writeText(O.code);t.textContent="کپی شد"}catch(x){}}
- if(d.new!==undefined){O={th:O.th,am:O.am,to:"",ct:"",msg:"",step:1};$("#gn").textContent="ZX•• - •••• - ••••";pane()}});
-$("#q").addEventListener("input",find);
-const st=document.querySelector(".stage");
-st.addEventListener("pointermove",e=>{const g=$("#gc"),r=g.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;g.style.transform=`rotateY(${x*14}deg) rotateX(${-y*14}deg)`});
-st.addEventListener("pointerleave",()=>{$("#gc").style.transform=""});
-addEventListener("hashchange",route);route();draw();pane();
-</script></body></html>
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0a0a0a;
+      color: #e8e8e8;
+      font-family: 'Estedad', 'Ardakan', 'Inter', sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #555; }
+    a { text-decoration: none; color: inherit; }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* ===== جلوگیری از دانلود عکس ===== */
+    img {
+      -webkit-user-drag: none;
+      user-drag: none;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+    .card-img img,
+    .hero-slide-bg,
+    .detail-hero-bg,
+    .gallery-grid img,
+    .result-card .card-img img,
+    .game-card .card-img img,
+    .purchase-cover img {
+      -webkit-user-drag: none;
+      user-drag: none;
+      -webkit-user-select: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* ==================================================
+       انیمیشن‌ها
+    ================================================== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideInRightMenu {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes modalFade {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .animate-fade-up {
+      animation: fadeUp 0.8s ease forwards;
+      opacity: 0;
+    }
+    .animate-fade-down {
+      animation: fadeDown 0.6s ease forwards;
+      opacity: 0;
+    }
+    .animate-scale-in {
+      animation: scaleIn 0.6s ease forwards;
+      opacity: 0;
+    }
+    .animate-slide-right {
+      animation: slideInRight 0.8s ease forwards;
+      opacity: 0;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+
+    /* ==================================================
+       HEADER
+    ================================================== */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: 0.3s;
+      animation: fadeDown 0.6s ease;
+    }
+    .header.scrolled {
+      background: rgba(10, 10, 10, 0.98);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #fff;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      transition: 0.3s;
+    }
+    .logo:hover { transform: scale(1.05) rotate(-2deg); }
+    .logo span { font-weight: 300; color: #555; }
+
+    .nav {
+      display: flex;
+      gap: 2.2rem;
+      font-size: 0.9rem;
+      align-items: center;
+    }
+    .nav a {
+      cursor: pointer;
+      transition: 0.4s;
+      position: relative;
+      color: #777;
+      font-weight: 400;
+      padding: 4px 0;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #fff, #888, #fff);
+      background-size: 200% auto;
+      transition: 0.4s;
+    }
+    .nav a:hover::after {
+      width: 100%;
+      animation: shimmer 1.5s linear infinite;
+    }
+    .nav a:hover { color: #fff; transform: translateY(-2px); }
+    .nav a.active { color: #fff; }
+    .nav a.active::after { width: 100%; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      color: #555;
+    }
+    .header-actions i {
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+    .header-actions i:hover {
+      color: #fff;
+      transform: scale(1.2) rotate(15deg);
+    }
+    .menu-mobile { display: none; }
+
+    /* ==================================================
+       منوی موبایل
+    ================================================== */
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+      padding: 2rem;
+    }
+    .mobile-menu-overlay.active { display: flex; }
+
+    .mobile-menu-content {
+      width: 100%;
+      max-width: 400px;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+    .mobile-menu-content .close-menu {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 2rem;
+      color: #666;
+      cursor: pointer;
+      transition: 0.4s;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+    .mobile-menu-content .close-menu:hover {
+      color: #fff;
+      transform: rotate(90deg);
+    }
+    .mobile-menu-content .mobile-logo {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #fff;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      letter-spacing: 3px;
+      margin-bottom: 3rem;
+    }
+    .mobile-menu-content .mobile-logo span { color: #555; font-weight: 300; }
+    .mobile-menu-content .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .mobile-menu-content .mobile-nav a {
+      color: #888;
+      font-size: 1.4rem;
+      font-weight: 400;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      transition: 0.4s;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      opacity: 0;
+      animation: slideInRightMenu 0.5s ease forwards;
+    }
+    .mobile-menu-content .mobile-nav a:nth-child(1) { animation-delay: 0.05s; }
+    .mobile-menu-content .mobile-nav a:nth-child(2) { animation-delay: 0.1s; }
+    .mobile-menu-content .mobile-nav a:nth-child(3) { animation-delay: 0.15s; }
+    .mobile-menu-content .mobile-nav a:nth-child(4) { animation-delay: 0.2s; }
+    .mobile-menu-content .mobile-nav a i {
+      font-size: 1.2rem;
+      color: #444;
+      transition: 0.3s;
+      width: 30px;
+    }
+    .mobile-menu-content .mobile-nav a:hover {
+      color: #fff;
+      transform: translateX(-6px);
+      border-bottom-color: rgba(255,255,255,0.1);
+    }
+    .mobile-menu-content .mobile-nav a:hover i {
+      color: #888;
+      transform: scale(1.2);
+    }
+    .mobile-menu-content .mobile-nav a.active { color: #fff; }
+    .mobile-menu-content .mobile-nav a.active i { color: #888; }
+    .mobile-menu-content .mobile-social {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 2rem;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+      animation-delay: 0.2s;
+    }
+    .mobile-menu-content .mobile-social a {
+      color: #444;
+      font-size: 1.5rem;
+      transition: 0.3s;
+    }
+    .mobile-menu-content .mobile-social a:hover {
+      color: #fff;
+      transform: translateY(-4px) scale(1.1);
+    }
+
+    /* ===== صفحات ===== */
+    .page { display: none; padding-top: 70px; }
+    .page.active { display: block; }
+
+    /* ==================================================
+       HERO SLIDER
+    ================================================== */
+    .hero-slider {
+      position: relative;
+      min-height: 88vh;
+      overflow: hidden;
+      background: #0a0a0a;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      min-height: 88vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 4rem 2rem 3rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+      overflow: hidden;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
+    .hero-slide-bg {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transform: scale(1.02);
+      filter: brightness(0.5) contrast(1.15) saturate(0.85);
+      will-change: transform;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-slide-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.9) 15%, rgba(0,0,0,0.15) 70%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 720px;
+      padding-bottom: 2rem;
+    }
+    .hero-content .game-tag {
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+      opacity: 0;
+    }
+    .hero-slide.active .hero-content .game-tag {
+      animation: fadeUp 1s ease 0.1s forwards;
+    }
+    .hero-content h1 {
+      font-size: 4.8rem;
+      font-weight: 900;
+      line-height: 1.05;
+      color: #fff;
+      margin: 0.5rem 0 0.2rem;
+      letter-spacing: -2px;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      opacity: 0;
+    }
+    .hero-slide.active .hero-content h1 {
+      animation: fadeUp 1.2s ease 0.2s forwards;
+    }
+    .hero-content .sub-title {
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: #888;
+      margin-bottom: 0.6rem;
+      opacity: 0;
+    }
+    .hero-slide.active .hero-content .sub-title {
+      animation: fadeUp 1.4s ease 0.3s forwards;
+    }
+    .hero-content .meta {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: #666;
+      margin: 0.8rem 0 2rem;
+      flex-wrap: wrap;
+      font-weight: 300;
+      opacity: 0;
+    }
+    .hero-slide.active .hero-content .meta {
+      animation: fadeUp 1.6s ease 0.4s forwards;
+    }
+    .hero-content .meta i { margin-left: 0.4rem; color: #444; }
+    .hero-content .btn-ghost { opacity: 0; }
+    .hero-slide.active .hero-content .btn-ghost {
+      animation: fadeUp 1.8s ease 0.5s forwards;
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 1rem 3rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      background: transparent;
+      transition: all 0.5s;
+      border-radius: 2px;
+      cursor: pointer;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-ghost::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: translateX(-100%);
+      transition: 0.6s;
+    }
+    .btn-ghost:hover::before { transform: translateX(100%); }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.3);
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    /* ===== کنترل اسلایدر ===== */
+    .hero-slider-controls {
+      position: absolute;
+      bottom: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .hero-slider-dot {
+      width: 28px;
+      height: 3px;
+      border: none;
+      outline: none;
+      padding: 0;
+      background: #333;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+    .hero-slider-dot:hover { background: #666; }
+    .hero-slider-dot.active {
+      width: 50px;
+      background: #fff;
+    }
+
+    /* ==================================================
+       بخش بازی‌ها
+    ================================================== */
+    #games-section { scroll-margin-top: 80px; }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 4rem 0 2rem;
+      border-right: 3px solid #333;
+      padding-right: 1.2rem;
+      color: #eee;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      animation: slideInRight 0.8s ease;
+    }
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .game-card {
+      background: #0f0f0f;
+      border: 1px solid #181818;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      cursor: pointer;
+      animation: scaleIn 0.6s ease forwards;
+      opacity: 0;
+    }
+    .game-card:nth-child(1) { animation-delay: 0.1s; }
+    .game-card:nth-child(2) { animation-delay: 0.2s; }
+    .game-card:nth-child(3) { animation-delay: 0.3s; }
+    .game-card:hover {
+      border-color: #444;
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+    }
+    .game-card .card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+      background: #0a0a0a;
+    }
+    .game-card .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+      pointer-events: none;
+    }
+    .game-card:hover .card-img img { transform: scale(1.15); }
+    .game-card .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease;
+      backdrop-filter: blur(4px);
+    }
+    .game-card:hover .card-overlay { opacity: 1; }
+    .game-card .card-overlay i {
+      font-size: 3.5rem;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(30px) scale(0.7);
+      transition: all 0.5s ease;
+    }
+    .game-card:hover .card-overlay i {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .game-card .card-body {
+      padding: 1.5rem;
+      background: #0f0f0f;
+    }
+    .game-card .card-body h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.2rem;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .game-card .card-body .genre {
+      font-size: 0.8rem;
+      color: #555;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    .game-card .card-body .status {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 0.2rem 1.2rem;
+      border: 1px solid #222;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      color: #666;
+      letter-spacing: 1px;
+    }
+
+    /* ==================================================
+       درباره ما
+    ================================================== */
+    .about-page {
+      padding: 4rem 0;
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+      overflow: hidden;
+    }
+    .about-page .about-header h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      letter-spacing: -1px;
+      margin-bottom: 2.5rem;
+      border-right: 3px solid #333;
+      padding-right: 1.2rem;
+      color: #fff;
+      word-wrap: break-word;
+      animation: slideInRight 0.8s ease;
+    }
+    .about-page .about-content p {
+      color: #aaa;
+      font-size: 1.05rem;
+      line-height: 2.2;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
+      padding: 0;
+      animation: fadeUp 0.8s ease forwards;
+      opacity: 0;
+    }
+    .about-page .about-content p:nth-child(1) { animation-delay: 0.1s; }
+    .about-page .about-content p:nth-child(2) { animation-delay: 0.2s; }
+    .about-page .about-content p:nth-child(3) { animation-delay: 0.3s; }
+    .about-page .about-content p:nth-child(4) { animation-delay: 0.4s; }
+    .about-page .about-content p:last-of-type { margin-bottom: 2.5rem; }
+    .about-page .about-tagline {
+      font-size: 2rem;
+      font-weight: 900;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      color: #fff;
+      letter-spacing: -1px;
+      border-top: 1px solid #1a1a1a;
+      padding-top: 2rem;
+      word-wrap: break-word;
+      animation: fadeUp 0.8s ease forwards;
+      opacity: 0;
+      animation-delay: 0.5s;
+    }
+    .about-page .about-tagline span {
+      display: block;
+      font-size: 1rem;
+      font-weight: 300;
+      color: #555;
+      letter-spacing: 2px;
+      margin-top: 0.3rem;
+      font-family: 'Inter', 'Estedad', 'Ardakan', sans-serif;
+    }
+
+    /* ==================================================
+       صفحه جستجو
+    ================================================== */
+    .search-page {
+      padding: 4rem 0 5rem;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .search-page .search-header { margin-bottom: 2.5rem; }
+    .search-page .search-header h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      letter-spacing: -2px;
+      color: #fff;
+    }
+    .search-page .search-header .sub {
+      color: #666;
+      font-size: 1rem;
+      font-weight: 300;
+      margin-top: 0.3rem;
+    }
+    .search-page .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    .search-page .search-box input {
+      width: 100%;
+      padding: 1.3rem 2rem 1.3rem 3.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid #222;
+      border-radius: 50px;
+      color: #fff;
+      font-size: 1.2rem;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      outline: none;
+      transition: 0.4s;
+      font-weight: 300;
+      text-align: center;
+    }
+    .search-page .search-box input:focus {
+      border-color: #555;
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 0 50px rgba(255,255,255,0.02);
+      transform: scale(1.02);
+    }
+    .search-page .search-box input::placeholder { color: #333; font-weight: 300; }
+    .search-page .search-box .search-icon {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #444;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+    .search-page .search-box input:focus ~ .search-icon { color: #888; }
+    .search-page .results-count {
+      color: #555;
+      font-size: 0.85rem;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+    .search-page .results-count span { color: #888; font-weight: 700; }
+    .search-page .search-placeholder {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 3rem 0;
+      color: #444;
+    }
+    .search-page .search-placeholder i {
+      font-size: 3.5rem;
+      color: #222;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .search-page .search-placeholder p { font-weight: 300; font-size: 1rem; }
+    .search-page .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .search-page .result-card {
+      background: #0f0f0f;
+      border: 1px solid #181818;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      cursor: pointer;
+      animation: scaleIn 0.5s ease forwards;
+      opacity: 0;
+    }
+    .search-page .result-card:nth-child(1) { animation-delay: 0.05s; }
+    .search-page .result-card:nth-child(2) { animation-delay: 0.1s; }
+    .search-page .result-card:nth-child(3) { animation-delay: 0.15s; }
+    .search-page .result-card:hover {
+      border-color: #444;
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    }
+    .search-page .result-card .card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: #0a0a0a;
+    }
+    .search-page .result-card .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      pointer-events: none;
+    }
+    .search-page .result-card:hover .card-img img { transform: scale(1.08); }
+    .search-page .result-card .card-body {
+      padding: 1.2rem 1.5rem 1.5rem;
+    }
+    .search-page .result-card .card-body h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .search-page .result-card .card-body .genre {
+      color: #555;
+      font-size: 0.75rem;
+      font-weight: 300;
+    }
+    .search-page .result-card .card-body .status {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.1rem 1rem;
+      border: 1px solid #222;
+      border-radius: 20px;
+      font-size: 0.6rem;
+      color: #666;
+    }
+    .search-page .not-found {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 3rem 0;
+      animation: fadeUp 0.6s ease;
+    }
+    .search-page .not-found i {
+      font-size: 4.5rem;
+      color: #222;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .search-page .not-found h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #666;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .search-page .not-found p {
+      color: #444;
+      font-weight: 300;
+      margin-top: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+
+
+
+
+    /* ==================================================
+       مودال
+    ================================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #0f0f0f;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      animation: modalFade 0.3s ease;
+    }
+    .modal-box .modal-icon {
+      font-size: 3.5rem;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+    .modal-box h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      margin-bottom: 0.5rem;
+    }
+    .modal-box p {
+      color: #888;
+      font-size: 0.95rem;
+      font-weight: 300;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+    .modal-box .modal-close {
+      padding: 0.6rem 2rem;
+      background: transparent;
+      border: 1px solid #333;
+      color: #aaa;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .modal-box .modal-close:hover {
+      border-color: #666;
+      color: #fff;
+      background: rgba(255,255,255,0.03);
+    }
+
+    /* ==================================================
+       کارت خرید (استیم-استایل) - SilentGears
+    ================================================== */
+    .purchase-card {
+      background: #0d0d0d;
+      border: 1px solid #1a1a1a;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .purchase-card:hover {
+      border-color: #333;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.8);
+    }
+    .purchase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid #181818;
+    }
+    .purchase-logo {
+      font-size: 0.95rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .purchase-logo span { color: #555; font-weight: 300; }
+    .purchase-badge {
+      font-size: 0.65rem;
+      color: #666;
+      border: 1px solid #222;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .purchase-body {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+    .purchase-cover {
+      flex: 0 0 140px;
+      width: 140px;
+      aspect-ratio: 16/9;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid #1a1a1a;
+      background: #0a0a0a;
+    }
+    .purchase-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .purchase-info { flex: 1; min-width: 0; }
+    .purchase-info h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      margin-bottom: 0.2rem;
+      letter-spacing: -0.5px;
+    }
+    .purchase-desc {
+      color: #888;
+      font-size: 0.85rem;
+      font-weight: 300;
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .purchase-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .purchase-meta span {
+      color: #666;
+      font-size: 0.75rem;
+      font-weight: 300;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .purchase-meta i { margin-left: 4px; color: #444; font-size: 0.7rem; }
+    .purchase-status {
+      margin: 0.8rem 0 1rem;
+      padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid #1a1a1a;
+      border-radius: 6px;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.2rem 1rem;
+      border: 1px solid #333;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      color: #aaa;
+      letter-spacing: 0.5px;
+      background: rgba(255,255,255,0.02);
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .status-badge i { color: #555; font-size: 0.8rem; }
+    .status-desc {
+      color: #666;
+      font-size: 0.75rem;
+      font-weight: 300;
+      margin: 0.3rem 0 0;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .purchase-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.7rem 2rem;
+      background: #fff;
+      color: #0a0a0a;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      cursor: pointer;
+      transition: 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .purchase-btn:hover { background: #ddd; transform: scale(1.02); }
+    .purchase-btn i { font-size: 0.9rem; }
+    .purchase-btn.disabled {
+      background: transparent;
+      color: #666;
+      border: 1px solid #222;
+      cursor: not-allowed;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .purchase-btn.disabled i { color: #444; }
+    .purchase-btn.disabled:hover { background: transparent; transform: none; }
+
+
+    /* ==================================================
+       صفحه اختصاصی SilentGears
+    ================================================== */
+    .detail-hero {
+      position: relative;
+      min-height: 75vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 5rem 2rem 4rem;
+      margin-bottom: 3rem;
+      overflow: hidden;
+      border-radius: 0;
+    }
+    .detail-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg') center/cover no-repeat;
+      filter: brightness(0.25) contrast(1.2) saturate(0.7);
+      z-index: 0;
+      transform: scale(1.05);
+      pointer-events: none;
+    }
+    .detail-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.1) 60%, transparent 100%);
+    }
+    .detail-hero .detail-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .detail-hero .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: #555;
+      margin-bottom: 2rem;
+      font-size: 0.85rem;
+      transition: 0.4s;
+      cursor: pointer;
+      gap: 8px;
+      border-bottom: 1px solid #222;
+      padding-bottom: 6px;
+      font-weight: 300;
+    }
+    .detail-hero .back-link:hover {
+      color: #fff;
+      border-color: #555;
+      transform: translateX(-5px);
+    }
+    .detail-hero h1 {
+      font-size: 4.5rem;
+      font-weight: 900;
+      margin-bottom: 0.3rem;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+      animation: fadeUp 0.8s ease;
+    }
+    .detail-hero .sub {
+      font-size: 1.4rem;
+      color: #888;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      animation: fadeUp 1s ease forwards;
+      opacity: 0;
+    }
+    .detail-info-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0 2.5rem;
+      background: rgba(255,255,255,0.02);
+      padding: 2rem;
+      border-radius: 10px;
+      border: 1px solid #181818;
+      animation: scaleIn 0.8s ease;
+    }
+    .detail-info-box .item { color: #666; }
+    .detail-info-box .item strong {
+      color: #fff;
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .detail-info-box .item span {
+      font-size: 0.9rem;
+      color: #aaa;
+      font-weight: 300;
+    }
+
+    .detail-body {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 0 3rem;
+    }
+    .detail-body .full-desc {
+      background: rgba(255,255,255,0.015);
+      padding: 2.5rem;
+      border-radius: 10px;
+      border: 1px solid #161616;
+      white-space: pre-line;
+      color: #aaa;
+      line-height: 2.2;
+      margin: 2rem 0;
+      font-size: 1rem;
+      font-weight: 300;
+      animation: scaleIn 0.8s ease;
+    }
+    .detail-body .full-desc::first-letter {
+      font-size: 3.5rem;
+      color: #fff;
+      float: right;
+      margin-left: 10px;
+      line-height: 1;
+      font-weight: 900;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .trailer-section {
+      margin: 2.5rem 0;
+      padding: 2rem;
+      border: 1px solid #161616;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.015);
+      animation: scaleIn 0.8s ease;
+    }
+    .trailer-section h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: #ddd;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .trailer-section h3 i { margin-left: 12px; color: #444; }
+    .trailer-placeholder {
+      background: #0a0a0a;
+      aspect-ratio: 16/9;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #1a1a1a;
+      color: #333;
+      font-size: 4rem;
+      transition: 0.4s;
+      cursor: pointer;
+    }
+    .trailer-placeholder:hover {
+      border-color: #444;
+      color: #666;
+      transform: scale(1.02) rotate(2deg);
+    }
+    .gallery-section {
+      margin: 2.5rem 0;
+      animation: scaleIn 0.8s ease;
+    }
+    .gallery-section h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: #ddd;
+      font-family: 'Estedad', 'Ardakan', sans-serif;
+    }
+    .gallery-section h3 i { margin-left: 12px; color: #444; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #161616;
+      transition: all 0.5s ease;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      cursor: default;
+      pointer-events: none;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.04);
+      border-color: #444;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+    }
+
+    /* ==================================================
+       FOOTER
+    ================================================== */
+    .footer {
+      border-top: 1px solid #0f0f0f;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      background: #0a0a0a;
+      margin-top: 2rem;
+      animation: fadeUp 0.8s ease;
+    }
+    .footer .logo {
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .footer .logo:hover { transform: scale(1.05); }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      color: #444;
+      font-size: 0.85rem;
+    }
+    .footer-links a {
+      cursor: pointer;
+      transition: 0.4s;
+      font-weight: 300;
+      position: relative;
+    }
+    .footer-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      right: 0;
+      width: 0;
+      height: 1px;
+      background: #fff;
+      transition: 0.3s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-links a:hover::after { width: 100%; }
+    .footer-social {
+      display: flex;
+      gap: 1.2rem;
+      color: #333;
+      font-size: 1.2rem;
+    }
+    .footer-social a {
+      color: #444;
+      transition: 0.4s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid transparent;
+    }
+    .footer-social a:hover {
+      color: #fff;
+      transform: translateY(-5px) scale(1.1);
+      border-color: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+    }
+    .footer-social a i {
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+    .footer-social a:hover i { transform: rotate(10deg); }
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      color: #222;
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+      border-top: 1px solid #0f0f0f;
+      padding-top: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* ==================================================
+       RESPONSIVE
+    ================================================== */
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .menu-mobile { display: inline-block; }
+      .header { padding: 0.8rem 1.2rem; }
+      .hero-slider { min-height: 70vh; }
+      .hero-slide { min-height: 70vh; padding: 2rem 1rem 2rem; }
+      .hero-content h1 { font-size: 2.8rem; }
+      .game-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 1.6rem; }
+      .detail-hero h1 { font-size: 2.8rem; }
+      .detail-hero { min-height: 60vh; padding: 3rem 1rem 2rem; }
+      .detail-info-box { grid-template-columns: 1fr 1fr; padding: 1.2rem; }
+      .detail-body .full-desc { padding: 1.2rem; font-size: 0.95rem; }
+      .footer { flex-direction: column; align-items: flex-start; }
+      .about-page .about-header h1 { font-size: 2.2rem; }
+      .about-page .about-content p { font-size: 0.95rem; }
+      .about-page .about-tagline { font-size: 1.5rem; }
+      .search-page .search-header h1 { font-size: 2rem; }
+      .search-page .search-box input { font-size: 1rem; padding: 1rem 1.5rem 1rem 3rem; }
+      .search-page .results-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .purchase-body { flex-direction: column; align-items: center; }
+      .purchase-cover { flex: 0 0 auto; width: 100%; max-width: 280px; }
+      .purchase-info { width: 100%; }
+      .purchase-info h3 { font-size: 1.1rem; }
+      .modal-box { padding: 2rem; }
+    }
+    @media (max-width: 480px) {
+      .detail-info-box { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .detail-hero h1 { font-size: 2.2rem; }
+      .about-page .about-header h1 { font-size: 1.8rem; }
+      .about-page .about-tagline { font-size: 1.3rem; }
+      .footer-social { gap: 0.8rem; }
+      .footer-social a { width: 35px; height: 35px; }
+      .search-page .results-grid { grid-template-columns: 1fr; }
+      .search-page .search-header h1 { font-size: 1.6rem; }
+      .search-page .search-box input { font-size: 0.9rem; padding: 0.8rem 1.2rem 0.8rem 2.5rem; }
+      .purchase-card { padding: 1rem; }
+      .purchase-header { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+      .purchase-btn { width: 100%; justify-content: center; }
+      .hero-content h1 { font-size: 2.2rem; }
+      .hero-content .sub-title { font-size: 1rem; }
+      .hero-content .meta { font-size: 0.72rem; gap: 0.8rem; }
+      .hero-slider-controls { bottom: 20px; }
+      .hero-slider-dot { width: 20px; }
+      .hero-slider-dot.active { width: 38px; }
+      .modal-box { padding: 1.5rem; }
+      .modal-box h2 { font-size: 1.2rem; }
+      .modal-box .modal-icon { font-size: 2.5rem; }
+    }
+
+    /* ===== بخش استیم‌مانند صفحه‌ی بازی (.sx) ===== */
+    .sx{margin:2.5rem 0}
+    .sx img{-webkit-user-drag:none;user-select:none}
+    .sx-top{display:grid;grid-template-columns:1fr 300px;gap:1.5rem;align-items:start}
+    .sx-stage{position:relative;aspect-ratio:16/9;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;overflow:hidden;cursor:zoom-in;display:flex;align-items:center;justify-content:center}
+    .sx-stage img{width:100%;height:100%;object-fit:cover}
+    .sx-vid{display:flex;flex-direction:column;align-items:center;gap:.6rem;color:#444;cursor:default}
+    .sx-vid i{font-size:4rem}.sx-vid span{font-size:.8rem;color:#666}
+    .sx-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:1px solid #333;background:rgba(10,10,10,.8);color:#ccc;cursor:pointer;transition:.2s}
+    .sx-nav:hover{background:#fff;color:#0a0a0a}.sx-nav.p{right:10px}.sx-nav.n{left:10px}
+    .sx-thumbs{display:flex;gap:.6rem;margin-top:.7rem;overflow-x:auto;padding-bottom:4px}
+    .sx-th{flex:0 0 110px;aspect-ratio:16/9;border:1px solid #1a1a1a;border-radius:4px;overflow:hidden;background:#0d0d0d;display:flex;align-items:center;justify-content:center;color:#444;cursor:pointer;opacity:.5;transition:.25s}
+    .sx-th img{width:100%;height:100%;object-fit:cover}
+    .sx-th.on,.sx-th:hover{opacity:1;border-color:#888}
+    .sx-side{background:#0d0d0d;border:1px solid #1a1a1a;border-radius:8px;padding:1rem}
+    .sx-side>img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;border:1px solid #1a1a1a}
+    .sx-short{color:#888;font-size:.82rem;font-weight:300;line-height:1.9;margin:.8rem 0}
+    .sx-row{display:flex;justify-content:space-between;gap:.6rem;font-size:.75rem;padding:.45rem 0;border-top:1px solid #151515}
+    .sx-row b{color:#666;font-weight:400}.sx-row span{color:#ccc;text-align:left}
+    .sx-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.9rem 0}
+    .sx-tags span{font-size:.7rem;color:#999;background:#161616;border-radius:3px;padding:.15rem .6rem;transition:.2s}
+    .sx-tags span:hover{background:#fff;color:#0a0a0a}
+    .sx-btns{display:flex;gap:.5rem}
+    .sx-btn{flex:1;font:inherit;font-size:.75rem;padding:.55rem .4rem;background:transparent;color:#aaa;border:1px solid #222;border-radius:4px;cursor:pointer;transition:.2s}
+    .sx-btn:hover{border-color:#666;color:#fff}.sx-btn.on{background:#fff;color:#0a0a0a;border-color:#fff}
+    .sx-sec{margin:2rem 0;padding:1.6rem;border:1px solid #161616;border-radius:10px;background:rgba(255,255,255,.015)}
+    .sx-sec h3{font-size:1.05rem;font-weight:700;color:#ddd;margin-bottom:1.1rem}
+    .sx-sec h3 i{margin-left:12px;color:#444}
+    .sx-feat{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.8rem}
+    .sx-feat div{display:flex;align-items:center;gap:.7rem;font-size:.8rem;color:#aaa;padding:.7rem;border:1px solid #181818;border-radius:6px}
+    .sx-feat i{color:#555;width:18px;text-align:center}
+    .sx table{width:100%;border-collapse:collapse;font-size:.8rem}
+    .sx th,.sx td{padding:.6rem;border-bottom:1px solid #151515;text-align:center;color:#aaa;font-weight:400}
+    .sx th{color:#666;font-size:.72rem}.sx td:first-child,.sx th:first-child{text-align:right}
+    .sx .ck{color:#4caf50}.sx .no{color:#333}
+    .sx-end{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem}
+    .sx-lock{border:1px dashed #262626;border-radius:8px;padding:1rem;text-align:center;cursor:pointer;transition:.3s;color:#555;background:#0a0a0a}
+    .sx-lock:hover{border-color:#555}.sx-lock i{font-size:1.4rem;display:block;margin-bottom:.5rem}
+    .sx-lock b{display:block;color:#ccc;font-size:.85rem}.sx-lock small{display:block;font-size:.72rem;margin-top:.4rem;opacity:0;max-height:0;transition:.4s;color:#999;line-height:1.8}
+    .sx-lock.open{border-style:solid;border-color:#444}.sx-lock.open small{opacity:1;max-height:80px}
+    .sx-meter{position:relative;height:10px;background:#161616;border-radius:10px;margin:1.4rem 0 .6rem}
+    .sx-meter i{position:absolute;top:0;bottom:0;background:#fff;border-radius:10px;min-width:10px}
+    .sx-scale{display:flex;justify-content:space-between;font-size:.7rem;color:#555}
+    .sx-meter-t{font-size:.85rem;color:#aaa}
+    .sx-tabs{display:flex;gap:.5rem;margin-bottom:1rem}
+    .sx-tabs .sx-btn{flex:0 0 auto;padding:.4rem 1.2rem}
+    .sx-chk{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid #161616;display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;font-size:.8rem;color:#777}
+    .sx-chk select{font:inherit;background:#0a0a0a;color:#ccc;border:1px solid #222;border-radius:4px;padding:.4rem .6rem}
+    .sx-ver{font-weight:700;color:#fff;padding:.3rem 1rem;border:1px solid #333;border-radius:30px}
+    .sx-news{display:flex;gap:1rem;padding:.8rem 0;border-top:1px solid #151515}.sx-news time{flex:0 0 90px;font-size:.72rem;color:#555}
+    .sx-news b{color:#ddd;font-size:.9rem}.sx-news p{color:#777;font-size:.8rem;margin-top:.2rem}
+    .sx-lb{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;cursor:zoom-out}
+    .sx-lb.on{display:flex}.sx-lb img{max-width:92vw;max-height:90vh;border-radius:6px}
+    @media(max-width:768px){.sx-top{grid-template-columns:1fr}.sx-sec{padding:1.1rem}}
+
+    /* ===== نظرات ===== */
+    .sx-cm{margin:2.5rem 0 1rem;padding:1.6rem;border:1px solid #161616;border-radius:10px;background:rgba(255,255,255,.015)}
+    .sx-cm h3{font-size:1.05rem;font-weight:700;color:#ddd;margin-bottom:1.1rem}.sx-cm h3 i{margin-left:12px;color:#444}.sx-cm h3 small{color:#555;font-weight:300;font-size:.75rem;margin-right:8px}
+    .sx-cm form{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.4rem}
+    .sx-cm input,.sx-cm textarea{font:inherit;font-size:.85rem;background:#0a0a0a;color:#ddd;border:1px solid #222;border-radius:6px;padding:.7rem .9rem;outline:none;transition:.2s;resize:vertical}
+    .sx-cm input:focus,.sx-cm textarea:focus{border-color:#666}
+    .sx-cm textarea{min-height:90px}
+    .sx-cm button.go{align-self:flex-start;font:inherit;font-size:.85rem;font-weight:700;padding:.6rem 1.8rem;background:#fff;color:#0a0a0a;border:none;border-radius:4px;cursor:pointer;transition:.2s}
+    .sx-cm button.go:hover{background:#ddd}
+    .sx-c{padding:1rem 0;border-top:1px solid #151515}
+    .sx-c-h{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;margin-bottom:.4rem}
+    .sx-c-h b{color:#ddd}.sx-c-h span{color:#555}.sx-c-h button{background:none;border:none;color:#555;cursor:pointer;margin-right:.6rem}.sx-c-h button:hover{color:#fff}
+    .sx-c p{color:#999;font-size:.85rem;line-height:1.9;white-space:pre-line;word-break:break-word}
+    .sx-empty{color:#555;font-size:.82rem;text-align:center;padding:1rem 0}
+
+
+    .sx-md{position:fixed;inset:0;z-index:3500;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:1rem}
+    .sx-md.on{display:flex;animation:fadeIn .25s ease}
+    .sx-md-box{position:relative;overflow:hidden;max-width:400px;width:100%;text-align:center;padding:2.4rem 2rem 1.8rem;border-radius:16px;border:1px solid #262626;background:linear-gradient(165deg,#141414,#0a0a0a);box-shadow:0 30px 80px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.06)}
+    .sx-md.on .sx-md-box{animation:sxPop .5s cubic-bezier(.2,.9,.3,1.25)}
+    .sx-md-box::before{content:'';position:absolute;top:-70px;left:50%;width:260px;height:140px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,255,255,.12),transparent);pointer-events:none}
+    .sx-chip{display:inline-block;font-size:.68rem;color:#888;border:1px solid #2a2a2a;border-radius:30px;padding:.15rem .9rem;margin-bottom:.8rem;letter-spacing:.5px}
+    .sx-md-box h4{color:#fff;font-size:1.2rem;font-weight:800;margin-bottom:.5rem}
+    .sx-md-box p{color:#777;font-size:.85rem;line-height:1.9;margin-bottom:1.5rem}
+    .sx-md-act{display:flex;gap:.6rem}
+    .sx-md-act button,.sx-md-act a{flex:1;font:inherit;font-size:.82rem;font-weight:700;padding:.7rem .5rem;border-radius:6px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:6px}
+    .sx-md-act button{background:#fff;color:#0a0a0a;border:1px solid #fff}.sx-md-act button:hover{background:#ddd}
+    .sx-md-act a{background:transparent;color:#aaa;border:1px solid #2a2a2a}.sx-md-act a:hover{border-color:#777;color:#fff}
+    @keyframes sxPop{from{opacity:0;transform:translateY(24px) scale(.92)}to{opacity:1;transform:none}}
+
+    /* ===== منوی جدید ===== */
+    .nav{position:relative;gap:0;padding:4px;background:rgba(255,255,255,.03);border:1px solid #1a1a1a;border-radius:40px}
+    .nav a{padding:.45rem 1.4rem;border-radius:30px;position:relative;z-index:1;color:#777}
+    .nav a::after{display:none}
+    .nav a:hover{transform:none;color:#fff}
+    .nav-ind{position:absolute;top:4px;bottom:4px;left:0;width:0;opacity:0;border-radius:30px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);box-shadow:0 0 24px rgba(255,255,255,.05);transition:transform .45s cubic-bezier(.3,1.2,.4,1),width .45s cubic-bezier(.3,1.2,.4,1),opacity .3s;pointer-events:none}
+    .header-actions i{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #1a1a1a;border-radius:50%;font-size:.95rem;transition:.3s}
+    .header-actions i:hover{border-color:#555;background:rgba(255,255,255,.05)}
+    .mobile-menu-overlay{display:flex;animation:none;align-items:stretch;justify-content:center;padding:0;background:radial-gradient(120% 60% at 50% 0%,#151515,#050505 70%);backdrop-filter:none;visibility:hidden;pointer-events:none;clip-path:circle(0 at 8% 4%);transition:clip-path .7s cubic-bezier(.7,0,.2,1),visibility 0s .7s;overflow-y:auto}
+    .mobile-menu-overlay.active{visibility:visible;pointer-events:auto;clip-path:circle(150% at 8% 4%);transition:clip-path .7s cubic-bezier(.7,0,.2,1),visibility 0s}
+    .mm-wrap{width:100%;max-width:520px;margin:auto;padding:1.4rem 1.6rem 2rem;display:flex;flex-direction:column;min-height:100%}
+    .mm-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
+    .mm-top .mobile-logo{font-size:1.1rem;font-weight:900;letter-spacing:3px;color:#fff;margin:0}.mm-top .mobile-logo span{color:#555;font-weight:300}
+    .mm-top .close-menu{position:static;width:40px;height:40px;border-radius:50%;border:1px solid #222;background:none;color:#888;font-size:1rem;cursor:pointer;transition:.4s}
+    .mm-top .close-menu:hover{color:#fff;border-color:#555;transform:rotate(90deg)}
+    .mm-nav a,.mm-feat,.mm-social{opacity:0;transform:translateY(28px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.9,.3,1),color .3s,padding .3s}
+    .mobile-menu-overlay.active .mm-nav a,.mobile-menu-overlay.active .mm-feat,.mobile-menu-overlay.active .mm-social{opacity:1;transform:none}
+    .mm-nav a:nth-child(1){transition-delay:.25s}.mm-nav a:nth-child(2){transition-delay:.32s}.mm-nav a:nth-child(3){transition-delay:.39s}.mm-nav a:nth-child(4){transition-delay:.46s}
+    .mm-feat{transition-delay:.55s}.mm-social{transition-delay:.65s}
+    .mm-nav a{display:flex;align-items:baseline;gap:.9rem;padding:1.1rem 0;border-bottom:1px solid #151515;color:#555;position:relative}
+    .mm-nav a b{font-size:clamp(2rem,9vw,2.8rem);font-weight:900;letter-spacing:-1px;line-height:1.2}
+    .mm-nav a small{font-size:.75rem;color:#3d3d3d;font-weight:300;transition:.3s}
+    .mm-nav a i{margin-right:auto;font-size:1rem;color:#333;transform:translateX(10px);opacity:0;transition:.35s}
+    .mm-nav a:hover,.mm-nav a.on{color:#fff;padding-right:.8rem}
+    .mm-nav a:hover small,.mm-nav a.on small{color:#888}
+    .mm-nav a:hover i,.mm-nav a.on i{opacity:1;transform:none;color:#fff}
+    .mm-nav a.on::before{content:'';position:absolute;right:-1px;top:28%;bottom:28%;width:3px;border-radius:3px;background:#fff}
+    .mm-feat{display:flex;align-items:center;gap:1rem;margin-top:2rem;padding:.7rem;border:1px solid #1d1d1d;border-radius:12px;background:rgba(255,255,255,.02)}
+    .mm-feat:hover{border-color:#444}
+    .mm-feat img{width:112px;aspect-ratio:16/9;object-fit:cover;border-radius:7px;border:1px solid #222;pointer-events:none}
+    .mm-feat span{display:block;font-size:.68rem;color:#666}.mm-feat b{display:block;color:#fff;font-size:1.05rem;font-weight:800}.mm-feat small{font-size:.72rem;color:#777}
+    .mm-social{display:flex;gap:1.6rem;justify-content:center;margin-top:auto;padding-top:2rem}
+    .mm-social a{color:#444;font-size:1.4rem;transition:.3s}.mm-social a:hover{color:#fff;transform:translateY(-4px)}
+
+    .dev-credit{display:block;margin:2.2rem auto 0;font:inherit;font-size:.82rem;font-weight:300;color:#555;background:none;border:none;border-top:1px solid #151515;padding:1.2rem 1.5rem 0;cursor:pointer;transition:.3s}
+    .dev-credit b{color:#888;font-weight:700;direction:ltr;unicode-bidi:embed;transition:.3s}.dev-credit i{font-size:.65rem;margin-right:4px}
+    .dev-credit:hover,.dev-credit:hover b{color:#fff}
+    .dev-av{width:84px;height:84px;margin:0 auto 1rem;border-radius:50%;overflow:hidden;border:1px solid #2a2a2a;background:#0d0d0d;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.5rem;color:#fff;letter-spacing:1px;box-shadow:0 0 40px rgba(255,255,255,.06)}
+    .dev-av img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+    .dev-links{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.3rem}
+    .dev-links a{display:flex;align-items:center;gap:.8rem;padding:.75rem 1rem;border:1px solid #1f1f1f;border-radius:8px;background:rgba(255,255,255,.02);color:#aaa;font-size:.85rem;transition:.25s}
+    .dev-links a i:first-child{font-size:1.15rem;color:#666;width:22px;text-align:center;transition:.25s}
+    .dev-links a span{margin-right:auto;font-size:.72rem;color:#555;direction:ltr}
+    .dev-links a:hover{border-color:#555;color:#fff;transform:translateY(-2px)}.dev-links a:hover i:first-child{color:#fff}
+    #devModal .sx-md-act button{flex:1}
+
+    /* ===== جستجو (هم‌استایل کارت‌های سایت) ===== */
+    .sq-clear{display:none;position:absolute;left:1.2rem;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:none;background:#1a1a1a;color:#888;cursor:pointer;align-items:center;justify-content:center;font-size:.7rem;transition:.2s}
+    .sq-clear:hover{background:#fff;color:#0a0a0a}
+    .search-page .search-box{margin-bottom:1.2rem}
+    .sq-chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;width:100%;max-width:600px;margin:0 auto 2rem}
+    .sq-chip{font:inherit;font-size:.72rem;color:#666;background:transparent;border:1px solid #222;border-radius:20px;padding:.25rem 1.1rem;letter-spacing:.5px;cursor:pointer;transition:.3s}
+    .sq-chip:hover{color:#fff;border-color:#555}.sq-chip.on{background:#fff;color:#0a0a0a;border-color:#fff}
+    .search-page .results-count span:first-child{color:#888;font-weight:700}
+    .sq-grid{width:100%;text-align:right}
+    .sq-grid .game-card.sel{border-color:#555;box-shadow:0 20px 60px rgba(0,0,0,.7)}
+    .sq-pn{font-size:.85rem;color:#777;font-weight:300;margin-bottom:.3rem}
+    .sq-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.8rem}.sq-tags span{font-size:.68rem;color:#888;background:#161616;border-radius:3px;padding:.1rem .6rem}
+    .sq-grid mark{background:#fff;color:#0a0a0a;border-radius:3px;padding:0 3px}
+    .sq-none{grid-column:1/-1;text-align:center;padding:3rem 0;color:#555}
+    .sq-none i{font-size:3rem;color:#222;display:block;margin-bottom:1rem}.sq-none h2{color:#888;font-size:1.2rem;font-weight:700;margin-bottom:.3rem}
+
+    /* ===== کارت صفحه‌ی اصلی به سبک استیم ===== */
+    .steam-list{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:4rem}
+    .steam-card{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);background:#0f0f0f;border:1px solid #181818;border-radius:8px;overflow:hidden;cursor:pointer;color:inherit;text-decoration:none;animation:fadeUp .7s ease backwards;transition:border-color .4s,box-shadow .4s,transform .4s}
+    .steam-card:hover{border-color:#444;box-shadow:0 30px 80px rgba(0,0,0,.8);transform:translateY(-4px)}
+    .sc-media{display:flex;flex-direction:column;background:#0a0a0a;min-width:0}
+    .sc-cap{position:relative;aspect-ratio:460/215;overflow:hidden;background:#0a0a0a}
+    .sc-cap img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .25s ease;pointer-events:none}
+    .sc-cap::after{content:'';position:absolute;left:0;right:0;bottom:0;height:40%;background:linear-gradient(0deg,rgba(10,10,10,.65),transparent);pointer-events:none}
+    .sc-thumbs{display:flex;gap:6px;padding:6px}
+    .sc-th{flex:1;min-width:0;aspect-ratio:460/215;overflow:hidden;border:1px solid #1a1a1a;border-radius:3px;opacity:.45;transition:.25s;background:#0d0d0d}
+    .sc-th img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+    .sc-th.on,.sc-th:hover{opacity:1;border-color:#777}
+    .sc-info{display:flex;flex-direction:column;gap:.9rem;padding:1.4rem;background:linear-gradient(135deg,#131313,#0d0d0d);min-width:0}
+    .sc-title{font-size:1.6rem;font-weight:800;color:#fff;line-height:1.3;font-family:'Estedad','Ardakan',sans-serif}
+    .sc-desc{font-size:.85rem;color:#777;font-weight:300;line-height:1.9}
+    .sc-meta div{display:flex;justify-content:space-between;gap:.6rem;font-size:.76rem;padding:.45rem 0;border-top:1px solid #151515}
+    .sc-meta b{color:#555;font-weight:400}.sc-meta span{color:#bbb}.sc-meta i{margin-left:4px}
+    .sc-tags{display:flex;flex-wrap:wrap;gap:.35rem}.sc-tags span{font-size:.68rem;color:#999;background:#161616;border-radius:3px;padding:.15rem .6rem}
+    .sc-buy{margin-top:auto;display:flex;border:1px solid #222;border-radius:4px;overflow:hidden}
+    .sc-buy .sc-state{flex:1;display:flex;align-items:center;gap:.5rem;padding:.6rem 1rem;font-size:.8rem;color:#aaa;background:#0a0a0a}
+    .sc-go{display:flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;background:#fff;color:#0a0a0a;font-size:.8rem;font-weight:700;transition:background .3s}
+    .steam-card:hover .sc-go{background:#ddd}
+    @media(max-width:820px){.steam-card{grid-template-columns:1fr}}
+
+    /* ===== هدر شناور (جداشدن از بالا هنگام اسکرول) ===== */
+    .header{background:rgba(10,10,10,0);backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0);border:1px solid transparent;border-radius:0;box-shadow:0 0 0 rgba(0,0,0,0);
+      transition:top .5s cubic-bezier(.2,.8,.2,1),left .5s cubic-bezier(.2,.8,.2,1),right .5s cubic-bezier(.2,.8,.2,1),padding .5s cubic-bezier(.2,.8,.2,1),border-radius .5s,background-color .5s,border-color .5s,box-shadow .5s,backdrop-filter .5s}
+    .header.scrolled{top:12px;left:16px;right:16px;padding:.6rem 1.4rem;border-radius:18px;background:rgba(12,12,12,.72);
+      backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);border:1px solid rgba(255,255,255,.09);box-shadow:0 18px 50px rgba(0,0,0,.55)}
+    @media(max-width:768px){.header.scrolled{top:8px;left:10px;right:10px;padding:.5rem 1rem;border-radius:14px}}
+
+    /* ===== صفحه‌ی سبد خرید ===== */
+    .cart-page{padding:4rem 0 5rem;min-height:80vh;display:flex;flex-direction:column;align-items:center;text-align:center}
+    .cart-page h1{font-size:2.8rem;font-weight:900;font-family:'Estedad','Ardakan',sans-serif;letter-spacing:-1px;color:#fff}
+    .cart-art{width:min(380px,82vw);aspect-ratio:1;object-fit:contain;margin:1.5rem auto .5rem;mix-blend-mode:screen;pointer-events:none}
+    .cart-chip{font-size:.7rem;color:#888;border:1px solid #262626;border-radius:30px;padding:.15rem 1rem;letter-spacing:.5px}
+    .cart-page h2{font-size:1.5rem;font-weight:800;color:#ddd;margin:1rem 0 .3rem;font-family:'Estedad','Ardakan',sans-serif}
+    .cart-page p{color:#777;max-width:440px;font-weight:300;line-height:2;margin:0 0 2rem}
+    @media(max-width:768px){.cart-page h1{font-size:2rem}}
+  </style>
+</head>
+<body>
+
+  <!-- ==================================================
+       مودال
+  ================================================== -->
+  <div class="modal-overlay" id="notReadyModal">
+    <div class="modal-box">
+      <div class="modal-icon"><i class="fas fa-hourglass-half"></i></div>
+      <h2>هنوز آماده نیست!</h2>
+      <p>این بازی در حال فارسی‌سازی است و به‌زودی در Zerox Game Studios منتشر می‌شود.</p>
+      <button class="modal-close" onclick="closeModal()">متوجه شدم</button>
+    </div>
+  </div>
+
+  <!-- ==================================================
+       منوی موبایل
+  ================================================== -->
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="mm-wrap">
+      <div class="mm-top">
+        <div class="mobile-logo">ZER0X <span>GAME</span></div>
+        <button class="close-menu" aria-label="بستن" onclick="closeMobileMenu()"><i class="fas fa-times"></i></button>
+      </div>
+      <nav class="mm-nav">
+        <a href="#home" onclick="navigateTo('home'); closeMobileMenu();"><b>خانه</b><small>صفحه‌ی اصلی</small><i class="fas fa-arrow-left"></i></a>
+        <a href="#games" onclick="scrollToGames(); closeMobileMenu();"><b>بازی‌ها</b><small>پروژه‌های ما</small><i class="fas fa-arrow-left"></i></a>
+        <a href="#about" onclick="navigateTo('about'); closeMobileMenu();"><b>درباره ما</b><small>داستان استودیو</small><i class="fas fa-arrow-left"></i></a>
+        <a href="#search" onclick="navigateTo('search'); closeMobileMenu();"><b>جستجو</b><small>پیدا کردن بازی</small><i class="fas fa-arrow-left"></i></a>
+      </nav>
+      <a class="mm-feat" href="#game-silentgears" onclick="navigateTo('detail'); closeMobileMenu();">
+        <img src="https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg" alt="" />
+        <div><span>بازی منتخب</span><b>SilentGears</b><small>چرخ‌دنده‌ساکت · به‌زودی</small></div>
+      </a>
+      <div class="mm-social">
+        <a href="https://t.me/ZEROX_GAME_STUDIOS" target="_blank" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.youtube.com/@Zerox_game_studios" target="_blank" aria-label="یوتیوب"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/zerox_game_studios" target="_blank" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================================
+       HEADER
+  ================================================== -->
+  <header class="header" id="header">
+    <div class="logo animate-fade-down" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
+    <nav class="nav" id="mainNav">
+      <a class="active" data-page="home" href="#home" onclick="navigateTo('home')">خانه</a>
+      <a data-page="games" href="#games" onclick="scrollToGames()">بازی‌ها</a>
+      <a data-page="about" href="#about" onclick="navigateTo('about')">درباره ما</a>
+    </nav>
+    <div class="header-actions">
+      <i class="fas fa-search" onclick="navigateTo('search')"></i>
+      <i class="fas fa-shopping-basket" onclick="navigateTo('cart')" aria-label="سبد خرید"></i>
+      <i class="fas fa-bars menu-mobile" onclick="toggleMobileMenu()"></i>
+    </div>
+  </header>
+
+  <!-- ==================================================
+       صفحه خانه
+  ================================================== -->
+  <div class="page active" id="pageHome">
+    <section class="hero-slider" id="heroSlider">
+      <div class="hero-slide active">
+        <div class="hero-slide-bg" style="background-image: url('https://cdn.imgurl.ir/uploads/x571205_Negar_1788480643884.png');"></div>
+        <div class="hero-content">
+          <div class="game-tag"><i class="fas fa-star" style="color:#444; margin-left:6px;"></i> بازی منتخب</div>
+          <h1>SilentGears</h1>
+          <div class="sub-title">چرخ‌دنده‌ساکت</div>
+          <div class="meta">
+            <span><i class="fas fa-tag"></i> اکشن-ماجرایی</span>
+            <span><i class="fas fa-desktop"></i> ویندوز</span>
+            <span><i class="fas fa-clock"></i> در دست توسعه</span>
+          </div>
+          <a href="#game-silentgears" class="btn-ghost" onclick="navigateTo('detail')">مشاهده بازی <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" id="games-section">
+      <h2 class="section-title">بازی‌های ما</h2>
+      <div class="steam-list">
+        <a href="#game-silentgears" class="steam-card" data-game="silentgears" data-title="SilentGears" data-state="در دست توسعه" onclick="navigateTo('detail')">
+          <div class="sc-media"><div class="sc-cap"><img src="https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg" alt="SilentGears" /></div></div>
+          <div class="sc-info"><div class="sc-title">SilentGears</div><div class="sc-state">در دست توسعه</div></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="container" id="about-section">
+      <div class="intro-section" style="border-top:1px solid #1a1a1a; padding:3rem 0 4rem; margin-top:1rem;">
+        <h2 style="font-size:2.8rem; font-weight:900; font-family:'Estedad','Ardakan',sans-serif; letter-spacing:-1px;">ZER0X GAME</h2>
+        <p style="max-width:600px; color:#555; margin:0.8rem 0 1.5rem; font-size:1.05rem; font-weight:300;">استودیوی بازی‌سازی با نگاه سینمایی و روایت‌های عمیق. خلق فراتر از مرزها.</p>
+        <a href="#about" onclick="navigateTo('about')" style="color:#666; border-bottom:1px solid #222; padding-bottom:3px; transition:0.3s; cursor:pointer;">درباره ما <i class="fas fa-arrow-left" style="margin-right:6px;"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================================
+       صفحه درباره ما
+  ================================================== -->
+  <div class="page" id="pageAbout">
+    <div class="container">
+      <div class="about-page">
+        <div class="about-header"><h1>درباره Zerox Game</h1></div>
+        <div class="about-content">
+          <p>Zerox Game بخش اختصاصی گیمینگ Zerox Studios است؛ جایی که ایده‌ها به تجربه‌های تعاملی تبدیل می‌شوند.</p>
+          <p>ما با تمرکز بر ساخت بازی‌های مستقل، تولید محتوای گیمینگ و معرفی آثار ویدیویی فعالیت می‌کنیم و تلاش داریم تجربه‌هایی متفاوت، خلاقانه و به‌یادماندنی خلق کنیم.</p>
+          <p>اولین پروژه‌ی بازی‌سازی Zerox Studios، Silent Gears، آغاز مسیر ما در دنیای توسعه‌ی بازی است؛ مسیری که با هدف یادگیری، نوآوری و ساخت آثار مستقل ادامه خواهد داشت.</p>
+          <p>در Zerox Game، فقط بازی نمی‌سازیم؛<br />دنیایی می‌سازیم که بازیکن بتواند در آن تجربه کند، کشف کند و لذت ببرد.</p>
+          <div class="about-tagline">ZEROX GAME <span>Play. Create. Beyond Limits.</span></div>
+          <button type="button" class="dev-credit" onclick="openDevModal()">سازنده سایت: <b>mohamad hossein ev18</b> <i class="fas fa-arrow-up-right-from-square"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================================
+       صفحه جستجو
+  ================================================== -->
+  <div class="page" id="pageSearch">
+    <div class="container search-page">
+      <div class="search-header">
+        <h1>جستجوی بازی</h1>
+        <div class="sub">اسم بازی، ژانر یا برچسب رو بنویس</div>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="مثل: SilentGears ..." id="searchInput" autocomplete="off" oninput="searchGames()" />
+        <i class="fas fa-search search-icon"></i>
+        <button type="button" class="sq-clear" id="sqClear" aria-label="پاک کردن"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="sq-chips" id="sqChips"></div>
+      <div class="results-count"><span id="countNum">۰</span> <span id="countLabel">بازی در استودیو</span></div>
+      <div class="game-grid sq-grid" id="resultsGrid"></div>
+    </div>
+  </div>
+
+  <!-- ==================================================
+       صفحه سبد خرید
+  ================================================== -->
+  <div class="page" id="pageCart">
+    <div class="container cart-page">
+      <h1>سبد خرید</h1>
+      <img class="cart-art" src="https://www.picofile.com/f/kALYrVblCc/file-000000007d18820c8985112c2a1d2081.png" alt="سبد خرید" />
+      <span class="cart-chip">فروشگاه به‌زودی</span>
+      <h2>سبد خریدت خالیه</h2>
+      <p>فروشگاه Zerox Game هنوز باز نشده. وقتی بازی‌ها منتشر بشن، خریدشون رو از همین‌جا انجام می‌دی.</p>
+      <a href="#games" class="btn-ghost" onclick="scrollToGames()">دیدن بازی‌ها <i class="fas fa-arrow-left" style="margin-right:10px;"></i></a>
+    </div>
+  </div>
+
+  <!-- ==================================================
+       صفحه اختصاصی SilentGears
+  ================================================== -->
+  <div class="page" id="pageDetail">
+    <div class="detail-hero">
+      <div class="detail-hero-bg"></div>
+      <div class="detail-content">
+        <a href="#home" class="back-link" onclick="navigateTo('home')"><i class="fas fa-arrow-right"></i> بازگشت</a>
+        <h1>SilentGears</h1>
+        <div class="sub">چرخ‌دنده‌ساکت</div>
+        <div class="detail-info-box">
+          <div class="item"><strong>ژانر</strong><span>اکشن-ماجرایی • نقش‌آفرینی</span></div>
+          <div class="item"><strong>پلتفرم</strong><span>ویندوز (PC)</span></div>
+          <div class="item"><strong>وضعیت</strong><span>در دست توسعه</span></div>
+          <div class="item"><strong>مدت زمان</strong><span>۳ تا ۴ ساعت</span></div>
+          <div class="item"><strong>پایان‌ها</strong><span>۳ پایان مختلف</span></div>
+          <div class="item"><strong>حالت بازی</strong><span>تکنفره، روایت خطی</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-body container">
+      <div class="full-desc">
+        🎮 SilentGears | چرخ‌دنده‌ساکت یک بازی اکشن-ماجرایی، نقش‌آفرینی سبک، ریتم‌محور (Rhythm-Based) و پساآخرالزمانی است که توسط Zerox Studios ساخته شده.
+        داستان بازی در دنیایی پس از سقوط تمدن روایت می‌شود. شما در نقش یک بازمانده تنها، باید در میان ویرانه‌های یک شهر صنعتی، راز چرخ‌دنده‌های خاموش را کشف کنید. هر تصمیم شما مسیر داستان را تغییر می‌دهد و به یکی از ۳ پایان مختلف ختم می‌شود.
+        بازی با ترکیب گیم‌پلی ریتم‌محور و مبارزات استراتژیک، تجربه‌ای منحصربه‌فرد را برای شما به ارمغان می‌آورد. گرافیک خیره‌کننده، موسیقی متن حماسی و فضای پساآخرالزمانی، شما را به دنیای چرخ‌دنده‌ساکت می‌برد.
+      </div>
+
+      <div class="purchase-card">
+        <div class="purchase-header">
+          <div class="purchase-logo">ZER0X <span>GAME</span></div>
+          <div class="purchase-badge">به‌زودی</div>
+        </div>
+        <div class="purchase-body">
+          <div class="purchase-cover">
+            <img src="https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg" alt="SilentGears" />
+          </div>
+          <div class="purchase-info">
+            <h3>SilentGears</h3>
+            <p class="purchase-desc">یک بازی اکشن-ماجرایی ریتم‌محور در دنیای پساآخرالزمانی</p>
+            <div class="purchase-meta">
+              <span><i class="fas fa-tag"></i> اکشن-ماجرایی</span>
+              <span><i class="fas fa-desktop"></i> ویندوز</span>
+            </div>
+            <div class="purchase-status">
+              <div class="status-badge"><i class="fas fa-clock"></i> <span>به‌زودی</span></div>
+              <p class="status-desc">این بازی در حال توسعه است و به‌زودی منتشر می‌شود.</p>
+            </div>
+            <button class="purchase-btn disabled"><i class="fas fa-hourglass-half"></i> به‌زودی</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sx" data-game="silentgears"></div>
+
+      <a href="#home" class="back-link" onclick="navigateTo('home')" style="display:inline-flex; align-items:center; gap:8px; color:#555; border-bottom:1px solid #222; padding-bottom:6px; cursor:pointer; margin-top:1rem;">
+        <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
+      </a>
+
+      <div class="sx-cm" data-game="silentgears"></div>
+    </div>
+  </div>
+
+  <!-- ==================================================
+       FOOTER
+  ================================================== -->
+  <footer class="footer">
+    <div class="logo" onclick="navigateTo('home')">ZER0X <span>GAME</span></div>
+    <div class="footer-links">
+      <a href="#home" onclick="navigateTo('home')">خانه</a>
+      <a href="#games" onclick="scrollToGames()">بازی‌ها</a>
+      <a href="#about" onclick="navigateTo('about')">درباره ما</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://t.me/ZEROX_GAME_STUDIOS" target="_blank" rel="noopener noreferrer" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.youtube.com/@Zerox_game_studios" target="_blank" rel="noopener noreferrer" aria-label="یوتیوب"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/zerox_game_studios" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="توییتر"><i class="fab fa-twitter"></i></a>
+    </div>
+    <div class="footer-copy">© 2026 ZER0X GAME · Create Beyond Limits.</div>
+  </footer>
+
+  <!-- ==================================================
+       JAVASCRIPT
+  ================================================== -->
+  <script>
+
+    /* ===== جلوگیری از دانلود عکس ===== */
+    document.addEventListener('contextmenu', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
+    });
+    document.addEventListener('dragstart', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    /* ===== مودال ===== */
+    function openModal() {
+      document.getElementById('notReadyModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('notReadyModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+        closeMobileMenu();
+      }
+    });
+
+    /* ==================================================
+       HERO SLIDER (صفحه اصلی)
+    ================================================== */
+    let currentHeroSlide = 0;
+    let heroSliderTimer = null;
+    const HERO_SLIDE_TIME = 6000;
+
+    function goToHeroSlide(index) {
+      const slides = document.querySelectorAll('#heroSlider .hero-slide');
+      const dots = document.querySelectorAll('#heroSlider .hero-slider-dot');
+      if (!slides.length) return;
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      slides.forEach(function(slide) { slide.classList.remove('active'); });
+      dots.forEach(function(dot) { dot.classList.remove('active'); });
+      currentHeroSlide = index;
+      slides[currentHeroSlide].classList.add('active');
+      if (dots[currentHeroSlide]) dots[currentHeroSlide].classList.add('active');
+      resetHeroSliderTimer();
+    }
+
+    function nextHeroSlide() {
+      const slides = document.querySelectorAll('#heroSlider .hero-slide');
+      if (!slides.length) return;
+      goToHeroSlide((currentHeroSlide + 1) % slides.length);
+    }
+
+    function resetHeroSliderTimer() {
+      if (heroSliderTimer) clearInterval(heroSliderTimer);
+      heroSliderTimer = setInterval(function() { nextHeroSlide(); }, HERO_SLIDE_TIME);
+    }
+
+    /* ==================================================
+       شروع اسلایدرها
+    ================================================== */
+    document.addEventListener('DOMContentLoaded', function() {
+      currentHeroSlide = 0;
+      goToHeroSlide(0);
+    });
+
+    /* ==================================================
+       اسکرول به بازی‌ها
+    ================================================== */
+    function scrollToGames() {
+      navigateTo('home');
+      setTimeout(function() {
+        const gamesSection = document.getElementById('games-section');
+        if (gamesSection) gamesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
+    }
+
+    /* ==================================================
+       ناوبری
+    ================================================== */
+    function navigateTo(page) {
+      document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+      if (page === 'home') {
+        document.getElementById('pageHome').classList.add('active');
+        window.location.hash = 'home';
+        setTimeout(function() { goToHeroSlide(0); }, 100);
+      } else if (page === 'about') {
+        document.getElementById('pageAbout').classList.add('active');
+        window.location.hash = 'about';
+      } else if (page === 'search') {
+        document.getElementById('pageSearch').classList.add('active');
+        document.getElementById('searchInput').focus();
+        searchGames();
+        window.location.hash = 'search';
+      } else if (page === 'cart') {
+        document.getElementById('pageCart').classList.add('active');
+        window.location.hash = 'cart';
+      } else if (page === 'detail') {
+        document.getElementById('pageDetail').classList.add('active');
+        window.location.hash = 'game-silentgears';
+      }
+      document.querySelectorAll('.nav a').forEach(function(a) { a.classList.remove('active'); });
+      const navMap = { home: 0, about: 2 };
+      if (page === 'home' || page === 'about') {
+        const idx = navMap[page];
+        const navItems = document.querySelectorAll('.nav a');
+        if (idx !== undefined && navItems[idx]) navItems[idx].classList.add('active');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ==================================================
+       لود شدن با HASH
+    ================================================== */
+    window.addEventListener('load', function() {
+      const hash = window.location.hash.replace('#', '');
+      if (hash === 'home' || hash === '') navigateTo('home');
+      else if (hash === 'about') navigateTo('about');
+      else if (hash === 'search') navigateTo('search');
+      else if (hash === 'cart') navigateTo('cart');
+      else if (hash === 'game-silentgears') navigateTo('detail');
+      else navigateTo('home');
+    });
+
+    window.addEventListener('hashchange', function() {
+      const hash = window.location.hash.replace('#', '');
+      if (hash === 'home') navigateTo('home');
+      else if (hash === 'about') navigateTo('about');
+      else if (hash === 'search') navigateTo('search');
+      else if (hash === 'cart') navigateTo('cart');
+      else if (hash === 'game-silentgears') navigateTo('detail');
+    });
+
+    /* ==================================================
+       جستجو
+    ================================================== */
+    const gamesDB = [
+      { id: 1, title: 'SilentGears', persianTitle: 'چرخ‌دنده‌ساکت', slug: 'silentgears', genre: 'اکشن-ماجرایی • نقش‌آفرینی', status: 'در دست توسعه', platform: 'ویندوز', tags: ['ریتم‌محور', 'پساآخرالزمانی', 'اکشن-ماجرایی', 'نقش‌آفرینی', 'تک‌نفره', 'ویندوز'], cover: 'https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg', link: 'detail' }
+    ];
+
+    function sqNorm(t) { return String(t || '').toLowerCase().replace(/[\u200c\s]+/g, '').replace(/\u064a/g, '\u06cc').replace(/\u0643/g, '\u06a9').replace(/[\u06f0-\u06f9]/g, function (d) { return '\u06f0\u06f1\u06f2\u06f3\u06f4\u06f5\u06f6\u06f7\u06f8\u06f9'.indexOf(d); }); }
+    let sqSel = 0;
+    function sqHi(text, q) { const i = q ? text.toLowerCase().indexOf(q.toLowerCase()) : -1; return i < 0 ? text : text.slice(0, i) + '<mark>' + text.slice(i, i + q.length) + '</mark>' + text.slice(i + q.length); }
+    function sqPaint() { document.querySelectorAll('#resultsGrid .game-card').forEach(function (r, i) { r.classList.toggle('sel', i === sqSel); }); }
+    function searchGames() {
+      const input = document.getElementById('searchInput'), raw = input.value.trim(), q = sqNorm(raw);
+      const grid = document.getElementById('resultsGrid');
+      document.getElementById('sqClear').style.display = raw ? 'flex' : 'none';
+      document.querySelectorAll('.sq-chip').forEach(function (c) { c.classList.toggle('on', !!raw && sqNorm(c.dataset.t) === q); });
+      const list = gamesDB.map(function (g) {
+        let sc = 0;
+        if (!q) sc = 1;
+        else {
+          if (sqNorm(g.title).includes(q) || sqNorm(g.persianTitle).includes(q)) sc += 3;
+          if (g.tags.some(function (t) { return sqNorm(t).includes(q); }) || sqNorm(g.genre).includes(q)) sc += 2;
+          if (sqNorm(g.status + g.platform).includes(q)) sc += 1;
+        }
+        return { g: g, sc: sc };
+      }).filter(function (x) { return x.sc > 0; }).sort(function (a, b) { return b.sc - a.sc; }).map(function (x) { return x.g; });
+      document.getElementById('countNum').textContent = list.length.toLocaleString('fa-IR');
+      document.getElementById('countLabel').textContent = q ? 'نتیجه پیدا شد' : 'بازی در استودیو';
+      sqSel = 0;
+      if (!list.length) { grid.innerHTML = '<div class="sq-none"><i class="fas fa-ghost"></i><h2>چیزی پیدا نشد</h2><p>یه کلمه‌ی دیگه یا یکی از برچسب‌های بالا رو امتحان کن.</p></div>'; return; }
+      grid.innerHTML = list.map(function (g, i) {
+        return '<div class="game-card" style="animation-delay:' + (i * 0.08) + 's" onclick="navigateTo(\'' + g.link + '\')">' +
+          '<div class="card-img"><img src="' + g.cover + '" alt="' + g.title + '" loading="lazy" decoding="async" /><div class="card-overlay"><i class="fas fa-arrow-left"></i></div></div>' +
+          '<div class="card-body"><h3>' + sqHi(g.title, raw) + '</h3><div class="sq-pn">' + sqHi(g.persianTitle, raw) + '</div><div class="genre">' + g.genre + '</div>' +
+          '<div class="sq-tags">' + g.tags.slice(0, 4).map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div>' +
+          '<div class="status"><i class="far fa-clock" style="margin-left:6px;"></i> ' + g.status + '</div></div></div>';
+      }).join('');
+      sqPaint();
+    }
+    (function () {
+      const input = document.getElementById('searchInput'), page = document.getElementById('pageSearch');
+      const tags = []; gamesDB.forEach(function (g) { g.tags.forEach(function (t) { if (tags.indexOf(t) < 0) tags.push(t); }); });
+      const chips = document.getElementById('sqChips');
+      chips.innerHTML = tags.map(function (t) { return '<button type="button" class="sq-chip" data-t="' + t + '">' + t + '</button>'; }).join('');
+      chips.onclick = function (e) { const c = e.target.closest('.sq-chip'); if (!c) return; input.value = input.value.trim() === c.dataset.t ? '' : c.dataset.t; searchGames(); input.focus(); };
+      document.getElementById('sqClear').onclick = function () { input.value = ''; searchGames(); input.focus(); };
+      input.addEventListener('keydown', function (e) {
+        const rows = document.querySelectorAll('#resultsGrid .game-card');
+        if (e.key === 'ArrowDown') { e.preventDefault(); sqSel = Math.min(sqSel + 1, rows.length - 1); sqPaint(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); sqSel = Math.max(sqSel - 1, 0); sqPaint(); }
+        else if (e.key === 'Enter' && rows[sqSel]) rows[sqSel].click();
+        else if (e.key === 'Escape') { input.value = ''; searchGames(); }
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === '/' && page.classList.contains('active') && document.activeElement !== input) { e.preventDefault(); input.focus(); } });
+      const hints = gamesDB.map(function (g) { return g.title; }).concat(tags); let k = 0;
+      setInterval(function () { if (!input.value && page.classList.contains('active')) input.placeholder = 'مثل: ' + hints[k++ % hints.length] + ' ...'; }, 2400);
+      searchGames();
+    })();
+
+    /* ==================================================
+       منوی موبایل
+    ================================================== */
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const map = { pageHome: 0, pageAbout: 2, pageSearch: 3 };
+      const cur = document.querySelector('.page.active');
+      menu.querySelectorAll('.mm-nav a').forEach(function(a, k) { a.classList.toggle('on', !!cur && map[cur.id] === k); });
+      menu.classList.toggle('active');
+      document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    /* ==================================================
+       هدر اسکرول
+    ================================================== */
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+
+    /* ==================================================
+       پارالاکس
+    ================================================== */
+    document.addEventListener('scroll', function() {
+      const heroBg = document.querySelector('#heroSlider .hero-slide.active .hero-slide-bg');
+      if (heroBg) {
+        heroBg.style.transform = 'scale(1.02) translateY(' + (window.scrollY * 0.04) + 'px)';
+      }
+    });
+
+    /* ==================================================
+       ریسپانسیو منو
+    ================================================== */
+    window.addEventListener('resize', function() {
+      const nav = document.getElementById('mainNav');
+      if (window.innerWidth > 768) {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'row';
+        nav.style.position = 'static';
+        nav.style.background = 'transparent';
+        nav.style.padding = '0';
+        nav.style.gap = '2.2rem';
+        nav.style.borderBottom = 'none';
+      } else {
+        nav.style.display = 'none';
+      }
+    });
+
+  
+    /* ==================================================
+       صفحه‌ی بازی به سبک استیم — فقط داده‌ی GAMES رو ویرایش کن
+       برای بازی جدید: یک آبجکت جدید اضافه کن و <div class="sx" data-game="نام"></div> بذار
+       (مقادیر مشخصات سیستم نمونه‌اند → با مقدار واقعی عوض کن)
+    ================================================== */
+    const GAMES = {
+      silentgears: {
+        cover: 'https://cdn.imgurl.ir/uploads/k51183_Negar_1788164380627.jpg',
+        media: [ {video:1}, {src:'https://cdn.imgurl.ir/uploads/z306107_Negar_1788157838729.jpg'}, {src:'https://cdn.imgurl.ir/uploads/l79706_Negar_1788163302729.jpg'} ],
+        short: 'اکشن-ماجرایی ریتم‌محور در دنیایی پس از سقوط تمدن؛ راز چرخ‌دنده‌های خاموش رو کشف کن.',
+        info: [['تاریخ انتشار','به‌زودی'],['سازنده','Zerox Studios'],['ناشر','Zerox Game'],['پلتفرم','ویندوز (PC)']],
+        tags: ['ریتم‌محور','پساآخرالزمانی','اکشن-ماجرایی','نقش‌آفرینی','تک‌نفره','چند پایانی'],
+        features: [['user','تک‌نفره'],['music','گیم‌پلی ریتم‌محور'],['code-branch','۳ پایان مختلف'],['windows','فقط ویندوز']],
+        langs: [['فارسی',1,0,1]],
+        endings: [['پایان اول','با انتخاب‌های تو باز می‌شود'],['پایان دوم','با انتخاب‌های تو باز می‌شود'],['پایان سوم','با انتخاب‌های تو باز می‌شود']],
+        hours: [3,4],
+        req: { min:{os:'Windows 7',cpu:'دو هسته‌ای ۲ گیگاهرتز',ram:2,gpu:'کارت گرافیک ساده',storage:'۵۰۰ مگابایت',tier:0},
+               rec:{os:'Windows 10',cpu:'چهار هسته‌ای ۲٫۵ گیگاهرتز',ram:4,gpu:'کارت گرافیک متوسط',storage:'۱ گیگابایت',tier:1} },
+        news: []
+      }
+    };
+
+    (function () {
+      const lb = document.createElement('div'); lb.className = 'sx-lb';
+      lb.innerHTML = '<img alt="" />'; document.body.appendChild(lb);
+      lb.onclick = function () { lb.classList.remove('on'); };
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('on'); });
+      const sec = function (ic, t, b) { return '<section class="sx-sec"><h3><i class="fas fa-' + ic + '"></i>' + t + '</h3>' + b + '</section>'; };
+      const mark = function (v) { return v ? '<i class="fas fa-check ck"></i>' : '<i class="fas fa-minus no"></i>'; };
+
+      document.querySelectorAll('.sx[data-game]').forEach(function (el) {
+        const id = el.dataset.game, g = GAMES[id]; if (!g) return;
+        let cur = 0, tab = 'min', wished = false;
+        try { wished = localStorage.getItem('wish_' + id) === '1'; } catch (e) {}
+        const thumbs = g.media.map(function (m, i) {
+          return '<div class="sx-th" data-i="' + i + '">' + (m.src ? '<img src="' + m.src + '" alt="" loading="lazy" />' : '<i class="fas fa-play"></i>') + '</div>';
+        }).join('');
+        const multi = g.media.length > 1;
+        let h = '<div class="sx-top"><div><div class="sx-stage"></div>' +
+          (multi ? '<div class="sx-thumbs">' + thumbs + '</div>' : '') + '</div>' +
+          '<aside class="sx-side"><img src="' + g.cover + '" alt="" /><p class="sx-short">' + g.short + '</p>' +
+          g.info.map(function (r) { return '<div class="sx-row"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>'; }).join('') +
+          '<div class="sx-tags">' + g.tags.map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div>' +
+          '<div class="sx-btns"><button class="sx-btn wish"></button><button class="sx-btn share"><i class="fas fa-link"></i> کپی لینک</button></div></aside></div>';
+        h += sec('star', 'ویژگی‌های بازی', '<div class="sx-feat">' + g.features.map(function (f) { return '<div><i class="fas fa-' + f[0] + '"></i>' + f[1] + '</div>'; }).join('') + '</div>');
+        h += sec('language', 'زبان‌ها', '<table><tr><th>زبان</th><th>رابط</th><th>صدا</th><th>زیرنویس</th></tr>' +
+          g.langs.map(function (l) { return '<tr><td>' + l[0] + '</td><td>' + mark(l[1]) + '</td><td>' + mark(l[2]) + '</td><td>' + mark(l[3]) + '</td></tr>'; }).join('') + '</table>');
+        h += sec('lock', 'پایان‌ها <small style="color:#555;font-weight:300">(برای دیدن راهنما لمس کن)</small>',
+          '<div class="sx-end">' + g.endings.map(function (e) { return '<div class="sx-lock"><i class="fas fa-lock"></i><b>' + e[0] + '</b><small>' + e[1] + '</small></div>'; }).join('') + '</div>');
+        const a = g.hours[0], b = g.hours[1];
+        h += sec('hourglass-half', 'مدت زمان بازی', '<div class="sx-meter-t">حدود ' + a + ' تا ' + b + ' ساعت</div><div class="sx-meter"><i style="inset-inline-start:' + (a / 20 * 100) + '%;width:' + ((b - a) / 20 * 100) + '%"></i></div><div class="sx-scale"><span>کوتاه</span><span>۱۰ ساعت</span><span>۲۰+ ساعت</span></div>');
+        h += sec('microchip', 'مشخصات سیستم', '<div class="sx-tabs"><button class="sx-btn on" data-t="min">حداقل</button><button class="sx-btn" data-t="rec">پیشنهادی</button></div><div class="sx-req"></div>' +
+          '<div class="sx-chk"><span>سیستمم می‌تونه اجرا کنه؟</span><select class="ram"><option value="1">۱ گیگ رم</option><option value="2">۲ گیگ رم</option><option value="4" selected>۴ گیگ رم</option><option value="8">۸ گیگ یا بیشتر</option></select>' +
+          '<select class="gpu"><option value="0">گرافیک ضعیف / داخلی</option><option value="1" selected>گرافیک متوسط</option><option value="2">گرافیک قوی</option></select><span class="sx-ver"></span></div>');
+        if (g.news.length) h += sec('newspaper', 'اخبار و آپدیت‌ها', g.news.map(function (n) { return '<div class="sx-news"><time>' + n[0] + '</time><div><b>' + n[1] + '</b><p>' + n[2] + '</p></div></div>'; }).join(''));
+        el.innerHTML = h;
+
+        const stage = el.querySelector('.sx-stage');
+        function show(i) {
+          cur = (i + g.media.length) % g.media.length; const m = g.media[cur];
+          stage.innerHTML = (m.src ? '<img src="' + m.src + '" alt="" />' : '<div class="sx-vid"><i class="fas fa-play-circle"></i><span>تریلر به‌زودی</span></div>') +
+            (multi ? '<button class="sx-nav p"><i class="fas fa-chevron-right"></i></button><button class="sx-nav n"><i class="fas fa-chevron-left"></i></button>' : '');
+          el.querySelectorAll('.sx-th').forEach(function (t, k) { t.classList.toggle('on', k === cur); });
+        }
+        stage.onclick = function (e) {
+          if (e.target.closest('.sx-nav')) { show(cur + (e.target.closest('.sx-nav').classList.contains('n') ? -1 : 1) * -1); return; }
+          const m = g.media[cur]; if (m.src) { lb.querySelector('img').src = m.src; lb.classList.add('on'); }
+        };
+        el.querySelectorAll('.sx-th').forEach(function (t) { t.onclick = function () { show(+t.dataset.i); }; });
+        show(0);
+
+        const wb = el.querySelector('.wish');
+        function paintWish() { wb.classList.toggle('on', wished); wb.innerHTML = '<i class="' + (wished ? 'fas' : 'far') + ' fa-heart"></i> ' + (wished ? 'در علاقه‌مندی‌ها' : 'علاقه‌مندی'); }
+        wb.onclick = function () { wished = !wished; try { localStorage.setItem('wish_' + id, wished ? '1' : '0'); } catch (e) {} paintWish(); };
+        paintWish();
+        const sb = el.querySelector('.share');
+        sb.onclick = function () {
+          const done = function () { sb.innerHTML = '<i class="fas fa-check"></i> کپی شد'; setTimeout(function () { sb.innerHTML = '<i class="fas fa-link"></i> کپی لینک'; }, 1800); };
+          if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(done, done); else done();
+        };
+        el.querySelectorAll('.lock, .sx-lock').forEach(function (c) { c.onclick = function () { c.classList.toggle('open'); c.querySelector('i').className = 'fas fa-' + (c.classList.contains('open') ? 'unlock' : 'lock'); }; });
+
+        const rq = el.querySelector('.sx-req'), ver = el.querySelector('.sx-ver');
+        function paintReq() {
+          const r = g.req[tab];
+          rq.innerHTML = '<table>' + [['سیستم‌عامل', r.os], ['پردازنده', r.cpu], ['رم', r.ram + ' گیگابایت'], ['گرافیک', r.gpu], ['فضای خالی', r.storage]]
+            .map(function (x) { return '<tr><td>' + x[0] + '</td><td style="text-align:left">' + x[1] + '</td></tr>'; }).join('') + '</table>';
+        }
+        function verdict() {
+          const ram = +el.querySelector('.ram').value, gpu = +el.querySelector('.gpu').value, q = g.req;
+          const ok = function (r) { return ram >= r.ram && gpu >= r.tier; };
+          ver.textContent = ok(q.rec) ? 'روان اجرا می‌شود ✓' : ok(q.min) ? 'قابل اجراست' : 'ممکن است سنگین باشد';
+          ver.style.color = ok(q.rec) ? '#4caf50' : ok(q.min) ? '#ccc' : '#888';
+        }
+        el.querySelectorAll('.sx-tabs .sx-btn').forEach(function (t) {
+          t.onclick = function () { tab = t.dataset.t; el.querySelectorAll('.sx-tabs .sx-btn').forEach(function (x) { x.classList.toggle('on', x === t); }); paintReq(); };
+        });
+        el.querySelector('.ram').onchange = verdict; el.querySelector('.gpu').onchange = verdict;
+        paintReq(); verdict();
+      });
+    })();
+
+    /* ===== نظرات: فعلاً فقط باکس؛ ثبت نظر پیام «در دسترس نیست» نشون می‌ده ===== */
+    (function () {
+      const m = document.createElement('div'); m.className = 'sx-md';
+      m.innerHTML = '<div class="sx-md-box"><span class="sx-chip">به‌زودی</span><h4>سیستم نظردهی در دسترس نیست</h4><p>بخش نظرات هنوز آماده نیست.<br />به‌زودی فعال می‌شه.</p><div class="sx-md-act"><button type="button">باشه</button><a href="https://t.me/ZEROX_GAME_STUDIOS" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> خبرها در تلگرام</a></div></div>';
+      document.body.appendChild(m);
+      const close = function () { m.classList.remove('on'); };
+      m.onclick = function (e) { if (e.target === m || e.target.tagName === 'BUTTON') close(); };
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+      document.querySelectorAll('.sx-cm[data-game]').forEach(function (el) {
+        el.innerHTML = '<h3><i class="fas fa-comments"></i>نظرات</h3>' +
+          '<form><input class="nm" maxlength="30" placeholder="نام (اختیاری)" /><textarea class="tx" maxlength="600" placeholder="نظرت درباره‌ی این بازی..."></textarea><button class="go" type="submit">ثبت نظر</button></form>' +
+          '<div class="sx-empty">هنوز نظری ثبت نشده.</div>';
+        el.querySelector('form').onsubmit = function (e) { e.preventDefault(); m.classList.add('on'); };
+      });
+    })();
+  
+    /* ===== نشانگر متحرک منوی دسکتاپ + بستن منو با Esc ===== */
+    (function () {
+      const nav = document.getElementById('mainNav'); if (!nav) return;
+      const ind = document.createElement('span'); ind.className = 'nav-ind'; nav.appendChild(ind);
+      const cur = function () { return nav.querySelector('a.active'); };
+      const to = function (a) { if (!a) { ind.style.opacity = 0; return; } ind.style.opacity = 1; ind.style.width = a.offsetWidth + 'px'; ind.style.transform = 'translateX(' + a.offsetLeft + 'px)'; };
+      nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('mouseenter', function () { to(a); }); });
+      nav.addEventListener('mouseleave', function () { to(cur()); });
+      new MutationObserver(function () { to(cur()); }).observe(nav, { subtree: true, attributes: true, attributeFilter: ['class'] });
+      window.addEventListener('load', function () { to(cur()); });
+      window.addEventListener('resize', function () { to(cur()); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMobileMenu(); });
+    })();
+  
+    /* ===== مودال سازنده سایت ===== */
+    (function () {
+      const m = document.createElement('div'); m.className = 'sx-md'; m.id = 'devModal';
+      m.innerHTML = '<div class="sx-md-box"><span class="sx-chip">سازنده سایت</span><div class="dev-av"><img src="https://cdn.imgurl.ir/uploads/y39152_Negar_1791034551022.jpg" alt="mohamad hossein ev18" /></div><h4 dir="ltr">mohamad hossein ev18</h4><p>طراح و سازنده‌ی این سایت. از اینجا می‌تونی دنبالم کنی:</p>' +
+        '<div class="dev-links">' +
+        '<a href="https://www.youtube.com/@mohamad_hossein_ev18" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i>یوتیوب<span>@mohamad_hossein_ev18</span></a>' +
+        '<a href="https://www.instagram.com/mohamad_hossein_ev18" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i>اینستاگرام<span>@mohamad_hossein_ev18</span></a>' +
+        '<a href="https://t.me/MOHAMAD_HOSSEIN_EV188" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i>تلگرام<span>@MOHAMAD_HOSSEIN_EV188</span></a></div>' +
+        '<div class="sx-md-act"><button type="button">بستن</button></div></div>';
+      document.body.appendChild(m);
+      const close = function () { m.classList.remove('on'); };
+      m.onclick = function (e) { if (e.target === m || e.target.tagName === 'BUTTON') close(); };
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+      window.openDevModal = function () { m.classList.add('on'); };
+    })();
+  
+    /* ===== کارت استیمی صفحه‌ی اصلی: داده‌ها از GAMES می‌آد؛ هاور = چرخش اسکرین‌شات‌ها ===== */
+    (function () {
+      document.querySelectorAll('.steam-card[data-game]').forEach(function (card) {
+        const g = typeof GAMES !== 'undefined' && GAMES[card.dataset.game]; if (!g) return;
+        const imgs = [g.cover].concat(g.media.filter(function (m) { return m.src; }).map(function (m) { return m.src; })).filter(function (v, i, a) { return a.indexOf(v) === i; });
+        imgs.forEach(function (u) { new Image().src = u; });
+        const info = function (l) { const r = g.info.find(function (x) { return x[0] === l; }); return r ? r[1] : ''; };
+        const row = function (l, v, ic) { return v ? '<div><b>' + l + '</b><span>' + (ic || '') + v + '</span></div>' : ''; };
+        card.innerHTML =
+          '<div class="sc-media"><div class="sc-cap"><img alt="" /></div>' +
+          (imgs.length > 1 ? '<div class="sc-thumbs">' + imgs.map(function (u) { return '<div class="sc-th"><img src="' + u + '" alt="" loading="lazy" /></div>'; }).join('') + '</div>' : '') + '</div>' +
+          '<div class="sc-info"><div class="sc-title"></div><p class="sc-desc"></p>' +
+          '<div class="sc-meta">' + row('تاریخ انتشار', info('تاریخ انتشار')) + row('سازنده', info('سازنده')) + row('پلتفرم', info('پلتفرم'), '<i class="fab fa-windows"></i>') + '</div>' +
+          '<div class="sc-tags">' + g.tags.slice(0, 5).map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div>' +
+          '<div class="sc-buy"><span class="sc-state"><i class="far fa-clock"></i></span><span class="sc-go">مشاهده بازی <i class="fas fa-arrow-left"></i></span></div></div>';
+        card.querySelector('.sc-title').textContent = card.dataset.title;
+        card.querySelector('.sc-desc').textContent = g.short;
+        card.querySelector('.sc-state').appendChild(document.createTextNode(card.dataset.state));
+        const cap = card.querySelector('.sc-cap img'
